@@ -1,0 +1,87 @@
+[tool.poetry]
+name = "nipcbatt"
+version = "1.0.54"
+license = "MIT"
+description = "Python PCB Assembly Test Toolkit"
+authors = ["NI <opensource@ni.com>"]
+maintainers = ["John Meeker <john.meeker@emerson.com>", "Emmanuel ROSET <emmanuel.roset@emerson.com>", "Srinivasan J <srinivasan.j@emerson.com>", "Aditya Saxena <adityasaxena@emerson.com>"]
+include = ["docs", "requirements.txt", "requirements_for_packaging.txt"]
+readme = "README.rst"
+exclude = [
+	"tests/nipcbatt_tests/pcbatt_library_integration_tests",
+	"tests/nipcbatt_tests/pcbatt_library_tests"
+]
+packages = [{ include = "nipcbatt", from = "src" }]
+
+[[tool.poetry.source]]
+name = "NI PyPI"
+priority = "primary"
+url = "https://pypi.ni.systems"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "1.26.4"
+scipy = "1.13.0"
+nidaqmx = "0.9.0"
+pyvisa = "1.14.1"
+colorama = "0.4.6"
+varname = "0.12.0"
+executing = "2.0.1"
+pandas = "2.2.2"
+matplotlib = "3.9.2"
+
+[tool.poetry.group.dev.dependencies]
+setuptools = "*"
+wheel = "*"
+asttokens = "2.4.1"
+build = "1.0.3"
+colorama = "0.4.6"
+decorator = "5.1.1"
+deprecation = "2.1.0"
+executing = "2.0.1"
+ipython = "8.17.2"
+jedi = "0.19.1"
+matplotlib-inline = "0.1.6"
+packaging = "23.2"
+parso = "0.8.3"
+prompt-toolkit = "3.0.40"
+pure-eval = "0.2.2"
+Pygments = "2.16.1"
+pyproject_hooks = "1.0.0"
+six = "1.16.0"
+stack-data = "0.6.3"
+toml = "0.10.2"
+traitlets = "5.13.0"
+varname = "0.12.0"
+wcwidth = "0.2.9"
+pytest = ">=6.2.3"
+pytest-cov = "^4.1.0"
+mock = ">=4.0.3"
+black = "^23.3.0"
+parameterized = "^0.8.1"
+flake8 = ">=5.0.4"
+pep8-naming = ">=0.13.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.setuptools.package-data]
+"*" = [ "win_amd64/NI.*.dll",]
+
+[tool.pytest.ini_options]
+addopts = "--cov src --strict-markers --doctest-modules"
+testpaths = ["tests"]
+pythonpath = "src"
+norecursedirs = [
+    "tests/nipcbatt_tests/pcbatt_library_integration_tests/*",
+	"tests/nipcbatt_tests/pcbatt_analysis_tests/*",
+	"tests/nipcbatt_tests/pcbatt_library_tests/*"
+]
+
+[tool.distutils.bdist_wheel]
+plat-name = "win_amd64"
+
+[tool.black]
+line-length = 100
+

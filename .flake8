@@ -1,0 +1,13 @@
+# TODO: Merge this into pyproject.toml when it is supported
+#       https://github.com/PyCQA/flake8/issues/234
+[flake8]
+show_source = true
+max_line_length = 140
+exclude = build,docs,.tox,__pycache__,.venv,venvs
+
+# H216: The unittest.mock module should be used rather than the third party mock package unless actually needed.
+# H404: Multi line docstrings should start without a leading new line.
+# H405: Multi line docstrings should start with a one line summary followed by an empty line.
+# H903: Windows style line endings not allowed in code
+# W503 line break before binary operator
+ignore = H216,H404,H405,H903,W503,D102,D200,D103,D205,D101,D105,D400,D401,D107,D202,D203,E202,E203,I202,I201,I100,D403,W291,D209,D208,D403,E501,E266,N803,F401,D414,F841,D300,N801,D402,E714,D210,I101,F632,F811,N818,D211,D204,BLK100,LK100,E123,E225,E265,E275,W292,E303,W293,E231,E251,E302,E275,E722
