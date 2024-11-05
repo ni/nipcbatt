@@ -1,0 +1,9 @@
+numpy==1.26.4
+scipy==1.13.0
+nidaqmx==0.9.0
+pyvisa==1.14.1
+colorama==0.4.6
+varname==0.12.0
+executing==2.0.1
+pandas==2.2.2
+matplotlib==3.9.2

@@ -1,0 +1,12 @@
+diff a/pcbatt.python/tests/nipcbatt_tests/pcbatt_library_tests/digital_clock_generations/test_digital_clock_data_types.py b/pcbatt.python/tests/nipcbatt_tests/pcbatt_library_tests/digital_clock_generations/test_digital_clock_data_types.py	(rejected hunks)
+@@ -79,8 +79,8 @@
+             expected_frequency, expected_duty_cycle
+         )
+ 
+-        self.assertEqual(expected_frequency, instance.frequency_hertz)
+-        self.assertEqual(expected_duty_cycle, instance.duty_cycle_ratio)
++        self.assertEqual(expected_frequency, instance.frequency)
++        self.assertEqual(expected_duty_cycle, instance.duty_cycle)
+ 
+     def test_digital_clock_generation_counter_channel_parameters_with_invalid_data(
+         self,

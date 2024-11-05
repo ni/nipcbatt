@@ -1,11 +1,11 @@
-# Contributing to \<reponame\> 
+# Contributing to nipcbatt 
 
-Contributions to \<reponame\> are welcome from all!
+Contributions to **nipcbatt** are welcome from all!
 
-\<reponame\> is managed via [git](https://git-scm.com), with the canonical upstream
+**nipcbatt** is managed via [git](https://git-scm.com), with the canonical upstream
 repository hosted on [GitHub](https://github.com/ni/<reponame>/).
 
-\<reponame\> follows a pull-request model for development.  If you wish to
+**nipcbatt** follows a pull-request model for development.  If you wish to
 contribute, you will need to create a GitHub account, fork this project, push a
 branch with your changes to your project, and then submit a pull request.
 
@@ -19,13 +19,20 @@ this repository.
 
 See [GitHub's official documentation](https://help.github.com/articles/using-pull-requests/) for more details.
 
-# Getting Started
+<!-- # Getting Started -->
 
-- TODO: include build steps here.
+## 📝 Making a Code Contribution 📝
 
-# Testing
+All code contributions should be in the form of [Pull Requests](https://guides.github.com/activities/forking/).
 
-- TODO: include testing steps here.
+Please follow these steps to have your contribution considered by the maintainers:
+
+1. Follow the styleguide
+1. After you submit your pull request, verify that all status checks are passing
+
+<!-- # Testing
+
+- TODO: include testing steps here. -->
 
 # Developer Certificate of Origin (DCO)
 
@@ -57,5 +64,5 @@ See [GitHub's official documentation](https://help.github.com/articles/using-pul
 
 (taken from [developercertificate.org](https://developercertificate.org/))
 
-See [LICENSE](https://github.com/ni/<reponame>/blob/main/LICENSE)
-for details about how \<reponame\> is licensed.
+See [LICENSE](https://github.com/ni/nipcbatt/blob/main/LICENSE)
+for details about how **nipcbatt** is licensed.
