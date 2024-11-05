@@ -1,4 +1,4 @@
-""" Power supply source data types """
+""" Power supply source data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (149 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import numpy
@@ -15,7 +15,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class PowerSupplySourceAndMeasureTerminalParameters(PCBATestToolkitData):
-    """Defines parameters used for configuration of Power source and measurements"""
+    """Defines parameters used for configuration of Power source and measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (195 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -40,7 +40,7 @@ class PowerSupplySourceAndMeasureTerminalParameters(PCBATestToolkitData):
                 maintain the existing value after the task is uncommitted.
             enable_output (bool):
                 Specifies whether to enable or disable power module output.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._voltage_setpoint_volts = voltage_setpoint_volts
         self._current_setpoint_amperes = current_setpoint_amperes
         self._power_sense = power_sense
@@ -51,14 +51,14 @@ class PowerSupplySourceAndMeasureTerminalParameters(PCBATestToolkitData):
     def voltage_setpoint_volts(self) -> float:
         """
         :type:`float`:Gets the output voltage setpoint in volts for the terminal
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._voltage_setpoint_volts
 
     @property
     def current_setpoint_amperes(self) -> float:
         """
         :type:`float`:Gets the output current setpoint in amperes for the terminal
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._current_setpoint_amperes
 
     @property
@@ -66,7 +66,7 @@ class PowerSupplySourceAndMeasureTerminalParameters(PCBATestToolkitData):
         """
         :class:`nidaqmx.constants.Sense`:
             Gets the remote sense value configured for the power measurement
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._power_sense
 
     @property
@@ -74,19 +74,19 @@ class PowerSupplySourceAndMeasureTerminalParameters(PCBATestToolkitData):
         """
         :class:`nidaqmx.constants.PowerIdleOutputBehavior`:
             Gets the idle output behaviour value configured for the power channels
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._idle_output_behaviour
 
     @property
     def enable_output(self) -> bool:
         """
         :type:`bool`:Gets if the output is enabled or disabled
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._enable_output
 
 
 class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
-    """Defines parameters used for configuration of Power measurements"""
+    """Defines parameters used for configuration of Power measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -110,7 +110,7 @@ class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
             digital_start_trigger_parameters (DigitalStartTriggerParameters):
                 An instance of `DigitalStartTriggerParameters`
                 that represents the settings of triggers.
-        """
+        """  # noqa: D205, D415, D417, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (286 > 100 characters) (auto-generated noqa)
         self._measurement_options = measurement_options
         self._sample_clock_timing_parameters = sample_clock_timing_parameters
         self._digital_start_trigger_parameters = digital_start_trigger_parameters
@@ -121,7 +121,7 @@ class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
         """
         :class: `PowerSupplySourceAndMeasureTerminalParameters`:
             Gets the settings of Power terminal for all the channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._terminal_parameters
 
     @property
@@ -130,7 +130,7 @@ class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
         :class:`MeasurementOptions`:
             Gets a `MeasurementOptions` instance
             that represents the settings of options used for execution.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -139,7 +139,7 @@ class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -148,13 +148,13 @@ class PowerSupplySourceAndMeasureConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
     """Defines the result values computed after analysing
-    voltage and current waveforms from Power Supply Source."""
+    voltage and current waveforms from Power Supply Source."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (355 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -184,7 +184,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
                 The average power value (in Watts).
             acquisition_duration_seconds (float):
                 The total acquisition time by the instrument in seconds.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(voltage_waveform, nameof(voltage_waveform))
         Guard.is_not_none(current_waveform, nameof(current_waveform))
 
@@ -202,7 +202,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         :class:`AnalogWaveform`:
             Gets the voltage waveforms acquired from channels defined
             for measurement and used to compute power measurements.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_waveform
 
     @property
@@ -211,7 +211,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         :class:`AnalogWaveform`:
             Gets the current waveforms acquired from channels defined
             for measurement and used to compute power measurements.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._current_waveform
 
     @property
@@ -219,7 +219,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum voltage level value (in Volts).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._max_voltage_level_volts
 
     @property
@@ -227,7 +227,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum current level value (in Amperes).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._max_current_level_amperes
 
     @property
@@ -235,7 +235,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum power level value (in Watts).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._max_power_level_watts
 
     @property
@@ -243,7 +243,7 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the average power value (in Watts).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._average_power_value_watts
 
     @property
@@ -251,14 +251,14 @@ class PowerSupplySourceAndMeasureResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the duration of acquisition of samples for each of the power channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._acquisition_duration_seconds
 
 
 class PowerSupplySourceAndMeasureData(PCBATestToolkitData):
     """
     Defines the voltage and current waveform acquired from power channels.
-    """
+    """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -284,7 +284,7 @@ class PowerSupplySourceAndMeasureData(PCBATestToolkitData):
             Note: argument cannot be None or zero.
 
             voltage_samples, current_samples, and sampling_rate_hertz ca
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._source_name = source_name
 
         Guard.is_greater_than_zero(
@@ -310,7 +310,7 @@ class PowerSupplySourceAndMeasureData(PCBATestToolkitData):
     def source_name(self) -> str:
         """
         :type:`str`: Gets the name of channel on which waveform was captured.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._source_name
 
     @property
@@ -318,7 +318,7 @@ class PowerSupplySourceAndMeasureData(PCBATestToolkitData):
         """
         :class:`numpy.ndarray`:
             Gets the array of samples from the voltage waveform.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_samples
 
     @property
@@ -326,7 +326,7 @@ class PowerSupplySourceAndMeasureData(PCBATestToolkitData):
         """
         :class:`numpy.ndarray`:
             Gets the array of samples from the current waveform.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._current_samples
 
     @property

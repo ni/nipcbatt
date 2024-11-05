@@ -1,4 +1,4 @@
-"""Provides DC-RMS analysis tools"""
+"""Provides DC-RMS analysis tools"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (147 > 100 characters) (auto-generated noqa)
 
 from enum import IntEnum
 from typing import Iterable
@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DcRmsProcessingResult(AnalysisLibraryElement):
-    """Defines DC-RMS processing results"""
+    """Defines DC-RMS processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (154 > 100 characters) (auto-generated noqa)
 
     def __init__(self, dc_value: float, rms_value: float) -> None:
         """Initialize an instance of DC-RMS processing result.
@@ -50,7 +50,7 @@ class DcRmsProcessingResult(AnalysisLibraryElement):
 
 
 class DcRmsProcessingWindow(IntEnum):
-    """Defines DC-RMS processing window"""
+    """Defines DC-RMS processing window"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (153 > 100 characters) (auto-generated noqa)
 
     RECTANGULAR = 0
     """No windows is applied."""
@@ -63,7 +63,7 @@ class DcRmsProcessingWindow(IntEnum):
 
 
 class LabViewBasicDcRms(AnalysisLibraryElement):
-    """Provides DC-RMS processing based on LabVIEW Basic DC-RMS VI"""
+    """Provides DC-RMS processing based on LabVIEW Basic DC-RMS VI"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def get_last_error_message() -> str:
@@ -72,7 +72,7 @@ class LabViewBasicDcRms(AnalysisLibraryElement):
 
         Returns:
             str: Empty string when no error occured, elsewhere not empty string.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         return _dc_rms_analysis.labview_get_last_error_message_impl()
 
     @staticmethod
@@ -91,7 +91,7 @@ class LabViewBasicDcRms(AnalysisLibraryElement):
         Returns:
             DcRmsProcessingResult: An object that holds result of DC-RMS
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -129,7 +129,7 @@ class LabViewBasicDcRms(AnalysisLibraryElement):
         Returns:
             Iterable[DcRmsProcessingResult]: An iterable of objects that hold result of
             DC-RMS processing of each input waveform using LabVIEW VI.
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(waveforms_samples, nameof(waveforms_samples))
         Guard.is_greater_than_zero(

@@ -36,7 +36,7 @@ class DcVoltageGeneration(BuildingBlockUsingDAQmx):
         if self.is_task_initialized:
             return
 
-        # If the input analog_output_channel_expression contains global channel, then add them as global channels
+        # If the input analog_output_channel_expression contains global channel, then add them as global channels  # noqa: W505 - doc line too long (113 > 100 characters) (auto-generated noqa)
         # and verify if the global channels are configured for analog output voltage.
         if self.contains_only_global_virtual_channels(
             channel_expression=analog_output_channel_expression
@@ -85,8 +85,8 @@ class DcVoltageGeneration(BuildingBlockUsingDAQmx):
             ValueError:
                 If the `output_voltages` is an ampty array.
                 If the size of `output_voltages` does not match with the number of channels in the Task.
-        """
-        # Check if the output_voltages array is not empty and if it has same number of elements as the number of channels in the task.
+        """  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
+        # Check if the output_voltages array is not empty and if it has same number of elements as the number of channels in the task.  # noqa: W505 - doc line too long (134 > 100 characters) (auto-generated noqa)
         Guard.is_not_empty(output_voltages, nameof(output_voltages))
         Guard.have_same_size(
             first_iterable_instance=output_voltages,
@@ -112,7 +112,7 @@ class DcVoltageGeneration(BuildingBlockUsingDAQmx):
 
         Returns:
             None.
-        """
+        """  # noqa: W505 - doc line too long (113 > 100 characters) (auto-generated noqa)
         self.configure_all_channels(parameters=configuration.voltage_generation_range_parameters)
         self.generate_voltage(
             output_voltages=configuration.output_voltages,

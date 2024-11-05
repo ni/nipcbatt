@@ -1,13 +1,15 @@
 """This example demonstrates synchronization using Dynamic Digital Pattern Generation Library to 
    generate Digital Pattern from one Backplane and capture it using Dynamic Digital Pattern 
-   Measuerment library in another Backplane"""
+   Measuerment library in another Backplane"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (339 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105,E0401
 import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
-from nipcbatt.pcbatt_library.common.helper_functions import digital_ramp_pattern_generator
+from nipcbatt.pcbatt_library.common.helper_functions import (
+    digital_ramp_pattern_generator,
+)
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 """Note to run with Hardware: Update the Global Channel Info based on 
@@ -32,7 +34,7 @@ DEFAULT_FILEPATH = (
 
 
 def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT_CHANNEL):
-    """Creates the necessary objects for the generation and measurement of digital patterns"""
+    """Creates the necessary objects for the generation and measurement of digital patterns"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (282 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     generation_instance = nipcbatt.DynamicDigitalPatternGeneration()
@@ -70,7 +72,7 @@ def main(
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
     The default file path for the results of this sequence is:
-    C:\\Windows\\Temp\\dynamic_digital_pattern_generation_and_measurement_results.txt"""
+    C:\\Windows\\Temp\\dynamic_digital_pattern_generation_and_measurement_results.txt"""  # noqa: D202, D205, D209, D301 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa)
 
     if write_to_file:
         logger = PcbattLogger(filepath)
@@ -82,7 +84,7 @@ def main(
     # Note to run with Hardware: Review the Configurations & update the Sample Clock Source and
     # Digital Start Trigger Settings based on NI MAX and Setup Connections
 
-    """Consider below items when measuring Digital patterns
+    """Consider below items when measuring Digital patterns  # noqa: W505 - doc line too long (428 > 100 characters) (auto-generated noqa)
        1. Sampling rate at measurement end should be same as the sampling rate at generation end
        2. Configure Trigger to start capture as soon as pattern generated using Dynamic 
        digital pattern measurement"""
@@ -210,7 +212,7 @@ def cleanup(
     measurement_instance: nipcbatt.DynamicDigitalPatternMeasurement,
     sync_signals: nipcbatt.SynchronizationSignalRouting,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement."""
     generation_instance.close()  # Close generation
     measurement_instance.close()  # Close measurement
     sync_signals.close()  # Close signal synchronization
@@ -228,8 +230,7 @@ def dynamic_digital_pattern_generation_and_measurement(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
-
+    """Execute all steps in the sequence."""
     # Run setup function
     gen, meas, sync = setup(generation_channel, measurement_channel)
 

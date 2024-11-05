@@ -1,4 +1,4 @@
-"""Builds x64 native DLLs then copies them into python src structure"""
+"""Builds x64 native DLLs then copies them into python src structure"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (182 > 100 characters) (auto-generated noqa)
 
 import logging
 import os

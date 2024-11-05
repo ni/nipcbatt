@@ -1,9 +1,10 @@
-import os
-import numpy as np
+import os  # noqa: D100 - Missing docstring in public module (auto-generated noqa)
 from datetime import datetime
-import matplotlib.pyplot as plt
-import matplotlib.pylab as pl
+
 import matplotlib.gridspec as gridspec
+import matplotlib.pylab as pl
+import matplotlib.pyplot as plt
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 
 ## Using graph_plot function as a module in other files:
 
@@ -12,7 +13,9 @@ import matplotlib.gridspec as gridspec
 # pl.graph_plot(y,x,title="Graph", save_fig=True)
 
 
-def graph_plot(y: list, x=[], title="", ylabel="", xlabel="", save_fig=False):
+def graph_plot(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+    y: list, x=[], title="", ylabel="", xlabel="", save_fig=False
+):
     if x != []:
         plt.plot(x, y)
     else:
@@ -47,7 +50,7 @@ def graph_plot(y: list, x=[], title="", ylabel="", xlabel="", save_fig=False):
 # _______________________________________________________________________________________________________________________________________________________
 
 
-def plot_two(
+def plot_two(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     y1: list,
     y2: list,
     x1=[],
@@ -99,7 +102,7 @@ def plot_two(
 # _______________________________________________________________________________________________________________________________________________________
 
 
-def plot_three(
+def plot_three(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     y1: list,
     y2: list,
     y3: list,
@@ -171,7 +174,7 @@ def plot_three(
 # _______________________________________________________________________________________________________________________________________________________
 
 
-def plot_four(
+def plot_four(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     y1: list,
     y2: list,
     y3: list,

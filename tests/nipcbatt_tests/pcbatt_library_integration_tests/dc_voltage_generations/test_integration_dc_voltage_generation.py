@@ -22,7 +22,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dc_voltage_generation_generate_only(self):
-        """Checks if class `DcVoltageGeneration' can generate with just the initial configurations"""
+        """Checks if class `DcVoltageGeneration' can generate with just the initial configurations"""  # noqa: W505, D202, D415 - doc line too long (101 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
         generation = nipcbatt.DcVoltageGeneration()
         generation.initialize(
@@ -58,7 +58,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
     def test_dc_voltage_generation_generate_voltage_with_configure_and_generate_in_loop(
         self,
     ):
-        """Checks if class `DcVoltageGeneration' can configure and generate when they are called one after the other."""
+        """Checks if class `DcVoltageGeneration' can configure and generate when they are called one after the other."""  # noqa: W505, D202 - doc line too long (120 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa)
 
         generation_channel_parameters_1 = nipcbatt.VoltageGenerationChannelParameters(
             range_min_volts=-5.0,
@@ -84,21 +84,21 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
             analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
         )
 
-        # With the instance of DCVoltageGeneration Initialized, test for configure and generate in loop with different Voltage ranges
+        # With the instance of DCVoltageGeneration Initialized, test for configure and generate in loop with different Voltage ranges  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
         for generation_parameters, output_voltages_list in parameters_list:
             generation.configure_all_channels(
                 parameters=generation_parameters,
             )
             generation.generate_voltage(output_voltages_list)
 
-        # With the same configuration, test for generate_voltage consecutively with a different set output_voltages
+        # With the same configuration, test for generate_voltage consecutively with a different set output_voltages  # noqa: W505 - doc line too long (115 > 100 characters) (auto-generated noqa)
         generation.generate_voltage(output_voltages_3)
         generation.close()
 
     def test_dc_voltage_generation_generate_voltage_with_incorrect_output_voltages(
         self,
     ):
-        """Checks if class `DcVoltageGeneration' throws expected error when called with invalid output_voltages"""
+        """Checks if class `DcVoltageGeneration' throws expected error when called with invalid output_voltages"""  # noqa: W505, D202, D415 - doc line too long (114 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
         generation = nipcbatt.DcVoltageGeneration()
         generation.initialize(
@@ -110,13 +110,13 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
         # The generate_voltage with valid output_voltages shoudl not throw any error
         generation.generate_voltage([0.5, 0.7])
 
-        # Checks if the expected error is thrown when the size of output_voltages is more than the number of channels.
+        # Checks if the expected error is thrown when the size of output_voltages is more than the number of channels.  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: generation.generate_voltage(output_voltages=[1.0, 2.0, 2.8]),
         )
 
-        # Checks if the expected error is thrown when the size of output_voltages is less than the number of channels.
+        # Checks if the expected error is thrown when the size of output_voltages is less than the number of channels.  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: generation.generate_voltage(output_voltages=[1.5]),

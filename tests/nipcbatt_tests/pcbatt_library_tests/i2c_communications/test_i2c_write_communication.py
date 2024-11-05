@@ -48,7 +48,7 @@ class TestI2cWriteCommunication(unittest.TestCase):
     def test_i2c_write_communication(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_communication.I2cWriteCommunication
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with nipcbatt.I2cWriteCommunication() as communication:
             communication.initialize("USB-8452")
 

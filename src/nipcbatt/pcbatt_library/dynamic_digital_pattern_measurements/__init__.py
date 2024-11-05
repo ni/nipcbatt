@@ -1,1 +1,1 @@
-"""Provides nipcbatt library dynamic digital pattern measurement modules"""
+"""Provides nipcbatt library dynamic digital pattern measurement modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (186 > 100 characters) (auto-generated noqa)

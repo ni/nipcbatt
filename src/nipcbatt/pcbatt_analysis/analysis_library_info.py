@@ -43,7 +43,7 @@ def enable_traces(traces_status: bool) -> None:
 
     Args:
         trace_status (bool): True, verbose traces are recorded, False, no traces are recorded.
-    """
+    """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
     _analysis_library_info.call_interop_api_labview_analysis_enable_traces(traces_status)
 
 
@@ -53,7 +53,7 @@ def get_labview_analysis_available_functions_names_list() -> list[str]:
 
 
 def get_labview_analysis_library_version_numbers() -> tuple[int, int, int, int]:
-    """Gets the version information elements of labview analysis library."""
+    """Gets the version information elements of labview analysis library."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
 
     logging.debug("current script path = %s", __file__)
 

@@ -1,4 +1,4 @@
-"""Provides unit tests related to multitones_waveform.py module"""
+"""Provides unit tests related to multitones_waveform.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -19,7 +19,7 @@ class TestMultitonesWaveform(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @classmethod
     def setUpClass(cls):
@@ -48,7 +48,7 @@ class TestMultitonesWaveform(unittest.TestCase):
     def test_create_multitones_waveform_single_tone(
         self,
     ):
-        """Test of `multitones_waveform.create_multitones_waveform` function"""
+        """Test of `multitones_waveform.create_multitones_waveform` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (267 > 100 characters) (auto-generated noqa)
 
         # Arrange
         single_tone_frequency = 440
@@ -105,7 +105,7 @@ class TestMultitonesWaveform(unittest.TestCase):
     def test_create_multitones_waveform_multiple_harmonics(
         self,
     ):
-        """Test of `multitones_waveform.create_multitones_waveform` function"""
+        """Test of `multitones_waveform.create_multitones_waveform` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (267 > 100 characters) (auto-generated noqa)
 
         # Arrange
         fundamental_tone_frequency = 440

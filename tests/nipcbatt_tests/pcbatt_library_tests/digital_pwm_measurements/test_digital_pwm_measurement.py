@@ -10,7 +10,7 @@ from varname import nameof
 from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
     ConstantsForDigitalPwmMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (
+from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types.DigitalPwmMeasurementData' imported but unused (auto-generated noqa)
     DigitalPwmMeasurementConfiguration,
     DigitalPwmMeasurementCounterChannelParameters,
     DigitalPwmMeasurementData,
@@ -34,7 +34,7 @@ class TestDigitalPwmMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class of the Python unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -58,7 +58,7 @@ class TestDigitalPwmMeasurement(unittest.TestCase):
         print("Teardown fixture")
 
     def test_digital_pwm_measurement(self):
-        """Checks if class 'DigitalPwmMeasurement' is ready to use"""
+        """Checks if class 'DigitalPwmMeasurement' is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (257 > 100 characters) (auto-generated noqa)
 
         channel = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
         terminal = "/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"

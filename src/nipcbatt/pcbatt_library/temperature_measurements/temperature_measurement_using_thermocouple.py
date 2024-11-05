@@ -19,7 +19,7 @@ from nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement im
 
 class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
     """Defines a way that allows you to perform Temperature measurements
-    using Thermocouple on PCB points."""
+    using Thermocouple on PCB points."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (333 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -38,7 +38,7 @@ class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
             cold_junction_compensation_source (nidaqmx.constants.CJCSource):
                 Specify the source for cold junction compensation: [CONSTANT_USER_VALUE, SCANNABLE_CHANNEL, BUILT_IN]
                 Default value is set as BUILT_IN.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (119 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
         # If the input channel_expression contains global channel, then add them as global channels
@@ -82,7 +82,7 @@ class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
             TemperatureMeasurementResultData | None:
             An instance of `TemperatureMeasurementResultData`
             or `None` if no measure was performed.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if configuration.measurement_execution_type in (
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -111,7 +111,7 @@ class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
             parameters (TemperatureThermocoupleMeasurementTerminalParameters):
             An instance of `TemperatureThermocoupleMeasurementTerminalParameters`
             used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         for channel in self.task.ai_channels:
             channel.ai_min = parameters.temperature_minimum_value_celsius_degrees
             channel.ai_max = parameters.temperature_maximum_value_celsius_degrees
@@ -135,7 +135,7 @@ class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
 
         Similarly, if the user provides Physical channel name in Initialize(),
         then he/she has to provide the Physical channel name in Specific channel parameters.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         if parameters.channel_name in (channel.name for channel in self.task.ai_channels):
             # if the specified channel is present in ai_channel_collection,

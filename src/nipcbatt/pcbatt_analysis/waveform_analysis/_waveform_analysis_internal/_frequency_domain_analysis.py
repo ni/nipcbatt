@@ -1,5 +1,5 @@
 """Private module that provides a set of helper functions 
-   for nipcbatt.pcbatt_analysis.frequency_domain_analysis module."""
+   for nipcbatt.pcbatt_analysis.frequency_domain_analysis module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (361 > 100 characters) (auto-generated noqa)
 
 import math
 from ctypes import (
@@ -151,7 +151,7 @@ def labview_process_single_waveform_amplitude_phase_spectrum_impl(
     Returns:
         AmplitudePhaseSpectrum: An object that holds result of fft spectrum
         processing result using LabVIEW VI.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformAmplitudePhaseSpectrumMeasurement(
     # FftSpectrumWindowEnum inputFftWindow,
@@ -309,7 +309,7 @@ def labview_process_single_waveform_multiple_tones_impl(
     Returns:
         MultipleTonesMeasurementResult: An object that holds result of multiple tones
         processing result using LabVIEW VI.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformTonesMeasurement(
     # TonesSortingModeEnum inputTonesSortingMode,
@@ -454,7 +454,7 @@ def labview_process_single_waveform_multiple_tones_and_amplitude_phase_spectrum_
     Returns:
         FrequencyDomainProcessingResult: An object that holds result of fft spectrum
         processing result and multiple tones processing result using LabVIEW VIs.
-    """
+    """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (106 > 100 characters) (auto-generated noqa)
 
     # process spectrum magnitude and phase
     rms_spectrum_result = labview_process_single_waveform_amplitude_phase_spectrum_impl(

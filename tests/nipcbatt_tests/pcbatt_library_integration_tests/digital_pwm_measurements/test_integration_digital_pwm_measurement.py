@@ -5,14 +5,14 @@ import logging
 import sys
 import unittest
 
-import numpy as np
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
 from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
     ConstantsForDigitalPwmMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (
+from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types.DigitalPwmMeasurementData' imported but unused (auto-generated noqa)
     DigitalPwmMeasurementConfiguration,
     DigitalPwmMeasurementCounterChannelParameters,
     DigitalPwmMeasurementData,
@@ -35,7 +35,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class of the unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -60,7 +60,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_channel_expression_empty(self):
         """Integration test ensuring that if channel expression
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -71,7 +71,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_channel_expression_is_none(self):
         """Integration test ensuring that if channel expression
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -82,7 +82,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_input_terminal_empty(self):
         """Integration test ensuring that if input terminal
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -93,7 +93,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_input_terminal_is_none(self):
         """Integration test ensuring that if input terminal
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -104,7 +104,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_configure_only(self):
         """Integration test of Digital PWM Measurement that ensures an instance
         of DigitalPwmMeasurement is successfully initialized and configured
-        given correct inputs"""
+        given correct inputs"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (401 > 100 characters) (auto-generated noqa)
 
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
@@ -132,7 +132,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_measure_only(self):
         """Integration test of Digital PWM measurement that ensures an instance
         of DigitalPwmMeasurement is successfully executed when measure only
-        is selected as the execution option"""
+        is selected as the execution option"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (416 > 100 characters) (auto-generated noqa)
 
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
@@ -157,7 +157,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_both_configure_and_measure(self):
         """Integration test of Digital PWM measurement that ensures an instance
         of DigitalPwmMeasurement is successfully executed when both configure
-        and measure is selected as the execution option"""
+        and measure is selected as the execution option"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (351 > 100 characters) (auto-generated noqa)
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
@@ -182,7 +182,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         """Integration test of Digital Pwm measurement that ensures
         a DigitalPwmMeasurement instantiation fails if given a negative
         value for any parameter
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_semiperiod = -50.0e-9
         max_semiperiod = 50.0
@@ -241,7 +241,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_no_edge_defined(self):
         """Integration test of Digital PWM measurement that ensures an instance
         of DigitalPwmMeasurement is successfully executed when the user does not
-        define an edge"""
+        define an edge"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (318 > 100 characters) (auto-generated noqa)
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
@@ -264,7 +264,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_no_cycles_defined(self):
         """Integration test of Digital PWM measurement that ensures an instance
         of DigitalPwmMeasurement is successfully executed when the user does not
-        define a value for cycles"""
+        define a value for cycles"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (329 > 100 characters) (auto-generated noqa)
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
@@ -287,7 +287,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
     def test_integration_digital_pwm_measurement_no_execution_type_defined(self):
         """Integration test of Digital PWM measurement that ensures an instance
         of DigitalPwmMeasurement is successfully executed when the user does not
-        define a value for execution type"""
+        define a value for execution type"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (337 > 100 characters) (auto-generated noqa)
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100

@@ -1,5 +1,5 @@
 """This example demonstrates the digital pattern generation and capture using digital input and 
-   output modules with trigger for synchronization"""
+   output modules with trigger for synchronization"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (346 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
@@ -8,7 +8,9 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
-from nipcbatt.pcbatt_library.common.helper_functions import digital_ramp_pattern_generator
+from nipcbatt.pcbatt_library.common.helper_functions import (
+    digital_ramp_pattern_generator,
+)
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 """Note to run with Hardware: Update Virtual/Physical Channels Info based on 
@@ -26,7 +28,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\digital_pattern_test_results.txt"
 
 
 def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT_CHANNEL):
-    """Creates the necessary objects for the generation and measurement of digital patterns"""
+    """Creates the necessary objects for the generation and measurement of digital patterns"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (282 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     generation_instance = nipcbatt.DynamicDigitalPatternGeneration()
@@ -58,7 +60,7 @@ def main(
 ):
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
-    The default file path is C:\\Windows\\Temp\\digital_pattern_test_results.txt"""
+    The default file path is C:\\Windows\\Temp\\digital_pattern_test_results.txt"""  # noqa: D205, D209, D301 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa)
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(generation_instance)
@@ -66,7 +68,7 @@ def main(
 
     """Note to run with Hardware: Review the configurations and update the trigger configurations"""
 
-    """Note to run with Hardware: Sampling rate at measurement end should be same as the sampling 
+    """Note to run with Hardware: Sampling rate at measurement end should be same as the sampling  # noqa: W505 - doc line too long (346 > 100 characters) (auto-generated noqa)
        rate at generation end (Onboard Clock for same backplane or external PFI signals)"""
 
     """Storing results -- create both a Python dictionary (hashmap)
@@ -184,7 +186,7 @@ def cleanup(
     generation_instance: nipcbatt.DynamicDigitalPatternGeneration,
     measurement_instance: nipcbatt.DynamicDigitalPatternMeasurement,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
     generation_instance.close()  # Close generation
     measurement_instance.close()  # Close measurement
 
@@ -201,7 +203,7 @@ def digital_pattern_test(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # Run setup function
     gen, meas = setup(generation_channel, measurement_channel)
@@ -213,4 +215,4 @@ def digital_pattern_test(
     cleanup(gen, meas)
 
 
-# endregion test
+# endregion test  # noqa: W505 - doc line too long (231 > 100 characters) (auto-generated noqa)

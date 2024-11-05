@@ -1,1 +1,1 @@
-"""Provides a set of integration tests for nipcbatt.pcbatt_library.digital_clock_generations package"""
+"""Provides a set of integration tests for nipcbatt.pcbatt_library.digital_clock_generations package"""  # noqa: W505, D415 - doc line too long (103 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)

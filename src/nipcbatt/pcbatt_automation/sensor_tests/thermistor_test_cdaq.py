@@ -1,11 +1,13 @@
 """Demonstrates DC Voltage Generation using AO lines or Modules and Temprature
-   measurement with Thermistor using AI lines or Modules of cDAQ"""
+   measurement with Thermistor using AI lines or Modules of cDAQ"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (360 > 100 characters) (auto-generated noqa)
 
 import os
 import sys
+
 import nidaqmx
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
+
 import nipcbatt
-import numpy as np
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 parent_folder = os.getcwd()
@@ -27,12 +29,12 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\Thermistor_test_cDAQ.txt"
 
 
 # Initialize Region
-########################################   INITIALIZATION FUNCTION   ################################################################
+########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
 def setup(
     output_terminal=OUTPUT_TERMINAL, input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH
 ):
     """Creates the necessary objects for DC voltage generation
-    and the Temprature Measurement"""
+    and the Temprature Measurement"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (407 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation class required for the test
     drvg = nipcbatt.DcVoltageGeneration()
@@ -56,13 +58,13 @@ def setup(
     return drvg, ttr
 
 
-###############################################################################################################################################
+###############################################################################################################################################  # noqa: W505 - doc line too long (143 > 100 characters) (auto-generated noqa)
 # end region initialize
 
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
-def main(
+def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     drvg: nipcbatt.DcVoltageGeneration,
     ttr: nipcbatt.TemperatureMeasurementUsingThermistor,
     input_terminal=INPUT_TERMINAL,
@@ -138,7 +140,7 @@ def main(
     )
 
     # endregion TTR configure and measure
-    ####################################################################################################
+    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
 
     ttr_result_data = ttr.configure_and_measure(configuration=ttr_config)
 
@@ -163,7 +165,7 @@ def main(
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(
+def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     drvg: nipcbatt.DcVoltageGeneration,
     ttr: nipcbatt.TemperatureMeasurementUsingThermistor,
 ):
@@ -181,7 +183,7 @@ def thermistor_test_cdaq(
     generation_output_channel=OUTPUT_TERMINAL,
     measurement_input_channel=INPUT_TERMINAL,
 ):
-    """Execute all the steps in sequence"""
+    """Execute all the steps in sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
 
     # Run the setup function
     drvg, ttr = setup(

@@ -1,1 +1,1 @@
-"""Provides nipcbatt library DC-RMS voltage measurement modules"""
+"""Provides nipcbatt library DC-RMS voltage measurement modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)

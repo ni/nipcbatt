@@ -1,4 +1,4 @@
-"""Script that should be used to create venvs tree near src folder"""
+"""Script that should be used to create venvs tree near src folder"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
 
 import logging
 import sys

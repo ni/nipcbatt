@@ -1,5 +1,5 @@
 """Private module that provides a set of helper functions 
-   for nipcbatt.pcbatt_analysis.pulse_analog_analysis module."""
+   for nipcbatt.pcbatt_analysis.pulse_analog_analysis module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (357 > 100 characters) (auto-generated noqa)
 
 from collections import namedtuple
 from ctypes import (
@@ -125,7 +125,7 @@ def labview_process_single_waveform_pulse_measurements_ref_levels_absolute_expor
 
     Returns:
         PulseResultsExportAll: Tuple gathering, exported all pulse measurement results.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformPulseAnalogMeasurement_Absolute_ReferenceLevels_ExportAll(
@@ -261,7 +261,7 @@ def labview_process_single_waveform_pulse_measurements_ref_levels_relative_expor
 
     Returns:
         PulseResultsExportAll: Tuple gathering, exported all pulse measurement results.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformPulseAnalogMeasurement_Relative_ReferenceLevels_ExportAll(
@@ -405,7 +405,7 @@ def labview_process_single_waveform_pulse_measurements_ref_levels_absolute_expor
 
     Returns:
         PulseResultsExportAll: Tuple gathering, exported all pulse measurement results.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformPulseAnalogMeasurement_Absolute_ReferenceLevels_ExportAll(
@@ -529,7 +529,7 @@ def labview_process_single_waveform_pulse_measurements_ref_levels_relative_expor
 
     Returns:
         TuplePulseResultsExportIgnorePeriodicity: Tuple gathering, exported all pulse measurement results.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (106 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     # int PCBATT_INTEROP_API __cdecl
     # NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformPulseAnalogMeasurement_Relative_ReferenceLevels_ExportAll(

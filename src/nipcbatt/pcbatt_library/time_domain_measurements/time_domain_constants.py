@@ -31,7 +31,7 @@ from nipcbatt.pcbatt_library.time_domain_measurements.time_domain_data_types imp
 
 @dataclasses.dataclass
 class ConstantsForTimeDomainMeasurement:
-    """Constants used for Time Domain measurement"""
+    """Constants used for Time Domain measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
 
     DEFAULT_DC_RMS_PROCESSING_WINDOW = DcRmsProcessingWindow.HANN
     """Default window that will be used to process DC-RMS in time domain measurement class."""

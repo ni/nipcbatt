@@ -1,13 +1,17 @@
 """Private module that provides a set of helper functions 
-   for `multitones_waveform` module."""
+   for `multitones_waveform` module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (332 > 100 characters) (auto-generated noqa)
 
 import math
 
 import numpy
 
 from nipcbatt.pcbatt_analysis.common.common_types import WaveformTone
-from nipcbatt.pcbatt_analysis.waveform_transformation import scale_and_offset_waveform
-from nipcbatt.pcbatt_utilities import numeric_utilities
+from nipcbatt.pcbatt_analysis.waveform_transformation import (  # noqa: F401 - 'nipcbatt.pcbatt_analysis.waveform_transformation.scale_and_offset_waveform' imported but unused (auto-generated noqa)
+    scale_and_offset_waveform,
+)
+from nipcbatt.pcbatt_utilities import (  # noqa: F401 - 'nipcbatt.pcbatt_utilities.numeric_utilities' imported but unused (auto-generated noqa)
+    numeric_utilities,
+)
 
 
 def create_multitones_waveform_impl(

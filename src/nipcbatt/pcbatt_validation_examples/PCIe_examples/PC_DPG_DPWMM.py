@@ -1,7 +1,8 @@
-### Ensure correct hardware and corresponding trigger names before running this example
+### Ensure correct hardware and corresponding trigger names before running this example  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
+
+import nidaqmx.constants
 
 import nipcbatt
-import nidaqmx.constants
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 number_of_cycles = 101

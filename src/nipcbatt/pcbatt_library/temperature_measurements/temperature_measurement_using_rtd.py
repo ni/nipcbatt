@@ -29,7 +29,7 @@ class TemperatureMeasurementUsingRtd(TemperatureMeasurement):
             channel_expression (str):
                 Expression representing the name of a physical channel,
                 or a global channel in DAQ System.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -77,7 +77,7 @@ class TemperatureMeasurementUsingRtd(TemperatureMeasurement):
             TemperatureMeasurementResultData | None:
             An instance of `TemperatureMeasurementResultData`
             or `None` if no measure was performed.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if configuration.measurement_execution_type in (
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -104,7 +104,7 @@ class TemperatureMeasurementUsingRtd(TemperatureMeasurement):
             parameters (TemperatureRtdMeasurementTerminalParameters):
             An instance of `TemperatureRtdMeasurementTerminalParameters`
             used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         self.task.ai_channels.all.ai_adc_timing_mode = parameters.adc_timing_mode
         for channel in self.task.ai_channels:
             channel.ai_min = parameters.temperature_minimum_value_celsius_degrees
@@ -131,7 +131,7 @@ class TemperatureMeasurementUsingRtd(TemperatureMeasurement):
 
         Similarly, if the user provides Physical channel name in Initialize(),
         then he/she has to provide the Physical channel name in Specific channel parameters.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         if parameters.channel_name in (channel.name for channel in self.task.ai_channels):
             # if the specified channel is present in ai_channel_collection,
             # updates the voltage parameters of the channel

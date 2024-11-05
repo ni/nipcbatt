@@ -32,7 +32,7 @@ class TestAmplitudeAndLevelsProcessingResult(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -60,7 +60,7 @@ class TestAmplitudeAndLevelsProcessingResult(unittest.TestCase):
 
     def test_amplitude_and_levels_processing_result(self):
         """Test of pcbatt_analysis.amplitude_and_levels_analysis.AmplitudeAndLevelsProcessingResult
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange + Act
         amplitude_and_levels_results_1 = AmplitudeAndLevelsProcessingResult(0, 0, 0)
@@ -138,7 +138,7 @@ class TestLabViewAmplitudeAndLevels(unittest.TestCase):
     @functional_utilities.repeat(10)
     def test_get_last_error_message_returns_empty_string(self):
         """Test of pcbatt_analysis.amplitude_and_levels_analysis.LabViewAmplitudeAndLevels
-        get_last_error_message method when there is no error"""
+        get_last_error_message method when there is no error"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (356 > 100 characters) (auto-generated noqa)
         last_error_message = LabViewAmplitudeAndLevels.get_last_error_message()
         self.assertEqual("", last_error_message)
 
@@ -149,7 +149,7 @@ class TestLabViewAmplitudeAndLevels(unittest.TestCase):
         """Test of pcbatt_analysis.amplitude_and_levels.LabViewAmplitudeAndLevels
         process_single_waveform_amplitude_and_levels method using auto select analysis strategy
         using emv 106 Khz waveform.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_amplitude = 0.474
         expected_high_state = 0.476000212085181
@@ -216,7 +216,7 @@ class TestLabViewAmplitudeAndLevels(unittest.TestCase):
     def test_process_single_waveform_amplitude_and_levels_auto_select_method(self):
         """Test of pcbatt_analysis.amplitude_and_levels.LabViewAmplitudeAndLevels
         process_single_waveform_amplitude_and_levels method using auto select analysis strategy.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         t = numpy.linspace(0, 1, 500, endpoint=False)
         y = signal.square(2 * numpy.pi * 5 * t)
@@ -259,7 +259,7 @@ class TestLabViewAmplitudeAndLevels(unittest.TestCase):
     def test_process_single_waveform_amplitude_and_levels_histogram_method(self):
         """Test of pcbatt_analysis.amplitude_and_levels.LabViewAmplitudeAndLevels
         process_single_waveform_amplitude_and_levels method using histogram analysis strategy.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         t = numpy.linspace(0, 1, 500, endpoint=False)
         y = signal.square(2 * numpy.pi * 5 * t)
@@ -306,7 +306,7 @@ class TestLabViewAmplitudeAndLevels(unittest.TestCase):
     def test_process_single_waveform_amplitude_and_levels_peak_method(self):
         """Test of pcbatt_analysis.amplitude_and_levels.LabViewAmplitudeAndLevels
         process_single_waveform_amplitude_and_levels method using peak analysis strategy.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         t = numpy.linspace(0, 1, 500, endpoint=False)
         y = signal.sawtooth(2 * numpy.pi * 5 * t, 0.5)

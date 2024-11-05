@@ -1,5 +1,5 @@
 # pylint: disable=C0301
-""" DC-RMS Voltage data types """
+""" DC-RMS Voltage data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (144 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -56,7 +56,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
                 `measurement_options` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (101 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
         Guard.all_elements_are_of_same_type(
@@ -81,7 +81,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
     ) -> VoltageRangeAndTerminalParameters:
         """
         :class:`VoltageRangeAndTerminalParameters`:
-            Gets the settings of terminal for all channels."""
+            Gets the settings of terminal for all channels."""  # noqa: D205, D209, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (444 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -92,7 +92,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[VoltageMeasurementChannelAndTerminalRangeParameters]`:
             Gets the list of instances of
             `VoltageMeasurementChannelAndTerminalRangeParameters` used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -101,7 +101,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
         :class:`MeasurementOptions`:
             Gets a `MeasurementOptions` instance
             that represents the settings of options used for execution.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -110,7 +110,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -119,7 +119,7 @@ class DcRmsVoltageMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
@@ -153,7 +153,7 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
                 Raised when `waveforms` contains objects that are not `AnalogWaveform`,
                 `dc_values_volts` contains objects that are not `float`,
                 `rms_values_volts` contains objects that are not `float`
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
@@ -171,7 +171,7 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
         :class:`List[AnalogWaveform]`:
             Gets the list of waveforms acquired from channels defined
             for measurement and used to compute DC-RMS voltage.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveforms
 
     @property
@@ -179,7 +179,7 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the duration of acquisition of samples for each configured channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._acquisition_duration_seconds
 
     @property
@@ -187,7 +187,7 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
             Gets the list of DC voltages computed for all configured channels, expressed in Volts.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._dc_values_volts
 
     @property
@@ -195,5 +195,5 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
             Gets the list of RMS voltages computed for all configured channels, expressed in Volts.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._rms_values_volts

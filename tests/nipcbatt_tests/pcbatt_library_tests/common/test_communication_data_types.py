@@ -16,7 +16,7 @@ class TestMemoryAddressParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -41,7 +41,7 @@ class TestMemoryAddressParameters(unittest.TestCase):
     def test_memory_address_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.common.communication_data_types.MemoryAddressParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_memory_address = 7
         expected_address_type = nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE
         expected_address_endianness = nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN

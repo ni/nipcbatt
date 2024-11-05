@@ -1,10 +1,10 @@
-"Constants used in digital edge count measurement"
+"Constants used in digital edge count measurement"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
 
 import dataclasses
 
 import nidaqmx.constants
 
-from nipcbatt.pcbatt_library.common.common_data_types import (
+from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters' imported but unused (auto-generated noqa)
     DigitalStartTriggerParameters,
     StartTriggerType,
 )
@@ -12,7 +12,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 
 @dataclasses.dataclass
 class ConstantsForDigitalEdgeCountMeasurement:
-    """Constants used in digital edge count measurement"""
+    """Constants used in digital edge count measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)
 
     DEFAULT_INITIAL_COUNT = 0
     DEFAULT_COUNT_DIRECTION = nidaqmx.constants.CountDirection.COUNT_UP

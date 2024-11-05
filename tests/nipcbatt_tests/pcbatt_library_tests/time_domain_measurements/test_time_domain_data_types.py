@@ -20,7 +20,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -45,7 +45,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
     def test_time_domain_measurement_configuration_init_fails_when_global_channel_parameters_is_none(
         self,
     ):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -66,7 +66,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
     def test_time_domain_measurement_configuration_init_fails_when_specific_channels_parameters_is_none(
         self,
     ):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -87,7 +87,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
     def test_time_domain_measurement_configuration_init_fails_when_measurement_options_is_none(
         self,
     ):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -108,7 +108,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
     def test_time_domain_measurement_configuration_init_fails_when_sample_clock_timing_parameters_is_none(
         self,
     ):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -129,7 +129,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
     def test_time_domain_measurement_configuration_init_fails_when_digital_start_trigger_parameters_is_none(
         self,
     ):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -148,7 +148,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         self.assertEqual("The object digital_start_trigger_parameters is None.", str(ctx.exception))
 
     def test_time_domain_measurement_configuration(self):
-        """unit test of TimeDomainMeasurementConfiguration."""
+        """unit test of TimeDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.NRSE
         expected_range_min_volts = -9.0
@@ -307,9 +307,12 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, methodName: str = "runTest") -> None:
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
+        self,
+        methodName: str = "runTest",  # noqa: N803 - argument name 'methodName' should be lowercase (auto-generated noqa)
+    ) -> None:
         super().__init__(methodName)
         self._expected_waveforms = None
 
@@ -336,7 +339,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_waveforms_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_acquisition_duration_seconds = 0.3
         expected_mean_dc_voltage_values_volts = [1.0, 1.0, 1.0]
@@ -365,7 +368,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_waveforms_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_acquisition_duration_seconds = 0.3
         expected_mean_dc_voltage_values_volts = [1.0, 1.0, 1.0]
@@ -394,7 +397,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_waveforms_contains_object_that_are_not_of_analog_waveform(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_acquisition_duration_seconds = 0.3
         expected_mean_dc_voltage_values_volts = [1.0, 1.0, 1.0]
@@ -426,7 +429,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_mean_dc_voltage_values_volts_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (238 > 100 characters) (auto-generated noqa)
 
         # Arrange
         self._initialize_waveforms()
@@ -456,7 +459,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_mean_dc_voltage_values_volts_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -488,7 +491,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_mean_dc_voltage_values_volts_contains_object_that_are_not_of_float(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -520,7 +523,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_vpp_amplitudes_volts_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -549,7 +552,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_vpp_amplitudes_volts_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -581,7 +584,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_vpp_amplitudes_volts_contains_object_that_are_not_of_float(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -613,7 +616,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_frequencies_hertz_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -645,7 +648,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_does_not_fail_when_voltage_waveforms_frequencies_hertz_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -674,7 +677,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_frequencies_hertz_contains_object_that_are_not_of_float(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -706,7 +709,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_periods_seconds_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -738,7 +741,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_does_not_fail_when_voltage_waveforms_periods_seconds_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -767,7 +770,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_periods_seconds_contains_object_that_are_not_of_float(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -799,7 +802,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_duty_cycles_percent_is_none(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -831,7 +834,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_does_not_fail_when_voltage_waveforms_duty_cycles_percent_is_empty(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -860,7 +863,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
     def test_time_domain_measurement_result_data_init_fails_when_voltage_waveforms_duty_cycles_percent_contains_object_that_are_not_of_float(
         self,
     ):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
@@ -890,7 +893,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         )
 
     def test_time_domain_measurement_result_data(self):
-        """unit test of TestTimeDomainMeasurementResultData."""
+        """unit test of TestTimeDomainMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         self._initialize_waveforms()
         expected_acquisition_duration_seconds = 0.3
 

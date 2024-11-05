@@ -19,7 +19,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -42,7 +42,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
         print("Teardown fixture")
 
     def test_static_digital_state_generation_data(self):
-        """Tests the creation of a StaticDigitalStateGenerationData object"""
+        """Tests the creation of a StaticDigitalStateGenerationData object"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (188 > 100 characters) (auto-generated noqa)
         num_channels = 20
         name_length = 9
 
@@ -61,7 +61,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
     def test_static_digital_state_generation_data_with_invalid_data(self):
         """Tests the creation of an instance of StaticDigitalStateGeneration
         when using invalid data. It should produce and catch the associated error.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Test if a value error is thrown when channel_identifiers is None
         self.assertRaises(
@@ -76,7 +76,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
         )
 
     def test_static_digital_state_generation_configuration(self):
-        """Tests the creation of an instance of StaticDigitalStateGeneration"""
+        """Tests the creation of an instance of StaticDigitalStateGeneration"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (190 > 100 characters) (auto-generated noqa)
         num_states = 20
 
         expected_data_to_write = [random.choice([True, False]) for item in range(0, num_states)]
@@ -94,7 +94,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
     def test_static_digital_state_generation_configuration_with_invalid_data(self):
         """Create an instance of DigitalStateGenerationConfiguration which is
         invalid and ensure this throws an error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # create instance with data_to_write as None
         self.assertRaises(

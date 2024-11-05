@@ -1,1 +1,1 @@
-"""Provides nipcbatt library SPI communication modules"""
+"""Provides nipcbatt library SPI communication modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)

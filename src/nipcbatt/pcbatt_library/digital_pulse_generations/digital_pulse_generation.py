@@ -1,6 +1,6 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-"""Implementation of Digital Pulse Generation for TestScale and CompactDAQ"""
+"""Implementation of Digital Pulse Generation for TestScale and CompactDAQ"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (188 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import nidaqmx.stream_readers
@@ -29,7 +29,7 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): _description_
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -41,7 +41,7 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
         Args:
             channel_expression (str): Physical channel
             output_terminal_name (str): Channel to write
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -95,7 +95,7 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalPulseGenerationCounterChannelParameters): A valid instance
                 of DigitalPulseGenerationCounterChannelParameters
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # stop daq task and return it to previous state
         self.task.stop()
@@ -113,7 +113,7 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalPulseGenerationTimingParameters): A valid instance
                 of DigitalPulseGenerationTimingParameters
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
 
@@ -132,7 +132,7 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
 
         Returns:
             DigitalPulseGenerationData: A valid instance of DigitalPulseGenerationData
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # create stream writer
         # writer = nidaqmx.stream_writers.CounterWriter(
@@ -174,14 +174,14 @@ class DigitalPulseGeneration(BuildingBlockUsingDAQmx):
 
         Returns:
             DigitalPulseGenerationData: The values written to hardware
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         self.configure_counter_channel(configuration.counter_channel_parameters)
         self.configure_timing(configuration.timing_parameters)
 
         return self.generate(configuration.timing_parameters)
 
     def close(self):
-        """Stops and closes the DAQ task"""
+        """Stops and closes the DAQ task"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (154 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 

@@ -1,4 +1,4 @@
-""" DC Voltage data types """
+""" DC Voltage data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (140 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -33,7 +33,7 @@ class DcVoltageGenerationConfiguration(PCBATestToolkitData):
             ValueError:
                 If the input `voltage_generation_range_parameters' does not contain a valid object.
                 If the input `output_voltages' is an empty array.
-        """
+        """  # noqa: W505 - doc line too long (147 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             voltage_generation_range_parameters,
             nameof(voltage_generation_range_parameters),
@@ -49,7 +49,7 @@ class DcVoltageGenerationConfiguration(PCBATestToolkitData):
         :class:`VoltageGenerationChannelParameters`:
             Gets an instance of `VoltageGenerationChannelParameters'
             that represents the terminal settings for all channel for DC voltage generation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_generation_range_parameters
 
     @property
@@ -57,5 +57,5 @@ class DcVoltageGenerationConfiguration(PCBATestToolkitData):
         """
         :class:`List[float]`:
             Gets the list of output voltages to be generated at the selected channel(s).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._output_voltages

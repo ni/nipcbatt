@@ -1,5 +1,5 @@
 # pylint: disable=W0707, W0719, W0702, W0212
-"""Defines the base classes used by PCBA Test Toolkit data types"""
+"""Defines the base classes used by PCBA Test Toolkit data types"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 
 import json
 
@@ -17,7 +17,7 @@ class PCBATestToolkitData:
 
         Returns:
             str: The string representing the object.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         return self._to_json_representation()
 
     def __str__(self) -> str:
@@ -25,7 +25,7 @@ class PCBATestToolkitData:
 
         Returns:
             str: The string representing the object.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         return self._to_json_representation()
 
     def __eq__(self, value_to_compare: object) -> bool:
@@ -37,7 +37,7 @@ class PCBATestToolkitData:
         Returns:
             bool: True if equals to `value_to_compare`
                 (e.g. all properties defined in self object are equal to those of value_to_compare).
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return all(
                 property_value == property_value_of_value_to_compare

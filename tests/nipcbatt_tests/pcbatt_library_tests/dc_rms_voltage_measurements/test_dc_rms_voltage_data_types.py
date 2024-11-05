@@ -19,7 +19,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -44,7 +44,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_global_channel_parameters_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -69,7 +69,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_specific_channels_parameters_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -96,7 +96,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_specific_channels_parameters_contains_invalid_objects(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -126,7 +126,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_measurement_options_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -153,7 +153,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_sample_clock_timing_parameters_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -178,7 +178,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_voltage_measurement_configuration_init_fails_when_digital_start_trigger_parameters_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -201,7 +201,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         self.assertEqual("The object digital_start_trigger_parameters is None.", str(ctx.exception))
 
     def test_dc_rms_voltage_measurement_configuration(self):
-        """unit test of DcRmsVoltageMeasurementConfiguration."""
+        """unit test of DcRmsVoltageMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.NRSE
         expected_range_min_volts = -9.0
         expected_range_max_volts = 6.3
@@ -324,7 +324,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -349,7 +349,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_waveforms_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -369,7 +369,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_waveforms_is_empty(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -389,7 +389,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_waveforms_contains_invalid_objects(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -412,7 +412,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_dc_values_volts_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -439,7 +439,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_dc_values_volts_is_empty(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -466,7 +466,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_dc_values_volts_contains_invalid_objects(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -496,7 +496,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_rms_values_volts_is_none(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -523,7 +523,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_rms_values_volts_is_empty(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -550,7 +550,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
     def test_dc_rms_voltage_measurement_result_data_init_fails_when_rms_values_volts_contains_invalid_objects(
         self,
     ):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_waveforms = [
             nipcbatt.AnalogWaveform(
@@ -578,7 +578,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         )
 
     def test_dc_rms_voltage_measurement_result_data(self):
-        """unit test of DcRmsVoltageMeasurementResultData."""
+        """unit test of DcRmsVoltageMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         expected_waveforms = []
         expected_waveforms.append(
             nipcbatt.AnalogWaveform(

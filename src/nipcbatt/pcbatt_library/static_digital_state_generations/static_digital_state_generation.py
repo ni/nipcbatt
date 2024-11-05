@@ -1,6 +1,6 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-"""Use this class to generate digital states to output on system"""
+"""Use this class to generate digital states to output on system"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -30,7 +30,7 @@ class StaticDigitalStateGeneration(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): _description_
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def initialize(self, channel_expression: str):
         """Initializes the task to prepare for generation
@@ -38,7 +38,7 @@ class StaticDigitalStateGeneration(BuildingBlockUsingDAQmx):
         Args:
             channel_expression (str): The name of the lines/port
             where the data will be written
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         self.task.stop()
 
         if self.is_task_initialized:
@@ -68,7 +68,7 @@ class StaticDigitalStateGeneration(BuildingBlockUsingDAQmx):
             self.task.do_channels.add_do_chan(channel_expression, "", LineGrouping.CHAN_PER_LINE)
 
     def close(self):
-        """Closes the task and returns the hardware resource"""
+        """Closes the task and returns the hardware resource"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (174 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 
@@ -89,7 +89,7 @@ class StaticDigitalStateGeneration(BuildingBlockUsingDAQmx):
         Returns:
             StaticDigitalStateGenerationData: Contains an array of strings
             describing the lines that were written to
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         return self.generate_digital_states(configuration.data_to_write)
 
     def generate_digital_states(
@@ -105,7 +105,7 @@ class StaticDigitalStateGeneration(BuildingBlockUsingDAQmx):
         Returns:
             StaticDigitalStateGenerationData: An array of strings
             describing the lines that were written to
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.task.stop()
 
         # create values for memory declaration

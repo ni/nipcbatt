@@ -17,7 +17,7 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -49,7 +49,7 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
     def test_integration_spi_read_communication(self):
         """Integration test of
         nipcbatt.pcbatt_library.spi_communications.spi_read_communication.SpiReadCommunication
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with nipcbatt.SpiReadCommunication() as communication:
             communication.initialize("USB-8452")
 

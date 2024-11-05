@@ -1,4 +1,4 @@
-""" Signal Voltage Generation data types """
+""" Signal Voltage Generation data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (155 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -42,19 +42,19 @@ class ToneParameters(PCBATestToolkitData):
 
     @property
     def tone_frequency_hertz(self) -> float:
-        """Gets the frequency value of the tone, in Hertz."""
+        """Gets the frequency value of the tone, in Hertz."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (147 > 100 characters) (auto-generated noqa)
 
         return self._tone_frequency_hertz
 
     @property
     def tone_amplitude_volts(self) -> float:
-        """Gets the amplitude value of the tone, in Volts"""
+        """Gets the amplitude value of the tone, in Volts"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (248 > 100 characters) (auto-generated noqa)
 
         return self._tone_amplitude_volts
 
     @property
     def tone_phase_radians(self) -> float:
-        """Gets the phase value of the tone, in Radians."""
+        """Gets the phase value of the tone, in Radians."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (145 > 100 characters) (auto-generated noqa)
 
         return self._tone_phase_radians
 
@@ -127,7 +127,7 @@ class SignalVoltageGenerationSineWaveParameters(PCBATestToolkitData):
         Raises:
             ValueError:
                 if the `generated_signal_tone_parameters' is None
-        """
+        """  # noqa: W505 - doc line too long (103 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             generated_signal_tone_parameters, nameof(generated_signal_tone_parameters)
         )
@@ -137,13 +137,13 @@ class SignalVoltageGenerationSineWaveParameters(PCBATestToolkitData):
 
     @property
     def generated_signal_offset_volts(self) -> float:
-        """Gets the offset of the generated signal voltage."""
+        """Gets the offset of the generated signal voltage."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (148 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_offset_volts
 
     @property
     def generated_signal_tone_parameters(self) -> ToneParameters:
-        """Gets the tone settings of the generated signal"""
+        """Gets the tone settings of the generated signal"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (248 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_tone_parameters
 
@@ -178,7 +178,7 @@ class SignalVoltageGenerationSquareWaveParameters(PCBATestToolkitData):
                 If the value of `generated_signal_frequency_hertz` is less than or equal to 0
                 If the value of `generated_signal_amplitude_volts` is less than or equal to 0
                 If the value of `generated_signal_duty_cycle_percent` is not between 0 and 100
-        """
+        """  # noqa: W505 - doc line too long (105 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_zero(
             generated_signal_frequency_hertz, nameof(generated_signal_frequency_hertz)
         )
@@ -200,38 +200,38 @@ class SignalVoltageGenerationSquareWaveParameters(PCBATestToolkitData):
 
     @property
     def generated_signal_offset_volts(self) -> float:
-        """Gets the offset of the generated signal voltage."""
+        """Gets the offset of the generated signal voltage."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (148 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_offset_volts
 
     @property
     def generated_signal_frequency_hertz(self) -> float:
-        """Gets the frequency value of the square wave, in Hertz."""
+        """Gets the frequency value of the square wave, in Hertz."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (154 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_frequency_hertz
 
     @property
     def generated_signal_amplitude_volts(self) -> float:
-        """Gets the amplitude value of the square wave, in Volts."""
+        """Gets the amplitude value of the square wave, in Volts."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (154 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_amplitude_volts
 
     @property
     def generated_signal_duty_cycle_percent(self) -> float:
-        """Gets the duty cycle of the square wave, in percent."""
+        """Gets the duty cycle of the square wave, in percent."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (151 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_duty_cycle_percent
 
     @property
     def generated_signal_phase_radians(self) -> float:
-        """Gets the phase value of the square wave, in radians."""
+        """Gets the phase value of the square wave, in radians."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (152 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_phase_radians
 
 
 class SignalVoltageGenerationMultipleTonesWaveParameters(PCBATestToolkitData):
     """Defines the parameters used to configure generation of (multi-tone)
-    signal voltage with one or more sine waves (sum of sinusoid)."""
+    signal voltage with one or more sine waves (sum of sinusoid)."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (361 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -255,7 +255,7 @@ class SignalVoltageGenerationMultipleTonesWaveParameters(PCBATestToolkitData):
             ValueError:
                 If the `generated_signal_amplitude_volts' is less than or equal to zero.
                 if the `generated_signal_tone_parameters' is None or empty List
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         Guard.is_greater_than_zero(
             generated_signal_amplitude_volts, nameof(generated_signal_amplitude_volts)
@@ -270,26 +270,26 @@ class SignalVoltageGenerationMultipleTonesWaveParameters(PCBATestToolkitData):
 
     @property
     def generated_signal_offset_volts(self) -> float:
-        """Gets the offset of the generated signal voltage."""
+        """Gets the offset of the generated signal voltage."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (148 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_offset_volts
 
     @property
     def generated_signal_amplitude_volts(self) -> float:
-        """Gets the Amplitude value used to rescale the resulted sine wave."""
+        """Gets the Amplitude value used to rescale the resulted sine wave."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
 
         return self._generated_signal_amplitude_volts
 
     @property
     def multiple_tones_parameters(self) -> List[ToneParameters]:
         """Gets the List `ToneSettings` representing the settings of
-        each sine wave in generated signal voltage."""
+        each sine wave in generated signal voltage."""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (424 > 100 characters) (auto-generated noqa)
 
         return self._multiple_tones_parameters
 
 
 class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
-    """Defines the parameters used for configuration of sine wave signal generation"""
+    """Defines the parameters used for configuration of sine wave signal generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (197 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -311,7 +311,7 @@ class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
                 An instance of SignalVoltageGenerationTimingParameters that represents the settings of timing.
             digital_start_trigger_parameters (DigitalStartTriggerParameters):
                 An instance of `DigitalStartTriggerParameters` that represents the settings of triggers.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             voltage_generation_range_parameters,
             nameof(voltage_generation_range_parameters),
@@ -340,7 +340,7 @@ class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
         :class:`VoltageGenerationChannelParameters`:
             Gets an instance of `VoltageGenerationChannelParameters'
             that represents the terminal settings for all channel for signal voltage generation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_generation_range_parameters
 
     @property
@@ -351,7 +351,7 @@ class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationSineWaveParameters`:
             Gets an instance of `SignalVoltageGenerationSineWaveParameters`
             used to configure the generation of sine wave signal voltage.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveform_parameters
 
     @property
@@ -360,7 +360,7 @@ class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationTimingParameters`:
             Gets a `SignalVoltageGenerationTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
     @property
@@ -369,12 +369,12 @@ class SignalVoltageGenerationSineWaveConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
-    """Defines the parameters used for configuration of square wave signal generation"""
+    """Defines the parameters used for configuration of square wave signal generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -396,7 +396,7 @@ class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
                 An instance of SignalVoltageGenerationTimingParameters that represents the settings of timing.
             digital_start_trigger_parameters (DigitalStartTriggerParameters):
                 An instance of `DigitalStartTriggerParameters` that represents the settings of triggers.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             voltage_generation_range_parameters,
             nameof(voltage_generation_range_parameters),
@@ -425,7 +425,7 @@ class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
         :class:`VoltageGenerationChannelParameters`:
             Gets an instance of `VoltageGenerationChannelParameters'
             that represents the terminal settings for all channel for signal voltage generation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_generation_range_parameters
 
     @property
@@ -436,7 +436,7 @@ class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationSquareWaveParameters`:
             Gets an instance of `SignalVoltageGenerationSquareWaveParameters`
             used to configure the generation of square wave signal voltage.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveform_parameters
 
     @property
@@ -445,7 +445,7 @@ class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationTimingParameters`:
             Gets a `SignalVoltageGenerationTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
     @property
@@ -454,12 +454,12 @@ class SignalVoltageGenerationSquareWaveConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
-    """Defines the parameters used for configuration of multi-tone sine wave signal generation"""
+    """Defines the parameters used for configuration of multi-tone sine wave signal generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -481,7 +481,7 @@ class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
                 An instance of `SignalVoltageGenerationTimingParameters` that represents the settings of timing.
             digital_start_trigger_parameters (DigitalStartTriggerParameters):
                 An instance of `DigitalStartTriggerParameters` that represents the settings of triggers.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (112 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             voltage_generation_range_parameters,
             nameof(voltage_generation_range_parameters),
@@ -510,7 +510,7 @@ class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
         :class:`VoltageGenerationChannelParameters`:
             Gets an instance of `VoltageGenerationChannelParameters'
             that represents the terminal settings for all channel for signal voltage generation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_generation_range_parameters
 
     @property
@@ -521,7 +521,7 @@ class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationMultipleTonesWaveParameters`:
             Gets an instance of `SignalVoltageGenerationMultipleTonesWaveParameters`
             used to configure the generation of multi-tone sine wave signal voltage.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveform_parameters
 
     @property
@@ -530,7 +530,7 @@ class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
         :class:`SignalVoltageGenerationTimingParameters`:
             Gets a `SignalVoltageGenerationTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
     @property
@@ -539,5 +539,5 @@ class SignalVoltageGenerationMultipleTonesConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters

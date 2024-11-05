@@ -11,7 +11,7 @@
 #
 # measurement = nipcbatt.DcRmsCurrentMeasurement()
 # measurement.initialize()
-# results = measurement.configure_and_measure(configuration=nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION)
+# results = measurement.configure_and_measure(configuration=nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION)  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
 # measurement.close()
 
 from nipcbatt.pcbatt_analysis.analysis_library_exceptions import (
@@ -19,7 +19,9 @@ from nipcbatt.pcbatt_analysis.analysis_library_exceptions import (
     PCBATTAnalysisException,
     PCBATTAnalysisLoadNativeLibraryFailedException,
 )
-from nipcbatt.pcbatt_analysis.analysis_library_messages import AnalysisLibraryExceptionMessage
+from nipcbatt.pcbatt_analysis.analysis_library_messages import (
+    AnalysisLibraryExceptionMessage,
+)
 from nipcbatt.pcbatt_analysis.common.base_types import AnalysisLibraryElement
 from nipcbatt.pcbatt_analysis.common.common_types import (
     AmplitudePhaseSpectrum,
@@ -88,7 +90,9 @@ from nipcbatt.pcbatt_library.common.communication_data_types import (
     MemoryAddressParameters,
     MemoryPageCharacteristics,
 )
-from nipcbatt.pcbatt_library.common.voltage_constants import ConstantsForVoltageMeasurement
+from nipcbatt.pcbatt_library.common.voltage_constants import (
+    ConstantsForVoltageMeasurement,
+)
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
     VoltageMeasurementChannelAndTerminalRangeParameters,
@@ -129,7 +133,9 @@ from nipcbatt.pcbatt_library.dc_rms_voltage_measurements.dc_rms_voltage_measurem
 from nipcbatt.pcbatt_library.dc_voltage_generations.dc_voltage_data_types import (
     DcVoltageGenerationConfiguration,
 )
-from nipcbatt.pcbatt_library.dc_voltage_generations.dc_voltage_generation import DcVoltageGeneration
+from nipcbatt.pcbatt_library.dc_voltage_generations.dc_voltage_generation import (
+    DcVoltageGeneration,
+)
 from nipcbatt.pcbatt_library.dc_voltage_generations.dc_voltage_generation_constants import (
     DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION,
     DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
@@ -251,13 +257,17 @@ from nipcbatt.pcbatt_library.i2c_communications.i2c_data_types import (
     I2cCommunicationParameters,
     I2cDeviceParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_read_communication import I2cReadCommunication
+from nipcbatt.pcbatt_library.i2c_communications.i2c_read_communication import (
+    I2cReadCommunication,
+)
 from nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types import (
     I2cReadCommunicationConfiguration,
     I2cReadCommunicationData,
     I2cReadParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_write_communication import I2cWriteCommunication
+from nipcbatt.pcbatt_library.i2c_communications.i2c_write_communication import (
+    I2cWriteCommunication,
+)
 from nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types import (
     I2cWriteCommunicationConfiguration,
     I2cWriteParameters,
@@ -279,7 +289,9 @@ from nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_s
     PowerSupplySourceAndMeasureResultData,
     PowerSupplySourceAndMeasureTerminalParameters,
 )
-from nipcbatt.pcbatt_library.serial_communications.serial_communication import SerialCommunication
+from nipcbatt.pcbatt_library.serial_communications.serial_communication import (
+    SerialCommunication,
+)
 from nipcbatt.pcbatt_library.serial_communications.serial_communication_constants import (
     ConstantsForSerialCommunication,
 )
@@ -327,13 +339,17 @@ from nipcbatt.pcbatt_library.spi_communications.spi_data_types import (
     SpiCommunicationParameters,
     SpiDeviceParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_read_communication import SpiReadCommunication
+from nipcbatt.pcbatt_library.spi_communications.spi_read_communication import (
+    SpiReadCommunication,
+)
 from nipcbatt.pcbatt_library.spi_communications.spi_read_data_types import (
     SpiReadCommunicationConfiguration,
     SpiReadCommunicationData,
     SpiReadParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_write_communication import SpiWriteCommunication
+from nipcbatt.pcbatt_library.spi_communications.spi_write_communication import (
+    SpiWriteCommunication,
+)
 from nipcbatt.pcbatt_library.spi_communications.spi_write_data_types import (
     SpiWriteCommunicationConfiguration,
     SpiWriteParameters,
@@ -424,5 +440,7 @@ from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryChannelNotCompatibleWithMeasurementException,
     PCBATTLibraryException,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_library_messages import PCBATTLibraryExceptionMessages
+from nipcbatt.pcbatt_library_core.pcbatt_library_messages import (
+    PCBATTLibraryExceptionMessages,
+)
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard

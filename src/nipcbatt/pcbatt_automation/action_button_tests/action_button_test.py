@@ -1,5 +1,5 @@
 """Example demonstrates DC-RMS Voltage Measurements by performing button actions 
-   (generating DC Voltages) on specific test points"""
+   (generating DC Voltages) on specific test points"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (347 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
@@ -27,7 +27,7 @@ def setup(
     button_channel=BUTTON_CHANNEL,
     voltage_channel=DC_RMS_VOLTAGE_TEST_POINT_CHANNEL,
 ):
-    """Creates the necessary objects for the simulation and measurement of the action button"""
+    """Creates the necessary objects for the simulation and measurement of the action button"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (283 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     button_instance = nipcbatt.DcVoltageGeneration()
@@ -59,7 +59,7 @@ def main(
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
     The default file path is C:\\Windows\\Temp\\action_button_test_results.txt
-    """
+    """  # noqa: D205, D301 - 1 blank line required between summary line and description (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa)
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(button_instance)
@@ -73,7 +73,7 @@ def main(
         output_voltages=[3.3],  # ON voltage = 3.3V
     )
 
-    """Note to run with Hardware: Update DC Voltage for Action Button ON condition
+    """Note to run with Hardware: Update DC Voltage for Action Button ON condition  # noqa: W505 - doc line too long (176 > 100 characters) (auto-generated noqa)
        This step can be replaced with actual button action"""
 
     # Turn ON the simulated button using CONFIGURE_AND_GENERATE method
@@ -132,7 +132,7 @@ def main(
 
 # Close all tasks
 def cleanup(button_instance, dc_rms_voltage_test_point):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
     button_instance.close()  # Close Action Button
     dc_rms_voltage_test_point.close()  # Close TP
 
@@ -149,7 +149,7 @@ def action_button_test(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # Run setup function
     button, voltage_test_point = setup(button_channel, voltage_channel)
@@ -162,4 +162,4 @@ def action_button_test(
 
 
 ####################################################################################################
-# endregion test
+# endregion test  # noqa: W505 - doc line too long (231 > 100 characters) (auto-generated noqa)

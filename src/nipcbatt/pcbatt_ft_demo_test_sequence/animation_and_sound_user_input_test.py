@@ -1,19 +1,21 @@
-"""Animation and Sound User Input Test"""
+"""Animation and Sound User Input Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (152 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=C0413,E0401,C0115,W0611,C0116,C0103
 
-import os
-import sys
+import os  # noqa: F401 - 'os' imported but unused (auto-generated noqa)
+import sys  # noqa: F401 - 'sys' imported but unused (auto-generated noqa)
 from time import sleep
 
 import nidaqmx.constants
-from limit_exception import LimitException
+from limit_exception import (  # noqa: F401 - 'limit_exception.LimitException' imported but unused (auto-generated noqa)
+    LimitException,
+)
 
 import nipcbatt
 
 
-class AnimationAndSoundUserInputTest:
-    def __init__(self):
+class AnimationAndSoundUserInputTest:  # noqa: D101 - Missing docstring in public class (auto-generated noqa)
+    def __init__(self):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.digital_state_gen_task = None
         self.time_domain_meas_task = None
         self.dyn_digit_meas_task = None
@@ -22,24 +24,30 @@ class AnimationAndSoundUserInputTest:
         self.main()
         self.cleanup()
 
-    def setup(self):
+    def setup(self):  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
         self.initialize_push_user_button(channel_expression="TS_BUTTON0")
         self.initialize_tp_tweeter(channel_expression="TP_TWEET0")
         self.initialize_leds_pattern(channel_expression="TP_AN_LED0:2")
 
-    def initialize_push_user_button(self, channel_expression: str) -> None:
+    def initialize_push_user_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self, channel_expression: str
+    ) -> None:
         self.digital_state_gen_task = nipcbatt.StaticDigitalStateGeneration()
         self.digital_state_gen_task.initialize(channel_expression=channel_expression)
 
-    def initialize_tp_tweeter(self, channel_expression: str) -> None:
+    def initialize_tp_tweeter(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self, channel_expression: str
+    ) -> None:
         self.time_domain_meas_task = nipcbatt.TimeDomainMeasurement()
         self.time_domain_meas_task.initialize(analog_input_channel_expression=channel_expression)
 
-    def initialize_leds_pattern(self, channel_expression: str) -> None:
+    def initialize_leds_pattern(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self, channel_expression: str
+    ) -> None:
         self.dyn_digit_meas_task = nipcbatt.DynamicDigitalPatternMeasurement()
         self.dyn_digit_meas_task.initialize(channel_expression=channel_expression)
 
-    def main(self):
+    def main(self):  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
         self.configure_tweeter_meas()
         self.configure_dig_pattern()
         self.turn_on_dut_user_button()
@@ -48,7 +56,9 @@ class AnimationAndSoundUserInputTest:
         self.measure_and_check_leds_pattern()
         self.fetch_tweeter_sound()
 
-    def configure_tweeter_meas(self) -> None:
+    def configure_tweeter_meas(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
@@ -83,7 +93,9 @@ class AnimationAndSoundUserInputTest:
 
         self.time_domain_meas_task.configure_and_measure(configuration=configuration)
 
-    def configure_dig_pattern(self) -> None:
+    def configure_dig_pattern(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         measurement_options = nipcbatt.MeasurementOptions(
             execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
             measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS,
@@ -110,20 +122,28 @@ class AnimationAndSoundUserInputTest:
 
         self.dyn_digit_meas_task.configure_and_measure(configuration=configuration)
 
-    def turn_on_dut_user_button(self) -> None:
+    def turn_on_dut_user_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
-    def wait_for_500_ms_seconds_push_button(self) -> None:
+    def wait_for_500_ms_seconds_push_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         sleep(0.5)
 
-    def turn_off_dut_user_button(self) -> None:
+    def turn_off_dut_user_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
-    def measure_and_check_leds_pattern(self) -> None:
+    def measure_and_check_leds_pattern(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         measurement_options = nipcbatt.MeasurementOptions(
             execution_option=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
             measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS,
@@ -150,8 +170,10 @@ class AnimationAndSoundUserInputTest:
 
         self.dyn_digit_meas_task.configure_and_measure(configuration=configuration)
 
-    def fetch_tweeter_sound(self) -> None:
-        # Fetches the measured DC Voltage (measured after Button action) and returns Time Domain Analysis Frequency
+    def fetch_tweeter_sound(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
+        # Fetches the measured DC Voltage (measured after Button action) and returns Time Domain Analysis Frequency  # noqa: W505 - doc line too long (115 > 100 characters) (auto-generated noqa)
         # NOTE: This Step errors outs for non-periodic waveform captures.
 
         global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
@@ -202,16 +224,24 @@ class AnimationAndSoundUserInputTest:
         else:
             print("Status: Pass", "\n")
 
-    def cleanup(self) -> None:
+    def cleanup(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.close_tweeter_meas()
         self.close_leds_pattern()
         self.close_push_button()
 
-    def close_tweeter_meas(self) -> None:
+    def close_tweeter_meas(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.time_domain_meas_task.close()
 
-    def close_leds_pattern(self) -> None:
+    def close_leds_pattern(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.dyn_digit_meas_task.close()
 
-    def close_push_button(self) -> None:
+    def close_push_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.digital_state_gen_task.close()

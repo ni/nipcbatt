@@ -1,4 +1,4 @@
-"""Provides unit tests related to guard_utilities.py module"""
+"""Provides unit tests related to guard_utilities.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
 import logging
 import platform
@@ -16,7 +16,7 @@ class TestGuard(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -38,7 +38,7 @@ class TestGuard(unittest.TestCase):
         print("Teardown fixture")
 
     def test_is_not_empty_fails_if_iterable_empty(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_empty"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_empty"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         empty_tuple = ()
 
         with self.assertRaises(ValueError) as ctx:
@@ -47,7 +47,7 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The iterable empty_tuple of type tuple is empty.", str(ctx.exception))
 
     def test_is_not_empty_should_not_fail_if_iterable_not_empty(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_empty"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_empty"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         tuple_instance = (1, 3)
 
         Guard.is_not_empty(tuple_instance, nameof(tuple_instance))
@@ -57,7 +57,7 @@ class TestGuard(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         iterable_instance = map(lambda x: x, range(0, 10))
 
         Guard.size_is_greater_or_equal_than(iterable_instance, 3, nameof(iterable_instance))
@@ -69,7 +69,7 @@ class TestGuard(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         tuple_instance = (2, 4)
 
         with self.assertRaises(ValueError) as ctx:
@@ -82,13 +82,13 @@ class TestGuard(unittest.TestCase):
 
     def test_size_is_greater_or_equal_than_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.size_is_greater_or_equal_than"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         tuple_instance = (1.0, 2, 3, 4)
 
         Guard.size_is_greater_or_equal_than(tuple_instance, 3, nameof(tuple_instance))
 
     def test_size_is_less_than_or_equal_fails_if_iterable_is_too_large(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.Guard.size_is_less_than_or_equal"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.Guard.size_is_less_than_or_equal"""  # noqa: W505, D415 - doc line too long (107 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
         tuple_instance = (2, 4, 5, 6)
 
         with self.assertRaises(ValueError) as ctx:
@@ -100,7 +100,7 @@ class TestGuard(unittest.TestCase):
         )
 
     def test_size_is_less_than_or_equal_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.Guard.size_is_less_than_or_equal"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.Guard.size_is_less_than_or_equal"""  # noqa: W505, D415 - doc line too long (107 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
         tuple_instance = (1.0, 2)
 
         Guard.size_is_less_than_or_equal(tuple_instance, 3, nameof(tuple_instance))
@@ -108,7 +108,7 @@ class TestGuard(unittest.TestCase):
     def test_all_elements_are_of_same_type_fails_if_list_contains_invalid_objects(self):
         """Unit test
         of nipcbatt.pcbatt_utilities.guard_utilities.Guard.all_elements_are_of_same_type
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         input_list = [1.0, 3.0, "string_not_allowed"]
 
         with self.assertRaises(TypeError) as ctx:
@@ -120,13 +120,13 @@ class TestGuard(unittest.TestCase):
 
     def test_all_elements_are_of_same_type_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.all_elements_are_of_same_type"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.all_elements_are_of_same_type"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         input_list = [1.0, 3.0, 10.0]
 
         Guard.all_elements_are_of_same_type(input_list=input_list, expected_type=float)
 
     def test_have_same_size_fails_if_lists_have_not_same_size(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.have_same_size"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.have_same_size"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (200 > 100 characters) (auto-generated noqa)
         first_input_list = [1.0, 3.0, 4.0]
         second_input_list = ["item_1", "item_2", "item_3", "item_4"]
 
@@ -144,7 +144,7 @@ class TestGuard(unittest.TestCase):
         )
 
     def test_have_same_size_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.have_same_size"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.have_same_size"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (200 > 100 characters) (auto-generated noqa)
         first_input_list = [1.0, 3.0, 4.0]
         second_input_list = ["item_1", "item_2", "item_3"]
 
@@ -157,7 +157,7 @@ class TestGuard(unittest.TestCase):
 
     def test_is_not_none_fails_if_object_is_none(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
         instance = None
         with self.assertRaises(ValueError) as ctx:
             Guard.is_not_none(instance, nameof(instance))
@@ -166,13 +166,13 @@ class TestGuard(unittest.TestCase):
 
     def test_is_not_none_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
         instance = 3.0
         Guard.is_not_none(instance, nameof(instance))
 
     def test_is_greater_than_zero_fails_if_object_is_string(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (372 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -182,7 +182,7 @@ class TestGuard(unittest.TestCase):
 
     def test_is_greater_than_zero_fails_if_object_is_less_than_or_equal_to_zero(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (372 > 100 characters) (auto-generated noqa)
         instance = -6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_greater_than_zero(instance, nameof(instance))
@@ -191,14 +191,14 @@ class TestGuard(unittest.TestCase):
 
     def test_is_greater_than_zero_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (372 > 100 characters) (auto-generated noqa)
         instance = 3.0
         Guard.is_greater_than_zero(instance, nameof(instance))
 
     def test_is_greater_than_or_equal_to_zero_fails_if_object_is_string(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to_zero
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -209,7 +209,7 @@ class TestGuard(unittest.TestCase):
     def test_is_greater_than_or_equal_to_zero_fails_if_object_is_negative(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to_zero
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = -6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_greater_than_or_equal_to_zero(instance, nameof(instance))
@@ -221,14 +221,14 @@ class TestGuard(unittest.TestCase):
     def test_is_greater_than_or_equal_to_zero_should_not_fail(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to_zero
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = 3.0
         Guard.is_greater_than_or_equal_to_zero(instance, nameof(instance))
         instance = 0.0
         Guard.is_greater_than_or_equal_to_zero(instance, nameof(instance))
 
     def test_is_less_than_zero_fails_if_object_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (203 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -237,7 +237,7 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The object instance is not a numeric value.", str(ctx.exception))
 
     def test_is_less_than_zero_fails_if_object_is_positive_or_equal_to_zero(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (203 > 100 characters) (auto-generated noqa)
         instance = 6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_less_than_zero(instance, nameof(instance))
@@ -245,13 +245,13 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The value instance must be less than 0.", str(ctx.exception))
 
     def test_is_less_than_zero_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_zero"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (203 > 100 characters) (auto-generated noqa)
         instance = -3.0
         Guard.is_less_than_zero(instance, nameof(instance))
 
     def test_is_less_than_or_equal_to_zero_fails_if_object_is_string(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -261,7 +261,7 @@ class TestGuard(unittest.TestCase):
 
     def test_is_less_than_or_equal_to_zero_fails_if_object_is_greater_than_zero(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         instance = 6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_less_than_or_equal_to_zero(instance, nameof(instance))
@@ -270,14 +270,14 @@ class TestGuard(unittest.TestCase):
 
     def test_is_less_than_or_equal_to_zero_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to_zero"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         instance = -3.0
         Guard.is_less_than_or_equal_to_zero(instance, nameof(instance))
         instance = 0.0
         Guard.is_less_than_or_equal_to_zero(instance, nameof(instance))
 
     def test_is_less_than_fails_if_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -286,7 +286,7 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The object instance is not a numeric value.", str(ctx.exception))
 
     def test_is_less_than_fails_if_expected_greater_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         instance = -6
 
         with self.assertRaises(TypeError) as ctx:
@@ -298,7 +298,7 @@ class TestGuard(unittest.TestCase):
         )
 
     def test_is_less_than_fails_if_value_is_greater_or_equal(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         instance = -6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_less_than(instance, -8, nameof(instance))
@@ -306,12 +306,12 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The value instance must be less than -8.", str(ctx.exception))
 
     def test_is_less_than_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (198 > 100 characters) (auto-generated noqa)
         instance = 3.0
         Guard.is_less_than(instance, 4.0, nameof(instance))
 
     def test_is_less_than_or_equal_to_fails_if_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = "-6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -320,7 +320,7 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The object instance is not a numeric value.", str(ctx.exception))
 
     def test_is_less_than_or_equal_to_fails_if_expected_greater_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = -6
 
         with self.assertRaises(TypeError) as ctx:
@@ -332,7 +332,7 @@ class TestGuard(unittest.TestCase):
         )
 
     def test_is_less_than_or_equal_to_fails_if_value_is_greater(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = -6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_less_than_or_equal_to(instance, -8, nameof(instance))
@@ -340,14 +340,14 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The value instance must be less than or equal to -8.", str(ctx.exception))
 
     def test_is_less_than_or_equal_to_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_less_than_or_equal_to"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = 3.0
         Guard.is_less_than_or_equal_to(instance, 4.0, nameof(instance))
         instance = 4.0
         Guard.is_less_than_or_equal_to(instance, 4.0, nameof(instance))
 
     def test_is_greater_than_fails_if_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (201 > 100 characters) (auto-generated noqa)
         instance = "6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -356,7 +356,7 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The object instance is not a numeric value.", str(ctx.exception))
 
     def test_is_greater_than_fails_if_expected_smaller_value_is_string(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (201 > 100 characters) (auto-generated noqa)
         instance = 6
 
         with self.assertRaises(TypeError) as ctx:
@@ -370,7 +370,7 @@ class TestGuard(unittest.TestCase):
         )
 
     def test_is_greater_than_fails_if_value_is_less_than_or_equal_to(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (201 > 100 characters) (auto-generated noqa)
         instance = 6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_greater_than(instance, 8, nameof(instance))
@@ -378,13 +378,13 @@ class TestGuard(unittest.TestCase):
         self.assertEqual("The value instance must be greater than 8.", str(ctx.exception))
 
     def test_is_greater_than_should_not_fail(self):
-        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""
+        """Unit test of nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (201 > 100 characters) (auto-generated noqa)
         instance = 6.0
         Guard.is_greater_than(instance, 4.0, nameof(instance))
 
     def test_is_greater_or_equal_to_fails_if_value_is_string(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (379 > 100 characters) (auto-generated noqa)
         instance = "6"
 
         with self.assertRaises(TypeError) as ctx:
@@ -396,7 +396,7 @@ class TestGuard(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (379 > 100 characters) (auto-generated noqa)
         instance = 6
 
         with self.assertRaises(TypeError) as ctx:
@@ -411,7 +411,7 @@ class TestGuard(unittest.TestCase):
 
     def test_is_greater_than_or_equal_to_fails_if_value_is_less_than(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (379 > 100 characters) (auto-generated noqa)
         instance = 6
         with self.assertRaises(ValueError) as ctx:
             Guard.is_greater_than_or_equal_to(instance, 8, nameof(instance))
@@ -422,7 +422,7 @@ class TestGuard(unittest.TestCase):
 
     def test_is_greater_than_or_equal_to_should_not_fail(self):
         """Unit test of
-        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""
+        nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_greater_than_or_equal_to"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (379 > 100 characters) (auto-generated noqa)
         instance = 6.0
         Guard.is_greater_than_or_equal_to(instance, 4.0, nameof(instance))
         instance = 4.0
@@ -431,7 +431,7 @@ class TestGuard(unittest.TestCase):
     def test_is_not_none_nor_empty_nor_whitespace_fails_if_string_value_is_none(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none_nor_empty_nor_whitespace
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = None
         with self.assertRaises(ValueError) as ctx:
             Guard.is_not_none_nor_empty_nor_whitespace(value=instance, value_name=nameof(instance))
@@ -444,7 +444,7 @@ class TestGuard(unittest.TestCase):
     def test_is_not_none_nor_empty_nor_whitespace_fails_if_string_value_is_empty(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none_nor_empty_nor_whitespace
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = ""
         with self.assertRaises(ValueError) as ctx:
             Guard.is_not_none_nor_empty_nor_whitespace(value=instance, value_name=nameof(instance))
@@ -459,7 +459,7 @@ class TestGuard(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none_nor_empty_nor_whitespace
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = " "
         with self.assertRaises(ValueError) as ctx:
             Guard.is_not_none_nor_empty_nor_whitespace(value=instance, value_name=nameof(instance))
@@ -472,7 +472,7 @@ class TestGuard(unittest.TestCase):
     def test_is_not_none_nor_empty_nor_whitespace_should_not_fail(self):
         """Unit test of
         nipcbatt.pcbatt_utilities.guard_utilities.Guard.is_not_none_nor_empty_nor_whitespace
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = "3.0"
         Guard.is_not_none_nor_empty_nor_whitespace(value=instance, value_name=nameof(instance))
 

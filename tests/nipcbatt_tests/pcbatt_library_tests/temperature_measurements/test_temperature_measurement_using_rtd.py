@@ -22,7 +22,7 @@ class TestTemperatureMeasurementUsingRtd(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestTemperatureMeasurementUsingRtd(unittest.TestCase):
         print("Teardown fixture")
 
     def test_temperature_measurement_using_rtd(self):
-        """Checks if class TemperatureMeasurementUsingRtd is ready to use"""
+        """Checks if class TemperatureMeasurementUsingRtd is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (187 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.TemperatureMeasurementUsingRtd()
         measurement.initialize(channel_expression="Dev/ai0")
 

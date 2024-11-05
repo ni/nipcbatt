@@ -25,7 +25,7 @@ from nipcbatt.pcbatt_library.frequency_domain_measurements.frequency_domain_data
 
 @dataclasses.dataclass
 class ConstantsForFrequencyDomainMeasurement:
-    """Constants used for Frequency Domain measurement"""
+    """Constants used for Frequency Domain measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
 
     FILTERING_WINDOW_FOR_FFT = LabViewFftSpectrumWindow.HANNING
     """Specifies the time-domain window to apply to the time signal before performing FFT.

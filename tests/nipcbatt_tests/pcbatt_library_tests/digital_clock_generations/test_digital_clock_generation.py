@@ -23,7 +23,7 @@ class TestDigitalClockGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class for unit tests which is inherited
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestDigitalClockGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_digital_clock_generation(self):
-        """Checks if class 'DigitalClockGeneration' is ready to use"""
+        """Checks if class 'DigitalClockGeneration' is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (258 > 100 characters) (auto-generated noqa)
 
         physical_channel = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
         output_terminal = "/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"

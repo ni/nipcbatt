@@ -42,7 +42,7 @@ class TestPulseAnalogProcessingReferenceLevels(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -65,7 +65,7 @@ class TestPulseAnalogProcessingReferenceLevels(unittest.TestCase):
 
     def test_pulse_analog_processing_reference_levels(self):
         """Test of `pcbatt_analysis.pulse_analog_analysis.PulseAnalogProcessingReferenceLevels`
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange
         expected_reference_level_high = 5
@@ -107,7 +107,7 @@ class TestWaveformPeriodicityAnalogProcessingResult(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -130,7 +130,7 @@ class TestWaveformPeriodicityAnalogProcessingResult(unittest.TestCase):
 
     def test_waveform_periodicity_analog_processing_result(self):
         """Test of `pcbatt_analysis.pulse_analog_analysis.WaveformPeriodicityAnalogProcessingResult`
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange + Act
         pulse_periodicty_results = WaveformPeriodicityAnalogProcessingResult(
@@ -152,7 +152,7 @@ class TestWaveformPeriodicityAnalogProcessingResult(unittest.TestCase):
 
     def test_waveform_periodicity_analog_processing_result_invalid_inputs(self):
         """Test of `pcbatt_analysis.pulse_analog_analysis.WaveformPeriodicityAnalogProcessingResult`
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange + Act + Assert
         self.assertRaises(
@@ -178,7 +178,7 @@ class TestPulseAnalogMeasurementPercentLevelsSettings(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -208,7 +208,7 @@ class TestPulseAnalogMeasurementPercentLevelsSettings(unittest.TestCase):
         """Test of
         `pcbatt_analysis.pulse_analog_analysis.PulseAnalogMeasurementPercentLevelsSettings`
         class constructor
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: PulseAnalogMeasurementPercentLevelsSettings(
@@ -229,7 +229,7 @@ class TestPulseAnalogMeasurementPercentLevelsSettings(unittest.TestCase):
         """Test of
         `pcbatt_analysis.pulse_analog_analysis.PulseAnalogMeasurementPercentLevelsSettings`
         class constructor
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Arrange
         expected_histogram_size = 256
@@ -315,7 +315,7 @@ class TestPulseAnalogProcessingResult(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -343,7 +343,7 @@ class TestPulseAnalogProcessingResult(unittest.TestCase):
 
     def test_pulse_analog_processing_result(self):
         """Test of `pcbatt_analysis.pulse_analog_analysis.PulseAnalogProcessingResult`
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange
         expected_pulse_center = 125
@@ -470,7 +470,7 @@ class TestPulseAnalogProcessingResult(unittest.TestCase):
 
     def test_pulse_analog_processing_result_invalid_inputs(self):
         """Test of `pcbatt_analysis.pulse_analog_analysis.PulseAnalogProcessingResult`
-        class constructor"""
+        class constructor"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (398 > 100 characters) (auto-generated noqa)
 
         # Arrange + Act
         self.assertRaises(
@@ -546,7 +546,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
 
     Args:
         unittest (TestCase): test cases fixture.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         # active debug traces of native dll
@@ -583,7 +583,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     @functional_utilities.repeat(10)
     def test_get_last_error_message_returns_empty_string(self):
         """Test of ``pcbatt_analysis.pulse_analog_analysis.LabViewPulseAnalogMeasurements
-        get_last_error_message`` method when there is no error"""
+        get_last_error_message`` method when there is no error"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (358 > 100 characters) (auto-generated noqa)
         last_error_message = LabViewPulseAnalogMeasurements.get_last_error_message()
         self.assertEqual("", last_error_message)
 
@@ -593,7 +593,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     ):
         """Test of
         `LabViewPulseAnalogMeasurements.process_single_waveform_multiple_pulse_measurements` method.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         tolerance_percent = 1
         expected_pulse_duration = 0.5
@@ -697,7 +697,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     ):
         """Test of
         `LabViewPulseAnalogMeasurements.process_single_waveform_pulse_measurements` method.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         tolerance_percent = 1
         expected_pulse_centers_per_polarity = {
@@ -808,7 +808,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     ):
         """Test of
         `LabViewPulseAnalogMeasurements.process_single_waveform_pulse_measurements` method.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         tolerance_percent = 1
         expected_pulse_centers_per_polarity = {
@@ -901,7 +901,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     ):
         """Test of
         `LabViewPulseAnalogMeasurements.process_single_waveform_pulse_measurements` method.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Arrange
         tolerance_percent = 1
@@ -992,7 +992,7 @@ class TestLabViewPulseAnalogMeasurements(unittest.TestCase):
     ):
         """Test of
         `LabViewPulseAnalogMeasurements.process_single_waveform_pulse_measurements` method.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Arrange
         tolerance_percent = 1

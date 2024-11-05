@@ -1,5 +1,5 @@
 """Private module that provides a set of helper functions 
-   for nipcbatt.pcbatt_analysis.amplitude_and_levels_analysis module."""
+   for nipcbatt.pcbatt_analysis.amplitude_and_levels_analysis module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (365 > 100 characters) (auto-generated noqa)
 
 from ctypes import (
     POINTER,
@@ -88,7 +88,7 @@ def labview_process_single_waveform_amplitude_and_levels_impl(
 
     Returns:
         tuple[float, float, float]: Tuple gathering, amplitude, high state and low state levels.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (106 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     # int NI_PCBATT_InteropApi_LabVIEW_Analysis_ProcessSingleWaveformAmplitudeAndLevelsMeasurement(
     # AmplitudeAndLevelsProcessingMethodEnum inputAmplitudeAndLevelsProcessingMethod,

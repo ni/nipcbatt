@@ -1,1 +1,1 @@
-"""Provides a set of unit tests for nipcbatt.pcbatt_library.dc_rms_voltage_measurements package"""
+"""Provides a set of unit tests for nipcbatt.pcbatt_library.dc_rms_voltage_measurements package"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (209 > 100 characters) (auto-generated noqa)

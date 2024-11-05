@@ -1,1 +1,1 @@
-"""Provides a set of unit tests for nipcbatt.pcbatt_library.digital_pulse_generations package"""
+"""Provides a set of unit tests for nipcbatt.pcbatt_library.digital_pulse_generations package"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (207 > 100 characters) (auto-generated noqa)

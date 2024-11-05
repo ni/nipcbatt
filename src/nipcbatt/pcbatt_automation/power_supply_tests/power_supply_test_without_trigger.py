@@ -1,4 +1,4 @@
-"""This example demonstrates Power Supply source and Voltage Measurement without trigger"""
+"""This example demonstrates Power Supply source and Voltage Measurement without trigger"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (202 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105,E0401
 
@@ -28,7 +28,7 @@ def setup(
     power_channel=POWER_CHANNEL,
     voltage_channel=ANALOG_INPUT_CHANNEL,
 ):
-    """Creates the necessary objects for the generation and measurement of the power supply"""
+    """Creates the necessary objects for the generation and measurement of the power supply"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (282 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     power_supply_test_source_instance = nipcbatt.PowerSupplySourceAndMeasure()
@@ -57,7 +57,7 @@ def main(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Note to run with Hardware: Review the configurations and update the trigger configurations"""
+    """Note to run with Hardware: Review the configurations and update the trigger configurations"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (288 > 100 characters) (auto-generated noqa)
 
     """ If write_to_file is True, the Logger is used to output the results to a file.
         The Logger can be used to store configurations and outputs in a .txt or .csv file.
@@ -187,7 +187,7 @@ def cleanup(
     power_supply_test_source_instance: nipcbatt.PowerSupplySourceAndMeasure,
     analog_input_test_point_instance: nipcbatt.DcRmsVoltageMeasurement,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (190 > 100 characters) (auto-generated noqa)
     power_supply_test_source_instance.close()  # Close TS
     analog_input_test_point_instance.close()  # Close TP
 
@@ -204,7 +204,7 @@ def power_supply_test_without_trigger(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
 
     # Run setup function
     gen, meas = setup(power_channel, voltage_channel)

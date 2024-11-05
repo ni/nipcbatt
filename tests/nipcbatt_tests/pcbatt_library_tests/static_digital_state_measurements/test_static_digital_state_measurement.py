@@ -25,7 +25,7 @@ class TestStaticDigitalStateMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -49,7 +49,7 @@ class TestStaticDigitalStateMeasurement(unittest.TestCase):
         print("Teardown fixture")
 
     def test_static_digital_state_measurement(self):
-        """Checks if class 'StaticDigitalStateMeasurement' is ready for use"""
+        """Checks if class 'StaticDigitalStateMeasurement' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (189 > 100 characters) (auto-generated noqa)
         meas = StaticDigitalStateMeasurement()
         meas.initialize("NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line0:7")
         meas.configure_and_measure()

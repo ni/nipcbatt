@@ -24,7 +24,7 @@ def scale(
 
     Returns:
         numpy.ndarray[numpy.float64]: new samples constituting transformed waveform.
-    """
+    """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
     Guard.is_not_none(waveform_samples, nameof(waveform_samples))
     Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -49,7 +49,7 @@ def apply_offset(
 
     Returns:
         numpy.ndarray[numpy.float64]: new samples constituting transformed waveform.
-    """
+    """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
     Guard.is_not_none(waveform_samples, nameof(waveform_samples))
     Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -122,7 +122,7 @@ def scale_and_apply_offset(
 
     Returns:
         numpy.ndarray[numpy.float64]: new samples constituting transformed waveform.
-    """
+    """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (283 > 100 characters) (auto-generated noqa)
 
     Guard.is_not_none(waveform_samples, nameof(waveform_samples))
     Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -149,7 +149,7 @@ def scale_and_apply_offset_inplace(
 
     Returns:
         numpy.ndarray[numpy.float64]: modified input samples constituting transformed waveform.
-    """
+    """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (283 > 100 characters) (auto-generated noqa)
 
     Guard.is_not_none(instance=waveform_samples, instance_name=nameof(waveform_samples))
     Guard.is_not_empty(iterable_instance=waveform_samples, instance_name=nameof(waveform_samples))

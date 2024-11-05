@@ -1,6 +1,6 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-"""Use this class to generate a digital clock"""
+"""Use this class to generate a digital clock"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import nidaqmx.stream_writers
@@ -32,7 +32,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx: Base class for all testscale modules
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -44,7 +44,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
         Args:
             counter_channel_expression (str): Physical channel of counter to use
             output_terminal_name (str): Terminal on which the signal is measured
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -98,7 +98,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
             parameters (DigitalClockGenerationCounterChannelParameters): An instance
             of DigitalClockGenerationCounterChannelParameters containg frequency
             and duty cycle data
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
@@ -115,7 +115,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalClockGenerationTimingParameters): Contains
             duration settings used for generation
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
 
@@ -138,7 +138,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
         Returns:
             DigitalClockGenerationData: Contains the settings that
             were actually written to the instrument
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         self.task.start()
         # return written data
         data_out = DigitalClockGenerationData(
@@ -156,7 +156,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
         Args:
             configuration (DigitalClockGenerationConfiguration): A instance of
             DigitalClockGenerationConfiguration containing the settings to be used
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # configure channel
         self.configure_counter_channel(configuration.counter_channel_parameters)
@@ -170,7 +170,7 @@ class DigitalClockGeneration(BuildingBlockUsingDAQmx):
         return data
 
     def close(self):
-        """_summary_"""
+        """_summary_"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (134 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 

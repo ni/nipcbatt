@@ -20,7 +20,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -43,7 +43,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         print("Teardown fixture")
 
     def test_static_digital_state_measurement_result_data(self):
-        """Tests the creation of a StaticDigitalStateMeasurementResultData object"""
+        """Tests the creation of a StaticDigitalStateMeasurementResultData object"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (195 > 100 characters) (auto-generated noqa)
         expected_digital_states = [random.choice([True, False]) for item in range(0, 20)]
         expected_channel_identifiers = [
             "".join(random.choice(string.ascii_letters + string.digits) for n in range(4))
@@ -70,7 +70,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
 
     def test_static_digital_state_measurement_result_data_with_invalid_data(self):
         """Tests if expected error is thrown when creating an instance of
-        'StaticDigitalStateMeasurementResultData with invalid data"""
+        'StaticDigitalStateMeasurementResultData with invalid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (439 > 100 characters) (auto-generated noqa)
 
         expected_digital_states = [random.choice([True, False]) for item in range(0, 20)]
         expected_channel_identifiers = [

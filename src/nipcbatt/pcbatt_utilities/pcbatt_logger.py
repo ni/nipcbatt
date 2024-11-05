@@ -1,4 +1,4 @@
-""" Implementation of PcbattLogger """
+""" Implementation of PcbattLogger """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (149 > 100 characters) (auto-generated noqa)
 
 import types
 from datetime import datetime
@@ -14,7 +14,7 @@ class PcbattLogger:
     """
     Class for logging inputs and outputs of methods.
     The goal is to log most informations without slowing down the caller.
-    """
+    """  # noqa: D205, D212, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (193 > 100 characters) (auto-generated noqa)
 
     def __init__(self, file: str, methods: List[str] = None):
         """
@@ -24,7 +24,7 @@ class PcbattLogger:
         Args:
             file (str): The file path where the logs will be stored.
             methods (List[str], optional): List of methods to log. Defaults values : ['configure_and_measure', 'configure_and_generate'].
-        """
+        """  # noqa: D205, D212, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (137 > 100 characters) (auto-generated noqa)
         # https://pylint.readthedocs.io/en/latest/user_guide/messages/warning/dangerous-default-value.html
         if methods is None:
             methods = ["configure_and_measure", "configure_and_generate"]
@@ -45,7 +45,7 @@ class PcbattLogger:
 
         Returns:
             The result returned by the original method.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if configuration:
             result = original_method(configuration)
         else:
@@ -76,7 +76,7 @@ class PcbattLogger:
 
         Returns:
             The result returned by the original method.
-        """
+        """  # noqa: D205, D212, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (197 > 100 characters) (auto-generated noqa)
         result = original_method(configuration)
 
         with open(self.__file, mode="a", encoding="utf-8") as f:
@@ -96,7 +96,7 @@ class PcbattLogger:
 
         Args:
             module: The module to be patched.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         # Retrieve all methods from module
         attributes = dir(module)
         # Monkey-patch the method
@@ -131,7 +131,7 @@ class PcbattLogger:
 
         Args:
             module: The module to be attached.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         # Retrieve all methods from module
         attributes = dir(module)
         # Save wanted method
@@ -146,7 +146,7 @@ class PcbattLogger:
 
         Args:
             module: The module to be removed.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         # Retrieve all methods from module
         attributes = dir(module)
         # Remove monkey patching
@@ -163,7 +163,7 @@ class PcbattLogger:
 
         Args:
             file (str): The file path where the logs will be stored.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         self.__file = file
         now = datetime.now()
         current_time = now.strftime("%m-%d-%Y %H:%M:%S")
@@ -177,7 +177,7 @@ class PcbattLogger:
 
         Returns:
             List[str]: The names of all attached modules.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         # Get all classes names
         # Split them with a . and get the last value
         # Remove the two last characters

@@ -7,16 +7,24 @@ authors = ["NI <opensource@ni.com>"]
 maintainers = ["John Meeker <john.meeker@emerson.com>", "Emmanuel ROSET <emmanuel.roset@emerson.com>", "Srinivasan J <srinivasan.j@emerson.com>", "Aditya Saxena <adityasaxena@emerson.com>"]
 include = ["docs", "requirements.txt", "requirements_for_packaging.txt"]
 readme = "README.rst"
+keywords = ["nipcbatt", "pcbatt", "pcba"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Manufacturing",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
 exclude = [
 	"tests/nipcbatt_tests/pcbatt_library_integration_tests",
 	"tests/nipcbatt_tests/pcbatt_library_tests"
 ]
 packages = [{ include = "nipcbatt", from = "src" }]
-
-[[tool.poetry.source]]
-name = "NI PyPI"
-priority = "primary"
-url = "https://pypi.ni.systems"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -57,10 +65,12 @@ wcwidth = "0.2.9"
 pytest = ">=6.2.3"
 pytest-cov = "^4.1.0"
 mock = ">=4.0.3"
-black = "^23.3.0"
-parameterized = "^0.8.1"
-flake8 = ">=5.0.4"
 pep8-naming = ">=0.13.2"
+parameterized = "^0.8.1"
+ni-python-styleguide = ">=0.4.6"
+black = "^23.3.0"
+flake8 = ">=5.0.4"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -84,4 +94,7 @@ plat-name = "win_amd64"
 
 [tool.black]
 line-length = 100
+extend_exclude = "docs"
 
+[tool.ni-python-styleguide]
+extend_exclude = "docs,src/nipcbatt/pcbatt_automation"

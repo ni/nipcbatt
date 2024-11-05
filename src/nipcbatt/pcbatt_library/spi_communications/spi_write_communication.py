@@ -25,7 +25,7 @@ from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
 
 
 class SpiWriteCommunication(BuildingBlockUsingNi845xSpiDevice):
-    """Defines a way that allows you to perform a write operation to SPI device,"""
+    """Defines a way that allows you to perform a write operation to SPI device,"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
 
     def initialize(self, device_name: str):
         """Initializes the communication with the specific NI 845x device.
@@ -52,7 +52,7 @@ class SpiWriteCommunication(BuildingBlockUsingNi845xSpiDevice):
             configuration (SpiWriteCommunicationConfiguration):
                 An instance of `SpiWriteCommunicationConfiguration`,
                 encapsulating parameters used to configure communication.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         # Configuration of the device for SPI communications.
         self.configure_device_for_spi_communications(parameters=configuration.device_parameters)

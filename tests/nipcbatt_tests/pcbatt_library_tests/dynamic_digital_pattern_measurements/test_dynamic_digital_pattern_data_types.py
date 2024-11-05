@@ -5,7 +5,7 @@ import logging
 import sys
 import unittest
 
-import numpy as np
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 import nipcbatt
@@ -24,7 +24,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -48,7 +48,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
 
     def test_dynamic_digital_pattern_measurement_configuration(self):
         """Tests if the instance of `DynamicDigitalPatternMeasurementConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         # Create test values for the Timing parameters
         expected_sample_clock_source = "OnboardClock"
@@ -103,7 +103,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement_configuration_with_invalid_parameters(
         self,
     ):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: DynamicDigitalPatternMeasurementConfiguration(
@@ -152,7 +152,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement_result_data_init_fails_when_waveforms_is_none(
         self,
     ):
-        """unit test of DynamicDigitalPatternMeasurementResultData."""
+        """unit test of DynamicDigitalPatternMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -169,7 +169,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement_result_data_init_fails_when_waveforms_is_empty(
         self,
     ):
-        """unit test of DynamicDigitalPatternMeasurementResultData."""
+        """unit test of DynamicDigitalPatternMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -186,7 +186,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement_result_data_init_fails_when_daq_digital_waveform_from_port_is_none(
         self,
     ):
-        """unit test of DynamicDigitalPatternMeasurementResultData."""
+        """unit test of DynamicDigitalPatternMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -204,7 +204,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement_result_data_init_fails_when_daq_digital_waveform_from_port_is_empty(
         self,
     ):
-        """unit test of DynamicDigitalPatternMeasurementResultData."""
+        """unit test of DynamicDigitalPatternMeasurementResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act

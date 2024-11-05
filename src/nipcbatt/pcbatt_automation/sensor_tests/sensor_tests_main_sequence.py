@@ -1,12 +1,11 @@
-"""Main sequence forr executing the Sensor Test"""
+"""Main sequence forr executing the Sensor Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
 
+from rtd_test import rtd_test
 from thermistor_test_cdaq import thermistor_test_cdaq
 from thermistor_test_testscale import thermistor_test_testscale
 from thermocouple_test import thermocouple_test
-from rtd_test import rtd_test
 from turn_off_all_ao_channels import power_down_all_ao_channels
 from turn_off_power_channels import close_power_supply
-
 
 ############# SETUP ###################
 # Import the simulated hardware to NI Max for running the example

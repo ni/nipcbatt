@@ -1,4 +1,4 @@
-""" digital PWM data types """
+""" digital PWM data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (141 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import numpy as np
@@ -13,7 +13,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DigitalPwmMeasurementRangeParameters(PCBATestToolkitData):
-    """Defines the range between minimum and maximum pulse width"""
+    """Defines the range between minimum and maximum pulse width"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -33,7 +33,7 @@ class DigitalPwmMeasurementRangeParameters(PCBATestToolkitData):
             1) The value of semi_period_minimum_value_seconds is less than or equal to zero
             2) The value of semi_period_maximum_value_seconds is less than or eqaul to zero
             3) semi_period_maximum_value_seconds < semi_period_minimum_value_seconds
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(
@@ -66,19 +66,19 @@ class DigitalPwmMeasurementRangeParameters(PCBATestToolkitData):
     def semi_period_minimum_value_seconds(self) -> float:
         """
         :type:'float': Gets the minimum semi period value in seconds
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._semi_period_minimum_value_seconds
 
     @property
     def semi_period_maximum_value_seconds(self) -> float:
         """
         :type:'float': Gets the minimum semi period value in seconds
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._semi_period_maximum_value_seconds
 
 
 class DigitalPwmMeasurementTimingParameters(PCBATestToolkitData):
-    """Defines the desired number of cycles to capture"""
+    """Defines the desired number of cycles to capture"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
 
     def __init__(self, semi_period_counter_wanted_cycles_count: int = 2) -> None:
         """Initializes an instance of 'DigitalPwmMeasurementTimingParameters'
@@ -92,7 +92,7 @@ class DigitalPwmMeasurementTimingParameters(PCBATestToolkitData):
             1) The value of semi_period_counter_wanted_cycles_count is less than zero
             2) The value of semi_period_maximum_value_seconds is more than 2147483647
             3) The value of semi_period_counter_wanted_cycles_count does not exist (null)
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(
@@ -118,12 +118,12 @@ class DigitalPwmMeasurementTimingParameters(PCBATestToolkitData):
     def semi_period_counter_wanted_cycles_count(self) -> int:
         """
         :type:'int': Gets the desired number of cycles to capture
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._semi_period_counter_wanted_cycles_count
 
 
 class DigitalPwmMeasurementCounterChannelParameters(PCBATestToolkitData):
-    """Holds all of the parameters for creating a PWM measurement"""
+    """Holds all of the parameters for creating a PWM measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (179 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -145,7 +145,7 @@ class DigitalPwmMeasurementCounterChannelParameters(PCBATestToolkitData):
         Raises: ValueError when,
             1) The value of range_parameters is None
             2) The value of timing_parameters is None
-            3) The value of semi_period_counter_starting_edge is None"""
+            3) The value of semi_period_counter_starting_edge is None"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (442 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(range_parameters, nameof(range_parameters))
@@ -163,26 +163,26 @@ class DigitalPwmMeasurementCounterChannelParameters(PCBATestToolkitData):
     def range_parameters(self) -> DigitalPwmMeasurementRangeParameters:
         """
         :type:DigitalPwmMeasurementRangeParamters: The range parameters of the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._range_parameters
 
     @property
     def timing_parameters(self) -> DigitalPwmMeasurementTimingParameters:
         """
         :type:DigitalPwmMeasurementTimingParameters: The timing parameters of the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
     @property
     def semi_period_counter_starting_edge(self) -> int:
         """
         :type:Constant int:The starting edge for the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._semi_period_counter_starting_edge
 
 
 class DigitalPwmMeasurementConfiguration(PCBATestToolkitData):
-    """Defines values for the configuration of a digital pwm measurement"""
+    """Defines values for the configuration of a digital pwm measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (186 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -196,7 +196,7 @@ class DigitalPwmMeasurementConfiguration(PCBATestToolkitData):
                 A valid instance of DigitalPwmMeasurementCounterChannelParameters
             measurement_options (MeasurementExecutionType):
                 A valid instance of MeasurementExecutionType
-        """
+        """  # noqa: D202, D415, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (275 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
@@ -211,19 +211,19 @@ class DigitalPwmMeasurementConfiguration(PCBATestToolkitData):
         """
         :type:DigitalPwmMeasurementCounterChannelParameters: Contains data
         range and timing parameters
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._parameters
 
     @property
     def measurement_option(self) -> MeasurementExecutionType:
         """
         :type:MeasurmentExecutionType: Contains the type of execution
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._measurement_option
 
 
 class DigitalPwmMeasurementData(PCBATestToolkitData):
-    """Defines the values returned from the capture"""
+    """Defines the values returned from the capture"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
 
     def __init__(self, data: np.ndarray) -> None:
         """Initializes an instance of 'DigitalPwmMeasurementData'
@@ -235,7 +235,7 @@ class DigitalPwmMeasurementData(PCBATestToolkitData):
         Raises: ValueError when,
             1) data is empty
             2) data is None
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(data, nameof(data))
@@ -248,12 +248,12 @@ class DigitalPwmMeasurementData(PCBATestToolkitData):
     def data(self) -> np.ndarray:
         """
         :type:'numpy.ndarray': Data captured from the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._data
 
 
 class DigitalPwmMeasurementResultData(PCBATestToolkitData):
-    """Defines the values returned by a digital PWM measurement"""
+    """Defines the values returned by a digital PWM measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -288,7 +288,7 @@ class DigitalPwmMeasurementResultData(PCBATestToolkitData):
             4) The value of frequency is None or is < 0
             5) The value of high_state_duration is None or is < 0
             6) THe value of low_state_duration is None or is < 0
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(actual_cycles_count, nameof(actual_cycles_count))
@@ -322,40 +322,40 @@ class DigitalPwmMeasurementResultData(PCBATestToolkitData):
     def actual_cycles_count(self) -> int:
         """
         :type:'int': Gets the number of cycles
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._actual_cycles_count
 
     @property
     def duty_cycle(self) -> float:
         """
         :type:'float': Gets the measured duty cycle
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._duty_cycle
 
     @property
     def period_duration(self) -> float:
         """
         :type:'float': Gets the length of the period
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._period_duration
 
     @property
     def frequency(self) -> float:
         """
         :type:'float': Gets the measured frequency
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._frequency
 
     @property
     def high_state_duration(self) -> float:
         """
         :type:'float': Gets the length of the high state
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._high_state_duration
 
     @property
     def low_state_duration(self) -> float:
         """
         :type:'float': Gets the length of the low state
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._low_state_duration

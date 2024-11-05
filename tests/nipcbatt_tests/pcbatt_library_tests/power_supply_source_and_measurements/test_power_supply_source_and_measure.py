@@ -23,7 +23,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -47,7 +47,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         print("Teardown fixture")
 
     def test_power_supply_source_and_measure(self):
-        """Checks if class PowerSupplySourceAndMeasure is ready to use"""
+        """Checks if class PowerSupplySourceAndMeasure is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.PowerSupplySourceAndMeasure()
 
         measurement.initialize(power_channel_name="TS1Mod1_pwr/power")
@@ -59,7 +59,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         measurement.close()
 
     def test_analyze_measurement_data_results_when_providing_valid_data(self):
-        """unit test of PowerSupplySourceAndMeasureData."""
+        """unit test of PowerSupplySourceAndMeasureData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (157 > 100 characters) (auto-generated noqa)
         ############ ARRANGE ######################################
         # create data objects for test
         voltage_samples1 = np.asarray([-2.0, -1.0, 0.0, 1.0, 2.0])
@@ -119,7 +119,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         self.assertAlmostEqual(res_data_4.acquisition_duration_seconds, 5e-06, places=5)
 
     def test_analyze_measurement_data_results_when_providing_undefined_data(self):
-        """unit test of PowerSupplySourceAndMeasureData."""
+        """unit test of PowerSupplySourceAndMeasureData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (157 > 100 characters) (auto-generated noqa)
         ############ ARRANGE ######################################
         # create data objects for test
         voltage_samples1 = None

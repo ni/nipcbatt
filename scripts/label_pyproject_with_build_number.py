@@ -1,4 +1,4 @@
-"""Script that should be used to label pyproject file with build number"""
+"""Script that should be used to label pyproject file with build number"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (185 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -20,7 +20,7 @@ def transform_toml_pkg_version(build_number: int, pyproject_file_path: str):
     Args:
         build_number (int): build counter value to write into pyproject file
         pyproject_file_path (str): path into pyproject file to add build number into it
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     parsed_data = toml.load(f=pyproject_file_path)
 
     logging.debug("pyproject: %s", parsed_data)
@@ -79,7 +79,7 @@ if __name__ == "__main__":
             label_pyproject(build_number=int(args[0]))
         else:
             label_pyproject(build_number=0)
-    except:
+    except:  # noqa: E722 - do not use bare 'except' (auto-generated noqa)
         print(Fore.RED + "Failure: " + str(sys.exc_info()[0]))
         raise
     finally:

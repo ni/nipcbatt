@@ -30,5 +30,5 @@ def combine_path_components(path: str, *path_components: str) -> str:
         *path_components (str): contains path components to add.
     Returns:
         str: the conbined path.
-    """
+    """  # noqa: D411 - Missing blank line before section (auto-generated noqa)
     return os.path.join(path, *path_components)

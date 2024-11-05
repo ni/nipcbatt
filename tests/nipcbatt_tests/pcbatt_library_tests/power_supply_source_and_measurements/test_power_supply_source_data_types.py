@@ -20,7 +20,7 @@ class TestPowerSupplySourceAndMeasureTerminalParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -43,7 +43,7 @@ class TestPowerSupplySourceAndMeasureTerminalParameters(unittest.TestCase):
         print("Teardown fixture")
 
     def test_power_supply_source_and_measure_terminal_parameters(self):
-        """unit test of PowerSupplySourceAndMeasureTerminalParameters."""
+        """unit test of PowerSupplySourceAndMeasureTerminalParameters."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         expected_voltage_setpoint_volts = 5.0
         expected_current_setpoint_amperes = 0.5
         expected_power_sense = nidaqmx.constants.Sense.LOCAL
@@ -77,7 +77,7 @@ class TestPowerSupplySourceAndMeasureConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -100,7 +100,7 @@ class TestPowerSupplySourceAndMeasureConfiguration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_power_supply_source_and_measure_configuration(self):
-        """unit test of PowerSupplySourceAndMeasureConfiguration."""
+        """unit test of PowerSupplySourceAndMeasureConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (166 > 100 characters) (auto-generated noqa)
         expected_voltage_setpoint_volts = 0.5
         expected_current_setpoint_amperes = 0.02
         expected_power_sense = nidaqmx.constants.Sense.REMOTE
@@ -201,7 +201,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -224,7 +224,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         print("Teardown fixture")
 
     def test_power_supply_source_and_measure_data(self):
-        """unit test of PowerSupplySourceAndMeasureData."""
+        """unit test of PowerSupplySourceAndMeasureData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (157 > 100 characters) (auto-generated noqa)
         expected_source_name = "test_power_source_name"
         expected_voltage_samples = numpy.array(
             [random.random() * 0.1 for item in range(0, 1000)],
@@ -255,7 +255,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
 
     def test_power_supply_source_and_measure_data_with_invalid_data(self):
         """Tests if expected error is thrown when creating an instance of
-        `PowerSupplySourceAndMeasureData` with invalid data"""
+        `PowerSupplySourceAndMeasureData` with invalid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (432 > 100 characters) (auto-generated noqa)
 
         expected_source_name = "test_power_source_name"
         expected_voltage_samples = numpy.array(
@@ -330,7 +330,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -353,7 +353,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
         print("Teardown fixture")
 
     def test_power_supply_source_and_measure_result_data(self):
-        """unit test of PowerSupplySourceAndMeasureResultData."""
+        """unit test of PowerSupplySourceAndMeasureResultData."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
         # todo: write test code
         expected_voltage_waveform = nipcbatt.AnalogWaveform(
             channel_name="Dev/pow0",
@@ -407,7 +407,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
     def test_power_supply_source_and_measure_result_data_with_invalid_waveforms(
         self,
     ):
-        """Test if the expected error is thrown if the current or voltage waveform is None"""
+        """Test if the expected error is thrown if the current or voltage waveform is None"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (281 > 100 characters) (auto-generated noqa)
 
         test_sample_waveform = nipcbatt.AnalogWaveform(
             channel_name="Dev/pow0",

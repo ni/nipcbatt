@@ -1,6 +1,6 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-"""Use this class for digital pulse width modulation measurement"""
+"""Use this class for digital pulse width modulation measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 import nidaqmx.constants
 import nidaqmx.stream_readers
 import nidaqmx.stream_writers
@@ -34,7 +34,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): Parent class for all PCBATT classes
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -46,7 +46,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
         Args:
             channel_expression (str): The physical channel being measured
             input_terminal_name (str): The name of the paticular input terminal
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -101,7 +101,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
             parameters (DigitalPwmMeasurementCounterChannelParameters):
                 An instance of DigitalPwmMeasurementCounterChannelParameters
                 with correct values
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # stop daq task and return it to previous state
         self.task.stop()
 
@@ -123,13 +123,13 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
             parameters (DigitalPwmMeasurementTimingParameters):
                 An instance of DigitalPwmMeasurementTimingParameters containing
                 a valid value for semi_period_wounter_wanted_cycles_count
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
 
         # calculate # of semiperiods to read
-        # Always last cycles will be ignored for the calculations as it does not have complete cycle info
+        # Always last cycles will be ignored for the calculations as it does not have complete cycle info  # noqa: W505 - doc line too long (105 > 100 characters) (auto-generated noqa)
         semiperiods_to_read = 2 * parameters.semi_period_counter_wanted_cycles_count - 1
 
         # set timing task
@@ -144,7 +144,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
         """Acquires data from the hardware and prepares it for analysis
 
         Returns:
-            DigitalPwmMeasurementData: Numpy array of data to be processed"""
+            DigitalPwmMeasurementData: Numpy array of data to be processed"""  # noqa: D202, D209, D414, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Section has no content (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         num_samples_per_channel = self.task.timing.samp_quant_samp_per_chan
 
@@ -175,7 +175,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             DigitalPwmMeasurementResultData: Contains the data of interest
             from the PWM measurement
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         meas_data = measurement_data.data
         half_data_length = len(meas_data) // 2
@@ -239,7 +239,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
 
         Returns:
             DigitalPwmMeasurementResultData:
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         if (
             configuration.measurement_option == MeasurementExecutionType.CONFIGURE_AND_MEASURE
@@ -265,7 +265,7 @@ class DigitalPwmMeasurement(BuildingBlockUsingDAQmx):
             return None
 
     def close(self):
-        """_summary_"""
+        """_summary_"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (134 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 

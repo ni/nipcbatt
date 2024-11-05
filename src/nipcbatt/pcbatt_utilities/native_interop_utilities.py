@@ -158,7 +158,7 @@ def check_dll_availability(relative_or_absolute_dll_path: str):
     Raises:
         FileNotFoundError:
             Raised the dll is not found.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     if os_utilities.is_path_absolute(relative_or_absolute_dll_path):
         if file_exists(relative_or_absolute_dll_path):
             return

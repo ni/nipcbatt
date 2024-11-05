@@ -43,7 +43,7 @@ class TemperatureMeasurement(BuildingBlockUsingDAQmx):
             parameters (SampleClockTimingParameters):
             An instance of `SampleClockTimingParameters`
             used to configure the timing.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         self.task.timing.cfg_samp_clk_timing(
             rate=parameters.sampling_rate_hertz,
@@ -69,7 +69,7 @@ class TemperatureMeasurement(BuildingBlockUsingDAQmx):
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters`
             used to configure the channels.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.task.triggers.start_trigger.disable_start_trig()
@@ -85,7 +85,7 @@ class TemperatureMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             MeasurementData: An instance of `MeasurementData`
             that specifies the data acquired from DAQ channels.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         # Builds the shape of numpy array (number of channels, number of samples per channel)
         number_of_channels = len(self.task.in_stream.channels_to_read.channel_names)

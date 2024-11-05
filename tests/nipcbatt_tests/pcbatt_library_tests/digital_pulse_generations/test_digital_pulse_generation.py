@@ -10,7 +10,7 @@ from varname import nameof
 from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
     ConstantsForDigitalPulseGeneration,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (
+from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types.DigitalPulseGenerationData' imported but unused (auto-generated noqa)
     DigitalPulseGenerationConfiguration,
     DigitalPulseGenerationCounterChannelParameters,
     DigitalPulseGenerationData,
@@ -30,7 +30,7 @@ class TestDigitalPulseGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -53,7 +53,7 @@ class TestDigitalPulseGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_digital_pulse_generation(self):
-        """Checks if class DigitalPulseGneration is ready to use"""
+        """Checks if class DigitalPulseGneration is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (255 > 100 characters) (auto-generated noqa)
 
         t_low = 1.0
         t_high = 1.0

@@ -175,7 +175,7 @@ class Ni845xI2cConfiguration:
 
         Args:
             configuration_handle (int): The configuration handle.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._configuration_handle = configuration_handle
 
     @property
@@ -290,7 +290,7 @@ class Ni845xI2cConfiguration:
 
         Returns:
             int: The I2C ACK (acknowledge) polling timeout in milliseconds.
-        """
+        """  # noqa: D205, W505 - 1 blank line required between summary line and description (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
         return _ni_845x_functions.ni_845x_i2c_configuration_get_ack_poll_timeout_impl(
             configuration_handle=self._configuration_handle
         )
@@ -304,7 +304,7 @@ class Ni845xI2cConfiguration:
 
         Args:
             val (int): the I2C ACK (acknowledge) polling timeout in milliseconds.
-        """
+        """  # noqa: D205, W505 - 1 blank line required between summary line and description (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
         _ni_845x_functions.ni_845x_i2c_configuration_set_ack_poll_timeout_impl(
             configuration_handle=self._configuration_handle, timeout_milliseconds=val
         )

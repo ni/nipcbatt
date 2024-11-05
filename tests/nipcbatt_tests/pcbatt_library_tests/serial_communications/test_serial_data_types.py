@@ -17,7 +17,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -44,7 +44,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -67,7 +67,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -90,7 +90,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -114,7 +114,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -138,7 +138,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -161,7 +161,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SerialCommunicationParameters(
@@ -182,7 +182,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
     def test_serial_communication_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_data_rate_bauds = 115200
         expected_number_of_bits_in_data_frame = 8
@@ -242,7 +242,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -269,7 +269,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -286,7 +286,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_data_rate_bauds = 115200
         expected_number_of_bits_in_data_frame = 8
@@ -325,7 +325,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_data_rate_bauds = 115200
         expected_number_of_bits_in_data_frame = 8
@@ -364,7 +364,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_data_rate_bauds = 115200
         expected_number_of_bits_in_data_frame = 8
@@ -403,7 +403,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_data_rate_bauds = 115200
         expected_number_of_bits_in_data_frame = 8
@@ -446,7 +446,7 @@ class TestSerialCommunicationData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -473,7 +473,7 @@ class TestSerialCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -491,7 +491,7 @@ class TestSerialCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -509,7 +509,7 @@ class TestSerialCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -527,7 +527,7 @@ class TestSerialCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_data_types.SerialCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_received_response = "HELO 0000 MP 300 1.11 5.27"
 

@@ -1,1 +1,1 @@
-"""Initialization of _mock_daqmx modules package"""
+"""Initialization of _mock_daqmx modules package"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)

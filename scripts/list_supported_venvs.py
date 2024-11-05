@@ -1,4 +1,4 @@
-"""Lists venvs variables environment"""
+"""Lists venvs variables environment"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (150 > 100 characters) (auto-generated noqa)
 
 import venv_tools
 

@@ -1,4 +1,4 @@
-"""Provides unit tests related to square_waveform.py module"""
+"""Provides unit tests related to square_waveform.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -20,7 +20,7 @@ class TestScaleAndOffsetWaveform(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @classmethod
     def setUpClass(cls):
@@ -78,7 +78,7 @@ class TestScaleAndOffsetWaveform(unittest.TestCase):
     def test_scale_and_apply_offset_linear_function(
         self, case_name: str, expected_scale_factor: float, expected_offset: float
     ):
-        """Test of `scale_and_offset_waveform.scale_and_apply_offset` function"""
+        """Test of `scale_and_offset_waveform.scale_and_apply_offset` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
         logging.debug("%s = %s", nameof(case_name), case_name)
 
@@ -133,7 +133,7 @@ class TestScaleAndOffsetWaveform(unittest.TestCase):
     def test_scale_and_apply_offset_inplace_linear_function(
         self, case_name: str, expected_scale_factor: float, expected_offset: float
     ):
-        """Test of `scale_and_offset_waveform.scale_and_apply_offset_inplace` function"""
+        """Test of `scale_and_offset_waveform.scale_and_apply_offset_inplace` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (277 > 100 characters) (auto-generated noqa)
 
         logging.debug("%s = %s", nameof(case_name), case_name)
 

@@ -19,7 +19,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -44,7 +44,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     def test_frequency_domain_measurement_configuration_init_fails_when_global_channel_parameters_is_none(
         self,
     ):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -69,7 +69,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     def test_frequency_domain_measurement_configuration_init_fails_when_specific_channels_parameters_is_none(
         self,
     ):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -96,7 +96,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     def test_frequency_domain_measurement_configuration_init_fails_when_measurement_options_is_none(
         self,
     ):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -123,7 +123,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     def test_frequency_domain_measurement_configuration_init_fails_when_sample_clock_timing_parameters_is_none(
         self,
     ):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -148,7 +148,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     def test_frequency_domain_measurement_configuration_init_fails_when_digital_start_trigger_parameters_is_none(
         self,
     ):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -171,7 +171,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         self.assertEqual("The object digital_start_trigger_parameters is None.", str(ctx.exception))
 
     def test_frequency_domain_measurement_configuration(self):
-        """unit test of FrequencyDomainMeasurementConfiguration."""
+        """unit test of FrequencyDomainMeasurementConfiguration."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.NRSE
         expected_range_min_volts = -9.0
@@ -302,9 +302,12 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, methodName: str = "runTest") -> None:
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
+        self,
+        methodName: str = "runTest",  # noqa: N803 - argument name 'methodName' should be lowercase (auto-generated noqa)
+    ) -> None:
         super().__init__(methodName)
         self._expected_waveforms = None
 
@@ -329,7 +332,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         print("Teardown fixture")
 
     def test_multiple_tones_measurement_result_data_for_value_error(self):
-        """Tests if expected ValueError in thrown when inputs are None"""
+        """Tests if expected ValueError in thrown when inputs are None"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (261 > 100 characters) (auto-generated noqa)
 
         # Test for tones_amplitudes_volts set to None
         with self.assertRaises(ValueError) as ctx:
@@ -354,7 +357,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         self.assertEqual("The object tones_frequencies_hertz is None.", str(ctx.exception))
 
     def test_multiple_tones_measurement_result_data_for_type_error(self):
-        """Tests if expected TypeError in thrown when inputs are None"""
+        """Tests if expected TypeError in thrown when inputs are None"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (260 > 100 characters) (auto-generated noqa)
 
         # Test for tones_amplitudes_volts with values that are not float
         with self.assertRaises(TypeError) as ctx:
@@ -385,7 +388,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
     def test_multiple_tones_measurement_result_data_with_input_lists_of_different_lengths(
         self,
     ):
-        """Tests if expected ValueError in thrown when the two input lists have different length."""
+        """Tests if expected ValueError in thrown when the two input lists have different length."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (186 > 100 characters) (auto-generated noqa)
 
         # Test for tones_amplitudes_volts and tones_frequencies_hertz lists
         # with different number of element
@@ -404,7 +407,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         )
 
     def test_multiple_tones_measurement_result_data(self):
-        """Test for proper functioning of TestMultipleTonesMeasurementResultData"""
+        """Test for proper functioning of TestMultipleTonesMeasurementResultData"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
         expected_tones_amplitude = [1.2, 1.6, 1.8, 1.0]
         expected_tones_frequencies = [100.05, 200.0, 500.0, 1000.1]
 
@@ -428,9 +431,12 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, methodName: str = "runTest") -> None:
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
+        self,
+        methodName: str = "runTest",  # noqa: N803 - argument name 'methodName' should be lowercase (auto-generated noqa)
+    ) -> None:
         super().__init__(methodName)
         self._expected_waveforms = None
 
@@ -449,7 +455,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         print("Teardown fixture")
 
     def setUp(self):
-        """Creates some common test data to be used in different test methods."""
+        """Creates some common test data to be used in different test methods."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
 
         # Create test data for waveforms.
         self._expected_waveforms = []
@@ -549,7 +555,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         self,
     ):
         """Unit test to check if `FrequencyDomainMeasurementResultData` throws Value Error
-        for invalid values for `waveforms` input."""
+        for invalid values for `waveforms` input."""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         # Test if expected error is thrown if waveforms is set to None.
         with self.assertRaises(ValueError) as ctx:
@@ -599,7 +605,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
     ):
         """Tests if expected error is thrown when creating instance of
         `FrequencyDomainMeasurementResultData' with invalid values for `magnitude_rms`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Test if expected error is thrown if magnitude_rms is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -651,7 +657,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
     ):
         """Tests if expected error is thrown when creating instance of
         `FrequencyDomainMeasurementResultData' with invalid values for `magnitude_peak`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Test if expected error is thrown if magnitude_peak is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -703,7 +709,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating instance of
         `FrequencyDomainMeasurementResultData'
         with diffrent list size for`waveforms` and `magnitude_rms`
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         samples_array = list(3.08 + random.random() * 0.1 for i in range(0, 200))
         samples_numpy_array = numpy.array(samples_array, dtype=numpy.float64)
 
@@ -736,7 +742,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating instance
         of `FrequencyDomainMeasurementResultData'
         with diffrent list size for`waveforms` and `magnitude_peak`
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         samples_array = list(3.08 + random.random() * 0.1 for i in range(0, 200))
         samples_numpy_array = numpy.array(samples_array, dtype=numpy.float64)
 
@@ -769,7 +775,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating instance of
         `FrequencyDomainMeasurementResultData'
         with diffrent list size for`waveforms` and `detected_tones`
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         self._expected_detected_tones.append(
             nipcbatt.MultipleTonesMeasurementResultData(
@@ -797,7 +803,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
     ):
         """Tests if expected error is thrown when creating instance of
         `FrequencyDomainMeasurementResultData' with invalid values for `detected_tones`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Test if expected error is thrown if detected_tones is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -844,7 +850,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         )
 
     def test_frequency_domain_measurement_result_data(self):
-        """Test for proper functioning of `FrequencyDomainMeasurementResultData` class"""
+        """Test for proper functioning of `FrequencyDomainMeasurementResultData` class"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (277 > 100 characters) (auto-generated noqa)
 
         fdvm_result_data_instance = nipcbatt.FrequencyDomainMeasurementResultData(
             waveforms=self._expected_waveforms,

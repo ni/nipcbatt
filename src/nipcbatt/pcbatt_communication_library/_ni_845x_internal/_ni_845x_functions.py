@@ -1,5 +1,5 @@
 """Private module that provides a set of ni-845x functions
-used in pcbatt_communication library modules."""
+used in pcbatt_communication library modules."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (341 > 100 characters) (auto-generated noqa)
 
 from ctypes import (
     POINTER,
@@ -45,7 +45,7 @@ from nipcbatt.pcbatt_utilities.platform_utilities import (
 
 
 class _Ni845xFunctionsNames:
-    """Constants defining NI-845X functions names"""
+    """Constants defining NI-845X functions names"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
 
     NI_845X_OPEN = "ni845xOpen"
     NI_845X_CLOSE = "ni845xClose"
@@ -101,7 +101,7 @@ def ni_845x_open_impl(device_name: str) -> int:
     Raises:
         PCBATTCommunicationException:
             Raised when an error occured while calling `ni845xOpen` function from `ni845x.dll`.
-    """
+    """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
     device_name_buffer = create_string_buffer(device_name.encode("ascii"))
     handle_type = _get_handle_type()
@@ -280,7 +280,7 @@ def ni_845x_close_find_device_handle_impl(find_device_handle: int):
             PCBATTCommunicationException:
                 Raised when an error occured while calling `ni845xCloseFindDeviceHandle`
                 function from `ni845x.dll`.
-    """
+    """  # noqa: D214 - Section is over-indented (auto-generated noqa)
     handle_type = _get_handle_type()
     invoke_ni_845x_function(
         _Ni845xFunctionsNames.NI_845X_CLOSE_FIND_DEVICE_HANDLE,
@@ -768,7 +768,7 @@ def ni_845x_i2c_configuration_get_addressing_type_impl(
         PCBATTCommunicationException:
             Raised when an error occured while calling
             `ni845xI2cConfigurationGetAddressSize` function from `ni845x.dll`.
-    """
+    """  # noqa: D410, D411, W505 - Missing blank line after section (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (141 > 100 characters) (auto-generated noqa)
     handle_type = _get_handle_type()
 
     addressing_type = c_int32()
@@ -796,7 +796,7 @@ def ni_845x_i2c_configuration_get_ack_poll_timeout_impl(
         PCBATTCommunicationException:
             Raised when an error occured while calling
             `ni845xI2cConfigurationGetAckPollTimeout` function from `ni845x.dll`.
-    """
+    """  # noqa: D410, D411, W505 - Missing blank line after section (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (141 > 100 characters) (auto-generated noqa)
     handle_type = _get_handle_type()
 
     timeout = c_uint16()
@@ -824,7 +824,7 @@ def ni_845x_spi_configuration_set_chip_select_impl(
         PCBATTCommunicationException:
             Raised when an error occured while calling
             `ni845xSpiConfigurationSetChipSelect` function from `ni845x.dll`.
-    """
+    """  # noqa: D411 - Missing blank line before section (auto-generated noqa)
     handle_type = _get_handle_type()
     invoke_ni_845x_function(
         _Ni845xFunctionsNames.NI_845X_SPI_CONFIGURATION_SET_CHIP_SELECT,
@@ -1121,7 +1121,7 @@ def convert_memory_address_to_data_bytes_array(
 
     Returns:
         List[int]: The array of bytes.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     if address_type == DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE:
         return _create_one_byte_array(memory_address)
 
@@ -1151,7 +1151,7 @@ def create_command_for_spi_read_communication_impl(
             The number of bytes to read.
     Returns:
         List[int]: The created array.
-    """
+    """  # noqa: D205, D411, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
     instruction_value = _compute_spi_communication_command(
         READ_INSTRUCTION,
         memory_address,
@@ -1188,7 +1188,7 @@ def create_command_for_spi_write_communication_impl(
 
     Returns:
         List[int]: The created array.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     instruction_value = _compute_spi_communication_command(
         WRITE_INSTRUCTION,
         memory_address,
@@ -1212,7 +1212,7 @@ def _get_status_description(status: int) -> str:
 
     Returns:
         str: The description of the status code.
-    """
+    """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
     string_buffer_length = 1024
     string_buffer = create_string_buffer(string_buffer_length)
@@ -1242,7 +1242,7 @@ def _get_status_description(status: int) -> str:
 
 def _get_handle_type() -> Union[c_uint32, c_uint64]:
     """Retrieves the type of handle used by NI-845x functions
-    according to the platform on which the Python executable runs.."""
+    according to the platform on which the Python executable runs.."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
     if is_python_windows_64bits():
         return c_uint64
     if is_python_windows_32bits():
@@ -1261,7 +1261,7 @@ def _create_one_byte_array(memory_address: int) -> List[int]:
 
     Returns:
         List[int]: The created array.
-    """
+    """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
     return [
         # The less significant byte of a short value.
         numpy.ubyte(memory_address & MAX_BYTE_VALUE),
@@ -1278,7 +1278,7 @@ def _create_two_bytes_array_little_endian(
 
     Returns:
         List[int]: The created array.
-    """
+    """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
     return [
         # The most significant byte of a short value.
         (memory_address >> 8) & MAX_BYTE_VALUE,
@@ -1297,7 +1297,7 @@ def _create_two_bytes_array_big_endian(
 
     Returns:
         List[int]: The created array.
-    """
+    """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
     return [
         # The less significant byte of a short value.
         memory_address & MAX_BYTE_VALUE,
@@ -1320,7 +1320,7 @@ def _compute_spi_communication_command(
 
     Returns:
         int: the computed value for the command.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     if address_type == DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE:
         # For address encoded on one byte,
         # some SPI devices require that the 4th bit

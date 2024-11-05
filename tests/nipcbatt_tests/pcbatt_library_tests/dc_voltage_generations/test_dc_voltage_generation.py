@@ -22,7 +22,7 @@ class TestDcVoltageGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestDcVoltageGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dc_voltage_generation(self):
-        """Checks if class `DcVoltageGeneration' is ready for use"""
+        """Checks if class `DcVoltageGeneration' is ready for use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (256 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.DcVoltageGeneration()
         generation.initialize(

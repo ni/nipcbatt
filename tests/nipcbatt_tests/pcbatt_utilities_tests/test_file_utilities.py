@@ -1,4 +1,4 @@
-"""Provides unit tests related to file_utilities.py module"""
+"""Provides unit tests related to file_utilities.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -23,7 +23,7 @@ class TestFileUtilities(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @classmethod
     def setUpClass(cls):
@@ -51,7 +51,7 @@ class TestFileUtilities(unittest.TestCase):
 
     @functional_utilities.repeat(2)
     def test_write_lines(self):
-        """Unit test of file_utilities.write_lines"""
+        """Unit test of file_utilities.write_lines"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
         # Arrange
         file_output_path = os.path.join(
             TestFileUtilities.tests_output_folder_path,
@@ -71,7 +71,7 @@ class TestFileUtilities(unittest.TestCase):
 
     @functional_utilities.repeat(2)
     def test_read_lines(self):
-        """Unit test of file_utilities.read_lines"""
+        """Unit test of file_utilities.read_lines"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
         # Arrange
         file_input_path = os.path.join(
             TestFileUtilities.tests_output_folder_path,
@@ -104,7 +104,7 @@ class TestFileUtilities(unittest.TestCase):
 
     @parameterized.expand([("C:/windows/explorer.exe"), ("C:/windows/system32/kernel32.dll")])
     def test_file_exists_should_not_fail(self, file_path: str):
-        """Unit test of nipcbatt.pcbatt_utilities.file_utilities.file_exists"""
+        """Unit test of nipcbatt.pcbatt_utilities.file_utilities.file_exists"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (267 > 100 characters) (auto-generated noqa)
 
         self.assertTrue(file_utilities.file_exists(file_path))
 

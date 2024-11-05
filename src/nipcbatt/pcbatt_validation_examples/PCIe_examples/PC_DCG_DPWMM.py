@@ -1,8 +1,9 @@
-# Digital Clock Generation to Digital Pulse Width Measurement
+# Digital Clock Generation to Digital Pulse Width Measurement  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (134 > 100 characters) (auto-generated noqa)
 ### Ensure correct hardware and corresponding trigger names before running this example
 
-import nipcbatt
 import nidaqmx.constants
+
+import nipcbatt
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Initialize

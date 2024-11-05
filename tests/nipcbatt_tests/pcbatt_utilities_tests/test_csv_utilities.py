@@ -1,4 +1,4 @@
-"""Provides unit tests related to functional_utilities.py module"""
+"""Provides unit tests related to functional_utilities.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -22,7 +22,7 @@ class TestCsvUtilities(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         self.counter = 0
@@ -55,7 +55,7 @@ class TestCsvUtilities(unittest.TestCase):
         print("Teardown fixture")
 
     def test_export_signal_to_csv_file(self):
-        """Unit test of csv_utilities.export_signal_to_csv_file"""
+        """Unit test of csv_utilities.export_signal_to_csv_file"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)
         # Arrange
         signal_samples = [1, 4, 9, 16]
         csv_file_ouput_path = os.path.join(
@@ -81,7 +81,7 @@ class TestCsvUtilities(unittest.TestCase):
 
     @functional_utilities.repeat(2)
     def test_export_columns_to_csv_file(self):
-        """Unit test of csv_utilities.export_to_csv_file_columns"""
+        """Unit test of csv_utilities.export_to_csv_file_columns"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
         # Arrange
         x_samples = [1, 2, 3, 4]
         y_samples = [1, 4, 9, 16]
@@ -104,7 +104,7 @@ class TestCsvUtilities(unittest.TestCase):
 
     @functional_utilities.repeat(2)
     def test_import_from_csv_file_2d_array(self):
-        """Unit test of csv_utilities.import_from_csv_file_2d_array"""
+        """Unit test of csv_utilities.import_from_csv_file_2d_array"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (258 > 100 characters) (auto-generated noqa)
 
         # Arrange
         expected_csv_lines_count = 14001

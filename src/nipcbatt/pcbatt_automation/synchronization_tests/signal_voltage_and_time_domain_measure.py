@@ -1,6 +1,6 @@
 """This example demonstrates synchronization using Signal Voltage Generation Library to generate 
    a Analog Sine waveform from one Backplane and capture it using Time Domain Measuerment 
-   library in another Backplane"""
+   library in another Backplane"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (327 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105,E0401
 
@@ -33,7 +33,7 @@ def setup(
     signal_channel=SIGNAL_CHANNEL,
     measurement_channel=ANALOG_INPUT_CHANNEL,
 ):
-    """Creates the necessary objects for the generation and measurement of the signal"""
+    """Creates the necessary objects for the generation and measurement of the signal"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (276 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     generation_instance = nipcbatt.SignalVoltageGeneration()
@@ -71,7 +71,7 @@ def main(
     filepath=DEFAULT_FILEPATH,
 ):
     """Note to run with Hardware: Review the Configurations & update the Sample Clock Source
-    and Digital Start Trigger Settings based on NI MAX and Setup Connections"""
+    and Digital Start Trigger Settings based on NI MAX and Setup Connections"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (449 > 100 characters) (auto-generated noqa)
 
     # Configure Time Domain Measurement settings to wait for Hardware Trigger and Sample Clock
     # from Signal generation. Configure exact sample clock rate set in generation for the shared
@@ -80,7 +80,7 @@ def main(
     """Configure test point"""
     """ If write_to_file is True, the Logger is used to output the results to a file.
         The Logger can be used to store configurations and outputs in a .txt or .csv file.
-        The default file path is C:\\Windows\\Temp\\signal_voltage_and_time_domain_measurement_results.txt"""
+        The default file path is C:\\Windows\\Temp\\signal_voltage_and_time_domain_measurement_results.txt"""  # noqa: W505 - doc line too long (109 > 100 characters) (auto-generated noqa)
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(generation_instance)
@@ -240,7 +240,7 @@ def cleanup(
     measurement_instance: nipcbatt.TimeDomainMeasurement,
     sync_signals: nipcbatt.SynchronizationSignalRouting,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (190 > 100 characters) (auto-generated noqa)
     generation_instance.close()  # Close TS
     measurement_instance.close()  # Close TP
     sync_signals.close()  # Close sync
@@ -258,7 +258,7 @@ def signal_voltage_and_time_domain_measurement(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
 
     # Run setup function
     gen, meas, sync = setup(generation_channel, measurement_channel)

@@ -1,1 +1,1 @@
-"""Provides a set of utilities modules"""
+"""Provides a set of utilities modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (152 > 100 characters) (auto-generated noqa)

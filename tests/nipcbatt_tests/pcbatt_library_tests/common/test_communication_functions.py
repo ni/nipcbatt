@@ -23,7 +23,7 @@ class TestComputePagesCharacteristics(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -88,7 +88,7 @@ class TestComputePagesCharacteristics(unittest.TestCase):
         number_of_bytes_per_page: int,
         expected_pages_characteristics: List[nipcbatt.MemoryPageCharacteristics],
     ):
-        """unit test of compute_pages_characteristics."""
+        """unit test of compute_pages_characteristics."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (155 > 100 characters) (auto-generated noqa)
         logging.debug("running %s.", test_case_name)
 
         actual_pages_characteristics = compute_pages_characteristics(
@@ -105,7 +105,7 @@ class TestCreateArrayForSpiReadInstruction(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -173,7 +173,7 @@ class TestCreateArrayForSpiReadInstruction(unittest.TestCase):
         number_of_byte_to_read: int,
         expected_bytes_array: List[int],
     ):
-        """unit test of create_array_for_spi_read_instruction."""
+        """unit test of create_array_for_spi_read_instruction."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (240 > 100 characters) (auto-generated noqa)
 
         logging.debug("running %s.", test_case_name)
 
@@ -195,7 +195,7 @@ class TestCreateArrayForSpiWriteInstruction(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -263,7 +263,7 @@ class TestCreateArrayForSpiWriteInstruction(unittest.TestCase):
         number_of_bytes_to_write: int,
         expected_bytes_array: List[int],
     ):
-        """unit test of create_array_for_spi_write_instruction."""
+        """unit test of create_array_for_spi_write_instruction."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (241 > 100 characters) (auto-generated noqa)
 
         logging.debug("running %s.", test_case_name)
 

@@ -1,10 +1,12 @@
-"""Demonstrates DC RMS Voltage Measurement using AI lines"""
+"""Demonstrates DC RMS Voltage Measurement using AI lines"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
 
 import os
 import sys
-from enum import Enum
-import nipcbatt
+from enum import Enum  # noqa: F401 - 'enum.Enum' imported but unused (auto-generated noqa)
+
 import nidaqmx.constants
+
+import nipcbatt
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # To use save_traces and plotter from utils folder
@@ -23,9 +25,9 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\DRVM_test.txt"
 
 
 # Initialize Region
-########################################   INITIALIZATION FUNCTION   ################################################################
+########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
 def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
-    """Creates the necessary objects for measurement of Voltage"""
+    """Creates the necessary objects for measurement of Voltage"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (254 > 100 characters) (auto-generated noqa)
 
     # Creates the instance of measurement class required for the test
     drvm = nipcbatt.DcRmsVoltageMeasurement()
@@ -40,13 +42,15 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
     return drvm
 
 
-###############################################################################################################################################
+###############################################################################################################################################  # noqa: W505 - doc line too long (143 > 100 characters) (auto-generated noqa)
 # end region initialize
 
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
-def main(drvm: nipcbatt.DcRmsVoltageMeasurement):
+def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+    drvm: nipcbatt.DcRmsVoltageMeasurement,
+):
     results_map = {}  # this structure will hold results in key-value pairs
 
     # Set the minimum and maximum voltage range
@@ -87,7 +91,7 @@ def main(drvm: nipcbatt.DcRmsVoltageMeasurement):
     )
 
     # endregion drvm configure and measure
-    ####################################################################################################
+    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
     # end region configure and measure
 
     drvm_result_data = drvm.configure_and_measure(drvm_config)
@@ -103,7 +107,9 @@ def main(drvm: nipcbatt.DcRmsVoltageMeasurement):
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(drvm: nipcbatt.DcRmsVoltageMeasurement):
+def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+    drvm: nipcbatt.DcRmsVoltageMeasurement,
+):
     drvm.close()
 
 
@@ -113,7 +119,7 @@ def cleanup(drvm: nipcbatt.DcRmsVoltageMeasurement):
 
 # region test
 ############# USE THIS FUNCTION TO CALL THE WHOLE SEQUENCE #########################################
-def analog_voltage_measurement(
+def analog_voltage_measurement(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     generation_input_channel=INPUT_TERMINAL,
 ):
     # Runs setup function

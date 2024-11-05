@@ -1,7 +1,10 @@
-"""Use this class to measure dynamic digital pattern from a system"""
+"""Use this class to measure dynamic digital pattern from a system"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
 
 import re
-from typing import List, Union
+from typing import (  # noqa: F401 - 'typing.List' imported but unused (auto-generated noqa)
+    List,
+    Union,
+)
 
 import nidaqmx.constants
 import nidaqmx.errors
@@ -13,7 +16,7 @@ import numpy as np
 from nidaqmx.constants import LineGrouping
 from varname import nameof
 
-from nipcbatt.pcbatt_library.common.common_data_types import (
+from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.MeasurementAnalysisRequirement' imported but unused (auto-generated noqa)
     DigitalStartTriggerParameters,
     DynamicDigitalPatternTimingParameters,
     MeasurementAnalysisRequirement,
@@ -41,7 +44,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): Parent class for all PCBATT classes
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -51,7 +54,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
 
         Args:
             channel_expression (str): The name of the lines/port where the data will be measured
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -85,7 +88,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
         self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
 
     def close(self):
-        """Closes the task and returns the hardware resources"""
+        """Closes the task and returns the hardware resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 
@@ -106,7 +109,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             DynamicDigitalPatternMeasurementResultData | None: An instance of `DynamicDigitalPatternMeasurementResultData`
             or `None` if no measure was performed.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
 
         if (
             configuration.measurement_options.execution_option
@@ -136,7 +139,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
         Args:
             parameters (DynamicDigitalPatternTimingParameters):
             An instance of `DynamicDigitalPatternTimingParameters` used to configure the timing.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         self.task.stop()
 
         self.task.timing.cfg_samp_clk_timing(
@@ -153,7 +156,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters` used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.task.triggers.start_trigger.disable_start_trig()
         else:
@@ -170,7 +173,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             MeasurementData:
             An instance of `MeasurementData` that specifies the data acquired from DAQ channels.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         number_of_channels = len(self.task.in_stream.channels_to_read.channel_names)
         number_of_samples_per_channel = self.task.timing.samp_quant_samp_per_chan
         data_to_read = np.zeros(

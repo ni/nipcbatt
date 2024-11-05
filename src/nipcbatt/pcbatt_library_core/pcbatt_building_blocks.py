@@ -1,5 +1,5 @@
 # pylint: disable=W0707, W0719, W0702
-"""Defines the base classes used by PCBA Test Toolkit building blocks"""
+"""Defines the base classes used by PCBA Test Toolkit building blocks"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
 
 from abc import ABC, abstractmethod
 from typing import Callable
@@ -28,7 +28,7 @@ from nipcbatt.pcbatt_library_core.pcbatt_library_messages import (
 
 
 class BuildingBlockUsingInstrument(ABC):
-    """Defines the base methods for initialization and release"""
+    """Defines the base methods for initialization and release"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (176 > 100 characters) (auto-generated noqa)
 
     def __init__(self, *args, **kwargs):
         """Constructor that initializes instrument."""
@@ -92,7 +92,7 @@ class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
         """Creates a DAQmx task instance.
         Returns:
             nidaqmx.Task: the type of instrument.
-        """
+        """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return nidaqmx.Task()
 
     @property
@@ -126,7 +126,7 @@ class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
         Returns:
             bool: True if the channel expression
             only contains global virtual channels defined in NI MAX.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         channel_names_in_expression = nidaqmx.utils.unflatten_channel_string(
             channel_names=channel_expression
         )
@@ -178,7 +178,7 @@ class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
             global_channel_expression (str):
                 Expression representing the name of
                 a global channel in DAQ System.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         global_channels_names = nidaqmx.utils.unflatten_channel_string(
             channel_names=global_channel_expression
         )
@@ -198,7 +198,7 @@ class BuildingBlockUsingNi845xI2cDevice(BuildingBlockUsingInstrument):
         """Creates a NI-845x I2C device handler.
         Returns:
             Ni845xI2cDevicesHandler: the type of instrument.
-        """
+        """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return Ni845xI2cDevicesHandler()
 
     @property
@@ -228,7 +228,7 @@ class BuildingBlockUsingNi845xSpiDevice(BuildingBlockUsingInstrument):
         """Creates a NI 845x device handler.
         Returns:
             Ni845xSpiDevicesHandler: the type of instrument.
-        """
+        """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return Ni845xSpiDevicesHandler()
 
     @property
@@ -252,9 +252,11 @@ class BuildingBlockUsingNi845xSpiDevice(BuildingBlockUsingInstrument):
 
 class BuildingBlockUsingVisa(BuildingBlockUsingInstrument):
     """Defines Building block that uses
-    serial device handler (NI-VISA) for instrument management."""
+    serial device handler (NI-VISA) for instrument management."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (358 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
+        self, *args, **kwargs
+    ):
         super().__init__(*args, **kwargs)
         self._serial_device_handler = None
 
@@ -263,7 +265,7 @@ class BuildingBlockUsingVisa(BuildingBlockUsingInstrument):
         """Creates a NI-VISA resource manager.
         Returns:
             pyvisa.ResourceManager: the type of resource manager.
-        """
+        """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return pyvisa.ResourceManager()
 
     @property

@@ -1,19 +1,21 @@
-"""Audio Filter Test"""
+"""Audio Filter Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (134 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=C0413,E0401,C0115,W0611,C0116,C0103
 
-import os
-import sys
-from time import sleep
+import os  # noqa: F401 - 'os' imported but unused (auto-generated noqa)
+import sys  # noqa: F401 - 'sys' imported but unused (auto-generated noqa)
+from time import sleep  # noqa: F401 - 'time.sleep' imported but unused (auto-generated noqa)
 
 import nidaqmx.constants
-from limit_exception import LimitException
+from limit_exception import (  # noqa: F401 - 'limit_exception.LimitException' imported but unused (auto-generated noqa)
+    LimitException,
+)
 
 import nipcbatt
 
 
-class AudioFilterTest:
-    def __init__(self):
+class AudioFilterTest:  # noqa: D101 - Missing docstring in public class (auto-generated noqa)
+    def __init__(self):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.signal_voltage_gen_task = None
         self.freq_domain_meas_task = None
 
@@ -21,25 +23,33 @@ class AudioFilterTest:
         self.main()
         self.cleanup()
 
-    def setup(self) -> None:
+    def setup(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.initialize_multi_tone_audio_signal_gen()
         self.initialize_audio_meas()
 
-    def initialize_multi_tone_audio_signal_gen(self) -> None:
+    def initialize_multi_tone_audio_signal_gen(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.signal_voltage_gen_task = nipcbatt.SignalVoltageGeneration()
         self.signal_voltage_gen_task.initialize("TS_LINE_IN0")
 
-    def initialize_audio_meas(self) -> None:
+    def initialize_audio_meas(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.freq_domain_meas_task = nipcbatt.FrequencyDomainMeasurement()
         self.freq_domain_meas_task.initialize("TP_LINE_OUT0")
 
-    def main(self) -> None:
+    def main(self) -> None:  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
         self.configure_audio_meas()
         self.send_multi_tone_audio_signal()
         self.measure_tone()
 
-    def configure_audio_meas(self) -> None:
-        # Configure Freq Domain Measurement settings to wait for Hardware Trigger from Audio Signal Generation
+    def configure_audio_meas(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
+        # Configure Freq Domain Measurement settings to wait for Hardware Trigger from Audio Signal Generation  # noqa: W505 - doc line too long (110 > 100 characters) (auto-generated noqa)
 
         global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
@@ -75,7 +85,9 @@ class AudioFilterTest:
 
         self.freq_domain_meas_task.configure_and_measure(configuration=configuration)
 
-    def send_multi_tone_audio_signal(self) -> None:
+    def send_multi_tone_audio_signal(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
             range_min_volts=-10, range_max_volts=10
         )
@@ -127,8 +139,10 @@ class AudioFilterTest:
             configuration=configuration
         )
 
-    def measure_tone(self) -> None:
-        # Fetches the Analog Input voltage waveforms (Started measure when Signal Voltage generation sends Trigger) and returns Freq Domain Analysis
+    def measure_tone(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
+        # Fetches the Analog Input voltage waveforms (Started measure when Signal Voltage generation sends Trigger) and returns Freq Domain Analysis  # noqa: W505 - doc line too long (148 > 100 characters) (auto-generated noqa)
 
         global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
@@ -254,12 +268,18 @@ class AudioFilterTest:
         else:
             print("Status: Pass -- Measured amplitude: ", tested_value, "\n")
 
-    def cleanup(self) -> None:
+    def cleanup(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.close_multi_tone_audio_signal_gen()
         self.close_audio_meas()
 
-    def close_multi_tone_audio_signal_gen(self) -> None:
+    def close_multi_tone_audio_signal_gen(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.signal_voltage_gen_task.close()
 
-    def close_audio_meas(self) -> None:
+    def close_audio_meas(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.freq_domain_meas_task.close()

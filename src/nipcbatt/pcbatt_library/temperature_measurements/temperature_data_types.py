@@ -1,5 +1,5 @@
 # pylint: disable=C0301
-""" Temperature data types"""
+""" Temperature data types"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (140 > 100 characters) (auto-generated noqa)
 
 from enum import Enum
 from typing import List
@@ -19,7 +19,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
     """Defines the parameters used to configure terminal
-    of all channels for temperature measurement using RTD."""
+    of all channels for temperature measurement using RTD."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (354 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -59,7 +59,7 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
             ValueError:
                 Raised when `temperature_minimum_value_celsius_degrees'
                 is greater than or equal to `temperature_maximum_value_celsius_degrees`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         Guard.is_less_than(
             temperature_minimum_value_celsius_degrees,
             temperature_maximum_value_celsius_degrees,
@@ -79,21 +79,21 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
     def temperature_minimum_value_celsius_degrees(self) -> float:
         """
         :type:`float`: Gets the minimum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._temperature_minimum_value_celsius_degrees
 
     @property
     def temperature_maximum_value_celsius_degrees(self) -> float:
         """
         :type:`float`: Gets the minimum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._temperature_maximum_value_celsius_degrees
 
     @property
     def current_excitation_value_amperes(self) -> float:
         """
         :type:`float`: Gets the amount of excitation to supply to the sensor, in Amperes.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._current_excitation_value_amperes
 
     @property
@@ -101,7 +101,7 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`: Gets the sensor resistance, in Ohms,
                 at 0 degree Celsius (also called R0).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sensor_resistance_ohms
 
     @property
@@ -110,14 +110,14 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
         :type:`float`: Gets the type of
             `RTD <https://www.ni.com/docs/en-US/bundle/ni-daqmx/page/measfunds/rtdtypes.html>`
             connected to the channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._rtd_type
 
     @property
     def excitation_source(self) -> nidaqmx.constants.ExcitationSource:
         """
         :type:`float`: Gets the source of excitation.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._excitation_source
 
     @property
@@ -127,7 +127,7 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
             that represents the number of
             `wires <https://en.wikipedia.org/wiki/Resistance_thermometer#Wiring_configurations>`
             to use for resistive measurements.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._resistance_configuration
 
     @property
@@ -135,7 +135,7 @@ class TemperatureRtdMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`: Gets the `ADC Timing Mode
             <https://www.ni.com/docs/en-US/bundle/ni-daqmx-properties/page/daqmxprop/attr29f9.html>`.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._adc_timing_mode
 
 
@@ -173,7 +173,7 @@ class TemperatureRtdMeasurementChannelParameters(PCBATestToolkitData):
         Raises:
             ValueError:
                 Raised when `channel_name` is None or empty or whitespace.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         Guard.is_not_none_nor_empty_nor_whitespace(channel_name, nameof(channel_name))
 
         self._channel_name = channel_name
@@ -187,7 +187,7 @@ class TemperatureRtdMeasurementChannelParameters(PCBATestToolkitData):
     def channel_name(self) -> str:
         """
         :type:`str`: Gets the name of the channel to configure.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._channel_name
 
     @property
@@ -195,14 +195,14 @@ class TemperatureRtdMeasurementChannelParameters(PCBATestToolkitData):
         """
         :type:`float`: Gets the sensor resistance, in Ohms,
                 at 0 degree Celsius (also called R0).
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sensor_resistance_ohms
 
     @property
     def current_excitation_value_amperes(self) -> float:
         """
         :type:`float`: Gets the amount of excitation to supply to the sensor, in Amperes.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._current_excitation_value_amperes
 
     @property
@@ -211,7 +211,7 @@ class TemperatureRtdMeasurementChannelParameters(PCBATestToolkitData):
         :type:`float`: Gets the type of
             `RTD <https://www.ni.com/docs/en-US/bundle/ni-daqmx/page/measfunds/rtdtypes.html>`
             connected to the channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._rtd_type
 
     @property
@@ -221,14 +221,14 @@ class TemperatureRtdMeasurementChannelParameters(PCBATestToolkitData):
             that represents the number of
             `wires <https://en.wikipedia.org/wiki/Resistance_thermometer#Wiring_configurations>`
             to use for resistive measurements.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._resistance_configuration
 
     @property
     def excitation_source(self) -> nidaqmx.constants.ExcitationSource:
         """
         :type:`float`: Gets the source of excitation.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._excitation_source
 
 
@@ -269,7 +269,7 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
                 `specific_channels_parameters` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
         Guard.all_elements_are_of_same_type(
@@ -293,7 +293,7 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
     ) -> TemperatureRtdMeasurementTerminalParameters:
         """
         :class:`TemperatureRtdMeasurementChannelParameters`:
-            Gets the settings of terminal for all channels."""
+            Gets the settings of terminal for all channels."""  # noqa: D205, D209, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (444 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -304,7 +304,7 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[VoltageMeasurementChannelAndTerminalRangeParameters]`:
             Gets the list of instances of
             `TemperatureRtdMeasurementChannelParameters` used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -312,7 +312,7 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
         """
         :class:`MeasurementExecutionType`:
             Gets the type of measurement execution selected by user.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_execution_type
 
     @property
@@ -321,7 +321,7 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -330,26 +330,26 @@ class TemperatureRtdMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class SteinhartHartEquationOption(Enum):
     """Defines the option of to use coefficients
-    in Steinhart-Hart equation used during channels configuration."""
+    in Steinhart-Hart equation used during channels configuration."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (362 > 100 characters) (auto-generated noqa)
 
     USE_STEINHART_HART_COEFFICIENTS = 0
     """Use coefficients A, B and C of the
        `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation."""
 
     USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE = 1
-    """Use the `β coefficient <https://en.wikipedia.org/wiki/Thermistor#B_or_.CE.B2_parameter_equation>` and the sensor resistance."""
+    """Use the `β coefficient <https://en.wikipedia.org/wiki/Thermistor#B_or_.CE.B2_parameter_equation>` and the sensor resistance."""  # noqa: W505 - doc line too long (134 > 100 characters) (auto-generated noqa)
 
 
 class CoefficientsSteinhartHartParameters(PCBATestToolkitData):
     """Defines the parameters used to configure coefficients of
     the <Steinhart-Hart https://en.wikipedia.org/wiki/Thermistor#Steinhart.E2.80.93Hart_equation>
-    for Temperature measurements."""
+    for Temperature measurements."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (329 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -367,7 +367,7 @@ class CoefficientsSteinhartHartParameters(PCBATestToolkitData):
             `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation.
             coefficient_steinhart_hart_c (float): The C coefficient in the
             `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (102 > 100 characters) (auto-generated noqa)
         self._coefficient_steinhart_hart_a = coefficient_steinhart_hart_a
         self._coefficient_steinhart_hart_b = coefficient_steinhart_hart_b
         self._coefficient_steinhart_hart_c = coefficient_steinhart_hart_c
@@ -378,7 +378,7 @@ class CoefficientsSteinhartHartParameters(PCBATestToolkitData):
         :type:`float`:
             Gets the A coefficient in the
             `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (102 > 100 characters) (auto-generated noqa)
         return self._coefficient_steinhart_hart_a
 
     @property
@@ -387,7 +387,7 @@ class CoefficientsSteinhartHartParameters(PCBATestToolkitData):
         :type:`float`:
             Gets the B coefficient in the
             `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (102 > 100 characters) (auto-generated noqa)
         return self._coefficient_steinhart_hart_b
 
     @property
@@ -396,14 +396,14 @@ class CoefficientsSteinhartHartParameters(PCBATestToolkitData):
         :type:`float`:
             Gets the C coefficient in the
             `Steinhart-Hart <https://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation>` equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (102 > 100 characters) (auto-generated noqa)
         return self._coefficient_steinhart_hart_c
 
 
 class BetaCoefficientAndSensorResistanceParameters(PCBATestToolkitData):
     """Defines the parameters for coefficients
     (`β coefficient <https://en.wikipedia.org/wiki/Thermistor#B_or_.CE.B2_parameter_equation>` and sensor resistance)
-    of Steinhart-Hart equation."""
+    of Steinhart-Hart equation."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (117 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -421,7 +421,7 @@ class BetaCoefficientAndSensorResistanceParameters(PCBATestToolkitData):
             sensor_resistance_ohms (float):
             The sensor resistance, in Ohms, at 25 degrees Celsius (298.15 Kelvins).
             Coefficients A, B and C of the equation are computed from this coefficient.
-        """
+        """  # noqa: D205, D415, D417, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
         self._coefficient_steinhart_hart_beta_kelvins = coefficient_steinhart_hart_beta_kelvins
         self._sensor_resistance_ohms = sensor_resistance_ohms
 
@@ -432,7 +432,7 @@ class BetaCoefficientAndSensorResistanceParameters(PCBATestToolkitData):
             Gets the `β coefficient <https://en.wikipedia.org/wiki/Thermistor#B_or_.CE.B2_parameter_equation>`
             used with the Steinhart-Hart equation, in Kelvins.
             Coefficients A, B and C of the equation are computed from this coefficient.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         return self._coefficient_steinhart_hart_beta_kelvins
 
     @property
@@ -441,13 +441,13 @@ class BetaCoefficientAndSensorResistanceParameters(PCBATestToolkitData):
         :type:`float`:
             Gets the sensor resistance, in Ohms, at 25 degrees Celsius (298.15 Kelvins).
             Coefficients A, B and C of the equation are computed from this coefficient.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sensor_resistance_ohms
 
 
 class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
     """Defines the parameters used to configure terminal
-    of all channels for temperature measurement using Thermistor."""
+    of all channels for temperature measurement using Thermistor."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (361 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -498,7 +498,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
                 `beta_coefficient_and_sensor_resistance_parameters` is None
                 and `steinhart_hart_equation_option` is equal to
                 `SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
         Guard.is_less_than(
             temperature_minimum_value_celsius_degrees,
             temperature_maximum_value_celsius_degrees,
@@ -537,7 +537,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :class:`nidaqmx.constants.TerminalConfiguration`:
             Gets the input terminal configuration parameter.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._terminal_configuration
 
     @property
@@ -545,7 +545,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the minimum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_minimum_value_celsius_degrees
 
     @property
@@ -553,7 +553,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_maximum_value_celsius_degrees
 
     @property
@@ -562,7 +562,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         :type:`float`:
             Gets the amount of voltage excitation to supply to the sensor, expressed in Volts.
             Refer to the sensor documentation to determine this value.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._voltage_excitation_value_volts
 
     @property
@@ -572,7 +572,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
             Gets the reference resistor for the
             `thermistor <https://www.ni.com/docs/en-US/bundle/ni-daqmx/page/measfunds/thermistors.html>`
             if you use voltage excitation, in Ohms.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
         return self._thermistor_resistor_ohms
 
     @property
@@ -580,7 +580,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :class:`SteinhartHartEquationOption`:
             Gets the option used to compute coefficients of Steinhart-Hart equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._steinhart_hart_equation_option
 
     @property
@@ -591,7 +591,7 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
         :class:`CoefficientsSteinhartHartParameters`:
             Gets an instance of `CoefficientsSteinhartHartParameters`
             representing the coefficients of the SteinHart-Hart equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._coefficients_steinhart_hart_parameters
 
     @property
@@ -602,12 +602,12 @@ class TemperatureThermistorRangeAndTerminalParameters(PCBATestToolkitData):
             representing the coefficients
             (`β coefficient <https://en.wikipedia.org/wiki/Thermistor#B_or_.CE.B2_parameter_equation>` and sensor resistance)
             of Steinhart-Hart equation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (125 > 100 characters) (auto-generated noqa)
         return self._beta_coefficient_and_sensor_resistance_parameters
 
 
 class TemperatureThermistorChannelRangeAndTerminalParameters(PCBATestToolkitData):
-    """Defines settings for channel and terminal used to configure temperature measurement based on thermistor."""
+    """Defines settings for channel and terminal used to configure temperature measurement based on thermistor."""  # noqa: W505 - doc line too long (114 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -626,7 +626,7 @@ class TemperatureThermistorChannelRangeAndTerminalParameters(PCBATestToolkitData
             ValueError:
                 Raised when `channel_name` is None or empty or whitespace,
                 `channel_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         Guard.is_not_none_nor_empty_nor_whitespace(channel_name, nameof(channel_name))
         Guard.is_not_none(channel_parameters, nameof(channel_parameters))
 
@@ -638,7 +638,7 @@ class TemperatureThermistorChannelRangeAndTerminalParameters(PCBATestToolkitData
         """
         :type:`str`:
             Gets the name of the channel to configure.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._channel_name
 
     @property
@@ -646,7 +646,7 @@ class TemperatureThermistorChannelRangeAndTerminalParameters(PCBATestToolkitData
         """
         :class:`TemperatureThermistorRangeAndTerminalParameters`:
             Gets the settings of the channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._channel_parameters
 
 
@@ -687,7 +687,7 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
                 `specific_channels_parameters` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
         Guard.all_elements_are_of_same_type(
@@ -712,7 +712,7 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
         """
         :class:`TemperatureThermistorRangeAndTerminalParameters`:
             Gets the settings of terminal for all channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -723,7 +723,7 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[TemperatureThermistorChannelRangeAndTerminalParameters]`:
             Gets the list of instances of `TemperatureThermistorChannelRangeAndTerminalParameters`
             used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -731,7 +731,7 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
         """
         :class:`MeasurementExecutionType`:
             Gets the type of measurement execution selected by user.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_execution_type
 
     @property
@@ -740,7 +740,7 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -749,13 +749,13 @@ class TemperatureThermistorMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
     """Defines the parameters used to configure terminal
-    of all channels for temperature measurement using Thermocouple."""
+    of all channels for temperature measurement using Thermocouple."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -798,7 +798,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
                 'perform_auto_zero_mode' is None,
                 if 'perform_auto_zero_mode' is True and 'auto_zero_mode' is None.
 
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (124 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             temperature_minimum_value_celsius_degrees,
             nameof(temperature_minimum_value_celsius_degrees),
@@ -854,7 +854,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the minimum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_minimum_value_celsius_degrees
 
     @property
@@ -862,7 +862,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_maximum_value_celsius_degrees
 
     @property
@@ -871,7 +871,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         :type:`nidaqmx.constants.ThermocoupleType`:
             Enum for ThermocoupleType: (B,E,J,K,N,R,S,T);
             Reference: https://nidaqmx-python.readthedocs.io/en/latest/constants.html#nidaqmx.constants.ThermocoupleType
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         return self._thermocouple_type
 
     @property
@@ -879,7 +879,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
            Cold junction compensation temperature, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._cold_junction_compensation_temperature
 
     @property
@@ -887,7 +887,7 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         """
         :class:`bool`:
             The option used to Enable or Disable Auto zero mode.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._perform_auto_zero_mode
 
     @property
@@ -898,13 +898,13 @@ class TemperatureThermocoupleMeasurementTerminalParameters(PCBATestToolkitData):
         :class:`nidaqmx.constants.AutoZeroType`:
             The option to set when to perform an auto zero during acquisition.
                 Reference: https://nidaqmx-python.readthedocs.io/en/latest/constants.html#nidaqmx.constants.AutoZeroType
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         return self._auto_zero_mode
 
 
 class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
     """Defines the parameters used to configure terminal
-    of all channels for temperature measurement using Thermocouple."""
+    of all channels for temperature measurement using Thermocouple."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -959,7 +959,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
                 'perform_auto_zero_mode' is None,
                 if 'perform_auto_zero_mode' is True and 'auto_zero_mode' is None.
 
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (124 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(
             temperature_minimum_value_celsius_degrees,
             nameof(temperature_minimum_value_celsius_degrees),
@@ -1027,7 +1027,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the minimum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_minimum_value_celsius_degrees
 
     @property
@@ -1035,7 +1035,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the maximum value expected from the measurement, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._temperature_maximum_value_celsius_degrees
 
     @property
@@ -1044,7 +1044,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         :type:`nidaqmx.constants.ThermocoupleType`:
             Enum for ThermocoupleType: (B,E,J,K,N,R,S,T);
             Reference: https://nidaqmx-python.readthedocs.io/en/latest/constants.html#nidaqmx.constants.ThermocoupleType
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         return self._thermocouple_type
 
     @property
@@ -1053,7 +1053,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         :type:`nidaqmx.constants.CJCSource`:
            Cold junction compensation Source.
            Reference: https://nidaqmx-python.readthedocs.io/en/latest/constants.html#nidaqmx.constants.CJCSource
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (112 > 100 characters) (auto-generated noqa)
         return self._cold_junction_compensation_source
 
     @property
@@ -1061,7 +1061,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`float`:
            Cold junction compensation temperature, expressed in °C.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._cold_junction_compensation_temperature
 
     @property
@@ -1069,7 +1069,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :type:`str`:
            Specify the channel to use for Cold junction compensation.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._cold_junction_compensation_channel_name
 
     @property
@@ -1077,7 +1077,7 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         """
         :class:`bool`:
             The option used to Enable or Disable Auto zero mode.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._perform_auto_zero_mode
 
     @property
@@ -1088,12 +1088,12 @@ class TemperatureThermocoupleRangeAndTerminalParameters(PCBATestToolkitData):
         :class:`nidaqmx.constants.AutoZeroType`:
             The option to set when to perform an auto zero during acquisition.
                 Reference: https://nidaqmx-python.readthedocs.io/en/latest/constants.html#nidaqmx.constants.AutoZeroType
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         return self._auto_zero_mode
 
 
 class TemperatureThermocoupleChannelRangeAndTerminalParameters(PCBATestToolkitData):
-    """Defines settings for channel and terminal used to configure temperature measurement based on thermocouple."""
+    """Defines settings for channel and terminal used to configure temperature measurement based on thermocouple."""  # noqa: W505 - doc line too long (116 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -1112,7 +1112,7 @@ class TemperatureThermocoupleChannelRangeAndTerminalParameters(PCBATestToolkitDa
             ValueError:
                 Raised when `channel_name` is None or empty or whitespace,
                 `channel_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (112 > 100 characters) (auto-generated noqa)
         Guard.is_not_none_nor_empty_nor_whitespace(channel_name, nameof(channel_name))
         Guard.is_not_none(channel_parameters, nameof(channel_parameters))
 
@@ -1124,7 +1124,7 @@ class TemperatureThermocoupleChannelRangeAndTerminalParameters(PCBATestToolkitDa
         """
         :type:`str`:
             Gets the name of the channel to configure.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._channel_name
 
     @property
@@ -1132,7 +1132,7 @@ class TemperatureThermocoupleChannelRangeAndTerminalParameters(PCBATestToolkitDa
         """
         :class:`TemperatureThermocoupleRangeAndTerminalParameters`:
             Gets the settings of the channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._channel_parameters
 
 
@@ -1175,7 +1175,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
                 `specific_channels_parameters` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (106 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
         Guard.all_elements_are_of_same_type(
@@ -1200,7 +1200,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
         """
         :class:`TemperatureThermocoupleMeasurementTerminalParameters`:
             Gets the settings of terminal for all channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -1211,7 +1211,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[TemperatureThermocoupleChannelRangeAndTerminalParameters]`:
             Gets the list of instances of `TemperatureThermocoupleChannelRangeAndTerminalParameters`
             used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -1219,7 +1219,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
         """
         :class:`MeasurementExecutionType`:
             Gets the type of measurement execution selected by user.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_execution_type
 
     @property
@@ -1228,7 +1228,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -1237,7 +1237,7 @@ class TemperatureThermocoupleMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
@@ -1278,7 +1278,7 @@ class TemperatureMeasurementResultData(PCBATestToolkitData):
                 If the `acquisition_duration_seconds' is less than or equal to zero,
                 `average_temperatures_celsius_degrees` contains objects that are not `float`,
                 `average_temperatures_kelvin` contains objects that are not `float`
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
         Guard.is_not_none(
@@ -1317,7 +1317,7 @@ class TemperatureMeasurementResultData(PCBATestToolkitData):
         :class:`List[AnalogWaveform]`:
             Gets list of waveforms acquired from channels defined for measurement
             and used to compute temperature.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveforms
 
     @property
@@ -1325,7 +1325,7 @@ class TemperatureMeasurementResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the duration of acquisition of samples for each configured channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._acquisition_duration_seconds
 
     @property
@@ -1334,7 +1334,7 @@ class TemperatureMeasurementResultData(PCBATestToolkitData):
         :class:`List[float]`:
             Gets the list of average temperatures computed for each configured channel,
             expressed in celsius degrees.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._average_temperatures_celsius_degrees
 
     @property
@@ -1343,5 +1343,5 @@ class TemperatureMeasurementResultData(PCBATestToolkitData):
         :class:`List[float]`:
             Gets the list of average temperatures computed for each configured channel,
             expressed in kelvins.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._average_temperatures_kelvin

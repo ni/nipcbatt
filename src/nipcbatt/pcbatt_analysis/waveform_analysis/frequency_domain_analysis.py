@@ -1,4 +1,4 @@
-"""Provides frequency domain analysis tools"""
+"""Provides frequency domain analysis tools"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (157 > 100 characters) (auto-generated noqa)
 
 from enum import IntEnum
 
@@ -103,7 +103,7 @@ class LabViewFftSpectrumWindow(IntEnum):
     attenuation via the β parameter, the higher the value of β, the more the attenuation is.
     The more attenuation you have the wider the main lobe and hence the wider the transition band,
     for more details please see:
-    https://www.ni.com/docs/fr-FR/bundle/rfmx-waveform-creator/page/rfwfmcreator/kaiserwindow.html"""
+    https://www.ni.com/docs/fr-FR/bundle/rfmx-waveform-creator/page/rfwfmcreator/kaiserwindow.html"""  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
 
     DOLPH_TCHEBYCHEV = (61,)
     """`DolphTchebychev` (requires to provider lobes ratio parameter), for more details please see:
@@ -115,7 +115,7 @@ class LabViewFftSpectrumWindow(IntEnum):
 
 
 class MultipleTonesProcessingResult(AnalysisLibraryElement):
-    """Defines multiple tones processing results"""
+    """Defines multiple tones processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -130,7 +130,7 @@ class MultipleTonesProcessingResult(AnalysisLibraryElement):
 
         Raises:
             ValueError: Occurs when input `detected_tones` list is none.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(instance=detected_tones, instance_name=nameof(detected_tones))
         self._detected_tones = detected_tones
         self._amplitude_type = amplitude_type
@@ -155,7 +155,7 @@ class MultipleTonesProcessingResult(AnalysisLibraryElement):
 
 
 class MultipleTonesAmplitudePhaseSpectrumProcessingResult(AnalysisLibraryElement):
-    """Defines multiple tones and spectrum processing results"""
+    """Defines multiple tones and spectrum processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -207,7 +207,7 @@ class MultipleTonesAmplitudePhaseSpectrumProcessingResult(AnalysisLibraryElement
 
 class LabViewFrequencyDomainProcessing(AnalysisLibraryElement):
     """Defines frequency domain analysis functions such
-    fft spectrum and multiple tones processing."""
+    fft spectrum and multiple tones processing."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (343 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def process_single_waveform_multiple_tones_and_amplitude_phase_spectrum(
@@ -243,7 +243,7 @@ class LabViewFrequencyDomainProcessing(AnalysisLibraryElement):
         Returns:
             FrequencyDomainProcessingResult: An object that holds result of fft spectrum
             processing result and multiple tones processing result using LabVIEW VIs.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
         try:
             results_tuple = _frequency_domain_analysis.labview_process_single_waveform_multiple_tones_and_amplitude_phase_spectrum_impl(
                 waveform_samples,
@@ -271,7 +271,7 @@ class LabViewFrequencyDomainProcessing(AnalysisLibraryElement):
 
 class LabViewFftSpectrumAmplitudePhase(AnalysisLibraryElement):
     """Provides Amplitude/Phase spectrum processing based on
-    `LabVIEW FFT Spectrum Magnitude Phase VI`"""
+    `LabVIEW FFT Spectrum Magnitude Phase VI`"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (341 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def get_last_error_message() -> str:
@@ -280,7 +280,7 @@ class LabViewFftSpectrumAmplitudePhase(AnalysisLibraryElement):
 
         Returns:
             str: Empty string when no error occurred, elsewhere not empty string.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         return (
             _frequency_domain_analysis.labview_fft_spectrum_amplitude_phase_get_last_error_message_impl()
@@ -316,7 +316,7 @@ class LabViewFftSpectrumAmplitudePhase(AnalysisLibraryElement):
         Returns:
             AmplitudePhaseSpectrum: An object that holds result of fft spectrum
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -342,7 +342,7 @@ class LabViewFftSpectrumAmplitudePhase(AnalysisLibraryElement):
 
 class LabViewMultipleTonesMeasurement(AnalysisLibraryElement):
     """Provides multiple tones processing based on
-    `LabVIEW Multiple Tone Information VI`"""
+    `LabVIEW Multiple Tone Information VI`"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (338 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def get_last_error_message() -> str:
@@ -351,7 +351,7 @@ class LabViewMultipleTonesMeasurement(AnalysisLibraryElement):
 
         Returns:
             str: Empty string when no error occurred, elsewhere not empty string.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         return (
             _frequency_domain_analysis.labview_multiple_tones_measurement_get_last_error_message_impl()
@@ -381,7 +381,7 @@ class LabViewMultipleTonesMeasurement(AnalysisLibraryElement):
         Returns:
             MultipleTonesMeasurementResult: An object that holds result of multiple tones
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))

@@ -1,4 +1,4 @@
-"""Defines a set of filesystem utility functions"""
+"""Defines a set of filesystem utility functions"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
 
 import os
 import shutil

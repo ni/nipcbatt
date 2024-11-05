@@ -24,7 +24,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class of the unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -50,7 +50,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
     def test_integration_num_channels_8(self):
         """Integration test ensuring the module creates the correct output
         when given 8 channels of data to write
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # create configuration object
         num_channels = 8
@@ -75,7 +75,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
     def test_integration_num_channels_23(self):
         """Integration test ensuring the module creates the correct output
         when given 23 channels of data to write
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # create configuration object
         num_channels = 23
@@ -100,7 +100,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
     def test_integration_channel_expression_is_empty(self):
         """Integration test ensuring that is channel expression
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -111,7 +111,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
     def test_integration_channel_expression_is_none(self):
         """Integration test ensuring that is channel expression
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -123,7 +123,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         """Integration test ensuring that the channel expression
         value consisting of only 'port' with channel
         designated will throw an error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(DaqError) as ctx:
@@ -138,7 +138,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
     def test_integration_channel_expression_only_instrument(self):
         """Integration test that channel expression value of only 'port'
         without channels designated throws an error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(DaqError):

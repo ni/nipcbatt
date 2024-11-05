@@ -1,12 +1,14 @@
 """This module provides Dynamic digital pattern data types check."""
 
-import importlib.metadata
-import logging
-import sys
+import importlib.metadata  # noqa: F401 - 'importlib.metadata' imported but unused (auto-generated noqa)
+import logging  # noqa: F401 - 'logging' imported but unused (auto-generated noqa)
+import sys  # noqa: F401 - 'sys' imported but unused (auto-generated noqa)
 import unittest
 
-import nidaqmx.constants
-from varname import nameof
+import nidaqmx.constants  # noqa: F401 - 'nidaqmx.constants' imported but unused (auto-generated noqa)
+from varname import (  # noqa: F401 - 'varname.nameof' imported but unused (auto-generated noqa)
+    nameof,
+)
 
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
@@ -31,11 +33,11 @@ class TestDynamicDigitalPatternGenerationDataTypes(unittest.TestCase):
 
     Args:
         unittest: The unittest class from which all tests inherit
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def test_dynamic_digital_start_trigger_parameters(self):
         """Ensures a valid instance of DynamicDigitalStartTriggerParameters
-        is created when given valid parameters"""
+        is created when given valid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (419 > 100 characters) (auto-generated noqa)
 
         trig_source = TRIGGER_SOURCE
         trig_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
@@ -50,7 +52,7 @@ class TestDynamicDigitalPatternGenerationDataTypes(unittest.TestCase):
 
     def test_dynamic_digital_start_trigger_parameters_invalid(self):
         """Ensures an instance of DynamicDigitalStartTriggerParameters is not
-        created when given invalid parameters"""
+        created when given invalid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         trig_source = None
         trig_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
@@ -81,7 +83,7 @@ class TestDynamicDigitalPatternGenerationDataTypes(unittest.TestCase):
 
     def test_dynamic_digital_pattern_generation_data(self):
         """Ensures that a valid instance of DynamicDigitalPatternGenerationData
-        is created when given valid parameters"""
+        is created when given valid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (419 > 100 characters) (auto-generated noqa)
 
         gen_time = 1.0
         instance = DynamicDigitalPatternGenerationData(gen_time)
@@ -90,7 +92,7 @@ class TestDynamicDigitalPatternGenerationDataTypes(unittest.TestCase):
 
     def test_dynamic_digital_pattern_generation_data_invalid(self):
         """Ensures that an instance of DynamicDigitalPatternGenerationData is
-        not created when given invalid parameters"""
+        not created when given invalid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         gen_time = None
 
@@ -102,7 +104,7 @@ class TestDynamicDigitalPatternGenerationDataTypes(unittest.TestCase):
 
     def test_dynamic_digital_pattern_generation_configuration(self):
         """Ensures an instance of DynamicDigitalPatternGenerationConfiguration
-        is created when given valid parameters"""
+        is created when given valid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (419 > 100 characters) (auto-generated noqa)
 
         clock_source = CLOCK_SOURCE
         num_samples = 100

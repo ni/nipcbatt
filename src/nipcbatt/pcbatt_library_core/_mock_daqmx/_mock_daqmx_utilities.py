@@ -45,10 +45,9 @@ def _replace_daqmx(interpreter_class: Type):
 def _replace_daqmx_if_not_installed(interpreter_class: Type):
     """Substitutes mock version of nidaqmx in Building block class
     if nidaqmx in not installed on local system.
-
     Args:
         interpreter_class (Type): Class of interpreter to use in mock version.
-    """
+    """  # noqa: D202, D205, D411, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
     def _instrument_factory() -> nidaqmx.Task:
         try:

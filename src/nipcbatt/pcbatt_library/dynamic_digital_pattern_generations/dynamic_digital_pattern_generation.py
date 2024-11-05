@@ -1,19 +1,19 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-""" _summary_ """
+""" _summary_ """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (128 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import nidaqmx.stream_writers
 import numpy as np
 from varname import nameof
 
-from nipcbatt.pcbatt_library.common.common_data_types import (
+from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters' imported but unused (auto-generated noqa)
     DigitalStartTriggerParameters,
     DynamicDigitalPatternTimingParameters,
     SampleClockTimingParameters,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (
+from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types.ConstantsForDigitalPulseGeneration' imported but unused (auto-generated noqa)
     ConstantsForDigitalPulseGeneration,
 )
 from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
@@ -27,7 +27,9 @@ from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital
 from nipcbatt.pcbatt_library.synchronizations.synchronization_signal_routing import (
     SynchronizationSignalRouting,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
+from nipcbatt.pcbatt_library_core.pcbatt_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library_core.pcbatt_data_types.PCBATestToolkitData' imported but unused (auto-generated noqa)
+    PCBATestToolkitData,
+)
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,
@@ -39,14 +41,14 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
-    """Use this class to generate dynamic digital patterns"""
+    """Use this class to generate dynamic digital patterns"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
 
     def initialize(self, channel_expression: str):
         """Initializes a dynamic digital pattern generation sequence
 
         Args:
             channel_expression (str): The channel to generate on
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         # self.task.stop()
 
         if self.is_task_initialized:
@@ -85,7 +87,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
         Args:
             parameters (DynamicDigitalPatternTimingParameters): A valid instance
                 of DynamicDigitalPatternTimingParameters
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
@@ -106,7 +108,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
         Args:
             parameters (DynamicDigitalStartTriggerParameters): A valid instance of
                 DynamicDigitalStartTriggerParameters
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(parameters, nameof(parameters))
@@ -127,7 +129,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
 
         Returns:
             float: The total generation time
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (102 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(pulse_signal, nameof(pulse_signal))
@@ -161,7 +163,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
 
         Returns:
             An instance of DynamicDigitalPatternGenerationData
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         self.task.stop()
         self.configure_timing(configuration.timing_parameters)
@@ -174,7 +176,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
         return data_out
 
     def close(self):
-        """_summary_"""
+        """_summary_"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (134 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
         self.task.wait_until_done()

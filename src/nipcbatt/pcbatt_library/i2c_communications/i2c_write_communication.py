@@ -26,7 +26,7 @@ from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
 
 
 class I2cWriteCommunication(BuildingBlockUsingNi845xI2cDevice):
-    """Defines a way that allows you to perform a write operation to I2C device,"""
+    """Defines a way that allows you to perform a write operation to I2C device,"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
 
     def initialize(self, device_name: str):
         """Initializes the communication with the specific NI 845x device.
@@ -53,7 +53,7 @@ class I2cWriteCommunication(BuildingBlockUsingNi845xI2cDevice):
             configuration (I2cWriteCommunicationConfiguration):
                 An instance of `I2cWriteCommunicationConfiguration`,
                 encapsulating parameters used to configure communication.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         # Configuration of the device for I2C communications.
         self.configure_device_for_i2c_communications(parameters=configuration.device_parameters)

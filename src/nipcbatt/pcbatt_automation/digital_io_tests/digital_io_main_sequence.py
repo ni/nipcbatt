@@ -1,15 +1,23 @@
-"""Main sequence for executing Digital IO Test"""
+"""Main sequence for executing Digital IO Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105, C0413
 
 # import functions
-from nipcbatt.pcbatt_automation.digital_io_tests.digital_clock_test import digital_clock_test
+from nipcbatt.pcbatt_automation.digital_io_tests.digital_clock_test import (
+    digital_clock_test,
+)
 from nipcbatt.pcbatt_automation.digital_io_tests.digital_count_events_sw_timed import (
     digital_count_events_sw_timed_test,
 )
-from nipcbatt.pcbatt_automation.digital_io_tests.digital_pattern_test import digital_pattern_test
-from nipcbatt.pcbatt_automation.digital_io_tests.digital_pwm_test import digital_pwm_test
-from nipcbatt.pcbatt_automation.digital_io_tests.digital_state_test import digital_state_test
+from nipcbatt.pcbatt_automation.digital_io_tests.digital_pattern_test import (
+    digital_pattern_test,
+)
+from nipcbatt.pcbatt_automation.digital_io_tests.digital_pwm_test import (
+    digital_pwm_test,
+)
+from nipcbatt.pcbatt_automation.digital_io_tests.digital_state_test import (
+    digital_state_test,
+)
 from nipcbatt.pcbatt_automation.digital_io_tests.turn_off_all_do_channels import (
     power_down_all_do_channels,
 )

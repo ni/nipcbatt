@@ -1,4 +1,4 @@
-""" I2C read communication data types """
+""" I2C read communication data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (152 > 100 characters) (auto-generated noqa)
 
 import numpy
 from varname import nameof
@@ -37,7 +37,7 @@ class I2cReadParameters(PCBATestToolkitData):
                 Raised when
                 `number_of_bytes_to_read` is negative or equal to zero,
                 `memory_address_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_zero(number_of_bytes_to_read, nameof(number_of_bytes_to_read))
         Guard.is_not_none(memory_address_parameters, nameof(memory_address_parameters))
 
@@ -52,7 +52,7 @@ class I2cReadParameters(PCBATestToolkitData):
     @property
     def memory_address_parameters(self) -> MemoryAddressParameters:
         """Gets an instance of `MemoryAddressParameters` that specifies
-        the format of memory address."""
+        the format of memory address."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (333 > 100 characters) (auto-generated noqa)
         return self._memory_address_parameters
 
 
@@ -85,7 +85,7 @@ class I2cReadCommunicationConfiguration(PCBATestToolkitData):
                 `device_parameters` is None,
                 `communication_parameters` is None,
                 `communication_read_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(device_parameters, nameof(device_parameters))
         Guard.is_not_none(communication_parameters, nameof(communication_parameters))
         Guard.is_not_none(read_parameters, nameof(read_parameters))
@@ -97,19 +97,19 @@ class I2cReadCommunicationConfiguration(PCBATestToolkitData):
     @property
     def device_parameters(self) -> I2cDeviceParameters:
         """Gets an instance of `I2cDeviceParameters` that represents
-        the parameters used for settings of I2C device for communications."""
+        the parameters used for settings of I2C device for communications."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (370 > 100 characters) (auto-generated noqa)
         return self._device_parameters
 
     @property
     def communication_parameters(self) -> I2cCommunicationParameters:
         """Gets an instance of `I2cCommunicationParameters` that represents
-        the parameters used for settings of I2C communication."""
+        the parameters used for settings of I2C communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (358 > 100 characters) (auto-generated noqa)
         return self._communication_parameters
 
     @property
     def read_parameters(self) -> I2cReadParameters:
         """Gets an instance of `I2cReadParameters` that represents
-        the parameters used for settings of I2C Read communication."""
+        the parameters used for settings of I2C Read communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
         return self._read_parameters
 
 
@@ -127,7 +127,7 @@ class I2cReadCommunicationData(PCBATestToolkitData):
         Raises:
             ValueError:
                 Raised when `data_bytes_read` is None or empty,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(data_bytes_read, nameof(data_bytes_read))
         Guard.is_not_empty(data_bytes_read, nameof(data_bytes_read))
 
@@ -141,7 +141,7 @@ class I2cReadCommunicationData(PCBATestToolkitData):
 
         Returns:
             bool: True if equals to `value_to_compare`.
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return numpy.allclose(self._data_bytes_read, value_to_compare._data_bytes_read)
 

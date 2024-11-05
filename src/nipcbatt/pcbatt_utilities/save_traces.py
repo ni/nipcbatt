@@ -1,14 +1,16 @@
 """
 Save environment config, inputs and outputs from pcbatt
-"""
+"""  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (203 > 100 characters) (auto-generated noqa)
+
+import inspect
 import os
+import struct
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Union
-import sys
-import inspect
+
 import pkg_resources
-import struct
 
 import nipcbatt
 from nipcbatt.pcbatt_utilities.csv_utilities import export_signal_to_csv_file
@@ -48,7 +50,7 @@ def save_traces(
         result_data (Any ResultData, optional): Result data from nipcbatt. Defaults to None.
         sampling_rate (int, optional): sampling rate. Defaults to 10000.
         unit (str, optional): unit use for the waveforms. Defaults to 'Amplitude'.
-    """
+    """  # noqa: D202, D205, D212, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (372 > 100 characters) (auto-generated noqa)
 
     # Retrieve the caller path
     stack = inspect.stack()

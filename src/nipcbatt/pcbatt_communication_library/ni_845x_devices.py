@@ -14,7 +14,7 @@ class Ni845xDevicesHandler:
     """Defines methods used to handle NI-845x devices."""
 
     def __init__(self) -> None:
-        """Default initialization of new `Ni845xI2cDevicesHandler` object"""
+        """Default initialization of new `Ni845xI2cDevicesHandler` object"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (187 > 100 characters) (auto-generated noqa)
         self._devices_handler = None
 
     def is_initialized(self) -> bool:
@@ -22,7 +22,7 @@ class Ni845xDevicesHandler:
 
         Returns:
             bool: _description_
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         return self._devices_handler is not None
 
     def open(self, device_name: str):
@@ -116,7 +116,7 @@ class Ni845xDevicesHandler:
                 Raised when
                 the method `open` was nor called before or
                 an error occured while calling `ni845xSetTimeout` function from `ni845x.dll`
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self._devices_handler is None:
             raise PCBATTLibraryException(
                 PCBATTCommunicationExceptionMessages.OPEN_METHOD_MUST_BE_CALLED_FIRST

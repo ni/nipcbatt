@@ -1,4 +1,4 @@
-"""Holds common types of the package nipcbatt.pcbatt_analysis"""
+"""Holds common types of the package nipcbatt.pcbatt_analysis"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
 
 import math
 from enum import IntEnum
@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class SpectrumPhaseUnit(IntEnum):
-    """Defines all supported phase units of `fft spectrum processing`"""
+    """Defines all supported phase units of `fft spectrum processing`"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
 
     RADIAN = 0
     "Default unit, radian"
@@ -21,7 +21,7 @@ class SpectrumPhaseUnit(IntEnum):
 
 
 class SpectrumAmplitudeType(IntEnum):
-    """Defines all supported amplitude kinds of `fft spectrum processing`"""
+    """Defines all supported amplitude kinds of `fft spectrum processing`"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (187 > 100 characters) (auto-generated noqa)
 
     PEAK = 0
     """`Peak` amplitude, ie, sqrt(2) * magnitude spectrum"""
@@ -31,7 +31,7 @@ class SpectrumAmplitudeType(IntEnum):
 
 class AmplitudePhaseSpectrum(AnalysisLibraryElement):
     """Defines Amplitude and phase spectrum processing results,
-    amplitude can be `PEAK` or `RMS`"""
+    amplitude can be `PEAK` or `RMS`"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (332 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -59,7 +59,7 @@ class AmplitudePhaseSpectrum(AnalysisLibraryElement):
             `frequencies_phases` are none or empty.
             occurs when `f0` is less than zero, `df` is less or equal zero.
             occurs when `frequencies_amplitudes` and `frequencies_phases` have not same size.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         Guard.is_greater_than_or_equal_to_zero(f0, nameof(f0))
         Guard.is_greater_than_zero(df, nameof(df))
@@ -159,7 +159,7 @@ class AmplitudePhaseSpectrum(AnalysisLibraryElement):
             SpectrumAmplitudeType:
             `RMS`, spectrum amplitudes are RMS amplitude ie complexe magnitude,
             `PEAK` spectrum amplitudes are PEAK amplitude ie sqrt(2) * RMS amplitude
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         return self._spectrum_amplitude_type
 
     @property
@@ -211,10 +211,10 @@ class WaveformTone(AnalysisLibraryElement):
 
     @property
     def phase_radians(self) -> float:
-        """Gets waveform tone phase expressed in radian"""
+        """Gets waveform tone phase expressed in radian"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)
         return self._phase_radians
 
     @property
     def phase_degrees(self) -> float:
-        """Gets waveform tone phase expressed in degree"""
+        """Gets waveform tone phase expressed in degree"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)
         return math.degrees(self.phase_radians)

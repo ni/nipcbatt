@@ -26,7 +26,7 @@ from nipcbatt.pcbatt_library.temperature_measurements.temperature_data_types imp
 
 @dataclasses.dataclass
 class ConstantsForTemperatureMeasurement:
-    """Constants used for Temperature measurements"""
+    """Constants used for Temperature measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
 
     INITIAL_TEMPERATURE_MINIMUM_VALUE_CELSIUS_DEGREES = 0.0
     INITIAL_TEMPERATURE_MAXIMUM_VALUE_CELSIUS_DEGREES = 100.0
@@ -49,7 +49,7 @@ class ConstantsForTemperatureMeasurement:
 
 @dataclasses.dataclass
 class ConstantsForTemperatureMeasurementUsingRtd:
-    """Constants used for Temperature measurement using RTD"""
+    """Constants used for Temperature measurement using RTD"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
     INITIAL_CURRENT_EXCITATION_VALUE_AMPERES = 0.0025
     INITIAL_SENSOR_RESISTANCE_OHMS = 100.0
@@ -70,7 +70,7 @@ class ConstantsForTemperatureMeasurementUsingRtd:
 
 @dataclasses.dataclass
 class ConstantsForTemperatureMeasurementUsingThermistor:
-    """Constants used for Temperature measurement using Thermistor"""
+    """Constants used for Temperature measurement using Thermistor"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
 
     INITIAL_VOLTAGE_EXCITATION_VALUE_VOLTS = 2.5
     INITIAL_THERMISTOR_RESISTANCE_CONFIGURATION = (
@@ -102,7 +102,7 @@ class ConstantsForTemperatureMeasurementUsingThermistor:
 
 @dataclasses.dataclass
 class ConstantsForTemperatureMeasurementUsingThermocouple:
-    """Constants used for Temperature measurement using Thermocouple"""
+    """Constants used for Temperature measurement using Thermocouple"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (182 > 100 characters) (auto-generated noqa)
 
     DEFAULT_TEMPERATURE_MINIMUM_VALUE_CELSIUS_DEGREES = 0.0
     DEFAULT_TEMPERATURE_MAXIMUM_VALUE_CELSIUS_DEGREES = 100.0

@@ -5,7 +5,7 @@ measurement libraries and can be built off of for a custom sequencer.
 
 Limits suggested will return a FAIL test with DAQ simulation and they need to be changed 
 to match your physical hardware.
-"""
+"""  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (101 > 100 characters) (auto-generated noqa)
 
 from animation_and_sound_user_input_test import AnimationAndSoundUserInputTest
 from audio_filter_test import AudioFilterTest
@@ -16,14 +16,14 @@ from turn_off_all_ao_channels import TurnOffAllAOChannels
 
 
 class MainSequence:
-    """Sequence for testing different systems"""
+    """Sequence for testing different systems"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
-    def __init__(self) -> None:
+    def __init__(self) -> None:  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.main()
         self.cleanup()
 
     def main(self) -> None:
-        """Main method"""
+        """Main method"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (136 > 100 characters) (auto-generated noqa)
         try:
             print("\n\n------Power Diagnostics------\n")
             PowerDiagnostics()
@@ -40,7 +40,7 @@ class MainSequence:
             print(e)
 
     def cleanup(self) -> None:
-        """turn everything off"""
+        """turn everything off"""  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (233 > 100 characters) (auto-generated noqa)
         t = TurnOffAllAOChannels()
         t.cleanup()
 

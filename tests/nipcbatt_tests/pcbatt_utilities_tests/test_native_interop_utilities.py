@@ -1,5 +1,5 @@
 """This module provides check of functions in 
-nipcbatt.pcbatt_library_code.ni_845x_i2c_spi_communications.ni_845x_helper_functions package"""
+nipcbatt.pcbatt_library_code.ni_845x_i2c_spi_communications.ni_845x_helper_functions package"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (388 > 100 characters) (auto-generated noqa)
 
 import importlib.metadata
 import logging
@@ -20,7 +20,7 @@ class TestCreateNativeStdCallWinFunction(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestCreateNativeStdCallWinFunction(unittest.TestCase):
     def test_create_native_stdcall_win_function_fails_if_dll_path(
         self, test_name: str, dll_path: str
     ):
-        """unit test of _create_native_stdcall_win_function."""
+        """unit test of _create_native_stdcall_win_function."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         logging.debug("Running with %s", test_name)
         # Arrange
 
@@ -69,7 +69,7 @@ class TestCreateNativeStdCallWinFunction(unittest.TestCase):
     def test_create_native_stdcall_win_function_fails_if_function_name_is_invalid(
         self, test_name: str, function_name: str
     ):
-        """unit test of _create_native_stdcall_win_function."""
+        """unit test of _create_native_stdcall_win_function."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         logging.debug("Running with %s", test_name)
         # Arrange
 
@@ -89,7 +89,7 @@ class TestCreateNativeStdCallWinFunction(unittest.TestCase):
         )
 
     def test_create_native_stdcall_win_function_fails_if_library_not_exist(self):
-        """unit test of _create_native_stdcall_win_function."""
+        """unit test of _create_native_stdcall_win_function."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -108,7 +108,7 @@ class TestCreateNativeStdCallWinFunction(unittest.TestCase):
         )
 
     def test_create_native_stdcall_win_function_fails_if_function_not_found(self):
-        """unit test of _create_native_stdcall_win_function."""
+        """unit test of _create_native_stdcall_win_function."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act

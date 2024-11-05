@@ -1,5 +1,5 @@
 """This module provides unit tests for functions defined in
-nipcbatt.pcbatt_communication_library._ni_845x_internal._ni_845x_functions module."""
+nipcbatt.pcbatt_communication_library._ni_845x_internal._ni_845x_functions module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (378 > 100 characters) (auto-generated noqa)
 
 import importlib.metadata
 import logging
@@ -39,7 +39,7 @@ class TestInvokeNi845xFunction(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -63,7 +63,7 @@ class TestInvokeNi845xFunction(unittest.TestCase):
 
     @parameterized.expand([("is_none", None), ("is_empty", ""), ("is_whitespace", " ")])
     def test_invoke_ni_845x_function_fails_if_function_name(self, test_name, function_name):
-        """unit test of _get_function_from_native_library."""
+        """unit test of _get_function_from_native_library."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         logging.debug("running test_invoke_ni_845x_function_fails_if_function_name_%s", test_name)
         # Arrange
 
@@ -80,7 +80,7 @@ class TestInvokeNi845xFunction(unittest.TestCase):
         )
 
     def test_invoke_ni_845x_function_fails_if_function_name_does_not_exist(self):
-        """unit test of _get_function_from_native_library."""
+        """unit test of _get_function_from_native_library."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -102,7 +102,7 @@ class TestI2cConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -129,7 +129,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_i2c_configuration_open_should_not_fail(self):
-        """unit test of ni_845x_i2c_configuration_open."""
+        """unit test of ni_845x_i2c_configuration_open."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (156 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -147,7 +147,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_spi_configuration_open_should_not_fail(self):
-        """unit test of ni_845x_spi_configuration_open."""
+        """unit test of ni_845x_spi_configuration_open."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (156 > 100 characters) (auto-generated noqa)
         # Arrange
 
         # Act
@@ -165,7 +165,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_i2c_configuration_set_address_should_not_fail(self):
-        """unit test of ni_845x_i2c_configuration_set_address."""
+        """unit test of ni_845x_i2c_configuration_set_address."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_address = int(random() * 65535)
 
@@ -190,7 +190,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_i2c_configuration_set_clock_rate_should_not_fail(self):
-        """unit test of ni_845x_i2c_configuration_set_clock_rate."""
+        """unit test of ni_845x_i2c_configuration_set_clock_rate."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (166 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_clock_rate = int(random() * 500)
 
@@ -215,7 +215,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_i2c_configuration_set_addressing_type_should_not_fail(self):
-        """unit test of ni_845x_i2c_configuration_set_addressing_type."""
+        """unit test of ni_845x_i2c_configuration_set_addressing_type."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_addressing_type = Ni845xI2cAddressingType.ADDRESSING_10_BIT
 
@@ -242,7 +242,7 @@ class TestI2cConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_i2c_configuration_set_ack_poll_timeout_should_not_fail(self):
-        """unit test of ni_845x_i2c_configuration_set_ack_poll_timeout."""
+        """unit test of ni_845x_i2c_configuration_set_ack_poll_timeout."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_ack_poll_timeout = int(random() * 20000)
 
@@ -271,7 +271,7 @@ class TestSpiConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -298,7 +298,7 @@ class TestSpiConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_spi_configuration_set_chip_select_should_not_fail(self):
-        """unit test of ni_845x_spi_configuration_set_chip_select."""
+        """unit test of ni_845x_spi_configuration_set_chip_select."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_chip_select = int(random() * 100)
 
@@ -323,7 +323,7 @@ class TestSpiConfiguration(unittest.TestCase):
         "The execution of test is skipped because Ni-845x driver is not installed.",
     )
     def test_ni_845x_spi_configuration_set_clock_rate_should_not_fail(self):
-        """unit test of ni_845x_spi_configuration_set_clock_rate."""
+        """unit test of ni_845x_spi_configuration_set_clock_rate."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (166 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_clock_rate = int(random() * 20000)
 
@@ -362,7 +362,7 @@ class TestSpiConfiguration(unittest.TestCase):
     def test_ni_845x_spi_configuration_set_clock_phase_should_not_fail(
         self, test_name: str, clock_phase: SpiConfigurationClockPhase
     ):
-        """unit test of ni_845x_spi_configuration_set_clock_phase."""
+        """unit test of ni_845x_spi_configuration_set_clock_phase."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
         logging.debug("Running with %s", test_name)
         # Arrange
         expected_clock_phase = clock_phase
@@ -402,7 +402,7 @@ class TestSpiConfiguration(unittest.TestCase):
     def test_ni_845x_spi_configuration_set_clock_polarity_should_not_fail(
         self, test_name: str, clock_polarity: SpiConfigurationClockPolarity
     ):
-        """unit test of ni_845x_spi_configuration_set_clock_polarity."""
+        """unit test of ni_845x_spi_configuration_set_clock_polarity."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (170 > 100 characters) (auto-generated noqa)
         logging.debug("Running with %s", test_name)
         # Arrange
         expected_clock_polarity = clock_polarity
@@ -432,7 +432,7 @@ class TestConvertMemoryAddressToDataBytesArray(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -522,7 +522,7 @@ class TestConvertMemoryAddressToDataBytesArray(unittest.TestCase):
         address_endianness: DataMemoryAddressEndianness,
         expected_bytes_array: List[int],
     ):
-        """unit test of convert_memory_address_to_data_bytes_array."""
+        """unit test of convert_memory_address_to_data_bytes_array."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (245 > 100 characters) (auto-generated noqa)
 
         logging.debug("running %s.", test_case_name)
 

@@ -1,1 +1,1 @@
-"""Provides a set of unit tests for nipcbatt.pcbatt_library.digital_edge_count_measurements package"""
+"""Provides a set of unit tests for nipcbatt.pcbatt_library.digital_edge_count_measurements package"""  # noqa: W505, D415 - doc line too long (102 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)

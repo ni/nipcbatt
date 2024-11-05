@@ -24,7 +24,7 @@ from nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_data_typ
 
 @dataclasses.dataclass
 class ConstantsForDcRmsCurrentMeasurement:
-    """Constants used for Current measurement"""
+    """Constants used for Current measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
     INITIAL_AI_TERMINAL_CONFIGURATION = nidaqmx.constants.TerminalConfiguration.DEFAULT
     INITIAL_CURRENT_RANGE_MINIMUM_AMPERES = -0.01

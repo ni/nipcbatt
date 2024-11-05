@@ -5,7 +5,7 @@ import logging
 import sys
 import unittest
 
-import nidaqmx.constants
+import nidaqmx.constants  # noqa: F401 - 'nidaqmx.constants' imported but unused (auto-generated noqa)
 import numpy as np
 from varname import nameof
 
@@ -15,7 +15,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternGeneration,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (
+from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types.DynamicDigitalPatternGenerationData' imported but unused (auto-generated noqa)
     DynamicDigitalPatternGenerationConfiguration,
     DynamicDigitalPatternGenerationData,
     DynamicDigitalStartTriggerParameters,
@@ -35,7 +35,7 @@ class TestDynamicDigitalPatternGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -58,7 +58,7 @@ class TestDynamicDigitalPatternGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dynamic_digital_pattern_generation(self):
-        """Checks if class DynamicDigitalPatternGeneration is ready to use"""
+        """Checks if class DynamicDigitalPatternGeneration is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (265 > 100 characters) (auto-generated noqa)
 
         clock_source = CLOCK_SOURCE
         num_samples = 100
