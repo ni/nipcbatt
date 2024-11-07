@@ -11,6 +11,7 @@ on:
 env:
       PYTHON_VERSION: 3.9
       POETRY_VERSION: 1.8.4
+      ARCHITECTURE: 'x64'
       
 jobs:
   checks:
@@ -23,6 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
+          architecture: ${{ env.ARCHITECTURE }}
           python-version: ${{ env.PYTHON_VERSION }}
 
       - uses: Gr1N/setup-poetry@v9
@@ -57,6 +59,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
+          architecture: ${{ env.ARCHITECTURE }}
           python-version: ${{ matrix.python-version }}
 
       - uses: Gr1N/setup-poetry@v9
