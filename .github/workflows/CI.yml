@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+  workflow_call:
+  workflow_dispatch:
+
+env:
+      PYTHON_VERSION: 3.9  # Use latest
+      POETRY_VERSION: 1.8.4
+      
+jobs:
+  checks:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - uses: Gr1N/setup-poetry@v9
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+      # @TODO: This is a workaround for there not being a way to check the lock file
+      #   See: https://github.com/python-poetry/poetry/issues/453
+      - name: Check for lock changes
+        run: |
+          poetry lock --check
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Install the Package
+        run: poetry install -vvv
+      - name: Run the formattor
+        run: poetry run black --check --diff .
+      - name: Lint the Code
+        run: poetry run ni-python-styleguide lint
+
+  tests:
+    runs-on: ${{ matrix.os }}
+    needs: checks  # Run tests only if linting passes
+    strategy:
+      matrix:
+        os: [windows-latest]
+        python-version: [3.9, 3.10, 3.11, 3.12]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - uses: Gr1N/setup-poetry@v9
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Install the Package
+        run: poetry install
+      - name: Run tests
+        run: poetry run pytest -v
+
+  build:
+    runs-on: windows-latest
+    needs: tests  # Trigger build only after tests pass
+
+    steps:
+      - name: Trigger Build Workflow
+        uses: ./.github/workflows/build.yml
+        with:
+          ref: ${{ github.ref }}  # Trigger build on the same branch or tag

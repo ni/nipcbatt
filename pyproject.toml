@@ -7,7 +7,8 @@ authors = ["NI <opensource@ni.com>"]
 maintainers = ["John Meeker <john.meeker@emerson.com>", "Emmanuel ROSET <emmanuel.roset@emerson.com>", "Srinivasan J <srinivasan.j@emerson.com>", "Aditya Saxena <adityasaxena@emerson.com>"]
 include = ["docs", "requirements.txt", "requirements_for_packaging.txt"]
 readme = "README.rst"
-keywords = ["nipcbatt", "pcbatt", "pcba"]
+repository = "https://github.com/ni/nipcbatt"
+keywords = ["nipcbatt", "pcbatt", "pcba", "pcb"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
