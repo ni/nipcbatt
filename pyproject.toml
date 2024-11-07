@@ -21,9 +21,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 exclude = [
-	"tests/nipcbatt_tests/pcbatt_library_integration_tests",
-	"tests/nipcbatt_tests/pcbatt_library_tests",
-    # "tests/nipcbatt_tests/pcbatt_analysis_tests"
+    "tests/nipcbatt_tests",
+	# "tests/nipcbatt_tests/pcbatt_library_integration_tests",
+	# "tests/nipcbatt_tests/pcbatt_library_tests",
 ]
 packages = [{ include = "nipcbatt", from = "src" }]
 

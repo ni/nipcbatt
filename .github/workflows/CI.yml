@@ -12,7 +12,7 @@ env:
       PYTHON_VERSION: 3.9
       POETRY_VERSION: 1.8.4
       ARCHITECTURE: 'x64'
-      
+
 jobs:
   checks:
     runs-on: windows-latest
@@ -74,8 +74,15 @@ jobs:
       - name: Install the Package
         run: poetry install
       - name: Run tests
-        run: poetry run pytest -v
-
+        # run: poetry run pytest -v
+        run: pytest tests --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
   build:
     runs-on: windows-latest
     needs: tests  # Trigger build only after tests pass
