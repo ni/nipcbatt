@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-      PYTHON_VERSION: 3.9  # Use latest
+      PYTHON_VERSION: 3.9
       POETRY_VERSION: 1.8.4
       
 jobs:
@@ -50,7 +50,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        python-version: [3.9, 3.10, 3.11, 3.12]
+        python-version: [3.9, '3.10', 3.11, 3.12]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -60,7 +60,7 @@ jobs:
       - uses: Gr1N/setup-poetry@v9
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
