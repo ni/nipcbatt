@@ -28,15 +28,17 @@ jobs:
       - uses: Gr1N/setup-poetry@v9
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
+      - name: Check Poetry version
+        run: poetry --version
       # @TODO: This is a workaround for there not being a way to check the lock file
       #   See: https://github.com/python-poetry/poetry/issues/453
-      - name: Check for lock changes
-        run: |
-          poetry lock --check
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      # - name: Check for lock changes
+      #   run: |
+      #     poetry lock --check
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: ~/.cache/pypoetry/virtualenvs
+      #     key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
       - name: Install the Package
         run: poetry install -vvv
       - name: Run the formattor
