@@ -14,7 +14,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "Intended Audience :: Manufacturing",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: Microsoft :: Windows",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -23,7 +22,8 @@ classifiers = [
 ]
 exclude = [
 	"tests/nipcbatt_tests/pcbatt_library_integration_tests",
-	"tests/nipcbatt_tests/pcbatt_library_tests"
+	"tests/nipcbatt_tests/pcbatt_library_tests",
+    # "tests/nipcbatt_tests/pcbatt_analysis_tests"
 ]
 packages = [{ include = "nipcbatt", from = "src" }]
 

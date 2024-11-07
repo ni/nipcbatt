@@ -62,10 +62,12 @@ jobs:
       - uses: Gr1N/setup-poetry@v9
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      # - uses: actions/cache@v4
+      #   with:
+      #     path: ~/.cache/pypoetry/virtualenvs
+      #     key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Check Poetry version
+        run: poetry --version
       - name: Install the Package
         run: poetry install
       - name: Run tests
