@@ -83,6 +83,7 @@ jobs:
       #     path: junit/test-results-${{ matrix.python-version }}.xml
       #   # Use always() to always run this step to publish test results when there are test failures
       #   if: ${{ always() }}
+      
   build:
     runs-on: windows-latest
     needs: tests  # Trigger build only after tests pass
@@ -90,5 +91,3 @@ jobs:
     steps:
       - name: Trigger Build Workflow
         uses: ./.github/workflows/build.yml
-        with:
-          ref: ${{ github.ref }}  # Trigger build on the same branch or tag

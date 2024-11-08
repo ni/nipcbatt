@@ -2,10 +2,6 @@ name: Build
 
 on:
   workflow_call:
-  workflow_run:
-    workflows: ["CI"]  # Trigger build after CI Workflow completes successfully
-    types:
-      - completed
   workflow_dispatch:  # Manual trigger
 
 env:
