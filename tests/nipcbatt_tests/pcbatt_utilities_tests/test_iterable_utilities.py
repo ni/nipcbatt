@@ -1,4 +1,4 @@
-"""Provides unit tests related to iterable_utilities.py module"""
+"""Provides unit tests related to iterable_utilities.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (176 > 100 characters) (auto-generated noqa)
 
 import logging
 import platform
@@ -14,7 +14,7 @@ class TestIterableUtilities(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -36,11 +36,11 @@ class TestIterableUtilities(unittest.TestCase):
         print("Teardown fixture")
 
     def test_count_invalid_input(self):
-        """Unit test of iterable_utilities.count"""
+        """Unit test of iterable_utilities.count"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         self.assertRaises(ValueError, lambda: iterable_utilities.count(None))
 
     def test_count(self):
-        """Unit test of iterable_utilities.count"""
+        """Unit test of iterable_utilities.count"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (162 > 100 characters) (auto-generated noqa)
         self.assertEqual(first=0, second=iterable_utilities.count([])[0])
         self.assertEqual(first=1, second=iterable_utilities.count([1])[0])
         self.assertEqual(first=2, second=iterable_utilities.count([1, "aa"])[0])

@@ -23,7 +23,7 @@ def create_command_for_i2c_communications(
 
     Returns:
         numpy.ndarray[numpy.ubyte]: The array of bytes representing the command.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     return numpy.array(
         _ni_845x_functions.convert_memory_address_to_data_bytes_array(
             address_parameters.memory_address,
@@ -49,7 +49,7 @@ def create_command_for_spi_read_communication(
 
     Returns:
         numpy.ndarray[numpy.ubyte]: The array of bytes representing the command.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     return numpy.array(
         _ni_845x_functions.create_command_for_spi_read_communication_impl(
             memory_address=address_parameters.memory_address,
@@ -76,7 +76,7 @@ def create_command_for_spi_write_communication(
 
     Returns:
         numpy.ndarray[numpy.ubyte]: The array of bytes representing the instruction.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     return numpy.array(
         _ni_845x_functions.create_command_for_spi_write_communication_impl(
             address_parameters.memory_address,
@@ -107,7 +107,7 @@ def compute_pages_characteristics(
         List[MemoryPageCharacteristics]:
             A list of `MemoryPageCharacteristics` representing
             the zone of memory pages where data will be written.
-    """
+    """  # noqa: D411 - Missing blank line before section (auto-generated noqa)
     pages_characteristics = []
 
     current_page_address = data_memory_start_address

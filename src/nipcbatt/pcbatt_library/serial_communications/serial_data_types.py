@@ -1,4 +1,4 @@
-""" Serial communication data types """
+""" Serial communication data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (150 > 100 characters) (auto-generated noqa)
 
 import pyvisa.constants
 from varname import nameof
@@ -47,7 +47,7 @@ class SerialCommunicationParameters(PCBATestToolkitData):
                 `data_rate_bauds` is negative or equal to zero,
                 `number_of_bits_in_data_frame` is lower than 4 or greater than 8,
                 `delay_before_receive_response_milliseconds` is negative or equal to zero.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_zero(data_rate_bauds, nameof(data_rate_bauds))
         Guard.is_within_limits_included(
             number_of_bits_in_data_frame,
@@ -77,31 +77,31 @@ class SerialCommunicationParameters(PCBATestToolkitData):
     @property
     def number_of_bits_in_data_frame(self) -> int:
         """Gets the number of data bits contained in each frame
-        (4, 5, 6, 7, or 8)."""
+        (4, 5, 6, 7, or 8)."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (323 > 100 characters) (auto-generated noqa)
         return self._number_of_bits_in_data_frame
 
     @property
     def delay_before_receive_response_milliseconds(self) -> int:
         """Gets the delay time that occurs after the send of command
-        and before the reception of response."""
+        and before the reception of response."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (341 > 100 characters) (auto-generated noqa)
         return self._delay_before_receive_response_milliseconds
 
     @property
     def parity(self) -> pyvisa.constants.Parity:
         """Gets the `pyvisa.constants.Parity` value representing
-        the parity used with every frame transmitted and received."""
+        the parity used with every frame transmitted and received."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (362 > 100 characters) (auto-generated noqa)
         return self._parity
 
     @property
     def stop_bits(self) -> pyvisa.constants.StopBits:
         """Gets the `pyvisa.constants.StopBits` value representing
-        the number of stop bits used to indicate the end of a frame."""
+        the number of stop bits used to indicate the end of a frame."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (364 > 100 characters) (auto-generated noqa)
         return self._stop_bits
 
     @property
     def flow_control(self) -> pyvisa.constants.ControlFlow:
         """Gets the `pyvisa.constants.ControlFlow` value representing
-        the flow control mechanism(s) used by the serial communication."""
+        the flow control mechanism(s) used by the serial communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (367 > 100 characters) (auto-generated noqa)
         return self._flow_control
 
 
@@ -128,7 +128,7 @@ class SerialCommunicationConfiguration(PCBATestToolkitData):
                 Raised when
                 `communication_parameters` is None,
                 `command_to_send` is None or empty or whitespace.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(communication_parameters, nameof(communication_parameters))
         Guard.is_not_none_nor_empty_nor_whitespace(command_to_send, nameof(command_to_send))
 
@@ -138,7 +138,7 @@ class SerialCommunicationConfiguration(PCBATestToolkitData):
     @property
     def communication_parameters(self) -> SerialCommunicationParameters:
         """Gets the instance of `SerialCommunicationParameters`
-        that represents the parameters used for settings of serial communication."""
+        that represents the parameters used for settings of serial communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (377 > 100 characters) (auto-generated noqa)
         return self._communication_parameters
 
     @property
@@ -162,7 +162,7 @@ class SerialCommunicationData(PCBATestToolkitData):
             ValueError:
                 Raised when
                 `received_response` is None or empty or whitespace.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none_nor_empty_nor_whitespace(received_response, nameof(received_response))
 
         self._received_response = received_response

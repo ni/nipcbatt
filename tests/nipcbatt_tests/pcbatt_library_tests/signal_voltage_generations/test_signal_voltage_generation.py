@@ -22,7 +22,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_signal_voltage_generation_sine_wave(self):
-        """Checks if class `SignalVoltageGeneration` is ready for use"""
+        """Checks if class `SignalVoltageGeneration` is ready for use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (260 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         # Test for Sine wave generation
@@ -59,7 +59,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
         generation.close()
 
     def test_signal_voltage_generation_square_wave(self):
-        """Checks if class `SignalVoltageGeneration` is ready for use for square wave generation"""
+        """Checks if class `SignalVoltageGeneration` is ready for use for square wave generation"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         # Test for Square wave generation
@@ -73,7 +73,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
 
     def test_signal_voltage_generation_multiple_tones_wave(self):
         """Checks if class `SignalVoltageGeneration` is ready for use
-        for Multiple-tones generation"""
+        for Multiple-tones generation"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (410 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         # Test for multi-tone sine wave generation

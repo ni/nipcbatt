@@ -1,1 +1,1 @@
-"""Provides a set of waveform transformation modules using python written functions"""
+"""Provides a set of waveform transformation modules using python written functions"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (197 > 100 characters) (auto-generated noqa)

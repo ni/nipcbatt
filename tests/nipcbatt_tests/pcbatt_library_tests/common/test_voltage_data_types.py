@@ -18,7 +18,7 @@ class TestVoltageRangeAndTerminalParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -66,7 +66,7 @@ class TestVoltageMeasurementChannelAndTerminalRangeParameters(unittest.TestCase)
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -122,7 +122,7 @@ class TestVoltageGenerationChannelParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -157,7 +157,7 @@ class TestVoltageGenerationChannelParameters(unittest.TestCase):
         self.assertEqual(expected_range_max_volts, instance.range_max_volts)
 
     def test_voltage_generation_channel_parameters_with_invalid_inputs(self):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (285 > 100 characters) (auto-generated noqa)
 
         # Test if Valus error is raised when range Max = Min value
         self.assertRaises(

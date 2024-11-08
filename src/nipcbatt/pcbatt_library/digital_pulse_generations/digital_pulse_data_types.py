@@ -1,4 +1,4 @@
-""" Digital pulse data types """
+""" Digital pulse data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (143 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 from varname import nameof
@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DigitalPulseGenerationCounterChannelParameters(PCBATestToolkitData):
-    """Defines the counter channel parameters used for digital pulse generation"""
+    """Defines the counter channel parameters used for digital pulse generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (193 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -25,7 +25,7 @@ class DigitalPulseGenerationCounterChannelParameters(PCBATestToolkitData):
             pulse_idle_state (Constant state): The intended idle state of the generation
             low_time_seconds (float): The intended duration of the low time of the pulse
             high_time_seconds (float): The intended duration of the high time of the pulse
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(pulse_idle_state, nameof(pulse_idle_state))
@@ -47,32 +47,32 @@ class DigitalPulseGenerationCounterChannelParameters(PCBATestToolkitData):
     def pulse_idle_state(self) -> nidaqmx.constants.Level:
         """
         :type:'nidaqmx.constants.Level': The idle state of the pulse generation
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._pulse_idle_state
 
     @property
     def low_time_seconds(self) -> float:
         """
         :type:float: The low time of the pulse
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._low_time_seconds
 
     @property
     def high_time_seconds(self) -> float:
         """
         :type:float: The high time of the pulse
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._high_time_seconds
 
 
 class DigitalPulseGenerationTimingParameters(PCBATestToolkitData):
-    """Defines the pulses count used in digital pulse generation"""
+    """Defines the pulses count used in digital pulse generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (178 > 100 characters) (auto-generated noqa)
 
     def __init__(self, pulses_count: int) -> None:
         """Creates an instance of DigitalPulseGenerationTimingParameters
 
         Args: pulses_count (int): The number of pulses to generate
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(pulses_count, nameof(pulses_count))
@@ -86,12 +86,12 @@ class DigitalPulseGenerationTimingParameters(PCBATestToolkitData):
     def pulses_count(self) -> int:
         """
         :type:int: Gets the number of pulses to generate
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._pulses_count
 
 
 class DigitalPulseGenerationConfiguration(PCBATestToolkitData):
-    """Defines a configuration for digital pulse generation"""
+    """Defines a configuration for digital pulse generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -105,7 +105,7 @@ class DigitalPulseGenerationConfiguration(PCBATestToolkitData):
                 An valid instance of DigitalPulseGenerationCounterChannelParameters
             timing_parameters:
                 An valid instance of DigitalPulseGenerationTimingParameters
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(counter_channel_parameters, nameof(counter_channel_parameters))
@@ -122,7 +122,7 @@ class DigitalPulseGenerationConfiguration(PCBATestToolkitData):
         """
         :type:DigitalPulseGenerationCounterChannelParameters: The instance of
             DigitalPulseGenerationCounterChannelParameters used for digital pulse generation
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._counter_channel_parameters
 
     @property
@@ -130,12 +130,12 @@ class DigitalPulseGenerationConfiguration(PCBATestToolkitData):
         """
         :type:DigitalPulseGenerationTimingParameters: The instance of
             DigitalPulseGenerationTimingParameters used for digital pulse generation
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
 
 class DigitalPulseGenerationData(PCBATestToolkitData):
-    """Returns the values actually written to the hardware"""
+    """Returns the values actually written to the hardware"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -144,7 +144,7 @@ class DigitalPulseGenerationData(PCBATestToolkitData):
         actual_pulse_low_time_seconds: float,
         actual_pulse_high_time_seconds: float,
     ) -> None:
-        """Creates an instance of DigitalPulseGenerationData"""
+        """Creates an instance of DigitalPulseGenerationData"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (251 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(timebase_frequency_hertz, nameof(timebase_frequency_hertz))
@@ -188,26 +188,26 @@ class DigitalPulseGenerationData(PCBATestToolkitData):
     def timebase_frequency_hertz(self) -> float:
         """
         :type:float: The timebase frequecy used to generate the pulse(s)
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._timebase_frequency_hertz
 
     @property
     def actual_pulse_train_duration_seconds(self) -> float:
         """
         :type:float: The actual pulse train duration written to the hardware
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._actual_pulse_train_duration_seconds
 
     @property
     def actual_pulse_low_time_seconds(self) -> float:
         """
         :type:float: The actual pulse low time written to the hardware
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._actual_pulse_low_time_seconds
 
     @property
     def actual_pulse_high_time_seconds(self) -> float:
         """
         :type:float: The actual pulse high time written to the hardware
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._actual_pulse_high_time_seconds

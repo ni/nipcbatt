@@ -8,7 +8,9 @@ import unittest
 import numpy as np
 
 # import numpy as np
-from varname import nameof
+from varname import (  # noqa: I202 - Additional newline in a group of imports. 'from varname import nameof' is identified as Third Party and 'import numpy' is identified as Third Party. (auto-generated noqa)
+    nameof,
+)
 
 from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
     ConstantsForDigitalPwmMeasurement,
@@ -27,7 +29,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
        measurement are ready to use.
 
     Args:
-        unittest.testCase: Parent class of the unittest framework"""
+        unittest.testCase: Parent class of the unittest framework"""  # noqa: D205, D209, D414, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Section has no content (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (413 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -51,7 +53,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_range_parameters(self):
         """Tests if an instance of DigitalPwmMeasurementRangeParameters is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (337 > 100 characters) (auto-generated noqa)
         ex_min_value_seconds = 0.005
         ex_max_value_seconds = 0.5
 
@@ -64,7 +66,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_range_parameters_invalid_input(self):
         """Ensures an instance of DigitalPwmMeasurementRangeParameters is
-        not created when given invalid values"""
+        not created when given invalid values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         min_val_seconds = 0.0
         max_value_seconds = 1.0
@@ -109,7 +111,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_timing_parameters(self):
         """Tests if an instance of DigitalPwmMeasurementTimingParameters is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (414 > 100 characters) (auto-generated noqa)
 
         cycles_count = 42
         instance = DigitalPwmMeasurementTimingParameters(cycles_count)
@@ -119,7 +121,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_timing_parameters_invalid_input(self):
         """Ensures an instance of DigitalPwmMeasurementTimingParameters is
-        not created when given invalid values"""
+        not created when given invalid values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         cycles_count = -0.1
         self.assertRaises(ValueError, lambda: DigitalPwmMeasurementTimingParameters(cycles_count))
@@ -132,7 +134,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_counter_channel_parameters(self):
         """Tests if an instance of DigitalPwmMeasurementCounterChannelParameters is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (414 > 100 characters) (auto-generated noqa)
 
         range_params = DigitalPwmMeasurementRangeParameters(1.0, 10.0)
         timing = DigitalPwmMeasurementTimingParameters(10.0)
@@ -147,7 +149,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_counter_channel_parameters_invalid_data(self):
         """Ensures an instance of DigitalPwmMeasurementCounterChannelParameters is
-        not created when given invalid values"""
+        not created when given invalid values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         range_params = None
         timing = DigitalPwmMeasurementTimingParameters(10.0)
@@ -178,7 +180,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_data(self):
         """Tests if an instance of DigitalPwmMeasurementData is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (414 > 100 characters) (auto-generated noqa)
 
         data = np.array([1, 2, 3, 4, 5])
         instance = DigitalPwmMeasurementData(data)
@@ -188,7 +190,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_data_invalid_input(self):
         """Ensures an instance of DigitalPwmMeasurementCounterChannelParameters is
-        not created when given invalid values"""
+        not created when given invalid values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         data = None
         self.assertRaises(ValueError, lambda: DigitalPwmMeasurementData(data))
@@ -198,7 +200,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_result_data(self):
         """Tests if an instance of DigitalPwmMeasurementResultData is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (414 > 100 characters) (auto-generated noqa)
 
         actual_cycles_count = 10
         duty_cycle = 0.5
@@ -226,7 +228,7 @@ class TestDigitalPwmMeasurementDataTypes(unittest.TestCase):
 
     def test_dpwmm_result_data_invalid_input(self):
         """Tests if an instance of DigitalPwmMeasurementResultData is
-        created when given correct values"""
+        created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (414 > 100 characters) (auto-generated noqa)
 
         actual_cycles_count = None
         duty_cycle = 0.5

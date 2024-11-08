@@ -2,7 +2,7 @@
 # remove it when arguments of initialize are used.
 """Defines class used for power supply source and measurement of voltage, current and power."""
 
-import time
+import time  # noqa: F401 - 'time' imported but unused (auto-generated noqa)
 
 import nidaqmx.constants
 import nidaqmx.stream_readers
@@ -37,7 +37,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): _description_
-    """
+    """  # noqa: W505 - doc line too long (132 > 100 characters) (auto-generated noqa)
 
     def initialize(self, power_channel_name: str):
         """Initializes the Power source and measurement with the specific channel
@@ -45,7 +45,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
         Args:
             power_channel_name (str): Expression representing the name of a physical channel,
             or a global channel or the name of registered settings in DAQ System.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -63,7 +63,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
         )
 
     def close(self):
-        """Closes the measurement process and releases the internal resources"""
+        """Closes the measurement process and releases the internal resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (191 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
         # Stop and close the daqmx task
@@ -84,7 +84,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
         Returns:
             _type_: An instance of `PowerSupplySourceAndMeasureResultData
             ` or `None` if no measure was performed.
-        """
+        """  # noqa: D202, D212, W505 - No blank lines allowed after function docstring (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (186 > 100 characters) (auto-generated noqa)
 
         if configuration.measurement_options.execution_option in (
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -114,7 +114,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
             parameters (PowerSupplySourceAndMeasureTerminalParameters):
             An instance of `PowerSupplySourceAndMeasureTerminalParameters`
             used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         for channel in self.task.ai_channels:
             channel.pwr_voltage_setpoint = parameters.voltage_setpoint_volts
             channel.pwr_current_setpoint = parameters.current_setpoint_amperes
@@ -129,7 +129,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
             parameters (SampleClockTimingParameters):
             An instance of `SampleClockTimingParameters`
             used to configure the timing.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         self.task.timing.cfg_samp_clk_timing(
             rate=parameters.sampling_rate_hertz,
@@ -154,7 +154,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters`
             used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         self.task.stop()
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.task.triggers.start_trigger.disable_start_trig()
@@ -171,7 +171,7 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
         Returns:
             PowerSupplySourceAndMeasureData: An instance of `PowerSupplySourceAndMeasureData`
             that contains array of voltage and current samples acquired from DAQ channels.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         number_of_samples_per_channel_to_read = self.task.timing.samp_quant_samp_per_chan
         # Create pre-allocated numpy array to read the voltage samples from the daqmx buffer.
         voltage_data_to_read = numpy.zeros(

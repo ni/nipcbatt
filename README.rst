@@ -26,8 +26,10 @@ resources on any platform.
 Documentation
 -------------
 
-Download and extract the source distribution archive from `downloads <https://pypi.org/project/nipcbatt/#files>`_ section. Refer to the Python PCB Assembly Test Toolkit User Manual present in the location *"\\nipcbatt-1.x\\src\\docs\\Python PCB Assembly Test Toolkit - User Manual.pdf"* from 
-the downloaded source code archive for an overview of Toolkit concepts, and measurement fundamentals.
+Refer to the `Python PCB Assembly Test Toolkit - Getting Started <https://github.com/ni/nipcbatt/blob/main/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20Getting%20Started.pdf>`_ guide for
+getting started steps including installation and setup procedures, and steps to run example test sequences. 
+Refer to the `User Manual <https://github.com/ni/nipcbatt/blob/main/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20User%20Manual.pdf>`_ for an overview of Toolkit concepts and measurement 
+fundamentals, including a brief overview of each library and automation sequences.
 
 Supported Features
 ------------------

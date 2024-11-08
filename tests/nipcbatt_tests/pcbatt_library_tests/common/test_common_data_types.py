@@ -20,7 +20,7 @@ class TestMeasurementOptions(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -69,7 +69,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -95,7 +95,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""
+        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_number_of_samples_per_channel = 1500
         expected_sample_timing_engine = nipcbatt.SampleTimingEngine.TE1
@@ -119,7 +119,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""
+        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_number_of_samples_per_channel = 1500
         expected_sample_timing_engine = nipcbatt.SampleTimingEngine.TE1
@@ -143,7 +143,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""
+        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_number_of_samples_per_channel = 1500
         expected_sample_timing_engine = nipcbatt.SampleTimingEngine.TE1
@@ -167,7 +167,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
         self,
     ):
         """Unit test of
-        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""
+        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         expected_sample_clock_source = "OnboardClock"
         expected_number_of_samples_per_channel = 1500
         expected_sample_timing_engine = nipcbatt.SampleTimingEngine.TE1
@@ -189,7 +189,7 @@ class TestSampleClockTimingParameters(unittest.TestCase):
 
     def test_sample_clock_timing_parameters(self):
         """Unit test of
-        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""
+        nipcbatt.pcbatt_library.common.common_data_types.SampleClockTimingParameters."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (381 > 100 characters) (auto-generated noqa)
         expected_sample_clock_source = "OnboardClock"
         expected_sampling_rate_hertz = 10000
         expected_number_of_samples_per_channel = 1500
@@ -223,7 +223,7 @@ class TestDigitalStartTriggerParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -250,7 +250,7 @@ class TestDigitalStartTriggerParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_trigger_select = nipcbatt.StartTriggerType.NO_TRIGGER
         expected_digital_start_trigger_source = ""
         expected_digital_start_trigger_edge = nidaqmx.constants.Edge.FALLING
@@ -271,7 +271,7 @@ class TestDigitalStartTriggerParameters(unittest.TestCase):
     def test_digital_start_trigger_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_trigger_select = nipcbatt.StartTriggerType.DIGITAL_TRIGGER
         expected_digital_start_trigger_source = "trigger_source"
         expected_digital_start_trigger_edge = nidaqmx.constants.Edge.FALLING
@@ -296,7 +296,7 @@ class TestMeasurementData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -397,7 +397,7 @@ class TestAnalogWaveform(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -595,7 +595,7 @@ class TestAmplitudeSpectrum(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass

@@ -6,8 +6,8 @@ import sys
 import unittest
 
 import nidaqmx.constants
-import nidaqmx.stream_writers
-import numpy as np
+import nidaqmx.stream_writers  # noqa: F401 - 'nidaqmx.stream_writers' imported but unused (auto-generated noqa)
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
@@ -34,7 +34,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
     Args:
         unittest (_type_): _description_
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -58,7 +58,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
     def test_integration_digital_pulse_generation_channel_expression_empty(self):
         """Integration test ensuring that if channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -68,7 +68,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
     def test_integration_digital_pulse_generation_channel_expression_is_none(self):
         """Integration test ensuring that if channel expression is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -79,7 +79,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
     def test_integration_digital_pulse_generation_terminal_empty(self):
         """Integration test ensuring that if input terminal
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -90,7 +90,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
     def test_integration_digital_pulse_generation_terminal_is_none(self):
         """Integration test ensuring that if input terminal
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
@@ -101,7 +101,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
     def test_integration_digital_pulse_generation_configure_and_generate(self):
         """Integration test of Digital Pulse Generation that ensures an instance
         of DigitalPulseGeneration is successfully executed when configure
-        and measure is performed"""
+        and measure is performed"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (405 > 100 characters) (auto-generated noqa)
 
         t_low = 0.1
         t_high = 0.1
@@ -123,7 +123,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         """Integration test of Digital Pulse Generation that ensures
         a DigitalPulseGeneration instantiation fails if given a negative
         value for any parameter
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         t_low = -0.1
         t_high = 0.1
@@ -182,7 +182,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
     def test_integration_digital_pulse_generation_no_idle_state_defined(self):
         """Integration test of Digital Pulse Generation that ensures an instance
         of DigitalPulseGeneration is successfully executed when the user does not
-        define an idle state with otherwise valid data"""
+        define an idle state with otherwise valid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (427 > 100 characters) (auto-generated noqa)
 
         t_low = 0.1
         t_high = 0.1

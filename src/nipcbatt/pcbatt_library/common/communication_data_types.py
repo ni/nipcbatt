@@ -12,7 +12,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 class MemoryAddressParameters(PCBATestToolkitData):
     """Defines the settings used to specify data
-    memory address format in communication device."""
+    memory address format in communication device."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (346 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -30,7 +30,7 @@ class MemoryAddressParameters(PCBATestToolkitData):
                 The type of address in device memory.
             address_endianness (DataMemoryAddressEndianness):
                 The address endianness.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._memory_address = memory_address
         self._address_type = address_type
         self._address_endianness = address_endianness
@@ -54,7 +54,7 @@ class MemoryAddressParameters(PCBATestToolkitData):
 class MemoryPageCharacteristics(PCBATestToolkitData):
     """Characteristics of a page in the device memory.
     A page is a sub-collection of the data bytes
-    starting at specific index in the data collection and a specific length."""
+    starting at specific index in the data collection and a specific length."""  # noqa: D205, D209, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), doc line too long (270 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -79,7 +79,7 @@ class MemoryPageCharacteristics(PCBATestToolkitData):
                 `index_in_data_bytes_array` is negative,
                 `number_of_bytes_in_page` is negative or equal to zero,
                 `data_memory_address` is negative.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_or_equal_to_zero(
             index_in_data_bytes_array, nameof(index_in_data_bytes_array)
         )

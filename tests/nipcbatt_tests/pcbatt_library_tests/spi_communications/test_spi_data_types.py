@@ -16,7 +16,7 @@ class TestSpiDeviceParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -41,7 +41,7 @@ class TestSpiDeviceParameters(unittest.TestCase):
     def test_spi_device_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_data_types.SpiDeviceParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_voltage_level = nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_25
 
         instance = nipcbatt.SpiDeviceParameters(
@@ -61,7 +61,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -88,7 +88,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_data_types.SpiCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_chip_select = 50
         expected_clock_rate_kilohertz = 0
 
@@ -112,7 +112,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_data_types.SpiCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_chip_select = 50
         expected_clock_rate_kilohertz = -100
 
@@ -134,7 +134,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
     def test_spi_communication_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_data_types.SpiCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_chip_select = 50
         expected_clock_rate_kilohertz = 100
         expected_clock_phase = nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE

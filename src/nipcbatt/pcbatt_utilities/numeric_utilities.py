@@ -17,7 +17,7 @@ def from_percent_to_decimal_ratio(percent: float) -> float:
 
     Raises:
         ValueError: Occurs when input percent is less than zero.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     Guard.is_greater_than_or_equal_to_zero(percent, nameof(percent))
     return percent / 100
 
@@ -60,7 +60,7 @@ def invert_value(value: float):
         float: for example 0.5 -> 2
     Raises:
         ValueError: Occurs when input value equals zero.
-    """
+    """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
     Guard.is_greater_than_zero(value, nameof(value))
     return 1 / value

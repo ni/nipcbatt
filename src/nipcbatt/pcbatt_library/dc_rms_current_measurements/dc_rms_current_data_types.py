@@ -1,4 +1,4 @@
-""" DC-RMS current data types """
+""" DC-RMS current data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (144 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -16,7 +16,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DcRmsCurrentMeasurementTerminalRangeParameters(PCBATestToolkitData):
-    """Defines the parameters used to configure terminal of all channels for DC-RMS Current measurement"""
+    """Defines the parameters used to configure terminal of all channels for DC-RMS Current measurement"""  # noqa: W505, D415 - doc line too long (106 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # The minimum value of shunt resitor value that Daqmx allows is 100e-9
     MINIMUM_ALLOWED_SHUNT_RESISTOR_VALUE_OHMS = 100e-9
@@ -45,7 +45,7 @@ class DcRmsCurrentMeasurementTerminalRangeParameters(PCBATestToolkitData):
                     the value of `terminal_configuration` is set to None,
                     when `range_min_amperes` is greater or equal to `range_max_amperes`,
                     when `shunt_resistor_ohms` value is less than 'MINIMUM_ALLOWED_SHUNT_RESISTOR_VALUE_OHMS'.
-        """
+        """  # noqa: W505 - doc line too long (108 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(terminal_configuration, nameof(terminal_configuration))
         Guard.is_greater_than(
             value=range_max_amperes,
@@ -68,28 +68,28 @@ class DcRmsCurrentMeasurementTerminalRangeParameters(PCBATestToolkitData):
         """
         :class:`nidaqmx.constants.TerminalConfiguration`:
             Gets the input terminal configuration parameter.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._terminal_configuration
 
     @property
     def range_min_amperes(self) -> float:
         """
         :type:`float`: Gets the minimum value expected for the measurement on the channel.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._range_min_amperes
 
     @property
     def range_max_amperes(self) -> float:
         """
         :type:`float`: Gets the maximum value expected for the measurement on the channel.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._range_max_amperes
 
     @property
     def shunt_resistor_ohms(self) -> float:
         """
         :type:`float`: Gets the value in ohms of an external shunt resistor.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._shunt_resistor_ohms
 
 
@@ -115,7 +115,7 @@ class DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(PCBATestToolkitDa
             ValueError when,
                     the value of `channel_name` is set to None or empty or whitespace,
                     when `channel_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none_nor_empty_nor_whitespace(channel_name, nameof(channel_name))
         Guard.is_not_none(channel_parameters, nameof(channel_parameters))
 
@@ -126,7 +126,7 @@ class DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(PCBATestToolkitDa
     def channel_name(self) -> str:
         """
         :type:`str`: Gets the name of the channel to configure.
-        """
+        """  # noqa: D212, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         return self._channel_name
 
     @property
@@ -135,7 +135,7 @@ class DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(PCBATestToolkitDa
         :class:`DcRmsCurrentMeasurementTerminalRangeParameters`:
             Gets an instance of `DcRmsCurrentMeasurementTerminalRangeParameters` that specifies
             the parameters used to configure the channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._channel_parameters
 
 
@@ -177,7 +177,7 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
                 `measurement_options` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None,
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (127 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
@@ -203,7 +203,7 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
     ) -> DcRmsCurrentMeasurementTerminalRangeParameters:
         """
         :class:`DcRmsCurrentMeasurementTerminalRangeParameters`:
-            Gets the settings of terminal for all channels."""
+            Gets the settings of terminal for all channels."""  # noqa: D205, D209, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (444 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -214,7 +214,7 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[DcRmsCurrentMeasurementChannelAndTerminalRangeParameters]`:
             Gets the list of instances of
             `DcRmsCurrentMeasurementChannelAndTerminalRangeParameters` used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -223,7 +223,7 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
         :class:`MeasurementOptions`:
             Gets a `MeasurementOptions` instance
             that represents the settings of options used for execution.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -232,7 +232,7 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -241,12 +241,12 @@ class DcRmsCurrentMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
 class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
-    """Defines the result values computed during analysis procedure for DC-RMS Current measurement."""
+    """Defines the result values computed during analysis procedure for DC-RMS Current measurement."""  # noqa: W505 - doc line too long (102 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -275,7 +275,7 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
                 `rms_values_amperes` contains objects that are not `float'.
             ValueError when,
                 `waveforms` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
         Guard.all_elements_are_of_same_type(input_list=dc_values_amperes, expected_type=float)
@@ -292,7 +292,7 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
         :class:`List[AnalogWaveform]`:
             Gets the list of waveforms acquired from channels defined
             for measurement and used to compute DC-RMS current.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveforms
 
     @property
@@ -300,7 +300,7 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
         """
         :type:`float`:
             Gets the duration of acquisition of samples for each configured channel.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._acquisition_duration_seconds
 
     @property
@@ -308,7 +308,7 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
             Gets the list of DC current computed for all configured channels, expressed in amperes.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._dc_values_amperes
 
     @property
@@ -316,5 +316,5 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
             Gets the list of RMS current computed for all configured channels, expressed in amperes.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._rms_values_amperes

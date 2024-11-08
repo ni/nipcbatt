@@ -1,5 +1,5 @@
 """This module provides DigitalEdgeCountMeasurementUsingSoftwareTimer
-   and DigitalEdgeCountMeasurementUsingHardwareTimer check."""
+   and DigitalEdgeCountMeasurementUsingHardwareTimer check."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (355 > 100 characters) (auto-generated noqa)
 
 import importlib.metadata
 import logging
@@ -14,10 +14,10 @@ import nipcbatt
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DigitalStartTriggerParameters,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (
+from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants.ConstantsForDigitalEdgeCountMeasurement' imported but unused (auto-generated noqa)
     ConstantsForDigitalEdgeCountMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (
+from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData' imported but unused (auto-generated noqa)
     DigitalEdgeCountHardwareTimerConfiguration,
     DigitalEdgeCountMeasurementCounterChannelParameters,
     DigitalEdgeCountMeasurementResultData,
@@ -45,7 +45,7 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: W505, D205, D415 - doc line too long (103 > 100 characters) (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -69,7 +69,7 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         print("Teardown fixture")
 
     def test_digital_edge_count_measurement_using_hardware_timer(self):
-        """Checks if class 'DigitalEdgeCountMeasurementUsingHardwareTimer' is ready for use"""
+        """Checks if class 'DigitalEdgeCountMeasurementUsingHardwareTimer' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
         meas = DigitalEdgeCountMeasurementUsingHardwareTimer()
         meas.initialize(
             measurement_channel_expression="TS1_Core/ctr1",
@@ -100,7 +100,7 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         meas.close()
 
     def test_digital_edge_count_measurement_using_software_timer(self):
-        """Checks if class 'DigitalEdgeCountMeasurementUsingSoftwareTimer' is ready for use"""
+        """Checks if class 'DigitalEdgeCountMeasurementUsingSoftwareTimer' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
         meas = DigitalEdgeCountMeasurementUsingSoftwareTimer()
         meas.initialize(
             measurement_channel_expression="TS1_Core/ctr1",

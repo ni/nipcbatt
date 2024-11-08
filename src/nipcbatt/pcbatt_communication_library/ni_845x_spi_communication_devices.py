@@ -20,7 +20,7 @@ class Ni845xSpiDevicesHandler(Ni845xDevicesHandler):
     """Defines handler on SPI devices."""
 
     def __init__(self) -> None:
-        """Default initialization of new `Ni845xSpiDevicesHandler` object"""
+        """Default initialization of new `Ni845xSpiDevicesHandler` object"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (187 > 100 characters) (auto-generated noqa)
         super().__init__()
         self._configuration_handle = _ni_845x_functions.ni_845x_spi_configuration_open_impl()
 
@@ -95,7 +95,7 @@ class Ni845xSpiConfiguration:
 
         Args:
             configuration_handle (int): The configuration handle.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._configuration_handle = configuration_handle
 
     @property

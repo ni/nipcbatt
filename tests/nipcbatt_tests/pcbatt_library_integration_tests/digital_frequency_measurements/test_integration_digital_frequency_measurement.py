@@ -7,7 +7,7 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_constants import (
+from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_constants.ConstantsForDigitalFrequencyMeasurement' imported but unused (auto-generated noqa)
     ConstantsForDigitalFrequencyMeasurement,
 )
 from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_data_types import (
@@ -31,7 +31,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class of the unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -58,7 +58,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     ):
         """Integration test ensuring that is channel expression
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalFrequencyMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -69,7 +69,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     def test_integration_digital_frequency_measurement_channel_expression_is_none(self):
         """Integration test ensuring that is channel expression
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalFrequencyMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -80,7 +80,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     def test_integration_digital_frequency_measurement_input_terminal_is_empty(self):
         """Integration test ensuring that is input terminal
         is empty then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalFrequencyMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -94,7 +94,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     def test_integration_digital_frequency_measurement_input_terminal_is_none(self):
         """Integration test ensuring that is input terminal
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DigitalFrequencyMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -111,7 +111,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
         """Integration test of Digital Frequency Measurement that ensures
         a DigitalFrequencyMeasurement is successfully configured
         when given the necessary inputs
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = 1.0
         max_frequency = 10000000.0
@@ -132,7 +132,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
         """Integration test of Digital Frequency Measurement that ensures
         a DigitalFrequencyMeasurementResultData is successfully returned
         when given the necessary inputs
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = 1.0
         max_frequency = 10000000.0
@@ -159,7 +159,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     ):
         """Integration test of Digital Frequency Measurement that ensures
         an error is thrown when a negative minimum frequency is used
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = -0.1
         max_frequency = 10000000.0
@@ -174,7 +174,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
                 )
 
                 range_parameters = DigitalFrequencyRangeParameters(min_frequency, max_frequency)
-                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(
+                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(  # noqa: F841 - local variable 'counter_channel_parameters' is assigned to but never used (auto-generated noqa)
                     range_parameters, input_divisor, measurement_duration
                 )
 
@@ -183,7 +183,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     ):
         """Integration test of Digital Frequency Measurement that ensures
         an error is thrown when 0 is used for the input divisor
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = -0.1
         max_frequency = 10000000.0
@@ -198,7 +198,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
                 )
 
                 range_parameters = DigitalFrequencyRangeParameters(min_frequency, max_frequency)
-                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(
+                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(  # noqa: F841 - local variable 'counter_channel_parameters' is assigned to but never used (auto-generated noqa)
                     range_parameters, input_divisor, measurement_duration
                 )
 
@@ -207,7 +207,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
     ):
         """Integration test of Digital Frequency Measurement that ensures
         an error is thrown when 0 is used for the measurement duration
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = 1.0
         max_frequency = 10000000.0
@@ -222,7 +222,7 @@ class TestIntegrationDigitalFrequencyMeasurement(unittest.TestCase):
                 )
 
                 range_parameters = DigitalFrequencyRangeParameters(min_frequency, max_frequency)
-                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(
+                counter_channel_parameters = DigitalFrequencyMeasurementCounterChannelParameters(  # noqa: F841 - local variable 'counter_channel_parameters' is assigned to but never used (auto-generated noqa)
                     range_parameters, input_divisor, measurement_duration
                 )
 

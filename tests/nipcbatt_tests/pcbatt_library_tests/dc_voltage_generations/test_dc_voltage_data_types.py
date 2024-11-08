@@ -16,7 +16,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -39,7 +39,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dc_voltage_generation_configuration(self):
-        """Tests if the instance of `DcVoltageGenerationConfiguration` is created as expected"""
+        """Tests if the instance of `DcVoltageGenerationConfiguration` is created as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (207 > 100 characters) (auto-generated noqa)
         expected_range_min_volts = -5.0
         expected_range_max_volts = 5.0
         expected_output_voltages = [1.2, 2.8, 3.2]
@@ -64,7 +64,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
 
     def test_dc_voltage_generation_configuration_with_empty_channel_parameters(self):
         """Tests if the Value error is raised when tried to create an
-        instance of `DcVoltageGenerationConfiguration` with empty channel parameters"""
+        instance of `DcVoltageGenerationConfiguration` with empty channel parameters"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (380 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: nipcbatt.DcVoltageGenerationConfiguration(
@@ -76,7 +76,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
     def test_dc_voltage_generation_configuration_with_empty_output_voltages(self):
         """Tests if the Value error is raised when tried to create an
         instance of `DcVoltageGenerationConfiguration` with empty output_voltages array
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: nipcbatt.DcVoltageGenerationConfiguration(

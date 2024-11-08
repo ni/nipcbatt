@@ -26,7 +26,7 @@ from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value
 
 class TemperatureMeasurementUsingThermistor(TemperatureMeasurement):
     """Defines a way that allows you to perform Temperature measurements
-    using Thermistor on PCB points."""
+    using Thermistor on PCB points."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (331 > 100 characters) (auto-generated noqa)
 
     def initialize(self, channel_expression: str):
         """Initializes the measurement with the specific channels
@@ -34,7 +34,7 @@ class TemperatureMeasurementUsingThermistor(TemperatureMeasurement):
             channel_expression (str):
                 Expression representing the name of a physical channel,
                 or a global channel in DAQ System.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -84,7 +84,7 @@ class TemperatureMeasurementUsingThermistor(TemperatureMeasurement):
             TemperatureMeasurementResultData | None:
             An instance of `TemperatureMeasurementResultData`
             or `None` if no measure was performed.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if configuration.measurement_execution_type in (
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -111,7 +111,7 @@ class TemperatureMeasurementUsingThermistor(TemperatureMeasurement):
             parameters (TemperatureThermistorRangeAndTerminalParameters):
             An instance of `TemperatureThermistorRangeAndTerminalParameters`
             used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         for channel in self.task.ai_channels:
             channel.ai_min = parameters.temperature_minimum_value_celsius_degrees
             channel.ai_max = parameters.temperature_maximum_value_celsius_degrees
@@ -140,7 +140,7 @@ class TemperatureMeasurementUsingThermistor(TemperatureMeasurement):
 
         Similarly, if the user provides Physical channel name in Initialize(),
         then he/she has to provide the Physical channel name in Specific channel parameters.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         stainhart_hart_coefficients = self._compute_steinhart_hart_coefficients_from_parameters(
             parameters.channel_parameters
         )

@@ -1,4 +1,4 @@
-""" SPI communication data types """
+""" SPI communication data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (147 > 100 characters) (auto-generated noqa)
 
 from varname import nameof
 
@@ -23,7 +23,7 @@ class SpiDeviceParameters(PCBATestToolkitData):
                 The `Ni845xVoltageLevel` value
                 representing the voltage level of signal
                 sent or received during SPI communications.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._voltage_level = voltage_level
 
     @property
@@ -62,7 +62,7 @@ class SpiCommunicationParameters(PCBATestToolkitData):
                 Raised when
                 `chip_select` is negative,
                 `clock_rate_kilohertz` is negative or equal to zero,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_zero(clock_rate_kilohertz, nameof(clock_rate_kilohertz))
 
         self._chip_select = chip_select
@@ -83,11 +83,11 @@ class SpiCommunicationParameters(PCBATestToolkitData):
     @property
     def clock_phase(self) -> SpiConfigurationClockPhase:
         """Gets the SpiConfigurationClockPhase value representing
-        the clock phase value for SPI configuration."""
+        the clock phase value for SPI configuration."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (348 > 100 characters) (auto-generated noqa)
         return self._clock_phase
 
     @property
     def clock_polarity(self) -> SpiConfigurationClockPolarity:
         """Gets the SpiConfigurationClockPhase value representing
-        the clock polarity value for SPI configuration."""
+        the clock polarity value for SPI configuration."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (351 > 100 characters) (auto-generated noqa)
         return self._clock_polarity

@@ -21,7 +21,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     Args:
         unittest.testCase: Parent class of the unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -45,7 +45,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_timing_parameters(self):
         """Tests if an instance of DigitalClockGenerationTimingParameters is
-        created with specific values"""
+        created with specific values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (409 > 100 characters) (auto-generated noqa)
 
         expected_duration = 1.0
         instance = DigitalClockGenerationTimingParameters(expected_duration)
@@ -55,7 +55,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_timing_parameters_with_invalid_data(self):
         """Tests if an instance of DigitalClockGenerationTimingParameters throws
-        an error if given invalid data"""
+        an error if given invalid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         expected_duration = 0.0
 
@@ -68,7 +68,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_counter_channel_parameters(self):
         """Tests if an instance of DigitalClockGenerationCounterChannelParameters
-        is produced with specfic values"""
+        is produced with specfic values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (412 > 100 characters) (auto-generated noqa)
 
         expected_frequency = 1000.0
         expected_duty_cycle = 0.95
@@ -84,7 +84,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         self,
     ):
         """Tests if an attempted instance of DigitalClockGenerationCounterChannelParameters
-        throws an error when given incorrect values"""
+        throws an error when given incorrect values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (424 > 100 characters) (auto-generated noqa)
 
         frequency = -0.1  # frequency can't be less than 0
         duty_cycle = 0.5
@@ -112,7 +112,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_configuration(self):
         """Tests if an instance of DigitalClockGenerationConfiguration is
-        successfully created when given the proper arugments"""
+        successfully created when given the proper arugments"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (433 > 100 characters) (auto-generated noqa)
 
         freq = 100.0
         duty_cycle = 0.5
@@ -138,7 +138,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_configuration_with_invalid_data(self):
         """Tests if instantiaion of DigitalClockGenerationConfiguration fails
-        when given invalid data"""
+        when given invalid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (404 > 100 characters) (auto-generated noqa)
 
         freq = 100.0
         duty_cycle = 0.5
@@ -168,7 +168,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_data(self):
         """Test if an instance of DigitalClockGenerationData is created
-        successfully when given the proper values"""
+        successfully when given the proper values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         expected_timebase_freq = 1000.0
         expected_actual_clock_freq = 100.0
@@ -189,7 +189,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
     def test_digital_clock_generation_with_invalid_data(self):
         """Ensures that the attempted creation of an instance of
-        DigitalClockGenerationData with invalid data throws an error"""
+        DigitalClockGenerationData with invalid data throws an error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (441 > 100 characters) (auto-generated noqa)
 
         expected_timebase_freq = -1
         expected_actual_clock_freq = 100.0

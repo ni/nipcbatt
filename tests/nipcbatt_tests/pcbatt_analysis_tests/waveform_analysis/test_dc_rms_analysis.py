@@ -25,7 +25,7 @@ class TestDcRmsProcessingResult(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -47,7 +47,7 @@ class TestDcRmsProcessingResult(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dc_rms_processing_result(self):
-        """Test of pcbatt_analysis.dc_rms_analysis.DcRmsProcessingResults class constructor"""
+        """Test of pcbatt_analysis.dc_rms_analysis.DcRmsProcessingResults class constructor"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (282 > 100 characters) (auto-generated noqa)
 
         # Arrange + Act
         dc_rms_results_1 = DcRmsProcessingResult(0, 0)
@@ -97,14 +97,14 @@ class TestLabViewBasicDcRms(unittest.TestCase):
     @functional_utilities.repeat(10)
     def test_get_last_error_message_returns_empty_string(self):
         """Test of pcbatt_analysis.dc_rms_analysis.LabViewDcRms
-        get_last_error_message method when there is no error"""
+        get_last_error_message method when there is no error"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (356 > 100 characters) (auto-generated noqa)
         last_error_message = LabViewBasicDcRms.get_last_error_message()
         self.assertEqual("", last_error_message)
 
     @functional_utilities.repeat(10)
     def test_process_single_waveform_dc_rms_lsl_window(self):
         """Test of pcbatt_analysis.dc_rms_analysis.LabViewDcRms
-        process_single_waveform_dc_rms method using low side lobe window"""
+        process_single_waveform_dc_rms method using low side lobe window"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (445 > 100 characters) (auto-generated noqa)
 
         # Arrange
         tolerance_percent = 0.1
@@ -223,7 +223,7 @@ class TestLabViewBasicDcRms(unittest.TestCase):
     @functional_utilities.repeat(10)
     def test_process_single_waveform_dc_rms_hann_window(self):
         """Test of pcbatt_analysis.dc_rms_analysis.LabViewDcRms
-        process_single_waveform_dc_rms method using hann window"""
+        process_single_waveform_dc_rms method using hann window"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (436 > 100 characters) (auto-generated noqa)
 
         # Arrange
         tolerance_percent = 0.1
@@ -338,7 +338,7 @@ class TestLabViewBasicDcRms(unittest.TestCase):
     @functional_utilities.repeat(10)
     def test_process_single_waveform_dc_rms_rectangular_window(self):
         """Test of pcbatt_analysis.dc_rms_analysis.LabViewDcRms
-        process_single_waveform_dc_rms method using rectangular window"""
+        process_single_waveform_dc_rms method using rectangular window"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (443 > 100 characters) (auto-generated noqa)
 
         samples = numpy.array(range(1, 11), dtype=numpy.float64)
 

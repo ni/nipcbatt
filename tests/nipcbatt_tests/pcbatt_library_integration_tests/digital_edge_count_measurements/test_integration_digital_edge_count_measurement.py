@@ -1,5 +1,5 @@
 """This module provides test of integration of DigitalEdgeCountMeasurementUsingSoftwareTimer
-   and DigitalEdgeCountMeasurementUsingHardwareTimer."""
+   and DigitalEdgeCountMeasurementUsingHardwareTimer."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (349 > 100 characters) (auto-generated noqa)
 
 import importlib.metadata
 import logging
@@ -20,7 +20,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -47,7 +47,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -63,7 +63,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -79,7 +79,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if measurement_input_terminal_name is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -95,7 +95,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if measurement_input_terminal_name is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -111,7 +111,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if timer channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -127,7 +127,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -145,7 +145,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_hardware_timer.
         DigitalEdgeCountMeasurementUsingHardwareTimer with MeasurementExecutionType.CONFIGURE_ONLY
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
@@ -186,7 +186,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_hardware_timer.
         DigitalEdgeCountMeasurementUsingHardwareTimer with MeasurementExecutionType.CONFIGURE_AND_MEASURE
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
@@ -227,7 +227,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_hardware_timer.
         DigitalEdgeCountMeasurementUsingHardwareTimer with MeasurementExecutionType.CONFIGURE_ONLY
-        and MeasurementExecutionType.MEASURE_ONLY"""
+        and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
@@ -281,7 +281,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -296,7 +296,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -311,7 +311,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -326,7 +326,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test ensuring that if channel expression is None then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
@@ -343,7 +343,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_software_timer.
         DigitalEdgeCountMeasurementUsingSoftwareTimer with MeasurementExecutionType.CONFIGURE_ONLY
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(
@@ -379,7 +379,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_software_timer.
         DigitalEdgeCountMeasurementUsingSoftwareTimer with MeasurementExecutionType.CONFIGURE_AND_MEASURE
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(
@@ -413,7 +413,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.digital_edge_count_measurements.test_digital_edge_count_measurement_using_software_timer.
         DigitalEdgeCountMeasurementUsingSoftwareTimer with MeasurementExecutionType.CONFIGURE_ONLY
-        and MeasurementExecutionType.MEASURE_ONLY"""
+        and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(

@@ -1,4 +1,4 @@
-""" Digital Frequency Measurement data types """
+""" Digital Frequency Measurement data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
 from varname import nameof
 
@@ -7,7 +7,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class DigitalFrequencyRangeParameters(PCBATestToolkitData):
-    """Defines the values used to establish the frequency range"""
+    """Defines the values used to establish the frequency range"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self, frequency_minimum_value_hertz: float, frequency_maximum_value_hertz: float
@@ -24,7 +24,7 @@ class DigitalFrequencyRangeParameters(PCBATestToolkitData):
         Raises: ValueError when,
             1) The value of frequency_minimum_value_hertz is None or is <= 0
             2) The value of frequency_maximum_vlue_hertz is None or is <= 0
-        """
+        """  # noqa: D202, D205, D415, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(frequency_minimum_value_hertz, nameof(frequency_minimum_value_hertz))
@@ -52,19 +52,19 @@ class DigitalFrequencyRangeParameters(PCBATestToolkitData):
     def frequency_minimum_value_hertz(self) -> float:
         """
         :type:'float': Gets the minimum frquency in the range
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._frequency_minimum_value_hertz
 
     @property
     def frequency_maximum_value_hertz(self) -> float:
         """
         :type:'float': Gets the maximum frquency in the range
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._frequency_maximum_value_hertz
 
 
 class DigitalFrequencyMeasurementCounterChannelParameters(PCBATestToolkitData):
-    """Defines the values for frequency counter channels"""
+    """Defines the values for frequency counter channels"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (170 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -85,7 +85,7 @@ class DigitalFrequencyMeasurementCounterChannelParameters(PCBATestToolkitData):
             2) The value of frequency_maximum_value_hertz is None or <= 0
             3) The value of input_divisor_for_frequency_measurement is None or <= 4
             4) The value of measurement_duration_seconds is None or <= 0
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(range_parameters, nameof(range_parameters))
@@ -114,26 +114,26 @@ class DigitalFrequencyMeasurementCounterChannelParameters(PCBATestToolkitData):
     def range_parameters(self) -> DigitalFrequencyRangeParameters:
         """
         :type:'DigitalFrequencyRangeParameters': Holds the frequency range
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._range_parameters
 
     @property
     def input_divisor_for_frequency_measurement(self) -> int:
         """
         :type:'int': The divisor used for measuring frequency
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._input_divisor_for_frequency_measurement
 
     @property
     def measurement_duration_seconds(self) -> float:
         """
         :type:'float': The duration of the measurement in seconds
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._measurement_duration_seconds
 
 
 class DigitalFrequencyMeasurementConfiguration(PCBATestToolkitData):
-    """Defines the values used in the creation of a Digital Frequency Measurement"""
+    """Defines the values used in the creation of a Digital Frequency Measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (195 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -148,7 +148,7 @@ class DigitalFrequencyMeasurementConfiguration(PCBATestToolkitData):
 
         Raises: ValueError when,
             1) The value of configuration_parameters is None
-        """
+        """  # noqa: D202, D205, D415, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(
@@ -166,12 +166,12 @@ class DigitalFrequencyMeasurementConfiguration(PCBATestToolkitData):
         """
         :type:'DigitalFrequencyMeasurementCounterChannelParameters': Holds the
         configuration parameters used for this measurement
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._configuration_parameters
 
 
 class DigitalFrequencyMeasurementResultData:
-    """Defines the values inside a digital frequency result"""
+    """Defines the values inside a digital frequency result"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
     def __init__(self, frequency: float):
         """Instantiates a DigitalFrequencyMeasurementResultData object
@@ -182,7 +182,7 @@ class DigitalFrequencyMeasurementResultData:
 
         Raises:
             ValueError when the frequency is None or <= 0
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(frequency, nameof(frequency))
@@ -195,5 +195,5 @@ class DigitalFrequencyMeasurementResultData:
     def frequency(self) -> float:
         """
         :type:'float': The frequency captured in the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._frequency

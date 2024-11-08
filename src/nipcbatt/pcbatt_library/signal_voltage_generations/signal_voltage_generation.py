@@ -47,7 +47,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             channel_expression (str):
                 Expression representing the name of an analog output physical channel,
                 or a global channel in DAQ System.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -76,7 +76,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             parameters (VoltageGenerationChannelParameters):
             An instance of `VoltageGenerationChannelParameters` used
             to configure the analog output channels.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         for channel in self.task.ao_channels:
             channel.ao_min = parameters.range_min_volts
@@ -89,7 +89,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
         Args:
             parameters (SampleClockTimingParameters): An instance of `SampleClockTimingParameters`
                 used to configure the timing.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         self.task.timing.cfg_samp_clk_timing(
             rate=parameters.sampling_rate_hertz,
@@ -104,7 +104,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
     def _get_generated_signal_samples_count(
         self, sampling_rate_hertz, generated_signal_duration_seconds
     ) -> int:
-        """Calculates the number of samples that will be in the generated signal"""
+        """Calculates the number of samples that will be in the generated signal"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
         return math.ceil(sampling_rate_hertz * generated_signal_duration_seconds)
 
     def configure_trigger(self, parameters: DigitalStartTriggerParameters):
@@ -114,7 +114,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters`
             used to configure the channels.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.task.triggers.start_trigger.disable_start_trig()
@@ -138,7 +138,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             timing_parameters (SignalVoltageGenerationTimingParameters):
                 An instance of `SignalVoltageGenerationTimingParameters` used
                 to configure the sample rate and duration of the signal to be generated.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         waveform_samples_count = self._get_generated_signal_samples_count(
             sampling_rate_hertz=timing_parameters.sampling_rate_hertz,
@@ -177,7 +177,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             timing_parameters (SignalVoltageGenerationTimingParameters):
                 An instance of `SignalVoltageGenerationTimingParameters` used
                 to configure the sample rate and duration of the signal to be generated.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         waveform_samples_count = self._get_generated_signal_samples_count(
             sampling_rate_hertz=timing_parameters.sampling_rate_hertz,
@@ -220,7 +220,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             timing_parameters (SignalVoltageGenerationTimingParameters):
                 An instance of `SignalVoltageGenerationTimingParameters` used
                 to configure the sample rate and duration of the signal to be generated.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         waveform_samples_count = self._get_generated_signal_samples_count(
             sampling_rate_hertz=timing_parameters.sampling_rate_hertz,
@@ -264,7 +264,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             configuration (SignalVoltageGenerationSineWaveConfiguration):
                 An instance of `SignalVoltageGenerationSineWaveConfiguration`
                 used to configure the generation of single tone sine voltage signal at the channel.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         self.configure_all_channels(parameters=configuration.voltage_generation_range_parameters)
 
@@ -295,7 +295,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             configuration (SignalVoltageGenerationSquareWaveConfiguration):
                 An instance of `SignalVoltageGenerationSquareWaveConfiguration`
                 used to configure the generation of square wave voltage signal at the channel.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         self.configure_all_channels(parameters=configuration.voltage_generation_range_parameters)
 
@@ -326,7 +326,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             configuration (SignalVoltageGenerationMultipleTonesConfiguration):
                 An instance of `SignalVoltageGenerationMultipleTonesConfiguration`
                 used to configure the generation of multi-tones voltage waveform at the channel.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         self.configure_all_channels(parameters=configuration.voltage_generation_range_parameters)
 

@@ -1,10 +1,12 @@
-# Temperature Thermistor Measurement connected with DC Voltage Generation
+# Temperature Thermistor Measurement connected with DC Voltage Generation  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (146 > 100 characters) (auto-generated noqa)
 # import plotter as pl
 import os
 import sys
+
 import nidaqmx
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
+
 import nipcbatt
-import numpy as np
 
 # To use save_traces and plotter from utils folder
 

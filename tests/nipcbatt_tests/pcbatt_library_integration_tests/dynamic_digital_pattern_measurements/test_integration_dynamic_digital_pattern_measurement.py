@@ -7,19 +7,19 @@ import sys
 import unittest
 
 import nidaqmx.constants
-import nidaqmx.stream_writers
-import numpy as np
+import nidaqmx.stream_writers  # noqa: F401 - 'nidaqmx.stream_writers' imported but unused (auto-generated noqa)
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library.common.common_data_types import (
+from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters' imported but unused (auto-generated noqa)
     DigitalStartTriggerParameters,
     DynamicDigitalPatternTimingParameters,
 )
 from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternMeasurement,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (
+from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types.DynamicDigitalPatternMeasurementConfiguration' imported but unused (auto-generated noqa)
     DynamicDigitalPatternMeasurementConfiguration,
     DynamicDigitalPatternMeasurementResultData,
 )
@@ -34,7 +34,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class of the unittest framework
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -58,7 +58,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
 
     def test_integration_dynamic_digital_pattern_meas_channel_expression_empty(self):
         """Integration test ensuring that if channel expression is empty then
-        initialize() catches the error"""
+        initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
         with DynamicDigitalPatternMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -69,7 +69,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
     def test_integration_dynamic_digital_pattern_meas_channel_expression_is_none(self):
         """Integration test ensuring that if channel expression
         is null then initialize() catches the error
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with DynamicDigitalPatternMeasurement() as meas:
             with self.assertRaises(ValueError):
@@ -83,7 +83,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_measurement.
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.CONFIGURE_ONLY
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
@@ -118,7 +118,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_measurement.
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.CONFIGURE_AND_MEASURE
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
@@ -154,7 +154,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_measurement.
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.MeasurementExecutionType.CONFIGURE_ONLY
-        and MeasurementExecutionType.MEASURE_ONLY"""
+        and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(

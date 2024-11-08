@@ -16,7 +16,7 @@ class TestI2cDeviceParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -41,7 +41,7 @@ class TestI2cDeviceParameters(unittest.TestCase):
     def test_i2c_device_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cDeviceParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_enable_i2c_pullup_resistor = False
         expected_voltage_level = nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_25
 
@@ -65,7 +65,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -92,7 +92,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_address = -50
         expected_addressing_type = nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT
         expected_clock_rate_kilohertz = 100
@@ -118,7 +118,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_address = 50
         expected_addressing_type = nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT
         expected_clock_rate_kilohertz = 100
@@ -144,7 +144,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_address = 50
         expected_addressing_type = nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT
         expected_clock_rate_kilohertz = 0
@@ -170,7 +170,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_address = 50
         expected_addressing_type = nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT
         expected_clock_rate_kilohertz = -100
@@ -194,7 +194,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
     def test_i2c_communication_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_data_types.I2cCommunicationParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_address = 50
         expected_addressing_type = nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT
         expected_clock_rate_kilohertz = 100

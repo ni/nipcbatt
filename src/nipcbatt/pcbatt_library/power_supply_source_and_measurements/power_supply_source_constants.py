@@ -1,4 +1,4 @@
-"""Constants for default values for Power Supply Source Measurements"""
+"""Constants for default values for Power Supply Source Measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (182 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 
@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_s
 
 
 class ConstantsForPowerSupplySourceMeasurement:
-    """Constants used for Power Supply measurements"""
+    """Constants used for Power Supply measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (165 > 100 characters) (auto-generated noqa)
 
     INITIAL_VOLTAGE_SETPOINT_VOLTS = 0.0
     INITIAL_CURRENT_SETPOINT_AMPERES = 0.03

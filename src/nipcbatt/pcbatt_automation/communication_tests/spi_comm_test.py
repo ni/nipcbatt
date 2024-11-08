@@ -1,5 +1,5 @@
 """Example demonstrates simple read and write data operations through SPI 
-   protocol communication using NI 845x Device """
+   protocol communication using NI 845x Device """  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (343 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
@@ -22,7 +22,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\spi_comm_test_results.txt"
 # region initialize
 ######## INITIALIZE ################################################################################
 def setup():
-    """Creates and initializes SPI communication objects"""
+    """Creates and initializes SPI communication objects"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (247 > 100 characters) (auto-generated noqa)
 
     reader = nipcbatt.SpiReadCommunication()
     reader.initialize(device_name=DEVICE_ID)
@@ -46,7 +46,7 @@ def main(
     """If you wish to write your results to a file use the following commands
     Make sure the write_to_file option is set to True when calling spi_comm_test()
     Change the file path to desired location on your drive
-    The default file path is C:\\Windows\\Temp\\spi_comm_test_results.txt"""
+    The default file path is C:\\Windows\\Temp\\spi_comm_test_results.txt"""  # noqa: D202, D205, D209, D301, D415 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # if write_to_file is True, call write_results_to_file in order to output the results to a file
     if write_to_file:
@@ -120,7 +120,7 @@ def main(
 
     writer.configure_and_write_data(configuration=write_config)
 
-    """Storing results -- create both a Python dictionary (hashmap)
+    """Storing results -- create both a Python dictionary (hashmap)  # noqa: W505 - doc line too long (518 > 100 characters) (auto-generated noqa)
        A dictionary will store values with a key provided by the user"""
     results_map = {}  # this structure will hold results in key-value pairs
 
@@ -141,7 +141,7 @@ def cleanup(
     reader: nipcbatt.SpiReadCommunication,
     writer: nipcbatt.SpiWriteCommunication,
 ):
-    """Closes out the created objects used in the communication"""
+    """Closes out the created objects used in the communication"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
     reader.close()
     writer.close()
 
@@ -153,7 +153,7 @@ def cleanup(
 # region test
 ############# USE THIS FUNCTION TO CALL THE WHOLE SEQUENCE #########################################
 def spi_comm_test():
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # Run setup function
     spi_reader, spi_writer = setup()
@@ -166,4 +166,4 @@ def spi_comm_test():
 
 
 ####################################################################################################
-# endregion test
+# endregion test  # noqa: W505 - doc line too long (177 > 100 characters) (auto-generated noqa)

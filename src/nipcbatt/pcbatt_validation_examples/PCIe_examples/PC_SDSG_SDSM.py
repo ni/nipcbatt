@@ -1,4 +1,4 @@
-"""Static Digital State Generation and Measurement"""
+"""Static Digital State Generation and Measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
 
 ### Ensure correct hardware and corresponding trigger names before running this example
 

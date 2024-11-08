@@ -1,5 +1,7 @@
-class LimitException(BaseException):
-    def __init__(
+class LimitException(  # noqa: D100, D101 - Missing docstring in public module (auto-generated noqa), Missing docstring in public class (auto-generated noqa)
+    BaseException
+):
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self,
         called_class: str,
         called_method: str,

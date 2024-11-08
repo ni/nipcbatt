@@ -22,7 +22,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -47,7 +47,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
 
     def test_signal_voltage_generation_generate_only(self):
         """Checks if class `SignalVoltageGeneration' can generate
-        with just the initial configurations"""
+        with just the initial configurations"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (417 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(
@@ -69,7 +69,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
 
     def test_signal_voltage_generation_configure_and_generate_in_loop(self):
         """Checks if class `SignalVoltageGeneration' can configure and generate
-        when they are called one after the other."""
+        when they are called one after the other."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (345 > 100 characters) (auto-generated noqa)
         generation_channel_parameters_1 = nipcbatt.VoltageGenerationChannelParameters(
             range_min_volts=-5.0,
             range_max_volts=5.0,
@@ -117,7 +117,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
         generation.close()
 
     def test_signal_voltage_generation_for_configure_and_generate_sine_wave(self):
-        """Checks if class `SignalVoltageGeneration' can configure and generate sine wave."""
+        """Checks if class `SignalVoltageGeneration' can configure and generate sine wave."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (179 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(
@@ -129,7 +129,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
         generation.close()
 
     def test_signal_voltage_generation_for_configure_and_generate_square_wave(self):
-        """Checks if class `SignalVoltageGeneration' can configure and generate square wave."""
+        """Checks if class `SignalVoltageGeneration' can configure and generate square wave."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (181 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(
@@ -144,7 +144,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
         self,
     ):
         """Checks if class `SignalVoltageGeneration' can configure and generate
-        multiple tones signal."""
+        multiple tones signal."""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(
@@ -157,7 +157,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
 
     def test_signal_voltage_generation_route_sample_clock_signal_to_terminal(self):
         """Checks if class `SignalVoltageGeneration' can configure and export the
-        sample clock signal to the specified terminal"""
+        sample clock signal to the specified terminal"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (349 > 100 characters) (auto-generated noqa)
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(
             channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
@@ -180,7 +180,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
 
     def test_signal_voltage_generation_route_digital_trigger_signal_to_terminal(self):
         """Checks if class `SignalVoltageGeneration' can configure and export the
-        digital trigger signal to the specified terminal"""
+        digital trigger signal to the specified terminal"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (429 > 100 characters) (auto-generated noqa)
 
         generation = nipcbatt.SignalVoltageGeneration()
         generation.initialize(

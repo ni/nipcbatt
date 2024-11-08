@@ -18,7 +18,7 @@ class TestIntegrationI2cWriteCommunication(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -50,7 +50,7 @@ class TestIntegrationI2cWriteCommunication(unittest.TestCase):
     def test_integration_i2c_write_communication(self):
         """Integration test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_communication.I2cWriteCommunication
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with nipcbatt.I2cWriteCommunication() as communication:
             communication.initialize("USB-8452")
 

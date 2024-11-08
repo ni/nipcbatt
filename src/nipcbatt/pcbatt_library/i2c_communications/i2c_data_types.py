@@ -1,4 +1,4 @@
-""" I2C communication data types """
+""" I2C communication data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (147 > 100 characters) (auto-generated noqa)
 
 from varname import nameof
 
@@ -25,7 +25,7 @@ class I2cDeviceParameters(PCBATestToolkitData):
                 The `Ni845xVoltageLevel` value
                 representing the voltage level of signal
                 sent or received during I2C communications.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._enable_i2c_pullup_resistor = enable_i2c_pullup_resistor
         self._voltage_level = voltage_level
 
@@ -70,7 +70,7 @@ class I2cCommunicationParameters(PCBATestToolkitData):
                 `device_address` is negative,
                 `clock_rate_kilohertz` is negative or equal to zero,
                 `ack_poll_timeout_milliseconds` is negative.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_or_equal_to_zero(device_address, nameof(device_address))
         Guard.is_greater_than_zero(clock_rate_kilohertz, nameof(clock_rate_kilohertz))
         Guard.is_greater_than_or_equal_to_zero(
@@ -100,5 +100,5 @@ class I2cCommunicationParameters(PCBATestToolkitData):
     @property
     def ack_poll_timeout_milliseconds(self) -> int:
         """Gets the I2C ACK (acknowledge) polling timeout
-        to apply to the device communication, in milliseconds."""
+        to apply to the device communication, in milliseconds."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (358 > 100 characters) (auto-generated noqa)
         return self._ack_poll_timeout_milliseconds

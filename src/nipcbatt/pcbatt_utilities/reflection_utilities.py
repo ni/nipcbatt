@@ -13,7 +13,7 @@ def substitute_method(cls: Type, method: Callable, method_name: str):
         cls (Type): The class on which the method is replaced.
         method (Callable): the function to substitute.
         method_name (str): the name of the method to replace.
-    """
+    """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
     setattr(
         cls,
         method_name,
@@ -29,7 +29,7 @@ def enumerate_properties(instance: object) -> Iterable[Tuple]:
 
     Returns:
         iterator with a sequence of tuples containing the name of property and its value.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     members = [item for item in vars(type(instance)).items() if isinstance(item[1], property)]
 
     for property_name, property_object in members:

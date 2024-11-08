@@ -1,4 +1,4 @@
-"""Provides unit tests related to sine_waveform.py module"""
+"""Provides unit tests related to sine_waveform.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -20,7 +20,7 @@ class TestSineWaveform(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @classmethod
     def setUpClass(cls):
@@ -64,7 +64,7 @@ class TestSineWaveform(unittest.TestCase):
         expected_sampling_rate: float,
         expected_waveform_duration_seconds: float,
     ):
-        """Test of `sin_waveform.create_cosine_waveform` function"""
+        """Test of `sin_waveform.create_cosine_waveform` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (256 > 100 characters) (auto-generated noqa)
 
         logging.debug("%s = %s", nameof(case_name), case_name)
 
@@ -115,7 +115,7 @@ class TestSineWaveform(unittest.TestCase):
         expected_sampling_rate: float,
         expected_waveform_duration_seconds: float,
     ):
-        """Test of `sin_waveform.create_sine_waveform` function"""
+        """Test of `sin_waveform.create_sine_waveform` function"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (177 > 100 characters) (auto-generated noqa)
         logging.debug("%s = %s", nameof(case_name), case_name)
 
         # Arrange

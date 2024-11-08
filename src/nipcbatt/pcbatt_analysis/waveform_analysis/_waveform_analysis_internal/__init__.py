@@ -1,1 +1,1 @@
-"""Provides private modules of waveform analysis package"""
+"""Provides private modules of waveform analysis package"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (170 > 100 characters) (auto-generated noqa)

@@ -1,10 +1,10 @@
 """This example demonstrates digital pulse generation and digital edge count measurement through 
    counter-based measurements using Core Digital IO Modules. Digital edge counting is performed 
-   at Software timed using an external wait"""
+   at Software timed using an external wait"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (339 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
-import time
+import time  # noqa: F401 - 'time' imported but unused (auto-generated noqa)
 
 import nipcbatt
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
@@ -36,7 +36,7 @@ def setup(
     input_terminal=INPUT_TERMINAL,
     meas_counter_channel=MEAS_PHYSICAL_CHANNEL_COUNTER,
 ):
-    """Creates the necessary objects for the generation and measurement of PWM"""
+    """Creates the necessary objects for the generation and measurement of PWM"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test
     generation_instance = nipcbatt.DigitalPulseGeneration()
@@ -71,13 +71,13 @@ def main(
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
     The default file path is C:\\Windows\\Temp\\digital_pwm_test_results.txt
-    """
+    """  # noqa: D205, D301 - 1 blank line required between summary line and description (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa)
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(generation_instance)
         logger.attach(measurement_instance)
 
-    """Note to run with Hardware: Update the Cycles to capture value in the below step based on the
+    """Note to run with Hardware: Update the Cycles to capture value in the below step based on the  # noqa: W505 - doc line too long (176 > 100 characters) (auto-generated noqa)
     digital signals to be measured"""
 
     """Storing results -- create both a Python dictionary (hashmap)
@@ -161,7 +161,7 @@ def cleanup(
     generation_instance: nipcbatt.DigitalPulseGeneration,
     measurement_instance: nipcbatt.DigitalPwmMeasurement,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
     generation_instance.close()  # Close generation
     measurement_instance.close()  # Close measurement
 
@@ -181,7 +181,7 @@ def digital_pwm_test(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # Run setup function
     gen, meas = setup(
@@ -198,4 +198,4 @@ def digital_pwm_test(
     cleanup(gen, meas)
 
 
-# endregion test
+# endregion test  # noqa: W505 - doc line too long (231 > 100 characters) (auto-generated noqa)

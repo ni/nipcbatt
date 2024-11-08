@@ -44,7 +44,7 @@ class SerialCommunication(BuildingBlockUsingVisa):
             SerialCommunicationData:
                 An instance of `SerialCommunicationData`
                 encapsulating the received response.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Configuration of the device for serial communications.
         self.configure_serial_communication(parameters=configuration.communication_parameters)
 

@@ -1,8 +1,9 @@
-### Ensure correct hardware and corresponding trigger names before running this example
+### Ensure correct hardware and corresponding trigger names before running this example  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
 
-import nipcbatt
 import nidaqmx.constants
 import numpy as np
+
+import nipcbatt
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # DDPG_Initialization

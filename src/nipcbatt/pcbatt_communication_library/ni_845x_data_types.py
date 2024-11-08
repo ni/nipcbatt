@@ -6,7 +6,7 @@ from enum import IntEnum
 
 class DataMemoryAddressType(IntEnum):
     """Defines on which the size, in bytes,
-    the memory address of the communication device is addressed."""
+    the memory address of the communication device is addressed."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (360 > 100 characters) (auto-generated noqa)
 
     ADDRESS_ENCODED_ON_ONE_BYTE = 1
     """The address is encoded on 1 byte."""
@@ -17,7 +17,7 @@ class DataMemoryAddressType(IntEnum):
 
 class DataMemoryAddressEndianness(IntEnum):
     """Defines the endianness of the memory address
-    in a device communication using I2C/SPI protocols."""
+    in a device communication using I2C/SPI protocols."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (350 > 100 characters) (auto-generated noqa)
 
     LITTLE_ENDIAN = 0
     """Little Endian."""

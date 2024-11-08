@@ -18,7 +18,7 @@ class TestI2cReadParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -45,7 +45,7 @@ class TestI2cReadParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = 7
 
         with self.assertRaises(ValueError) as ctx:
@@ -66,7 +66,7 @@ class TestI2cReadParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = 0
         expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
             memory_address=50,
@@ -92,7 +92,7 @@ class TestI2cReadParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = -7
         expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
             memory_address=50,
@@ -116,7 +116,7 @@ class TestI2cReadParameters(unittest.TestCase):
     def test_i2c_read_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = 7
         expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
             memory_address=50,
@@ -145,7 +145,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -172,7 +172,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_communication_parameters = nipcbatt.I2cCommunicationParameters(
             device_address=50,
@@ -207,7 +207,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_device_parameters = nipcbatt.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
@@ -240,7 +240,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_device_parameters = nipcbatt.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
@@ -269,7 +269,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
     def test_i2c_read_communication_configuration(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_device_parameters = nipcbatt.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
@@ -315,7 +315,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -342,7 +342,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.I2cReadCommunicationData(
@@ -360,7 +360,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationData.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -377,7 +377,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
     def test_i2c_read_communication_data(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationData.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_data_bytes_read_count = 30
         expected_data_bytes_read_list = list(
             random.randint(0, 255) for i in range(0, expected_data_bytes_read_count)

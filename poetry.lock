@@ -11,11 +11,6 @@ files = [
     {file = "appnope-0.1.4.tar.gz", hash = "sha256:1de3860566df9caf38f01f86f65e0e13e379af54f9e4bee1e66b48f2efffd1ee"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "asttokens"
 version = "2.4.1"
@@ -33,11 +28,6 @@ six = ">=1.12.0"
 [package.extras]
 astroid = ["astroid (>=1,<2)", "astroid (>=2,<4)"]
 test = ["astroid (>=1,<2)", "astroid (>=2,<4)", "pytest"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "black"
@@ -85,11 +75,6 @@ d = ["aiohttp (>=3.7.4)", "aiohttp (>=3.7.4,!=3.9.0)"]
 jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "build"
 version = "1.0.3"
@@ -114,11 +99,6 @@ test = ["filelock (>=3)", "pytest (>=6.2.4)", "pytest-cov (>=2.12)", "pytest-moc
 typing = ["importlib-metadata (>=5.1)", "mypy (>=1.5.0,<1.6.0)", "tomli", "typing-extensions (>=3.7.4.3)"]
 virtualenv = ["virtualenv (>=20.0.35)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "click"
 version = "8.1.7"
@@ -133,11 +113,6 @@ files = [
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "colorama"
 version = "0.4.6"
@@ -148,11 +123,6 @@ files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "contourpy"
@@ -238,11 +208,6 @@ mypy = ["contourpy[bokeh,docs]", "docutils-stubs", "mypy (==1.11.1)", "types-Pil
 test = ["Pillow", "contourpy[test-no-images]", "matplotlib"]
 test-no-images = ["pytest", "pytest-cov", "pytest-rerunfailures", "pytest-xdist", "wurlitzer"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "coverage"
 version = "7.6.4"
@@ -320,11 +285,6 @@ tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.1
 [package.extras]
 toml = ["tomli"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "cycler"
 version = "0.12.1"
@@ -340,11 +300,6 @@ files = [
 docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
 tests = ["pytest", "pytest-cov", "pytest-xdist"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "decorator"
 version = "5.1.1"
@@ -355,11 +310,6 @@ files = [
     {file = "decorator-5.1.1-py3-none-any.whl", hash = "sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186"},
     {file = "decorator-5.1.1.tar.gz", hash = "sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "deprecation"
@@ -375,11 +325,6 @@ files = [
 [package.dependencies]
 packaging = "*"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "exceptiongroup"
 version = "1.2.2"
@@ -393,11 +338,6 @@ files = [
 
 [package.extras]
 test = ["pytest (>=6)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "executing"
@@ -413,31 +353,86 @@ files = [
 [package.extras]
 tests = ["asttokens (>=2.1.0)", "coverage", "coverage-enable-subprocess", "ipython", "littleutils", "pytest", "rich"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "flake8"
-version = "7.1.1"
+version = "5.0.4"
 description = "the modular source code checker: pep8 pyflakes and co"
 optional = false
-python-versions = ">=3.8.1"
+python-versions = ">=3.6.1"
 files = [
-    {file = "flake8-7.1.1-py2.py3-none-any.whl", hash = "sha256:597477df7860daa5aa0fdd84bf5208a043ab96b8e96ab708770ae0364dd03213"},
-    {file = "flake8-7.1.1.tar.gz", hash = "sha256:049d058491e228e03e67b390f311bbf88fce2dbaa8fa673e7aea87b7198b8d38"},
+    {file = "flake8-5.0.4-py2.py3-none-any.whl", hash = "sha256:7a1cf6b73744f5806ab95e526f6f0d8c01c66d7bbe349562d22dfca20610b248"},
+    {file = "flake8-5.0.4.tar.gz", hash = "sha256:6fbe320aad8d6b95cec8b8e47bc933004678dc63095be98528b7bdd2a9f510db"},
 ]
 
 [package.dependencies]
 mccabe = ">=0.7.0,<0.8.0"
-pycodestyle = ">=2.12.0,<2.13.0"
-pyflakes = ">=3.2.0,<3.3.0"
+pycodestyle = ">=2.9.0,<2.10.0"
+pyflakes = ">=2.5.0,<2.6.0"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "flake8"
+version = "6.1.0"
+description = "the modular source code checker: pep8 pyflakes and co"
+optional = false
+python-versions = ">=3.8.1"
+files = [
+    {file = "flake8-6.1.0-py2.py3-none-any.whl", hash = "sha256:ffdfce58ea94c6580c77888a86506937f9a1a227dfcd15f245d694ae20a6b6e5"},
+    {file = "flake8-6.1.0.tar.gz", hash = "sha256:d5b3857f07c030bdb5bf41c7f53799571d75c4491748a3adcd47de929e34cd23"},
+]
+
+[package.dependencies]
+mccabe = ">=0.7.0,<0.8.0"
+pycodestyle = ">=2.11.0,<2.12.0"
+pyflakes = ">=3.1.0,<3.2.0"
+
+[[package]]
+name = "flake8-black"
+version = "0.3.6"
+description = "flake8 plugin to call black as a code style validator"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "flake8-black-0.3.6.tar.gz", hash = "sha256:0dfbca3274777792a5bcb2af887a4cad72c72d0e86c94e08e3a3de151bb41c34"},
+    {file = "flake8_black-0.3.6-py3-none-any.whl", hash = "sha256:fe8ea2eca98d8a504f22040d9117347f6b367458366952862ac3586e7d4eeaca"},
+]
+
+[package.dependencies]
+black = ">=22.1.0"
+flake8 = ">=3"
+tomli = {version = "*", markers = "python_version < \"3.11\""}
+
+[package.extras]
+develop = ["build", "twine"]
+
+[[package]]
+name = "flake8-docstrings"
+version = "1.7.0"
+description = "Extension for flake8 which uses pydocstyle to check docstrings"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "flake8_docstrings-1.7.0-py2.py3-none-any.whl", hash = "sha256:51f2344026da083fc084166a9353f5082b01f72901df422f74b4d953ae88ac75"},
+    {file = "flake8_docstrings-1.7.0.tar.gz", hash = "sha256:4c8cc748dc16e6869728699e5d0d685da9a10b0ea718e090b1ba088e67a941af"},
+]
+
+[package.dependencies]
+flake8 = ">=3"
+pydocstyle = ">=2.1"
+
+[[package]]
+name = "flake8-import-order"
+version = "0.18.2"
+description = "Flake8 and pylama plugin that checks the ordering of import statements."
+optional = false
+python-versions = "*"
+files = [
+    {file = "flake8-import-order-0.18.2.tar.gz", hash = "sha256:e23941f892da3e0c09d711babbb0c73bc735242e9b216b726616758a920d900e"},
+    {file = "flake8_import_order-0.18.2-py2.py3-none-any.whl", hash = "sha256:82ed59f1083b629b030ee9d3928d9e06b6213eb196fe745b3a7d4af2168130df"},
+]
+
+[package.dependencies]
+pycodestyle = "*"
+setuptools = "*"
 
 [[package]]
 name = "fonttools"
@@ -510,11 +505,6 @@ ufo = ["fs (>=2.2.0,<3)"]
 unicode = ["unicodedata2 (>=15.1.0)"]
 woff = ["brotli (>=1.0.1)", "brotlicffi (>=0.8.0)", "zopfli (>=0.1.4)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "hightime"
 version = "0.2.2"
@@ -524,11 +514,6 @@ python-versions = "*"
 files = [
     {file = "hightime-0.2.2-py3-none-any.whl", hash = "sha256:5109a449bb3a75dbf305147777de71634c91b943d47cfbee18ed2f34a8307e0b"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "importlib-metadata"
@@ -553,11 +538,6 @@ perf = ["ipython"]
 test = ["flufl.flake8", "importlib-resources (>=1.3)", "jaraco.test (>=5.4)", "packaging", "pyfakefs", "pytest (>=6,!=8.1.*)", "pytest-perf (>=0.9.2)"]
 type = ["pytest-mypy"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "importlib-resources"
 version = "6.4.5"
@@ -580,11 +560,6 @@ enabler = ["pytest-enabler (>=2.2)"]
 test = ["jaraco.test (>=5.4)", "pytest (>=6,!=8.1.*)", "zipp (>=3.17)"]
 type = ["pytest-mypy"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "iniconfig"
 version = "2.0.0"
@@ -595,11 +570,6 @@ files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "ipython"
@@ -639,10 +609,19 @@ qtconsole = ["qtconsole"]
 test = ["pickleshare", "pytest (<7.1)", "pytest-asyncio (<0.22)", "testpath"]
 test-extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.22)", "pandas", "pickleshare", "pytest (<7.1)", "pytest-asyncio (<0.22)", "testpath", "trio"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "isort"
+version = "5.13.2"
+description = "A Python utility / library to sort Python imports."
+optional = false
+python-versions = ">=3.8.0"
+files = [
+    {file = "isort-5.13.2-py3-none-any.whl", hash = "sha256:8ca5e72a8d85860d5a3fa69b8745237f2939afe12dbf656afbcb47fe72d947a6"},
+    {file = "isort-5.13.2.tar.gz", hash = "sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109"},
+]
+
+[package.extras]
+colors = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "jedi"
@@ -662,11 +641,6 @@ parso = ">=0.8.3,<0.9.0"
 docs = ["Jinja2 (==2.11.3)", "MarkupSafe (==1.1.1)", "Pygments (==2.8.1)", "alabaster (==0.7.12)", "babel (==2.9.1)", "chardet (==4.0.0)", "commonmark (==0.8.1)", "docutils (==0.17.1)", "future (==0.18.2)", "idna (==2.10)", "imagesize (==1.2.0)", "mock (==1.0.1)", "packaging (==20.9)", "pyparsing (==2.4.7)", "pytz (==2021.1)", "readthedocs-sphinx-ext (==2.1.4)", "recommonmark (==0.5.0)", "requests (==2.25.1)", "six (==1.15.0)", "snowballstemmer (==2.1.0)", "sphinx (==1.8.5)", "sphinx-rtd-theme (==0.4.3)", "sphinxcontrib-serializinghtml (==1.1.4)", "sphinxcontrib-websupport (==1.2.4)", "urllib3 (==1.26.4)"]
 qa = ["flake8 (==5.0.4)", "mypy (==0.971)", "types-setuptools (==67.2.0.1)"]
 testing = ["Django", "attrs", "colorama", "docopt", "pytest (<7.0.0)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "kiwisolver"
@@ -791,11 +765,6 @@ files = [
     {file = "kiwisolver-1.4.7.tar.gz", hash = "sha256:9893ff81bd7107f7b685d3017cc6583daadb4fc26e4a888350df530e41980a60"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "matplotlib"
 version = "3.9.2"
@@ -860,11 +829,6 @@ python-dateutil = ">=2.7"
 [package.extras]
 dev = ["meson-python (>=0.13.1)", "numpy (>=1.25)", "pybind11 (>=2.6)", "setuptools (>=64)", "setuptools_scm (>=7)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "matplotlib-inline"
 version = "0.1.6"
@@ -879,11 +843,6 @@ files = [
 [package.dependencies]
 traitlets = "*"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "mccabe"
 version = "0.7.0"
@@ -894,11 +853,6 @@ files = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
     {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "mock"
@@ -916,11 +870,6 @@ build = ["blurb", "twine", "wheel"]
 docs = ["sphinx"]
 test = ["pytest", "pytest-cov"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "mypy-extensions"
 version = "1.0.0"
@@ -932,10 +881,35 @@ files = [
     {file = "mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "ni-python-styleguide"
+version = "0.4.6"
+description = "NI's internal and external Python linter rules and plugins"
+optional = false
+python-versions = "<4.0,>=3.7"
+files = [
+    {file = "ni_python_styleguide-0.4.6-py3-none-any.whl", hash = "sha256:0ffa8bd5de38d96779ad0e83e49a3db3620a31742247be10f6471961ab6fa246"},
+    {file = "ni_python_styleguide-0.4.6.tar.gz", hash = "sha256:26d7ebd5acce0b29a6209ef9950f369327cbfd7ffd8404ade3e9a7c0f0aa6bcb"},
+]
+
+[package.dependencies]
+black = ">=23.1"
+click = ">=7.1.2"
+flake8 = [
+    {version = ">=5.0,<6.0", markers = "python_version >= \"3.7\" and python_version < \"3.12\""},
+    {version = ">=6.1,<7.0", markers = "python_version >= \"3.12\" and python_version < \"4.0\""},
+]
+flake8-black = ">=0.2.1"
+flake8-docstrings = ">=1.5.0"
+flake8-import-order = ">=0.18.1"
+isort = ">=5.10"
+pathspec = ">=0.11.1"
+pep8-naming = ">=0.11.1"
+pycodestyle = [
+    {version = ">=2.9,<3.0", markers = "python_version >= \"3.7\" and python_version < \"3.12\""},
+    {version = ">=2.11,<3.0", markers = "python_version >= \"3.12\" and python_version < \"4.0\""},
+]
+toml = ">=0.10.1"
 
 [[package]]
 name = "nidaqmx"
@@ -959,11 +933,6 @@ numpy = [
 [package.extras]
 docs = ["Sphinx (>=4.3,<5.0)", "sphinx_rtd_theme (>=1.0,<2.0)"]
 grpc = ["grpcio (>=1.49.0,<2.0)", "protobuf (>=4.21,<5.0)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "numpy"
@@ -1010,11 +979,6 @@ files = [
     {file = "numpy-1.26.4.tar.gz", hash = "sha256:2a02aba9ed12e4ac4eb3ea9421c420301a0c6460d9830d74a9df87efa4912010"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "packaging"
 version = "23.2"
@@ -1025,11 +989,6 @@ files = [
     {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
     {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pandas"
@@ -1104,11 +1063,6 @@ sql-other = ["SQLAlchemy (>=2.0.0)", "adbc-driver-postgresql (>=0.8.0)", "adbc-d
 test = ["hypothesis (>=6.46.1)", "pytest (>=7.3.2)", "pytest-xdist (>=2.2.0)"]
 xml = ["lxml (>=4.9.2)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "parameterized"
 version = "0.8.1"
@@ -1122,11 +1076,6 @@ files = [
 
 [package.extras]
 dev = ["jinja2"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "parso"
@@ -1143,11 +1092,6 @@ files = [
 qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
 testing = ["docopt", "pytest (<6.0.0)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pathspec"
 version = "0.12.1"
@@ -1158,11 +1102,6 @@ files = [
     {file = "pathspec-0.12.1-py3-none-any.whl", hash = "sha256:a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08"},
     {file = "pathspec-0.12.1.tar.gz", hash = "sha256:a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pep8-naming"
@@ -1178,11 +1117,6 @@ files = [
 [package.dependencies]
 flake8 = ">=5.0.0"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pexpect"
 version = "4.9.0"
@@ -1196,11 +1130,6 @@ files = [
 
 [package.dependencies]
 ptyprocess = ">=0.5"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pillow"
@@ -1294,11 +1223,6 @@ tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "pa
 typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "platformdirs"
 version = "4.3.6"
@@ -1315,11 +1239,6 @@ docs = ["furo (>=2024.8.6)", "proselint (>=0.14)", "sphinx (>=8.0.2)", "sphinx-a
 test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.3.2)", "pytest-cov (>=5)", "pytest-mock (>=3.14)"]
 type = ["mypy (>=1.11.2)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pluggy"
 version = "1.5.0"
@@ -1335,11 +1254,6 @@ files = [
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "prompt-toolkit"
 version = "3.0.40"
@@ -1354,11 +1268,6 @@ files = [
 [package.dependencies]
 wcwidth = "*"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "ptyprocess"
 version = "0.7.0"
@@ -1369,11 +1278,6 @@ files = [
     {file = "ptyprocess-0.7.0-py2.py3-none-any.whl", hash = "sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"},
     {file = "ptyprocess-0.7.0.tar.gz", hash = "sha256:5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pure-eval"
@@ -1389,42 +1293,66 @@ files = [
 [package.extras]
 tests = ["pytest"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "pycodestyle"
+version = "2.9.1"
+description = "Python style guide checker"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pycodestyle-2.9.1-py2.py3-none-any.whl", hash = "sha256:d1735fc58b418fd7c5f658d28d943854f8a849b01a5d0a1e6f3f3fdd0166804b"},
+    {file = "pycodestyle-2.9.1.tar.gz", hash = "sha256:2c9607871d58c76354b697b42f5d57e1ada7d261c261efac224b664affdc5785"},
+]
 
 [[package]]
 name = "pycodestyle"
-version = "2.12.1"
+version = "2.11.1"
 description = "Python style guide checker"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pycodestyle-2.12.1-py2.py3-none-any.whl", hash = "sha256:46f0fb92069a7c28ab7bb558f05bfc0110dac69a0cd23c61ea0040283a9d78b3"},
-    {file = "pycodestyle-2.12.1.tar.gz", hash = "sha256:6838eae08bbce4f6accd5d5572075c63626a15ee3e6f842df996bf62f6d73521"},
+    {file = "pycodestyle-2.11.1-py2.py3-none-any.whl", hash = "sha256:44fe31000b2d866f2e41841b18528a505fbd7fef9017b04eff4e2648a0fadc67"},
+    {file = "pycodestyle-2.11.1.tar.gz", hash = "sha256:41ba0e7afc9752dfb53ced5489e89f8186be00e599e712660695b7a75ff2663f"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "pydocstyle"
+version = "6.3.0"
+description = "Python docstring style checker"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pydocstyle-6.3.0-py3-none-any.whl", hash = "sha256:118762d452a49d6b05e194ef344a55822987a462831ade91ec5c06fd2169d019"},
+    {file = "pydocstyle-6.3.0.tar.gz", hash = "sha256:7ce43f0c0ac87b07494eb9c0b462c0b73e6ff276807f204d6b53edc72b7e44e1"},
+]
+
+[package.dependencies]
+snowballstemmer = ">=2.2.0"
+
+[package.extras]
+toml = ["tomli (>=1.2.3)"]
 
 [[package]]
 name = "pyflakes"
-version = "3.2.0"
+version = "2.5.0"
+description = "passive checker of Python programs"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pyflakes-2.5.0-py2.py3-none-any.whl", hash = "sha256:4579f67d887f804e67edb544428f264b7b24f435b263c4614f384135cea553d2"},
+    {file = "pyflakes-2.5.0.tar.gz", hash = "sha256:491feb020dca48ccc562a8c0cbe8df07ee13078df59813b83959cbdada312ea3"},
+]
+
+[[package]]
+name = "pyflakes"
+version = "3.1.0"
 description = "passive checker of Python programs"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pyflakes-3.2.0-py2.py3-none-any.whl", hash = "sha256:84b5be138a2dfbb40689ca07e2152deb896a65c3a3e24c251c5c62489568074a"},
-    {file = "pyflakes-3.2.0.tar.gz", hash = "sha256:1c61603ff154621fb2a9172037d84dca3500def8c8b630657d1701f026f8af3f"},
+    {file = "pyflakes-3.1.0-py2.py3-none-any.whl", hash = "sha256:4132f6d49cb4dae6819e5379898f2b8cce3c5f23994194c24b77d5da2e36f774"},
+    {file = "pyflakes-3.1.0.tar.gz", hash = "sha256:a0aae034c444db0071aa077972ba4768d40c830d9539fd45bf4cd3f8f6992efc"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pygments"
@@ -1440,11 +1368,6 @@ files = [
 [package.extras]
 plugins = ["importlib-metadata"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pyparsing"
 version = "3.2.0"
@@ -1459,11 +1382,6 @@ files = [
 [package.extras]
 diagrams = ["jinja2", "railroad-diagrams"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pyproject-hooks"
 version = "1.0.0"
@@ -1477,11 +1395,6 @@ files = [
 
 [package.dependencies]
 tomli = {version = ">=1.1.0", markers = "python_version < \"3.11\""}
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pytest"
@@ -1505,11 +1418,6 @@ tomli = {version = ">=1", markers = "python_version < \"3.11\""}
 [package.extras]
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pytest-cov"
 version = "4.1.0"
@@ -1528,11 +1436,6 @@ pytest = ">=4.6"
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtualenv"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
@@ -1547,11 +1450,6 @@ files = [
 [package.dependencies]
 six = ">=1.5"
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "pytz"
 version = "2024.2"
@@ -1562,11 +1460,6 @@ files = [
     {file = "pytz-2024.2-py2.py3-none-any.whl", hash = "sha256:31c7c1817eb7fae7ca4b8c7ee50c72f93aa2dd863de768e1ef4245d426aa0725"},
     {file = "pytz-2024.2.tar.gz", hash = "sha256:2aa355083c50a0f93fa581709deac0c9ad65cca8a9e9beac660adcbd493c798a"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "pyvisa"
@@ -1581,11 +1474,6 @@ files = [
 
 [package.dependencies]
 typing-extensions = "*"
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "scipy"
@@ -1629,11 +1517,6 @@ dev = ["cython-lint (>=0.12.2)", "doit (>=0.36.0)", "mypy", "pycodestyle", "pyde
 doc = ["jupyterlite-pyodide-kernel", "jupyterlite-sphinx (>=0.12.0)", "jupytext", "matplotlib (>=3.5)", "myst-nb", "numpydoc", "pooch", "pydata-sphinx-theme (>=0.15.2)", "sphinx (>=5.0.0)", "sphinx-design (>=0.4.0)"]
 test = ["array-api-strict", "asv", "gmpy2", "hypothesis (>=6.30)", "mpmath", "pooch", "pytest", "pytest-cov", "pytest-timeout", "pytest-xdist", "scikit-umfpack", "threadpoolctl"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "setuptools"
 version = "75.3.0"
@@ -1654,11 +1537,6 @@ enabler = ["pytest-enabler (>=2.2)"]
 test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test (>=5.5)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
 type = ["importlib-metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (==1.12.*)", "pytest-mypy"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "six"
 version = "1.16.0"
@@ -1670,10 +1548,16 @@ files = [
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
+[[package]]
+name = "snowballstemmer"
+version = "2.2.0"
+description = "This package provides 29 stemmers for 28 languages generated from Snowball algorithms."
+optional = false
+python-versions = "*"
+files = [
+    {file = "snowballstemmer-2.2.0-py2.py3-none-any.whl", hash = "sha256:c8e1716e83cc398ae16824e5572ae04e0d9fc2c6b985fb0f900f5f0c96ecba1a"},
+    {file = "snowballstemmer-2.2.0.tar.gz", hash = "sha256:09b16deb8547d3412ad7b590689584cd0fe25ec8db3be37788be3810cbf19cb1"},
+]
 
 [[package]]
 name = "stack-data"
@@ -1694,11 +1578,6 @@ pure-eval = "*"
 [package.extras]
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "toml"
 version = "0.10.2"
@@ -1710,11 +1589,6 @@ files = [
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "tomli"
 version = "2.0.2"
@@ -1725,11 +1599,6 @@ files = [
     {file = "tomli-2.0.2-py3-none-any.whl", hash = "sha256:2ebe24485c53d303f690b0ec092806a085f07af5a5aa1464f3931eec36caaa38"},
     {file = "tomli-2.0.2.tar.gz", hash = "sha256:d46d457a85337051c36524bc5349dd91b1877838e2979ac5ced3e710ed8a60ed"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "traitlets"
@@ -1746,11 +1615,6 @@ files = [
 docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["argcomplete (>=3.0.3)", "mypy (>=1.6.0)", "pre-commit", "pytest (>=7.0,<7.5)", "pytest-mock", "pytest-mypy-testing"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "typing-extensions"
 version = "4.12.2"
@@ -1762,11 +1626,6 @@ files = [
     {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "tzdata"
 version = "2024.2"
@@ -1777,11 +1636,6 @@ files = [
     {file = "tzdata-2024.2-py2.py3-none-any.whl", hash = "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd"},
     {file = "tzdata-2024.2.tar.gz", hash = "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "varname"
@@ -1800,11 +1654,6 @@ executing = ">=2.0,<3.0"
 [package.extras]
 all = ["asttokens (==2.*)", "pure_eval (==0.*)"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [[package]]
 name = "wcwidth"
 version = "0.2.9"
@@ -1815,11 +1664,6 @@ files = [
     {file = "wcwidth-0.2.9-py2.py3-none-any.whl", hash = "sha256:9a929bd8380f6cd9571a968a9c8f4353ca58d7cd812a4822bba831f8d685b223"},
     {file = "wcwidth-0.2.9.tar.gz", hash = "sha256:a675d1a4a2d24ef67096a04b85b02deeecd8e226f57b5e3a72dbb9ed99d27da8"},
 ]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "wheel"
@@ -1834,11 +1678,6 @@ files = [
 
 [package.extras]
 test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
-
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
 
 [[package]]
 name = "zipp"
@@ -1859,12 +1698,7 @@ enabler = ["pytest-enabler (>=2.2)"]
 test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-itertools", "pytest (>=6,!=8.1.*)", "pytest-ignore-flaky"]
 type = ["pytest-mypy"]
 
-[package.source]
-type = "legacy"
-url = "https://pypi.ni.systems"
-reference = "NI PyPI"
-
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "523cb2f9a4485e2235fa3faf4be1850f2bd47a3a011123bb157eaa169d96ce79"
+content-hash = "936168b76396b3c800780328b6b74ed28bfab825b994ada573f26187562854d2"

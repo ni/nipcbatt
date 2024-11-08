@@ -22,7 +22,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -48,7 +48,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
     def test_integration_power_supply_and_source_measurement_configure_only(self):
         """Integration test of
         nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure
-         with MeasurementExecutionType.CONFIGURE_ONLY"""
+         with MeasurementExecutionType.CONFIGURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (426 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
@@ -87,7 +87,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure
          with MeasurementExecutionType.CONFIGURE_ONLY and MeasurementExecutionType.MEASURE_ONLY
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
@@ -151,7 +151,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure
          with MeasurementExecutionType.CONFIGURE_AND_MEASURE
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
@@ -217,7 +217,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure
         for initialize, configure and measure and close to be called in loop with the same context.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         for _ in range(3):
             with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
                 measurement.initialize(

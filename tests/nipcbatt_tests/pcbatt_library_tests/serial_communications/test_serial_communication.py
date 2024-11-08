@@ -44,7 +44,7 @@ class TestSerialCommunication(unittest.TestCase):
     def test_serial_communication(self):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_communication.SerialCommunication
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with nipcbatt.SerialCommunication() as communication:
             communication.initialize("ASRL7::INSTR")
 

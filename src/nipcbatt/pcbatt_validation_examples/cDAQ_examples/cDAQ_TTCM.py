@@ -1,11 +1,12 @@
-"""Standalone for TemperatureMeasurementUsingThermocouple"""
+"""Standalone for TemperatureMeasurementUsingThermocouple"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
 
 ### Ensure correct hardware and corresponding trigger names before running this example
 
+import nidaqmx.constants
+
+import nipcbatt
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
-import nidaqmx.constants
-import nipcbatt
 
 # Global variables
 plot_results = True

@@ -23,7 +23,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -53,7 +53,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
         analysis_library_info.enable_traces(False)
 
     def test_dc_rms_current_measurement(self):
-        """Tests for the proper flow of DC-RMS Current Measurement"""
+        """Tests for the proper flow of DC-RMS Current Measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.DcRmsCurrentMeasurement()
         measurement.initialize(analog_input_channel_expression="TS1Mod2_ai/ai0:2")
         measurement.configure_and_measure(
@@ -63,7 +63,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
 
     def test_dc_rms_current_measurement_analysis_with_empty_data(self):
         """Tests if calling analyze_measurement_data
-        with None as measure_data input raises Attribute error as expected."""
+        with None as measure_data input raises Attribute error as expected."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (371 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.DcRmsCurrentMeasurement()
         self.assertRaises(
             AttributeError,

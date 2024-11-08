@@ -1,26 +1,28 @@
 """ This example demonstrates use of LM75 I2C Temperature sensor for taking 
- temperature measurements using USB-8452 device """
+ temperature measurements using USB-8452 device """  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (344 > 100 characters) (auto-generated noqa)
 
 ### Ensure correct hardware and corresponding trigger names before running this example
 
+import threading
 import time
+from ctypes import c_uint8
+
 import numpy
+
 import nipcbatt
 import nipcbatt.pcbatt_communication_library
+import nipcbatt.pcbatt_communication_library._ni_845x_internal
+import nipcbatt.pcbatt_communication_library._ni_845x_internal._ni_845x_functions
 import nipcbatt.pcbatt_communication_library.ni_845x_data_types
 import nipcbatt.pcbatt_communication_library.ni_845x_devices
 import nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices
 import nipcbatt.pcbatt_library
-import nipcbatt.pcbatt_communication_library._ni_845x_internal
-import nipcbatt.pcbatt_communication_library._ni_845x_internal._ni_845x_functions
-from ctypes import c_uint8
-import threading
 
 # Flag to control the loop
 running = True
 
 
-def check_input():
+def check_input():  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     global running
     input("Press Enter to exit...\n")
     running = False

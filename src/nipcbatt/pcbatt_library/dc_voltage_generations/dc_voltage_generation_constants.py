@@ -14,7 +14,7 @@ from nipcbatt.pcbatt_library.dc_voltage_generations.dc_voltage_data_types import
 
 @dataclasses.dataclass
 class ConstantsForDcVoltageGeneration:
-    """Constants used as Initial and defauls values for DC Voltage generation configuration"""
+    """Constants used as Initial and defauls values for DC Voltage generation configuration"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
 
     INITIAL_AO_OUTPUT_TERMINAL_CONFIGURATION = nidaqmx.constants.TerminalConfiguration.RSE
     INITIAL_RANGE_MIN_VOLTS = 0.0

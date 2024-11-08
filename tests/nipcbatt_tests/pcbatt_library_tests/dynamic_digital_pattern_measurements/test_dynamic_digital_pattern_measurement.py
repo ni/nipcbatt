@@ -15,7 +15,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternMeasurement,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (
+from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types.DynamicDigitalPatternMeasurementResultData' imported but unused (auto-generated noqa)
     DynamicDigitalPatternMeasurementConfiguration,
     DynamicDigitalPatternMeasurementResultData,
 )
@@ -37,7 +37,7 @@ class TestDynamicDigitalPatternMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -61,7 +61,7 @@ class TestDynamicDigitalPatternMeasurement(unittest.TestCase):
         print("Teardown fixture")
 
     def test_dynamic_digital_pattern_measurement(self):
-        """Checks if class 'DynamicDigitalPatternMeasurement' is ready for use"""
+        """Checks if class 'DynamicDigitalPatternMeasurement' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (192 > 100 characters) (auto-generated noqa)
         meas = DynamicDigitalPatternMeasurement()
         meas.initialize("TS1_DIO/port0/line0:7")
         timing_parameters = DynamicDigitalPatternTimingParameters(

@@ -1,12 +1,14 @@
 """This module provides Digital pulse data types check."""
 
-import importlib.metadata
-import logging
-import sys
+import importlib.metadata  # noqa: F401 - 'importlib.metadata' imported but unused (auto-generated noqa)
+import logging  # noqa: F401 - 'logging' imported but unused (auto-generated noqa)
+import sys  # noqa: F401 - 'sys' imported but unused (auto-generated noqa)
 import unittest
 
-import nidaqmx.constants
-from varname import nameof
+import nidaqmx.constants  # noqa: F401 - 'nidaqmx.constants' imported but unused (auto-generated noqa)
+from varname import (  # noqa: F401 - 'varname.nameof' imported but unused (auto-generated noqa)
+    nameof,
+)
 
 from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
     ConstantsForDigitalPulseGeneration,
@@ -25,11 +27,11 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def test_digital_pulse_counter_channel_parameters(self):
         """Tests if an instance of 'DigitalPulseGenerationCounterChannelParameters
-        is created when given correct values"""
+        is created when given correct values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (417 > 100 characters) (auto-generated noqa)
 
         idle_state = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         t_low = 0.5
@@ -44,7 +46,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_counter_channel_parameters_invalid(self):
         """Ensures an instance of DigitalPulseGenerationCounterChannel parameters
-        is not generated when given invalid values"""
+        is not generated when given invalid values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (423 > 100 characters) (auto-generated noqa)
 
         idle_state = None
         t_low = 0.5
@@ -111,7 +113,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_timing_parameters(self):
         """Tests if an instance of DigitalPulseGenerationTimingParameters
-        is created successfully when given valid parameters"""
+        is created successfully when given valid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (432 > 100 characters) (auto-generated noqa)
 
         count = 10
         instance = DigitalPulseGenerationTimingParameters(count)
@@ -120,7 +122,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_timing_parameters_invalid(self):
         """Ensures an instance of DigitalPulseGenerationTimingParameters
-        is not created when given invalid parameters"""
+        is not created when given invalid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (425 > 100 characters) (auto-generated noqa)
 
         count = None
         self.assertRaises(ValueError, lambda: DigitalPulseGenerationTimingParameters(count))
@@ -133,7 +135,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_configuration(self):
         """Ensures an instance of DigitalPulseGenerationConfiguration is
-        created when given correct parameters"""
+        created when given correct parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (418 > 100 characters) (auto-generated noqa)
 
         idle_state = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         t_low = 0.5
@@ -151,7 +153,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
     def test_digital_pulse_generation_configuration_invalid_params(self):
         """Ensures that the creation of an instance of
         DigitalPusleGenerationConfiguration fails when given
-        invalid data"""
+        invalid data"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (393 > 100 characters) (auto-generated noqa)
 
         idle_state = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         t_low = 0.5
@@ -173,7 +175,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_data(self):
         """Tests if an instance of DigitalPulseGenerationData is correctly
-        created when given correct input"""
+        created when given correct input"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (413 > 100 characters) (auto-generated noqa)
 
         freq = 10.0
         duration = 10.0
@@ -189,7 +191,7 @@ class TestDigitalPulseGenerationDataTypes(unittest.TestCase):
 
     def test_digital_pulse_generation_data_invalid(self):
         """Ensures an instance of DigitalPulseGenerationData is not created
-        when given invalid parameters"""
+        when given invalid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (410 > 100 characters) (auto-generated noqa)
 
         freq = None
         duration = 10.0

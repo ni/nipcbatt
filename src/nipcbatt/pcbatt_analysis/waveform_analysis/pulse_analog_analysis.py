@@ -1,4 +1,4 @@
-"""Provides pulse analog analysis tools"""
+"""Provides pulse analog analysis tools"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (153 > 100 characters) (auto-generated noqa)
 
 from enum import IntEnum
 from typing import Iterable, Optional
@@ -22,7 +22,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class WaveformPeriodicityAnalogProcessingResult(AnalysisLibraryElement):
-    """Defines pulse periodicity related measurements analog processing results"""
+    """Defines pulse periodicity related measurements analog processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (193 > 100 characters) (auto-generated noqa)
 
     def __init__(self, period: float, duty_cycle: float) -> None:
         """Initialize an instance of waveform periodicty processing result.
@@ -76,7 +76,7 @@ class WaveformPeriodicityAnalogProcessingResult(AnalysisLibraryElement):
 
 
 class PulseAnalogProcessingResult(AnalysisLibraryElement):
-    """Defines pulse measurements analog processing results"""
+    """Defines pulse measurements analog processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -106,7 +106,7 @@ class PulseAnalogProcessingResult(AnalysisLibraryElement):
                 Defaults to None.
             duty_cycle (float, optional): fraction of period according to analyzed pulse.
                 Defaults to None.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         Guard.is_greater_than_or_equal_to_zero(pulse_duration, nameof(pulse_duration))
 
@@ -215,9 +215,9 @@ class PulseAnalogProcessingExportMode(IntEnum):
 class PulseAnalogProcessingReferenceLevels(AnalysisLibraryElement):
     """Defines reference levels that will be used to locate pulse when
     analyzing waveform.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
-    def __init__(
+    def __init__(  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self,
         reference_level_high: float,
         reference_level_middle: float,
@@ -257,7 +257,7 @@ class PulseAnalogProcessingReferenceLevels(AnalysisLibraryElement):
 
 class PulseAnalogMeasurementPercentLevelsSettings(AnalysisLibraryElement):
     """Defines settings to use when reference levels
-    required for pulse analysis are expressed as percentage."""
+    required for pulse analysis are expressed as percentage."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (356 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -298,7 +298,7 @@ class PulseAnalogMeasurementPercentLevelsSettings(AnalysisLibraryElement):
 
 
 class LabViewPulseAnalogMeasurements(AnalysisLibraryElement):
-    """Provides pulse analog processing based on ``LabVIEW Pulse Measurements`` VI"""
+    """Provides pulse analog processing based on ``LabVIEW Pulse Measurements`` VI"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (196 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def get_last_error_message() -> str:
@@ -307,7 +307,7 @@ class LabViewPulseAnalogMeasurements(AnalysisLibraryElement):
 
         Returns:
             str: Empty string when no error occured, elsewhere not empty string.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         return _pulse_analog_analysis.labview_get_last_error_message_impl()
 
@@ -353,7 +353,7 @@ class LabViewPulseAnalogMeasurements(AnalysisLibraryElement):
         Returns:
             Iterable[PulseAnalogProcessingResult]: an object that holds multiple results of pulse
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -425,7 +425,7 @@ class LabViewPulseAnalogMeasurements(AnalysisLibraryElement):
         Returns:
             PulseAnalogProcessingResult: An object that holds result of pulse
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))

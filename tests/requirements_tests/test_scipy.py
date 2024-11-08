@@ -41,7 +41,7 @@ class TestSignal(unittest.TestCase):
         print("Teardown method")
 
     def test_signal_windows_hann(self):
-        """Checks method scipy.signal.windows.hann is ready to use"""
+        """Checks method scipy.signal.windows.hann is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
         window_length = 51
         hann_window = scipy.signal.windows.hann(M=window_length)
         self.assertIsNotNone(hann_window)
@@ -59,7 +59,7 @@ class TestSignal(unittest.TestCase):
         self.assertAlmostEqual(first=hann_window[5], second=hann_window[-6], delta=0.0001)
 
     def test_signal_windows_hamming(self):
-        """Checks method scipy.signal.windows.hamming is ready to use"""
+        """Checks method scipy.signal.windows.hamming is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
         window_length = 51
         hann_window = scipy.signal.windows.hamming(M=window_length)
         self.assertIsNotNone(hann_window)
@@ -77,7 +77,7 @@ class TestSignal(unittest.TestCase):
         self.assertAlmostEqual(first=hann_window[5], second=hann_window[-6], delta=0.0001)
 
     def test_signal_find_peaks(self):
-        """Checks method scipy.signal.find_peaks is ready to use"""
+        """Checks method scipy.signal.find_peaks is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (255 > 100 characters) (auto-generated noqa)
 
         sawtooth_width_eq1 = scipy.signal.sawtooth(t=range(0, 16), width=1)
         found_peaks = scipy.signal.find_peaks(x=sawtooth_width_eq1, threshold=0.01)
@@ -89,13 +89,13 @@ class TestSignal(unittest.TestCase):
         self.assertEqual(first=2, second=len(found_peaks[1]))
 
     def test_signal_square(self):
-        """Checks method scipy.signal.square is ready to use"""
+        """Checks method scipy.signal.square is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (174 > 100 characters) (auto-generated noqa)
         square_05_duty_cycle = scipy.signal.square(t=[1, 2, 3, 4], duty=0.5)
         self.assertIsNotNone(square_05_duty_cycle)
         self.assertEqual(first=4, second=len(square_05_duty_cycle.data))
 
     def test_signal_sawtooth(self):
-        """Checks method scipy.signal.sawtooth is ready to use"""
+        """Checks method scipy.signal.sawtooth is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (176 > 100 characters) (auto-generated noqa)
         sawtooth_width_eq1 = scipy.signal.sawtooth(t=[1, 2, 3, 4], width=1)
         self.assertIsNotNone(sawtooth_width_eq1)
         self.assertEqual(first=4, second=len(sawtooth_width_eq1.data))

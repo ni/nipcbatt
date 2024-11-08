@@ -1,4 +1,4 @@
-"""Script that should be used to label pyproject file with specific plateform architecture"""
+"""Script that should be used to label pyproject file with specific plateform architecture"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (204 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -33,7 +33,7 @@ def transform_toml_pkg_plateform_architecture(
     Args:
         plateform_architecture_tag (str): platform architecture tag to write into pyproject file
         pyproject_file_path (str): path into pyproject file to add platform architecture tag into it
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     logging.debug("Apply platform tag: %s", plateform_architecture_tag)
 
     parsed_data = toml.load(f=pyproject_file_path)
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         else:
             print("Usage: label_pyproject_with_platform_architecture.py platform_tag")
             print(f"Supported platform tags = {SUPPORTED_PLATFORM_TAGS}")
-    except:
+    except:  # noqa: E722 - do not use bare 'except' (auto-generated noqa)
         print(Fore.RED + "Failure: " + str(sys.exc_info()[0]))
         raise
     finally:

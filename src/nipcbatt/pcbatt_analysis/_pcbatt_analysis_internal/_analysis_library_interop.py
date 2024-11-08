@@ -1,4 +1,4 @@
-"""Provides private module of native interop helper functions"""
+"""Provides private module of native interop helper functions"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
 
 import os
 from ctypes import CDLL, cdll
@@ -23,7 +23,7 @@ def load_windows_shared_library_entries(native_library_path: str) -> CDLL:
 
     Returns:
         CDLL: An object holding windows shared library entries.
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
     try:
         dll_entries = cdll.LoadLibrary(native_library_path)
         # print(dll_entries)

@@ -1,4 +1,4 @@
-"""Provides Amplitude And Levels analysis tools"""
+"""Provides Amplitude And Levels analysis tools"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
 
 from enum import IntEnum
 from typing import Iterable
@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class AmplitudeAndLevelsProcessingResult(AnalysisLibraryElement):
-    """Defines Amplitude and Levels processing results"""
+    """Defines Amplitude and Levels processing results"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
 
     def __init__(self, amplitude: float, high_state_level: float, low_state_level: float) -> None:
         """Initialize an instance of Amplitude and Levels processing result.
@@ -61,7 +61,7 @@ class AmplitudeAndLevelsProcessingResult(AnalysisLibraryElement):
 
 
 class AmplitudeAndLevelsProcessingMethod(IntEnum):
-    """Defines Amplitude and levels processing method"""
+    """Defines Amplitude and levels processing method"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
 
     HISTOGRAM = 0
     """Strategy is based on histogram analysis to estimate waveform states."""
@@ -75,7 +75,7 @@ class AmplitudeAndLevelsProcessingMethod(IntEnum):
 
 
 class LabViewAmplitudeAndLevels(AnalysisLibraryElement):
-    """Provides Amplitude and Levels processing based on LabVIEW Amplitude and Levels VI"""
+    """Provides Amplitude and Levels processing based on LabVIEW Amplitude and Levels VI"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (202 > 100 characters) (auto-generated noqa)
 
     @staticmethod
     def get_last_error_message() -> str:
@@ -84,7 +84,7 @@ class LabViewAmplitudeAndLevels(AnalysisLibraryElement):
 
         Returns:
             str: Empty string when no error occured, elsewhere not empty string.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         return _amplitude_and_levels_analysis.labview_get_last_error_message_impl()
 
     @staticmethod
@@ -111,7 +111,7 @@ class LabViewAmplitudeAndLevels(AnalysisLibraryElement):
         Returns:
             AmplitudeAndLevelsProcessingResult: An object that holds result of amplitude and levels
             processing result using LabVIEW VI.
-        """
+        """  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
         Guard.is_not_none(waveform_samples, nameof(waveform_samples))
         Guard.is_not_empty(waveform_samples, nameof(waveform_samples))
@@ -162,7 +162,7 @@ class LabViewAmplitudeAndLevels(AnalysisLibraryElement):
         Yields:
             Iterator[Iterable[AmplitudeAndLevelsProcessingResult]]: objects that hold result of
             amplitude and levels processing of each input waveform using LabVIEW VI.
-        """
+        """  # noqa: W505, D415 - doc line too long (113 > 100 characters) (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
         Guard.is_not_none(waveforms_samples, nameof(waveforms_samples))
         Guard.is_greater_than_zero(
             waveforms_sampling_period_seconds, nameof(waveforms_sampling_period_seconds)

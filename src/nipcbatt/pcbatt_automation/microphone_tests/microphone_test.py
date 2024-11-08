@@ -1,12 +1,14 @@
 """This example demonstrates Sine Wave Generation and Frequency Domain 
-   Measurement using AO and AI channels or Modules"""
+   Measurement using AO and AI channels or Modules"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (346 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
-import nipcbatt
+import os  # noqa: F401 - 'os' imported but unused (auto-generated noqa)
+
 import nidaqmx.constants
+
+import nipcbatt
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
-import os
 
 # Setup: Get the physical channels required for the test.
 
@@ -25,14 +27,14 @@ generation_time = 0.1
 
 
 # Initialize Region
-########################################   INITIALIZATION FUNCTION   ################################################################
+########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
 def setup(
     svg_channel=SIGNAL_VOLTAGE_GEN_CHANNEL,
     fdvm_channel=FREQ_DOMAIN_MEAS_CHANNEL,
     file_path=DEFAULT_FILEPATH,
 ):
     """Creates the necessary objects for generation of sine wave and Frequency
-    Domain Measurement"""
+    Domain Measurement"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (395 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test.
     microphone_instance = nipcbatt.SignalVoltageGeneration()
@@ -60,7 +62,7 @@ def setup(
 
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
-def main(
+def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     microphone_instance: nipcbatt.SignalVoltageGeneration,
     freq_domain_meas_test_point: nipcbatt.FrequencyDomainMeasurement,
     digital_start_trigger=DIGITAL_STATRT_TRIGGER,
@@ -148,7 +150,7 @@ def main(
     # endregion
     microphone_instance.configure_and_generate_sine_waveform(svg_config)
 
-    """Measures the Analog Input voltage waveforms (Started measure when Signal Voltage generation sends Trigger after source) and returns Freq Domain Analysis"""
+    """Measures the Analog Input voltage waveforms (Started measure when Signal Voltage generation sends Trigger after source) and returns Freq Domain Analysis"""  # noqa: W505 - doc line too long (162 > 100 characters) (auto-generated noqa)
     # Region FDVM Measure Only
     meas_options_measure_only = nipcbatt.MeasurementOptions(
         execution_option=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
@@ -170,7 +172,7 @@ def main(
     )
 
     # endregion fdvm configure and measure
-    ####################################################################################################
+    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
     # end region configure and measure
     fdvm_result_data = freq_domain_meas_test_point.configure_and_measure(configuration=fdvm_config)
 
@@ -186,7 +188,7 @@ def main(
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(
+def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
     microphone_instance: nipcbatt.SignalVoltageGeneration,
     freq_domain_meas_test_point: nipcbatt.TimeDomainMeasurement,
 ):
@@ -204,7 +206,7 @@ def signal_voltage_generation_and_measurement(
     generation_channel=SIGNAL_VOLTAGE_GEN_CHANNEL,
     measurement_channel=FREQ_DOMAIN_MEAS_CHANNEL,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
 
     # Run setup function
     microphone_instance, freq_domain_meas_test_point = setup(

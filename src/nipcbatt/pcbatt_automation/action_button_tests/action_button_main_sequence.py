@@ -1,9 +1,11 @@
-"""Main Sequence for executing Action Button Test"""
+"""Main Sequence for executing Action Button Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 
 # import functions
-from nipcbatt.pcbatt_automation.action_button_tests.action_button_test import action_button_test
+from nipcbatt.pcbatt_automation.action_button_tests.action_button_test import (
+    action_button_test,
+)
 from nipcbatt.pcbatt_automation.action_button_tests.turn_off_all_ao_channels import (
     power_down_all_ao_channels,
 )

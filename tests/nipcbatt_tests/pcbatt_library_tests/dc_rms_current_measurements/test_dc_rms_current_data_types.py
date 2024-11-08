@@ -19,7 +19,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -44,7 +44,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
     def test_dc_rms_current_measurement_terminal_range_parameters(self):
         """Tests if an instance of `DcRmsCurrentMeasurementTerminalRangeParameters`
         is created with the specific values.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.RSE
         expexted_range_min_amperes = -0.01
         expecte_range_max_amperes = 0.01
@@ -67,7 +67,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         self.assertEqual(expected_shunt_resistor_ohms, actual_shunt_resistor_ohms)
 
     def test_dc_rms_current_measurement_terminal_range_invalid_parameters(self):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (285 > 100 characters) (auto-generated noqa)
 
         # Test if Valus error is raised when range max = min value
         self.assertRaises(
@@ -120,7 +120,7 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -145,7 +145,7 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
     def test_dc_rms_curren_measurement_channel_and_terminal_range_parameters(self):
         """Tests if an instance of `DcRmsCurrentMeasurementChannelAndTerminalRangeParameters`
         is created with the specific values.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_channel_name = "dev1/ai1"
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.DIFF
         expexted_range_min_amperes = 0.02
@@ -182,7 +182,7 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
         """Tests if the expected value or type error is thrown when creating an instance of
         `DcRmsCurrentMeasurementChannelAndTerminalRangeParameters` with invalid values
         for channel_name string.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Check if value error is thrown when channel_name string is empty
         # Act
@@ -223,7 +223,7 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
     ):
         """Tests if the expected value or type error is thrown when creating an instance of
         `DcRmsCurrentMeasurementChannelAndTerminalRangeParameters` when channel_parameters is none.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # Check if value error is thrown when channel_name string is empty
         # Act
@@ -247,7 +247,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         # Create expected values constants for global_channel_parameters
@@ -393,7 +393,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     def test_dc_rms_current_measurement_configuration(self):
         """Tests if an instance of `DcRmsCurrentMeasurementConfiguration`
         is created with the specific values.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Create expected values constants for global_channel_parameters
         # of type DcRmsCurrentMeasurementTerminalRangeParameters
         expected_terminal_configuration = nidaqmx.constants.TerminalConfiguration.NRSE
@@ -539,7 +539,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     ):
         """Test if expected error is thrown when creating an instance
         of `DcRmsCurrentMeasurementConfiguration`
-        with invalid values for specific_channel_parameters"""
+        with invalid values for specific_channel_parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (432 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -579,7 +579,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     ):
         """Test if expected error is thrown when creating an instance
         of `DcRmsCurrentMeasurementConfiguration`
-        with global_channel_parameters is set to None"""
+        with global_channel_parameters is set to None"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (426 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -600,7 +600,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     ):
         """Test if expected error is thrown
         when creating an instance of `DcRmsCurrentMeasurementConfiguration`
-        when measurement_options is None"""
+        when measurement_options is None"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (413 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -621,7 +621,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     ):
         """Test if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementConfiguration`
-        when sample_clock_timing_parameters is None"""
+        when sample_clock_timing_parameters is None"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (424 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -642,7 +642,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
     ):
         """Test if expected error is thrown
         when creating an instance of `DcRmsCurrentMeasurementConfiguration`
-        when digital_start_trigger_parameters is None"""
+        when digital_start_trigger_parameters is None"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (426 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -663,7 +663,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         self._expected_waveforms = []
@@ -720,7 +720,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
     def test_dc_rms_current_measurement_result_data(self):
         """Tests if an instance of `DcRmsCurrentMeasurementResultData`
         is created with the specific values.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         instance = nipcbatt.DcRmsCurrentMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
@@ -746,7 +746,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
     def test_dc_rms_current_measurement_result_data_when_waveforms_is_none(self):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` with waveform as none.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.DcRmsCurrentMeasurementResultData(
@@ -764,7 +764,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` when waveform has an item
         that is not of type `AnalogWaveform`.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._expected_waveforms.append([0.5, 1.2])
 
         with self.assertRaises(TypeError) as ctx:
@@ -787,7 +787,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` when dc_values_amperes
         has an item that is not of type float.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._expected_dc_values_amperes.append("two")
 
         with self.assertRaises(TypeError) as ctx:
@@ -810,7 +810,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` when rms_values_amperes
         has an item that is not of type float.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._expected_rms_values_amperes.append([1.0])
 
         with self.assertRaises(TypeError) as ctx:
@@ -834,7 +834,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` when waveforms list and
         rms_values_amperes have list have different lengths
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._expected_rms_values_amperes.append(1.0)
 
         with self.assertRaises(ValueError) as ctx:
@@ -857,7 +857,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if expected error is thrown when creating an instance of
         `DcRmsCurrentMeasurementResultData` when waveforms list and
         dc_values_amperes have list have different lengths
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self._expected_dc_values_amperes.append(1.0)
 
         with self.assertRaises(ValueError) as ctx:

@@ -1,4 +1,4 @@
-"Constant datatypes for use in digital frequency measurement"
+"Constant datatypes for use in digital frequency measurement"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
 
 import dataclasses
 
@@ -7,7 +7,7 @@ import nidaqmx.constants
 
 @dataclasses.dataclass
 class ConstantsForDigitalFrequencyMeasurement:
-    "Constants used in digital frequency measurement"
+    "Constants used in digital frequency measurement"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
     DEFAULT_FREQUENCY_COUNTER_METHOD = (
         nidaqmx.constants.CounterFrequencyMethod.LARGE_RANGE_2_COUNTERS
     )

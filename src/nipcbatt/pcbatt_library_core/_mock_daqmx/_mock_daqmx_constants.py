@@ -83,23 +83,23 @@ class _ConstantsForMockDAQmx(Enum):
 _DAQMX_ATTRIBUTES = {
     # used when invoke property nidaqmx._task_modules.channels.channel.Channel.chan_type
     0x187F: _ConstantsForMockDAQmx.CHANNEL_TYPE,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_count_edges_term
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_count_edges_term  # noqa: W505 - doc line too long (103 > 100 characters) (auto-generated noqa)
     0x18C7: _ConstantsForMockDAQmx.COUNT_EDGES_TERM,
     # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_term
     0x18A2: _ConstantsForMockDAQmx.FREQ_TERM,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_semi_period_term
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_semi_period_term  # noqa: W505 - doc line too long (103 > 100 characters) (auto-generated noqa)
     0x18B0: _ConstantsForMockDAQmx.SEMI_PERIOD_TERM,
     # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_term
     0x18E1: _ConstantsForMockDAQmx.PULSE_TERM,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_count_edges_active_edge
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_count_edges_active_edge  # noqa: W505 - doc line too long (110 > 100 characters) (auto-generated noqa)
     0x697: _ConstantsForMockDAQmx.COUNT_EDGES_ACTIVE_EDGE,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_starting_edge
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_starting_edge  # noqa: W505 - doc line too long (105 > 100 characters) (auto-generated noqa)
     0x799: _ConstantsForMockDAQmx.FREQ_STARTING_EDGE,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_semi_period_starting_edge
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_semi_period_starting_edge  # noqa: W505 - doc line too long (112 > 100 characters) (auto-generated noqa)
     0x22FE: _ConstantsForMockDAQmx.SEMI_PERIOD_STARTING_EDGE,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_meas_meth
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_meas_meth  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x144: _ConstantsForMockDAQmx.MEAS_METHOD,
-    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_meas_time
+    # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_meas_time  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x145: _ConstantsForMockDAQmx.MEAS_TIME,
     # used when invoke property nidaqmx._task_modules.channels.ci_channel.CIChannel.ci_freq_div
     0x147: _ConstantsForMockDAQmx.DIVISOR,
@@ -111,39 +111,39 @@ _DAQMX_ATTRIBUTES = {
     0x189C: _ConstantsForMockDAQmx.MAX_VAL,
     # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_freq
     0x1178: _ConstantsForMockDAQmx.PULSE_FREQ,
-    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_duty_cyc
+    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_duty_cyc  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x1176: _ConstantsForMockDAQmx.PULSE_DUTY_CYC,
-    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_ctr_timebase_rate
+    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_ctr_timebase_rate  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
     0x18C2: _ConstantsForMockDAQmx.CTR_TIME_BASE_RATE,
-    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_idle_state
+    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_idle_state  # noqa: W505 - doc line too long (103 > 100 characters) (auto-generated noqa)
     0x1170: _ConstantsForMockDAQmx.IDLE_STATE,
-    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_low_time
+    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_low_time  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x18BB: _ConstantsForMockDAQmx.PULSE_LOW_TIME,
-    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_low_time
+    # used when invoke property nidaqmx._task_modules.channels.co_channel.COChannel.co_pulse_low_time  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x18BA: _ConstantsForMockDAQmx.PULSE_HIGH_TIME,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_term_cfg
     0x1097: _ConstantsForMockDAQmx.TERMINAL_CONFIG,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_remote_sense
     0x31DB: _ConstantsForMockDAQmx.POWER_SENSE,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_idle_output_behavior
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_idle_output_behavior  # noqa: W505 - doc line too long (108 > 100 characters) (auto-generated noqa)
     0x31D8: _ConstantsForMockDAQmx.PWR_IDLE_OUTPUT_BEHAVIOR,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_adc_timing_mode
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_adc_timing_mode  # noqa: W505 - doc line too long (102 > 100 characters) (auto-generated noqa)
     0x29F9: _ConstantsForMockDAQmx.ADC_TIMING_MODE,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_excit_src
     0x17F4: _ConstantsForMockDAQmx.CURRENT_EXCIT_SOURCE,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_resistance_cfg
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_resistance_cfg  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x1881: _ConstantsForMockDAQmx.RESISTANCE_CONFIG,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_excit_voltage_or_current
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_excit_voltage_or_current  # noqa: W505 - doc line too long (111 > 100 characters) (auto-generated noqa)
     0x17F6: _ConstantsForMockDAQmx.EXCIT_VOLTAGE_OR_CURRENT,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_min
     0x17DE: _ConstantsForMockDAQmx.MIN_VAL,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_max
     0x17DD: _ConstantsForMockDAQmx.MAX_VAL,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.current_shunt_resistance
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.current_shunt_resistance  # noqa: W505 - doc line too long (108 > 100 characters) (auto-generated noqa)
     0x17F3: _ConstantsForMockDAQmx.EXT_SHUNT_RESISTOR_VAL,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_voltage_setpoint
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_voltage_setpoint  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
     0x31D4: _ConstantsForMockDAQmx.VOLTAGE_SETPOINT,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_current_setpoint
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_current_setpoint  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
     0x31D5: _ConstantsForMockDAQmx.CURRENT_SETPOINT,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_excit_val
     0x17F5: _ConstantsForMockDAQmx.EXCIT_VAL,
@@ -159,7 +159,7 @@ _DAQMX_ATTRIBUTES = {
     0x18CA: _ConstantsForMockDAQmx.THRMSTR_C,
     # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.ai_thrmstr_r1
     0x1061: _ConstantsForMockDAQmx.R_1,
-    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_output_enable
+    # used when invoke property nidaqmx._task_modules.channels.ai_channel.AIChannel.pwr_output_enable  # noqa: W505 - doc line too long (101 > 100 characters) (auto-generated noqa)
     0x31D6: _ConstantsForMockDAQmx.OUTPUT_ENABLE,
     # used when invoke property nidaqmx._task_modules.timing.Timing.samp_quant_samp_per_chan
     0x1300: _ConstantsForMockDAQmx.SAMP_QUANT_SAMP_PER_CHAN,
@@ -178,4 +178,4 @@ _DAQMX_ATTRIBUTES = {
     # used when invoke property nidaqmx._task_modules.channels.ao_channel.AOChannel.ao_term_cfg
     0x188E: _ConstantsForMockDAQmx.TERMINAL_CONFIG,
 }
-"""The dictionnary makes a relation between attribute IDs and the attributes stored in dictionnaries of the interpreter"""
+"""The dictionnary makes a relation between attribute IDs and the attributes stored in dictionnaries of the interpreter"""  # noqa: W505 - doc line too long (122 > 100 characters) (auto-generated noqa)

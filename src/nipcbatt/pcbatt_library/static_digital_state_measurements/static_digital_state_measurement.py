@@ -1,7 +1,7 @@
 # pylint: disable=W0613
 # pylint: disable=W0612
 # remove it when arguments of initialize are used.
-""" _summary_ """
+""" _summary_ """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (128 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -13,7 +13,9 @@ import nidaqmx.stream_readers
 import nidaqmx.system
 import numpy as np
 from nidaqmx.constants import LineGrouping
-from nidaqmx.utils import unflatten_channel_string
+from nidaqmx.utils import (  # noqa: F401 - 'nidaqmx.utils.unflatten_channel_string' imported but unused (auto-generated noqa)
+    unflatten_channel_string,
+)
 from varname import nameof
 
 from nipcbatt.pcbatt_library.static_digital_state_measurements.static_digital_state_data_types import (
@@ -33,7 +35,7 @@ class StaticDigitalStateMeasurement(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): _description_
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def initialize(self, channel_expression: str):
         """Initializes Digital input channels for static digital measurements for
@@ -42,7 +44,7 @@ class StaticDigitalStateMeasurement(BuildingBlockUsingDAQmx):
         Args:
             channel_expression (str): Digital input channels to read off of the
             DAQmx task
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -72,7 +74,7 @@ class StaticDigitalStateMeasurement(BuildingBlockUsingDAQmx):
             self.task.di_channels.add_di_chan(channel_expression, "", LineGrouping.CHAN_PER_LINE)
 
     def close(self):
-        """Closes the measurement process and releases the internal resources"""
+        """Closes the measurement process and releases the internal resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (191 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 
@@ -99,7 +101,7 @@ class StaticDigitalStateMeasurement(BuildingBlockUsingDAQmx):
         Args:
 
         Returns:
-            An instance of StaticDigitalStateMeasurementResultData"""
+            An instance of StaticDigitalStateMeasurementResultData"""  # noqa: D202, D209, D414, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Section has no content (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         # set values for memory declaration
         num_channels = len(self.task.in_stream.channels_to_read.channel_names)

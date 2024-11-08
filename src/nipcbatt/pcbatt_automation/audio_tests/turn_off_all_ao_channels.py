@@ -1,4 +1,4 @@
-"""This example resets all configured Analog output channels to 0 volts"""
+"""This example resets all configured Analog output channels to 0 volts"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (185 > 100 characters) (auto-generated noqa)
 
 import nipcbatt
 
@@ -16,7 +16,7 @@ def power_down_all_ao_channels(
     channel_names=ANALOG_OUT_CHANNELS,
     parameters=RANGE_PARAMETERS,
 ):
-    """Turn off configured AO channels by configuring to 0V"""
+    """Turn off configured AO channels by configuring to 0V"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (250 > 100 characters) (auto-generated noqa)
 
     # declare constant to hold output voltage of 0V
     off_voltages = [0.0, 0.0, 0.0, 0.0]

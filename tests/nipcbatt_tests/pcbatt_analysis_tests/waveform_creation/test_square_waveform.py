@@ -1,4 +1,4 @@
-"""Provides unit tests related to square_waveform.py module"""
+"""Provides unit tests related to square_waveform.py module"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
 import logging
 import os
@@ -21,7 +21,7 @@ class TestSquareWaveform(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @classmethod
     def setUpClass(cls):
@@ -139,7 +139,7 @@ class TestSquareWaveform(unittest.TestCase):
         expected_waveform_max: float,
         expected_waveform_min: float,
     ):
-        """Test of `square_waveform.create_square_waveform` function"""
+        """Test of `square_waveform.create_square_waveform` function"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (259 > 100 characters) (auto-generated noqa)
 
         logging.debug("%s = %s", nameof(case_name), case_name)
 

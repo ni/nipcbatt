@@ -1,11 +1,12 @@
-# Temperature Thermistor Measurement connected with Power Supply Source and Measure
+# Temperature Thermistor Measurement connected with Power Supply Source and Measure  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (156 > 100 characters) (auto-generated noqa)
 ### Ensure correct hardware and corresponding trigger names before running this example
 
+import nidaqmx.constants
+import numpy as np
+
+import nipcbatt
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
-import nidaqmx.constants
-import nipcbatt
-import numpy as np
 
 # Global variables
 plot_results = True

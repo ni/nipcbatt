@@ -1,1 +1,1 @@
-"""Provides private modules related to ni 845x communication protocols"""
+"""Provides private modules related to ni 845x communication protocols"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)

@@ -21,7 +21,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -46,7 +46,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_range_parameters(self):
         """Tests if an instance of `DigitalFrequencyRangeParameters`
         is created with the specific values.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_minimum_frequency = 1.0
         expected_maximum_frequency = 999999999.0
@@ -65,7 +65,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_range_parameters_with_invalid_data(self):
         """Tests if an instance of `DigitalFrequencyRangeParameters`
         is created with the invalid values.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_minimum_frequency = None
         expected_maximum_frequency = 999999999.0
@@ -125,7 +125,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_measurement_configuration(self):
         """Tests if an instance of DigitalFrequencyMeasurementConfiguration
         is created successfully when given correct input
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_freq = 1.0
         max_freq = 999999999.0
@@ -147,7 +147,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_measurement_configuration_with_invalid_data(self):
         """Tests if an instance of DigitalFrequencyMeasurementConfiguration
         throws errors during instantiation when given incorrect input
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # DigitalFrequencyMeasurementCounterChannelParameters is None
         self.assertRaises(ValueError, lambda: DigitalFrequencyMeasurementConfiguration(None))
@@ -155,7 +155,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_measurement_counter_channel_parameters(self):
         """Tests if an instance of DigitalFrequencyMeasurementCounterChannelParameters
         is created successfully when given correct input
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_min_freq = 0.0
         expected_max_freq = 999999999.0
@@ -182,7 +182,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     ):
         """Tests if an instance of DigitalFrequencyMeasurementCounterChannelParameters
         throws errors when given incorrect input
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         min_frequency = 0.0
         max_frequency = 999999999.0
@@ -233,7 +233,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_measurement_result_data(self):
         """Tests if an instance of DigitalFrequencyMeasurementResultData
         is generated correctly when given correct data
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_frequency = 10000000
         instance = DigitalFrequencyMeasurementResultData(expected_frequency)
@@ -242,7 +242,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
     def test_digital_frequency_measurement_result_data_with_invalid_data(self):
         """Tests if an instance of DigitalFrequencyMeasurementResultData
         throws an error when given incorrect data
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_frequency = None
         self.assertRaises(

@@ -48,7 +48,7 @@ class TestSpectrumAmplitudeType(unittest.TestCase):
         actual_enum_value: SpectrumAmplitudeType,
         expected_int_value: int,
     ):
-        """Test of enum `SpectrumAmplitudeType` integer values"""
+        """Test of enum `SpectrumAmplitudeType` integer values"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (176 > 100 characters) (auto-generated noqa)
         logging.debug("%s = %s", nameof(case_name), case_name)
         self.assertEqual(expected_int_value, actual_enum_value)
 
@@ -81,7 +81,7 @@ class TestSpectrumPhaseUnit(unittest.TestCase):
         actual_enum_value: SpectrumPhaseUnit,
         expected_int_value: int,
     ):
-        """Test of pcbatt_analysis.frequency_domain_analysis.FftSpectrumPhaseUnit integer values"""
+        """Test of pcbatt_analysis.frequency_domain_analysis.FftSpectrumPhaseUnit integer values"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         logging.debug("%s = %s", nameof(case_name), case_name)
         self.assertEqual(expected_int_value, actual_enum_value)
 
@@ -204,7 +204,7 @@ class TestWaveformTone(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -226,7 +226,7 @@ class TestWaveformTone(unittest.TestCase):
     def test_waveform_tone(self):
         """Tests if an instance of `WaveformTone`
         is created with the specific values.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         waveform_tone = WaveformTone(frequency=440, amplitude=1, phase_radians=math.pi / 2)
 
         logging.debug("%s = %s", nameof(waveform_tone), repr(waveform_tone))

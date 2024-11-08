@@ -1,4 +1,4 @@
-"""Static digital state  data types"""
+"""Static digital state  data types"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (149 > 100 characters) (auto-generated noqa)
 
 from typing import Dict, List
 
@@ -9,7 +9,7 @@ from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 
 class StaticDigitalStateMeasurementResultData(PCBATestToolkitData):
-    """Defines parameters used for configuration of static digital state measurements"""
+    """Defines parameters used for configuration of static digital state measurements"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
 
     def __init__(self, digital_states: List[bool], channel_identifiers: List[str]) -> None:
         """Initializes an instance of `StaticDigitalStateMeasurementResultData'
@@ -20,7 +20,7 @@ class StaticDigitalStateMeasurementResultData(PCBATestToolkitData):
                 The boolean state of each corresponding channel in the measurement
             channel_identifiers (array of string):
                 The channel ID of each channel in the measurement
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # input verification
         Guard.is_not_none(digital_states, nameof(digital_states))
@@ -46,12 +46,12 @@ class StaticDigitalStateMeasurementResultData(PCBATestToolkitData):
     def digital_states(self) -> List[bool]:
         """
         :type: array of 'bool': Holds the state of each channel
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._digital_states
 
     @property
     def channel_identifiers(self) -> List[str]:
-        """:type: array of 'str': Identifies each channel"""
+        """:type: array of 'str': Identifies each channel"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return self._channel_identifiers
 
     @property
@@ -61,5 +61,5 @@ class StaticDigitalStateMeasurementResultData(PCBATestToolkitData):
 
         Returns:
             Dict[str, bool]: mapping of channel to digital state
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         return self._states_per_channels

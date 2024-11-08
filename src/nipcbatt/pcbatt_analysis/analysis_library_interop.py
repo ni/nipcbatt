@@ -27,7 +27,7 @@ def get_native_libraries_folder_name_for_windows() -> str:
 
     Returns:
         str: folder name containing native libraries, win_amd64 or win32.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     if platform_utilities.is_python_windows_64bits():
         return "win_amd64"
 
@@ -47,7 +47,7 @@ def load_interop_api_library_entries() -> CDLL:
     Raises:
         PCBATTAnalysisLoadNativeLibraryFailedException:
         occurs when loading interop api entries fails for some reason.
-    """
+    """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (283 > 100 characters) (auto-generated noqa)
 
     native_libraries_folder_name = get_native_libraries_folder_name_for_windows()
 

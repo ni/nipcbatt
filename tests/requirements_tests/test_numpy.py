@@ -39,7 +39,7 @@ class TestNDArray(unittest.TestCase):
         print("Teardown fixture")
 
     def test_ndarray_zeros_array(self):
-        """Checks method numpy.zeros is ready to use"""
+        """Checks method numpy.zeros is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (243 > 100 characters) (auto-generated noqa)
 
         logging.debug("=> %s", inspect.currentframe().f_code.co_name)
         ndarray_instance = numpy.zeros(shape=(4, 1), dtype=numpy.int16)
@@ -58,7 +58,7 @@ class TestNDArray(unittest.TestCase):
         self.assertEqual(first=0, second=ndarray_instance[3])
 
     def test_ndarray_create_single_dimension_array(self):
-        """Checks method numpy.array is ready to use"""
+        """Checks method numpy.array is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (243 > 100 characters) (auto-generated noqa)
 
         logging.debug("=> %s", inspect.currentframe().f_code.co_name)
         ndarray_instance = numpy.array([1, 2, 3, 4], dtype=numpy.int16)
@@ -73,7 +73,7 @@ class TestNDArray(unittest.TestCase):
         self.assertEqual(first=4, second=array_shape_item1)
 
     def test_ndarray_create_two_dimensions_array(self):
-        """Checks method numpy.ndarray is ready to use"""
+        """Checks method numpy.ndarray is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (245 > 100 characters) (auto-generated noqa)
 
         logging.debug("=> %s", inspect.currentframe().f_code.co_name)
         ndarray_instance = numpy.ndarray(shape=(2, 2), dtype=numpy.int16)
@@ -102,7 +102,7 @@ class TestNDArray(unittest.TestCase):
         self.assertEqual(first=ndarray_instance[1][0], second=2)
 
     def test_ndarray_sum_single_dimension_array(self):
-        """Checks method numpy.sum is ready to use"""
+        """Checks method numpy.sum is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (241 > 100 characters) (auto-generated noqa)
 
         logging.debug("=> %s", inspect.currentframe().f_code.co_name)
         ndarray_instance = numpy.array([1, 2, 3, 4], dtype=numpy.int16)
@@ -111,7 +111,7 @@ class TestNDArray(unittest.TestCase):
         self.assertEqual(first=10, second=ndarray_instance_sum)
 
     def test_ndarray_mean_single_dimension_array(self):
-        """Checks method numpy.mean is ready to use"""
+        """Checks method numpy.mean is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (242 > 100 characters) (auto-generated noqa)
 
         logging.debug("=> %s", inspect.currentframe().f_code.co_name)
         ndarray_instance = numpy.array([1, 2, 3, 4], dtype=numpy.int16)
@@ -136,25 +136,25 @@ class TestMatlib(unittest.TestCase):
         print("Teardown fixture")
 
     def test_mathlib_average(self):
-        """Checks method numpy.matlib.average is ready to use"""
+        """Checks method numpy.matlib.average is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
         average_result = numpy.matlib.average(a=[1, -1, -2, 2])
         self.assertIsNotNone(average_result)
         self.assertEqual(first=0, second=average_result)
 
     def test_mathlib_amax(self):
-        """Checks method numpy.matlib.amax is ready to use"""
+        """Checks method numpy.matlib.amax is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
         amax_result = numpy.matlib.amax(a=[1, -1, -2, 2])
         self.assertIsNotNone(amax_result)
         self.assertEqual(first=2, second=amax_result)
 
     def test_mathlib_amin(self):
-        """Checks method numpy.matlib.amin is ready to use"""
+        """Checks method numpy.matlib.amin is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
         amin_result = numpy.matlib.amin(a=[1, -1, -2, 2])
         self.assertIsNotNone(amin_result)
         self.assertEqual(first=-2, second=amin_result)
 
     def test_mathlib_all(self):
-        """Checks method numpy.matlib.all is ready to use"""
+        """Checks method numpy.matlib.all is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         all_result = numpy.matlib.all(a=[-1, -1, -2, -2], axis=0, where=lambda x: x < 0)
         self.assertIsNotNone(all_result)
         self.assertEqual(first=True, second=all_result)

@@ -22,7 +22,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -48,7 +48,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
     def test_integration_dc_rms_current_measurement_configure_only(self):
         """Integration test of
         nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
-        with MeasurementExecutionType.CONFIGURE_ONLY"""
+        with MeasurementExecutionType.CONFIGURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (425 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
@@ -89,7 +89,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         with MeasurementExecutionType.CONFIGURE_ONLY
-        and MeasurementExecutionType.MEASURE_ONLY"""
+        and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
@@ -158,7 +158,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         with MeasurementExecutionType.CONFIGURE_AND_MEASURE.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with nipcbatt.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
@@ -227,7 +227,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         to be called in a loop.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         channel_list = [
             "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3",

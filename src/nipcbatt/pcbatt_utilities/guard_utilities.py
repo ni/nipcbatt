@@ -73,20 +73,22 @@ class Guard:
     @staticmethod
     def is_not_none(instance: object, instance_name: str):
         """Asserts that the object is not None."""
-        if not instance is None:
+        if (  # noqa: E714 - test for object identity should be 'is not' (auto-generated noqa)
+            not instance is None
+        ):
             return
 
         raise ValueError(Guard.OBJECT_IS_NONE_ARGS_1.format(instance_name))
 
     @staticmethod
     def is_not_int(value, value_name: str):
-        """Ensures value is not an integer"""
+        """Ensures value is not an integer"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (156 > 100 characters) (auto-generated noqa)
         if isinstance(value, int):
             raise ValueError(Guard.VALUE_IS_NOT_INTEGER.format(value_name))
 
     @staticmethod
     def is_float(value, value_name: str):
-        "Ensures value is a float"
+        "Ensures value is a float"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (145 > 100 characters) (auto-generated noqa)
         if isinstance(value, float):
             return
 
@@ -94,7 +96,7 @@ class Guard:
 
     @staticmethod
     def is_int(value, value_name: str):
-        "Ensures value is an integer"
+        "Ensures value is an integer"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (148 > 100 characters) (auto-generated noqa)
         if isinstance(value, int):
             return
 
@@ -102,7 +104,7 @@ class Guard:
 
     @staticmethod
     def is_not_float(value, value_name: str):
-        """Ensures value is not a float"""
+        """Ensures value is not a float"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (153 > 100 characters) (auto-generated noqa)
         if isinstance(value, float):
             raise ValueError(Guard.VALUE_IS_NOT_FLOAT.format(value_name))
 
@@ -216,7 +218,9 @@ class Guard:
     @staticmethod
     def is_not_none_nor_empty_nor_whitespace(value: str, value_name: str):
         """Asserts that the str object is empty."""
-        if not value is None and value and value.strip():
+        if (  # noqa: E714 - test for object identity should be 'is not' (auto-generated noqa)
+            not value is None and value and value.strip()
+        ):
             return
 
         raise ValueError(Guard.STRING_IS_NONE_OR_EMPTY_OR_WHITESPACE_ARGS_1.format(value_name))
@@ -233,7 +237,7 @@ class Guard:
     @staticmethod
     def size_is_less_than_or_equal(iterable_instance: Iterable, size: int, iterable_name: str):
         """Asserts that the iterable object does contains
-        less than the specific size."""
+        less than the specific size."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (332 > 100 characters) (auto-generated noqa)
         if len(iterable_instance) <= size:
             return
         raise ValueError(
@@ -261,7 +265,7 @@ class Guard:
 
     @staticmethod
     def is_within_limits_included(value, lower_limit, upper_limit, value_name: str):
-        """Asserts that the value is not within the specified limits including the limit values"""
+        """Asserts that the value is not within the specified limits including the limit values"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (286 > 100 characters) (auto-generated noqa)
 
         if value >= lower_limit and value <= upper_limit:
             return
@@ -272,7 +276,7 @@ class Guard:
 
     @staticmethod
     def is_within_limits_excluded(value, lower_limit, upper_limit, value_name: str):
-        """Asserts that the value is not within the specified limits excluding the limit values"""
+        """Asserts that the value is not within the specified limits excluding the limit values"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (286 > 100 characters) (auto-generated noqa)
 
         if value > lower_limit and value < upper_limit:
             return

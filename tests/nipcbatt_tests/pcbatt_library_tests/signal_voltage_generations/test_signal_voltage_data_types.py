@@ -17,7 +17,7 @@ class TestToneParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -40,7 +40,7 @@ class TestToneParameters(unittest.TestCase):
         print("Teardown fixture")
 
     def test_tone_parameters(self):
-        """Tests if the instance of `ToneParameters` is created as expected"""
+        """Tests if the instance of `ToneParameters` is created as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (189 > 100 characters) (auto-generated noqa)
         expected_tone_frequency = 100
         expected_amplitude = 1.0
         expected_phase = 0
@@ -61,7 +61,7 @@ class TestToneParameters(unittest.TestCase):
 
     def test_tone_parameters_with_invalid_parameters(self):
         """Tests if  expected ValueError is thrown when an instance of
-        `ToneParameters` is created with invalid parameters"""
+        `ToneParameters` is created with invalid parameters"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (432 > 100 characters) (auto-generated noqa)
 
         expected_tone_frequency = 100
         expected_amplitude = 1.0
@@ -92,7 +92,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -119,7 +119,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.200
 
@@ -142,7 +142,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.200
 
@@ -165,7 +165,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.200
 
@@ -188,7 +188,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sample_clock_source = "OnboardClock"
         expected_generated_signal_duration_seconds = 0.200
 
@@ -211,7 +211,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sample_clock_source = "OnboardClock"
         # expected_generated_signal_duration_seconds = 0.200
 
@@ -232,7 +232,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
     def test_signal_voltage_generation_timing_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.common.common_data_types.SignalVoltageGenerationTimingParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_sample_clock_source = "OnboardClock"
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.200
@@ -260,7 +260,7 @@ class TestSignalVoltageGenerationSineWaveParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -284,7 +284,7 @@ class TestSignalVoltageGenerationSineWaveParameters(unittest.TestCase):
 
     def test_signal_voltage_generation_sine_wave_parameters(self):
         """Tests if the instance of `SignalVoltageGenerationSineWaveParameters`
-        is created as expected"""
+        is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
         expected_generated_signal_offset_volts = 0.25
         expected_tone_frequency = 100
         expected_amplitude = 1.0
@@ -317,7 +317,7 @@ class TestSignalVoltageGenerationSineWaveParameters(unittest.TestCase):
     ):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationSineWaveParameters` is created with signal_tone_parameters is none.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SignalVoltageGenerationSineWaveParameters(
@@ -334,7 +334,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         self._expected_generated_signal_offset_volts = 0.1
@@ -362,7 +362,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
     def test_signal_voltage_generation_square_wave_parameters(self):
         """Tests if the instance of `SignalVoltageGenerationSquareWaveParameters`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         instance = nipcbatt.SignalVoltageGenerationSquareWaveParameters(
             generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
@@ -402,7 +402,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
     ):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationSquareWaveParameters` is created with signal frequency is set to 0.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -429,7 +429,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
     ):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationSquareWaveParameters` is created with signal amplitude is set to 0.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -457,7 +457,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationSquareWaveParameters` is created
         with duty_cycle value not within 0 and 100.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -506,7 +506,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         self._expected_generated_signal_offset_volts = 0.05
@@ -549,7 +549,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
 
     def test_signal_voltage_generation_multiple_tones_wave_parameters(self):
         """Tests if the instance of `SignalVoltageGenerationMultipleTonesWaveParameters`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         instance = nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
             generated_signal_amplitude_volts=self._expected_generated_signal_amplitude_volts,
@@ -581,7 +581,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationMultipleTonesWaveParameters` is created
         with signal_amplitude is set to 0.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
@@ -602,7 +602,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationMultipleTonesWaveParameters` is created with
         multiple_tones_parameters is set to None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
@@ -622,7 +622,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationMultipleTonesWaveParameters` is created with
         multiple_tones_parameters is set to empty list.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
@@ -646,7 +646,7 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -670,7 +670,7 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
 
     def test_signal_voltage_generation_sine_wave_configuration(self):
         """Tests if the instance of `SignalVoltageGenerationSineWaveConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         # Create test values for the Sample clock timing parameters
         expected_sample_clock_source = "OnboardClock"
@@ -753,7 +753,7 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
     def test_signal_voltage_generation_sine_wave_configuration_with_invalid_parameters(
         self,
     ):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
@@ -807,7 +807,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -831,7 +831,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
 
     def test_signal_voltage_generation_square_wave_configuration(self):
         """Tests if the instance of `SignalVoltageGenerationSquareWaveConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
         # Create test values for signal voltage generation square wave parameters.
         expected_generated_signal_duration_seconds = 0.01
         expected_generated_signal_offset_volts = 0.1
@@ -909,7 +909,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
     ):
         """Tests if  expected ValueError is thrown when an instance of
         `SignalVoltageGenerationSquareWaveConfiguration` is created with invalid parameters
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
@@ -969,7 +969,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -993,7 +993,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
 
     def test_signal_voltage_generation_multiple_tones_configuration(self):
         """Tests if the instance of `SignalVoltageGenerationMultipleTonesConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
         # Create test values for signal voltage generation multi-tone wave parameters.
         expected_generated_signal_duration_seconds = 0.20
         expected_generated_signal_offset_volts = 0.05
@@ -1084,7 +1084,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
     def test_signal_voltage_generation_multiple_tones_configuration_with_invalid_parameters(
         self,
     ):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (285 > 100 characters) (auto-generated noqa)
 
         self.assertRaises(
             ValueError,

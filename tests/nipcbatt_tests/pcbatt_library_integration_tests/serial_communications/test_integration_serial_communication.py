@@ -16,7 +16,7 @@ class TestIntegrationSerialCommunication(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -45,7 +45,7 @@ class TestIntegrationSerialCommunication(unittest.TestCase):
     def test_integration_serial_communication(self):
         """Integration test of
         nipcbatt.pcbatt_library.serial_communications.serial_communication.SerialCommunication
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with nipcbatt.SerialCommunication() as communication:
             communication.initialize("ASRL7::INSTR")
 

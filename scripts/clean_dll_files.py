@@ -1,4 +1,4 @@
-"""Cleans the dll files present in python src folders"""
+"""Cleans the dll files present in python src folders"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (167 > 100 characters) (auto-generated noqa)
 
 import logging
 import os

@@ -20,7 +20,9 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     SampleTimingEngine,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.common.voltage_constants import ConstantsForVoltageMeasurement
+from nipcbatt.pcbatt_library.common.voltage_constants import (
+    ConstantsForVoltageMeasurement,
+)
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,
@@ -47,7 +49,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
             analog_input_channel_expression (str):
                 Expression representing the name of a physical channel,
                 or a global channel in DAQ System.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -71,7 +73,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
             )
 
     def close(self):
-        """Closes measurement procedure and releases internal resources."""
+        """Closes measurement procedure and releases internal resources."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
 
         if not self.is_task_initialized:
             return
@@ -92,7 +94,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             DcRmsVoltageMeasurementResultData | None: An instance of `DcRmsVoltageMeasurementResultData`
               or `None` if no measure was performed.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
 
         if configuration.measurement_options.execution_option in (
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -122,7 +124,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
         Args:
             parameters (VoltageRangeAndTerminalParameters):
             An instance of `VoltageRangeAndTerminalParameters` used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         for channel in self.task.ai_channels:
             channel.ai_term_cfg = parameters.terminal_configuration
             channel.ai_min = parameters.range_min_volts
@@ -143,7 +145,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
 
         Similarly, if the user provides Physical channel name in Initialize(),
         then he/she has to provide the Physical channel name in Specific channel parameters.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         if parameters.channel_name in (channel.name for channel in self.task.ai_channels):
             # if the specified channel is present in ai_channel_collection,
@@ -187,7 +189,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
             parameters (SampleClockTimingParameters):
             An instance of `SampleClockTimingParameters`
             used to configure the timing.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         self.task.timing.cfg_samp_clk_timing(
             rate=parameters.sampling_rate_hertz,
@@ -213,7 +215,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingDAQmx):
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters`
             used to configure the channels.
-        """
+        """  # noqa: D202, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
 
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.task.triggers.start_trigger.disable_start_trig()

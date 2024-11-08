@@ -23,7 +23,7 @@ from nipcbatt.pcbatt_library.dc_rms_voltage_measurements.dc_rms_voltage_data_typ
 
 @dataclasses.dataclass
 class ConstantsForDcRmsVoltageMeasurement:
-    """Constants used for Voltage measurement"""
+    """Constants used for Voltage measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
     DEFAULT_DC_RMS_PROCESSING_WINDOW = DcRmsProcessingWindow.HANN
 

@@ -18,7 +18,7 @@ class TestI2cWriteParameters(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -45,7 +45,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -67,7 +67,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -93,7 +93,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -119,7 +119,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.I2cWriteParameters(
@@ -144,7 +144,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.I2cWriteParameters(
@@ -169,7 +169,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
                 nipcbatt.I2cWriteParameters(
@@ -192,7 +192,7 @@ class TestI2cWriteParameters(unittest.TestCase):
     def test_i2c_write_parameters(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteParameters.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_per_page = 128
         expected_delay_between_page_write_operations_milliseconds = 10
         expected_data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
@@ -241,7 +241,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -268,7 +268,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
@@ -309,7 +309,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
@@ -348,7 +348,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
         device_parameters = nipcbatt.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
@@ -378,7 +378,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
     def test_i2c_write_communication_configuration(self):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteCommunicationConfiguration.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 

@@ -1,4 +1,4 @@
-""" Frequency domain data types """
+""" Frequency domain data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (146 > 100 characters) (auto-generated noqa)
 
 from typing import List
 
@@ -55,7 +55,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
                 `measurement_options` is None,
                 `sample_clock_timing_parameters` is None,
                 `digital_start_trigger_parameters` is None,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (101 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(global_channel_parameters, nameof(global_channel_parameters))
         Guard.is_not_none(specific_channels_parameters, nameof(specific_channels_parameters))
         Guard.all_elements_are_of_same_type(
@@ -80,7 +80,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
     ) -> VoltageRangeAndTerminalParameters:
         """
         :class:`VoltageRangeAndTerminalParameters`:
-            Gets the settings of terminal for all channels."""
+            Gets the settings of terminal for all channels."""  # noqa: D205, D209, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (444 > 100 characters) (auto-generated noqa)
         return self._global_channel_parameters
 
     @property
@@ -91,7 +91,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
         :class:`List[VoltageMeasurementChannelAndTerminalRangeParameters]`:
             Gets the list of instances of
             `VoltageMeasurementChannelAndTerminalRangeParameters` used to configure channels.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._specific_channels_parameters
 
     @property
@@ -100,7 +100,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
         :class:`MeasurementOptions`:
             Gets a `MeasurementOptions` instance
             that represents the settings of options used for execution.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -109,7 +109,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
         :class:`SampleClockTimingParameters`:
             Gets a `SampleClockTimingParameters` instance
             that represents the settings of timing.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._sample_clock_timing_parameters
 
     @property
@@ -118,7 +118,7 @@ class FrequencyDomainMeasurementConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_parameters
 
 
@@ -167,7 +167,7 @@ class MultipleTonesMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
         Gets a List containing detected tones frequencies of all analyzed waveform.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._tones_frequencies_hertz
 
     @property
@@ -175,7 +175,7 @@ class MultipleTonesMeasurementResultData(PCBATestToolkitData):
         """
         :class:`List[float]`:
         Gets a list containing detected tones peak amplitudes of all analyzed waveform.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._tones_amplitudes_volts
 
 
@@ -210,7 +210,7 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
 
             ValueError: Raised when,
                 `waveforms` is None or empty.
-        """
+        """  # noqa: W505 - doc line too long (121 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
 
@@ -236,7 +236,7 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
         :class:`List[AnalogWaveform]`:
             Gets the list of waveforms acquired from channels defined
             for measurement and used to compute frequency domain results.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._waveforms
 
     @property
@@ -244,7 +244,7 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
         """
         :calss: List[AmplitudeSpectrum]:
             Gets an array of RMS based spectrums computed for each channel waveform in `waveforms`.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._magnitude_rms
 
     @property
@@ -252,7 +252,7 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
         """
         :calss: List[AmplitudeSpectrum]:
             Gets an array of Peak to Peak based spectrums computed for each channel waveform in `waveforms`.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
         return self._magnitude_peak
 
     @property
@@ -260,5 +260,5 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
         """
         :calss: List[MultipleTonesMeasurementResultData]:
             Gets an array of multiple tones analysis results for each waveform contained in `waveforms`.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
         return self._detected_tones

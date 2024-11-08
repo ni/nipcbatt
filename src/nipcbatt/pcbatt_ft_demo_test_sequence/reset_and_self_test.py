@@ -1,18 +1,18 @@
-"""Reset and Self-Test"""
+"""Reset and Self-Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (136 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=C0413,E0401,C0115,W0611,C0116,C0103
 
-import os
+import os  # noqa: F401 - 'os' imported but unused (auto-generated noqa)
 import sys
 from time import sleep, time
 
-import nidaqmx.constants
+import nidaqmx.constants  # noqa: F401 - 'nidaqmx.constants' imported but unused (auto-generated noqa)
 
 import nipcbatt
 
 
-class ResetAndSelfTest:
-    def __init__(self) -> None:
+class ResetAndSelfTest:  # noqa: D101 - Missing docstring in public class (auto-generated noqa)
+    def __init__(self) -> None:  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.digital_state_meas_task = None
         self.digital_state_gen_task = None
 
@@ -25,19 +25,25 @@ class ResetAndSelfTest:
         self.main()
         self.cleanup()
 
-    def setup(self) -> None:
+    def setup(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.initialize_reset_button()
         self.initialize_led_status()
 
-    def initialize_reset_button(self) -> None:
+    def initialize_reset_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.digital_state_gen_task = nipcbatt.StaticDigitalStateGeneration()
         self.digital_state_gen_task.initialize("TS_RESET0")
 
-    def initialize_led_status(self) -> None:
+    def initialize_led_status(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.digital_state_meas_task = nipcbatt.StaticDigitalStateMeasurement()
         self.digital_state_meas_task.initialize("TP_ACT_LED0")
 
-    def main(self) -> None:
+    def main(self) -> None:  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
         self.turn_on_dut_reset_button()
         self.wait_for_100_ms_seconds_in_reset_enabled_state()
         self.turn_off_dut_reset_button()
@@ -48,33 +54,49 @@ class ResetAndSelfTest:
             self.get_current_time()
         self.dut_elasped_time_validation_or_timeout()
 
-    def turn_on_dut_reset_button(self) -> None:
+    def turn_on_dut_reset_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
-    def wait_for_100_ms_seconds_in_reset_enabled_state(self) -> None:
+    def wait_for_100_ms_seconds_in_reset_enabled_state(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         sleep(0.1)
 
-    def turn_off_dut_reset_button(self) -> None:
+    def turn_off_dut_reset_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
-    def get_start_time(self) -> None:
+    def get_start_time(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.start_time = time()
 
-    def wait_led_activity(self) -> None:
+    def wait_led_activity(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         sleep(0.1)
 
-    def led_state_status(self) -> None:
+    def led_state_status(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         result_data = self.digital_state_meas_task.configure_and_measure()
         self.led = result_data.digital_states
 
-    def get_current_time(self) -> None:
+    def get_current_time(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.elasped_time = time() - self.start_time
 
-    def dut_elasped_time_validation_or_timeout(self) -> None:
+    def dut_elasped_time_validation_or_timeout(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         if self.elasped_time >= 30:
             # Gather the name of the class and the method where the exception was raised
             exception_message = (
@@ -89,12 +111,18 @@ class ResetAndSelfTest:
         else:
             print("Status: Pass -- Elapsed time: ", self.elasped_time)
 
-    def cleanup(self) -> None:
+    def cleanup(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.close_led_status()
         self.close_reset_button()
 
-    def close_led_status(self) -> None:
+    def close_led_status(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.digital_state_meas_task.close()
 
-    def close_reset_button(self) -> None:
+    def close_reset_button(  # noqa: D102 - Missing docstring in public method (auto-generated noqa)
+        self,
+    ) -> None:
         self.digital_state_gen_task.close()

@@ -1,4 +1,4 @@
-"""Main sequence for executing audio test sequence"""
+"""Main sequence for executing audio test sequence"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105
 

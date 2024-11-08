@@ -1,7 +1,7 @@
-"""  digital edge count data types """
+"""  digital edge count data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (149 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
-import numpy as np
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 from nipcbatt.pcbatt_library.common.common_data_types import (
@@ -31,7 +31,7 @@ class DigitalEdgeCountMeasurementCounterChannelParameters(PCBATestToolkitData):
         Raises:
             ValueError:
                 if 'active_edge' is None.
-        """
+        """  # noqa: W505 - doc line too long (111 > 100 characters) (auto-generated noqa)
         # Input validation
         Guard.is_not_none(edge_type, nameof(edge_type))
 
@@ -58,7 +58,7 @@ class DigitalEdgeCountMeasurementTimingParameters(PCBATestToolkitData):
         Raises:
             ValueError:
                 if 'edge_counting_duration' is less than zero and None.
-        """
+        """  # noqa: W505 - doc line too long (108 > 100 characters) (auto-generated noqa)
         # Input validation
         Guard.is_not_none(edge_counting_duration, nameof(edge_counting_duration))
         Guard.is_greater_than_or_equal_to_zero(
@@ -74,7 +74,7 @@ class DigitalEdgeCountMeasurementTimingParameters(PCBATestToolkitData):
 
 
 class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
-    """Defines a configuration for hardware timer digital edge count measurement"""
+    """Defines a configuration for hardware timer digital edge count measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -102,7 +102,7 @@ class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
                 `counter_channel_parameters` is None,
                 'timing_parameters' is None or less than zero,
                 `trigger_parameters` is None,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (127 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(measurement_options, nameof(measurement_options))
         Guard.is_not_none(counter_channel_parameters, nameof(counter_channel_parameters))
         Guard.is_not_none(timing_parameters, nameof(timing_parameters))
@@ -118,7 +118,7 @@ class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
         """
         :class:`MeasurementExecutionType`:
             Gets the type of measurement execution selected by user.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -127,7 +127,7 @@ class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
         :class:`DigitalEdgeCountMeasurementCounterChannelParameters`:
             Gets a `DigitalEdgeCountMeasurementCounterChannelParameters` instance
             that represents the settings of edge_type to be counted.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._counter_channel_parameters
 
     @property
@@ -136,7 +136,7 @@ class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
         :class:`DigitalEdgeCountMeasurementTimingParameters`:
             Gets a `DigitalEdgeCountMeasurementTimingParameters` instance
             that represents the settings of the time duration in which number of edges to be counted.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (101 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
     @property
@@ -145,12 +145,12 @@ class DigitalEdgeCountHardwareTimerConfiguration(PCBATestToolkitData):
         :class:`DigitalStartTriggerParameters`:
             Gets a `DigitalStartTriggerParameters` instance
             that represents the settings of triggers.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._trigger_parameters
 
 
 class DigitalEdgeCountSoftwareTimerConfiguration(PCBATestToolkitData):
-    """Defines a configuration for software timer digital edge count measurement"""
+    """Defines a configuration for software timer digital edge count measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
 
     def __init__(
         self,
@@ -174,7 +174,7 @@ class DigitalEdgeCountSoftwareTimerConfiguration(PCBATestToolkitData):
                 'measurement_options' is None,
                 `counter_channel_parameters` is None,
                 'timing_parameters' is None or less than zero,
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (127 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(measurement_options, nameof(measurement_options))
         Guard.is_not_none(counter_channel_parameters, nameof(counter_channel_parameters))
         Guard.is_not_none(timing_parameters, nameof(timing_parameters))
@@ -188,7 +188,7 @@ class DigitalEdgeCountSoftwareTimerConfiguration(PCBATestToolkitData):
         """
         :class:`MeasurementExecutionType`:
             Gets the type of measurement execution selected by user.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._measurement_options
 
     @property
@@ -197,7 +197,7 @@ class DigitalEdgeCountSoftwareTimerConfiguration(PCBATestToolkitData):
         :class:`DigitalEdgeCountMeasurementCounterChannelParameters`:
             Gets a `DigitalEdgeCountMeasurementCounterChannelParameters` instance
             that represents the settings of edge_type to be counted.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (299 > 100 characters) (auto-generated noqa)
         return self._counter_channel_parameters
 
     @property
@@ -206,12 +206,12 @@ class DigitalEdgeCountSoftwareTimerConfiguration(PCBATestToolkitData):
         :class:`DigitalEdgeCountMeasurementTimingParameters`:
             Gets a `DigitalEdgeCountMeasurementTimingParameters` instance
             that represents the settings of the time duration in which number of edges to be counted.
-        """
+        """  # noqa: D205, D212, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (101 > 100 characters) (auto-generated noqa)
         return self._timing_parameters
 
 
 class DigitalEdgeCountMeasurementResultData(PCBATestToolkitData):
-    """Defines the values returned from the digital edge count measurement"""
+    """Defines the values returned from the digital edge count measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (188 > 100 characters) (auto-generated noqa)
 
     def __init__(self, edge_count: int, edge_type: nidaqmx.constants.Edge) -> None:
         """Initializes an instance of 'DigitalEdgeCountMeasurementResultData'
@@ -225,7 +225,7 @@ class DigitalEdgeCountMeasurementResultData(PCBATestToolkitData):
             1) edge_count is None
             2) edge_count is less than zero
             3) edge_type is None
-        """
+        """  # noqa: D202, D205, D415, D417, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (363 > 100 characters) (auto-generated noqa)
 
         # input validation
         Guard.is_not_none(edge_count, nameof(edge_count))
@@ -240,12 +240,12 @@ class DigitalEdgeCountMeasurementResultData(PCBATestToolkitData):
     def edge_count(self) -> int:
         """
         :type:'int': Edge count data captured from the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._edge_count
 
     @property
     def edge_type(self) -> nidaqmx.constants.Edge:
         """
         :type:'nidaqmx.constants.Edge': Data captured from the measurement
-        """
+        """  # noqa: D212, D415, W505 - Multi-line docstring summary should start at the first line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (211 > 100 characters) (auto-generated noqa)
         return self._edge_type

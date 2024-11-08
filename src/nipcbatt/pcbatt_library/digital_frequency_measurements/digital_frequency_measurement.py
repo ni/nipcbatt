@@ -1,6 +1,6 @@
 # pylint: disable=W0613
 # remove it when arguments of initialize are used.
-"""Defines class used for digital frequency measurement"""
+"""Defines class used for digital frequency measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)
 
 import nidaqmx.constants
 import nidaqmx.stream_readers
@@ -26,7 +26,7 @@ class DigitalFrequencyMeasurement(BuildingBlockUsingDAQmx):
     """This class is used to perform digital frequency meausrements
     Args:
         BuildingBlockUsingDAQmx: Parent class for all modules
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def initialize(
         self,
@@ -39,7 +39,7 @@ class DigitalFrequencyMeasurement(BuildingBlockUsingDAQmx):
         Args:
             channel_expression (str): Channels to acquire
             input_terminal_name (str): Terminal to acquire
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -83,7 +83,7 @@ class DigitalFrequencyMeasurement(BuildingBlockUsingDAQmx):
         self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
 
     def close(self):
-        """Ends measurement process and releases internal resources"""
+        """Ends measurement process and releases internal resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (181 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 
@@ -102,7 +102,7 @@ class DigitalFrequencyMeasurement(BuildingBlockUsingDAQmx):
         Returns:
             DigitalFrequencyMeasurementResultData: An instance of
             `DigitalFrequencyMeasurementResultData`or `None` if no measure was performed.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.configure_counter_channel(configuration.counter_channel_configuration_parameters)
 
         # extract frequency data
@@ -150,7 +150,7 @@ class DigitalFrequencyMeasurement(BuildingBlockUsingDAQmx):
 
         Returns:
             float: A digital frequency measurement result
-        """
+        """  # noqa: D202 - No blank lines allowed after function docstring (auto-generated noqa)
 
         # create reader
         counter_reader = nidaqmx.stream_readers.CounterReader(self.task.in_stream)

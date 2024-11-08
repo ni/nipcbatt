@@ -1,5 +1,5 @@
 """Private module that provides a set of helper functions
-   for `scale_and_offset_waveform` module."""
+   for `scale_and_offset_waveform` module."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (338 > 100 characters) (auto-generated noqa)
 
 import numpy
 

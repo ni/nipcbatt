@@ -1,5 +1,5 @@
 """This example demonstrates generation of Digital Clock signal using Digital Clock Generation 
-   Library and measurement of the same signal using Digital PWM Measurement Library"""
+   Library and measurement of the same signal using Digital PWM Measurement Library"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (379 > 100 characters) (auto-generated noqa)
 
 # pylint: disable=W0105,E0401
 import nipcbatt
@@ -29,7 +29,7 @@ def setup(
     input_terminal=INPUT_TERMINAL,
     meas_counter_channel=PHYSICAL_CHANNEL_IN,
 ):
-    """Creates the necessary objects for the generation and measurement of digital clock"""
+    """Creates the necessary objects for the generation and measurement of digital clock"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (279 > 100 characters) (auto-generated noqa)
 
     # Create the instances of generation and measurement classes required for the test
     generation_instance = nipcbatt.DigitalClockGeneration()
@@ -67,7 +67,7 @@ def main(
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
     The default file path is C:\\Windows\\Temp\\digital_clock_generation_and_pwm_measurement_results.txt
-    """
+    """  # noqa: D205, D301, W505 - 1 blank line required between summary line and description (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(generation_instance)
@@ -75,7 +75,7 @@ def main(
 
     """1. Configure PWM Measurement settings to wait for Digital PWM Signal from Digital Clock Generation
     2. Generate PWM waveform from digital IO module
-    3. Fetch and Validate Digital PWM Signal"""
+    3. Fetch and Validate Digital PWM Signal"""  # noqa: W505 - doc line too long (105 > 100 characters) (auto-generated noqa)
 
     # create configuration sub-objects
     meas_range_parameters = nipcbatt.DigitalPwmMeasurementRangeParameters(
@@ -148,7 +148,7 @@ def cleanup(
     generation_instance: nipcbatt.DigitalClockGeneration,
     measurement_instance: nipcbatt.DigitalPwmMeasurement,
 ):
-    """Closes out the created objects used in the generation and measurement"""
+    """Closes out the created objects used in the generation and measurement"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
     generation_instance.close()  # Close generation
     measurement_instance.close()  # Close measurement
 
@@ -167,7 +167,7 @@ def digital_clock_generation_and_pwm_measurement(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""
+    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
     # Run setup function
     gen, meas = setup(
@@ -184,4 +184,4 @@ def digital_clock_generation_and_pwm_measurement(
     cleanup(gen, meas)
 
 
-# endregion test
+# endregion test  # noqa: W505 - doc line too long (231 > 100 characters) (auto-generated noqa)

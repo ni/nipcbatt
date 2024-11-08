@@ -1,23 +1,31 @@
 # pylint: disable=C0116, W0201, W0613, W0231
 """This module provides unit tests of module pcbatt_building_blocks
-   present in package pcbatt_core located in src."""
+   present in package pcbatt_core located in src."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (345 > 100 characters) (auto-generated noqa)
 import importlib.metadata
 import logging
 import sys
 import unittest
-from dataclasses import dataclass
-from enum import Enum
+from dataclasses import (  # noqa: F401 - 'dataclasses.dataclass' imported but unused (auto-generated noqa)
+    dataclass,
+)
+from enum import Enum  # noqa: F401 - 'enum.Enum' imported but unused (auto-generated noqa)
 
 import nidaqmx
-from nidaqmx import utils
+from nidaqmx import utils  # noqa: F401 - 'nidaqmx.utils' imported but unused (auto-generated noqa)
 from nidaqmx._task_modules.ai_channel_collection import AIChannelCollection
-from nidaqmx._task_modules.ao_channel_collection import AOChannelCollection
-from nidaqmx._task_modules.channels.channel import Channel
+from nidaqmx._task_modules.ao_channel_collection import (  # noqa: F401 - 'nidaqmx._task_modules.ao_channel_collection.AOChannelCollection' imported but unused (auto-generated noqa)
+    AOChannelCollection,
+)
+from nidaqmx._task_modules.channels.channel import (  # noqa: F401 - 'nidaqmx._task_modules.channels.channel.Channel' imported but unused (auto-generated noqa)
+    Channel,
+)
 from nidaqmx._task_modules.ci_channel_collection import CIChannelCollection
 from nidaqmx._task_modules.co_channel_collection import COChannelCollection
 from nidaqmx._task_modules.di_channel_collection import DIChannelCollection
 from nidaqmx._task_modules.do_channel_collection import DOChannelCollection
-from nidaqmx._task_modules.export_signals import ExportSignals
+from nidaqmx._task_modules.export_signals import (  # noqa: F401 - 'nidaqmx._task_modules.export_signals.ExportSignals' imported but unused (auto-generated noqa)
+    ExportSignals,
+)
 from nidaqmx._task_modules.in_stream import InStream
 from nidaqmx._task_modules.out_stream import OutStream
 from nidaqmx._task_modules.timing import Timing
@@ -34,7 +42,7 @@ from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
 
 
 class TestInstrument:
-    """Defines the instrument used in TestAbstractBuildingBlockUsingInstrument fixture"""
+    """Defines the instrument used in TestAbstractBuildingBlockUsingInstrument fixture"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (200 > 100 characters) (auto-generated noqa)
 
     def close(self):
         pass
@@ -46,7 +54,7 @@ class ChildClassForTests(BuildingBlockUsingInstrument):
 
     Args:
         BuildingBlockUsingInstrument: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     @property
     def is_instrument_initialized(self) -> bool:
@@ -75,7 +83,7 @@ class ChildClassForTests(BuildingBlockUsingInstrument):
         """Creates an instance of TestInstrument.
         Returns:
             TestInstrument: the type of instrument.
-        """
+        """  # noqa: D205, D411, W505 - 1 blank line required between summary line and description (auto-generated noqa), Missing blank line before section (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
         return TestInstrument()
 
     def close(self):
@@ -88,7 +96,7 @@ class ChildClassInitWithIntFloat(ChildClassForTests):
 
     Args:
         ChildClassForTests: Base class from which this class inherits.
-    """
+    """  # noqa: D205, W505 - 1 blank line required between summary line and description (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
 
     def initialize(self, int_param: int, str_param: str):
         """Initializes the building block with specific values.
@@ -107,7 +115,7 @@ class ChildClassInitWithVarious(ChildClassForTests):
 
     Args:
         ChildClassForTests: Base class from which this class inherits.
-    """
+    """  # noqa: D205, W505 - 1 blank line required between summary line and description (auto-generated noqa), doc line too long (104 > 100 characters) (auto-generated noqa)
 
     def initialize(self, *args, **kwnargs):
         """Initializes the building block with variatic arguments."""
@@ -116,25 +124,25 @@ class ChildClassInitWithVarious(ChildClassForTests):
 
 
 class ChannelNames(ChildClassForTests):
-    """x"""
+    """x"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, n):
+    def __init__(self, n):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.channel_names = ["x"] * n
 
 
 class ChannelsToRead(ChildClassForTests):
-    """x"""
+    """x"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
 
-    def __init__(self, n):
+    def __init__(self, n):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.channels_to_read = ChannelNames(n)
         self._task = Task()
         self.di_num_booleans_per_chan = 1
 
 
 class Task(ChildClassForTests):
-    """x"""
+    """x"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
 
-    def __init__(self):
+    def __init__(self):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self._handle = 1
         self._interpreter = MockDAQmxTask.Interpreter()
         self.channels = DIChannel()
@@ -148,7 +156,7 @@ class Task(ChildClassForTests):
 
 
 class Name(ChildClassForTests):
-    """x"""
+    """x"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
 
     @property
     def name(self):
@@ -156,17 +164,17 @@ class Name(ChildClassForTests):
 
 
 class DIChannel(ChildClassForTests):
-    """x"""
+    """x"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (122 > 100 characters) (auto-generated noqa)
 
-    def __iter__(self):
+    def __iter__(self):  # noqa: D105 - Missing docstring in magic method (auto-generated noqa)
         channel_list = [Name()] * self.num_channels
         self.a = iter(channel_list)
         return self.a
 
-    def __next__(self):
+    def __next__(self):  # noqa: D105 - Missing docstring in magic method (auto-generated noqa)
         return self.a
 
-    def __init__(self):
+    def __init__(self):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self.num_channels = 3
         self.channel_names = ["One"]
 
@@ -178,8 +186,10 @@ class DIChannel(ChildClassForTests):
         self.num_channels = x - y
 
 
-class OStream(ChildClassForTests):
-    def __init__(self):
+class OStream(  # noqa: D101 - Missing docstring in public class (auto-generated noqa)
+    ChildClassForTests
+):
+    def __init__(self):  # noqa: D107 - Missing docstring in __init__ (auto-generated noqa)
         self._task = Task()
 
 
@@ -191,10 +201,10 @@ class MockDAQmxTask(nidaqmx.Task):
     """
 
     class Interpreter:
-        "Empty class creates to deal with mock interpreter bugs"
+        "Empty class creates to deal with mock interpreter bugs"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
 
         def __init__(self):
-            "Do nothing"
+            "Do nothing"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (135 > 100 characters) (auto-generated noqa)
             self.num_channels = 0
 
         def add_global_chans_to_task(self, one, two):
@@ -202,16 +212,16 @@ class MockDAQmxTask(nidaqmx.Task):
                 raise DaqError("This be error", 1)
 
         def stop_task(self, handle):
-            "Stops the task (does nothing)"
+            "Stops the task (does nothing)"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (154 > 100 characters) (auto-generated noqa)
 
         def create_do_chan(self, handle, lines, name_to_assign_to_lines, line_grouping):
-            "Do nothing"
+            "Do nothing"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (135 > 100 characters) (auto-generated noqa)
 
         def create_di_chan(self, handle, lines, name_to_assign_to_lines, line_grouping):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def create_ai_thrmcpl_chan(self, one, two, three, four, five, six, seven, eight, nine, ten):
-            if ten is "" and eight == 10113:
+            if ten == "" and eight == 10113:
                 raise DaqError("channel is None", 1)
 
             if ten is None and nine is not None:
@@ -220,27 +230,27 @@ class MockDAQmxTask(nidaqmx.Task):
         def add_ci_freq_chan(
             self, one, two, three, four, five, six, seven, eight, nine, ten, eleven
         ):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def create_ci_freq_chan(
             self, one, two, three, four, five, six, seven, eight, nine, ten, eleven
         ):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def create_co_pulse_chan_freq(self, one, two, three, four, five, six, seven, eight):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def create_co_pulse_chan_time(self, one, two, three, four, five, six, seven, eight):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def get_task_attribute_uint32(self, one, two):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def get_read_attribute_uint32(self, one, two):
             return 1
 
         def task_control(self, handle, action):
-            "Do nothing"
+            "Do nothing"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (135 > 100 characters) (auto-generated noqa)
 
         def get_task_attribute_string(self, handle, x=int(1273)):
             return "stuff"
@@ -252,7 +262,7 @@ class MockDAQmxTask(nidaqmx.Task):
             self.num_channels = val
 
         def set_chan_attribute_int32(self, one, two, three, four):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def get_chan_attribute_int32(self, one, two, three):
             if three == 6271:
@@ -261,7 +271,7 @@ class MockDAQmxTask(nidaqmx.Task):
                 return UsageTypeAI.TEMPERATURE_THERMOCOUPLE
 
         def write_many_sample_port_uint32(self, data):
-            "yep"
+            "yep"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (217 > 100 characters) (auto-generated noqa)
 
         def cfg_samp_clk_timing(
             self,
@@ -272,31 +282,31 @@ class MockDAQmxTask(nidaqmx.Task):
             samps_per_chan=1,
             stuff=1,
         ):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def cfg_dig_edge_start_trig(self, source, edge, stuff):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def write_digital_u32(self, one, two, three, four, five, six):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def get_timing_attribute_double(self, one, two):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def set_chan_attribute_double(self, handle, two, three, four):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def start_task(self, one):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def disable_start_trig(self, one):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def read_analog_f64(self, one, two, three, four, five):
             return [1.0], [1.0]
 
         def write_ctr_freq_scalar(self, one, two, three, four, five):
-            "do nothing"
+            "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (224 > 100 characters) (auto-generated noqa)
 
         def write_ctr_time_scalar(self, one, two, three, four, five):
             return 100.0
@@ -311,7 +321,7 @@ class MockDAQmxTask(nidaqmx.Task):
             return [[1] * len(read_array), 1, 1]
 
     def __init__(self, new_task_name="", *, grpc_options=None):
-        """Does not call Task.__init__ (it requires DAQmx to be installed)."""
+        """Does not call Task.__init__ (it requires DAQmx to be installed)."""  # noqa: D402, W505 - First line should not be the function's "signature" (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
         self._interpreter = self.Interpreter()
         self._handle = ""
         self._do_channels = DOChannelCollection("", self._interpreter)
@@ -349,7 +359,7 @@ class MockDAQmxTask(nidaqmx.Task):
     @property
     def channels(self):
         class Channels:
-            "placeholder class"
+            "placeholder class"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (142 > 100 characters) (auto-generated noqa)
 
             def __init__(self):
                 self.channel_names = DIChannel()
@@ -379,7 +389,7 @@ class MockDAQmxTask(nidaqmx.Task):
 
     @property
     def ci_channels(self):
-        class CI_Channels:
+        class CI_Channels:  # noqa: N801 - class name 'CI_Channels' should use CapWords convention (auto-generated noqa)
             def __init__(self):
                 self.channel_names = "Channel_One"
 
@@ -403,7 +413,7 @@ class MockDAQmxTask(nidaqmx.Task):
     @property
     def timing(self):
         class Time:
-            "placeholder class"
+            "placeholder class"  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (142 > 100 characters) (auto-generated noqa)
 
             def __init__(self):
                 self.samp_clk_rate = 1
@@ -417,10 +427,10 @@ class MockDAQmxTask(nidaqmx.Task):
                 sample_mode=1,
                 samps_per_chan=1,
             ):
-                "do nothing"
+                "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (228 > 100 characters) (auto-generated noqa)
 
             def cfg_implicit_timing(self, sample_mode="one", samps_per_chan="two"):
-                "do nothing"
+                "do nothing"  # noqa: D403, D415, W505 - First word of the first line should be properly capitalized (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (228 > 100 characters) (auto-generated noqa)
 
         return Time()
 
@@ -431,7 +441,7 @@ class TestBuildingBlockUsingInstrument(unittest.TestCase):
 
     Args:
         unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass

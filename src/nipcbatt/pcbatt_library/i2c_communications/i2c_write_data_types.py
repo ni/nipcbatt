@@ -1,4 +1,4 @@
-""" I2C communication data types """
+""" I2C communication data types """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (147 > 100 characters) (auto-generated noqa)
 
 import numpy
 from varname import nameof
@@ -49,7 +49,7 @@ class I2cWriteParameters(PCBATestToolkitData):
                 `number_of_bytes_per_page` is negative or equal to zero,
                 `delay_between_page_write_operations_milliseconds` is negative,
                 `memory_address_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_greater_than_zero(number_of_bytes_per_page, nameof(number_of_bytes_per_page))
         Guard.is_greater_than_or_equal_to_zero(
             delay_between_page_write_operations_milliseconds,
@@ -79,7 +79,7 @@ class I2cWriteParameters(PCBATestToolkitData):
 
         Returns:
             bool: True if equals to `value_to_compare`.
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return (
                 self._number_of_bytes_per_page == value_to_compare._number_of_bytes_per_page
@@ -109,7 +109,7 @@ class I2cWriteParameters(PCBATestToolkitData):
     @property
     def memory_address_parameters(self) -> MemoryAddressParameters:
         """Gets an instance of `MemoryAddressParameters` that specifies
-        the format of memory address."""
+        the format of memory address."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (333 > 100 characters) (auto-generated noqa)
         return self._memory_address_parameters
 
 
@@ -142,7 +142,7 @@ class I2cWriteCommunicationConfiguration(PCBATestToolkitData):
                 `device_parameters` is None,
                 `communication_parameters` is None,
                 `write_parameters` is None.
-        """
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(device_parameters, nameof(device_parameters))
         Guard.is_not_none(communication_parameters, nameof(communication_parameters))
         Guard.is_not_none(write_parameters, nameof(write_parameters))
@@ -154,17 +154,17 @@ class I2cWriteCommunicationConfiguration(PCBATestToolkitData):
     @property
     def device_parameters(self) -> I2cDeviceParameters:
         """Gets an instance of `I2cDeviceParameters` that represents
-        the parameters used for settings of I2C device for communications."""
+        the parameters used for settings of I2C device for communications."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (370 > 100 characters) (auto-generated noqa)
         return self._device_parameters
 
     @property
     def communication_parameters(self) -> I2cCommunicationParameters:
         """Gets an instance of `I2cCommunicationParameters` that represents
-        the parameters used for settings of I2C communication."""
+        the parameters used for settings of I2C communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (358 > 100 characters) (auto-generated noqa)
         return self._communication_parameters
 
     @property
     def write_parameters(self) -> I2cWriteParameters:
         """Gets an instance of `I2cWriteParameters` that represents
-        the parameters used for settings of I2C Write communication."""
+        the parameters used for settings of I2C Write communication."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (364 > 100 characters) (auto-generated noqa)
         return self._write_parameters

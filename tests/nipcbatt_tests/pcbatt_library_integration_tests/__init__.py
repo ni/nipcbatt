@@ -1,1 +1,1 @@
-"""Provides a set of integration tests for nipcbatt.pcbatt_library package"""
+"""Provides a set of integration tests for nipcbatt.pcbatt_library package"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (188 > 100 characters) (auto-generated noqa)

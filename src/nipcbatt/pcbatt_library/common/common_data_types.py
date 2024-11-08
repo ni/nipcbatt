@@ -169,7 +169,7 @@ class DynamicDigitalPatternTimingParameters(PCBATestToolkitData):
                 if `sampling_rate_hertz` is None or less than zero,
                 if 'number_of_samples_per_channel' is None or less than zero,
                 if 'active_edge' is None.
-        """
+        """  # noqa: W505 - doc line too long (113 > 100 characters) (auto-generated noqa)
         # Input validation
         Guard.is_not_none_nor_empty_nor_whitespace(sample_clock_source, nameof(sample_clock_source))
         Guard.is_not_none(sampling_rate_hertz, nameof(sampling_rate_hertz))
@@ -253,7 +253,7 @@ class DigitalStartTriggerParameters(PCBATestToolkitData):
     def digital_start_trigger_edge(self) -> nidaqmx.constants.Edge:
         """Gets the `nidaqmx.constants.Edge` value
         that specifies on which edge
-        of a digital pulse to start acquiring or generating samples."""
+        of a digital pulse to start acquiring or generating samples."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (364 > 100 characters) (auto-generated noqa)
         return self._digital_start_trigger_edge
 
 
@@ -269,7 +269,7 @@ class MeasurementData(PCBATestToolkitData):
         Raises:
             ValueError:
                 Raised when `samples` is None or empty.
-        """
+        """  # noqa: D411 - Missing blank line before section (auto-generated noqa)
         Guard.is_not_none(data_samples, nameof(data_samples))
         Guard.is_not_empty(data_samples, nameof(data_samples))
         Guard.size_is_less_than_or_equal(
@@ -288,7 +288,7 @@ class MeasurementData(PCBATestToolkitData):
 
         Returns:
             bool: True if equals to `value_to_compare`.
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return numpy.allclose(self._data_samples, value_to_compare._data_samples)
 
@@ -296,7 +296,7 @@ class MeasurementData(PCBATestToolkitData):
 
     @property
     def samples_per_channel(self) -> Iterable[numpy.ndarray[numpy.float64]]:
-        """Gets a iterable instance on the samples array per channel."""
+        """Gets a iterable instance on the samples array per channel."""  # noqa: D202, W505 - No blank lines allowed after function docstring (auto-generated noqa), doc line too long (158 > 100 characters) (auto-generated noqa)
 
         if len(self._data_samples.shape) <= 1:
             yield self._data_samples
@@ -344,7 +344,7 @@ class AnalogWaveform(PCBATestToolkitData):
 
         Returns:
             bool: True if equals to `value_to_compare`.
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return (
                 self._channel_name == value_to_compare._channel_name
@@ -416,7 +416,7 @@ class AmplitudeSpectrum(PCBATestToolkitData):
 
         Returns:
             bool: True if equals to `value_to_compare`.
-        """
+        """  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (109 > 100 characters) (auto-generated noqa)
         if isinstance(value_to_compare, self.__class__):
             return (
                 self._channel_name == value_to_compare._channel_name

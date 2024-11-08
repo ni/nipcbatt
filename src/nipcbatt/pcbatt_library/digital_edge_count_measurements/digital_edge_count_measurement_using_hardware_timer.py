@@ -1,4 +1,4 @@
-"""Use this class to measure digital edge count using hardware timer"""
+"""Use this class to measure digital edge count using hardware timer"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (182 > 100 characters) (auto-generated noqa)
 
 import re
 from typing import Union
@@ -10,7 +10,7 @@ import nidaqmx.system
 import nidaqmx.system.device
 from varname import nameof
 
-from nipcbatt.pcbatt_library.common.common_data_types import (
+from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.MeasurementData' imported but unused (auto-generated noqa)
     DigitalStartTriggerParameters,
     MeasurementData,
     MeasurementExecutionType,
@@ -38,7 +38,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
 
     Args:
         BuildingBlockUsingDAQmx (_type_): Parent class for all PCBATT classes
-    """
+    """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     # define class variable as there are two seperate tasks for counter and timer
     counter_task = nidaqmx.Task()
@@ -56,7 +56,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
             measurement_channel_expression (str): specifies the counter resource needed for Edge counting operation.
             measurement_input_terminal_name (str): specifies the input terminal on which to look for digital events / edges.
             timer_channel_expression (str): specifies the counter resource needed for Timer task.
-        """
+        """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (116 > 100 characters) (auto-generated noqa)
         if self.is_task_initialized:
             return
 
@@ -144,7 +144,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         Returns:
             DigitalEdgeCountMeasurementResultData | None: An instance of `DigitalEdgeCountMeasurementResultData`
             or `None` if no measure was performed.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
 
         if (
             configuration.measurement_options.execution_option
@@ -183,7 +183,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalEdgeCountMeasurementCounterChannelParameters):
             An instance of `DigitalEdgeCountMeasurementCounterChannelParameters` used to configure the counter channel parameter.
-        """
+        """  # noqa: D417, W505 - Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (129 > 100 characters) (auto-generated noqa)
         self.counter_task.stop()
         self.counter_task.channels.ci_count_edges_active_edge = parameters.edge_type
 
@@ -193,7 +193,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalEdgeCountMeasurementTimingParameters):
             An instance of `DigitalEdgeCountMeasurementTimingParameters` used to configure the edge count duration.
-        """
+        """  # noqa: D417, W505 - Missing argument descriptions in the docstring (auto-generated noqa), doc line too long (115 > 100 characters) (auto-generated noqa)
         self.timer_task.stop()
         self.counter_task.triggers.pause_trigger.trig_type = (
             ConstantsForDigitalEdgeCountMeasurement.DEFAULT_PAUSE_TRIGGER_TYPE
@@ -212,7 +212,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         Args:
             parameters (DigitalStartTriggerParameters):
             An instance of `DigitalStartTriggerParameters` used to configure the channels.
-        """
+        """  # noqa: D417 - Missing argument descriptions in the docstring (auto-generated noqa)
         if parameters.trigger_select == StartTriggerType.NO_TRIGGER:
             self.timer_task.triggers.start_trigger.disable_start_trig()
         else:
@@ -230,7 +230,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         Returns:
             DigitalEdgeCountMeasurementResultData:
             An instance of `DigitalEdgeCountMeasurementResultData` that specifies the data acquired from DAQ channels.
-        """
+        """  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
         time_out = (
             self.timer_task.channels.co_pulse_high_time
             + ConstantsForDigitalEdgeCountMeasurement.DEFAULT_TRIGGER_TIMEOUT
@@ -247,7 +247,7 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         return decm_result
 
     def close(self):
-        """Closes the task and returns the hardware resources"""
+        """Closes the task and returns the hardware resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 

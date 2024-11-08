@@ -28,7 +28,7 @@ def get_labview_analysis_traces_folder_path_impl() -> str:
     Raises:
         PCBATTAnalysisCallNativeLibraryFailedException: Occurs when function call to
         'NI_PCBATT_InteropApi_LabVIEW_Analysis_GetTracesFolderPath' fails for some reason.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     # Create native code DLL call
     try:
         dll_entries = analysis_library_interop.load_interop_api_library_entries()
@@ -72,7 +72,7 @@ def call_interop_api_labview_analysis_enable_traces(traces_status: bool) -> None
     Raises:
         PCBATTAnalysisCallNativeLibraryFailedException: Occurs when function call to
         'NI_PCBATT_InteropApi_LabVIEW_Analysis_EnableTraces' fails for some reason.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     try:
         dll_entries = analysis_library_interop.load_interop_api_library_entries()
 
@@ -112,7 +112,7 @@ def call_interop_api_labview_analysis_are_traces_enabled() -> bool:
     Raises:
         PCBATTAnalysisCallNativeLibraryFailedException: Occurs when function call to
         'NI_PCBATT_InteropApi_LabVIEW_Analysis_AreTracesEnabled' fails for some reason.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     try:
         dll_entries = analysis_library_interop.load_interop_api_library_entries()
 
@@ -150,7 +150,7 @@ def call_interop_api_labview_analysis_lv_runtime_available():
     Raises:
         PCBATTAnalysisCallNativeLibraryFailedException: Occurs when function call to
         'NI_PCBATT_InteropApi_LabVIEW_Analysis_IsLvRuntimeAvailable' fails for some reason.
-    """
+    """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (283 > 100 characters) (auto-generated noqa)
 
     try:
         dll_entries = analysis_library_interop.load_interop_api_library_entries()
@@ -180,7 +180,7 @@ def call_interop_api_labview_analysis_get_library_version():
 
     Returns:
         tuple[Any, int, int, int, int]: status code and library version numbers.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
     try:
         dll_entries = analysis_library_interop.load_interop_api_library_entries()
 

@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 
 
 class ConstantsForVoltageMeasurement:
-    """Constants used for Voltage measurement"""
+    """Constants used for Voltage measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
 
     INITIAL_AI_TERMINAL_CONFIGURATION = nidaqmx.constants.TerminalConfiguration.DEFAULT
     INITIAL_VOLTAGE_MINIMUM_VALUE_VOLTS = -10.0

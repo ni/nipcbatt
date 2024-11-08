@@ -1,9 +1,11 @@
-# Signal Voltage Generation from DAQ1 connected to Time Domain Measurement in DAQ2 using Route Synchronization
+# Signal Voltage Generation from DAQ1 connected to Time Domain Measurement in DAQ2 using Route Synchronization  # noqa: W505, D100 - doc line too long (110 > 100 characters) (auto-generated noqa), Missing docstring in public module (auto-generated noqa)
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 from enum import Enum
-import nipcbatt
+
 import nidaqmx.constants
+
+import nipcbatt
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -15,12 +17,16 @@ use_specific_channel = False
 # Enums to select generation and Waveform types
 
 
-class Generation_type(Enum):
+class Generation_type(  # noqa: D101, N801 - Missing docstring in public class (auto-generated noqa), class name 'Generation_type' should use CapWords convention (auto-generated noqa)
+    Enum
+):
     Single_tone = 0
     Multi_tone = 1
 
 
-class Waveform_type(Enum):
+class Waveform_type(  # noqa: D101, N801 - Missing docstring in public class (auto-generated noqa), class name 'Waveform_type' should use CapWords convention (auto-generated noqa)
+    Enum
+):
     Sine_wave = 0
     Square_wave = 1
 

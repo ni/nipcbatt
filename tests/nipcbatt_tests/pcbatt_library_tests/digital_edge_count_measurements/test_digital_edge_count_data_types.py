@@ -1,5 +1,5 @@
 """This module provides DigitalEdgeCountMeasurementUsingSoftwareTimer
-   and DigitalEdgeCountMeasurementUsingHardwareTimer Datatypes check."""
+   and DigitalEdgeCountMeasurementUsingHardwareTimer Datatypes check."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (365 > 100 characters) (auto-generated noqa)
 
 import importlib.metadata
 import logging
@@ -8,11 +8,11 @@ import unittest
 
 import nidaqmx
 import nidaqmx.constants
-import numpy as np
+import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (
+from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants.ConstantsForDigitalEdgeCountMeasurement' imported but unused (auto-generated noqa)
     ConstantsForDigitalEdgeCountMeasurement,
 )
 from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (
@@ -30,7 +30,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
     Args:
          unittest.TestCase: Base class from which this class inherits.
-    """
+    """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (206 > 100 characters) (auto-generated noqa)
 
     def setUp(self):
         pass
@@ -57,7 +57,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementCounterChannelParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -73,7 +73,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
     def test_digital_edge_count_measurement_counter_channel_parameter(self):
         """Tests if the instance of `DigitalEdgeCountMeasurementCounterChannelParameters`
-        is created as expected"""
+        is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
         instance = DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=nidaqmx.constants.Edge.FALLING
         )
@@ -87,7 +87,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementTimingParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -106,7 +106,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementTimingParameters.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -122,7 +122,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
     def test_digital_edge_count_measurement_timing_parameter(self):
         """Tests if the instance of `DigitalEdgeCountMeasurementTimingParameters`
-        is created as expected"""
+        is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
         instance = DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.005)
 
         actual_edge_counting_duration = instance._edge_counting_duration
@@ -131,7 +131,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
     def test__digital_edge_count_hardware_timer_configuration(self):
         """Tests if the instance of `DigitalEdgeCountHardwareTimerConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         # Create test values for the Counter Channel Parameter
         expected_edge_type = nidaqmx.constants.Edge.FALLING
@@ -183,7 +183,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
     def test__digital_edge_count_software_timer_configuration(self):
         """Tests if the instance of `DigitalEdgeCountSoftwareTimerConfiguration`
-        is created as expected"""
+        is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
         # Create test values for the Counter Channel Parameter
         expected_edge_type = nidaqmx.constants.Edge.FALLING
@@ -223,7 +223,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     def test_digital_edge_count_hardware_timer_configuration_with_invalid_parameters(
         self,
     ):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: DigitalEdgeCountHardwareTimerConfiguration(
@@ -291,7 +291,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     def test_digital_edge_count_software_timer_configuration_with_invalid_parameters(
         self,
     ):
-        """Tests if the instance creation with invalid parameters throws exception as expected"""
+        """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
             lambda: DigitalEdgeCountSoftwareTimerConfiguration(
@@ -332,7 +332,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -352,7 +352,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
@@ -372,7 +372,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     ):
         """Unit test of
         nipcbatt.pcbatt_library.nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData.
-        """
+        """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         with self.assertRaises(ValueError) as ctx:
             print(
