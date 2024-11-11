@@ -14,9 +14,9 @@ env:
       ARCHITECTURE: 'x64'
 
 jobs:
-  checks:
-    runs-on: windows-latest
-    
+  build:
+    runs-on: [windows-latest]
+
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -27,63 +27,49 @@ jobs:
           architecture: ${{ env.ARCHITECTURE }}
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Check Windows architecture
+        run: |
+            echo "Running on architecture:"
+            echo %PROCESSOR_ARCHITECTURE%  
+      - name: Check Python architecture
+        run: |
+              python -c "import platform; print('Platform architecture:', platform.architecture())"
+
       - uses: Gr1N/setup-poetry@v9
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
       - name: Check Poetry version
         run: poetry --version
-      # @TODO: This is a workaround for there not being a way to check the lock file
-      #   See: https://github.com/python-poetry/poetry/issues/453
-      # - name: Check for lock changes
-      #   run: |
-      #     poetry lock --check
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: ~/.cache/pypoetry/virtualenvs
-      #     key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
       - name: Install the Package
         run: poetry install -vvv
+      - name: Check Poetry version
+        run: poetry --version
+
       - name: Run the formattor
         run: poetry run black --check --diff .
+
       - name: Lint the Code
         run: poetry run ni-python-styleguide lint
 
-  tests:
-    runs-on: ${{ matrix.os }}
-    needs: checks  # Run tests only if linting passes
-    strategy:
-      matrix:
-        os: [windows-latest]
-        python-version: [3.9, '3.10', 3.11, 3.12]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Run tests
+        # run: poetry run pytest -v
+        run: poetry run pytest --verbose --doctest-modules --junitxml=junit/test-results-${{ env.PYTHON_VERSION }}.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v4
         with:
-          architecture: ${{ env.ARCHITECTURE }}
-          python-version: ${{ matrix.python-version }}
+          name: pytest-results-${{env.PYTHON_VERSION }}
+          path: junit/test-results-${{ env.PYTHON_VERSION }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
 
-      - uses: Gr1N/setup-poetry@v9
+      - name: Build Python package
+        run: poetry build
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
         with:
-          poetry-version: ${{ env.POETRY_VERSION }}
-      # - uses: actions/cache@v4
-      #   with:
-      #     path: ~/.cache/pypoetry/virtualenvs
-      #     key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - name: Check Poetry version
-        run: poetry --version
-      # - name: Install the Package
-      #   run: poetry install
-      # - name: Run tests
-      #   # run: poetry run pytest -v
-      #   run: poetry run pytest --verbose --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
-      # - name: Upload pytest test results
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: pytest-results-${{ matrix.python-version }}
-      #     path: junit/test-results-${{ matrix.python-version }}.xml
-      #   # Use always() to always run this step to publish test results when there are test failures
-      #   if: ${{ always() }}
-
-  build:
-    name: Trigger Build Workflow
-    uses: ./.github/workflows/build.yml
+          name: dist
+          path: |
+            dist
+            !dist/**/*.md
