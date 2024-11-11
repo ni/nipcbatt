@@ -80,9 +80,7 @@ addopts = "--cov src --strict-markers --doctest-modules"
 testpaths = ["tests"]
 pythonpath = "src"
 norecursedirs = [
-    "tests/nipcbatt_tests/pcbatt_library_integration_tests/*",
-	"tests/nipcbatt_tests/pcbatt_analysis_tests/*",
-	"tests/nipcbatt_tests/pcbatt_library_tests/*"
+    "tests/nipcbatt_tests/*"
 ]
 
 [tool.distutils.bdist_wheel]

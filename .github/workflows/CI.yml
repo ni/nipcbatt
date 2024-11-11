@@ -28,6 +28,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Check Windows architecture
+        shell: pwsh
         run: |
             echo "Running on architecture:"
             echo %PROCESSOR_ARCHITECTURE%  
