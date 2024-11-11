@@ -29,12 +29,9 @@ jobs:
 
       - name: Check Windows architecture
         shell: pwsh
-        run: |
-            echo "Running on architecture:"
-            echo %PROCESSOR_ARCHITECTURE%  
+        run: wmic os get osarchitecture  
       - name: Check Python architecture
-        run: |
-              python -c "import platform; print('Platform architecture:', platform.architecture())"
+        run: python -c "import platform; print('Platform architecture:', platform.architecture())"
 
       - uses: Gr1N/setup-poetry@v9
         with:
