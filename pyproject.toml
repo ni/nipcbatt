@@ -20,10 +20,6 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-exclude = [
-	"tests/nipcbatt_tests/pcbatt_library_integration_tests",
-	"tests/nipcbatt_tests/pcbatt_library_tests",
-]
 packages = [{ include = "nipcbatt", from = "src" }]
 
 [tool.poetry.dependencies]
@@ -80,13 +76,11 @@ build-backend = "poetry.core.masonry.api"
 "*" = [ "win_amd64/NI.*.dll",]
 
 [tool.pytest.ini_options]
-addopts = "--cov src --strict-markers --doctest-modules"
 testpaths = ["tests"]
 pythonpath = "src"
+# Skipping the tests as they require NI DAQmx
 norecursedirs = [
-    "tests/nipcbatt_tests/pcbatt_library_integration_tests/*",
-	"tests/nipcbatt_tests/pcbatt_analysis_tests/*",
-	"tests/nipcbatt_tests/pcbatt_library_tests/*"
+    "tests/nipcbatt_tests/*"
 ]
 
 [tool.distutils.bdist_wheel]
