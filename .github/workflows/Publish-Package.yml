@@ -1,12 +1,9 @@
-name: CI
+name: Publish Package
 
 on:
-  push:
-    branches:
-      - main
-      - 'releases/**'
-  workflow_call:
-  workflow_dispatch:
+  release:
+    types: [released]
+
 
 env:
       PYTHON_VERSION: 3.9
@@ -14,7 +11,7 @@ env:
       ARCHITECTURE: 'x64'
 
 jobs:
-  build:
+  publish:
     runs-on: [windows-latest]
 
     steps:
@@ -57,13 +54,24 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
 
-      - name: Build Python package
-        run: poetry build
+      - name: Build Python package and publish to PyPI
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        run: |
+          poetry publish --build --username __token__ --password ${{ secrets.PYPI_TOKEN}}
 
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
+
+      - name: Commit files
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull --tags -f
+          git commit -m "Bump package version" -a
+
+      - name: Push changes
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        uses: CasperWA/push-protected@v2
         with:
-          name: dist
-          path: |
-            dist
-            !dist/**/*.md
+          token: ${{ secrets.ADMIN_PAT }}
+          branch: ${{ github.event.release.target_commitish }}
+          unprotect_reviews: true
