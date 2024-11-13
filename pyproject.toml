@@ -80,9 +80,7 @@ testpaths = ["tests"]
 pythonpath = "src"
 # Skipping the tests as they require NI DAQmx
 norecursedirs = [
-    "tests/nipcbatt_tests/pcbatt_library_integration_tests/*",
-	"tests/nipcbatt_tests/pcbatt_analysis_tests/*",
-	"tests/nipcbatt_tests/pcbatt_library_tests/*"
+    "tests/nipcbatt_tests/*"
 ]
 
 [tool.distutils.bdist_wheel]

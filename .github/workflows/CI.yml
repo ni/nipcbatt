@@ -51,7 +51,6 @@ jobs:
         run: poetry run ni-python-styleguide lint
 
       - name: Run tests
-        # run: poetry run pytest -v
         run: poetry run pytest --verbose --doctest-modules --junitxml=junit/test-results-${{ env.PYTHON_VERSION }}.xml
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
