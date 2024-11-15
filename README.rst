@@ -128,7 +128,7 @@ Supported Hardware
 Operating System Support
 ------------------------
 
-nipcbatt supports Windows 10 and 11 systems where the supported drivers are 
+**nipcbatt** supports Windows 10 and 11 systems where the supported drivers are 
 installed. Refer to `NI Hardware and Operating System Compatibility <https://www.ni.com/r/hw-support>`_ for 
 which versions of the driver support your hardware on a given operating system.
 
@@ -159,20 +159,25 @@ Getting Started
 
 In order to use the **nipcbatt package**, you must have at least one DAQ (`Data Acquisition <https://www.ni.com/en/shop/data-acquisition.html>`_)
 device installed on your system. Both physical and simulated devices are supported. The examples below use PC 
-based DAQ device (PCIe-6363). You can use NI MAX or NI Hardware 
+based DAQ device (PCIe-6353). You can use NI MAX or NI Hardware 
 Configuration Utility to verify and configure your devices.
 
 
 Finding and configuring device name in **NI MAX**:
 
-.. image:: https://raw.githubusercontent.com/ni/nidaqmx-python/ca9b8554e351a45172a3490a4716a52d8af6e95e/max_device_name.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/NI-MAX.png
+  :alt: NI-MAX
+  :align: center
+  :width: 800px
 
 Finding and configuring device name in **NI Hardware Configuration Utility**:
 
-.. image:: https://raw.githubusercontent.com/ni/nidaqmx-python/ca9b8554e351a45172a3490a4716a52d8af6e95e/hwcu_device_name.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/Hardware%20Configuration%20Utility.png
+  :alt: Hardware Config 
+  :align: center
+  :width: 800px
 
-Then refer to the Getting Started guide to proceed with testing. The Guide can be found at this location: 
-*"\\nipcbatt-1.x\\src\\docs\\Python PCB Assembly Test Toolkit - Getting Started.pdf"*
+Then refer to the Validation examples and Automation sequences to start testing. Refer to the Getting Started Guide for information.
 
 
 Key Concepts in Python PCBATT
@@ -190,7 +195,15 @@ All the measurement libraries consist of three main methods which have to be use
 
    This is done by calling the intialize() method on the class instance.
 
- 
+Example code to initialize an instance of DRVG to generate a DC Voltage:
+
+.. code-block:: python
+
+  >>> import nipcbatt
+  >>> drvg = nipcbatt.DcVoltageGeneration()
+  >>> drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+
+
 - Configure and Generate/Configure and Measure:
  
    Configures, Initiates and Measure/Generate for an input/output 
@@ -200,11 +213,26 @@ All the measurement libraries consist of three main methods which have to be use
    This is done by calling the
    configure_and_measure()/configure_and_generate() method on the class instance.
 
+Example code to configure and generate DC voltage using the class instance:
+
+.. code-block:: python
+
+  >>> drvg.configure_and_generate(nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
+  ... # Default generation voltage is 1.2V, Defaut Range is [-10.0, 10.0]
+
+
 - Close:
  
    Closes the DAQmx tasks and clears resources.
 
    This is done by calling the close() method on the class instance.
+  
+Example code to close the task and clear resources after generation:
+
+.. code-block:: python
+
+  >>> drvg.close()
+
 
 2. Features and Utilities
 -------------------------
@@ -240,16 +268,16 @@ Usage
  
 Validation examples are created as examples for testing and validating a pair of
 libraries together, where one library is used for generation and another for measurement.
-The validation examples can be found in this location in the installed library.
+The validation examples can be found in this location `pcbatt_validation_examples <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_validation_examples>`_.
 
-“\\<venv>\\Lib\\site-packages\\nipcbatt\\pcbatt_validation_examples”
+The following images shows sample results for Signal Voltage Generation to Frequency Domain Voltage Measurement Validation example which
+is located at *"/pcbatt_validation_examples/PCIe_examples/PC_SVG_FDVM.py"*:
 
-Or refer to the location given below if you are using the downloaded
-source code:
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/SVG_to_FDVM_Results.png
+  :alt: SVG_to_FDVM_Results
+  :align: center
+  :width: 600px
 
-“\\nipcbatt-1.x\\src\\nipcbatt\\pcbatt_validation_examples”
-
- 
 2. Automation Sequences
 -----------------------
 
@@ -276,13 +304,8 @@ h. sensor_tests
 
 i. synchronization_tests
 
-The Automation Sequences can be found in this location using the installed package:
+The Automation Sequences can be found in this location `pcbatt_automation <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_automation>`_.
 
-“\\<venv>\\Lib\\site-packages\\nipcbatt\\pcbatt_automation”
-
-Or refer to the location given below if you are using source code:
-
-“\\nipcbatt-1.x\\src\\nipcbatt\\pcbatt_automation”
  
 3. Functional Test Demo Sequence
 ---------------------------------
@@ -290,21 +313,14 @@ Or refer to the location given below if you are using source code:
 FT demo sequence is an example for creating a test sequence using
 libraries with applying test limits on the results to determine whether the test is a pass or a fail.
 
-Please refer to the FT Demo Sequence in the location.
-
-“\\<venv>\\Lib\\site-packages\\nipcbatt\\pcbatt_ft_demo_test_sequence”
-
-Or refer to the location given below if you are using source code:
-
-“\\nipcbatt-1.x\\src\\nipcbatt\\pcbatt_ft_demo_test_sequence”
+Please refer to the FT Demo Sequence in the location `pcbatt_ft_demo_test_sequence <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_ft_demo_test_sequence>`_.
 
 
 
 Bugs / Feature Requests
 =======================
 
-To report a bug or submit a feature request, please use this `link <https://www.ni.com/my-support/s/service-requests>`_.
-Or write an email to : `Customer Requests <90006a91.emerson.onmicrosoft.com@amer.teams.ms>`_
+To report a bug or submit a feature request, please use GitHub `Issues  <https://github.com/ni/nipcbatt/issues>`_.
 
 
 License
