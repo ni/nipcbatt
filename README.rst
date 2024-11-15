@@ -217,15 +217,8 @@ Example code to configure and generate DC voltage using the class instance:
 
 .. code-block:: python
 
-  >>> range_settings = nipcbatt.VoltageGenerationChannelParameters(
-  ...   range_min_volts=-10.0, range_max_volts=10.0
-  ... )
-
-  >>> output_voltages = [5.00]
-
-  >>> drvg_config = nipcbatt.DcVoltageGenerationConfiguration(
-  ...   voltage_generation_range_parameters=range_settings, output_voltages=output_voltages
-  ... )
+  >>> drvg.configure_and_generate(nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
+  ... # Default generation voltage is 1.2V, Defaut Range is [-10.0, 10.0]
 
 
 - Close:
@@ -283,7 +276,7 @@ is located at *"/pcbatt_validation_examples/PCIe_examples/PC_SVG_FDVM.py"*:
 .. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/SVG_to_FDVM_Results.png
   :alt: SVG_to_FDVM_Results
   :align: center
-  :width: 800px
+  :width: 600px
 
 2. Automation Sequences
 -----------------------
@@ -327,7 +320,7 @@ Please refer to the FT Demo Sequence in the location `pcbatt_ft_demo_test_sequen
 Bugs / Feature Requests
 =======================
 
-To report a bug or submit a feature request, please use this `Issues  <https://github.com/ni/nipcbatt/issues>`_.
+To report a bug or submit a feature request, please use GitHub `Issues  <https://github.com/ni/nipcbatt/issues>`_.
 
 
 License
