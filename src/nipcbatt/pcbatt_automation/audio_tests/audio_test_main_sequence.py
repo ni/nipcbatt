@@ -1,6 +1,5 @@
-"""Main sequence for executing audio test sequence"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (164 > 100 characters) (auto-generated noqa)
+"""Main sequence for executing audio test sequence""" 
 
-# pylint: disable=W0105
 
 # import functions
 from nipcbatt.pcbatt_automation.audio_tests.audio_filter_check import audio_filter_check

@@ -1,6 +1,4 @@
-"""Main sequence for executing Digital IO Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
-
-# pylint: disable=W0105, C0413
+"""Main sequence for executing Digital IO Test"""  
 
 # import functions
 from nipcbatt.pcbatt_automation.digital_io_tests.digital_clock_test import (

@@ -1,5 +1,5 @@
 """ This example demonstrates use of LM75 I2C Temperature sensor for taking 
- temperature measurements using USB-8452 device """  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (344 > 100 characters) (auto-generated noqa)
+    temperature measurements using USB-8452 device """  
 
 ### Ensure correct hardware and corresponding trigger names before running this example
 
@@ -22,7 +22,7 @@ import nipcbatt.pcbatt_library
 running = True
 
 
-def check_input():  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def check_input():  
     global running
     input("Press Enter to exit...\n")
     running = False

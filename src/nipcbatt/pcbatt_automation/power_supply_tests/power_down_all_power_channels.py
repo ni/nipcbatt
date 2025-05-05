@@ -1,4 +1,4 @@
-"""This example resets and closes configured Power channels"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
+"""This example resets and closes configured Power channels"""  
 
 import nipcbatt
 
@@ -16,7 +16,7 @@ def power_down_all_power_channels(
     channel_name=POWER_CHANNEL,
     config: nipcbatt.PowerSupplySourceAndMeasureConfiguration = CONFIGURATION,
 ):
-    """Configure power channel with default parameters and close"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (255 > 100 characters) (auto-generated noqa)
+    """Configure power channel with default parameters and close""" 
 
     # Initialize Power Channels
     generation = nipcbatt.PowerSupplySourceAndMeasure()

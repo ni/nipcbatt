@@ -1,4 +1,4 @@
-# Signal Voltage Generation connected to Frequency Domain Measurement  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (142 > 100 characters) (auto-generated noqa)
+# Signal Voltage Generation connected to Frequency Domain Measurement  
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 from enum import Enum
@@ -17,14 +17,14 @@ save_fig = False
 # Enums to select generation and Waveform types
 
 
-class Generation_type(  # noqa: D101, N801 - Missing docstring in public class (auto-generated noqa), class name 'Generation_type' should use CapWords convention (auto-generated noqa)
+class Generation_type(  
     Enum
 ):
     Single_tone = 0
     Multi_tone = 1
 
 
-class Waveform_type(  # noqa: D101, N801 - Missing docstring in public class (auto-generated noqa), class name 'Waveform_type' should use CapWords convention (auto-generated noqa)
+class Waveform_type( 
     Enum
 ):
     Sine_wave = 0

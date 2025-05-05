@@ -1,4 +1,4 @@
-"""Example demonstrates simple read and write data operations through Serial COM port"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (199 > 100 characters) (auto-generated noqa)
+"""Example demonstrates simple read and write data operations through Serial COM port"""  
 
 # pylint: disable=W0105
 
@@ -21,7 +21,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\serial_comm_test_results.txt"
 # region initialize
 ######## INITIALIZE ################################################################################
 def setup():
-    """Creates and initializes serial communication object"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (172 > 100 characters) (auto-generated noqa)
+    """Creates and initializes serial communication object""" 
     resource = nipcbatt.SerialCommunication()
     resource.initialize(serial_device_name=DEVICE_ID)
     return resource
@@ -39,7 +39,7 @@ def main(
     """If you wish to write your results to a file use the following commands
     Make sure the write_to_file option is set to True when calling i2c_comm_test()
     Change the file path to desired location on your drive
-    The default file path is C:\\Windows\\Temp\\serial_comm_test_results.txt"""  # noqa: D202, D205, D209, D301, D415 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    The default file path is C:\\Windows\\Temp\\serial_comm_test_results.txt"""  
 
     # if write_to_file is True, call write_results_to_file in order to output the results to a file
     if write_to_file:
@@ -67,7 +67,7 @@ def main(
 
     response_data = resource.configure_then_send_command_and_receive_response(configuration=config)
 
-    """Storing results -- create both a Python dictionary (hashmap)  # noqa: W505 - doc line too long (521 > 100 characters) (auto-generated noqa)
+    """Storing results -- create both a Python dictionary (hashmap) 
     A dictionary will store values with a key provided by the user"""
     results_map = {}  # this structure will hold results in key-value pairs
 
@@ -86,7 +86,7 @@ def main(
 
 # Close all tasks
 def cleanup(resource: nipcbatt.SerialCommunication):
-    """Closes out the created objects used in the communication"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Closes out the created objects used in the communication""" 
     resource.close()
 
 
@@ -97,7 +97,7 @@ def cleanup(resource: nipcbatt.SerialCommunication):
 # region test
 ############# USE THIS FUNCTION TO CALL THE WHOLE SEQUENCE #########################################
 def serial_comm_test():
-    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Execute all steps in the sequence"""  
 
     # Run setup function
     serial_resource = setup()
@@ -110,4 +110,4 @@ def serial_comm_test():
 
 
 ####################################################################################################
-# endregion test  # noqa: W505 - doc line too long (177 > 100 characters) (auto-generated noqa)
+# endregion test  

@@ -1,4 +1,4 @@
-"""Main sequence forr executing the Sensor Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
+"""Main sequence forr executing the Sensor Test"""  
 
 from rtd_test import rtd_test
 from thermistor_test_cdaq import thermistor_test_cdaq

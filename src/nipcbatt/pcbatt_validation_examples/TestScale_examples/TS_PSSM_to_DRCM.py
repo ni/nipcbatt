@@ -1,4 +1,4 @@
-# DcRmsCurrentMeasurement connected with Power Supply Source and Measure without Trigger  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (161 > 100 characters) (auto-generated noqa)
+# DcRmsCurrentMeasurement connected with Power Supply Source and Measure without Trigger 
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nidaqmx.constants

@@ -1,6 +1,5 @@
-"""Main Sequence for executing Power Supply Tests"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (163 > 100 characters) (auto-generated noqa)
+"""Main Sequence for executing Power Supply Tests"""  
 
-# pylint: disable=W0105,C0413,E0401,C0301
 # import functions
 from nipcbatt.pcbatt_automation.synchronization_tests.digital_clock_generation_and_pwm_measurement import (
     digital_clock_generation_and_pwm_measurement,

@@ -1,4 +1,4 @@
-# Digital Clock Generation to Digital Frequency Measurement  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (132 > 100 characters) (auto-generated noqa)
+# Digital Clock Generation to Digital Frequency Measurement 
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nipcbatt

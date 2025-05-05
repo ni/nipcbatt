@@ -1,10 +1,8 @@
 """This example demonstrates digital pulse generation and digital edge count measurement through 
    counter-based measurements using Core Digital IO Modules. Digital edge counting is performed 
-   at Software timed using an external wait"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (339 > 100 characters) (auto-generated noqa)
+   at Software timed using an external wait"""  
 
-# pylint: disable=W0105, C0413
-
-import time  # noqa: F401 - 'time' imported but unused (auto-generated noqa)
+import time  
 
 import nipcbatt
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
@@ -33,7 +31,7 @@ def setup(
     input_terminal=INPUT_TERMINAL,
     edge_count_channel=EDGE_COUNTER,
 ):
-    """Creates the necessary objects for the generation and measurement of digital edge count"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (284 > 100 characters) (auto-generated noqa)
+    """Creates the necessary objects for the generation and measurement of digital edge count"""  
 
     # Create the instances of generation and measurement classes required for the test
     generation_instance = nipcbatt.DigitalPulseGeneration()
@@ -70,7 +68,7 @@ def main(
 ):
     """If write_to_file is True, the Logger is used to output the results to a file.
     The Logger can be used to store configurations and outputs in a .txt or .csv file.
-    The default file path is C:\\Windows\\Temp\\digital_edge_count_sw_timed_test_results.txt"""  # noqa: D205, D209, D301 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa)
+    The default file path is C:\\Windows\\Temp\\digital_edge_count_sw_timed_test_results.txt"""  
     if write_to_file:
         logger = PcbattLogger(filepath)
         logger.attach(generation_instance)
@@ -78,7 +76,7 @@ def main(
 
     """Configure and generate/measure signals"""
 
-    """Storing results -- create both a Python dictionary (hashmap)  # noqa: W505 - doc line too long (358 > 100 characters) (auto-generated noqa)
+    """Storing results -- create both a Python dictionary (hashmap) 
     A dictionary will store values with a key provided by the user"""
     results_map = {}  # this structure will hold results in key-value pairs
     configure_only_option = nipcbatt.MeasurementOptions(
@@ -159,7 +157,7 @@ def cleanup(
     generation_instance: nipcbatt.DigitalPulseGeneration,
     measurement_instance: nipcbatt.DigitalEdgeCountMeasurementUsingSoftwareTimer,
 ):
-    """Closes out the created objects used in the generation and measurement"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation
     measurement_instance.close()  # Close measurement
 
@@ -180,7 +178,7 @@ def digital_count_events_sw_timed_test(
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
-    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Execute all steps in the sequence"""  
 
     # Run setup function
     gen, meas = setup(
@@ -197,4 +195,4 @@ def digital_count_events_sw_timed_test(
     cleanup(gen, meas)
 
 
-# endregion test  # noqa: W505 - doc line too long (190 > 100 characters) (auto-generated noqa)
+# endregion test  

@@ -1,1 +1,1 @@
-"""Contains files for digital test automation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (159 > 100 characters) (auto-generated noqa)
+"""Contains files for digital test automation""" 

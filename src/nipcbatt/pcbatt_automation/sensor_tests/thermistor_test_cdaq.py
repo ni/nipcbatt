@@ -1,11 +1,11 @@
 """Demonstrates DC Voltage Generation using AO lines or Modules and Temprature
-   measurement with Thermistor using AI lines or Modules of cDAQ"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (360 > 100 characters) (auto-generated noqa)
+   measurement with Thermistor using AI lines or Modules of cDAQ"""  
 
 import os
 import sys
 
 import nidaqmx
-import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
+import numpy as np  
 
 import nipcbatt
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
@@ -34,7 +34,7 @@ def setup(
     output_terminal=OUTPUT_TERMINAL, input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH
 ):
     """Creates the necessary objects for DC voltage generation
-    and the Temprature Measurement"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (407 > 100 characters) (auto-generated noqa)
+    and the Temprature Measurement"""  
 
     # Create the instances of generation class required for the test
     drvg = nipcbatt.DcVoltageGeneration()
@@ -64,7 +64,7 @@ def setup(
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
-def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def main(  
     drvg: nipcbatt.DcVoltageGeneration,
     ttr: nipcbatt.TemperatureMeasurementUsingThermistor,
     input_terminal=INPUT_TERMINAL,
@@ -140,7 +140,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
     )
 
     # endregion TTR configure and measure
-    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
+    #################################################################################################### 
 
     ttr_result_data = ttr.configure_and_measure(configuration=ttr_config)
 
@@ -165,7 +165,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def cleanup( 
     drvg: nipcbatt.DcVoltageGeneration,
     ttr: nipcbatt.TemperatureMeasurementUsingThermistor,
 ):
@@ -183,8 +183,8 @@ def thermistor_test_cdaq(
     generation_output_channel=OUTPUT_TERMINAL,
     measurement_input_channel=INPUT_TERMINAL,
 ):
-    """Execute all the steps in sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
-
+    """Execute all the steps in sequence"""  
+    
     # Run the setup function
     drvg, ttr = setup(
         output_terminal=generation_output_channel,

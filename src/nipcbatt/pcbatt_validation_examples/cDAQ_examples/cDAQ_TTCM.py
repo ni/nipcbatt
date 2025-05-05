@@ -1,4 +1,4 @@
-"""Standalone for TemperatureMeasurementUsingThermocouple"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (171 > 100 characters) (auto-generated noqa)
+"""Standalone for TemperatureMeasurementUsingThermocouple."""  
 
 ### Ensure correct hardware and corresponding trigger names before running this example
 

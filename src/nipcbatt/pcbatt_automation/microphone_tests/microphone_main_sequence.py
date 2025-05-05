@@ -1,6 +1,5 @@
-"""Main Sequence for executing Microphone Test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
+"""Main Sequence for executing Microphone Test""" 
 
-# pylint: disable=W0105
 
 # import functions
 from microphone_test import signal_voltage_generation_and_measurement

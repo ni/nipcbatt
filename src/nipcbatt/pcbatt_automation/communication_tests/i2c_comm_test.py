@@ -1,7 +1,6 @@
 """Example demonstrates simple read and write data operations through I2C protocol
-communication using NI 845x Device"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (330 > 100 characters) (auto-generated noqa)
+communication using NI 845x Device""" 
 
-# pylint: disable=W0105
 
 import numpy as np
 
@@ -22,7 +21,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\i2c_comm_test_results.txt"
 # region initialize
 ######## INITIALIZE ################################################################################
 def setup():
-    """Creates and initializes I2C communication objects"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (247 > 100 characters) (auto-generated noqa)
+    """Creates and initializes I2C communication objects"""  
 
     reader = nipcbatt.I2cReadCommunication()
     reader.initialize(device_name=DEVICE_ID)
@@ -46,7 +45,7 @@ def main(
     """If you wish to write your results to a file use the following commands
     Make sure the write_to_file option is set to True when calling i2c_comm_test()
     Change the file path to desired location on your drive
-    The default file path is C:\\Windows\\Temp\\i2c_comm_test_results.txt"""  # noqa: D202, D205, D209, D301, D415 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), Use r""" if any backslashes in a docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    The default file path is C:\\Windows\\Temp\\i2c_comm_test_results.txt""" 
 
     # if write_to_file is True, call write_results_to_file in order to output the results to a file
     if write_to_file:
@@ -120,7 +119,7 @@ def main(
 
     writer.configure_and_write_data(configuration=write_config)
 
-    """Storing results -- create both a Python dictionary (hashmap)  # noqa: W505 - doc line too long (518 > 100 characters) (auto-generated noqa)
+    """Storing results -- create both a Python dictionary (hashmap) 
        A dictionary will store values with a key provided by the user"""
     results_map = {}  # this structure will hold results in key-value pairs
 
@@ -142,7 +141,7 @@ def cleanup(
     reader: nipcbatt.I2cReadCommunication,
     writer: nipcbatt.I2cWriteCommunication,
 ):
-    """Closes out the created objects used in the communication"""  # noqa: D415 - First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Closes out the created objects used in the communication"""  
     reader.close()
     writer.close()
 
@@ -154,7 +153,7 @@ def cleanup(
 # region test
 ############# USE THIS FUNCTION TO CALL THE WHOLE SEQUENCE #########################################
 def i2c_comm_test():
-    """Execute all steps in the sequence"""  # noqa: D202, D415 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
+    """Execute all steps in the sequence"""  
 
     # Run setup function
     i2c_reader, i2c_writer = setup()
@@ -167,4 +166,4 @@ def i2c_comm_test():
 
 
 ####################################################################################################
-# endregion test  # noqa: W505 - doc line too long (177 > 100 characters) (auto-generated noqa)
+# endregion test 

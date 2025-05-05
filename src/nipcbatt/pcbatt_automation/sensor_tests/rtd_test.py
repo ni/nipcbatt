@@ -1,8 +1,7 @@
-"""Demonstrates temprature measurement using RTD using AI lines or Modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (188 > 100 characters) (auto-generated noqa)
+"""Demonstrates temprature measurement using RTD using AI lines or Modules"""  
 
-# pylint: disable=W0105,C0413,E0401,E712,E111S
-import os  # noqa: F401 - 'os' imported but unused (auto-generated noqa)
-import sys  # noqa: F401 - 'sys' imported but unused (auto-generated noqa)
+import os  
+import sys  
 
 import nidaqmx
 import nidaqmx.constants
@@ -28,7 +27,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\RTD_test.txt"
 # Initialize Region
 ########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
 def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
-    """Creates the necessary objects for the measurement of Temprature"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (261 > 100 characters) (auto-generated noqa)
+    """Creates the necessary objects for the measurement of Temprature"""  
 
     # Creates the instances of measurement class required for the test
     trtdm = nipcbatt.TemperatureMeasurementUsingRtd()
@@ -49,7 +48,7 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
-def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def main( 
     trtdm: nipcbatt.TemperatureMeasurementUsingRtd, input_terminal=INPUT_TERMINAL
 ):
     results_map = {}  # this structure will hold results in key-value pairs
@@ -105,7 +104,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
     )
 
     # endregion TRTDM configure and measure
-    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
+    ####################################################################################################  
 
     trtdm_result_data = trtdm.configure_and_measure(configuration=trtdm_config)
     print("TRTDM result :\n")
@@ -121,7 +120,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def cleanup(  
     trtdm: nipcbatt.TemperatureMeasurementUsingRtd,
 ):
     trtdm.close()
@@ -136,8 +135,8 @@ def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generate
 def rtd_test(
     measurement_input_channel=INPUT_TERMINAL,
 ):
-    """Execute all steps in the sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
-
+    """Execute all steps in the sequence"""  
+    
     # Run setup function
     trtdm = setup(
         input_terminal=measurement_input_channel,
