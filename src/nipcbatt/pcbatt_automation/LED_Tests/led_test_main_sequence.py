@@ -1,4 +1,4 @@
-"""Main sequence for Analog PWM test"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (150 > 100 characters) (auto-generated noqa)
+"""Main sequence for Analog PWM test"""  
 
 # Import Functions
 from analog_pwm_test import analog_pwm_test

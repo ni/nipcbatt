@@ -1,11 +1,11 @@
-"""This example resets all the configured Power Channels to 0 volts and 0 amps"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (192 > 100 characters) (auto-generated noqa)
+"""This example resets all the configured Power Channels to 0 volts and 0 amps"""  
 
 import os
 import sys
 
 import nidaqmx
 import nidaqmx.constants
-import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
+import numpy as np  
 
 import nipcbatt
 
@@ -20,9 +20,9 @@ OUTPUT_TERMINAL = "Simulated_Power/power"
 
 
 # Initialize Region
-########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
+########################################   INITIALIZATION FUNCTION   #########################################################
 def setup(output_terminal=OUTPUT_TERMINAL):
-    """Creates the necessary objects for voltage generation"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
+    """Creates the necessary objects for voltage generation""" 
     pssm = nipcbatt.PowerSupplySourceAndMeasure()
     # Create the instances of generation class reuired for the test
     pssm.initialize(output_terminal)
@@ -30,14 +30,14 @@ def setup(output_terminal=OUTPUT_TERMINAL):
     return pssm
 
 
-###############################################################################################################################################  # noqa: W505 - doc line too long (143 > 100 characters) (auto-generated noqa)
+################################################################################################################################
 # end region initialize
 
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(pssm: nipcbatt.PowerSupplySourceAndMeasure):
-    """Sets up the volatge and current to be generated"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (168 > 100 characters) (auto-generated noqa)
+    """Sets up the volatge and current to be generated."""  
     terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=0.1,
         current_setpoint_amperes=0.1,
@@ -72,7 +72,7 @@ def main(pssm: nipcbatt.PowerSupplySourceAndMeasure):
     )
 
     # endregion PSSM configure and measure
-    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
+    ###################################################################################################
 
     pssm.configure_and_measure(configuration=pssm_config)
 
@@ -83,7 +83,7 @@ def main(pssm: nipcbatt.PowerSupplySourceAndMeasure):
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def cleanup(  
     pssm: nipcbatt.PowerSupplySourceAndMeasure,
 ):
     pssm.close()
@@ -96,8 +96,8 @@ def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generate
 # region test
 ############# USE THIS FUNCTION TO CALL THE WHOLE SEQUENCE #########################################
 def close_power_supply(generation_output_channel=OUTPUT_TERMINAL):
-    """Executes all steps in Sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (228 > 100 characters) (auto-generated noqa)
-
+    """Executes all steps in Sequence"""  
+    
     # Runs the Setup Function
     pssm = setup(output_terminal=generation_output_channel)
 

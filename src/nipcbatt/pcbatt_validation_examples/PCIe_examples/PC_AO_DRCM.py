@@ -1,8 +1,8 @@
-### Ensure correct hardware and corresponding trigger names before running this example  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
+### Ensure correct hardware and corresponding trigger names before running this example  
 
 import matplotlib.pyplot as plt
 import nidaqmx.constants
-import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
+import numpy as np  
 
 import nipcbatt
 from nipcbatt.pcbatt_utilities.save_traces import save_traces

@@ -1,4 +1,4 @@
-# Digital Pulse Generation to Digital Edge Count Measurement  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (133 > 100 characters) (auto-generated noqa)
+# Digital Pulse Generation to Digital Edge Count Measurement  
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nidaqmx.constants

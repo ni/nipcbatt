@@ -1,4 +1,4 @@
-### Ensure correct hardware and corresponding trigger names before running this example  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (160 > 100 characters) (auto-generated noqa)
+### Ensure correct hardware and corresponding trigger names before running this example 
 
 import nidaqmx.constants
 import numpy as np

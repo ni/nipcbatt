@@ -1,4 +1,4 @@
-# DC Voltage Generation connected to DC-RMS Voltage Measurement (single ch.)  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (149 > 100 characters) (auto-generated noqa)
+# DC Voltage Generation connected to DC-RMS Voltage Measurement (single ch.)  
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nidaqmx.constants

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nipcbatt"
-version = "1.0.55"
+version = "1.0.56"
 license = "MIT"
 description = "Python PCB Assembly Test Toolkit"
 authors = ["NI <opensource@ni.com>"]
@@ -91,4 +91,4 @@ line-length = 100
 extend_exclude = "docs"
 
 [tool.ni-python-styleguide]
-extend_exclude = "docs,src/nipcbatt/pcbatt_automation"
+extend_exclude = "docs,src/nipcbatt/pcbatt_automation,src/nipcbatt/pcbatt_ft_demo_test_sequence,src/nipcbatt/pcbatt_validation_examples"

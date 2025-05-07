@@ -1,6 +1,4 @@
-"""Demonstrates temprature measurement using Thermocouple using AI lines or Modules"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (197 > 100 characters) (auto-generated noqa)
-
-# pylint: disable=all
+"""Demonstrates temprature measurement using Thermocouple using AI lines or Modules"""  
 
 import os
 import sys
@@ -27,13 +25,13 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\Thermocouple_test.txt"
 
 
 # Initialize Region
-########################################   INITIALIZATION FUNCTION   ################################################################  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
+########################################   INITIALIZATION FUNCTION   ###################################################
 def setup(
     input_terminal=INPUT_TERMINAL,
     cold_junction_terminal=COLD_JUNCTION_CHANNEL,
     file_path=DEFAULT_FILEPATH,
 ):
-    """Creates the necessary objects for the measurement of Temprature"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (261 > 100 characters) (auto-generated noqa)
+    """Creates the necessary objects for the measurement of Temprature"""  
 
     # Creates the instance of measurement class required for the test
     ttcm = nipcbatt.TemperatureMeasurementUsingThermocouple()
@@ -51,13 +49,13 @@ def setup(
     return ttcm
 
 
-###############################################################################################################################################  # noqa: W505 - doc line too long (143 > 100 characters) (auto-generated noqa)
+############################################################################################################################
 # end region initialize
 
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
-def main(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def main(  
     ttcm: nipcbatt.TemperatureMeasurementUsingThermocouple,
     input_terminal=INPUT_TERMINAL,
     cold_junction_terminal=COLD_JUNCTION_CHANNEL,
@@ -87,7 +85,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
         auto_zero_mode=nidaqmx.constants.AutoZeroType.NONE,
     )
 
-    channel1 = nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(  # noqa: F841 - local variable 'channel1' is assigned to but never used (auto-generated noqa)
+    channel1 = nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(  
         channel_name=input_terminal, channel_parameters=channel_parameters
     )
 
@@ -117,7 +115,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
     )
 
     # endregion ttcm configure and measure
-    ####################################################################################################  # noqa: W505 - doc line too long (104 > 100 characters) (auto-generated noqa)
+    #################################################################################################
     # end region configure and measure
 
     ttcm_result_data = ttcm.configure_and_measure(configuration=ttcm_config)
@@ -134,7 +132,7 @@ def main(  # noqa: D103 - Missing docstring in public function (auto-generated n
 
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
-def cleanup(  # noqa: D103 - Missing docstring in public function (auto-generated noqa)
+def cleanup(  
     ttcm: nipcbatt.TemperatureMeasurementUsingThermocouple,
 ):
     ttcm.close()
@@ -150,8 +148,8 @@ def thermocouple_test(
     generation_input_channel=INPUT_TERMINAL,
     cold_input_channel=COLD_JUNCTION_CHANNEL,
 ):
-    """Execute all steps in the sequence"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (231 > 100 characters) (auto-generated noqa)
-
+    """Execute all steps in the sequence""" 
+    
     # Runs setup function
     ttcm = setup(input_terminal=generation_input_channel, cold_junction_terminal=cold_input_channel)
     # Runs main function

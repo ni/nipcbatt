@@ -1,4 +1,4 @@
-# Temperature Thermistor Measurement connected with DC Voltage Generation  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (146 > 100 characters) (auto-generated noqa)
+# Temperature Thermistor Measurement connected with DC Voltage Generation  
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import matplotlib.pyplot as plt

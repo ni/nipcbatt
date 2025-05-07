@@ -1,1 +1,1 @@
-"""Contains all automation tests using nipcbatt.library"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)
+"""Contains all automation tests using nipcbatt.library."""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (169 > 100 characters) (auto-generated noqa)

@@ -1,4 +1,4 @@
-# Temperature Thermistor Measurement connected with Power Supply Source and Measure  # noqa: D100, W505 - Missing docstring in public module (auto-generated noqa), doc line too long (156 > 100 characters) (auto-generated noqa)
+# Temperature Thermistor Measurement connected with Power Supply Source and Measure  
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nidaqmx.constants
