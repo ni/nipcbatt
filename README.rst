@@ -26,9 +26,9 @@ resources on any platform.
 Documentation
 -------------
 
-Refer to the `Python PCB Assembly Test Toolkit - Getting Started <https://github.com/ni/nipcbatt/blob/main/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20Getting%20Started.pdf>`_ guide for
+Refer to the `Python PCB Assembly Test Toolkit - Getting Started <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20Getting%20Started.pdf>`_ guide for
 getting started steps including installation and setup procedures, and steps to run example test sequences. 
-Refer to the `User Manual <https://github.com/ni/nipcbatt/blob/main/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20User%20Manual.pdf>`_ for an overview of Toolkit concepts and measurement 
+Refer to the `User Manual <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/Python%20PCB%20Assembly%20Test%20Toolkit%20-%20User%20Manual.pdf>`_ for an overview of Toolkit concepts and measurement 
 fundamentals, including a brief overview of each library and automation sequences.
 
 Supported Features
@@ -165,14 +165,14 @@ Configuration Utility to verify and configure your devices.
 
 Finding and configuring device name in **NI MAX**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/NI-MAX.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX.png
   :alt: NI-MAX
   :align: center
   :width: 800px
 
 Finding and configuring device name in **NI Hardware Configuration Utility**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/Hardware%20Configuration%20Utility.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/Hardware%20Configuration%20Utility.png
   :alt: Hardware Config 
   :align: center
   :width: 800px
@@ -273,7 +273,7 @@ The validation examples can be found in this location `pcbatt_validation_example
 The following images shows sample results for Signal Voltage Generation to Frequency Domain Voltage Measurement Validation example which
 is located at *"/pcbatt_validation_examples/PCIe_examples/PC_SVG_FDVM.py"*:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/docs/images/SVG_to_FDVM_Results.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/SVG_to_FDVM_Results.png
   :alt: SVG_to_FDVM_Results
   :align: center
   :width: 600px
