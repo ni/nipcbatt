@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nipcbatt"
-version = "1.0.57"
+version = "1.0.60"
 license = "MIT"
 description = "Python PCB Assembly Test Toolkit"
 authors = ["NI <opensource@ni.com>"]
