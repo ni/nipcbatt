@@ -8,7 +8,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     DigitalStartTriggerParameters,
     MeasurementOptions,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_constants import (
     ConstantsForDigitalEdgeCountMeasurement,
 )
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData

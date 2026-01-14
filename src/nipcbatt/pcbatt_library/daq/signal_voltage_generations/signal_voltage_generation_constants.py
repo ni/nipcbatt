@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
 )
-from nipcbatt.pcbatt_library.signal_voltage_generations.signal_voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.signal_voltage_generations.signal_voltage_data_types import (
     SignalVoltageGenerationMultipleTonesConfiguration,
     SignalVoltageGenerationMultipleTonesWaveParameters,
     SignalVoltageGenerationSineWaveConfiguration,

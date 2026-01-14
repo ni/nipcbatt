@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     SampleTimingEngine,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_data_types import (
+from nipcbatt.pcbatt_library.daq.power_supply_source_and_measurements.power_supply_source_data_types import (
     PowerSupplySourceAndMeasureConfiguration,
     PowerSupplySourceAndMeasureTerminalParameters,
 )

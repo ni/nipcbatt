@@ -16,16 +16,16 @@ from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - '
     MeasurementExecutionType,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_constants import (
     ConstantsForDigitalEdgeCountMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_data_types import (
     DigitalEdgeCountHardwareTimerConfiguration,
     DigitalEdgeCountMeasurementCounterChannelParameters,
     DigitalEdgeCountMeasurementResultData,
     DigitalEdgeCountMeasurementTimingParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

@@ -11,15 +11,15 @@ from nipcbatt.pcbatt_library.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_spi_write_communication,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_data_types import (
+from nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types import (
     SpiCommunicationParameters,
     SpiDeviceParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_write_data_types import (
+from nipcbatt.pcbatt_library.communications.spi_communications.spi_write_data_types import (
     SpiWriteCommunicationConfiguration,
     SpiWriteParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xSpiDevice,
 )
 

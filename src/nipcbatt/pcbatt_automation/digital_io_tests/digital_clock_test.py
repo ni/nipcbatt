@@ -37,8 +37,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of digital clock"""  
 
     # Create the instances of generation and measurement classes required for the test
-    generation_instance = nipcbatt.DigitalClockGeneration()
-    measurement_instance = nipcbatt.DigitalFrequencyMeasurement()
+    generation_instance = nipcbatt.pcbatt_library.daq.DigitalClockGeneration()
+    measurement_instance = nipcbatt.pcbatt_library.daq.DigitalFrequencyMeasurement()
 
     # Initialize generation object
     """Initializes the channels of the DCG module to prepare for generation"""
@@ -64,8 +64,8 @@ def setup(
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    generation_instance: nipcbatt.DigitalClockGeneration,
-    measurement_instance: nipcbatt.DigitalFrequencyMeasurement,
+    generation_instance: nipcbatt.pcbatt_library.daq.DigitalClockGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalFrequencyMeasurement,
     write_to_file: True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -87,15 +87,15 @@ def main(
     # initialize instances of counter channel parameters and timing parameters for generation
     # then initialize an instance of 'DigitalClockGenerationConfiguration' with the settings
     frequency, duty_cycle, duration = 1000.0, 0.5, 0.5
-    gen_channel_parameters = nipcbatt.DigitalClockGenerationCounterChannelParameters(
+    gen_channel_parameters = nipcbatt.pcbatt_library.daq.DigitalClockGenerationCounterChannelParameters(
         frequency_hertz=frequency, duty_cycle_ratio=duty_cycle
     )
 
-    gen_timing_parameters = nipcbatt.DigitalClockGenerationTimingParameters(
+    gen_timing_parameters = nipcbatt.pcbatt_library.daq.DigitalClockGenerationTimingParameters(
         clock_duration_seconds=duration
     )
 
-    gen_configuration = nipcbatt.DigitalClockGenerationConfiguration(
+    gen_configuration = nipcbatt.pcbatt_library.daq.DigitalClockGenerationConfiguration(
         counter_channel_parameters=gen_channel_parameters, timing_parameters=gen_timing_parameters
     )
 
@@ -105,17 +105,17 @@ def main(
     ## initialize instances of range and counter channel parameters for measuremennt
     # then initialize an instance of 'DigitalFrequencyMeasurementConfiguration' with the settings
     minimum, maximum, divisor, measurement_time = 2, 100, 4, 0.001
-    meas_range_parameters = nipcbatt.DigitalFrequencyRangeParameters(
+    meas_range_parameters = nipcbatt.pcbatt_library.daq.DigitalFrequencyRangeParameters(
         frequency_minimum_value_hertz=minimum, frequency_maximum_value_hertz=maximum
     )
 
-    meas_channel_parameters = nipcbatt.DigitalFrequencyMeasurementCounterChannelParameters(
+    meas_channel_parameters = nipcbatt.pcbatt_library.daq.DigitalFrequencyMeasurementCounterChannelParameters(
         range_parameters=meas_range_parameters,
         input_divisor_for_frequency_measurement=divisor,
         measurement_duration_seconds=measurement_time,
     )
 
-    meas_configuration = nipcbatt.DigitalFrequencyMeasurementConfiguration(
+    meas_configuration = nipcbatt.pcbatt_library.daq.DigitalFrequencyMeasurementConfiguration(
         counter_channel_configuration_parameters=meas_channel_parameters
     )
 
@@ -139,8 +139,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.DigitalClockGeneration,
-    measurement_instance: nipcbatt.DigitalFrequencyMeasurement,
+    generation_instance: nipcbatt.pcbatt_library.daq.DigitalClockGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalFrequencyMeasurement,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation

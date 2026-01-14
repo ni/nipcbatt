@@ -7,18 +7,18 @@ import math
 import nidaqmx.constants
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_constants import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_constants import (
     ConstantsForTemperatureMeasurement,
     ConstantsForTemperatureMeasurementUsingThermistor,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_data_types import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_data_types import (
     CoefficientsSteinhartHartParameters,
     SteinhartHartEquationOption,
     TemperatureThermistorChannelRangeAndTerminalParameters,
     TemperatureThermistorMeasurementConfiguration,
     TemperatureThermistorRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_measurement import (
     TemperatureMeasurement,
 )
 from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value

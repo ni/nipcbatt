@@ -16,11 +16,11 @@ def power_down_all_do_channels():
     low_values = [False, False, False, False, False, False, False, False]
 
     # Static Digital State Generation -- Initialize DO channels
-    generation = nipcbatt.StaticDigitalStateGeneration()
+    generation = nipcbatt.pcbatt_library.daq.StaticDigitalStateGeneration()
     generation.initialize(channel_expression=DIGITAL_OUT_CHANNELS)
 
     # create configuration for output
-    output_config = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=low_values)
+    output_config = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(data_to_write=low_values)
 
     # set digital state LOW for all Digital Output channels
     generation.configure_and_generate(configuration=output_config)

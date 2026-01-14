@@ -8,17 +8,17 @@ import numpy as np
 from varname import nameof
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
+from nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_constants import (
     ConstantsForDigitalPwmMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_data_types import (
     DigitalPwmMeasurementConfiguration,
     DigitalPwmMeasurementCounterChannelParameters,
     DigitalPwmMeasurementData,
     DigitalPwmMeasurementResultData,
     DigitalPwmMeasurementTimingParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

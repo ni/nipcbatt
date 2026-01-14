@@ -24,14 +24,14 @@ from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - '
     MeasurementExecutionType,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
+from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternMeasurement,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (
+from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (
     DynamicDigitalPatternMeasurementConfiguration,
     DynamicDigitalPatternMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

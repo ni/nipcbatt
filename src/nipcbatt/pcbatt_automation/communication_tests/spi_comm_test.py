@@ -23,10 +23,10 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\spi_comm_test_results.txt"
 def setup():
     """Creates and initializes SPI communication objects"""  
 
-    reader = nipcbatt.SpiReadCommunication()
+    reader = nipcbatt.pcbatt_library.communications.spi_communications.spi_read_communication.SpiReadCommunication()
     reader.initialize(device_name=DEVICE_ID)
 
-    writer = nipcbatt.SpiWriteCommunication()
+    writer = nipcbatt.pcbatt_library.communications.spi_communications.spi_write_communication.SpiWriteCommunication()
     writer.initialize(device_name=DEVICE_ID)
 
     return reader, writer
@@ -38,8 +38,8 @@ def setup():
 # region configure
 ####### CONFIGURE/READ & CONFIGURE/WRITE DATA ######################################################
 def main(
-    reader: nipcbatt.SpiReadCommunication,
-    writer: nipcbatt.SpiWriteCommunication,
+    reader: nipcbatt.pcbatt_library.communications.spi_communications.spi_read_communication.SpiReadCommunication,
+    writer: nipcbatt.pcbatt_library.communications.spi_communications.spi_write_communication.SpiWriteCommunication,
     write_to_file: bool,
 ):
     """If you wish to write your results to a file use the following commands
@@ -54,11 +54,11 @@ def main(
         logger.attach(writer)
 
     """Note to run with Hardware: Update Read data settings for SPI communication"""
-    read_dev_params = nipcbatt.SpiDeviceParameters(
+    read_dev_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types.SpiDeviceParameters(
         voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33
     )
 
-    read_comm_params = nipcbatt.SpiCommunicationParameters(
+    read_comm_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types.SpiCommunicationParameters(
         chip_select=0,
         clock_rate_kilohertz=1000,
         clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_FIRST_EDGE,
@@ -71,11 +71,11 @@ def main(
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
     )
 
-    read_params = nipcbatt.SpiReadParameters(
+    read_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_read_communication.SpiReadParameters(
         number_of_bytes_to_read=32, memory_address_parameters=read_mem_params
     )
 
-    read_config = nipcbatt.SpiReadCommunicationConfiguration(
+    read_config = nipcbatt.pcbatt_library.communications.spi_communications.spi_read_communication.SpiReadCommunicationConfiguration(
         device_parameters=read_dev_params,
         communication_parameters=read_comm_params,
         read_parameters=read_params,
@@ -84,11 +84,11 @@ def main(
     read_data = reader.configure_and_read_data(configuration=read_config)
 
     # Note to run with Hardware: Update Write data settings for SPI communication
-    write_dev_params = nipcbatt.SpiDeviceParameters(
+    write_dev_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types.SpiDeviceParameters(
         voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33
     )
 
-    write_comm_params = nipcbatt.SpiCommunicationParameters(
+    write_comm_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types.SpiCommunicationParameters(
         chip_select=0,
         clock_rate_kilohertz=1000,
         clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_FIRST_EDGE,
@@ -104,14 +104,14 @@ def main(
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
     )
 
-    write_params = nipcbatt.SpiWriteParameters(
+    write_params = nipcbatt.pcbatt_library.communications.spi_communications.spi_write_communication.SpiWriteParameters(
         number_of_bytes_per_page=32,
         delay_between_page_write_operations_milliseconds=5,
         data_to_be_written=data_to_write,
         memory_address_parameters=write_mem_params,
     )
 
-    write_config = nipcbatt.SpiWriteCommunicationConfiguration(
+    write_config = nipcbatt.pcbatt_library.communications.spi_communications.spi_write_communication.SpiWriteCommunicationConfiguration(
         device_parameters=write_dev_params,
         communication_parameters=write_comm_params,
         write_parameters=write_params,
@@ -137,8 +137,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    reader: nipcbatt.SpiReadCommunication,
-    writer: nipcbatt.SpiWriteCommunication,
+    reader: nipcbatt.pcbatt_library.communications.spi_communications.spi_read_communication.SpiReadCommunication,
+    writer: nipcbatt.pcbatt_library.communications.spi_communications.spi_write_communication.SpiWriteCommunication,
 ):
     """Closes out the created objects used in the communication""" 
     reader.close()

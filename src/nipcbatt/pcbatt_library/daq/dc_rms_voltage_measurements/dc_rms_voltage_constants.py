@@ -16,7 +16,7 @@ from nipcbatt.pcbatt_library.common.voltage_constants import (
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
     DcRmsVoltageMeasurementConfiguration,
 )
 

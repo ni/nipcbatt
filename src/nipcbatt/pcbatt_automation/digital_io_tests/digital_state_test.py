@@ -24,8 +24,8 @@ def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT
     """Creates the necessary objects for the generation and measurement of digital states""" 
 
     # Create the instances of generation and measurement classes required for the test.
-    generation_instance = nipcbatt.StaticDigitalStateGeneration()
-    measurement_instance = nipcbatt.StaticDigitalStateMeasurement()
+    generation_instance = nipcbatt.pcbatt_library.daq.StaticDigitalStateGeneration()
+    measurement_instance = nipcbatt.pcbatt_library.daq.StaticDigitalStateMeasurement()
 
     # Initialze generation object
     """Intializes the channel(s) of the SDSG module to prepare for generation"""
@@ -46,8 +46,8 @@ def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    generation_instance: nipcbatt.StaticDigitalStateGeneration,
-    measurement_instance: nipcbatt.StaticDigitalStateMeasurement,
+    generation_instance: nipcbatt.pcbatt_library.daq.StaticDigitalStateGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.StaticDigitalStateMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -70,7 +70,7 @@ def main(
 
     # create a generation configuration that will implement HIGH digital state(s)
     gen_data_high = [True] * generation_instance.task.number_of_channels
-    gen_configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(gen_data_high)
+    gen_configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(gen_data_high)
 
     # Generate digital states with the HIGH configuration
     lines = generation_instance.configure_and_generate(configuration=gen_configuration)
@@ -85,7 +85,7 @@ def main(
 
     # create a generation configuration that will implement LOW digital state(s)
     gen_data_low = [False] * generation_instance.task.number_of_channels
-    gen_configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(gen_data_low)
+    gen_configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(gen_data_low)
 
     # Generate digital state with the LOW configuration
     lines = generation_instance.configure_and_generate( 
@@ -112,8 +112,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.StaticDigitalStateGeneration,
-    measurement_instance: nipcbatt.StaticDigitalStateMeasurement,
+    generation_instance: nipcbatt.pcbatt_library.daq.StaticDigitalStateGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.StaticDigitalStateMeasurement,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation

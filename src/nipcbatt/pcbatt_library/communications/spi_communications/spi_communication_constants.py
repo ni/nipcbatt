@@ -14,15 +14,15 @@ from nipcbatt.pcbatt_communication_library.ni_845x_data_types import (
 from nipcbatt.pcbatt_library.common.communication_data_types import (
     MemoryAddressParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_data_types import (
+from nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types import (
     SpiCommunicationParameters,
     SpiDeviceParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_read_data_types import (
+from nipcbatt.pcbatt_library.communications.spi_communications.spi_read_data_types import (
     SpiReadCommunicationConfiguration,
     SpiReadParameters,
 )
-from nipcbatt.pcbatt_library.spi_communications.spi_write_data_types import (
+from nipcbatt.pcbatt_library.communications.spi_communications.spi_write_data_types import (
     SpiWriteCommunicationConfiguration,
     SpiWriteParameters,
 )

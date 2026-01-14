@@ -7,7 +7,7 @@ from varname import nameof
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
+from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternGeneration,
 )
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData

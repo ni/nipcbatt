@@ -13,15 +13,15 @@ from nipcbatt.pcbatt_communication_library.ni_845x_data_types import (
 from nipcbatt.pcbatt_library.common.communication_data_types import (
     MemoryAddressParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_data_types import (
+from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_data_types import (
     I2cCommunicationParameters,
     I2cDeviceParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types import (
+from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_read_data_types import (
     I2cReadCommunicationConfiguration,
     I2cReadParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types import (
+from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_write_data_types import (
     I2cWriteCommunicationConfiguration,
     I2cWriteParameters,
 )

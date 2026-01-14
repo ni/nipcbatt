@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     SampleTimingEngine,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_data_types import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_data_types import (
     BetaCoefficientAndSensorResistanceParameters,
     CoefficientsSteinhartHartParameters,
     SteinhartHartEquationOption,

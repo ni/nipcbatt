@@ -3,16 +3,16 @@
 import nidaqmx.constants
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_constants import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_constants import (
     ConstantsForTemperatureMeasurement,
     ConstantsForTemperatureMeasurementUsingThermocouple,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_data_types import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_data_types import (
     TemperatureThermocoupleChannelRangeAndTerminalParameters,
     TemperatureThermocoupleMeasurementConfiguration,
     TemperatureThermocoupleMeasurementTerminalParameters,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_measurement import (
     TemperatureMeasurement,
 )
 

@@ -30,19 +30,19 @@ class AnimationAndSoundUserInputTest:
     def initialize_push_user_button(  
         self, channel_expression: str
     ) -> None:
-        self.digital_state_gen_task = nipcbatt.StaticDigitalStateGeneration()
+        self.digital_state_gen_task = nipcbatt.pcbatt_library.daq.StaticDigitalStateGeneration()
         self.digital_state_gen_task.initialize(channel_expression=channel_expression)
 
     def initialize_tp_tweeter( 
         self, channel_expression: str
     ) -> None:
-        self.time_domain_meas_task = nipcbatt.TimeDomainMeasurement()
+        self.time_domain_meas_task = nipcbatt.pcbatt_library.daq.TimeDomainMeasurement()
         self.time_domain_meas_task.initialize(analog_input_channel_expression=channel_expression)
 
     def initialize_leds_pattern(  
         self, channel_expression: str
     ) -> None:
-        self.dyn_digit_meas_task = nipcbatt.DynamicDigitalPatternMeasurement()
+        self.dyn_digit_meas_task = nipcbatt.pcbatt_library.daq.DynamicDigitalPatternMeasurement()
         self.dyn_digit_meas_task.initialize(channel_expression=channel_expression)
 
     def main(self): 
@@ -81,7 +81,7 @@ class AnimationAndSoundUserInputTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.TimeDomainMeasurementConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.TimeDomainMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=[],
             measurement_options=measurement_options,
@@ -112,7 +112,7 @@ class AnimationAndSoundUserInputTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.DynamicDigitalPatternMeasurementConfiguration(
             measurement_options=measurement_options,
             timing_parameters=timing_parameters,
             trigger_parameters=trigger_parameters,
@@ -123,7 +123,7 @@ class AnimationAndSoundUserInputTest:
     def turn_on_dut_user_button(  
         self,
     ) -> None:
-        configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
+        configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
@@ -135,7 +135,7 @@ class AnimationAndSoundUserInputTest:
     def turn_off_dut_user_button( 
         self,
     ) -> None:
-        configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
+        configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
@@ -160,7 +160,7 @@ class AnimationAndSoundUserInputTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.DynamicDigitalPatternMeasurementConfiguration(
             measurement_options=measurement_options,
             timing_parameters=timing_parameters,
             trigger_parameters=trigger_parameters,
@@ -198,7 +198,7 @@ class AnimationAndSoundUserInputTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.TimeDomainMeasurementConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.TimeDomainMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=[],
             measurement_options=measurement_options,

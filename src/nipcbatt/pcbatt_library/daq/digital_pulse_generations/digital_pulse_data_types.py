@@ -3,7 +3,7 @@
 import nidaqmx.constants
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_constants import (
     ConstantsForDigitalPulseGeneration,
 )
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData

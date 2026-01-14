@@ -12,15 +12,15 @@ from nipcbatt.pcbatt_library.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_i2c_communications,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_data_types import (
+from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_data_types import (
     I2cCommunicationParameters,
     I2cDeviceParameters,
 )
-from nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types import (
+from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_write_data_types import (
     I2cWriteCommunicationConfiguration,
     I2cWriteParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xI2cDevice,
 )
 

@@ -1,1 +1,0 @@
-"""Provides nipcbatt library of measurement, generation and modules uaing DAQ hardware"""  

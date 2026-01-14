@@ -32,14 +32,14 @@ from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.time_domain_measurements.time_domain_constants import (
+from nipcbatt.pcbatt_library.daq.time_domain_measurements.time_domain_constants import (
     ConstantsForTimeDomainMeasurement,
 )
-from nipcbatt.pcbatt_library.time_domain_measurements.time_domain_data_types import (
+from nipcbatt.pcbatt_library.daq.time_domain_measurements.time_domain_data_types import (
     TimeDomainMeasurementConfiguration,
     TimeDomainMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value
 

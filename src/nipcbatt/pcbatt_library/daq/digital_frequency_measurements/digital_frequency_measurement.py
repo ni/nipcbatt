@@ -6,15 +6,15 @@ import nidaqmx.constants
 import nidaqmx.stream_readers
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_constants import (
+from nipcbatt.pcbatt_library.daq.digital_frequency_measurements.digital_frequency_constants import (
     ConstantsForDigitalFrequencyMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_frequency_measurements.digital_frequency_data_types import (
     DigitalFrequencyMeasurementConfiguration,
     DigitalFrequencyMeasurementCounterChannelParameters,
     DigitalFrequencyMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

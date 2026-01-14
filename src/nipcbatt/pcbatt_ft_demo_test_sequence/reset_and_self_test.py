@@ -32,13 +32,13 @@ class ResetAndSelfTest:
     def initialize_reset_button(   
         self,
     ) -> None:
-        self.digital_state_gen_task = nipcbatt.StaticDigitalStateGeneration()
+        self.digital_state_gen_task = nipcbatt.pcbatt_library.daq.static_digital_state_generations.static_digital_state_generation.StaticDigitalStateGeneration()
         self.digital_state_gen_task.initialize("TS_RESET0")
 
     def initialize_led_status(   
         self,
     ) -> None:
-        self.digital_state_meas_task = nipcbatt.StaticDigitalStateMeasurement()
+        self.digital_state_meas_task = nipcbatt.pcbatt_library.daq.static_digital_state_measurements.static_digital_state_measurement.StaticDigitalStateMeasurement()
         self.digital_state_meas_task.initialize("TP_ACT_LED0")
 
     def main(self) -> None:   
@@ -55,7 +55,7 @@ class ResetAndSelfTest:
     def turn_on_dut_reset_button(   
         self,
     ) -> None:
-        configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
+        configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(data_to_write=[True])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 
@@ -67,7 +67,7 @@ class ResetAndSelfTest:
     def turn_off_dut_reset_button(   
         self,
     ) -> None:
-        configuration = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
+        configuration = nipcbatt.pcbatt_library.daq.StaticDigitalStateGenerationConfiguration(data_to_write=[False])
 
         self.digital_state_gen_task.configure_and_generate(configuration=configuration)
 

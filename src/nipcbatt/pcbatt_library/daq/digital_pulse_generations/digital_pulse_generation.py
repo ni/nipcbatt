@@ -7,16 +7,16 @@ import nidaqmx.stream_readers
 import nidaqmx.stream_writers
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_constants import (
     ConstantsForDigitalPulseGeneration,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_data_types import (
     DigitalPulseGenerationConfiguration,
     DigitalPulseGenerationCounterChannelParameters,
     DigitalPulseGenerationData,
     DigitalPulseGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

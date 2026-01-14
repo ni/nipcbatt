@@ -12,11 +12,11 @@ import numpy as np
 from nidaqmx.constants import LineGrouping
 from varname import nameof
 
-from nipcbatt.pcbatt_library.static_digital_state_generations.static_digital_state_data_types import (
+from nipcbatt.pcbatt_library.daq.static_digital_state_generations.static_digital_state_data_types import (
     StaticDigitalStateGenerationConfiguration,
     StaticDigitalStateGenerationData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

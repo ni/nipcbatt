@@ -5,16 +5,16 @@ import nidaqmx.constants
 import nidaqmx.stream_readers
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_constants import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_constants import (
     ConstantsForTemperatureMeasurement,
     ConstantsForTemperatureMeasurementUsingRtd,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_data_types import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_data_types import (
     TemperatureRtdMeasurementChannelParameters,
     TemperatureRtdMeasurementConfiguration,
     TemperatureRtdMeasurementTerminalParameters,
 )
-from nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement import (
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_measurement import (
     TemperatureMeasurement,
 )
 

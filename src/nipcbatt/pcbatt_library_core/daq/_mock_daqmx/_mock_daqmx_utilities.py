@@ -7,11 +7,11 @@ import nidaqmx
 import nidaqmx.errors
 import nidaqmx.system.system
 
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_task import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_task import (
     _MockSystem,
     _MockTask,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.reflection_utilities import substitute_method
 
 

@@ -6,16 +6,16 @@ import nidaqmx.constants
 import nidaqmx.stream_writers
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_constants import (
+from nipcbatt.pcbatt_library.daq.digital_clock_generations.digital_clock_constants import (
     ConstantsForDigitalClockGeneration,
 )
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_clock_generations.digital_clock_data_types import (
     DigitalClockGenerationConfiguration,
     DigitalClockGenerationCounterChannelParameters,
     DigitalClockGenerationData,
     DigitalClockGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

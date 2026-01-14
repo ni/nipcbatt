@@ -31,13 +31,13 @@ class PowerDiagnostics:
     def initialize_power_supply(  
         self,
     ) -> None:
-        self.ps_task = nipcbatt.PowerSupplySourceAndMeasure()
+        self.ps_task = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasure()
         self.ps_task.initialize("Simulated_Power/power")
 
     def initialize_dc_regulator_tps( 
         self,
     ) -> None:
-        self.dc_voltage_meas_task = nipcbatt.DcRmsVoltageMeasurement()
+        self.dc_voltage_meas_task = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement()
         self.dc_voltage_meas_task.initialize("TP_REG0:1")
 
     def main(self) -> None:   
@@ -48,7 +48,7 @@ class PowerDiagnostics:
     def power_on_and_measure_startup_max_current(   
         self,
     ) -> None:
-        terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+        terminal_parameters = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureTerminalParameters(
             voltage_setpoint_volts=6,
             current_setpoint_amperes=3,
             power_sense=nidaqmx.constants.Sense.REMOTE,
@@ -74,7 +74,7 @@ class PowerDiagnostics:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureConfiguration(
             terminal_parameters=terminal_parameters,
             measurement_options=measurement_options,
             sample_clock_timing_parameters=sample_clock_timing_parameters,
@@ -97,7 +97,7 @@ class PowerDiagnostics:
     def measure_idle_power_consumption(   
         self,
     ) -> None:
-        terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+        terminal_parameters = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureTerminalParameters(
             voltage_setpoint_volts=6,
             current_setpoint_amperes=3,
             power_sense=nidaqmx.constants.Sense.REMOTE,
@@ -123,7 +123,7 @@ class PowerDiagnostics:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureConfiguration(
             terminal_parameters=terminal_parameters,
             measurement_options=measurement_options,
             sample_clock_timing_parameters=sample_clock_timing_parameters,
@@ -170,7 +170,7 @@ class PowerDiagnostics:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.DcRmsVoltageMeasurementConfiguration(
+        configuration = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=[],
             measurement_options=measurement_options,

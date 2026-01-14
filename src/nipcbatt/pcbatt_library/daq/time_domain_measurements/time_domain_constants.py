@@ -24,7 +24,7 @@ from nipcbatt.pcbatt_library.common.voltage_constants import (
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.time_domain_measurements.time_domain_data_types import (
+from nipcbatt.pcbatt_library.daq.time_domain_measurements.time_domain_data_types import (
     TimeDomainMeasurementConfiguration,
 )
 

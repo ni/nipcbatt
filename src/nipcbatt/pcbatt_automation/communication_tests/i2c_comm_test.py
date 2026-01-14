@@ -5,7 +5,7 @@ communication using NI 845x Device"""
 import numpy as np
 
 # import functions
-import nipcbatt
+import nipcbatt.pcbatt_library.communications
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # Note to run with Hardware: Update Device ID of the connected
@@ -23,10 +23,10 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\i2c_comm_test_results.txt"
 def setup():
     """Creates and initializes I2C communication objects"""  
 
-    reader = nipcbatt.I2cReadCommunication()
+    reader = nipcbatt.pcbatt_library.communications.I2cReadCommunication()
     reader.initialize(device_name=DEVICE_ID)
 
-    writer = nipcbatt.I2cWriteCommunication()
+    writer = nipcbatt.pcbatt_library.communications.I2cWriteCommunication()
     writer.initialize(device_name=DEVICE_ID)
 
     return reader, writer
@@ -38,8 +38,8 @@ def setup():
 # region configure
 ####### CONFIGURE/READ & CONFIGURE/WRITE DATA ######################################################
 def main(
-    reader: nipcbatt.I2cReadCommunication,
-    writer: nipcbatt.I2cWriteCommunication,
+    reader: nipcbatt.pcbatt_library.communications.I2cReadCommunication,
+    writer: nipcbatt.pcbatt_library.communications.I2cWriteCommunication,
     write_to_file: bool,
 ):
     """If you wish to write your results to a file use the following commands
@@ -54,11 +54,11 @@ def main(
         logger.attach(writer)
 
     """Note to run with Hardware: Update Read data settings for I2C communication"""
-    read_dev_params = nipcbatt.I2cDeviceParameters(
+    read_dev_params = nipcbatt.pcbatt_library.communications.I2cDeviceParameters(
         enable_i2c_pullup_resistor=False, voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33
     )
 
-    read_comm_params = nipcbatt.I2cCommunicationParameters(
+    read_comm_params = nipcbatt.pcbatt_library.communications.I2cCommunicationParameters(
         device_address=80,  # 0x50
         addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_7_BIT,
         clock_rate_kilohertz=100,
@@ -71,11 +71,11 @@ def main(
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
     )
 
-    read_params = nipcbatt.I2cReadParameters(
+    read_params = nipcbatt.pcbatt_library.communications.I2cReadParameters(
         number_of_bytes_to_read=128, memory_address_parameters=read_mem_params
     )
 
-    read_config = nipcbatt.I2cReadCommunicationConfiguration(
+    read_config = nipcbatt.pcbatt_library.communications.I2cReadCommunicationConfiguration(
         device_parameters=read_dev_params,
         communication_parameters=read_comm_params,
         read_parameters=read_params,
@@ -84,11 +84,11 @@ def main(
     read_data = reader.configure_and_read_data(configuration=read_config)
 
     # Note to run with Hardware: Update Write data settings for I2C communication
-    write_dev_params = nipcbatt.I2cDeviceParameters(
+    write_dev_params = nipcbatt.pcbatt_library.communications.I2cDeviceParameters(
         enable_i2c_pullup_resistor=False, voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33
     )
 
-    write_comm_params = nipcbatt.I2cCommunicationParameters(
+    write_comm_params = nipcbatt.pcbatt_library.communications.I2cCommunicationParameters(
         device_address=80,  # 0x50
         addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_7_BIT,
         clock_rate_kilohertz=100,
@@ -104,14 +104,14 @@ def main(
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
     )
 
-    write_params = nipcbatt.I2cWriteParameters(
+    write_params = nipcbatt.pcbatt_library.communications.I2cWriteParameters(
         number_of_bytes_per_page=128,
         delay_between_page_write_operations_milliseconds=4,
         data_to_be_written=data_to_write,
         memory_address_parameters=write_mem_params,
     )
 
-    write_config = nipcbatt.I2cWriteCommunicationConfiguration(
+    write_config = nipcbatt.pcbatt_library.communications.I2cWriteCommunicationConfiguration(
         device_parameters=write_dev_params,
         communication_parameters=write_comm_params,
         write_parameters=write_params,
@@ -138,8 +138,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    reader: nipcbatt.I2cReadCommunication,
-    writer: nipcbatt.I2cWriteCommunication,
+    reader: nipcbatt.pcbatt_library.communications.I2cReadCommunication,
+    writer: nipcbatt.pcbatt_library.communications.I2cWriteCommunication,
 ):
     """Closes out the created objects used in the communication"""  
     reader.close()

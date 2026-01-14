@@ -27,14 +27,14 @@ from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.dc_rms_voltage_measurements.dc_rms_voltage_constants import (
+from nipcbatt.pcbatt_library.daq.dc_rms_voltage_measurements.dc_rms_voltage_constants import (
     ConstantsForDcRmsVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
     DcRmsVoltageMeasurementConfiguration,
     DcRmsVoltageMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value
 

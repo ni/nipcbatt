@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
 )
-from nipcbatt.pcbatt_library.signal_voltage_generations.signal_voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.signal_voltage_generations.signal_voltage_data_types import (
     SignalVoltageGenerationMultipleTonesConfiguration,
     SignalVoltageGenerationMultipleTonesWaveParameters,
     SignalVoltageGenerationSineWaveConfiguration,
@@ -27,10 +27,10 @@ from nipcbatt.pcbatt_library.signal_voltage_generations.signal_voltage_data_type
     SignalVoltageGenerationSquareWaveParameters,
     SignalVoltageGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library.signal_voltage_generations.signal_voltage_generation_constants import (
+from nipcbatt.pcbatt_library.daq.signal_voltage_generations.signal_voltage_generation_constants import (
     ConstantsForSignalVoltageGeneration,
 )
-from nipcbatt.pcbatt_library.synchronizations.synchronization_signal_routing import (
+from nipcbatt.pcbatt_library.daq.synchronizations.synchronization_signal_routing import (
     SynchronizationSignalRouting,
 )
 from nipcbatt.pcbatt_utilities import numeric_utilities

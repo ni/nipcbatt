@@ -36,8 +36,8 @@ def setup():
     """Creates the necessary objects for the generation and measurement of digital edge count"""  
 
     # Create the instances of generation and measurement classes required for the test
-    generation_instance = nipcbatt.DynamicDigitalPatternGeneration()
-    measurement_instance = nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer()
+    generation_instance = nipcbatt.pcbatt_library.daq.DynamicDigitalPatternGeneration()
+    measurement_instance = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingHardwareTimer()
 
     # initialize generation object
     generation_instance.initialize(channel_expression=GENERATION_CHANNEL)
@@ -62,8 +62,8 @@ def setup():
 
 
 def main(
-    generation_instance: nipcbatt.DynamicDigitalPatternGeneration,
-    measurement_instance: nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer,
+    generation_instance: nipcbatt.pcbatt_library.daq.DynamicDigitalPatternGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingHardwareTimer,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -99,14 +99,14 @@ def main(
         measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.SKIP_ANALYSIS,
     )
 
-    channel_params = nipcbatt.DigitalEdgeCountMeasurementCounterChannelParameters(
-        edge_type=nipcbatt.ConstantsForDigitalEdgeCountMeasurement.DEFAULT_EDGE
+    channel_params = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementCounterChannelParameters(
+        edge_type=nipcbatt.pcbatt_library.daq.ConstantsForDigitalEdgeCountMeasurement.DEFAULT_EDGE
     )
 
-    timing_params = nipcbatt.DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.1)
+    timing_params = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.1)
 
     # create configuration out of trigger and timing configs
-    init_config = nipcbatt.DigitalEdgeCountHardwareTimerConfiguration(
+    init_config = nipcbatt.pcbatt_library.daq.DigitalEdgeCountHardwareTimerConfiguration(
         measurement_options=configure_only_option,
         counter_channel_parameters=channel_params,
         timing_parameters=timing_params,
@@ -137,7 +137,7 @@ def main(
     )
 
     # create generation configuration
-    gen_config = nipcbatt.DynamicDigitalPatternGenerationConfiguration(
+    gen_config = nipcbatt.pcbatt_library.daq.DynamicDigitalPatternGenerationConfiguration(
         timing_parameters=gen_timing_parameters,
         digital_start_trigger_parameters=trig_params,
         pulse_signal=digital_port_data,
@@ -155,7 +155,7 @@ def main(
     )
 
     # create configuration from post trigger option settings
-    config_meas_only = nipcbatt.DigitalEdgeCountHardwareTimerConfiguration(
+    config_meas_only = nipcbatt.pcbatt_library.daq.DigitalEdgeCountHardwareTimerConfiguration(
         measurement_options=measure_only_option,
         counter_channel_parameters=channel_params,
         timing_parameters=timing_params,
@@ -182,8 +182,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.DynamicDigitalPatternGeneration,
-    measurement_instance: nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer,
+    generation_instance: nipcbatt.pcbatt_library.daq.DynamicDigitalPatternGeneration,
+    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingHardwareTimer,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation

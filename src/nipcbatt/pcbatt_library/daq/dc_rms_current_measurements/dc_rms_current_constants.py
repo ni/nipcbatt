@@ -16,7 +16,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     SampleTimingEngine,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_data_types import (
+from nipcbatt.pcbatt_library.daq.dc_rms_current_measurements.dc_rms_current_data_types import (
     DcRmsCurrentMeasurementConfiguration,
     DcRmsCurrentMeasurementTerminalRangeParameters,
 )

@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_library.common.voltage_constants import (
 from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageRangeAndTerminalParameters,
 )
-from nipcbatt.pcbatt_library.frequency_domain_measurements.frequency_domain_data_types import (
+from nipcbatt.pcbatt_library.daq.frequency_domain_measurements.frequency_domain_data_types import (
     FrequencyDomainMeasurementConfiguration,
 )
 
