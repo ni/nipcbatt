@@ -7,6 +7,7 @@ from enum import Enum
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # To use save_traces and plotter from utils folder
@@ -30,7 +31,7 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
     """Creates the necessary objects for measurement of Voltage""" 
 
     # Creates the instance of measurement class required for the test
-    drvm = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement()
+    drvm = daq.DcRmsVoltageMeasurement()
     """Initializes the channels for drvm module to prepare for measurement"""
     drvm.initialize(analog_input_channel_expression=input_terminal)
 
@@ -49,7 +50,7 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
 def main(  
-    drvm: nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement,
+    drvm: daq.DcRmsVoltageMeasurement,
 ):
     results_map = {}  # this structure will hold results in key-value pairs
 
@@ -82,7 +83,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    drvm_config = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurementConfiguration(
+    drvm_config = daq.DcRmsVoltageMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_options=measurement_options,
@@ -108,7 +109,7 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    drvm: nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement,
+    drvm: daq.DcRmsVoltageMeasurement,
 ):
     drvm.close()
 

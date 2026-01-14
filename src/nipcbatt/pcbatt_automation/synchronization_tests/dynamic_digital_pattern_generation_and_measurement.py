@@ -6,6 +6,7 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_library.common.helper_functions import (
     digital_ramp_pattern_generator,
 )
@@ -36,8 +37,8 @@ def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT
     """Creates the necessary objects for the generation and measurement of digital patterns"""  
 
     # Create the instances of generation and measurement classes required for the test.
-    generation_instance = nipcbatt.DynamicDigitalPatternGeneration()
-    measurement_instance = nipcbatt.DynamicDigitalPatternMeasurement()
+    generation_instance = daq.DynamicDigitalPatternGeneration()
+    measurement_instance = daq.DynamicDigitalPatternMeasurement()
 
     # Initialize generation object
     """Initializes the channel(s) of the DDPG module to prepare for generation"""
@@ -48,7 +49,7 @@ def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT
     measurement_instance.initialize(channel_expression=measurement_channel)
 
     # Export signals to PFI lines
-    sync_signals = nipcbatt.SynchronizationSignalRouting()
+    sync_signals = daq.SynchronizationSignalRouting()
     sync_signals.route_sample_clock_signal_to_terminal(terminal_name=SAMPLE_CLOCK_LINE)
     sync_signals.route_start_trigger_signal_to_terminal(terminal_name=START_TRIGGER_LINE)
 
@@ -63,8 +64,8 @@ def setup(generation_channel=GENERATION_CHANNEL, measurement_channel=MEASUREMENT
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    generation_instance: nipcbatt.DynamicDigitalPatternGeneration,
-    measurement_instance: nipcbatt.DynamicDigitalPatternMeasurement,
+    generation_instance: daq.DynamicDigitalPatternGeneration,
+    measurement_instance: daq.DynamicDigitalPatternMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -110,7 +111,7 @@ def main(
     )
 
     # initialize an instance of 'DynamicDigitalPatternMeasurementConfiguration' for configure only
-    pre_trigger_measurement_config = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+    pre_trigger_measurement_config = daq.DynamicDigitalPatternMeasurementConfiguration(
         measurement_options=meas_options_configure_only,
         timing_parameters=timing_parameters_configure_only,
         trigger_parameters=trigger_parameters_configure_only,
@@ -139,14 +140,14 @@ def main(
     )
 
     # create a generation instance for DigitalStartTriggerParameters
-    gen_trigger_parameters = nipcbatt.DynamicDigitalStartTriggerParameters(
+    gen_trigger_parameters = daq.DynamicDigitalStartTriggerParameters(
         trigger_type=nipcbatt.StartTriggerType.NO_TRIGGER,
         digital_start_trigger_source="/Sim_PC_basedDAQ/PFI0",  # placeholder- not used
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
     # create an instance of DynamicDigitalPatternGenerationConfiguration
-    generation_config = nipcbatt.DynamicDigitalPatternGenerationConfiguration(
+    generation_config = daq.DynamicDigitalPatternGenerationConfiguration(
         timing_parameters=gen_timing_parameters,
         digital_start_trigger_parameters=gen_trigger_parameters,
         pulse_signal=digital_port_data,
@@ -164,7 +165,7 @@ def main(
     )
 
     # create an instance for DigitalStartTriggerParameters
-    trigger_parameters_measure_only = nipcbatt.DynamicDigitalStartTriggerParameters(
+    trigger_parameters_measure_only = daq.DynamicDigitalStartTriggerParameters(
         trigger_type=nipcbatt.StartTriggerType.NO_TRIGGER,
         digital_start_trigger_source="/Sim_PC_basedDAQ/PFI0",  # placeholder- not used
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
@@ -177,7 +178,7 @@ def main(
     )
 
     # initialize an instance of 'DynamicDigitalPatternMeasurementConfiguration' for post-generation
-    post_gen_measurement_config = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+    post_gen_measurement_config = daq.DynamicDigitalPatternMeasurementConfiguration(
         measurement_options=meas_options_measure_only,
         timing_parameters=timing_parameters_measure_only,
         trigger_parameters=trigger_parameters_measure_only,
@@ -207,9 +208,9 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.DynamicDigitalPatternGeneration,
-    measurement_instance: nipcbatt.DynamicDigitalPatternMeasurement,
-    sync_signals: nipcbatt.SynchronizationSignalRouting,
+    generation_instance: daq.DynamicDigitalPatternGeneration,
+    measurement_instance: daq.DynamicDigitalPatternMeasurement,
+    sync_signals: daq.SynchronizationSignalRouting,
 ):
     """Closes out the created objects used in the generation and measurement."""
     generation_instance.close()  # Close generation

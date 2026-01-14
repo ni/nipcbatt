@@ -2,6 +2,7 @@
    Library and measurement of the same signal using Digital PWM Measurement Library"""  
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 """Note to run with Hardware: Update the Physical Channel (Counter) and its Terminals  
@@ -31,8 +32,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of digital clock"""  
 
     # Create the instances of generation and measurement classes required for the test
-    generation_instance = nipcbatt.DigitalClockGeneration()
-    measurement_instance = nipcbatt.DigitalPwmMeasurement()
+    generation_instance = daq.DigitalClockGeneration()
+    measurement_instance = daq.DigitalPwmMeasurement()
 
     # Initialize generation object
     """Initializes the channels of the DCG module to prepare for generation"""
@@ -58,8 +59,8 @@ def setup(
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    generation_instance: nipcbatt.DigitalClockGeneration,
-    measurement_instance: nipcbatt.DigitalPwmMeasurement,
+    generation_instance: daq.DigitalClockGeneration,
+    measurement_instance: daq.DigitalPwmMeasurement,
     write_to_file: True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -77,23 +78,23 @@ def main(
     3. Fetch and Validate Digital PWM Signal""" 
 
     # create configuration sub-objects
-    meas_range_parameters = nipcbatt.DigitalPwmMeasurementRangeParameters(
+    meas_range_parameters = daq.DigitalPwmMeasurementRangeParameters(
         semi_period_minimum_value_seconds=25e-9,  # default minimum semiperiod (s)
         semi_period_maximum_value_seconds=53.68709,  # default maximum semiperiod (s)
     )
 
-    meas_timing_parameters = nipcbatt.DigitalPwmMeasurementTimingParameters(
+    meas_timing_parameters = daq.DigitalPwmMeasurementTimingParameters(
         semi_period_counter_wanted_cycles_count=100
     )
 
-    meas_counter_parameters = nipcbatt.DigitalPwmMeasurementCounterChannelParameters(
+    meas_counter_parameters = daq.DigitalPwmMeasurementCounterChannelParameters(
         range_parameters=meas_range_parameters,
         timing_parameters=meas_timing_parameters,
-        semi_period_counter_starting_edge=nipcbatt.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE,
+        semi_period_counter_starting_edge=daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE,
     )
 
     # create configuration object to configure only
-    meas_cfg_config_only = nipcbatt.DigitalPwmMeasurementConfiguration(
+    meas_cfg_config_only = daq.DigitalPwmMeasurementConfiguration(
         parameters=meas_counter_parameters,
         measurement_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
     )
@@ -103,15 +104,15 @@ def main(
 
     # initialize instances of counter channel parameters and timing parameters for generation
     # then initialize an instance of 'DigitalClockGenerationConfiguration' with the settings
-    gen_channel_parameters = nipcbatt.DigitalClockGenerationCounterChannelParameters(
+    gen_channel_parameters = daq.DigitalClockGenerationCounterChannelParameters(
         frequency_hertz=1000.0, duty_cycle_ratio=0.5
     )
 
-    gen_timing_parameters = nipcbatt.DigitalClockGenerationTimingParameters(
+    gen_timing_parameters = daq.DigitalClockGenerationTimingParameters(
         clock_duration_seconds=0.1
     )
 
-    gen_configuration = nipcbatt.DigitalClockGenerationConfiguration(
+    gen_configuration = daq.DigitalClockGenerationConfiguration(
         counter_channel_parameters=gen_channel_parameters, timing_parameters=gen_timing_parameters
     )
 
@@ -119,7 +120,7 @@ def main(
     generation_instance.configure_and_generate(configuration=gen_configuration)
 
     # create separate measurement configuration to be used to measure only
-    meas_cfg_measure_only = nipcbatt.DigitalPwmMeasurementConfiguration(
+    meas_cfg_measure_only = daq.DigitalPwmMeasurementConfiguration(
         parameters=meas_counter_parameters,
         measurement_option=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
     )
@@ -144,8 +145,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.DigitalClockGeneration,
-    measurement_instance: nipcbatt.DigitalPwmMeasurement,
+    generation_instance: daq.DigitalClockGeneration,
+    measurement_instance: daq.DigitalPwmMeasurement,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation

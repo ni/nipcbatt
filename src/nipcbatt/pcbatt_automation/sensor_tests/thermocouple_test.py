@@ -7,6 +7,7 @@ import nidaqmx
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # To use save_traces and plotter from utils folder
@@ -34,7 +35,7 @@ def setup(
     """Creates the necessary objects for the measurement of Temprature"""  
 
     # Creates the instance of measurement class required for the test
-    ttcm = nipcbatt.pcbatt_library.daq.TemperatureMeasurementUsingThermocouple()
+    ttcm = daq.TemperatureMeasurementUsingThermocouple()
 
     """Initializes the channels of the ttcm module to prepare for measurement"""
     ttcm.initialize(
@@ -56,14 +57,14 @@ def setup(
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
 def main(  
-    ttcm: nipcbatt.pcbatt_library.daq.TemperatureMeasurementUsingThermocouple,
+    ttcm: daq.TemperatureMeasurementUsingThermocouple,
     input_terminal=INPUT_TERMINAL,
     cold_junction_terminal=COLD_JUNCTION_CHANNEL,
 ):
     results_map = {}  # this structure will hold results in key-value pairs
 
     # region ttcm configure and measure
-    global_channel_parameters = nipcbatt.pcbatt_library.daq.TemperatureThermocoupleMeasurementTerminalParameters(
+    global_channel_parameters = daq.TemperatureThermocoupleMeasurementTerminalParameters(
         temperature_minimum_value_celsius_degrees=0.0,
         temperature_maximum_value_celsius_degrees=100.0,
         thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -74,7 +75,7 @@ def main(
 
     # region specific_channels_parameters
 
-    channel_parameters = nipcbatt.pcbatt_library.daq.TemperatureThermocoupleRangeAndTerminalParameters(
+    channel_parameters = daq.TemperatureThermocoupleRangeAndTerminalParameters(
         temperature_minimum_value_celsius_degrees=0.0,
         temperature_maximum_value_celsius_degrees=100.0,
         thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -85,7 +86,7 @@ def main(
         auto_zero_mode=nidaqmx.constants.AutoZeroType.NONE,
     )
 
-    channel1 = nipcbatt.pcbatt_library.daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(  
+    channel1 = daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(  
         channel_name=input_terminal, channel_parameters=channel_parameters
     )
 
@@ -106,7 +107,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    ttcm_config = nipcbatt.pcbatt_library.daq.TemperatureThermocoupleMeasurementConfiguration(
+    ttcm_config = daq.TemperatureThermocoupleMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -133,7 +134,7 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    ttcm: nipcbatt.pcbatt_library.daq.TemperatureMeasurementUsingThermocouple,
+    ttcm: daq.TemperatureMeasurementUsingThermocouple,
 ):
     ttcm.close()
 

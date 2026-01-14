@@ -2,8 +2,8 @@
 
 
 # import functions
-from microphone_test import signal_voltage_generation_and_measurement
-from turn_off_all_ao_channels import power_down_all_ao_channels
+from .microphone_test import signal_voltage_generation_and_measurement
+from .turn_off_all_ao_channels import power_down_all_ao_channels
 
 ############# SETUP ###################
 # Import the simulated hardware to NI Max for running the example

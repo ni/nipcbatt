@@ -3,6 +3,7 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 ## Setup: Get the physical channels required for the test.
@@ -29,8 +30,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of the power supply"""  
 
     # Create the instances of generation and measurement classes required for the test.
-    power_supply_test_source_instance = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasure()
-    analog_input_test_point_instance = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement()
+    power_supply_test_source_instance = daq.PowerSupplySourceAndMeasure()
+    analog_input_test_point_instance = daq.DcRmsVoltageMeasurement()
 
     # Initialize Power Supply
     """Initializes the configured channels of Power supply module"""
@@ -50,8 +51,8 @@ def setup(
 # region configure_and_measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    power_supply_test_source_instance: nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasure,
-    analog_input_test_point_instance: nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement,
+    power_supply_test_source_instance: daq.PowerSupplySourceAndMeasure,
+    analog_input_test_point_instance: daq.DcRmsVoltageMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -68,7 +69,7 @@ def main(
     ### Configure and measure VDD using 'PowerSupplySourceAndMeasureConfiguration'
 
     # initialize an instance of 'PowerSupplySourceAndMeasureTerminalParameters'
-    gen_terminal_parameters = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureTerminalParameters(
+    gen_terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=5,
         current_setpoint_amperes=1,
         power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -98,7 +99,7 @@ def main(
     )
 
     # initialize an instance of 'PowerSupplySourceAndMeasureConfiguration'
-    gen_result_data_after_configure_and_measure = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureConfiguration(
+    gen_result_data_after_configure_and_measure = daq.PowerSupplySourceAndMeasureConfiguration(
         terminal_parameters=gen_terminal_parameters,
         measurement_options=gen_measurement_options,
         sample_clock_timing_parameters=gen_sample_clock_timing_parameters,
@@ -153,7 +154,7 @@ def main(
     )
 
     # initialize an instance of 'DcRmsVoltageMeasurementConfiguration'
-    meas_measurement_config = nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurementConfiguration(
+    meas_measurement_config = daq.DcRmsVoltageMeasurementConfiguration(
         global_channel_parameters=meas_global_channel_parameters,
         specific_channels_parameters=meas_specific_channels_parameters,
         measurement_options=meas_measurement_options,
@@ -182,8 +183,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    power_supply_test_source_instance: nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasure,
-    analog_input_test_point_instance: nipcbatt.pcbatt_library.daq.DcRmsVoltageMeasurement,
+    power_supply_test_source_instance: daq.PowerSupplySourceAndMeasure,
+    analog_input_test_point_instance: daq.DcRmsVoltageMeasurement,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     power_supply_test_source_instance.close()  # Close TS

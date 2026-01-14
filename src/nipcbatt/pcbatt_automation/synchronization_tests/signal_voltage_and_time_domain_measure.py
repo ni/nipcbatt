@@ -5,6 +5,7 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 ## Setup: Get the physical channels required for the test.
@@ -34,8 +35,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of the signal"""  
 
     # Create the instances of generation and measurement classes required for the test.
-    generation_instance = nipcbatt.SignalVoltageGeneration()
-    measurement_instance = nipcbatt.TimeDomainMeasurement()
+    generation_instance = daq.SignalVoltageGeneration()
+    measurement_instance = daq.TimeDomainMeasurement()
 
     # Initialize Generation
     """Initializes the configured channels of signal voltage generation module"""
@@ -49,7 +50,7 @@ def setup(
        Setup Connections in the below step"""
 
     # Export signals to PFI lines
-    sync_signals = nipcbatt.SynchronizationSignalRouting()
+    sync_signals = daq.SynchronizationSignalRouting()
     sync_signals.route_sample_clock_signal_to_terminal(terminal_name=SAMPLE_CLOCK_LINE)
     sync_signals.route_start_trigger_signal_to_terminal(terminal_name=START_TRIGGER_LINE)
 
@@ -63,8 +64,8 @@ def setup(
 # region configure_and_measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    generation_instance: nipcbatt.SignalVoltageGeneration,
-    measurement_instance: nipcbatt.TimeDomainMeasurement,
+    generation_instance: daq.SignalVoltageGeneration,
+    measurement_instance: daq.TimeDomainMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -116,7 +117,7 @@ def main(
     )
 
     # initialize an instance of 'TimeDomainMeasurementConfiguration'
-    pre_trigger_measurement_config = nipcbatt.TimeDomainMeasurementConfiguration(
+    pre_trigger_measurement_config = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=meas_global_channel_parameters,
         specific_channels_parameters=meas_specific_channels_parameters,
         measurement_options=meas_options_configure_only,
@@ -143,15 +144,15 @@ def main(
         range_min_volts=-10.0, range_max_volts=10.0
     )
 
-    tone_params = nipcbatt.ToneParameters(
+    tone_params = daq.ToneParameters(
         tone_frequency_hertz=100.0, tone_amplitude_volts=1.0, tone_phase_radians=0.0
     )
 
-    waveform_params = nipcbatt.SignalVoltageGenerationSineWaveParameters(
+    waveform_params = daq.SignalVoltageGenerationSineWaveParameters(
         generated_signal_offset_volts=0.0, generated_signal_tone_parameters=tone_params
     )
 
-    timing_parms = nipcbatt.SignalVoltageGenerationTimingParameters(
+    timing_parms = daq.SignalVoltageGenerationTimingParameters(
         sample_clock_source="OnboardClock",
         sampling_rate_hertz=10000,
         generated_signal_duration_seconds=0.1,
@@ -163,7 +164,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    sine_wave_configuration = nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+    sine_wave_configuration = daq.SignalVoltageGenerationSineWaveConfiguration(
         voltage_generation_range_parameters=range_params,
         waveform_parameters=waveform_params,
         timing_parameters=timing_parms,
@@ -204,7 +205,7 @@ def main(
     )
 
     # initialize an instance of 'TimeDomainMeasurementConfiguration' for measure only
-    measurement_config_measure_only = nipcbatt.TimeDomainMeasurementConfiguration(
+    measurement_config_measure_only = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=meas_global_channel_parameters,
         specific_channels_parameters=meas_specific_channels_parameters,
         measurement_options=meas_options_measure_only,
@@ -234,9 +235,9 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.SignalVoltageGeneration,
-    measurement_instance: nipcbatt.TimeDomainMeasurement,
-    sync_signals: nipcbatt.SynchronizationSignalRouting,
+    generation_instance: daq.SignalVoltageGeneration,
+    measurement_instance: daq.TimeDomainMeasurement,
+    sync_signals: daq.SynchronizationSignalRouting,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close TS

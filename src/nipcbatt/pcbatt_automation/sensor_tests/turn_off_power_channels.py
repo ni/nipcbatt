@@ -8,6 +8,7 @@ import nidaqmx.constants
 import numpy as np  
 
 import nipcbatt
+from nipcbatt import daq
 
 parent_folder = os.getcwd()
 utils_folder = os.path.join(parent_folder, "Utils")
@@ -23,7 +24,7 @@ OUTPUT_TERMINAL = "Simulated_Power/power"
 ########################################   INITIALIZATION FUNCTION   #########################################################
 def setup(output_terminal=OUTPUT_TERMINAL):
     """Creates the necessary objects for voltage generation""" 
-    pssm = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasure()
+    pssm = daq.PowerSupplySourceAndMeasure()
     # Create the instances of generation class reuired for the test
     pssm.initialize(output_terminal)
     # returns the initialized object
@@ -36,9 +37,9 @@ def setup(output_terminal=OUTPUT_TERMINAL):
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
-def main(pssm: nipcbatt.pcbatt_library.daq.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure):
+def main(pssm: daq.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure):
     """Sets up the volatge and current to be generated."""  
-    terminal_parameters = nipcbatt.pcbatt_library.daq.PowerSupplySourceAndMeasureTerminalParameters(
+    terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=0.1,
         current_setpoint_amperes=0.1,
         power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -64,7 +65,7 @@ def main(pssm: nipcbatt.pcbatt_library.daq.power_supply_source_and_measurements.
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    pssm_config = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+    pssm_config = daq.PowerSupplySourceAndMeasureConfiguration(
         terminal_parameters=terminal_parameters,
         measurement_options=measurement_options,
         sample_clock_timing_parameters=gen_timing_parameters,
@@ -84,7 +85,7 @@ def main(pssm: nipcbatt.pcbatt_library.daq.power_supply_source_and_measurements.
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    pssm: nipcbatt.PowerSupplySourceAndMeasure,
+    pssm: daq.PowerSupplySourceAndMeasure,
 ):
     pssm.close()
 

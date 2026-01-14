@@ -6,7 +6,8 @@ import sys
 
 import nidaqmx.constants
 
-import nipcbatt.pcbatt_library.daq
+import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # To use save_traces and plotter from utils folder
@@ -40,11 +41,11 @@ def setup(
     """Creates necessary objects for the generation of Analog PWM siganl and
     Time Domain Measurement"""  
     # Creates instance of the generation class required for the test
-    svg = nipcbatt.pcbatt_library.daq.SignalVoltageGeneration()
+    svg = daq.SignalVoltageGeneration()
     """Initializes the channels for signal volatge generaion"""
     svg.initialize(channel_expression=output_terminal)
     # Creates instance for the measurement class required for the test
-    tdvm = nipcbatt.pcbatt_library.daq.TimeDomainMeasurement()
+    tdvm = daq.TimeDomainMeasurement()
     """Initializes the channels for tdvm module to prepare for measurement"""
     tdvm.initialize(analog_input_channel_expression=input_terminal)
 
@@ -63,8 +64,8 @@ def setup(
 # Region to configure and Generate/Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(  
-    svg: nipcbatt.pcbatt_library.daq.SignalVoltageGeneration,
-    tdvm: nipcbatt.pcbatt_library.daq.TimeDomainMeasurement,
+    svg: daq.SignalVoltageGeneration,
+    tdvm: daq.TimeDomainMeasurement,
     digital_trigger_source=DIGITAL_TRIGGER_SOURCE,
 ):
     results_map = {}  # this structure will hold results in key-value pairs
@@ -97,7 +98,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    tdvm_config = nipcbatt.pcbatt_library.daq.TimeDomainMeasurementConfiguration(
+    tdvm_config = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_options=meas_config_configure_only,
@@ -115,7 +116,7 @@ def main(
         range_min_volts=-10, range_max_volts=10
     )
     # Set the Sampling rate hertz and the generated siganl duration
-    gen_timing_parameters = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationTimingParameters(
+    gen_timing_parameters = daq.SignalVoltageGenerationTimingParameters(
         sample_clock_source="OnboardClock",
         sampling_rate_hertz=100000,
         generated_signal_duration_seconds=0.1,
@@ -128,7 +129,7 @@ def main(
     )
 
     # Set the PWM signal parameters
-    waveform_parameters = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationSquareWaveParameters(
+    waveform_parameters = daq.SignalVoltageGenerationSquareWaveParameters(
         generated_signal_amplitude_volts=0.5,
         generated_signal_duty_cycle_percent=80.00,
         generated_signal_frequency_hertz=100,
@@ -136,7 +137,7 @@ def main(
         generated_signal_offset_volts=0.5,
     )
 
-    svg_config = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationSquareWaveConfiguration(
+    svg_config = daq.SignalVoltageGenerationSquareWaveConfiguration(
         voltage_generation_range_parameters=voltage_generation_range_parameters,
         waveform_parameters=waveform_parameters,
         timing_parameters=gen_timing_parameters,
@@ -158,7 +159,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    tdvm_config = nipcbatt.pcbatt_library.daq.TimeDomainMeasurementConfiguration(
+    tdvm_config = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_options=meas_options_measure_only,
@@ -186,8 +187,8 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    svg: nipcbatt.pcbatt_library.daq.SignalVoltageGeneration,
-    tdvm: nipcbatt.pcbatt_library.daq.TimeDomainMeasurement,
+    svg: daq.SignalVoltageGeneration,
+    tdvm: daq.TimeDomainMeasurement,
 ):
     svg.close()
     tdvm.close()

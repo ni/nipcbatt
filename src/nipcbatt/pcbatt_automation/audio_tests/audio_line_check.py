@@ -9,7 +9,8 @@
 import nidaqmx
 import nidaqmx.constants
 
-import nipcbatt.pcbatt_library.daq
+import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # Default channels
@@ -27,8 +28,8 @@ def setup():
     """Creates the necessary objects for signal generation and measurement"""  
 
     # Create the instances of generation and measurement classes required for the test
-    generation_instance = nipcbatt.pcbatt_library.daq.SignalVoltageGeneration()
-    measurement_instance = nipcbatt.pcbatt_library.daq.FrequencyDomainMeasurement()
+    generation_instance = daq.SignalVoltageGeneration()
+    measurement_instance = daq.FrequencyDomainMeasurement()
 
     # Initialize generation
     generation_instance.initialize(channel_expression=GEN_CHANNEL)
@@ -52,8 +53,8 @@ def setup():
 
 
 def main(
-    generation_instance: nipcbatt.pcbatt_library.daq.SignalVoltageGeneration,
-    measurement_instance: nipcbatt.pcbatt_library.daq.FrequencyDomainMeasurement,
+    generation_instance: daq.SignalVoltageGeneration,
+    measurement_instance: daq.FrequencyDomainMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -94,7 +95,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    meas_config_configure_only = nipcbatt.pcbatt_library.daq.FrequencyDomainMeasurementConfiguration(
+    meas_config_configure_only = daq.FrequencyDomainMeasurementConfiguration(
         global_channel_parameters=glob_chan_params,
         specific_channels_parameters=spec_chan_params,
         measurement_options=meas_options,
@@ -110,15 +111,15 @@ def main(
         range_min_volts=-2.0, range_max_volts=2.0
     )
 
-    tone_params = nipcbatt.pcbatt_library.daq.ToneParameters(
+    tone_params = daq.ToneParameters(
         tone_frequency_hertz=1000.0, tone_amplitude_volts=1.0, tone_phase_radians=0.0
     )
 
-    waveform_params = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationSineWaveParameters(
+    waveform_params = daq.SignalVoltageGenerationSineWaveParameters(
         generated_signal_offset_volts=0.0, generated_signal_tone_parameters=tone_params
     )
 
-    gen_timing_params = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationTimingParameters(
+    gen_timing_params = daq.SignalVoltageGenerationTimingParameters(
         sample_clock_source="OnboardClock",
         sampling_rate_hertz=100000,
         generated_signal_duration_seconds=0.1,
@@ -130,7 +131,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    gen_config = nipcbatt.pcbatt_library.daq.SignalVoltageGenerationSineWaveConfiguration(
+    gen_config = daq.SignalVoltageGenerationSineWaveConfiguration(
         voltage_generation_range_parameters=vol_gen_range_params,
         waveform_parameters=waveform_params,
         timing_parameters=gen_timing_params,
@@ -154,7 +155,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    meas_config_postgen = nipcbatt.pcbatt_library.daq.FrequencyDomainMeasurementConfiguration(
+    meas_config_postgen = daq.FrequencyDomainMeasurementConfiguration(
         global_channel_parameters=glob_chan_params,
         specific_channels_parameters=spec_chan_params,
         measurement_options=meas_options_measure_only,

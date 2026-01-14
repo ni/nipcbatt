@@ -5,6 +5,7 @@
 import time  
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 """Note to run with Hardware: Update the Terminal and Physical Counter Channels based on NI MAX 
@@ -34,8 +35,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of digital edge count"""  
 
     # Create the instances of generation and measurement classes required for the test
-    generation_instance = nipcbatt.pcbatt_library.daq.DigitalPulseGeneration()
-    measurement_instance = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingSoftwareTimer()
+    generation_instance = daq.DigitalPulseGeneration()
+    measurement_instance = daq.DigitalEdgeCountMeasurementUsingSoftwareTimer()
 
     # Initialize generation object
     generation_instance.initialize(
@@ -61,8 +62,8 @@ def setup(
 
 
 def main(
-    generation_instance: nipcbatt.pcbatt_library.daq.DigitalPulseGeneration,
-    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingSoftwareTimer,
+    generation_instance: daq.DigitalPulseGeneration,
+    measurement_instance: daq.DigitalEdgeCountMeasurementUsingSoftwareTimer,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -84,12 +85,12 @@ def main(
         measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.SKIP_ANALYSIS,
     )
 
-    channel_params = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementCounterChannelParameters(
-        edge_type=nipcbatt.pcbatt_library.daq.ConstantsForDigitalEdgeCountMeasurement.DEFAULT_EDGE
+    channel_params = daq.DigitalEdgeCountMeasurementCounterChannelParameters(
+        edge_type=daq.ConstantsForDigitalEdgeCountMeasurement.DEFAULT_EDGE
     )
 
-    timing_params = nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.1)
-    init_config = nipcbatt.pcbatt_library.daq.DigitalEdgeCountSoftwareTimerConfiguration(
+    timing_params = daq.DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.1)
+    init_config = daq.DigitalEdgeCountSoftwareTimerConfiguration(
         measurement_options=configure_only_option,
         counter_channel_parameters=channel_params,
         timing_parameters=timing_params,
@@ -103,15 +104,15 @@ def main(
 
     # create constants needed to create generation configuration
     low_time, high_time, num_pulses = 0.0003, 0.0005, 2000
-    level = nipcbatt.pcbatt_library.daq.ConstantsForDigitalPulseGeneration.DEFAULT_FREQUENCY_GENERATION_UNIT
+    level = daq.ConstantsForDigitalPulseGeneration.DEFAULT_FREQUENCY_GENERATION_UNIT
 
-    gen_counter_parameters = nipcbatt.pcbatt_library.daq.DigitalPulseGenerationCounterChannelParameters(
+    gen_counter_parameters = daq.DigitalPulseGenerationCounterChannelParameters(
         pulse_idle_state=level, low_time_seconds=low_time, high_time_seconds=high_time
     )
 
-    gen_timing_parameters = nipcbatt.pcbatt_library.daq.DigitalPulseGenerationTimingParameters(pulses_count=num_pulses)
+    gen_timing_parameters = daq.DigitalPulseGenerationTimingParameters(pulses_count=num_pulses)
 
-    gen_config = nipcbatt.pcbatt_library.daq.DigitalPulseGenerationConfiguration(
+    gen_config = daq.DigitalPulseGenerationConfiguration(
         counter_channel_parameters=gen_counter_parameters, timing_parameters=gen_timing_parameters
     )
 
@@ -129,7 +130,7 @@ def main(
         measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS,
     )
 
-    meas_config = nipcbatt.pcbatt_library.daq.DigitalEdgeCountSoftwareTimerConfiguration(
+    meas_config = daq.DigitalEdgeCountSoftwareTimerConfiguration(
         measurement_options=measure_only_option,
         counter_channel_parameters=channel_params,
         timing_parameters=timing_params,
@@ -154,8 +155,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    generation_instance: nipcbatt.pcbatt_library.daq.DigitalPulseGeneration,
-    measurement_instance: nipcbatt.pcbatt_library.daq.DigitalEdgeCountMeasurementUsingSoftwareTimer,
+    generation_instance: daq.DigitalPulseGeneration,
+    measurement_instance: daq.DigitalEdgeCountMeasurementUsingSoftwareTimer,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     generation_instance.close()  # Close generation

@@ -1,6 +1,7 @@
 """This example resets all configured Analog output channels to 0 volts"""  
 
 import nipcbatt
+from nipcbatt import daq
 
 # Note to run with hardware: update virtual/physical channels info based
 # on NI MAX in the below Initialize Steps
@@ -9,7 +10,7 @@ import nipcbatt
 ANALOG_OUT_CHANNELS = "Simulated_cDAQ_9263/ao0"
 
 # Assign the Range Parameters for all configured AO Channels
-RANGE_PARAMETERS = nipcbatt.pcbatt_library.daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS
+RANGE_PARAMETERS = daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS
 
 
 def power_down_all_ao_channels(
@@ -22,11 +23,11 @@ def power_down_all_ao_channels(
     off_voltages = [0.0]
 
     # DC Voltage Generation - Initialize AO Channels
-    generation = nipcbatt.pcbatt_library.daq.DcVoltageGeneration()
+    generation = daq.DcVoltageGeneration()
     generation.initialize(analog_output_channel_expression=channel_names)
 
     # Create configuration for analog output
-    output_configuration = nipcbatt.pcbatt_library.daq.DcVoltageGenerationConfiguration(
+    output_configuration = daq.DcVoltageGenerationConfiguration(
         voltage_generation_range_parameters=parameters, output_voltages=off_voltages
     )
 
