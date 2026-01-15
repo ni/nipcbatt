@@ -6,6 +6,7 @@ from enum import Enum
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -40,21 +41,21 @@ waveform_type = Waveform_type.Square_wave
 # Multiple tones settings
 multiple_tones_parameters = []
 multiple_tones_parameters.append(
-    nipcbatt.ToneParameters(
+    daq.ToneParameters(
         tone_frequency_hertz=100, tone_amplitude_volts=1.0, tone_phase_radians=0
     )
 )
 multiple_tones_parameters.append(
-    nipcbatt.ToneParameters(
+    daq.ToneParameters(
         tone_frequency_hertz=200, tone_amplitude_volts=1.0, tone_phase_radians=0
     )
 )
 
 # Initialize
-svg = nipcbatt.SignalVoltageGeneration()
+svg = daq.SignalVoltageGeneration()
 svg.initialize(channel_expression="Dev1/ao1")
 
-tdvm = nipcbatt.TimeDomainMeasurement()
+tdvm = daq.TimeDomainMeasurement()
 tdvm.initialize(analog_input_channel_expression="Dev2/ai0")
 
 
@@ -107,7 +108,7 @@ specific_channels_parameters = []
 if use_specific_channel is True:
     specific_channels_parameters.append(channel0)
 
-tdvm_config = nipcbatt.TimeDomainMeasurementConfiguration(
+tdvm_config = daq.TimeDomainMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,
@@ -124,7 +125,7 @@ voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameter
     range_min_volts=-10, range_max_volts=10
 )
 
-timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+timing_parameters = daq.SignalVoltageGenerationTimingParameters(
     sample_clock_source="OnboardClock",
     sampling_rate_hertz=100000,
     generated_signal_duration_seconds=0.1,
@@ -140,16 +141,16 @@ if generation_type == Generation_type.Single_tone:
     if waveform_type == Waveform_type.Sine_wave:
         # region SVG SineWave configure and generate
 
-        generated_signal_tone_parameters = nipcbatt.ToneParameters(
+        generated_signal_tone_parameters = daq.ToneParameters(
             tone_frequency_hertz=100, tone_amplitude_volts=1, tone_phase_radians=0
         )
 
-        waveform_parameters = nipcbatt.SignalVoltageGenerationSineWaveParameters(
+        waveform_parameters = daq.SignalVoltageGenerationSineWaveParameters(
             generated_signal_offset_volts=0,
             generated_signal_tone_parameters=generated_signal_tone_parameters,
         )
 
-        svg_config = nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+        svg_config = daq.SignalVoltageGenerationSineWaveConfiguration(
             voltage_generation_range_parameters=voltage_generation_range_parameters,
             waveform_parameters=waveform_parameters,
             timing_parameters=timing_parameters,
@@ -162,7 +163,7 @@ if generation_type == Generation_type.Single_tone:
     else:
         # region SVG SquareWave configure and generate
 
-        waveform_parameters = nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+        waveform_parameters = daq.SignalVoltageGenerationSquareWaveParameters(
             generated_signal_amplitude_volts=1.0,
             generated_signal_duty_cycle_percent=50.00,
             generated_signal_frequency_hertz=100,
@@ -170,7 +171,7 @@ if generation_type == Generation_type.Single_tone:
             generated_signal_offset_volts=0,
         )
 
-        svg_config = nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+        svg_config = daq.SignalVoltageGenerationSquareWaveConfiguration(
             voltage_generation_range_parameters=voltage_generation_range_parameters,
             waveform_parameters=waveform_parameters,
             timing_parameters=timing_parameters,
@@ -182,13 +183,13 @@ if generation_type == Generation_type.Single_tone:
 else:
     # region SVG MultiTone configure and generate
 
-    waveform_parameters = nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+    waveform_parameters = daq.SignalVoltageGenerationMultipleTonesWaveParameters(
         generated_signal_amplitude_volts=1.0,
         generated_signal_offset_volts=0.0,
         multiple_tones_parameters=multiple_tones_parameters,
     )
 
-    svg_config = nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+    svg_config = daq.SignalVoltageGenerationMultipleTonesConfiguration(
         voltage_generation_range_parameters=voltage_generation_range_parameters,
         waveform_parameters=waveform_parameters,
         timing_parameters=timing_parameters,
@@ -211,7 +212,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-tdvm_config = nipcbatt.TimeDomainMeasurementConfiguration(
+tdvm_config = daq.TimeDomainMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,

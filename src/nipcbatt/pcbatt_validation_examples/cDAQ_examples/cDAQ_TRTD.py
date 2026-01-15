@@ -5,6 +5,7 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -14,12 +15,12 @@ save_fig = False
 use_specific_channel = False
 
 # initialize 'TemperatureMeasurementUsingRtd' class instance
-trtdm = nipcbatt.TemperatureMeasurementUsingRtd()
+trtdm = daq.TemperatureMeasurementUsingRtd()
 trtdm.initialize("TP_RTD0")
 
 # region TRTDM configure and measure
 
-global_channel_parameters = nipcbatt.TemperatureRtdMeasurementTerminalParameters(
+global_channel_parameters = daq.TemperatureRtdMeasurementTerminalParameters(
     temperature_minimum_value_celsius_degrees=0,
     temperature_maximum_value_celsius_degrees=100,
     current_excitation_value_amperes=0.001,
@@ -32,7 +33,7 @@ global_channel_parameters = nipcbatt.TemperatureRtdMeasurementTerminalParameters
 
 # region specific_channels_parameters
 
-channel0 = nipcbatt.TemperatureRtdMeasurementChannelParameters(
+channel0 = daq.TemperatureRtdMeasurementChannelParameters(
     channel_name="TP_RTD0",
     sensor_resistance_ohms=100,
     current_excitation_value_amperes=0.001,
@@ -60,7 +61,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-trtdm_config = nipcbatt.TemperatureRtdMeasurementConfiguration(
+trtdm_config = daq.TemperatureRtdMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,

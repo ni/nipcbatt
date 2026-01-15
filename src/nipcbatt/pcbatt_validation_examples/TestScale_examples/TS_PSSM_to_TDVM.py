@@ -6,6 +6,7 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -15,10 +16,10 @@ save_fig = False
 use_specific_channel = False
 
 # Initialize
-pssm = nipcbatt.PowerSupplySourceAndMeasure()
+pssm = daq.PowerSupplySourceAndMeasure()
 pssm.initialize(power_channel_name="TS1_Power/power")
 
-tdvm = nipcbatt.TimeDomainMeasurement()
+tdvm = daq.TimeDomainMeasurement()
 tdvm.initialize(analog_input_channel_expression="TS1_AI/ai2")
 
 # region TDVM configure only
@@ -64,7 +65,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-tdvm_config = nipcbatt.TimeDomainMeasurementConfiguration(
+tdvm_config = daq.TimeDomainMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,
@@ -78,7 +79,7 @@ tdvm.configure_and_measure(configuration=tdvm_config)
 
 # region PSSM configure and measure
 
-terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
     voltage_setpoint_volts=6,
     current_setpoint_amperes=3,
     power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -104,7 +105,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-pssm_config = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+pssm_config = daq.PowerSupplySourceAndMeasureConfiguration(
     terminal_parameters=terminal_parameters,
     measurement_options=measurement_options,
     sample_clock_timing_parameters=sample_clock_timing_parameters,
@@ -143,7 +144,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-tdvm_config = nipcbatt.TimeDomainMeasurementConfiguration(
+tdvm_config = daq.TimeDomainMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,
