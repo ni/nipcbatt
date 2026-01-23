@@ -14,7 +14,7 @@
 # results = measurement.configure_and_measure(configuration=nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION)  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
 # measurement.close()
 
-from nipcbatt.pcbatt_library import daq 
+from nipcbatt.pcbatt_library import daq
 from nipcbatt.pcbatt_library import dmm
 from nipcbatt.pcbatt_library import communications
 
