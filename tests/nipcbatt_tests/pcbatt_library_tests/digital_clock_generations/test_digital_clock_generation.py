@@ -7,12 +7,12 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_data_types import (
+from nipcbatt.pcbatt_library.daq.digital_clock_generations.digital_clock_data_types import (
     DigitalClockGenerationConfiguration,
     DigitalClockGenerationCounterChannelParameters,
     DigitalClockGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_generation import (
+from nipcbatt.pcbatt_library.daq.digital_clock_generations.digital_clock_generation import (
     DigitalClockGeneration,
 )
 
@@ -48,7 +48,7 @@ class TestDigitalClockGeneration(unittest.TestCase):
     def test_digital_clock_generation(self):
         """Checks if class 'DigitalClockGeneration' is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (258 > 100 characters) (auto-generated noqa)
 
-        physical_channel = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
+        physical_channel = "Simulated_DAQ/ctr0"
         output_terminal = "/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"
         timing_parameters = DigitalClockGenerationTimingParameters(1.0)
         counter_parameters = DigitalClockGenerationCounterChannelParameters(1000.0, 0.5)

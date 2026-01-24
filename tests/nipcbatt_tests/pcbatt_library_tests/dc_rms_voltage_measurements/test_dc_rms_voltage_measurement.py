@@ -51,7 +51,7 @@ class TestDcRmsVoltageMeasurement(unittest.TestCase):
         """Checks if class DcRmsVoltageMeasurement is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
         with daq.DcRmsVoltageMeasurement() as measurement:
             measurement.initialize(
-                analog_input_channel_expression="Simulated_cDAQ_9211/ai0"
+                analog_input_channel_expression="Simulated_DAQ/ai0"
             )
 
             measurement.configure_and_measure(

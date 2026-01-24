@@ -11,6 +11,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
@@ -285,7 +286,7 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
             specific_channels_parameters,
         )
 
-        dc_rms_configuration_instance = nipcbatt.DcRmsVoltageMeasurementConfiguration(
+        dc_rms_configuration_instance = daq.DcRmsVoltageMeasurementConfiguration(
             global_channel_parameters=expected_global_channel_parameters,
             specific_channels_parameters=specific_channels_parameters,
             measurement_options=expected_measurement_options,
