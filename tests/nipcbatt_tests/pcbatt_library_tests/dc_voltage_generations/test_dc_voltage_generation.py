@@ -8,6 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
@@ -48,7 +49,7 @@ class TestDcVoltageGeneration(unittest.TestCase):
     def test_dc_voltage_generation(self):
         """Checks if class `DcVoltageGeneration' is ready for use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (256 > 100 characters) (auto-generated noqa)
 
-        generation = nipcbatt.DcVoltageGeneration()
+        generation = daq.DcVoltageGeneration()
         generation.initialize(
             analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0"
         )

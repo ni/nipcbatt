@@ -13,18 +13,18 @@ from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - '
     SampleClockTimingParameters,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types.ConstantsForDigitalPulseGeneration' imported but unused (auto-generated noqa)
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types.ConstantsForDigitalPulseGeneration' imported but unused (auto-generated noqa)
     ConstantsForDigitalPulseGeneration,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
+from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
     ConstantsForDynamicDigitalPatternGeneration,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (
+from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (
     DynamicDigitalPatternGenerationConfiguration,
     DynamicDigitalPatternGenerationData,
     DynamicDigitalStartTriggerParameters,
 )
-from nipcbatt.pcbatt_library.synchronizations.synchronization_signal_routing import (
+from nipcbatt.pcbatt_library.daq.synchronizations.synchronization_signal_routing import (
     SynchronizationSignalRouting,
 )
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library_core.pcbatt_data_types.PCBATestToolkitData' imported but unused (auto-generated noqa)
