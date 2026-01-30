@@ -214,6 +214,19 @@ class FrequencyDomainMeasurementResultData(PCBATestToolkitData):
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
 
+        Guard.is_not_none(magnitude_rms, nameof(magnitude_rms))
+        Guard.is_not_empty(magnitude_rms, nameof(magnitude_rms))
+
+        Guard.is_not_none(magnitude_peak, nameof(magnitude_peak))
+        Guard.is_not_empty(magnitude_peak, nameof(magnitude_peak))
+
+        Guard.is_not_none(detected_tones, nameof(detected_tones))
+        Guard.is_not_empty(detected_tones, nameof(detected_tones))
+
+        Guard.have_same_size(waveforms, nameof(waveforms), magnitude_rms, nameof(magnitude_rms))
+        Guard.have_same_size(waveforms, nameof(waveforms), magnitude_peak, nameof(magnitude_peak))
+        Guard.have_same_size(magnitude_rms, nameof(magnitude_rms), magnitude_peak, nameof(magnitude_peak))
+
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
         Guard.all_elements_are_of_same_type(
             input_list=magnitude_peak, expected_type=AmplitudeSpectrum

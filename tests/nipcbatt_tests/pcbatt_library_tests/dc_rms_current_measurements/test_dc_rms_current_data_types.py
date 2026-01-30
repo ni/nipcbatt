@@ -11,6 +11,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         expecte_range_max_amperes = 0.01
         expected_shunt_resistor_ohms = 0.02
 
-        instance = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+        instance = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
             terminal_configuration=expected_terminal_configuration,
             range_min_amperes=expexted_range_min_amperes,
             range_max_amperes=expecte_range_max_amperes,
@@ -72,7 +73,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         # Test if Valus error is raised when range max = min value
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            lambda: daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
                 range_min_amperes=0.02,
                 range_max_amperes=0.02,
@@ -83,7 +84,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         # Test if value error is raised when Min is greater than Max
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            lambda: daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
                 range_min_amperes=0.03,
                 range_max_amperes=0.02,
@@ -94,7 +95,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         # Test if value error is raised when shunt_resistor_ohms value is 0
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            lambda: daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
                 range_min_amperes=0.03,
                 range_max_amperes=0.05,
@@ -105,7 +106,7 @@ class TestDcRmsCurrentMeasurementTerminalRangeParameters(unittest.TestCase):
         # Test if Valus error is raised when terminal_configuration is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            lambda: daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=None,
                 range_min_amperes=0.02,
                 range_max_amperes=0.2,
@@ -152,14 +153,14 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
         expecte_range_max_amperes = 0.05
         expected_shunt_resistor_ohms = 0.1
 
-        expected_channel_parameters = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+        expected_channel_parameters = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
             terminal_configuration=expected_terminal_configuration,
             range_min_amperes=expexted_range_min_amperes,
             range_max_amperes=expecte_range_max_amperes,
             shunt_resistor_ohms=expected_shunt_resistor_ohms,
         )
 
-        instance = nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+        instance = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
             channel_name=expected_channel_name,
             channel_parameters=expected_channel_parameters,
         )
@@ -188,10 +189,10 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+                daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                     channel_name="",
                     channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                        daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                     ),
                 )
             )
@@ -205,10 +206,10 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+                daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                     channel_name=None,
                     channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                        daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                     ),
                 )
             )
@@ -229,7 +230,7 @@ class TestDcRmsCurrentMeasurementChannelAndTerminalRangeParameters(unittest.Test
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+                daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                     channel_name="dev1/ch0",
                     channel_parameters=None,
                 )
@@ -263,7 +264,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
         expected_specific_shunt_resistor_ohms = 0.1
 
         self._expected_global_channel_parameters = (
-            nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=expected_terminal_configuration,
                 range_min_amperes=expexted_range_min_amperes,
                 range_max_amperes=expected_range_max_amperes,
@@ -296,9 +297,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
         # Craete few constants to test the Specific_channel_parameters list
         self._expected_specific_channel_parameters = []
         self._expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai0",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -307,9 +308,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
             )
         )
         self._expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai1",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -318,9 +319,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
             )
         )
         self._expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai2",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -407,7 +408,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
         expected_specific_shunt_resistor_ohms = 0.1
 
         expected_global_channel_parameters = (
-            nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                 terminal_configuration=expected_terminal_configuration,
                 range_min_amperes=expexted_range_min_amperes,
                 range_max_amperes=expected_range_max_amperes,
@@ -429,9 +430,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
         # Craete few constants to test the Specific_channel_parameters list
         expected_specific_channel_parameters = []
         expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai0",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -440,9 +441,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
             )
         )
         expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai1",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -451,9 +452,9 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
             )
         )
         expected_specific_channel_parameters.append(
-            nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+            daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev0/ai2",
-                channel_parameters=nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+                channel_parameters=daq.DcRmsCurrentMeasurementTerminalRangeParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_amperes=expexted_specific_range_min_amperes,
                     range_max_amperes=expecte_specific_range_max_amperes,
@@ -494,7 +495,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
             expected_specific_channel_parameters,
         )
 
-        dc_rms_current_configuration_instance = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+        dc_rms_current_configuration_instance = daq.DcRmsCurrentMeasurementConfiguration(
             global_channel_parameters=expected_global_channel_parameters,
             specific_channels_parameters=expected_specific_channel_parameters,
             measurement_options=expected_measurement_options,
@@ -543,7 +544,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=self._expected_global_channel_parameters,
                     specific_channels_parameters=None,
                     measurement_options=self._expected_measurement_options,
@@ -559,7 +560,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=self._expected_global_channel_parameters,
                     specific_channels_parameters=self._expected_specific_channel_parameters,
                     measurement_options=self._expected_measurement_options,
@@ -583,7 +584,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=self._expected_specific_channel_parameters,
                     measurement_options=self._expected_measurement_options,
@@ -604,7 +605,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=self._expected_global_channel_parameters,
                     specific_channels_parameters=self._expected_specific_channel_parameters,
                     measurement_options=None,
@@ -625,7 +626,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=self._expected_global_channel_parameters,
                     specific_channels_parameters=self._expected_specific_channel_parameters,
                     measurement_options=self._expected_measurement_options,
@@ -646,7 +647,7 @@ class TestDcRmsCurrentMeasurementConfiguration(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=self._expected_global_channel_parameters,
                     specific_channels_parameters=self._expected_specific_channel_parameters,
                     measurement_options=self._expected_measurement_options,
@@ -721,7 +722,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """Tests if an instance of `DcRmsCurrentMeasurementResultData`
         is created with the specific values.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        instance = nipcbatt.DcRmsCurrentMeasurementResultData(
+        instance = daq.DcRmsCurrentMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
             dc_values_amperes=self._expected_dc_values_amperes,
@@ -749,7 +750,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=None,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,
@@ -769,7 +770,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,
@@ -792,7 +793,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,
@@ -815,7 +816,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,
@@ -839,13 +840,15 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,
                     rms_values_amperes=self._expected_rms_values_amperes,
                 )
             )
+
+            
         self.assertEqual(
             "The iterables (waveforms and rms_values_amperes) do not have same size.",
             str(ctx.exception),
@@ -862,7 +865,7 @@ class TestDcRmsCurrentMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsCurrentMeasurementResultData(
+                daq.DcRmsCurrentMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=self._expected_acquisition_duration_seconds,
                     dc_values_amperes=self._expected_dc_values_amperes,

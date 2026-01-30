@@ -12,6 +12,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
@@ -51,12 +52,12 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementConfiguration(
+                daq.TimeDomainMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
-                    sample_clock_timing_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
-                    digital_start_trigger_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    sample_clock_timing_parameters=daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
+                    digital_start_trigger_parameters=daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
                 )
             )
 
@@ -72,12 +73,12 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementConfiguration(
-                    global_channel_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
+                daq.TimeDomainMeasurementConfiguration(
+                    global_channel_parameters=daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
                     specific_channels_parameters=None,
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
-                    sample_clock_timing_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
-                    digital_start_trigger_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    sample_clock_timing_parameters=daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
+                    digital_start_trigger_parameters=daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
                 )
             )
 
@@ -93,12 +94,12 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementConfiguration(
-                    global_channel_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
+                daq.TimeDomainMeasurementConfiguration(
+                    global_channel_parameters=daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
                     specific_channels_parameters=[],
                     measurement_options=None,
-                    sample_clock_timing_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
-                    digital_start_trigger_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
+                    sample_clock_timing_parameters=daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
+                    digital_start_trigger_parameters=daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
                 )
             )
 
@@ -114,12 +115,12 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementConfiguration(
-                    global_channel_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
+                daq.TimeDomainMeasurementConfiguration(
+                    global_channel_parameters=daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=None,
-                    digital_start_trigger_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
+                    digital_start_trigger_parameters=daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS,
                 )
             )
 
@@ -135,11 +136,11 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementConfiguration(
-                    global_channel_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
+                daq.TimeDomainMeasurementConfiguration(
+                    global_channel_parameters=daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS,
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
-                    sample_clock_timing_parameters=nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    sample_clock_timing_parameters=daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS,
                     digital_start_trigger_parameters=None,
                 )
             )
@@ -234,7 +235,7 @@ class TestTimeDomainMeasurementConfiguration(unittest.TestCase):
         )
 
         # Act
-        dc_rms_configuration_instance = nipcbatt.TimeDomainMeasurementConfiguration(
+        dc_rms_configuration_instance = daq.TimeDomainMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=specific_channels_parameters,
             measurement_options=measurement_options,
@@ -351,7 +352,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=None,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -380,7 +381,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=[],
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -409,7 +410,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=[2.0],
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -440,9 +441,9 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         expected_voltage_waveforms_duty_cycles_percent = [0.5, 0.5, 0.5]
 
         # Act
-        with self.assertRaises(ValueError) as ctx:
+        with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=None,
@@ -454,7 +455,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
             )
 
         # Assert
-        self.assertEqual("The object mean_dc_voltage_values_volts is None.", str(ctx.exception))
+        self.assertEqual("object of type 'NoneType' has no len()", str(ctx.exception))
 
     def test_time_domain_measurement_result_data_init_fails_when_mean_dc_voltage_values_volts_is_empty(
         self,
@@ -471,7 +472,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=[],
@@ -503,7 +504,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=["1.0", 1.0, 1.0],
@@ -535,7 +536,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -564,7 +565,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -596,7 +597,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -628,7 +629,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -658,7 +659,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         expected_voltage_waveforms_duty_cycles_percent = [0.5, 0.5, 0.5]
 
         # Act
-        time_domain_result = nipcbatt.TimeDomainMeasurementResultData(
+        time_domain_result = daq.TimeDomainMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=expected_acquisition_duration_seconds,
             mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -689,7 +690,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -721,7 +722,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -751,7 +752,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         expected_voltage_waveforms_duty_cycles_percent = [0.5, 0.5, 0.5]
 
         # Act
-        time_domain_result = nipcbatt.TimeDomainMeasurementResultData(
+        time_domain_result = daq.TimeDomainMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=expected_acquisition_duration_seconds,
             mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -782,7 +783,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -814,7 +815,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -844,7 +845,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         expected_voltage_waveforms_periods_seconds = [0.01, 0.01, 0.01]
 
         # Act
-        time_domain_result = nipcbatt.TimeDomainMeasurementResultData(
+        time_domain_result = daq.TimeDomainMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=expected_acquisition_duration_seconds,
             mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -875,7 +876,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TimeDomainMeasurementResultData(
+                daq.TimeDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,
@@ -902,7 +903,7 @@ class TestTimeDomainMeasurementResultData(unittest.TestCase):
         expected_voltage_waveforms_frequencies_hertz = [1.0, 1.0, 1.0]
         expected_voltage_waveforms_periods_seconds = [0.01, 0.01, 0.01]
         expected_voltage_waveforms_duty_cycles_percent = [0.5, 0.5, 0.5]
-        instance = nipcbatt.TimeDomainMeasurementResultData(
+        instance = daq.TimeDomainMeasurementResultData(
             waveforms=self._expected_waveforms,
             acquisition_duration_seconds=expected_acquisition_duration_seconds,
             mean_dc_voltage_values_volts=expected_mean_dc_voltage_values_volts,

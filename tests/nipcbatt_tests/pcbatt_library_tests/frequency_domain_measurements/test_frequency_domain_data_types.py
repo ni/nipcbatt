@@ -11,7 +11,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
-
+from nipcbatt import daq
 
 class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
     """Defines a test fixture that checks
@@ -50,15 +50,15 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementConfiguration(
+                daq.FrequencyDomainMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -75,17 +75,17 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementConfiguration(
+                daq.FrequencyDomainMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=None,
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -102,17 +102,17 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementConfiguration(
+                daq.FrequencyDomainMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_options=None,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -129,15 +129,15 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementConfiguration(
+                daq.FrequencyDomainMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=None,
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -154,14 +154,14 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementConfiguration(
+                daq.FrequencyDomainMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_TIME_DOMAIN_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TIME_DOMAIN_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=None,
                 )
@@ -257,7 +257,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         )
 
         # Act
-        measurement_configuration_instance = nipcbatt.FrequencyDomainMeasurementConfiguration(
+        measurement_configuration_instance = daq.FrequencyDomainMeasurementConfiguration(
             global_channel_parameters=expected_global_channel_parameters,
             specific_channels_parameters=specific_channels_parameters,
             measurement_options=expected_measurement_options,
@@ -337,7 +337,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         # Test for tones_amplitudes_volts set to None
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.MultipleTonesMeasurementResultData(
+                daq.MultipleTonesMeasurementResultData(
                     tones_amplitudes_volts=None,
                     tones_frequencies_hertz=[1000],
                 )
@@ -348,7 +348,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         # Test for tones_frequencies_hertz set to None
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.MultipleTonesMeasurementResultData(
+                daq.MultipleTonesMeasurementResultData(
                     tones_amplitudes_volts=[1.0],
                     tones_frequencies_hertz=None,
                 )
@@ -362,7 +362,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         # Test for tones_amplitudes_volts with values that are not float
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.MultipleTonesMeasurementResultData(
+                daq.MultipleTonesMeasurementResultData(
                     tones_amplitudes_volts=[1.0, "1.5", 2.0],
                     tones_frequencies_hertz=[100, 1000, 250],
                 )
@@ -375,7 +375,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         # Test for tones_frequencies_hertz with values that are not float
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.MultipleTonesMeasurementResultData(
+                daq.MultipleTonesMeasurementResultData(
                     tones_amplitudes_volts=[1.0, 1.5, 2.0],
                     tones_frequencies_hertz=[100, 1000, True],
                 )
@@ -394,7 +394,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         # with different number of element
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.MultipleTonesMeasurementResultData(
+                daq.MultipleTonesMeasurementResultData(
                     tones_amplitudes_volts=[1.0, 2.0, 3.0],
                     tones_frequencies_hertz=[100.0, 200.0],
                 )
@@ -411,7 +411,7 @@ class TestMultipleTonesMeasurementResultData(unittest.TestCase):
         expected_tones_amplitude = [1.2, 1.6, 1.8, 1.0]
         expected_tones_frequencies = [100.05, 200.0, 500.0, 1000.1]
 
-        instance = nipcbatt.MultipleTonesMeasurementResultData(
+        instance = daq.MultipleTonesMeasurementResultData(
             tones_frequencies_hertz=expected_tones_frequencies,
             tones_amplitudes_volts=expected_tones_amplitude,
         )
@@ -536,13 +536,13 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Create test data for detected tones.
         self._expected_detected_tones = []
         self._expected_detected_tones.append(
-            nipcbatt.MultipleTonesMeasurementResultData(
+            daq.MultipleTonesMeasurementResultData(
                 tones_frequencies_hertz=[100.05, 200.0, 500.0, 1000.1],
                 tones_amplitudes_volts=[1.2, 1.6, 1.8, 1.0],
             )
         )
         self._expected_detected_tones.append(
-            nipcbatt.MultipleTonesMeasurementResultData(
+            daq.MultipleTonesMeasurementResultData(
                 tones_frequencies_hertz=[1000.5, 2000.15, 1500.0, 10000.89, 200000.0],
                 tones_amplitudes_volts=[1.02, 2.76, 3.2, 5.15, 4.87],
             )
@@ -560,7 +560,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected error is thrown if waveforms is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=None,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -573,7 +573,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected error is thrown if waveforms is set to an empty list.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=[],
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -587,7 +587,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         self._expected_waveforms.append(5.67)
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -600,6 +600,57 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
             str(ctx.exception),
         )
 
+    def test_frequency_domain_measurement_result_data_for_invalid_values_for_detected_tones(
+        self,
+    ):
+        """Tests if expected error is thrown when creating instance of
+        `FrequencyDomainMeasurementResultData' with invalid values for `detected_tones`.
+        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
+        # Test if expected error is thrown if detected_tones is set to None.
+        with self.assertRaises(ValueError) as ctx:
+            print(
+                daq.FrequencyDomainMeasurementResultData(
+                    waveforms=self._expected_waveforms,
+                    magnitude_peak=self._expected_magnitude_peak,
+                    magnitude_rms=self._expected_magnitude_peak,
+                    detected_tones=None,
+                )
+            )
+
+        self.assertEqual("The object detected_tones is None.", str(ctx.exception))
+
+        # Test if expected Value error is thrown if magnitude_peak is an empty list.
+        with self.assertRaises(ValueError) as ctx:
+            print(
+                daq.FrequencyDomainMeasurementResultData(
+                    waveforms=self._expected_waveforms,
+                    magnitude_peak=self._expected_magnitude_peak,
+                    magnitude_rms=self._expected_magnitude_rms,
+                    detected_tones=[],
+                )
+            )
+
+        self.assertEqual("The iterable detected_tones of type list is empty.", str(ctx.exception))
+
+        # Test if expected error is thrown if detected_tones contains elements
+        # that are not of type MultipleTonesMeasurementResultData.
+        self._expected_detected_tones.append([5.67])
+
+        with self.assertRaises(TypeError) as ctx:
+            print(
+                daq.FrequencyDomainMeasurementResultData(
+                    waveforms=self._expected_waveforms,
+                    magnitude_peak=self._expected_magnitude_peak,
+                    magnitude_rms=self._expected_magnitude_rms,
+                    detected_tones=self._expected_detected_tones,
+                )
+            )
+
+        self.assertEqual(
+            "Not all elements of the list are of the type (MultipleTonesMeasurementResultData).",
+            str(ctx.exception),
+        )    
+
     def test_frequency_domain_measurement_result_data_for_invalid_values_for_magnitude_rms(
         self,
     ):
@@ -609,7 +660,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected error is thrown if magnitude_rms is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=None,
@@ -622,7 +673,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected Value error is thrown if magnitude_rms is an empty list.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=[],
@@ -639,7 +690,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -661,7 +712,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected error is thrown if magnitude_peak is set to None.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=None,
                     magnitude_rms=self._expected_magnitude_peak,
@@ -674,7 +725,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         # Test if expected Value error is thrown if magnitude_peak is an empty list.
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=[],
                     magnitude_rms=self._expected_magnitude_rms,
@@ -690,7 +741,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -724,7 +775,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -757,7 +808,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -778,7 +829,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         self._expected_detected_tones.append(
-            nipcbatt.MultipleTonesMeasurementResultData(
+            daq.MultipleTonesMeasurementResultData(
                 tones_amplitudes_volts=[1.0, 2.0],
                 tones_frequencies_hertz=[100.12, 1000.00],
             )
@@ -786,7 +837,7 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
+                daq.FrequencyDomainMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     magnitude_peak=self._expected_magnitude_peak,
                     magnitude_rms=self._expected_magnitude_rms,
@@ -798,61 +849,10 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
             str(ctx.exception),
         )
 
-    def test_frequency_domain_measurement_result_data_for_invalid_values_for_detected_tones(
-        self,
-    ):
-        """Tests if expected error is thrown when creating instance of
-        `FrequencyDomainMeasurementResultData' with invalid values for `detected_tones`.
-        """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        # Test if expected error is thrown if detected_tones is set to None.
-        with self.assertRaises(ValueError) as ctx:
-            print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
-                    waveforms=self._expected_waveforms,
-                    magnitude_peak=self._expected_magnitude_peak,
-                    magnitude_rms=self._expected_magnitude_peak,
-                    detected_tones=None,
-                )
-            )
-
-        self.assertEqual("The object detected_tones is None.", str(ctx.exception))
-
-        # Test if expected Value error is thrown if magnitude_peak is an empty list.
-        with self.assertRaises(ValueError) as ctx:
-            print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
-                    waveforms=self._expected_waveforms,
-                    magnitude_peak=self._expected_magnitude_peak,
-                    magnitude_rms=self._expected_magnitude_rms,
-                    detected_tones=[],
-                )
-            )
-
-        self.assertEqual("The iterable detected_tones of type list is empty.", str(ctx.exception))
-
-        # Test if expected error is thrown if detected_tones contains elements
-        # that are not of type MultipleTonesMeasurementResultData.
-        self._expected_detected_tones.append([5.67])
-
-        with self.assertRaises(TypeError) as ctx:
-            print(
-                nipcbatt.FrequencyDomainMeasurementResultData(
-                    waveforms=self._expected_waveforms,
-                    magnitude_peak=self._expected_magnitude_peak,
-                    magnitude_rms=self._expected_magnitude_rms,
-                    detected_tones=self._expected_detected_tones,
-                )
-            )
-
-        self.assertEqual(
-            "Not all elements of the list are of the type (MultipleTonesMeasurementResultData).",
-            str(ctx.exception),
-        )
-
     def test_frequency_domain_measurement_result_data(self):
         """Test for proper functioning of `FrequencyDomainMeasurementResultData` class"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (277 > 100 characters) (auto-generated noqa)
 
-        fdvm_result_data_instance = nipcbatt.FrequencyDomainMeasurementResultData(
+        fdvm_result_data_instance = daq.FrequencyDomainMeasurementResultData(
             waveforms=self._expected_waveforms,
             magnitude_peak=self._expected_magnitude_peak,
             magnitude_rms=self._expected_magnitude_rms,

@@ -11,6 +11,7 @@ from typing import Dict
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
@@ -55,7 +56,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         for i, state in enumerate(expected_digital_states):
             expected_states_per_channels[expected_channel_identifiers[i]] = state
 
-        instance = nipcbatt.StaticDigitalStateMeasurementResultData(
+        instance = daq.StaticDigitalStateMeasurementResultData(
             digital_states=expected_digital_states,
             channel_identifiers=expected_channel_identifiers,
         )
@@ -86,7 +87,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         # Test if a value error is thrown when digital_states is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateMeasurementResultData(
+            lambda: daq.StaticDigitalStateMeasurementResultData(
                 digital_states=None, channel_identifiers=expected_channel_identifiers
             ),
         )
@@ -94,7 +95,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         # Test if a value error is thrown when digital_states is empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateMeasurementResultData(
+            lambda: daq.StaticDigitalStateMeasurementResultData(
                 digital_states=[], channel_identifiers=expected_channel_identifiers
             ),
         )
@@ -102,7 +103,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         # Test if a value error is thrown when channel_identifiers is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateMeasurementResultData(
+            lambda: daq.StaticDigitalStateMeasurementResultData(
                 digital_states=expected_digital_states, channel_identifiers=None
             ),
         )
@@ -110,7 +111,7 @@ class TestStaticDigitalStateMeasurementResultData(unittest.TestCase):
         # Test if a value error is thrown when channel_identifiers is empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateMeasurementResultData(
+            lambda: daq.StaticDigitalStateMeasurementResultData(
                 digital_states=expected_digital_states, channel_identifiers=[]
             ),
         )

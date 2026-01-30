@@ -11,6 +11,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
@@ -50,15 +51,15 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementConfiguration(
+                daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -75,17 +76,17 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementConfiguration(
+                daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=None,
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -102,15 +103,15 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementConfiguration(
+                daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=None,
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -127,14 +128,14 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementConfiguration(
+                daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=None,
                 )
@@ -148,7 +149,7 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
 
         # Arrange
 
-        expected_global_channel_parameters = nipcbatt.TemperatureRtdMeasurementTerminalParameters(
+        expected_global_channel_parameters = daq.TemperatureRtdMeasurementTerminalParameters(
             temperature_minimum_value_celsius_degrees=1.0,
             temperature_maximum_value_celsius_degrees=99.0,
             current_excitation_value_amperes=1.0,
@@ -161,7 +162,7 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
 
         expected_specific_channels_parameters = []
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureRtdMeasurementChannelParameters(
+            daq.TemperatureRtdMeasurementChannelParameters(
                 channel_name="Dev/ai0",
                 sensor_resistance_ohms=8.0,
                 current_excitation_value_amperes=2.0,
@@ -172,7 +173,7 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         )
 
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureRtdMeasurementChannelParameters(
+            daq.TemperatureRtdMeasurementChannelParameters(
                 channel_name="Dev/ai1",
                 sensor_resistance_ohms=11.0,
                 current_excitation_value_amperes=3.0,
@@ -182,7 +183,7 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
             ),
         )
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureRtdMeasurementChannelParameters(
+            daq.TemperatureRtdMeasurementChannelParameters(
                 channel_name="Dev/ai2",
                 sensor_resistance_ohms=7.0,
                 current_excitation_value_amperes=6.0,
@@ -214,7 +215,7 @@ class TestTemperatureRtdMeasurementConfiguration(unittest.TestCase):
         )
 
         # Act
-        temperature_rtd_configuration_instance = nipcbatt.TemperatureRtdMeasurementConfiguration(
+        temperature_rtd_configuration_instance = daq.TemperatureRtdMeasurementConfiguration(
             global_channel_parameters=expected_global_channel_parameters,
             specific_channels_parameters=expected_specific_channels_parameters,
             measurement_execution_type=expected_measurement_execution_type,
@@ -288,7 +289,7 @@ class TestTemperatureRtdMeasurementTerminalParameters(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementTerminalParameters(
+                daq.TemperatureRtdMeasurementTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     current_excitation_value_amperes=1.5,
@@ -312,7 +313,7 @@ class TestTemperatureRtdMeasurementTerminalParameters(unittest.TestCase):
 
         # Act
         expected_temperature_rtd_measurement_terminal_parameters = (
-            nipcbatt.TemperatureRtdMeasurementTerminalParameters(
+            daq.TemperatureRtdMeasurementTerminalParameters(
                 temperature_minimum_value_celsius_degrees=1.0,
                 temperature_maximum_value_celsius_degrees=99.0,
                 current_excitation_value_amperes=1.5,
@@ -396,7 +397,7 @@ class TestTemperatureRtdMeasurementChannelParameters(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementChannelParameters(
+                daq.TemperatureRtdMeasurementChannelParameters(
                     channel_name=None,
                     sensor_resistance_ohms=25.0,
                     current_excitation_value_amperes=1.5,
@@ -421,7 +422,7 @@ class TestTemperatureRtdMeasurementChannelParameters(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementChannelParameters(
+                daq.TemperatureRtdMeasurementChannelParameters(
                     channel_name="",
                     sensor_resistance_ohms=25.0,
                     current_excitation_value_amperes=1.5,
@@ -446,7 +447,7 @@ class TestTemperatureRtdMeasurementChannelParameters(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureRtdMeasurementChannelParameters(
+                daq.TemperatureRtdMeasurementChannelParameters(
                     channel_name=" ",
                     sensor_resistance_ohms=25.0,
                     current_excitation_value_amperes=1.5,
@@ -468,7 +469,7 @@ class TestTemperatureRtdMeasurementChannelParameters(unittest.TestCase):
 
         # Act
         expected_temperature_rtd_measurement_channel_parameters = (
-            nipcbatt.TemperatureRtdMeasurementChannelParameters(
+            daq.TemperatureRtdMeasurementChannelParameters(
                 channel_name="Dev/ai0",
                 sensor_resistance_ohms=25.0,
                 current_excitation_value_amperes=1.5,
@@ -552,7 +553,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=None,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -575,7 +576,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=[],
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -598,7 +599,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=[2.0, "3.5"],
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -625,7 +626,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=None,
@@ -652,7 +653,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=[],
@@ -679,7 +680,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=["2.3", 23.0, 27.0],
@@ -706,7 +707,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -733,7 +734,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -760,7 +761,7 @@ class TestTemperatureMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.TemperatureMeasurementResultData(
+                daq.TemperatureMeasurementResultData(
                     waveforms=self._expected_waveforms,
                     acquisition_duration_seconds=expected_acquisition_duration_seconds,
                     average_temperatures_celsius_degrees=expected_average_temperatures_celsius_degrees,
@@ -842,15 +843,15 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermistorMeasurementConfiguration(
+                daq.TemperatureThermistorMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -867,17 +868,17 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermistorMeasurementConfiguration(
+                daq.TemperatureThermistorMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=None,
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -894,15 +895,15 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermistorMeasurementConfiguration(
+                daq.TemperatureThermistorMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=None,
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -919,14 +920,14 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermistorMeasurementConfiguration(
+                daq.TemperatureThermistorMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=None,
                 )
@@ -941,26 +942,26 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         # Arrange
 
         expected_global_channel_parameters = (
-            nipcbatt.DEFAULT_TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS
+            daq.DEFAULT_TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS
         )
 
         expected_specific_channels_parameters = []
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermistorChannelRangeAndTerminalParameters(
+            daq.TemperatureThermistorChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai0",
-                channel_parameters=nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermistorRangeAndTerminalParameters(
                     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DEFAULT,
                     temperature_minimum_value_celsius_degrees=10.0,
                     temperature_maximum_value_celsius_degrees=89.0,
                     voltage_excitation_value_volts=15.0,
                     thermistor_resistor_ohms=5.0,
-                    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
-                    coefficients_steinhart_hart_parameters=nipcbatt.CoefficientsSteinhartHartParameters(
+                    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+                    coefficients_steinhart_hart_parameters=daq.CoefficientsSteinhartHartParameters(
                         coefficient_steinhart_hart_a=10.0,
                         coefficient_steinhart_hart_b=20.0,
                         coefficient_steinhart_hart_c=10.0,
                     ),
-                    beta_coefficient_and_sensor_resistance_parameters=nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+                    beta_coefficient_and_sensor_resistance_parameters=daq.BetaCoefficientAndSensorResistanceParameters(
                         coefficient_steinhart_hart_beta_kelvins=289.15,
                         sensor_resistance_ohms=5.0,
                     ),
@@ -969,21 +970,21 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
         )
 
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermistorChannelRangeAndTerminalParameters(
+            daq.TemperatureThermistorChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai1",
-                channel_parameters=nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermistorRangeAndTerminalParameters(
                     terminal_configuration=nidaqmx.constants.TerminalConfiguration.NRSE,
                     temperature_minimum_value_celsius_degrees=1.0,
                     temperature_maximum_value_celsius_degrees=79.0,
                     voltage_excitation_value_volts=10.0,
                     thermistor_resistor_ohms=10.0,
-                    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
-                    coefficients_steinhart_hart_parameters=nipcbatt.CoefficientsSteinhartHartParameters(
+                    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+                    coefficients_steinhart_hart_parameters=daq.CoefficientsSteinhartHartParameters(
                         coefficient_steinhart_hart_a=1.5,
                         coefficient_steinhart_hart_b=2.5,
                         coefficient_steinhart_hart_c=10.0,
                     ),
-                    beta_coefficient_and_sensor_resistance_parameters=nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+                    beta_coefficient_and_sensor_resistance_parameters=daq.BetaCoefficientAndSensorResistanceParameters(
                         coefficient_steinhart_hart_beta_kelvins=303.15,
                         sensor_resistance_ohms=15.0,
                     ),
@@ -991,21 +992,21 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
             ),
         )
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermistorChannelRangeAndTerminalParameters(
+            daq.TemperatureThermistorChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai2",
-                channel_parameters=nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermistorRangeAndTerminalParameters(
                     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
                     temperature_minimum_value_celsius_degrees=0.0,
                     temperature_maximum_value_celsius_degrees=100.0,
                     voltage_excitation_value_volts=10.0,
                     thermistor_resistor_ohms=15.0,
-                    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
-                    coefficients_steinhart_hart_parameters=nipcbatt.CoefficientsSteinhartHartParameters(
+                    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+                    coefficients_steinhart_hart_parameters=daq.CoefficientsSteinhartHartParameters(
                         coefficient_steinhart_hart_a=15.0,
                         coefficient_steinhart_hart_b=25.0,
                         coefficient_steinhart_hart_c=16.0,
                     ),
-                    beta_coefficient_and_sensor_resistance_parameters=nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+                    beta_coefficient_and_sensor_resistance_parameters=daq.BetaCoefficientAndSensorResistanceParameters(
                         coefficient_steinhart_hart_beta_kelvins=289.15,
                         sensor_resistance_ohms=5.0,
                     ),
@@ -1036,7 +1037,7 @@ class TestTemperatureThermistorMeasurementConfiguration(unittest.TestCase):
 
         # Act
         temperature_thermistor_configuration_instance = (
-            nipcbatt.TemperatureThermistorMeasurementConfiguration(
+            daq.TemperatureThermistorMeasurementConfiguration(
                 global_channel_parameters=expected_global_channel_parameters,
                 specific_channels_parameters=expected_specific_channels_parameters,
                 measurement_execution_type=expected_measurement_execution_type,
@@ -1108,7 +1109,7 @@ class TestCoefficientsSteinhartHartParameters(unittest.TestCase):
 
         # Act
         expected_coefficients_steinhart_hart_parameters = (
-            nipcbatt.CoefficientsSteinhartHartParameters(
+            daq.CoefficientsSteinhartHartParameters(
                 coefficient_steinhart_hart_a=10.0,
                 coefficient_steinhart_hart_b=25.0,
                 coefficient_steinhart_hart_c=5.0,
@@ -1164,7 +1165,7 @@ class TestBetaCoefficientAndSensorResistanceParameters(unittest.TestCase):
 
         # Act
         expected_beta_coefficient_and_sensor_resistance_parameters = (
-            nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+            daq.BetaCoefficientAndSensorResistanceParameters(
                 coefficient_steinhart_hart_beta_kelvins=289.15,
                 sensor_resistance_ohms=10.0,
             )
@@ -1215,14 +1216,14 @@ class TestTemperatureThermistorRangeAndTerminalParameters(unittest.TestCase):
         """unit test of TemperatureThermistorRangeAndTerminalParameters."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_coefficients_steinhart_hart_parameters = (
-            nipcbatt.CoefficientsSteinhartHartParameters(
+            daq.CoefficientsSteinhartHartParameters(
                 coefficient_steinhart_hart_a=10.0,
                 coefficient_steinhart_hart_b=25.0,
                 coefficient_steinhart_hart_c=5.0,
             )
         )
         expected_beta_coefficient_and_sensor_resistance_parameters = (
-            nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+            daq.BetaCoefficientAndSensorResistanceParameters(
                 coefficient_steinhart_hart_beta_kelvins=289.15,
                 sensor_resistance_ohms=10.0,
             )
@@ -1231,13 +1232,13 @@ class TestTemperatureThermistorRangeAndTerminalParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+                daq.TemperatureThermistorRangeAndTerminalParameters(
                     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     voltage_excitation_value_volts=5.0,
                     thermistor_resistor_ohms=10.0,
-                    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+                    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
                     coefficients_steinhart_hart_parameters=expected_coefficients_steinhart_hart_parameters,
                     beta_coefficient_and_sensor_resistance_parameters=expected_beta_coefficient_and_sensor_resistance_parameters,
                 )
@@ -1253,27 +1254,27 @@ class TestTemperatureThermistorRangeAndTerminalParameters(unittest.TestCase):
         """unit test of TemperatureThermistorRangeAndTerminalParameters."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (173 > 100 characters) (auto-generated noqa)
         # Arrange
         expected_coefficients_steinhart_hart_parameters = (
-            nipcbatt.CoefficientsSteinhartHartParameters(
+            daq.CoefficientsSteinhartHartParameters(
                 coefficient_steinhart_hart_a=10.0,
                 coefficient_steinhart_hart_b=25.0,
                 coefficient_steinhart_hart_c=5.0,
             )
         )
         expected_beta_coefficient_and_sensor_resistance_parameters = (
-            nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+            daq.BetaCoefficientAndSensorResistanceParameters(
                 coefficient_steinhart_hart_beta_kelvins=289.15,
                 sensor_resistance_ohms=10.0,
             )
         )
 
         # Act
-        expected_temperature_thermistor_range_and_terminal_parameters = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+        expected_temperature_thermistor_range_and_terminal_parameters = daq.TemperatureThermistorRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             temperature_minimum_value_celsius_degrees=0.0,
             temperature_maximum_value_celsius_degrees=100.0,
             voltage_excitation_value_volts=5.0,
             thermistor_resistor_ohms=10.0,
-            steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+            steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
             coefficients_steinhart_hart_parameters=expected_coefficients_steinhart_hart_parameters,
             beta_coefficient_and_sensor_resistance_parameters=expected_beta_coefficient_and_sensor_resistance_parameters,
         )
@@ -1300,7 +1301,7 @@ class TestTemperatureThermistorRangeAndTerminalParameters(unittest.TestCase):
             expected_temperature_thermistor_range_and_terminal_parameters.thermistor_resistor_ohms,
         )
         self.assertEqual(
-            nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
+            daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS,
             expected_temperature_thermistor_range_and_terminal_parameters.steinhart_hart_equation_option,
         )
         self.assertEqual(
@@ -1350,15 +1351,15 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+                daq.TemperatureThermocoupleMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -1375,17 +1376,17 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+                daq.TemperatureThermocoupleMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=None,
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -1402,15 +1403,15 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+                daq.TemperatureThermocoupleMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=None,
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -1427,14 +1428,14 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+                daq.TemperatureThermocoupleMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=None,
                 )
@@ -1448,14 +1449,14 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
 
         # Arrange
         expected_global_channel_parameters = (
-            nipcbatt.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
+            daq.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS
         )
 
         expected_specific_channels_parameters = []
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(
+            daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai0",
-                channel_parameters=nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=10.0,
                     temperature_maximum_value_celsius_degrees=89.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1469,9 +1470,9 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
         )
 
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(
+            daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai1",
-                channel_parameters=nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=1.0,
                     temperature_maximum_value_celsius_degrees=79.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1484,9 +1485,9 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
             ),
         )
         expected_specific_channels_parameters.append(
-            nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(
+            daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
                 channel_name="Dev/ai2",
-                channel_parameters=nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                channel_parameters=daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=0.0,
                     temperature_maximum_value_celsius_degrees=100.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1522,7 +1523,7 @@ class TestTemperatureThermocoupleMeasurementConfiguration(unittest.TestCase):
 
         # Act
         temperature_thermocouple_configuration_instance = (
-            nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+            daq.TemperatureThermocoupleMeasurementConfiguration(
                 global_channel_parameters=expected_global_channel_parameters,
                 specific_channels_parameters=expected_specific_channels_parameters,
                 measurement_execution_type=expected_measurement_execution_type,
@@ -1597,7 +1598,7 @@ class TestTemperatureThermocoupleMeasurementTerminalParameters(unittest.TestCase
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementTerminalParameters(
+                daq.TemperatureThermocoupleMeasurementTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1620,7 +1621,7 @@ class TestTemperatureThermocoupleMeasurementTerminalParameters(unittest.TestCase
 
         with self.assertRaises(ValueError):
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementTerminalParameters(
+                daq.TemperatureThermocoupleMeasurementTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1637,7 +1638,7 @@ class TestTemperatureThermocoupleMeasurementTerminalParameters(unittest.TestCase
 
         with self.assertRaises(ValueError):
             print(
-                nipcbatt.TemperatureThermocoupleMeasurementTerminalParameters(
+                daq.TemperatureThermocoupleMeasurementTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1652,7 +1653,7 @@ class TestTemperatureThermocoupleMeasurementTerminalParameters(unittest.TestCase
 
         # Act
         expected_temperature_thermocouple_measurement_terminal_parameters = (
-            nipcbatt.TemperatureThermocoupleMeasurementTerminalParameters(
+            daq.TemperatureThermocoupleMeasurementTerminalParameters(
                 temperature_minimum_value_celsius_degrees=0.0,
                 temperature_maximum_value_celsius_degrees=100.0,
                 thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1726,7 +1727,7 @@ class TestTemperatureThermocoupleRangeAndTerminalParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1751,7 +1752,7 @@ class TestTemperatureThermocoupleRangeAndTerminalParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             print(
-                nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1770,7 +1771,7 @@ class TestTemperatureThermocoupleRangeAndTerminalParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             print(
-                nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+                daq.TemperatureThermocoupleRangeAndTerminalParameters(
                     temperature_minimum_value_celsius_degrees=99.0,
                     temperature_maximum_value_celsius_degrees=1.0,
                     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -1787,7 +1788,7 @@ class TestTemperatureThermocoupleRangeAndTerminalParameters(unittest.TestCase):
 
         # Act
         expected_temperature_thermocouple_range_and_terminal_parameters = (
-            nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+            daq.TemperatureThermocoupleRangeAndTerminalParameters(
                 temperature_minimum_value_celsius_degrees=0.0,
                 temperature_maximum_value_celsius_degrees=100.0,
                 thermocouple_type=nidaqmx.constants.ThermocoupleType.J,

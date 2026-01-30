@@ -12,6 +12,7 @@ import numpy.testing
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestPowerSupplySourceAndMeasureTerminalParameters(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestPowerSupplySourceAndMeasureTerminalParameters(unittest.TestCase):
         expected_idle_output_behaviour = nidaqmx.constants.PowerIdleOutputBehavior.OUTPUT_DISABLED
         expected_enable_output = True
 
-        instance = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+        instance = daq.PowerSupplySourceAndMeasureTerminalParameters(
             voltage_setpoint_volts=expected_voltage_setpoint_volts,
             current_setpoint_amperes=expected_current_setpoint_amperes,
             power_sense=expected_power_sense,
@@ -107,7 +108,7 @@ class TestPowerSupplySourceAndMeasureConfiguration(unittest.TestCase):
         expected_idle_output_behaviour = nidaqmx.constants.PowerIdleOutputBehavior.OUTPUT_DISABLED
         expected_enable_output = False
 
-        expected_terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+        expected_terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
             voltage_setpoint_volts=expected_voltage_setpoint_volts,
             current_setpoint_amperes=expected_current_setpoint_amperes,
             power_sense=expected_power_sense,
@@ -147,7 +148,7 @@ class TestPowerSupplySourceAndMeasureConfiguration(unittest.TestCase):
             digital_start_trigger_edge=expected_digital_start_trigger_edge,
         )
 
-        instance = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+        instance = daq.PowerSupplySourceAndMeasureConfiguration(
             terminal_parameters=expected_terminal_parameters,
             measurement_options=expected_measurement_options,
             sample_clock_timing_parameters=expected_sample_clock_timing_parameters,
@@ -236,7 +237,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         )
         expected_sampling_rate_hertz = 5000
 
-        instance = nipcbatt.PowerSupplySourceAndMeasureData(
+        instance = daq.PowerSupplySourceAndMeasureData(
             source_name=expected_source_name,
             voltage_samples=expected_voltage_samples,
             current_samples=expected_current_samples,
@@ -271,7 +272,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         # Test if the value error is thrown if voltage_samples is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureData(
+            lambda: daq.PowerSupplySourceAndMeasureData(
                 source_name=expected_source_name,
                 voltage_samples=None,
                 current_samples=expected_current_samples,
@@ -282,7 +283,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         # Test if the value error is thrown if voltage_samples is empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureData(
+            lambda: daq.PowerSupplySourceAndMeasureData(
                 source_name=expected_source_name,
                 voltage_samples=[],
                 current_samples=expected_current_samples,
@@ -293,7 +294,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         # Test if the value error is thrown if current_samples is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureData(
+            lambda: daq.PowerSupplySourceAndMeasureData(
                 source_name=expected_source_name,
                 voltage_samples=expected_voltage_samples,
                 current_samples=None,
@@ -304,7 +305,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         # Test if the value error is thrown if current_samples is empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureData(
+            lambda: daq.PowerSupplySourceAndMeasureData(
                 source_name=expected_source_name,
                 voltage_samples=expected_voltage_samples,
                 current_samples=[],
@@ -315,7 +316,7 @@ class TestPowerSupplySourceAndMeasureData(unittest.TestCase):
         # Test if the value error is thrown if sampling_rate is 0
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureData(
+            lambda: daq.PowerSupplySourceAndMeasureData(
                 source_name=expected_source_name,
                 voltage_samples=expected_voltage_samples,
                 current_samples=expected_current_samples,
@@ -378,7 +379,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
         expected_average_power_value_watts = 0.8
         expected_acquisition_duration_seconds = 0.01
 
-        instance = nipcbatt.PowerSupplySourceAndMeasureResultData(
+        instance = daq.PowerSupplySourceAndMeasureResultData(
             voltage_waveform=expected_voltage_waveform,
             current_waveform=expected_current_waveform,
             max_voltage_level_volts=expected_max_voltage_level_volts,
@@ -420,7 +421,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
         # Test if Value error is raised in voltage_waveform instance is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureResultData(
+            lambda: daq.PowerSupplySourceAndMeasureResultData(
                 voltage_waveform=None,
                 current_waveform=test_sample_waveform,
                 max_voltage_level_volts=0.0,
@@ -434,7 +435,7 @@ class TestPowerSupplySourceAndMeasureResultData(unittest.TestCase):
         # Test if Value error is raised in current_waveform instance is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.PowerSupplySourceAndMeasureResultData(
+            lambda: daq.PowerSupplySourceAndMeasureResultData(
                 voltage_waveform=test_sample_waveform,
                 current_waveform=None,
                 max_voltage_level_volts=0.0,

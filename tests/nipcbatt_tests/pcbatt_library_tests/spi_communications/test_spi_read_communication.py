@@ -9,6 +9,7 @@ from varname import nameof
 
 import nipcbatt
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
+from nipcbatt import communications
 
 
 class TestSpiReadCommunication(unittest.TestCase):
@@ -49,16 +50,16 @@ class TestSpiReadCommunication(unittest.TestCase):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_read_communication.SpiReadCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.SpiReadCommunication() as communication:
+        with communications.SpiReadCommunication() as communication:
             communication.initialize("USB-8452")
 
-            configuration = nipcbatt.DEFAULT_SPI_WRITE_COMMUNICATION_CONFIGURATION
+            configuration = communications.DEFAULT_SPI_WRITE_COMMUNICATION_CONFIGURATION
 
             print(f"parameters = {configuration}")
             results = communication.configure_and_read_data(configuration=communication)
             print(f"results = {results}")
             self.assertIsNotNone(None, results)
-            self.assertIsInstance(results, nipcbatt.SpiReadCommunicationData)
+            self.assertIsInstance(results, communications.SpiReadCommunicationData)
 
 
 if __name__ == "__main__":

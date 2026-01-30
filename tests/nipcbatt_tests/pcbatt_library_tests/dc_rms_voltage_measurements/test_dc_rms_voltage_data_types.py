@@ -51,15 +51,15 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=None,
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+                    measurement_options=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -76,17 +76,17 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=None,
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+                    measurement_options=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -103,17 +103,17 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[1.2, "4"],
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+                    measurement_options=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -133,17 +133,17 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_options=None,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -160,15 +160,15 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+                    measurement_options=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
                     sample_clock_timing_parameters=None,
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
             )
@@ -185,14 +185,14 @@ class TestDcRmsVoltageMeasurementConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementConfiguration(
+                daq.DcRmsVoltageMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_RANGE_AND_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+                    measurement_options=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_VOLTAGE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=None,
                 )
@@ -356,7 +356,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=None,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -376,7 +376,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=[],
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -396,7 +396,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=[0.0, "2"],
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -426,7 +426,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=None,
@@ -453,7 +453,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[],
@@ -480,7 +480,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=["0.0", 2.0],
@@ -510,7 +510,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -537,7 +537,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -564,7 +564,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
         # Act
         with self.assertRaises(TypeError) as ctx:
             print(
-                nipcbatt.DcRmsVoltageMeasurementResultData(
+                daq.DcRmsVoltageMeasurementResultData(
                     waveforms=expected_waveforms,
                     acquisition_duration_seconds=0.0,
                     dc_values_volts=[0.0],
@@ -613,7 +613,7 @@ class TestDcRmsVoltageMeasurementResultData(unittest.TestCase):
 
         expected_dc_values_volts = [1.0, 1.0, 1.0]
         expected_rms_values_volts = [2.0, 2.0, 0.0]
-        instance = nipcbatt.DcRmsVoltageMeasurementResultData(
+        instance = daq.DcRmsVoltageMeasurementResultData(
             waveforms=expected_waveforms,
             acquisition_duration_seconds=expected_acquisition_duration_seconds,
             dc_values_volts=expected_dc_values_volts,

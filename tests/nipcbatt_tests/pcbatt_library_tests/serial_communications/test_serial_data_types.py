@@ -9,6 +9,7 @@ import pyvisa.constants
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestSerialCommunicationParameters(unittest.TestCase):
@@ -47,7 +48,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=0,
                     number_of_bits_in_data_frame=5,
                     delay_before_receive_response_milliseconds=100,
@@ -70,7 +71,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=-7,
                     number_of_bits_in_data_frame=5,
                     delay_before_receive_response_milliseconds=100,
@@ -93,7 +94,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=115200,
                     number_of_bits_in_data_frame=2,
                     delay_before_receive_response_milliseconds=100,
@@ -117,7 +118,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=115200,
                     number_of_bits_in_data_frame=10,
                     delay_before_receive_response_milliseconds=100,
@@ -141,7 +142,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=115200,
                     number_of_bits_in_data_frame=5,
                     delay_before_receive_response_milliseconds=0,
@@ -164,7 +165,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationParameters(
+                communications.SerialCommunicationParameters(
                     data_rate_bauds=115200,
                     number_of_bits_in_data_frame=5,
                     delay_before_receive_response_milliseconds=-100,
@@ -192,7 +193,7 @@ class TestSerialCommunicationParameters(unittest.TestCase):
         expected_flow_control = pyvisa.constants.ControlFlow.xon_xoff
 
         # Act
-        instance = nipcbatt.SerialCommunicationParameters(
+        instance = communications.SerialCommunicationParameters(
             data_rate_bauds=expected_data_rate_bauds,
             number_of_bits_in_data_frame=expected_number_of_bits_in_data_frame,
             delay_before_receive_response_milliseconds=(
@@ -273,7 +274,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationConfiguration(
+                communications.SerialCommunicationConfiguration(
                     communication_parameters=None, command_to_send="HELO\r"
                 )
             )
@@ -295,7 +296,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         expected_stop_bits = pyvisa.constants.StopBits.one
         expected_flow_control = pyvisa.constants.ControlFlow.xon_xoff
 
-        communication_parameters = nipcbatt.SerialCommunicationParameters(
+        communication_parameters = communications.SerialCommunicationParameters(
             data_rate_bauds=expected_data_rate_bauds,
             number_of_bits_in_data_frame=expected_number_of_bits_in_data_frame,
             delay_before_receive_response_milliseconds=(
@@ -308,7 +309,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationConfiguration(
+                communications.SerialCommunicationConfiguration(
                     communication_parameters=communication_parameters,
                     command_to_send=None,
                 )
@@ -334,7 +335,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         expected_stop_bits = pyvisa.constants.StopBits.one
         expected_flow_control = pyvisa.constants.ControlFlow.xon_xoff
 
-        communication_parameters = nipcbatt.SerialCommunicationParameters(
+        communication_parameters = communications.SerialCommunicationParameters(
             data_rate_bauds=expected_data_rate_bauds,
             number_of_bits_in_data_frame=expected_number_of_bits_in_data_frame,
             delay_before_receive_response_milliseconds=(
@@ -347,7 +348,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationConfiguration(
+                communications.SerialCommunicationConfiguration(
                     communication_parameters=communication_parameters,
                     command_to_send="",
                 )
@@ -373,7 +374,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         expected_stop_bits = pyvisa.constants.StopBits.one
         expected_flow_control = pyvisa.constants.ControlFlow.xon_xoff
 
-        communication_parameters = nipcbatt.SerialCommunicationParameters(
+        communication_parameters = communications.SerialCommunicationParameters(
             data_rate_bauds=expected_data_rate_bauds,
             number_of_bits_in_data_frame=expected_number_of_bits_in_data_frame,
             delay_before_receive_response_milliseconds=(
@@ -386,7 +387,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SerialCommunicationConfiguration(
+                communications.SerialCommunicationConfiguration(
                     communication_parameters=communication_parameters,
                     command_to_send=" ",
                 )
@@ -413,7 +414,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         expected_flow_control = pyvisa.constants.ControlFlow.xon_xoff
         expected_command_to_send = "HELO\r"
 
-        expected_communication_parameters = nipcbatt.SerialCommunicationParameters(
+        expected_communication_parameters = communications.SerialCommunicationParameters(
             data_rate_bauds=expected_data_rate_bauds,
             number_of_bits_in_data_frame=expected_number_of_bits_in_data_frame,
             delay_before_receive_response_milliseconds=(
@@ -425,7 +426,7 @@ class TestSerialCommunicationConfiguration(unittest.TestCase):
         )
 
         # Act
-        instance = nipcbatt.SerialCommunicationConfiguration(
+        instance = communications.SerialCommunicationConfiguration(
             communication_parameters=expected_communication_parameters,
             command_to_send=expected_command_to_send,
         )
@@ -478,7 +479,7 @@ class TestSerialCommunicationData(unittest.TestCase):
 
         # Act
         with self.assertRaises(ValueError) as ctx:
-            print(nipcbatt.SerialCommunicationData(received_response=None))
+            print(communications.SerialCommunicationData(received_response=None))
 
         # Assert
         self.assertEqual(
@@ -496,7 +497,7 @@ class TestSerialCommunicationData(unittest.TestCase):
 
         # Act
         with self.assertRaises(ValueError) as ctx:
-            print(nipcbatt.SerialCommunicationData(received_response=""))
+            print(communications.SerialCommunicationData(received_response=""))
 
         # Assert
         self.assertEqual(
@@ -514,7 +515,7 @@ class TestSerialCommunicationData(unittest.TestCase):
 
         # Act
         with self.assertRaises(ValueError) as ctx:
-            print(nipcbatt.SerialCommunicationData(received_response=" "))
+            print(communications.SerialCommunicationData(received_response=" "))
 
         # Assert
         self.assertEqual(
@@ -532,7 +533,7 @@ class TestSerialCommunicationData(unittest.TestCase):
         expected_received_response = "HELO 0000 MP 300 1.11 5.27"
 
         # Act
-        instance = nipcbatt.SerialCommunicationData(
+        instance = communications.SerialCommunicationData(
             received_response=expected_received_response,
         )
         actual_received_response = instance.received_response

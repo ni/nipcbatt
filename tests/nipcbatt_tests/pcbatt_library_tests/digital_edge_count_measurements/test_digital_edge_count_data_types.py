@@ -12,16 +12,7 @@ import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-gener
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants.ConstantsForDigitalEdgeCountMeasurement' imported but unused (auto-generated noqa)
-    ConstantsForDigitalEdgeCountMeasurement,
-)
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (
-    DigitalEdgeCountHardwareTimerConfiguration,
-    DigitalEdgeCountMeasurementCounterChannelParameters,
-    DigitalEdgeCountMeasurementResultData,
-    DigitalEdgeCountMeasurementTimingParameters,
-    DigitalEdgeCountSoftwareTimerConfiguration,
-)
+from nipcbatt import daq
 
 
 class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
@@ -61,7 +52,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementCounterChannelParameters(
+                daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=None,
                 )
             )
@@ -74,7 +65,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     def test_digital_edge_count_measurement_counter_channel_parameter(self):
         """Tests if the instance of `DigitalEdgeCountMeasurementCounterChannelParameters`
         is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
-        instance = DigitalEdgeCountMeasurementCounterChannelParameters(
+        instance = daq.DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=nidaqmx.constants.Edge.FALLING
         )
 
@@ -91,7 +82,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementTimingParameters(
+                daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=None,
                 )
             )
@@ -110,7 +101,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementTimingParameters(
+                daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=-0.01,
                 )
             )
@@ -123,7 +114,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
     def test_digital_edge_count_measurement_timing_parameter(self):
         """Tests if the instance of `DigitalEdgeCountMeasurementTimingParameters`
         is created as expected"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (326 > 100 characters) (auto-generated noqa)
-        instance = DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.005)
+        instance = daq.DigitalEdgeCountMeasurementTimingParameters(edge_counting_duration=0.005)
 
         actual_edge_counting_duration = instance._edge_counting_duration
 
@@ -136,14 +127,14 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         # Create test values for the Counter Channel Parameter
         expected_edge_type = nidaqmx.constants.Edge.FALLING
 
-        expected_counter_channel_parameter = DigitalEdgeCountMeasurementCounterChannelParameters(
+        expected_counter_channel_parameter = daq.DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=expected_edge_type,
         )
 
         # Create test values for the Timing Parameter
         expected_edge_counting_duration = 0.005
 
-        expected_timing_parameters = DigitalEdgeCountMeasurementTimingParameters(
+        expected_timing_parameters = daq.DigitalEdgeCountMeasurementTimingParameters(
             edge_counting_duration=expected_edge_counting_duration,
         )
 
@@ -161,7 +152,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         # Create test values for measurement options
         expected_measurement_options = nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        instance = DigitalEdgeCountHardwareTimerConfiguration(
+        instance = daq.DigitalEdgeCountHardwareTimerConfiguration(
             measurement_options=expected_measurement_options,
             counter_channel_parameters=expected_counter_channel_parameter,
             timing_parameters=expected_timing_parameters,
@@ -172,7 +163,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         # DigitalEdgeCountHardwareTimerConfiguration
         logging.debug(
             "%s = %s",
-            nameof(DigitalEdgeCountHardwareTimerConfiguration),
+            nameof(daq.DigitalEdgeCountHardwareTimerConfiguration),
             instance,
         )
 
@@ -188,21 +179,21 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         # Create test values for the Counter Channel Parameter
         expected_edge_type = nidaqmx.constants.Edge.FALLING
 
-        expected_counter_channel_parameter = DigitalEdgeCountMeasurementCounterChannelParameters(
+        expected_counter_channel_parameter = daq.DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=expected_edge_type,
         )
 
         # Create test values for the Timing Parameter
         expected_edge_counting_duration = 0.005
 
-        expected_timing_parameters = DigitalEdgeCountMeasurementTimingParameters(
+        expected_timing_parameters = daq.DigitalEdgeCountMeasurementTimingParameters(
             edge_counting_duration=expected_edge_counting_duration,
         )
 
         # Create test values for measurement options
         expected_measurement_options = nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        instance = DigitalEdgeCountSoftwareTimerConfiguration(
+        instance = daq.DigitalEdgeCountSoftwareTimerConfiguration(
             measurement_options=expected_measurement_options,
             counter_channel_parameters=expected_counter_channel_parameter,
             timing_parameters=expected_timing_parameters,
@@ -212,7 +203,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         # DigitalEdgeCountSoftwareTimerConfiguration
         logging.debug(
             "%s = %s",
-            nameof(DigitalEdgeCountSoftwareTimerConfiguration),
+            nameof(daq.DigitalEdgeCountSoftwareTimerConfiguration),
             instance,
         )
 
@@ -226,12 +217,12 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountHardwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountHardwareTimerConfiguration(
                 measurement_options=None,
-                counter_channel_parameters=DigitalEdgeCountMeasurementCounterChannelParameters(
+                counter_channel_parameters= daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 ),
-                timing_parameters=DigitalEdgeCountMeasurementTimingParameters(
+                timing_parameters= daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=0.005,
                 ),
                 trigger_parameters=nipcbatt.DigitalStartTriggerParameters(
@@ -244,10 +235,10 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountHardwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountHardwareTimerConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                 counter_channel_parameters=None,
-                timing_parameters=DigitalEdgeCountMeasurementTimingParameters(
+                timing_parameters= daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=0.005,
                 ),
                 trigger_parameters=nipcbatt.DigitalStartTriggerParameters(
@@ -260,9 +251,9 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountHardwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountHardwareTimerConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
-                counter_channel_parameters=DigitalEdgeCountMeasurementCounterChannelParameters(
+                counter_channel_parameters= daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 ),
                 timing_parameters=None,
@@ -276,12 +267,12 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountHardwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountHardwareTimerConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
-                counter_channel_parameters=DigitalEdgeCountMeasurementCounterChannelParameters(
+                counter_channel_parameters= daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 ),
-                timing_parameters=DigitalEdgeCountMeasurementTimingParameters(
+                timing_parameters= daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=0.005,
                 ),
                 trigger_parameters=None,
@@ -294,12 +285,12 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
         """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountSoftwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountSoftwareTimerConfiguration(
                 measurement_options=None,
-                counter_channel_parameters=DigitalEdgeCountMeasurementCounterChannelParameters(
+                counter_channel_parameters= daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 ),
-                timing_parameters=DigitalEdgeCountMeasurementTimingParameters(
+                timing_parameters= daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=0.005,
                 ),
             ),
@@ -307,10 +298,10 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountSoftwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountSoftwareTimerConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                 counter_channel_parameters=None,
-                timing_parameters=DigitalEdgeCountMeasurementTimingParameters(
+                timing_parameters= daq.DigitalEdgeCountMeasurementTimingParameters(
                     edge_counting_duration=0.005,
                 ),
             ),
@@ -318,9 +309,9 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalEdgeCountSoftwareTimerConfiguration(
+            lambda: daq.DigitalEdgeCountSoftwareTimerConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
-                counter_channel_parameters=DigitalEdgeCountMeasurementCounterChannelParameters(
+                counter_channel_parameters= daq.DigitalEdgeCountMeasurementCounterChannelParameters(
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 ),
                 timing_parameters=None,
@@ -336,7 +327,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementResultData(
+                daq.DigitalEdgeCountMeasurementResultData(
                     edge_count=None,
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 )
@@ -356,7 +347,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementResultData(
+                daq.DigitalEdgeCountMeasurementResultData(
                     edge_count=-1,
                     edge_type=nidaqmx.constants.Edge.FALLING,
                 )
@@ -376,7 +367,7 @@ class TestDynamicDigitalEdgeCountMeasuremntDataTypes(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                DigitalEdgeCountMeasurementResultData(
+                daq.DigitalEdgeCountMeasurementResultData(
                     edge_count=5,
                     edge_type=None,
                 )

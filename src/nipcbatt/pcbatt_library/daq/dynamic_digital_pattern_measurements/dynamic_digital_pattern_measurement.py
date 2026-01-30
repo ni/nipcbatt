@@ -110,21 +110,18 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
             DynamicDigitalPatternMeasurementResultData | None: An instance of `DynamicDigitalPatternMeasurementResultData`
             or `None` if no measure was performed.
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (108 > 100 characters) (auto-generated noqa)
-
-        if (
-            configuration.measurement_options.execution_option
-            == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
-            == MeasurementExecutionType.CONFIGURE_ONLY
+            
+        exec_type = configuration.measurement_options
+        if exec_type in(
+            MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+            MeasurementExecutionType.CONFIGURE_ONLY
         ):
             self.configure_timing(configuration.timing_parameters)
             self.configure_trigger(configuration.trigger_parameters)
 
-        if (
-            configuration.measurement_options.execution_option
-            == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
-            == MeasurementExecutionType.MEASURE_ONLY
+        if exec_type in(
+            MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+            MeasurementExecutionType.MEASURE_ONLY
         ):
             data = self.acquire_data_for_measurement_analysis()
 

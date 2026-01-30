@@ -9,9 +9,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
     MeasurementOptions,
 )
-from nipcbatt.pcbatt_library.daq.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants.ConstantsForDynamicDigitalPatternMeasurement' imported but unused (auto-generated noqa)
-    ConstantsForDynamicDigitalPatternMeasurement,
-)
+
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 

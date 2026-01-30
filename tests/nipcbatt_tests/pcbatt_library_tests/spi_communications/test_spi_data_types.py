@@ -8,6 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestSpiDeviceParameters(unittest.TestCase):
@@ -44,7 +45,7 @@ class TestSpiDeviceParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_voltage_level = nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_25
 
-        instance = nipcbatt.SpiDeviceParameters(
+        instance = communications.SpiDeviceParameters(
             voltage_level=expected_voltage_level,
         )
 
@@ -94,7 +95,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiCommunicationParameters(
+                communications.SpiCommunicationParameters(
                     chip_select=expected_chip_select,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
                     clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
@@ -118,7 +119,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiCommunicationParameters(
+                communications.SpiCommunicationParameters(
                     chip_select=expected_chip_select,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
                     clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
@@ -140,7 +141,7 @@ class TestSpiCommunicationParameters(unittest.TestCase):
         expected_clock_phase = nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE
         expected_clock_polarity = nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW
 
-        instance = nipcbatt.SpiCommunicationParameters(
+        instance = communications.SpiCommunicationParameters(
             chip_select=expected_chip_select,
             clock_rate_kilohertz=expected_clock_rate_kilohertz,
             clock_phase=expected_clock_phase,

@@ -7,12 +7,7 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_data_types import (
-    DigitalFrequencyMeasurementConfiguration,
-    DigitalFrequencyMeasurementCounterChannelParameters,
-    DigitalFrequencyMeasurementResultData,
-    DigitalFrequencyRangeParameters,
-)
+from nipcbatt import daq
 
 
 class TestDigitalFrequencyRangeParameters(unittest.TestCase):
@@ -51,7 +46,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         expected_minimum_frequency = 1.0
         expected_maximum_frequency = 999999999.0
 
-        instance = DigitalFrequencyRangeParameters(
+        instance = daq.DigitalFrequencyRangeParameters(
             frequency_minimum_value_hertz=expected_minimum_frequency,
             frequency_maximum_value_hertz=expected_maximum_frequency,
         )
@@ -72,7 +67,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyRangeParameters(
+            lambda: daq.DigitalFrequencyRangeParameters(
                 frequency_minimum_value_hertz=expected_minimum_frequency,
                 frequency_maximum_value_hertz=expected_maximum_frequency,
             ),
@@ -83,7 +78,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyRangeParameters(
+            lambda: daq.DigitalFrequencyRangeParameters(
                 frequency_minimum_value_hertz=expected_minimum_frequency,
                 frequency_maximum_value_hertz=expected_maximum_frequency,
             ),
@@ -94,7 +89,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyRangeParameters(
+            lambda: daq.DigitalFrequencyRangeParameters(
                 frequency_minimum_value_hertz=expected_minimum_frequency,
                 frequency_maximum_value_hertz=expected_maximum_frequency,
             ),
@@ -105,7 +100,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyRangeParameters(
+            lambda: daq.DigitalFrequencyRangeParameters(
                 frequency_minimum_value_hertz=expected_minimum_frequency,
                 frequency_maximum_value_hertz=expected_maximum_frequency,
             ),
@@ -116,7 +111,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyRangeParameters(
+            lambda: daq.DigitalFrequencyRangeParameters(
                 frequency_minimum_value_hertz=expected_minimum_frequency,
                 frequency_maximum_value_hertz=expected_maximum_frequency,
             ),
@@ -130,15 +125,15 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         min_freq = 1.0
         max_freq = 999999999.0
 
-        expected_range_param = DigitalFrequencyRangeParameters(min_freq, max_freq)
+        expected_range_param = daq.DigitalFrequencyRangeParameters(min_freq, max_freq)
         expected_input_divisor = 100.0
         expected_duration = 1.0
 
-        expected_config = DigitalFrequencyMeasurementCounterChannelParameters(
+        expected_config = daq.DigitalFrequencyMeasurementCounterChannelParameters(
             expected_range_param, expected_input_divisor, expected_duration
         )
 
-        instance = DigitalFrequencyMeasurementConfiguration(expected_config)
+        instance = daq.DigitalFrequencyMeasurementConfiguration(expected_config)
 
         actual_config = instance.counter_channel_configuration_parameters
 
@@ -150,7 +145,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         # DigitalFrequencyMeasurementCounterChannelParameters is None
-        self.assertRaises(ValueError, lambda: DigitalFrequencyMeasurementConfiguration(None))
+        self.assertRaises(ValueError, lambda: daq.DigitalFrequencyMeasurementConfiguration(None))
 
     def test_digital_frequency_measurement_counter_channel_parameters(self):
         """Tests if an instance of DigitalFrequencyMeasurementCounterChannelParameters
@@ -159,11 +154,11 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         expected_min_freq = 0.0
         expected_max_freq = 999999999.0
-        expected_range_param = DigitalFrequencyRangeParameters(expected_min_freq, expected_max_freq)
+        expected_range_param = daq.DigitalFrequencyRangeParameters(expected_min_freq, expected_max_freq)
         expected_input_divisor = 100.0
         expected_duration = 1.0
 
-        instance = DigitalFrequencyMeasurementCounterChannelParameters(
+        instance = daq.DigitalFrequencyMeasurementCounterChannelParameters(
             expected_range_param, expected_input_divisor, expected_duration
         )
 
@@ -186,14 +181,14 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
 
         min_frequency = 0.0
         max_frequency = 999999999.0
-        range_parameters = DigitalFrequencyRangeParameters(min_frequency, max_frequency)
+        range_parameters = daq.DigitalFrequencyRangeParameters(min_frequency, max_frequency)
         input_divisor = 10.0
         measurement_duration = 1.0
 
         # range_parameters is None
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementCounterChannelParameters(
+            lambda: daq.DigitalFrequencyMeasurementCounterChannelParameters(
                 None, input_divisor, measurement_duration
             ),
         )
@@ -201,7 +196,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         # input_divisor is None
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementCounterChannelParameters(
+            lambda: daq.DigitalFrequencyMeasurementCounterChannelParameters(
                 range_parameters, None, measurement_duration
             ),
         )
@@ -209,7 +204,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         # input_divisor is 0
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementCounterChannelParameters(
+            lambda: daq.DigitalFrequencyMeasurementCounterChannelParameters(
                 range_parameters, 0, measurement_duration
             ),
         )
@@ -217,7 +212,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         # measurement_duration is None
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementCounterChannelParameters(
+            lambda: daq.DigitalFrequencyMeasurementCounterChannelParameters(
                 range_parameters, input_divisor, None
             ),
         )
@@ -225,7 +220,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         # measurment_duration is 0
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementCounterChannelParameters(
+            lambda: daq.DigitalFrequencyMeasurementCounterChannelParameters(
                 range_parameters, input_divisor, 0
             ),
         )
@@ -236,7 +231,7 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
         expected_frequency = 10000000
-        instance = DigitalFrequencyMeasurementResultData(expected_frequency)
+        instance = daq.DigitalFrequencyMeasurementResultData(expected_frequency)
         self.assertEqual(expected_frequency, instance.frequency)
 
     def test_digital_frequency_measurement_result_data_with_invalid_data(self):
@@ -247,13 +242,13 @@ class TestDigitalFrequencyRangeParameters(unittest.TestCase):
         expected_frequency = None
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementResultData(expected_frequency),
+            lambda: daq.DigitalFrequencyMeasurementResultData(expected_frequency),
         )
 
         expected_frequency = -0.1
         self.assertRaises(
             ValueError,
-            lambda: DigitalFrequencyMeasurementResultData(expected_frequency),
+            lambda: daq.DigitalFrequencyMeasurementResultData(expected_frequency),
         )
 
 
