@@ -835,6 +835,9 @@ class TestFrequencyDomainMeasurementResultData(unittest.TestCase):
             )
         )
 
+        print(len(self._expected_waveforms))
+        print(len(self._expected_detected_tones))
+
         with self.assertRaises(ValueError) as ctx:
             print(
                 daq.FrequencyDomainMeasurementResultData(

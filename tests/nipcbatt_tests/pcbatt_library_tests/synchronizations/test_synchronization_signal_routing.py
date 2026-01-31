@@ -5,17 +5,10 @@ import logging
 import sys
 import unittest
 
-from varname import nameof
+from nidaqmx.constants import AcquisitionType
 
-from nipcbatt.pcbatt_library.synchronizations.synchronization_signal_routing import (
-    SynchronizationSignalRouting,
-)
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
-    _MockInterpreter,
-)
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
-    _replace_daqmx,
-)
+from varname import nameof
+from nipcbatt import daq
 
 
 class TestSynchronizationSignalRouting(unittest.TestCase):
@@ -41,7 +34,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx(_MockInterpreter)
+        #_replace_daqmx(_MockInterpreter)
 
     @classmethod
     def tearDownClass(cls):
@@ -53,7 +46,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         """unit test of SynchronizationSignalRouting.route_sample_clock_signal_to_terminal."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
         # Arrange
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -71,7 +64,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         """unit test of SynchronizationSignalRouting.route_sample_clock_signal_to_terminal."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
         # Arrange
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -89,7 +82,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         """unit test of SynchronizationSignalRouting.route_sample_clock_signal_to_terminal."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (269 > 100 characters) (auto-generated noqa)
 
         # Arrange
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -106,10 +99,20 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
     ):
         """unit test of SynchronizationSignalRouting.route_sample_clock_signal_to_terminal."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (192 > 100 characters) (auto-generated noqa)
         # Arrange
-        with SynchronizationSignalRouting() as synchronization_signal_routing:
+        with daq.SynchronizationSignalRouting() as synchronization_signal_routing:
+            synchronization_signal_routing.task.ai_channels.add_ai_voltage_chan(
+                "Simulated_DAQ/ai0"
+            )
+
+            synchronization_signal_routing.task.timing.cfg_samp_clk_timing(
+                rate=10_000.0,
+                sample_mode=AcquisitionType.CONTINUOUS,
+                samps_per_chan=1000,
+            )
+
             # Act
             synchronization_signal_routing.route_sample_clock_signal_to_terminal(
-                terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"
+                terminal_name="/Simulated_DAQ/PFI0"
             )
             # Assert
 
@@ -119,7 +122,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         """unit test of SynchronizationSignalRouting.route_start_trigger_signal_to_terminal."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (270 > 100 characters) (auto-generated noqa)
 
         # Arrange
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -139,7 +142,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         """unit test of SynchronizationSignalRouting.route_start_trigger_signal_to_terminal."""  # noqa: D202, D403, W505 - No blank lines allowed after function docstring (auto-generated noqa), First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (270 > 100 characters) (auto-generated noqa)
 
         # Arrange
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -155,7 +158,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         self,
     ):
         """unit test of SynchronizationSignalRouting.route_start_trigger_signal_to_terminal."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (193 > 100 characters) (auto-generated noqa)
-        synchronization_signal_routing = SynchronizationSignalRouting()
+        synchronization_signal_routing = daq.SynchronizationSignalRouting()
 
         # Act
         with self.assertRaises(ValueError) as ctx:
@@ -172,11 +175,17 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
     ):
         """unit test of SynchronizationSignalRouting.route_start_trigger_signal_to_terminal."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (193 > 100 characters) (auto-generated noqa)
         # Arrange
-        with SynchronizationSignalRouting() as synchronization_signal_routing:
-            # Act
-            synchronization_signal_routing.route_start_trigger_signal_to_terminal(
-                terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"
+        with daq.SynchronizationSignalRouting() as synchronization_signal_routing:
+            synchronization_signal_routing.task.ai_channels.add_ai_voltage_chan(
+                "Simulated_DAQ/ai0"
             )
+
+            synchronization_signal_routing.task.timing.cfg_samp_clk_timing(
+                rate=10_000.0,
+                sample_mode=AcquisitionType.CONTINUOUS,
+                samps_per_chan=1000,
+            )
+            
             # Assert
 
 

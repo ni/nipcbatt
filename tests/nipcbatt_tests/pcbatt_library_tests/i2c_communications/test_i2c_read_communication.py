@@ -12,6 +12,7 @@ from nipcbatt import communications
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
 
 
+
 class TestI2cReadCommunication(unittest.TestCase):
     """Defines a test fixture that checks the `I2cReadCommunication` class.
 
