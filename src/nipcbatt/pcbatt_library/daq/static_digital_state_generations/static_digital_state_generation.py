@@ -16,7 +16,7 @@ from nipcbatt.pcbatt_library.daq.static_digital_state_generations.static_digital
     StaticDigitalStateGenerationConfiguration,
     StaticDigitalStateGenerationData,
 )
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

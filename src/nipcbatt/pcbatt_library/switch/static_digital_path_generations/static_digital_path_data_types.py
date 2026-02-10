@@ -23,7 +23,7 @@ class StaticDigitalPathGenerationChannelParameters(PCBATestToolkitData):
         Guard.is_not_none_nor_empty_nor_whitespace(channel_two, nameof(channel_two))
 
         #assign values
-        self._channel_one = channel_two
+        self._channel_one = channel_one
         self._channel_two = channel_two
 
     @property 
@@ -52,7 +52,6 @@ class StaticDigitalPathGenerationStateParameters(PCBATestToolkitData):
 
         #inout validation
         Guard.is_not_none(connect, nameof(connect))
-        Guard.is_not_empty(connect, nameof(connect))
         Guard.is_not_float(connect, nameof(connect))
 
         # assign values 
@@ -185,6 +184,7 @@ class StaticDigitalPathGenerarionPathStatus(PCBATestToolkitData):
 
         #input validation
         Guard.is_not_none(path_status, nameof(path_status))
+        Guard.is_not_float(path_status, nameof(path_status))
 
         #assign values 
         self._path_status = path_status

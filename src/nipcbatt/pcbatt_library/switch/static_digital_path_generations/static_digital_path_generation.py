@@ -133,7 +133,7 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
         #return path capbility inside path status object
         return StaticDigitalPathGenerarionPathStatus(path_capability)
 
-
+        
         
 
 
