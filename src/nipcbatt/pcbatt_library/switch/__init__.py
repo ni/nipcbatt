@@ -7,3 +7,7 @@ from nipcbatt.pcbatt_library.switch.static_digital_path_generations.static_digit
     StaticDigitalPathGenerationTerminalAndStateSettings,
     StaticDigitalPathGenerationTimingParameters
 )
+
+from nipcbatt.pcbatt_library.switch.static_digital_path_generations.static_digital_path_generation import(
+    StaticDigitalPathGeneration
+)
