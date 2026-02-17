@@ -1,4 +1,5 @@
 """Use this class to connect switch paths is a test fixture"""
+# pylint: disable=W0611
 
 from typing import List
 from varname import nameof

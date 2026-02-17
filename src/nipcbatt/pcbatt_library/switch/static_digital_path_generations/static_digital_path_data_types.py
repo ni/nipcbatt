@@ -1,8 +1,8 @@
-from typing import List
+"These data types are used when implementing digital path generation"
 
 import niswitch
 
-from varname import nameof 
+from varname import nameof
 
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
