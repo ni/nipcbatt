@@ -10,7 +10,7 @@ import nidaqmx.utils
 from nidaqmx._library_interpreter import LibraryInterpreter
 from nidaqmx._task_modules.channels.channel import ChannelType
 
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_constants import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_constants import (
     _DAQMX_ATTRIBUTES,
     _ConstantsForMockDAQmx,
 )

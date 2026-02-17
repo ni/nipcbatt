@@ -280,6 +280,8 @@ class DcRmsCurrentMeasurementResultData(PCBATestToolkitData):
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
         Guard.all_elements_are_of_same_type(input_list=dc_values_amperes, expected_type=float)
         Guard.all_elements_are_of_same_type(input_list=rms_values_amperes, expected_type=float)
+        Guard.have_same_size(waveforms, nameof(waveforms), dc_values_amperes, nameof(dc_values_amperes))
+        Guard.have_same_size(waveforms, nameof(waveforms), rms_values_amperes, nameof(rms_values_amperes))
 
         self._waveforms = waveforms
         self._acquisition_duration_seconds = acquisition_duration_seconds

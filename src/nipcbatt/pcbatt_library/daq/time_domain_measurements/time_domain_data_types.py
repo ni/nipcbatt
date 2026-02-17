@@ -168,6 +168,18 @@ class TimeDomainMeasurementResultData(PCBATestToolkitData):
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
 
+        Guard.is_not_empty(mean_dc_voltage_values_volts, nameof(mean_dc_voltage_values_volts))
+        Guard.is_not_none(mean_dc_voltage_values_volts, nameof(mean_dc_voltage_values_volts))
+
+        Guard.is_not_none(vpp_amplitudes_volts, nameof(vpp_amplitudes_volts))
+        Guard.is_not_empty(vpp_amplitudes_volts, nameof(vpp_amplitudes_volts))
+        
+        Guard.is_not_none(voltage_waveforms_frequencies_hertz, nameof(voltage_waveforms_frequencies_hertz))
+        
+        Guard.is_not_none(voltage_waveforms_periods_seconds, nameof(voltage_waveforms_periods_seconds))
+        
+        Guard.is_not_none(voltage_waveforms_duty_cycles_percent, nameof(voltage_waveforms_duty_cycles_percent))        
+
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
         Guard.all_elements_are_of_same_type(
             input_list=mean_dc_voltage_values_volts, expected_type=float

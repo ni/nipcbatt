@@ -156,6 +156,13 @@ class DcRmsVoltageMeasurementResultData(PCBATestToolkitData):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (120 > 100 characters) (auto-generated noqa)
         Guard.is_not_none(waveforms, nameof(waveforms))
         Guard.is_not_empty(waveforms, nameof(waveforms))
+
+        Guard.is_not_none(dc_values_volts, nameof(dc_values_volts))
+        Guard.is_not_empty(dc_values_volts, nameof(dc_values_volts))
+
+        Guard.is_not_none(rms_values_volts, nameof(rms_values_volts))
+        Guard.is_not_empty(rms_values_volts, nameof(rms_values_volts))
+
         Guard.all_elements_are_of_same_type(input_list=waveforms, expected_type=AnalogWaveform)
         Guard.all_elements_are_of_same_type(input_list=dc_values_volts, expected_type=float)
         Guard.all_elements_are_of_same_type(input_list=rms_values_volts, expected_type=float)

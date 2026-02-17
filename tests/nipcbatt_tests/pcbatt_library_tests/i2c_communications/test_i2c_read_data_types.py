@@ -10,6 +10,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestI2cReadParameters(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestI2cReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadParameters(
+                communications.I2cReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=None,
                 )
@@ -76,7 +77,7 @@ class TestI2cReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadParameters(
+                communications.I2cReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=expected_memory_address_parameters,
                 )
@@ -102,7 +103,7 @@ class TestI2cReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadParameters(
+                communications.I2cReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=expected_memory_address_parameters,
                 )
@@ -124,7 +125,7 @@ class TestI2cReadParameters(unittest.TestCase):
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
         )
 
-        instance = nipcbatt.I2cReadParameters(
+        instance = communications.I2cReadParameters(
             number_of_bytes_to_read=expected_number_of_bytes_to_read,
             memory_address_parameters=expected_memory_address_parameters,
         )
@@ -174,13 +175,13 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_communication_parameters = nipcbatt.I2cCommunicationParameters(
+        expected_communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
             ack_poll_timeout_milliseconds=1000,
         )
-        expected_communication_read_parameters = nipcbatt.I2cReadParameters(
+        expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -192,7 +193,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadCommunicationConfiguration(
+                communications.I2cReadCommunicationConfiguration(
                     device_parameters=None,
                     communication_parameters=expected_communication_parameters,
                     read_parameters=expected_communication_read_parameters,
@@ -209,11 +210,11 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_device_parameters = nipcbatt.I2cDeviceParameters(
+        expected_device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_read_parameters = nipcbatt.I2cReadParameters(
+        expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -225,7 +226,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadCommunicationConfiguration(
+                communications.I2cReadCommunicationConfiguration(
                     device_parameters=expected_device_parameters,
                     communication_parameters=None,
                     read_parameters=expected_communication_read_parameters,
@@ -242,11 +243,11 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_device_parameters = nipcbatt.I2cDeviceParameters(
+        expected_device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_parameters = nipcbatt.I2cCommunicationParameters(
+        expected_communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
@@ -256,7 +257,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadCommunicationConfiguration(
+                communications.I2cReadCommunicationConfiguration(
                     device_parameters=expected_device_parameters,
                     communication_parameters=expected_communication_parameters,
                     read_parameters=None,
@@ -270,17 +271,17 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         """Unit test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        expected_device_parameters = nipcbatt.I2cDeviceParameters(
+        expected_device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_parameters = nipcbatt.I2cCommunicationParameters(
+        expected_communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
             ack_poll_timeout_milliseconds=1000,
         )
-        expected_communication_read_parameters = nipcbatt.I2cReadParameters(
+        expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -289,7 +290,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
             ),
         )
 
-        instance = nipcbatt.I2cReadCommunicationConfiguration(
+        instance = communications.I2cReadCommunicationConfiguration(
             device_parameters=expected_device_parameters,
             communication_parameters=expected_communication_parameters,
             read_parameters=expected_communication_read_parameters,
@@ -345,7 +346,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadCommunicationData(
+                communications.I2cReadCommunicationData(
                     data_bytes_read=None,
                 )
             )
@@ -364,7 +365,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cReadCommunicationData(
+                communications.I2cReadCommunicationData(
                     data_bytes_read=numpy.array([]),
                 )
             )
@@ -384,7 +385,7 @@ class TestI2cReadCommunicationData(unittest.TestCase):
         )
         expected_data_bytes_read = numpy.array(expected_data_bytes_read_list, dtype=numpy.ubyte)
 
-        instance = nipcbatt.I2cReadCommunicationData(data_bytes_read=expected_data_bytes_read)
+        instance = communications.I2cReadCommunicationData(data_bytes_read=expected_data_bytes_read)
 
         actual_data_bytes_read = instance.data_bytes_read
 

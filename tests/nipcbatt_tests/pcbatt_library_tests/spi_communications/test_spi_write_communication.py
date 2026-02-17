@@ -10,6 +10,7 @@ from varname import nameof
 
 import nipcbatt
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
+from nipcbatt import communications
 
 
 class TestSpiWriteCommunication(unittest.TestCase):
@@ -50,10 +51,10 @@ class TestSpiWriteCommunication(unittest.TestCase):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_write_communication.SpiWriteCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.SpiWriteCommunication() as communication:
+        with communications.SpiWriteCommunication() as communication:
             communication.initialize("USB-8452")
 
-            write_parameters = nipcbatt.SpiWriteParameters(
+            write_parameters = communications.SpiWriteParameters(
                 number_of_bytes_per_page=1,
                 delay_between_page_write_operations_milliseconds=500,
                 data_to_be_written=numpy.array(
@@ -84,9 +85,9 @@ class TestSpiWriteCommunication(unittest.TestCase):
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
                 ),
             )
-            configuration = nipcbatt.SpiWriteCommunicationConfiguration(
-                device_parameters=nipcbatt.DEFAULT_SPI_DEVICE_PARAMETERS,
-                communication_parameters=nipcbatt.DEFAULT_SPI_COMMUNICATION_PARAMETERS,
+            configuration = communications.SpiWriteCommunicationConfiguration(
+                device_parameters=communications.DEFAULT_SPI_DEVICE_PARAMETERS,
+                communication_parameters=communications.DEFAULT_SPI_COMMUNICATION_PARAMETERS,
                 write_parameters=write_parameters,
             )
 

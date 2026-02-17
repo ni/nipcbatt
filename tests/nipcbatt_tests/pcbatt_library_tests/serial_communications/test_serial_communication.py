@@ -8,7 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-
+from nipcbatt import communications
 
 class TestSerialCommunication(unittest.TestCase):
     """Defines a test fixture that checks `SerialCommunication` class.
@@ -45,18 +45,18 @@ class TestSerialCommunication(unittest.TestCase):
         """Unit test of
         nipcbatt.pcbatt_library.serial_communications.serial_communication.SerialCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.SerialCommunication() as communication:
+        with communications.SerialCommunication() as communication:
             communication.initialize("ASRL7::INSTR")
 
-            communication_parameters = nipcbatt.SerialCommunicationParameters(
+            communication_parameters = communications.SerialCommunicationParameters(
                 data_rate_bauds=9600,
                 number_of_bits_in_data_frame=8,
                 delay_before_receive_response_milliseconds=100,
-                parity=nipcbatt.ConstantsForSerialCommunication.DEFAULT_PARITY,
-                stop_bits=nipcbatt.ConstantsForSerialCommunication.DEFAULT_STOP_BITS,
-                flow_control=nipcbatt.ConstantsForSerialCommunication.DEFAULT_FLOW_CONTROL_MODE,
+                parity=communications.ConstantsForSerialCommunication.DEFAULT_PARITY,
+                stop_bits=communications.ConstantsForSerialCommunication.DEFAULT_STOP_BITS,
+                flow_control=communications.ConstantsForSerialCommunication.DEFAULT_FLOW_CONTROL_MODE,
             )
-            configuration = nipcbatt.SerialCommunicationConfiguration(
+            configuration = communications.SerialCommunicationConfiguration(
                 communication_parameters=communication_parameters,
                 command_to_send="*IDN?",
             )
@@ -67,7 +67,7 @@ class TestSerialCommunication(unittest.TestCase):
             )
             print(f"results = {results}")
             self.assertIsNotNone(results)
-            self.assertIsInstance(results, nipcbatt.SerialCommunicationData)
+            self.assertIsInstance(results, communications.SerialCommunicationData)
 
 
 if __name__ == "__main__":

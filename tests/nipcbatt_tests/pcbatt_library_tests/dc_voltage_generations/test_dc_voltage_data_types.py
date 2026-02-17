@@ -8,6 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestDcVoltageGenerationConfiguration(unittest.TestCase):
@@ -48,7 +49,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
             range_max_volts=expected_range_max_volts,
         )
 
-        instance = nipcbatt.DcVoltageGenerationConfiguration(
+        instance = daq.DcVoltageGenerationConfiguration(
             voltage_generation_range_parameters=expected_voltage_generation_range_parameters,
             output_voltages=expected_output_voltages,
         )
@@ -67,7 +68,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
         instance of `DcVoltageGenerationConfiguration` with empty channel parameters"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (380 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcVoltageGenerationConfiguration(
+            lambda: daq.DcVoltageGenerationConfiguration(
                 voltage_generation_range_parameters=None,
                 output_voltages=[],
             ),
@@ -79,9 +80,9 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.DcVoltageGenerationConfiguration(
+            lambda: daq.DcVoltageGenerationConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS
                 ),
                 output_voltages=[],
             ),

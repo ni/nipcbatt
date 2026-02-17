@@ -9,6 +9,7 @@ import nidaqmx.constants
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestToneParameters(unittest.TestCase):
@@ -45,7 +46,7 @@ class TestToneParameters(unittest.TestCase):
         expected_amplitude = 1.0
         expected_phase = 0
 
-        instance = nipcbatt.ToneParameters(
+        instance = daq.ToneParameters(
             tone_frequency_hertz=expected_tone_frequency,
             tone_amplitude_volts=expected_amplitude,
             tone_phase_radians=expected_phase,
@@ -69,7 +70,7 @@ class TestToneParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.ToneParameters(
+            lambda: daq.ToneParameters(
                 tone_frequency_hertz=0,
                 tone_amplitude_volts=expected_amplitude,
                 tone_phase_radians=expected_phase,
@@ -78,7 +79,7 @@ class TestToneParameters(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.ToneParameters(
+            lambda: daq.ToneParameters(
                 tone_frequency_hertz=expected_tone_frequency,
                 tone_amplitude_volts=0,
                 tone_phase_radians=expected_phase,
@@ -125,7 +126,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationTimingParameters(
+                daq.SignalVoltageGenerationTimingParameters(
                     sample_clock_source=None,
                     sampling_rate_hertz=expected_sampling_rate_hertz,
                     generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -148,7 +149,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationTimingParameters(
+                daq.SignalVoltageGenerationTimingParameters(
                     sample_clock_source="",
                     sampling_rate_hertz=expected_sampling_rate_hertz,
                     generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -171,7 +172,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationTimingParameters(
+                daq.SignalVoltageGenerationTimingParameters(
                     sample_clock_source=" ",
                     sampling_rate_hertz=expected_sampling_rate_hertz,
                     generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -194,7 +195,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationTimingParameters(
+                daq.SignalVoltageGenerationTimingParameters(
                     sample_clock_source=expected_sample_clock_source,
                     sampling_rate_hertz=-6,
                     generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -217,7 +218,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationTimingParameters(
+                daq.SignalVoltageGenerationTimingParameters(
                     sample_clock_source=expected_sample_clock_source,
                     sampling_rate_hertz=1000,
                     generated_signal_duration_seconds=0,
@@ -237,7 +238,7 @@ class TestSignalVoltageGenerationTimingParameters(unittest.TestCase):
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.200
 
-        instance = nipcbatt.SignalVoltageGenerationTimingParameters(
+        instance = daq.SignalVoltageGenerationTimingParameters(
             sample_clock_source=expected_sample_clock_source,
             sampling_rate_hertz=expected_sampling_rate_hertz,
             generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -290,13 +291,13 @@ class TestSignalVoltageGenerationSineWaveParameters(unittest.TestCase):
         expected_amplitude = 1.0
         expected_phase = 0
 
-        expected_generated_signal_tone_parameters = nipcbatt.ToneParameters(
+        expected_generated_signal_tone_parameters = daq.ToneParameters(
             tone_frequency_hertz=expected_tone_frequency,
             tone_amplitude_volts=expected_amplitude,
             tone_phase_radians=expected_phase,
         )
 
-        instance = nipcbatt.SignalVoltageGenerationSineWaveParameters(
+        instance = daq.SignalVoltageGenerationSineWaveParameters(
             generated_signal_offset_volts=expected_generated_signal_offset_volts,
             generated_signal_tone_parameters=expected_generated_signal_tone_parameters,
         )
@@ -320,7 +321,7 @@ class TestSignalVoltageGenerationSineWaveParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationSineWaveParameters(
+                daq.SignalVoltageGenerationSineWaveParameters(
                     generated_signal_offset_volts=0.0,
                     generated_signal_tone_parameters=None,
                 )
@@ -364,7 +365,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
         """Tests if the instance of `SignalVoltageGenerationSquareWaveParameters`
         is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
-        instance = nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+        instance = daq.SignalVoltageGenerationSquareWaveParameters(
             generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
             generated_signal_frequency_hertz=self._expected_generated_signal_frequency_hertz,
             generated_signal_amplitude_volts=self._expected_generated_signal_amplitude_volts,
@@ -406,7 +407,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+                daq.SignalVoltageGenerationSquareWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_frequency_hertz=0.0,
                     generated_signal_amplitude_volts=(
@@ -433,7 +434,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+                daq.SignalVoltageGenerationSquareWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_frequency_hertz=(
                         self._expected_generated_signal_frequency_hertz
@@ -461,7 +462,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+                daq.SignalVoltageGenerationSquareWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_frequency_hertz=(
                         self._expected_generated_signal_frequency_hertz
@@ -481,7 +482,7 @@ class TestSignalVoltageGenerationSquareWaveParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+                daq.SignalVoltageGenerationSquareWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_frequency_hertz=(
                         self._expected_generated_signal_frequency_hertz
@@ -515,7 +516,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         self._expected_multiple_tones_parameters = []
 
         self._expected_multiple_tones_parameters.append(
-            nipcbatt.ToneParameters(
+            daq.ToneParameters(
                 tone_frequency_hertz=100,
                 tone_amplitude_volts=0.5,
                 tone_phase_radians=0.2,
@@ -523,7 +524,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         )
 
         self._expected_multiple_tones_parameters.append(
-            nipcbatt.ToneParameters(
+            daq.ToneParameters(
                 tone_frequency_hertz=200,
                 tone_amplitude_volts=1.0,
                 tone_phase_radians=0,
@@ -551,7 +552,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """Tests if the instance of `SignalVoltageGenerationMultipleTonesWaveParameters`
         is created as expected"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (403 > 100 characters) (auto-generated noqa)
 
-        instance = nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+        instance = daq.SignalVoltageGenerationMultipleTonesWaveParameters(
             generated_signal_amplitude_volts=self._expected_generated_signal_amplitude_volts,
             generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
             multiple_tones_parameters=self._expected_multiple_tones_parameters,
@@ -584,7 +585,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+                daq.SignalVoltageGenerationMultipleTonesWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_amplitude_volts=0.0,
                     multiple_tones_parameters=self._expected_multiple_tones_parameters,
@@ -605,7 +606,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+                daq.SignalVoltageGenerationMultipleTonesWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_amplitude_volts=(
                         self._expected_generated_signal_amplitude_volts
@@ -625,7 +626,7 @@ class TestSignalVoltageGenerationMultipleTonesWaveParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+                daq.SignalVoltageGenerationMultipleTonesWaveParameters(
                     generated_signal_offset_volts=self._expected_generated_signal_offset_volts,
                     generated_signal_amplitude_volts=(
                         self._expected_generated_signal_amplitude_volts
@@ -677,7 +678,7 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
         expected_sampling_rate_hertz = 10000
         expected_generated_signal_duration_seconds = 0.01
 
-        expected_timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+        expected_timing_parameters = daq.SignalVoltageGenerationTimingParameters(
             sample_clock_source=expected_sample_clock_source,
             sampling_rate_hertz=expected_sampling_rate_hertz,
             generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -710,18 +711,18 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
         expected_amplitude = 1.0
         expected_phase = 0
 
-        expected_generated_signal_tone_parameters = nipcbatt.ToneParameters(
+        expected_generated_signal_tone_parameters = daq.ToneParameters(
             tone_frequency_hertz=expected_tone_frequency,
             tone_amplitude_volts=expected_amplitude,
             tone_phase_radians=expected_phase,
         )
 
-        expected_waveform_parameters = nipcbatt.SignalVoltageGenerationSineWaveParameters(
+        expected_waveform_parameters = daq.SignalVoltageGenerationSineWaveParameters(
             generated_signal_offset_volts=expected_generated_signal_offset_volts,
             generated_signal_tone_parameters=expected_generated_signal_tone_parameters,
         )
 
-        instance = nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+        instance = daq.SignalVoltageGenerationSineWaveConfiguration(
             voltage_generation_range_parameters=expected_voltage_generation_range_parameters,
             waveform_parameters=expected_waveform_parameters,
             timing_parameters=expected_timing_parameters,
@@ -732,7 +733,7 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
         # SignalVoltageGenerationSineWaveConfiguration
         logging.debug(
             "%s = %s",
-            nameof(nipcbatt.SignalVoltageGenerationSineWaveConfiguration),
+            nameof(daq.SignalVoltageGenerationSineWaveConfiguration),
             instance,
         )
 
@@ -756,46 +757,46 @@ class TestSignalVoltageGenerationSineWaveConfiguration(unittest.TestCase):
         """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSineWaveConfiguration(
                 voltage_generation_range_parameters=None,
-                waveform_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSineWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
                 waveform_parameters=None,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSineWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
-                waveform_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
                 timing_parameters=None,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSineWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
-                waveform_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
                 digital_start_trigger_parameters=None,
             ),
         )
@@ -841,7 +842,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
         expected_generated_signal_phase_radians = 0.2
 
         expected_square_wave_generation_parameters = (
-            nipcbatt.SignalVoltageGenerationSquareWaveParameters(
+            daq.SignalVoltageGenerationSquareWaveParameters(
                 generated_signal_offset_volts=expected_generated_signal_offset_volts,
                 generated_signal_frequency_hertz=expected_generated_signal_frequency_hertz,
                 generated_signal_amplitude_volts=expected_generated_signal_amplitude_volts,
@@ -854,7 +855,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
         expected_sample_clock_source = "OnboardClock"
         expected_sampling_rate_hertz = 10000
 
-        expected_timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+        expected_timing_parameters = daq.SignalVoltageGenerationTimingParameters(
             sample_clock_source=expected_sample_clock_source,
             sampling_rate_hertz=expected_sampling_rate_hertz,
             generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -880,7 +881,7 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
             range_max_volts=expected_range_max_volts,
         )
 
-        square_wave_configuration = nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+        square_wave_configuration = daq.SignalVoltageGenerationSquareWaveConfiguration(
             voltage_generation_range_parameters=expected_voltage_generation_range_parameters,
             waveform_parameters=expected_square_wave_generation_parameters,
             timing_parameters=expected_timing_parameters,
@@ -912,52 +913,52 @@ class TestSignalVoltageGenerationSquareWaveConfiguration(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSquareWaveConfiguration(
                 voltage_generation_range_parameters=None,
                 waveform_parameters=(
-                    nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
+                    daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
                 ),
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSquareWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
                 waveform_parameters=None,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSquareWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
                 waveform_parameters=(
-                    nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
+                    daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
                 ),
                 timing_parameters=None,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationSquareWaveConfiguration(
+            lambda: daq.SignalVoltageGenerationSquareWaveConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
                 waveform_parameters=(
-                    nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
+                    daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SQUARE_WAVE_PARAMETERS
                 ),
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
                 digital_start_trigger_parameters=None,
             ),
         )
@@ -1002,7 +1003,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
         expected_multiple_tones_parameters = []
 
         expected_multiple_tones_parameters.append(
-            nipcbatt.ToneParameters(
+            daq.ToneParameters(
                 tone_frequency_hertz=100,
                 tone_amplitude_volts=0.5,
                 tone_phase_radians=0.2,
@@ -1010,7 +1011,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
         )
 
         expected_multiple_tones_parameters.append(
-            nipcbatt.ToneParameters(
+            daq.ToneParameters(
                 tone_frequency_hertz=200,
                 tone_amplitude_volts=1.0,
                 tone_phase_radians=0,
@@ -1018,7 +1019,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
         )
 
         expected_multi_tone_parameters = (
-            nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+            daq.SignalVoltageGenerationMultipleTonesWaveParameters(
                 generated_signal_amplitude_volts=expected_generated_signal_amplitude_volts,
                 generated_signal_offset_volts=expected_generated_signal_offset_volts,
                 multiple_tones_parameters=expected_multiple_tones_parameters,
@@ -1029,7 +1030,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
         expected_sample_clock_source = "OnboardClock"
         expected_sampling_rate_hertz = 10000
 
-        expected_timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+        expected_timing_parameters = daq.SignalVoltageGenerationTimingParameters(
             sample_clock_source=expected_sample_clock_source,
             sampling_rate_hertz=expected_sampling_rate_hertz,
             generated_signal_duration_seconds=expected_generated_signal_duration_seconds,
@@ -1056,7 +1057,7 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
         )
 
         multi_tone_generation_configuration = (
-            nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+            daq.SignalVoltageGenerationMultipleTonesConfiguration(
                 voltage_generation_range_parameters=expected_voltage_generation_range_parameters,
                 waveform_parameters=expected_multi_tone_parameters,
                 timing_parameters=expected_timing_parameters,
@@ -1088,44 +1089,44 @@ class TestSignalVoltageGenerationMultipleTonesConfiguration(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+            lambda: daq.SignalVoltageGenerationMultipleTonesConfiguration(
                 voltage_generation_range_parameters=None,
-                waveform_parameters=nipcbatt.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+            lambda: daq.SignalVoltageGenerationMultipleTonesConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
                 waveform_parameters=None,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+            lambda: daq.SignalVoltageGenerationMultipleTonesConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
-                waveform_parameters=nipcbatt.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
                 timing_parameters=None,
-                digital_start_trigger_parameters=nipcbatt.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
+                digital_start_trigger_parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS,
             ),
         )
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+            lambda: daq.SignalVoltageGenerationMultipleTonesConfiguration(
                 voltage_generation_range_parameters=(
-                    nipcbatt.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
+                    daq.DEFAULT_VOLTAGE_GENERATION_RANGE_PARAMETERS
                 ),
-                waveform_parameters=nipcbatt.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
-                timing_parameters=nipcbatt.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
+                waveform_parameters=daq.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
+                timing_parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS,
                 digital_start_trigger_parameters=None,
             ),
         )

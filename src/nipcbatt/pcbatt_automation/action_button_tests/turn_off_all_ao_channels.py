@@ -6,7 +6,7 @@ from nipcbatt import daq
 # on NI MAX in the below Initialize Steps
 
 # Local constant for channel name
-ANALOG_OUT_CHANNELS = "Sim_PC_basedDAQ/ao0:3"
+ANALOG_OUT_CHANNELS = "Simulated_DAQ/ao0:3"
 
 # Assign the Range Parameters for all configured AO Channels
 RANGE_PARAMETERS = daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS

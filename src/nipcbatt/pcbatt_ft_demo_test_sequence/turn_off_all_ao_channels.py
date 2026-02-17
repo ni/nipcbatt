@@ -1,6 +1,7 @@
 """Turn Off all AO Channels""" 
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TurnOffAllAOChannels: 
@@ -19,7 +20,7 @@ class TurnOffAllAOChannels:
     def dc_voltage_generation_initialize_ao_channels(   
         self,
     ) -> None:
-        self.dc_voltage_gen_task = nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_generation.DcVoltageGeneration()
+        self.dc_voltage_gen_task = daq.dc_voltage_generations.dc_voltage_generation.DcVoltageGeneration()
         self.dc_voltage_gen_task.initialize("Sim_PC_basedDAQ/ao0:3")
 
     def main(self) -> None:   
@@ -32,7 +33,7 @@ class TurnOffAllAOChannels:
             range_min_volts=-10, range_max_volts=10
         )
 
-        configuration = nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_data_types.DcVoltageGenerationConfiguration(
+        configuration = daq.dc_voltage_generations.dc_voltage_data_types.DcVoltageGenerationConfiguration(
             voltage_generation_range_parameters=voltage_generation_range_parameters,
             output_voltages=[0.0, 0.0, 0.0, 0.0],
         )
