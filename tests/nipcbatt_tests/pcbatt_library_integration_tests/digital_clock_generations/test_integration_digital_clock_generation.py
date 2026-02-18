@@ -1,24 +1,15 @@
 """This module provides test of integration of DigitalClockGeneration."""
 
+# pylint: disable=W0611
 import importlib
 import logging
 import sys
 import unittest
 
 from varname import nameof
+import nipcbatt 
+from nipcbatt import daq
 
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_constants.ConstantsForDigitalClockGeneration' imported but unused (auto-generated noqa)
-    ConstantsForDigitalClockGeneration,
-)
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_data_types import (
-    DigitalClockGenerationConfiguration,
-    DigitalClockGenerationCounterChannelParameters,
-    DigitalClockGenerationData,
-    DigitalClockGenerationTimingParameters,
-)
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_generation import (
-    DigitalClockGeneration,
-)
 
 # constants used across multiple tests
 CHANNEL = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
@@ -60,7 +51,7 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(counter_channel_expression="", output_terminal_name=TERMINAL)
 
@@ -73,7 +64,7 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(counter_channel_expression=None, output_terminal_name=TERMINAL)
 
@@ -86,7 +77,7 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(counter_channel_expression=CHANNEL, output_terminal_name="")
 
@@ -99,7 +90,7 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        gen = DigitalClockGeneration()
+        gen = daq.DigitalClockGeneration()
 
         with self.assertRaises(ValueError):
             gen.initialize(counter_channel_expression=CHANNEL, output_terminal_name=None)
@@ -115,12 +106,12 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 0.5
         duration = 10.0
 
-        with DigitalClockGeneration() as gen:
-            counter_params = DigitalClockGenerationCounterChannelParameters(
+        with daq.DigitalClockGeneration() as gen:
+            counter_params = daq.DigitalClockGenerationCounterChannelParameters(
                 frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
             )
 
-            timing_params = DigitalClockGenerationTimingParameters(clock_duration_seconds=duration)
+            timing_params = daq.DigitalClockGenerationTimingParameters(clock_duration_seconds=duration)
 
             gen.initialize(CHANNEL, TERMINAL)
             gen.configure_counter_channel(parameters=counter_params)
@@ -137,14 +128,14 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 0.5
         duration = 10.0
 
-        with DigitalClockGeneration() as gen:
-            counter_params = DigitalClockGenerationCounterChannelParameters(
+        with daq.DigitalClockGeneration() as gen:
+            counter_params = daq.DigitalClockGenerationCounterChannelParameters(
                 frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
             )
 
-            timing_params = DigitalClockGenerationTimingParameters(clock_duration_seconds=duration)
+            timing_params = daq.DigitalClockGenerationTimingParameters(clock_duration_seconds=duration)
 
-            config = DigitalClockGenerationConfiguration(
+            config = daq.DigitalClockGenerationConfiguration(
                 counter_channel_parameters=counter_params,
                 timing_parameters=timing_params,
             )
@@ -153,7 +144,7 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
             actual_data = gen.configure_and_generate(configuration=config)
             gen.close()
 
-            self.assertIsInstance(actual_data, DigitalClockGenerationData)
+            self.assertIsInstance(actual_data, daq.DigitalClockGenerationData)
 
     def test_integration_digital_clock_generation_negative_vales(self):
         """Integration test of Digital Frequency Measurement that ensures
@@ -165,13 +156,13 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 0.5
         duration = 10.0
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
-                counter_params = DigitalClockGenerationCounterChannelParameters(
+                counter_params = daq.DigitalClockGenerationCounterChannelParameters(
                     frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
                 )
 
-                timing_params = DigitalClockGenerationTimingParameters(
+                timing_params = daq.DigitalClockGenerationTimingParameters(
                     clock_duration_seconds=duration
                 )
 
@@ -181,13 +172,13 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = -0.5
         duration = 10.0
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
-                counter_params = DigitalClockGenerationCounterChannelParameters(
+                counter_params = daq.DigitalClockGenerationCounterChannelParameters(
                     frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
                 )
 
-                timing_params = DigitalClockGenerationTimingParameters(
+                timing_params = daq.DigitalClockGenerationTimingParameters(
                     clock_duration_seconds=duration
                 )
 
@@ -197,13 +188,13 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 0.5
         duration = -0.1
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
-                counter_params = DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
+                counter_params = daq.DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
                     frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
                 )
 
-                timing_params = DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
+                timing_params = daq.DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
                     clock_duration_seconds=duration
                 )
 
@@ -219,13 +210,13 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 1.1
         duration = 10.0
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
-                counter_params = DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
+                counter_params = daq.DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
                     frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
                 )
 
-                timing_params = DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
+                timing_params = daq.DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
                     clock_duration_seconds=duration
                 )
 
@@ -241,13 +232,13 @@ class TestIntegrationDigitalClockGeneration(unittest.TestCase):
         duty_cyc = 0.5
         duration = 0.0
 
-        with DigitalClockGeneration() as gen:
+        with daq.DigitalClockGeneration() as gen:
             with self.assertRaises(ValueError):
-                counter_params = DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
+                counter_params = daq.DigitalClockGenerationCounterChannelParameters(  # noqa: F841 - local variable 'counter_params' is assigned to but never used (auto-generated noqa)
                     frequency_hertz=frequency, duty_cycle_ratio=duty_cyc
                 )
 
-                timing_params = DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
+                timing_params = daq.DigitalClockGenerationTimingParameters(  # noqa: F841 - local variable 'timing_params' is assigned to but never used (auto-generated noqa)
                     clock_duration_seconds=duration
                 )
 

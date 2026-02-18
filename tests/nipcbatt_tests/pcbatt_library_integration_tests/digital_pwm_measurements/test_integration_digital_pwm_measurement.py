@@ -9,20 +9,9 @@ import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-gener
 from varname import nameof
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
-    ConstantsForDigitalPwmMeasurement,
-)
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types.DigitalPwmMeasurementData' imported but unused (auto-generated noqa)
-    DigitalPwmMeasurementConfiguration,
-    DigitalPwmMeasurementCounterChannelParameters,
-    DigitalPwmMeasurementData,
-    DigitalPwmMeasurementRangeParameters,
-    DigitalPwmMeasurementResultData,
-    DigitalPwmMeasurementTimingParameters,
-)
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_measurement import (
-    DigitalPwmMeasurement,
-)
+
+import nipcbatt 
+from nipcbatt import daq
 
 # constants used across multiple tests
 CHANNEL = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
@@ -62,7 +51,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression="", input_terminal_name=TERMINAL)
 
@@ -73,7 +62,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression=None, input_terminal_name=TERMINAL)
 
@@ -84,7 +73,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression=CHANNEL, input_terminal_name="")
 
@@ -95,7 +84,7 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression=CHANNEL, input_terminal_name=None)
 
@@ -109,20 +98,20 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_ONLY
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
 
-        timing_params = DigitalPwmMeasurementTimingParameters(cycles)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
 
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params, edge
         )
 
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
@@ -137,22 +126,22 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.MEASURE_ONLY
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-        timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params, edge
         )
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
 
-        self.assertIsInstance(result_data, DigitalPwmMeasurementResultData)
+        self.assertIsInstance(result_data, daq.DigitalPwmMeasurementResultData)
 
     def test_integration_digital_pwm_measurement_both_configure_and_measure(self):
         """Integration test of Digital PWM measurement that ensures an instance
@@ -161,22 +150,22 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-        timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params, edge
         )
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
 
-        self.assertIsInstance(result_data, DigitalPwmMeasurementResultData)
+        self.assertIsInstance(result_data, daq.DigitalPwmMeasurementResultData)
 
     def test_integration_digital_pwm_negative_values(self):
         """Integration test of Digital Pwm measurement that ensures
@@ -187,17 +176,17 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = -50.0e-9
         max_semiperiod = 50.0
         cycles = 10
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
-                range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-                timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-                counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+                range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+                timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+                counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
                     range_params, timing_params, edge
                 )
-                config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+                config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
                 meas.initialize(CHANNEL, TERMINAL)
                 meas.configure_and_measure(config)
@@ -205,17 +194,17 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = -50.0
         cycles = 10
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
-                range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-                timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-                counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+                range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+                timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+                counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
                     range_params, timing_params, edge
                 )
-                config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+                config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
                 meas.initialize(CHANNEL, TERMINAL)
                 meas.configure_and_measure(config)
@@ -223,17 +212,17 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = -10
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             with self.assertRaises(ValueError):
-                range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-                timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-                counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+                range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+                timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+                counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
                     range_params, timing_params, edge
                 )
-                config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+                config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
                 meas.initialize(CHANNEL, TERMINAL)
                 meas.configure_and_measure(config)
@@ -247,19 +236,19 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         cycles = 100
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-        timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params
         )
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
 
-        self.assertIsInstance(result_data, DigitalPwmMeasurementResultData)
+        self.assertIsInstance(result_data, daq.DigitalPwmMeasurementResultData)
 
     def test_integration_digital_pwm_measurement_no_cycles_defined(self):
         """Integration test of Digital PWM measurement that ensures an instance
@@ -267,22 +256,22 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         define a value for cycles"""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (329 > 100 characters) (auto-generated noqa)
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
         execution_type = MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-        timing_params = DigitalPwmMeasurementTimingParameters()
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters()
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params, edge
         )
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params, execution_type)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
 
-        self.assertIsInstance(result_data, DigitalPwmMeasurementResultData)
+        self.assertIsInstance(result_data, daq.DigitalPwmMeasurementResultData)
 
     def test_integration_digital_pwm_measurement_no_execution_type_defined(self):
         """Integration test of Digital PWM measurement that ensures an instance
@@ -291,21 +280,21 @@ class TestIntegrationDigitalPwmMeasurement(unittest.TestCase):
         min_semiperiod = 50.0e-9
         max_semiperiod = 50.0
         cycles = 100
-        edge = ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
+        edge = daq.ConstantsForDigitalPwmMeasurement.DEFAULT_PWM_STARTING_EDGE
 
-        range_params = DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
-        timing_params = DigitalPwmMeasurementTimingParameters(cycles)
-        counter_channel_params = DigitalPwmMeasurementCounterChannelParameters(
+        range_params = daq.DigitalPwmMeasurementRangeParameters(min_semiperiod, max_semiperiod)
+        timing_params = daq.DigitalPwmMeasurementTimingParameters(cycles)
+        counter_channel_params = daq.DigitalPwmMeasurementCounterChannelParameters(
             range_params, timing_params, edge
         )
-        config = DigitalPwmMeasurementConfiguration(counter_channel_params)
+        config = daq.DigitalPwmMeasurementConfiguration(counter_channel_params)
 
-        with DigitalPwmMeasurement() as meas:
+        with daq.DigitalPwmMeasurement() as meas:
             meas.initialize(CHANNEL, TERMINAL)
             result_data = meas.configure_and_measure(configuration=config)
             meas.close()
 
-        self.assertIsInstance(result_data, DigitalPwmMeasurementResultData)
+        self.assertIsInstance(result_data, daq.DigitalPwmMeasurementResultData)
 
 
 if __name__ == "__main__":
