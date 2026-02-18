@@ -10,12 +10,14 @@ from nidaqmx.errors import DaqError
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx_if_not_installed,
-)
+)'''
 
 
 class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
@@ -41,7 +43,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx_if_not_installed(_MockInterpreter)
+        #_replace_daqmx_if_not_installed(_MockInterpreter)
 
     @classmethod
     def tearDownClass(cls):
@@ -55,9 +57,9 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         # create configuration object
         num_channels = 8
         test_data_to_write = [random.choice([True, False]) for item in range(num_channels)]
-        cfg = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=test_data_to_write)
+        cfg = daq.StaticDigitalStateGenerationConfiguration(data_to_write=test_data_to_write)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             test_channel_expression = (
                 "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line0:7"
             )
@@ -80,9 +82,9 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         # create configuration object
         num_channels = 23
         test_data_to_write = [random.choice([True, False]) for item in range(num_channels)]
-        cfg = nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=test_data_to_write)
+        cfg = daq.StaticDigitalStateGenerationConfiguration(data_to_write=test_data_to_write)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             test_channel_expression = (
                 "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line0:22"
             )
@@ -102,7 +104,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression="")
 
@@ -113,7 +115,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression=None)
 
@@ -125,7 +127,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         designated will throw an error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(DaqError) as ctx:
                 gen.initialize(
                     channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0"
@@ -140,7 +142,7 @@ class TestIntegrationStaticDigitalStateGeneration(unittest.TestCase):
         without channels designated throws an error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateGeneration() as gen:
+        with daq.StaticDigitalStateGeneration() as gen:
             with self.assertRaises(DaqError):
                 gen.initialize(channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4")
             gen.close()
