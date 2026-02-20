@@ -8,12 +8,15 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+
+
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterDcRmsVoltageMeasurement,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx_if_not_installed,
-)
+)'''
 
 
 class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
@@ -39,7 +42,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx_if_not_installed(_InterpreterDcRmsVoltageMeasurement)
+        #_replace_daqmx_if_not_installed(_InterpreterDcRmsVoltageMeasurement)
 
     @classmethod
     def tearDownClass(cls):
@@ -50,22 +53,22 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
         nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement_using_rtd.TemperatureMeasurementUsingRtd
         with MeasurementExecutionType.CONFIGURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (425 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.TemperatureMeasurementUsingRtd() as measurement:
+        with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
                 channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
             )
 
-            configuration = nipcbatt.TemperatureRtdMeasurementConfiguration(
+            configuration = daq.TemperatureRtdMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
             print(f"parameters = {configuration}")
@@ -79,18 +82,18 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
         nipcbatt.pcbatt_library.temperature_measurements.temperature_measurement_using_rtd.TemperatureMeasurementUsingRtd
         with MeasurementExecutionType.CONFIGURE_AND_MEASURE"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (432 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.TemperatureMeasurementUsingRtd() as measurement:
+        with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
                 channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
             )
 
-            print(f"parameters = {nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION}")
+            print(f"parameters = {daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION}")
             results = measurement.configure_and_measure(
-                configuration=nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION
+                configuration=daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION
             )
 
             print(f"results = {results}")
-            self.assertIsInstance(results, nipcbatt.TemperatureMeasurementResultData)
+            self.assertIsInstance(results, daq.TemperatureMeasurementResultData)
 
     def test_integration_temperature_measurement_using_rtd_configure_only_and_measure_only(
         self,
@@ -100,22 +103,22 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
         with MeasurementExecutionType.CONFIGURE_ONLY
         and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.TemperatureMeasurementUsingRtd() as measurement:
+        with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
                 channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
             )
 
-            configuration = nipcbatt.TemperatureRtdMeasurementConfiguration(
+            configuration = daq.TemperatureRtdMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
             print(f"parameters = {configuration}")
@@ -126,17 +129,17 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
             )
             self.assertIs(None, results)
 
-            configuration = nipcbatt.TemperatureRtdMeasurementConfiguration(
+            configuration = daq.TemperatureRtdMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_execution_type=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -145,7 +148,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.MEASURE_ONLY, results = {results}"
             )
-            self.assertIsInstance(results, nipcbatt.TemperatureMeasurementResultData)
+            self.assertIsInstance(results, daq.TemperatureMeasurementResultData)
 
     def test_integration_temperature_measurement_using_rtd_configure_only_and_measure_only_in_loop(
         self,
@@ -162,20 +165,20 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
             + " NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai15",
         ]
         for channel_expression in channel_expressions:
-            with nipcbatt.TemperatureMeasurementUsingRtd() as measurement:
+            with daq.TemperatureMeasurementUsingRtd() as measurement:
                 measurement.initialize(channel_expression=channel_expression)
 
-                configuration = nipcbatt.TemperatureRtdMeasurementConfiguration(
+                configuration = daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
                 print(f"parameters = {configuration}")
@@ -186,17 +189,17 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
                 )
                 self.assertIs(None, results)
 
-                configuration = nipcbatt.TemperatureRtdMeasurementConfiguration(
+                configuration = daq.TemperatureRtdMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS
                     ),
                     specific_channels_parameters=[],
                     measurement_execution_type=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
 
@@ -205,7 +208,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
                 print(
                     f"after configuration with MeasurementExecutionType.MEASURE_ONLY, results = {results}"
                 )
-                self.assertIsInstance(results, nipcbatt.TemperatureMeasurementResultData)
+                self.assertIsInstance(results, daq.TemperatureMeasurementResultData)
 
 
 if __name__ == "__main__":

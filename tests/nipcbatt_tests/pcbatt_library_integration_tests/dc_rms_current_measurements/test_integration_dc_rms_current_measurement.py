@@ -8,12 +8,14 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterDcRmsCurrentMeasurement,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx_if_not_installed,
-)
+)'''
 
 
 class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
@@ -39,7 +41,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx_if_not_installed(_InterpreterDcRmsCurrentMeasurement)
+        #_replace_daqmx_if_not_installed(_InterpreterDcRmsCurrentMeasurement)
 
     @classmethod
     def tearDownClass(cls):
@@ -50,16 +52,16 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         with MeasurementExecutionType.CONFIGURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (425 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DcRmsCurrentMeasurement() as measurement:
+        with daq.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
-                    "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
+                    "Simulated_DAQ/ai0:3"
                 )
             )
 
-            configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+            configuration = daq.DcRmsCurrentMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_options=nipcbatt.MeasurementOptions(
@@ -69,10 +71,10 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
             print(f"parameters = {configuration}")
@@ -87,20 +89,20 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test of
-        nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
+        daq.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         with MeasurementExecutionType.CONFIGURE_ONLY
         and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DcRmsCurrentMeasurement() as measurement:
+        with daq.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
-                    "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
+                    "Simulated_DAQ/ai0:3"
                 )
             )
 
-            configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+            configuration = daq.DcRmsCurrentMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_options=nipcbatt.MeasurementOptions(
@@ -110,10 +112,10 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
             print(f"parameters = {configuration}")
@@ -124,9 +126,9 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
             )
             self.assertIs(None, results)
 
-            configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+            configuration = daq.DcRmsCurrentMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_options=nipcbatt.MeasurementOptions(
@@ -136,10 +138,10 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -148,7 +150,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.MEASURE_ONLY, results = {results}"
             )
-            self.assertIsInstance(results, nipcbatt.DcRmsCurrentMeasurementResultData)
+            self.assertIsInstance(results, daq.DcRmsCurrentMeasurementResultData)
 
             measurement.close()
 
@@ -156,20 +158,20 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test of
-        nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
+        daq.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         with MeasurementExecutionType.CONFIGURE_AND_MEASURE.
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DcRmsCurrentMeasurement() as measurement:
+        with daq.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
                     "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
                 )
             )
 
-            configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+            configuration = daq.DcRmsCurrentMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_options=nipcbatt.MeasurementOptions(
@@ -179,10 +181,10 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
             print(f"parameters = {configuration}")
@@ -193,9 +195,9 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
             )
             self.assertIs(None, results)
 
-            configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+            configuration = daq.DcRmsCurrentMeasurementConfiguration(
                 global_channel_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                 ),
                 specific_channels_parameters=[],
                 measurement_options=nipcbatt.MeasurementOptions(
@@ -205,10 +207,10 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -217,7 +219,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.CONFIGURE_AND_MEASURE and MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS, results = {results}"
             )
-            self.assertIsInstance(results, nipcbatt.DcRmsCurrentMeasurementResultData)
+            self.assertIsInstance(results, daq.DcRmsCurrentMeasurementResultData)
 
             measurement.close()
 
@@ -225,7 +227,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         self,
     ):
         """Integration test of
-        nipcbatt.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
+        daq.pcbatt_library.dc_rms_current_measurements.dc_rms_current_measurement.DcRmsCurrentMeasurement
         to be called in a loop.
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
@@ -236,20 +238,20 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         ]
 
         for channel in channel_list:
-            with nipcbatt.DcRmsCurrentMeasurement() as measurement:
+            with daq.DcRmsCurrentMeasurement() as measurement:
                 measurement.initialize(analog_input_channel_expression=channel)
 
-                configuration = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+                configuration = daq.DcRmsCurrentMeasurementConfiguration(
                     global_channel_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
+                        daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_TERMINAL_RANGE_PARAMETERS
                     ),
                     specific_channels_parameters=[],
-                    measurement_options=nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_DC_RMS_CURRENT_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_DC_RMS_CURRENT_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
 
@@ -258,7 +260,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
                 print(
                     f"With Default configurations for channel string :{channel}, results = {results}"
                 )
-                self.assertIsInstance(results, nipcbatt.DcRmsCurrentMeasurementResultData)
+                self.assertIsInstance(results, daq.DcRmsCurrentMeasurementResultData)
 
                 measurement.close()
 

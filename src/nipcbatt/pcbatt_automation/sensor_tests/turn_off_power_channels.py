@@ -37,7 +37,7 @@ def setup(output_terminal=OUTPUT_TERMINAL):
 
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
-def main(pssm: daq.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure):
+def main(pssm: daq.PowerSupplySourceAndMeasure):
     """Sets up the volatge and current to be generated."""  
     terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=0.1,

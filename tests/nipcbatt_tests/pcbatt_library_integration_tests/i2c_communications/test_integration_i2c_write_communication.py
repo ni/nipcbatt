@@ -10,6 +10,7 @@ from varname import nameof
 
 import nipcbatt
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
+from nipcbatt import communications
 
 
 class TestIntegrationI2cWriteCommunication(unittest.TestCase):
@@ -51,20 +52,20 @@ class TestIntegrationI2cWriteCommunication(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_communication.I2cWriteCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.I2cWriteCommunication() as communication:
+        with communications.I2cWriteCommunication() as communication:
             communication.initialize("USB-8452")
 
-            device_parameters = nipcbatt.I2cDeviceParameters(
+            device_parameters = communications.I2cDeviceParameters(
                 enable_i2c_pullup_resistor=False,
                 voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33,
             )
-            communication_parameters = nipcbatt.I2cCommunicationParameters(
+            communication_parameters = communications.I2cCommunicationParameters(
                 device_address=73,
                 clock_rate_kilohertz=400,
                 addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_7_BIT,
                 ack_poll_timeout_milliseconds=0,
             )
-            write_parameters = nipcbatt.I2cWriteParameters(
+            write_parameters = communications.I2cWriteParameters(
                 number_of_bytes_per_page=2,
                 delay_between_page_write_operations_milliseconds=10,
                 data_to_be_written=numpy.array([26, 192, 30, 120, 50]),
@@ -74,7 +75,7 @@ class TestIntegrationI2cWriteCommunication(unittest.TestCase):
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
                 ),
             )
-            configuration = nipcbatt.I2cWriteCommunicationConfiguration(
+            configuration = communications.I2cWriteCommunicationConfiguration(
                 device_parameters=device_parameters,
                 communication_parameters=communication_parameters,
                 write_parameters=write_parameters,

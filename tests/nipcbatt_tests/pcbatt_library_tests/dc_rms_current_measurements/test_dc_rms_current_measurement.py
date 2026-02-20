@@ -10,12 +10,6 @@ from varname import nameof
 import nipcbatt
 from nipcbatt import daq
 from nipcbatt.pcbatt_analysis import analysis_library_info
-'''from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
-    _InterpreterDcRmsCurrentMeasurement,
-)
-from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
-    _replace_daqmx,
-)'''
 
 
 class TestDcRmsCurrentMeasurement(unittest.TestCase):
@@ -68,7 +62,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
         measurement = daq.DcRmsCurrentMeasurement()
         self.assertRaises(
             TypeError,
-            lambda: measurement.analyze_measurement_data(measurement_data=None),
+            lambda: measurement.analyze_measurement_data(measurement_data=None, None),
         )
 
 

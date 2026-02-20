@@ -9,6 +9,7 @@ from varname import nameof
 
 import nipcbatt
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
+from nipcbatt import communications
 
 
 class TestIntegrationI2cReadCommunication(unittest.TestCase):
@@ -50,20 +51,20 @@ class TestIntegrationI2cReadCommunication(unittest.TestCase):
         """Integration test of
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_communication.I2cReadCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.I2cReadCommunication() as communication:
+        with communications.I2cReadCommunication() as communication:
             communication.initialize("USB-8452")
 
-            device_parameters = nipcbatt.I2cDeviceParameters(
+            device_parameters = communications.I2cDeviceParameters(
                 enable_i2c_pullup_resistor=False,
                 voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33,
             )
-            communication_parameters = nipcbatt.I2cCommunicationParameters(
+            communication_parameters = communications.I2cCommunicationParameters(
                 device_address=73,
                 clock_rate_kilohertz=400,
                 addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_7_BIT,
                 ack_poll_timeout_milliseconds=0,
             )
-            read_parameters = nipcbatt.I2cReadParameters(
+            read_parameters = communications.I2cReadParameters(
                 number_of_bytes_to_read=2,
                 memory_address_parameters=nipcbatt.MemoryAddressParameters(
                     memory_address=0,
@@ -71,7 +72,7 @@ class TestIntegrationI2cReadCommunication(unittest.TestCase):
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
                 ),
             )
-            configuration = nipcbatt.I2cReadCommunicationConfiguration(
+            configuration = communications.I2cReadCommunicationConfiguration(
                 device_parameters=device_parameters,
                 communication_parameters=communication_parameters,
                 read_parameters=read_parameters,
@@ -81,7 +82,7 @@ class TestIntegrationI2cReadCommunication(unittest.TestCase):
             results = communication.configure_and_read_data(configuration=communication)
             print(f"results = {results}")
             self.assertIsNotNone(None, results)
-            self.assertIsInstance(results, nipcbatt.I2cReadCommunicationData)
+            self.assertIsInstance(results, communications.I2cReadCommunicationData)
 
 
 if __name__ == "__main__":

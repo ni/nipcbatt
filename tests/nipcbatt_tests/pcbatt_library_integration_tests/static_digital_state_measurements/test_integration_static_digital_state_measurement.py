@@ -8,7 +8,8 @@ import unittest
 from nidaqmx.errors import DaqError
 from varname import nameof
 
-import nipcbatt
+
+from nipcbatt import daq
 
 
 class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
@@ -45,7 +46,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         channels and the associated data, both of length 8
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             measurement.initialize(
                 channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line0:8"
             )
@@ -65,7 +66,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         channels and the associated data, both of length 5
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             measurement.initialize(
                 channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line1:5"
             )
@@ -84,7 +85,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         then initialize() properly catches this error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(channel_expression=None)
 
@@ -95,7 +96,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         then initialize() properly catches this error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(channel_expression="")
 
@@ -106,7 +107,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         of only 'port' without channels designated throws the proper error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             with self.assertRaises(DaqError):
                 measurement.initialize(
                     channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0"
@@ -118,7 +119,7 @@ class TestIntegrationStaticDigitalStateMeasurement(unittest.TestCase):
         of only 'port' without channels designated throws the proper error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.StaticDigitalStateMeasurement() as measurement:
+        with daq.StaticDigitalStateMeasurement() as measurement:
             with self.assertRaises(DaqError):
                 measurement.initialize(
                     channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4"

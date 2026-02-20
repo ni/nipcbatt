@@ -32,13 +32,13 @@ class ResetAndSelfTest:
     def initialize_reset_button(   
         self,
     ) -> None:
-        self.digital_state_gen_task = daq.static_digital_state_generations.static_digital_state_generation.StaticDigitalStateGeneration()
+        self.digital_state_gen_task = daq.StaticDigitalStateGeneration()
         self.digital_state_gen_task.initialize("TS_RESET0")
 
     def initialize_led_status(   
         self,
     ) -> None:
-        self.digital_state_meas_task = daq.static_digital_state_measurements.static_digital_state_measurement.StaticDigitalStateMeasurement()
+        self.digital_state_meas_task = daq.StaticDigitalStateMeasurement()
         self.digital_state_meas_task.initialize("TP_ACT_LED0")
 
     def main(self) -> None:   

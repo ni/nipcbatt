@@ -2,7 +2,7 @@
 """Defines the base classes used by PCBA Test Toolkit building blocks"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
 
 from abc import ABC, abstractmethod
-from typing import Callable
+from typing import Callable, Optional
 
 import nidaqmx
 import nidaqmx.constants
@@ -10,6 +10,7 @@ import nidaqmx.system
 import nidaqmx.system.storage.persisted_channel
 import nidaqmx.utils
 import pyvisa
+import niswitch
 
 from nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices import (
     Ni845xI2cDevicesHandler,
@@ -82,6 +83,44 @@ class BuildingBlockUsingInstrument(ABC):
                     type(self).__name__, method_name
                 )
             ) from exception
+
+
+class BuildingBlockUsingNISWITCH(BuildingBlockUsingInstrument):
+    """Defines building block that uses NI-SWITCH for switch matrix routing"""
+
+    @classmethod
+    def _instrument_factory(cls) -> Optional[niswitch.Session]:
+        """Creates a placeholder for an NI-SWITCH session
+
+        Returns:
+            Optional[niswitch.Session]: None until user calls initialize() to open the session
+        """
+        return None
+    
+    @property
+    def is_session_initialized(self) -> bool:
+        """ Checks if an NI-SWITCH session has been opened.
+
+        Returns:
+            bool: True if the NI-SWITCH session is open
+        """
+        return self._instrument is not None
+    
+    @property
+    def session(self) -> niswitch.Session:
+        """Defines the instance of the NI_SWITCH session.
+        
+        Returns:
+            niswitch.Session: the type of instrument
+        """
+        if self._instrument is None:
+            raise RuntimeError(
+                "NI-SWITCH session is not initialized. \n"
+                "Call initialize() on derived building block"
+            )
+        return self._instrument
+    
+
 
 
 class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
