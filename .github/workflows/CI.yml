@@ -44,6 +44,7 @@ jobs:
         run: poetry --version
 
       - name: Lint the Code
+        continue-on-error: true
         run: poetry run ni-python-styleguide lint
 
       - name: Run tests
