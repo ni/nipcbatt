@@ -14,17 +14,9 @@ from varname import nameof
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
-    ConstantsForDynamicDigitalPatternGeneration,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types.DynamicDigitalPatternGenerationData' imported but unused (auto-generated noqa)
-    DynamicDigitalPatternGenerationConfiguration,
-    DynamicDigitalPatternGenerationData,
-    DynamicDigitalStartTriggerParameters,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_generation import (
-    DynamicDigitalPatternGeneration,
-)
+
+import nipcbatt 
+from nipcbatt import daq
 
 # constants used across tests
 CHANNEL = "TS1_DIO/port0/line0:7"
@@ -64,7 +56,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         """Integration test ensuring that if channel expression is empty then
         initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
-        with DynamicDigitalPatternGeneration() as gen:
+        with daq.DynamicDigitalPatternGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression="")
 
@@ -75,7 +67,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DynamicDigitalPatternGeneration() as gen:
+        with daq.DynamicDigitalPatternGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression=None)
 
@@ -86,7 +78,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is successfully executed when configure
         and measure is performed"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (405 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = 1000.0
 
         timing_params = DynamicDigitalPatternTimingParameters(
@@ -96,18 +88,19 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
             sampling_rate_hertz=test_sample_rate,
         )
 
-        trigger_params = DynamicDigitalStartTriggerParameters(
+        trigger_params = daq.DynamicDigitalStartTriggerParameters(
             digital_start_trigger_source=TRIGGER_SOURCE,
             digital_start_trigger_edge=test_edge,
             trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
         )
 
-        test_config = DynamicDigitalPatternGenerationConfiguration(
+        test_config = daq.DynamicDigitalPatternGenerationConfiguration(
             timing_parameters=timing_params,
             digital_start_trigger_parameters=trigger_params,
+            pulse_signal=np.ndarray([0])
         )
 
-        gen = DynamicDigitalPatternGeneration()
+        gen = daq.DynamicDigitalPatternGeneration()
         gen.initialize(CHANNEL)
 
         if gen.task.name is not None and gen.task.channel_names is not None:
@@ -117,7 +110,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
 
         pattern = np.zeros((n, 10), dtype="uint32")
 
-        gen.configure_and_generate(test_config, pattern)
+        gen.configure_and_generate(test_config)
         gen.close()
 
     def test_integration_dynamic_digital_pattern_rate_not_float(self):
@@ -125,7 +118,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is not created if the given sample
         rate is not a float"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (400 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = 1000
 
         with self.assertRaises(ValueError):
@@ -136,19 +129,20 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
                 sampling_rate_hertz=test_sample_rate,
             )
 
-            trigger_params = DynamicDigitalStartTriggerParameters(
+            trigger_params = daq.DynamicDigitalStartTriggerParameters(
                 digital_start_trigger_source=TRIGGER_SOURCE,
                 digital_start_trigger_edge=test_edge,
                 trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
             )
 
-            test_config = DynamicDigitalPatternGenerationConfiguration(  # noqa: F841 - local variable 'test_config' is assigned to but never used (auto-generated noqa)
+            test_config = daq.DynamicDigitalPatternGenerationConfiguration(  # noqa: F841 - local variable 'test_config' is assigned to but never used (auto-generated noqa)
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
+                pulse_signal=np.array([0])
             )
 
             gen = (  # noqa: F841 - local variable 'gen' is assigned to but never used (auto-generated noqa)
-                DynamicDigitalPatternGeneration()
+                daq.DynamicDigitalPatternGeneration()
             )
 
     def test_integration_dynamic_digital_pattern_rate_negative(self):
@@ -156,7 +150,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is not created if the given sample
         rate is a negative number"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (406 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = -1000.0
 
         with self.assertRaises(ValueError):
@@ -167,19 +161,20 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
                 sampling_rate_hertz=test_sample_rate,
             )
 
-            trigger_params = DynamicDigitalStartTriggerParameters(
+            trigger_params = nipcbatt.DigitalStartTriggerParameters(
                 digital_start_trigger_source=TRIGGER_SOURCE,
                 digital_start_trigger_edge=test_edge,
-                trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
+                trigger_select=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
             )
 
-            test_config = DynamicDigitalPatternGenerationConfiguration(  # noqa: F841 - local variable 'test_config' is assigned to but never used (auto-generated noqa)
+            test_config = daq.DynamicDigitalPatternGenerationConfiguration(  # noqa: F841 - local variable 'test_config' is assigned to but never used (auto-generated noqa)
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
+                pulse_signal=np.array([0])
             )
 
             gen = (  # noqa: F841 - local variable 'gen' is assigned to but never used (auto-generated noqa)
-                DynamicDigitalPatternGeneration()
+                daq.DynamicDigitalPatternGeneration()
             )
 
     def test_integration_dynamic_digital_pattern_signal_empty(self):
@@ -187,12 +182,12 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is not created if the given signal is an empty
         array"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (386 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = 1000.0
 
         signal = np.array([])
 
-        gen = DynamicDigitalPatternGeneration()
+        gen = daq.DynamicDigitalPatternGeneration()
 
         with self.assertRaises(ValueError):
             timing_params = DynamicDigitalPatternTimingParameters(
@@ -202,19 +197,20 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
                 sampling_rate_hertz=test_sample_rate,
             )
 
-            trigger_params = DynamicDigitalStartTriggerParameters(
+            trigger_params = daq.DynamicDigitalStartTriggerParameters(
                 digital_start_trigger_source=TRIGGER_SOURCE,
                 digital_start_trigger_edge=test_edge,
                 trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
             )
 
-            test_config = DynamicDigitalPatternGenerationConfiguration(
+            test_config = daq.DynamicDigitalPatternGenerationConfiguration(
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
+                pulse_signal=np.array([0])
             )
 
             gen.initialize(channel_expression=CHANNEL)
-            gen.configure_and_generate(configuration=test_config, pulse_signal=signal)
+            gen.configure_and_generate(configuration=test_config)
 
         gen.close()
 
@@ -223,7 +219,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is not created if the given signal is an empty
         array"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (386 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = 1000.0
 
         signal = None
@@ -236,20 +232,21 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
                 sampling_rate_hertz=test_sample_rate,
             )
 
-            trigger_params = DynamicDigitalStartTriggerParameters(
+            trigger_params = daq.DynamicDigitalStartTriggerParameters(
                 digital_start_trigger_source=TRIGGER_SOURCE,
                 digital_start_trigger_edge=test_edge,
                 trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
             )
 
-            test_config = DynamicDigitalPatternGenerationConfiguration(
+            test_config = daq.DynamicDigitalPatternGenerationConfiguration(
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
+                pulse_signal=np.array([0])
             )
 
-            gen = DynamicDigitalPatternGeneration()
+            gen = daq.DynamicDigitalPatternGeneration()
             gen.initialize(channel_expression=CHANNEL)
-            gen.configure_and_generate(configuration=test_config, pulse_signal=signal)
+            gen.configure_and_generate(configuration=test_config)
             gen.close()
 
     def test_integration_dynamic_digital_pattern_signal_wrong_shape(self):
@@ -257,7 +254,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
         of DynamicDigitalPatternGeneration is not created if the given signal is the
         wrong shape"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (392 > 100 characters) (auto-generated noqa)
 
-        test_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        test_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         test_sample_rate = 1000.0
 
         # wrong shape of data array
@@ -271,20 +268,21 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
                 sampling_rate_hertz=test_sample_rate,
             )
 
-            trigger_params = DynamicDigitalStartTriggerParameters(
+            trigger_params = daq.DynamicDigitalStartTriggerParameters(
                 digital_start_trigger_source=TRIGGER_SOURCE,
                 digital_start_trigger_edge=test_edge,
                 trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
             )
 
-            test_config = DynamicDigitalPatternGenerationConfiguration(
+            test_config = daq.DynamicDigitalPatternGenerationConfiguration(
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
+                pulse_signal=np.array([0])
             )
 
-            gen = DynamicDigitalPatternGeneration()
+            gen = daq.DynamicDigitalPatternGeneration()
             gen.initialize(channel_expression=CHANNEL)
-            gen.configure_and_generate(configuration=test_config, pulse_signal=signal)
+            gen.configure_and_generate(configuration=test_config)
             gen.close()
 
 

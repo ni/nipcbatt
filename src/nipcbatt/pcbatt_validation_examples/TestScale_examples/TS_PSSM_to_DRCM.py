@@ -5,6 +5,7 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -14,14 +15,14 @@ save_fig = False
 use_specific_channel = False
 
 # Initialize
-pssm = nipcbatt.PowerSupplySourceAndMeasure()
+pssm = daq.PowerSupplySourceAndMeasure()
 pssm.initialize("TS1_Power/power")
-drcm = nipcbatt.DcRmsCurrentMeasurement()
+drcm = daq.DcRmsCurrentMeasurement()
 drcm.initialize("TS1_AI/ai4")
 
 # region PSSM configure and measure
 
-terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
     voltage_setpoint_volts=6,
     current_setpoint_amperes=3,
     power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -47,7 +48,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-pssm_config = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+pssm_config = daq.PowerSupplySourceAndMeasureConfiguration(
     terminal_parameters=terminal_parameters,
     measurement_options=measurement_options,
     sample_clock_timing_parameters=sample_clock_timing_parameters,
@@ -60,7 +61,7 @@ pssm_result_data = pssm.configure_and_measure(configuration=pssm_config)
 
 # region DRCM configure and measure
 
-global_channel_parameters = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+global_channel_parameters = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     range_min_amperes=-3.0,
     range_max_amperes=3.0,
     shunt_resistor_ohms=0.13,
@@ -88,14 +89,14 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
 # Specific channel parameters
 
 #    Channel 0
-cp0 = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+cp0 = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_amperes=-3,
     range_max_amperes=3,
     shunt_resistor_ohms=0.13,
 )
 
-channel0 = nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+channel0 = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
     channel_name="TS1_AI/ai4",
     channel_parameters=cp0,
 )
@@ -104,7 +105,7 @@ specific_channels_parameters = []
 if use_specific_channel is True:
     specific_channels_parameters.append(channel0)
 
-drcm_config = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+drcm_config = daq.DcRmsCurrentMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,

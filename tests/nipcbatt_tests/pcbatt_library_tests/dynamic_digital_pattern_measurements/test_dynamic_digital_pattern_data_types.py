@@ -8,14 +8,8 @@ import unittest
 import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
+from nipcbatt import daq
 import nipcbatt
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
-    ConstantsForDynamicDigitalPatternMeasurement,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (
-    DynamicDigitalPatternMeasurementConfiguration,
-    DynamicDigitalPatternMeasurementResultData,
-)
 
 
 class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
@@ -54,7 +48,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         expected_sample_clock_source = "OnboardClock"
         expected_sampling_rate_hertz = 10000.0
         expected_number_of_samples_per_channel = 1000
-        expected_active_edge = ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE
+        expected_active_edge = daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE
 
         expected_timing_parameters = nipcbatt.DynamicDigitalPatternTimingParameters(
             sample_clock_source=expected_sample_clock_source,
@@ -67,7 +61,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         expected_trigger_select = nipcbatt.StartTriggerType.DIGITAL_TRIGGER
         expected_digital_start_trigger_source = "trigger_source"
         expected_digital_start_trigger_edge = (
-            ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE
+            daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE
         )
 
         expected_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
@@ -79,7 +73,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # Create test values for measurement options
         expected_measurement_options = nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE
 
-        instance = DynamicDigitalPatternMeasurementConfiguration(
+        instance = daq.DynamicDigitalPatternMeasurementConfiguration(
             measurement_options=expected_measurement_options,
             timing_parameters=expected_timing_parameters,
             trigger_parameters=expected_trigger_parameters,
@@ -89,7 +83,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # SignalVoltageGenerationSineWaveConfiguration
         logging.debug(
             "%s = %s",
-            nameof(DynamicDigitalPatternMeasurementConfiguration),
+            nameof(daq.DynamicDigitalPatternMeasurementConfiguration),
             instance,
         )
 
@@ -106,44 +100,44 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         """Tests if the instance creation with invalid parameters throws exception as expected"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (208 > 100 characters) (auto-generated noqa)
         self.assertRaises(
             ValueError,
-            lambda: DynamicDigitalPatternMeasurementConfiguration(
+            lambda: daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=None,
                 timing_parameters=nipcbatt.DynamicDigitalPatternTimingParameters(
-                    sample_clock_source=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLE_CLOCK_SOURCE,
-                    sampling_rate_hertz=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLING_RATE_HERTZ,
-                    number_of_samples_per_channel=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_NUMBER_OF_SAMPLES_PER_CHANNEL,
-                    active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+                    sample_clock_source=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLE_CLOCK_SOURCE,
+                    sampling_rate_hertz=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLING_RATE_HERTZ,
+                    number_of_samples_per_channel=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_NUMBER_OF_SAMPLES_PER_CHANNEL,
+                    active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
                 ),
                 trigger_parameters=nipcbatt.DigitalStartTriggerParameters(
-                    trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-                    digital_start_trigger_source=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_SOURCE,
-                    digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+                    trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+                    digital_start_trigger_source=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_SOURCE,
+                    digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
                 ),
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: DynamicDigitalPatternMeasurementConfiguration(
+            lambda: daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                 timing_parameters=None,
                 trigger_parameters=nipcbatt.DigitalStartTriggerParameters(
-                    trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-                    digital_start_trigger_source=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_SOURCE,
-                    digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+                    trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+                    digital_start_trigger_source=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_SOURCE,
+                    digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
                 ),
             ),
         )
 
         self.assertRaises(
             ValueError,
-            lambda: DynamicDigitalPatternMeasurementConfiguration(
+            lambda: daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                 timing_parameters=nipcbatt.DynamicDigitalPatternTimingParameters(
-                    sample_clock_source=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLE_CLOCK_SOURCE,
-                    sampling_rate_hertz=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLING_RATE_HERTZ,
-                    number_of_samples_per_channel=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_NUMBER_OF_SAMPLES_PER_CHANNEL,
-                    active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+                    sample_clock_source=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLE_CLOCK_SOURCE,
+                    sampling_rate_hertz=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_SAMPLING_RATE_HERTZ,
+                    number_of_samples_per_channel=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_NUMBER_OF_SAMPLES_PER_CHANNEL,
+                    active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
                 ),
                 trigger_parameters=None,
             ),
@@ -158,7 +152,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                DynamicDigitalPatternMeasurementResultData(
+                daq.DynamicDigitalPatternMeasurementResultData(
                     waveforms=None, daq_digital_waveform_from_port=[[1, 2, 3], [4, 5, 6]]
                 )
             )
@@ -175,7 +169,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                DynamicDigitalPatternMeasurementResultData(
+                daq.DynamicDigitalPatternMeasurementResultData(
                     waveforms=[], daq_digital_waveform_from_port=[[1, 2, 3], [4, 5, 6]]
                 )
             )
@@ -192,7 +186,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                DynamicDigitalPatternMeasurementResultData(
+                daq.DynamicDigitalPatternMeasurementResultData(
                     daq_digital_waveform_from_port=None,
                     waveforms=[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]],
                 )
@@ -210,7 +204,7 @@ class TestDynamicDigitalPatternMeasurementDataTypes(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                DynamicDigitalPatternMeasurementResultData(
+                daq.DynamicDigitalPatternMeasurementResultData(
                     daq_digital_waveform_from_port=[], waveforms=[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
                 )
             )

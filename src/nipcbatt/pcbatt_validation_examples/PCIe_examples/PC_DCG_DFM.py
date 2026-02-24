@@ -2,11 +2,12 @@
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Initialize
-dcg = nipcbatt.DigitalClockGeneration()
-dfm = nipcbatt.DigitalFrequencyMeasurement()
+dcg = daq.DigitalClockGeneration()
+dfm = daq.DigitalFrequencyMeasurement()
 
 dcg.initialize(
     counter_channel_expression="Dev1/ctr0",
@@ -19,14 +20,14 @@ dfm.initialize(
 )
 # begin dcg configure
 
-channel_parameters = nipcbatt.DigitalClockGenerationCounterChannelParameters(
+channel_parameters = daq.DigitalClockGenerationCounterChannelParameters(
     frequency_hertz=10000.0,
     duty_cycle_ratio=0.5,
 )
-clock_timing_parameters = nipcbatt.DigitalClockGenerationTimingParameters(
+clock_timing_parameters = daq.DigitalClockGenerationTimingParameters(
     clock_duration_seconds=0.1,
 )
-dcg_configuration = nipcbatt.DigitalClockGenerationConfiguration(
+dcg_configuration = daq.DigitalClockGenerationConfiguration(
     counter_channel_parameters=channel_parameters,
     timing_parameters=clock_timing_parameters,
 )
@@ -34,18 +35,18 @@ dcg_configuration = nipcbatt.DigitalClockGenerationConfiguration(
 
 # begin dfm configure
 
-range_parameters = nipcbatt.DigitalFrequencyRangeParameters(
+range_parameters = daq.DigitalFrequencyRangeParameters(
     frequency_maximum_value_hertz=20000000.0,
     frequency_minimum_value_hertz=1.0,
 )
 
-counter_channel_parameter = nipcbatt.DigitalFrequencyMeasurementCounterChannelParameters(
+counter_channel_parameter = daq.DigitalFrequencyMeasurementCounterChannelParameters(
     range_parameters=range_parameters,
     input_divisor_for_frequency_measurement=4,
     measurement_duration_seconds=0.10,
 )
 
-dfm_configuration = nipcbatt.DigitalFrequencyMeasurementConfiguration(
+dfm_configuration = daq.DigitalFrequencyMeasurementConfiguration(
     counter_channel_configuration_parameters=counter_channel_parameter,
 )
 # end dfm configure

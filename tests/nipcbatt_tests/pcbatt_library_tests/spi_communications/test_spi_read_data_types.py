@@ -10,6 +10,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestSpiReadParameters(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestSpiReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadParameters(
+                communications.SpiReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=None,
                 )
@@ -76,7 +77,7 @@ class TestSpiReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadParameters(
+                communications.SpiReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=expected_memory_address_parameters,
                 )
@@ -102,7 +103,7 @@ class TestSpiReadParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadParameters(
+                communications.SpiReadParameters(
                     number_of_bytes_to_read=expected_number_of_bytes_to_read,
                     memory_address_parameters=expected_memory_address_parameters,
                 )
@@ -124,7 +125,7 @@ class TestSpiReadParameters(unittest.TestCase):
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
         )
 
-        instance = nipcbatt.SpiReadParameters(
+        instance = communications.SpiReadParameters(
             number_of_bytes_to_read=expected_number_of_bytes_to_read,
             memory_address_parameters=expected_memory_address_parameters,
         )
@@ -174,13 +175,13 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.spi_communications.spi_read_data_types.SpiReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_communication_parameters = nipcbatt.SpiCommunicationParameters(
+        expected_communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
             clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
         )
-        expected_communication_read_parameters = nipcbatt.SpiReadParameters(
+        expected_communication_read_parameters = communications.SpiReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -192,7 +193,7 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadCommunicationConfiguration(
+                communications.SpiReadCommunicationConfiguration(
                     device_parameters=None,
                     communication_parameters=expected_communication_parameters,
                     read_parameters=expected_communication_read_parameters,
@@ -209,10 +210,10 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.spi_communications.spi_read_data_types.SpiReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_device_parameters = nipcbatt.SpiDeviceParameters(
+        expected_device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_read_parameters = nipcbatt.SpiReadParameters(
+        expected_communication_read_parameters = communications.SpiReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -224,7 +225,7 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadCommunicationConfiguration(
+                communications.SpiReadCommunicationConfiguration(
                     device_parameters=expected_device_parameters,
                     communication_parameters=None,
                     read_parameters=expected_communication_read_parameters,
@@ -241,10 +242,10 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.spi_communications.spi_read_data_types.SpiReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        expected_device_parameters = nipcbatt.SpiDeviceParameters(
+        expected_device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_parameters = nipcbatt.SpiCommunicationParameters(
+        expected_communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
@@ -254,7 +255,7 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadCommunicationConfiguration(
+                communications.SpiReadCommunicationConfiguration(
                     device_parameters=expected_device_parameters,
                     communication_parameters=expected_communication_parameters,
                     read_parameters=None,
@@ -268,16 +269,16 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
         """Unit test of
         nipcbatt.pcbatt_library.spi_communications.spi_read_data_types.SpiReadCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        expected_device_parameters = nipcbatt.SpiDeviceParameters(
+        expected_device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
-        expected_communication_parameters = nipcbatt.SpiCommunicationParameters(
+        expected_communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
             clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
         )
-        expected_communication_read_parameters = nipcbatt.SpiReadParameters(
+        expected_communication_read_parameters = communications.SpiReadParameters(
             number_of_bytes_to_read=7,
             memory_address_parameters=nipcbatt.MemoryAddressParameters(
                 memory_address=128,
@@ -286,7 +287,7 @@ class TestSpiReadCommunicationConfiguration(unittest.TestCase):
             ),
         )
 
-        instance = nipcbatt.SpiReadCommunicationConfiguration(
+        instance = communications.SpiReadCommunicationConfiguration(
             device_parameters=expected_device_parameters,
             communication_parameters=expected_communication_parameters,
             read_parameters=expected_communication_read_parameters,
@@ -342,7 +343,7 @@ class TestSpiReadCommunicationData(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadCommunicationData(
+                communications.SpiReadCommunicationData(
                     data_bytes_read=None,
                 )
             )
@@ -361,7 +362,7 @@ class TestSpiReadCommunicationData(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiReadCommunicationData(
+                communications.SpiReadCommunicationData(
                     data_bytes_read=numpy.array([]),
                 )
             )
@@ -381,7 +382,7 @@ class TestSpiReadCommunicationData(unittest.TestCase):
         )
         expected_data_bytes_read = numpy.array(expected_data_bytes_read_list, dtype=numpy.ubyte)
 
-        instance = nipcbatt.SpiReadCommunicationData(data_bytes_read=expected_data_bytes_read)
+        instance = communications.SpiReadCommunicationData(data_bytes_read=expected_data_bytes_read)
 
         actual_data_bytes_read = instance.data_bytes_read
 

@@ -10,7 +10,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-
+from nipcbatt import daq
 
 class TestStaticDigitalStateGenerationData(unittest.TestCase):
     """Defines a test fixture that ensures the class
@@ -51,7 +51,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
             for item in range(num_channels)
         ]
 
-        instance = nipcbatt.StaticDigitalStateGenerationData(
+        instance = daq.StaticDigitalStateGenerationData(
             channel_identifiers=expected_channel_identifiers
         )
 
@@ -66,13 +66,13 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
         # Test if a value error is thrown when channel_identifiers is None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateGenerationData(channel_identifiers=None),
+            lambda: daq.StaticDigitalStateGenerationData(channel_identifiers=None),
         )
 
         # Test is a value error is thrown when channel_identifiers is empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateGenerationData(channel_identifiers=[]),
+            lambda: daq.StaticDigitalStateGenerationData(channel_identifiers=[]),
         )
 
     def test_static_digital_state_generation_configuration(self):
@@ -82,7 +82,7 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
         expected_data_to_write = [random.choice([True, False]) for item in range(0, num_states)]
 
         # create instance with generated digital states
-        instance = nipcbatt.StaticDigitalStateGenerationConfiguration(
+        instance = daq.StaticDigitalStateGenerationConfiguration(
             data_to_write=expected_data_to_write
         )
 
@@ -99,13 +99,13 @@ class TestStaticDigitalStateGenerationData(unittest.TestCase):
         # create instance with data_to_write as None
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=None),
+            lambda: daq.StaticDigitalStateGenerationConfiguration(data_to_write=None),
         )
 
         # create instance with data_to_write empty
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.StaticDigitalStateGenerationConfiguration(data_to_write=[]),
+            lambda: daq.StaticDigitalStateGenerationConfiguration(data_to_write=[]),
         )
 
 

@@ -4,11 +4,12 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Initialize
-dcg = nipcbatt.DigitalClockGeneration()
-decm = nipcbatt.DigitalEdgeCountMeasurementUsingHardwareTimer()
+dcg = daq.DigitalClockGeneration()
+decm = daq.DigitalEdgeCountMeasurementUsingHardwareTimer()
 
 dcg.initialize(counter_channel_expression="Dev1/ctr0", output_terminal_name="/Dev1/PFI2")
 
@@ -19,10 +20,10 @@ decm.initialize(
 )
 
 # begin decm configure
-counter_channel_parameters = nipcbatt.DigitalEdgeCountMeasurementCounterChannelParameters(
+counter_channel_parameters = daq.DigitalEdgeCountMeasurementCounterChannelParameters(
     edge_type=nidaqmx.constants.Edge.FALLING
 )
-timing_parameters = nipcbatt.DigitalEdgeCountMeasurementTimingParameters(
+timing_parameters = daq.DigitalEdgeCountMeasurementTimingParameters(
     edge_counting_duration=1.0,
 )
 trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
@@ -36,7 +37,7 @@ measurement_options = nipcbatt.MeasurementOptions(
     measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS,
 )
 
-decm_configuration = nipcbatt.DigitalEdgeCountHardwareTimerConfiguration(
+decm_configuration = daq.DigitalEdgeCountHardwareTimerConfiguration(
     measurement_options=measurement_options,
     counter_channel_parameters=counter_channel_parameters,
     timing_parameters=timing_parameters,
@@ -46,14 +47,14 @@ decm.configure_and_measure(configuration=decm_configuration)
 # end region decm configure
 
 # begin dcg configure and generate
-channel_parameters = nipcbatt.DigitalClockGenerationCounterChannelParameters(
+channel_parameters = daq.DigitalClockGenerationCounterChannelParameters(
     frequency_hertz=1000.0,
     duty_cycle_ratio=0.5,
 )
-clock_timing_parameters = nipcbatt.DigitalClockGenerationTimingParameters(
+clock_timing_parameters = daq.DigitalClockGenerationTimingParameters(
     clock_duration_seconds=1.0,
 )
-dcg_configuration = nipcbatt.DigitalClockGenerationConfiguration(
+dcg_configuration = daq.DigitalClockGenerationConfiguration(
     counter_channel_parameters=channel_parameters,
     timing_parameters=clock_timing_parameters,
 )
@@ -65,7 +66,7 @@ measurement_options = nipcbatt.MeasurementOptions(
     measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS,
 )
 
-decm_configuration = nipcbatt.DigitalEdgeCountHardwareTimerConfiguration(
+decm_configuration = daq.DigitalEdgeCountHardwareTimerConfiguration(
     measurement_options=measurement_options,
     counter_channel_parameters=counter_channel_parameters,
     timing_parameters=timing_parameters,

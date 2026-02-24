@@ -7,6 +7,7 @@ import os
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # Setup: Get the physical channels required for the test.
@@ -36,8 +37,8 @@ def setup(
     Domain Measurement""" 
 
     # Create the instances of generation and measurement classes required for the test.
-    microphone_instance = nipcbatt.SignalVoltageGeneration()
-    freq_domain_meas_test_point = nipcbatt.FrequencyDomainMeasurement()
+    microphone_instance = daq.SignalVoltageGeneration()
+    freq_domain_meas_test_point = daq.FrequencyDomainMeasurement()
 
     # Initialize Microphone
     """Initializes the configured channels of AO module to perform microphone functionality"""
@@ -62,8 +63,8 @@ def setup(
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main( 
-    microphone_instance: nipcbatt.SignalVoltageGeneration,
-    freq_domain_meas_test_point: nipcbatt.FrequencyDomainMeasurement,
+    microphone_instance: daq.SignalVoltageGeneration,
+    freq_domain_meas_test_point: daq.FrequencyDomainMeasurement,
     digital_start_trigger=DIGITAL_STATRT_TRIGGER,
 ):
     results_map = {}  # this structure will hold results in key-value pairs
@@ -96,7 +97,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    fdvm_config = nipcbatt.FrequencyDomainMeasurementConfiguration(
+    fdvm_config = daq.FrequencyDomainMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_options=meas_config_configure_only,
@@ -117,7 +118,7 @@ def main(
         range_min_volts=-2, range_max_volts=2
     )
     # Set the Sampling rate hertz and the generated siganl duration
-    gen_timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+    gen_timing_parameters = daq.SignalVoltageGenerationTimingParameters(
         sample_clock_source="OnboardClock",
         sampling_rate_hertz=100000,
         generated_signal_duration_seconds=generation_time,
@@ -130,16 +131,16 @@ def main(
     )
 
     # Set the Sine wave Parameters
-    generated_signal_tone_parameters = nipcbatt.ToneParameters(
+    generated_signal_tone_parameters = daq.ToneParameters(
         tone_frequency_hertz=1000, tone_amplitude_volts=1, tone_phase_radians=0
     )
 
-    waveform_parameters = nipcbatt.SignalVoltageGenerationSineWaveParameters(
+    waveform_parameters = daq.SignalVoltageGenerationSineWaveParameters(
         generated_signal_offset_volts=0,
         generated_signal_tone_parameters=generated_signal_tone_parameters,
     )
 
-    svg_config = nipcbatt.SignalVoltageGenerationSineWaveConfiguration(
+    svg_config = daq.SignalVoltageGenerationSineWaveConfiguration(
         voltage_generation_range_parameters=voltage_generation_range_parameters,
         waveform_parameters=waveform_parameters,
         timing_parameters=gen_timing_parameters,
@@ -162,7 +163,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    fdvm_config = nipcbatt.FrequencyDomainMeasurementConfiguration(
+    fdvm_config = daq.FrequencyDomainMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_options=meas_options_measure_only,
@@ -188,8 +189,8 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    microphone_instance: nipcbatt.SignalVoltageGeneration,
-    freq_domain_meas_test_point: nipcbatt.TimeDomainMeasurement,
+    microphone_instance: daq.SignalVoltageGeneration,
+    freq_domain_meas_test_point: daq.TimeDomainMeasurement,
 ):
     microphone_instance.close()
     freq_domain_meas_test_point.close()

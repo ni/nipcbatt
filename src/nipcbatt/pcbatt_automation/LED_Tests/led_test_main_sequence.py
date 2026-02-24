@@ -1,9 +1,9 @@
 """Main sequence for Analog PWM test"""  
 
 # Import Functions
-from analog_pwm_test import analog_pwm_test
-from analog_voltage_measurement_test import analog_voltage_measurement
-from turn_off_all_ao_channels import power_down_all_ao_channels
+from .analog_pwm_test import analog_pwm_test
+from .analog_voltage_measurement_test import analog_voltage_measurement
+from .turn_off_all_ao_channels import power_down_all_ao_channels
 
 ############# SETUP ###################
 # Import the simulated hardware to NI Max for running the example

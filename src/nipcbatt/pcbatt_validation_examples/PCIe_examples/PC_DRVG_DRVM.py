@@ -4,6 +4,7 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -11,10 +12,10 @@ from nipcbatt.pcbatt_utilities.save_traces import save_traces
 plot_results = True
 save_fig = False
 
-drvg = nipcbatt.DcVoltageGeneration()
+drvg = daq.DcVoltageGeneration()
 drvg.initialize(analog_output_channel_expression="Dev1/ao0")
 
-drvm = nipcbatt.DcRmsVoltageMeasurement()
+drvm = daq.DcRmsVoltageMeasurement()
 drvm.initialize(analog_input_channel_expression="Dev1/ai0")
 
 # region drvg configure and generate
@@ -25,7 +26,7 @@ range_settings = nipcbatt.VoltageGenerationChannelParameters(
 
 output_voltages = [1.00]
 
-drvg_config = nipcbatt.DcVoltageGenerationConfiguration(
+drvg_config = daq.DcVoltageGenerationConfiguration(
     voltage_generation_range_parameters=range_settings, output_voltages=output_voltages
 )
 
@@ -61,7 +62,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-drvm_config = nipcbatt.DcRmsVoltageMeasurementConfiguration(
+drvm_config = daq.DcRmsVoltageMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,
@@ -79,7 +80,7 @@ drvm.close()
 # Set DC Voltage to 0
 output_voltages = [0.0]
 
-drvg_config1 = nipcbatt.DcVoltageGenerationConfiguration(
+drvg_config1 = daq.DcVoltageGenerationConfiguration(
     voltage_generation_range_parameters=range_settings, output_voltages=output_voltages
 )
 

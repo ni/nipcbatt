@@ -9,6 +9,7 @@ from varname import nameof
 
 import nipcbatt
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
+from nipcbatt import communications
 
 
 class TestIntegrationSpiReadCommunication(unittest.TestCase):
@@ -48,21 +49,21 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
     )
     def test_integration_spi_read_communication(self):
         """Integration test of
-        nipcbatt.pcbatt_library.spi_communications.spi_read_communication.SpiReadCommunication
+        communications.pcbatt_library.spi_communications.spi_read_communication.SpiReadCommunication
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
-        with nipcbatt.SpiReadCommunication() as communication:
+        with communications.SpiReadCommunication() as communication:
             communication.initialize("USB-8452")
 
-            device_parameters = nipcbatt.SpiDeviceParameters(
+            device_parameters = communications.SpiDeviceParameters(
                 voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_33,
             )
-            communication_parameters = nipcbatt.SpiCommunicationParameters(
+            communication_parameters = communications.SpiCommunicationParameters(
                 chip_select=0,
                 clock_rate_kilohertz=1000,
                 clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_FIRST_EDGE,
                 clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
             )
-            read_parameters = nipcbatt.SpiReadParameters(
+            read_parameters = communications.SpiReadParameters(
                 number_of_bytes_to_read=32,
                 memory_address_parameters=nipcbatt.MemoryAddressParameters(
                     memory_address=0,
@@ -70,7 +71,7 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
                 ),
             )
-            configuration = nipcbatt.SpiReadCommunicationConfiguration(
+            configuration = communications.SpiReadCommunicationConfiguration(
                 device_parameters=device_parameters,
                 communication_parameters=communication_parameters,
                 read_parameters=read_parameters,
@@ -80,7 +81,7 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
             results = communication.configure_and_read_data(configuration=configuration)
             print(f"results = {results}")
             self.assertIsNotNone(results)
-            self.assertIsInstance(results, nipcbatt.SpiReadCommunicationData)
+            self.assertIsInstance(results, communications.SpiReadCommunicationData)
 
 
 if __name__ == "__main__":

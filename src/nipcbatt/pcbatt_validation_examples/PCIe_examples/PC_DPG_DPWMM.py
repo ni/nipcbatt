@@ -3,13 +3,14 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 number_of_cycles = 101
 
 # initialize
-dpg = nipcbatt.DigitalPulseGeneration()
-dpwmm = nipcbatt.DigitalPwmMeasurement()
+dpg = daq.DigitalPulseGeneration()
+dpwmm = daq.DigitalPwmMeasurement()
 
 # Terminals to be verified
 dpg.initialize(channel_expression="Dev1/ctr0", output_terminal_name="/Dev1/PFI2")
@@ -21,22 +22,22 @@ dpwmm.initialize(
 
 # DPWMM configuration begins
 
-range_parameters = nipcbatt.DigitalPwmMeasurementRangeParameters(
+range_parameters = daq.DigitalPwmMeasurementRangeParameters(
     semi_period_maximum_value_seconds=42.949672,
     semi_period_minimum_value_seconds=20e-9,
 )
 
-timing_parameters = nipcbatt.DigitalPwmMeasurementTimingParameters(
+timing_parameters = daq.DigitalPwmMeasurementTimingParameters(
     semi_period_counter_wanted_cycles_count=number_of_cycles,
 )
 
-counter_channel_parameters = nipcbatt.DigitalPwmMeasurementCounterChannelParameters(
+counter_channel_parameters = daq.DigitalPwmMeasurementCounterChannelParameters(
     timing_parameters=timing_parameters,
     range_parameters=range_parameters,
     semi_period_counter_starting_edge=nidaqmx.constants.Edge.RISING,
 )
 
-dpwmm_configuration = nipcbatt.DigitalPwmMeasurementConfiguration(
+dpwmm_configuration = daq.DigitalPwmMeasurementConfiguration(
     parameters=counter_channel_parameters,
     measurement_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
 )
@@ -46,15 +47,15 @@ dpwmm.configure_and_measure(configuration=dpwmm_configuration)
 
 
 # begin dpg configure and generate
-channel_parameters = nipcbatt.DigitalPulseGenerationCounterChannelParameters(
+channel_parameters = daq.DigitalPulseGenerationCounterChannelParameters(
     pulse_idle_state=nidaqmx.constants.Level.LOW,
     low_time_seconds=0.00005,
     high_time_seconds=0.00015,
 )
-pulse_timing_parameters = nipcbatt.DigitalPulseGenerationTimingParameters(
+pulse_timing_parameters = daq.DigitalPulseGenerationTimingParameters(
     pulses_count=number_of_cycles,
 )
-dpg_configuration = nipcbatt.DigitalPulseGenerationConfiguration(
+dpg_configuration = daq.DigitalPulseGenerationConfiguration(
     counter_channel_parameters=channel_parameters,
     timing_parameters=pulse_timing_parameters,
 )
@@ -62,7 +63,7 @@ dpg_configuration = nipcbatt.DigitalPulseGenerationConfiguration(
 dpg_results = dpg.configure_and_generate(configuration=dpg_configuration)
 
 
-dpwmm_configuration = nipcbatt.DigitalPwmMeasurementConfiguration(
+dpwmm_configuration = daq.DigitalPwmMeasurementConfiguration(
     parameters=counter_channel_parameters,
     measurement_option=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
 )

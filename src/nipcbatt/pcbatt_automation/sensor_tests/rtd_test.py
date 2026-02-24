@@ -7,6 +7,7 @@ import nidaqmx
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # ignore:
@@ -30,7 +31,7 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
     """Creates the necessary objects for the measurement of Temprature"""  
 
     # Creates the instances of measurement class required for the test
-    trtdm = nipcbatt.TemperatureMeasurementUsingRtd()
+    trtdm = daq.TemperatureMeasurementUsingRtd()
 
     # Initialize measurement object
     """Initializes the channels of the trtdm module to prepare for measurement"""
@@ -49,12 +50,12 @@ def setup(input_terminal=INPUT_TERMINAL, file_path=DEFAULT_FILEPATH):
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND MEASURE ###########################
 def main( 
-    trtdm: nipcbatt.TemperatureMeasurementUsingRtd, input_terminal=INPUT_TERMINAL
+    trtdm: daq.TemperatureMeasurementUsingRtd, input_terminal=INPUT_TERMINAL
 ):
     results_map = {}  # this structure will hold results in key-value pairs
 
     # region TRTDM configure and measure
-    global_channel_parameters = nipcbatt.TemperatureRtdMeasurementTerminalParameters(
+    global_channel_parameters = daq.TemperatureRtdMeasurementTerminalParameters(
         temperature_minimum_value_celsius_degrees=0,
         temperature_maximum_value_celsius_degrees=100,
         current_excitation_value_amperes=0.001,
@@ -66,7 +67,7 @@ def main(
     )
 
     # region specific_channels_parameters
-    channel0 = nipcbatt.TemperatureRtdMeasurementChannelParameters(
+    channel0 = daq.TemperatureRtdMeasurementChannelParameters(
         channel_name=input_terminal,
         sensor_resistance_ohms=100,
         current_excitation_value_amperes=0.001,
@@ -95,7 +96,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    trtdm_config = nipcbatt.TemperatureRtdMeasurementConfiguration(
+    trtdm_config = daq.TemperatureRtdMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -121,7 +122,7 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup(  
-    trtdm: nipcbatt.TemperatureMeasurementUsingRtd,
+    trtdm: daq.TemperatureMeasurementUsingRtd,
 ):
     trtdm.close()
 

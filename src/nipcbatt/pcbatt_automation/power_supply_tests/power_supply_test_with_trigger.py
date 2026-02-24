@@ -5,6 +5,7 @@ the Trigger is sent from Power Supply after starting the source."""
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 ## Setup: Get the physical channels required for the test.
@@ -31,8 +32,8 @@ def setup(
     """Creates the necessary objects for the generation and measurement of the power supply"""  
 
     # Create the instances of generation and measurement classes required for the test.
-    power_supply_test_source_instance = nipcbatt.PowerSupplySourceAndMeasure()
-    analog_input_test_point_instance = nipcbatt.TimeDomainMeasurement()
+    power_supply_test_source_instance = daq.PowerSupplySourceAndMeasure()
+    analog_input_test_point_instance = daq.TimeDomainMeasurement()
 
     # Initialize Power Supply
     """Initializes the configured channels of Power supply module"""
@@ -52,8 +53,8 @@ def setup(
 # region configure_and_measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    power_supply_test_source_instance: nipcbatt.PowerSupplySourceAndMeasure,
-    analog_input_test_point_instance: nipcbatt.TimeDomainMeasurement,
+    power_supply_test_source_instance: daq.PowerSupplySourceAndMeasure,
+    analog_input_test_point_instance: daq.TimeDomainMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -101,7 +102,7 @@ def main(
     )
 
     # initialize an instance of 'TimeDomainMeasurementConfiguration' for Configure only
-    meas_config_configure_only = nipcbatt.TimeDomainMeasurementConfiguration(
+    meas_config_configure_only = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=meas_global_channel_parameters,
         specific_channels_parameters=meas_specific_channels_parameters,
         measurement_options=meas_options_configure_only,
@@ -124,7 +125,7 @@ def main(
     ### Configure and measure test source using 'PowerSupplySourceAndMeasureConfiguration'
 
     # initialize an instance of 'PowerSupplySourceAndMeasureTerminalParameters'
-    gen_terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+    gen_terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=5,
         current_setpoint_amperes=1,
         power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -154,7 +155,7 @@ def main(
     )
 
     # initialize an instance of 'PowerSupplySourceAndMeasureConfiguration'
-    meas_config_configure_and_measure = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+    meas_config_configure_and_measure = daq.PowerSupplySourceAndMeasureConfiguration(
         terminal_parameters=gen_terminal_parameters,
         measurement_options=meas_options_configure_and_measure,
         sample_clock_timing_parameters=gen_sample_clock_timing_parameters,
@@ -179,7 +180,7 @@ def main(
     )
 
     # initialize an instance of 'TimeDomainMeasurementConfiguration' for Measure only
-    meas_config_measure_only = nipcbatt.TimeDomainMeasurementConfiguration(
+    meas_config_measure_only = daq.TimeDomainMeasurementConfiguration(
         global_channel_parameters=meas_global_channel_parameters,
         specific_channels_parameters=meas_specific_channels_parameters,
         measurement_options=meas_options_measure_only,
@@ -208,8 +209,8 @@ def main(
 
 # Close all tasks
 def cleanup(
-    power_supply_test_source_instance: nipcbatt.PowerSupplySourceAndMeasure,
-    analog_input_test_point_instance: nipcbatt.TimeDomainMeasurement,
+    power_supply_test_source_instance: daq.PowerSupplySourceAndMeasure,
+    analog_input_test_point_instance: daq.TimeDomainMeasurement,
 ):
     """Closes out the created objects used in the generation and measurement"""  
     power_supply_test_source_instance.close()  # Close TS

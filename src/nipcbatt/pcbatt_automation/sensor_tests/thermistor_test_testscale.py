@@ -8,6 +8,7 @@ import nidaqmx
 import numpy as np  
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 parent_folder = os.getcwd()
@@ -36,13 +37,13 @@ def setup(
     """Creates the necessary objects for voltage generation
     and the Temprature Measurement"""  
     # Create the instances of generation class required for the test
-    pssm = nipcbatt.PowerSupplySourceAndMeasure()
+    pssm = daq.PowerSupplySourceAndMeasure()
 
     """Initializes the channels for the pssm module to prepare 
        for voltage generation"""
     pssm.initialize(output_terminal)
     # Creates the necessary instances of measurement class required for the test
-    ttr = nipcbatt.TemperatureMeasurementUsingThermistor()
+    ttr = daq.TemperatureMeasurementUsingThermistor()
     """Initializes the channels of ttr module to prepare for temprature
        measuremnt"""
     ttr.initialize(input_terminal)
@@ -62,15 +63,15 @@ def setup(
 # Region to configure and Measure
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main( 
-    pssm: nipcbatt.PowerSupplySourceAndMeasure,
-    ttr: nipcbatt.TemperatureMeasurementUsingThermistor,
+    pssm: daq.PowerSupplySourceAndMeasure,
+    ttr: daq.TemperatureMeasurementUsingThermistor,
     input_terminal=INPUT_TERMINAL,
 ):
     results_map = {}  # this structure will hold results in key-value pairs
 
     """Sets up the volatge and current to be generated and whether
     to enable the output or not"""
-    terminal_parameters = nipcbatt.PowerSupplySourceAndMeasureTerminalParameters(
+    terminal_parameters = daq.PowerSupplySourceAndMeasureTerminalParameters(
         voltage_setpoint_volts=5.0,
         current_setpoint_amperes=0.1,
         power_sense=nidaqmx.constants.Sense.LOCAL,
@@ -96,7 +97,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    pssm_config = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+    pssm_config = daq.PowerSupplySourceAndMeasureConfiguration(
         terminal_parameters=terminal_parameters,
         measurement_options=measurement_options,
         sample_clock_timing_parameters=gen_timing_parameters,
@@ -110,25 +111,25 @@ def main(
     # region TTR configure and measure
 
     # Set the parameters for Thermistor
-    coefficients_steinhart_hart_parameters = nipcbatt.CoefficientsSteinhartHartParameters(
+    coefficients_steinhart_hart_parameters = daq.CoefficientsSteinhartHartParameters(
         coefficient_steinhart_hart_a=0,
         coefficient_steinhart_hart_b=0,
         coefficient_steinhart_hart_c=0,
     )
 
     beta_coefficient_and_sensor_resistance_parameters = (
-        nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+        nipcbatt.pcbBetaCoefficientAndSensorResistanceParameters(
             coefficient_steinhart_hart_beta_kelvins=3720, sensor_resistance_ohms=10000
         )
     )
 
-    global_channel_parameters = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+    global_channel_parameters = daq.TemperatureThermistorRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         temperature_minimum_value_celsius_degrees=0,
         temperature_maximum_value_celsius_degrees=100,
         voltage_excitation_value_volts=5,
         thermistor_resistor_ohms=1000,
-        steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
+        steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
         coefficients_steinhart_hart_parameters=coefficients_steinhart_hart_parameters,
         beta_coefficient_and_sensor_resistance_parameters=beta_coefficient_and_sensor_resistance_parameters,
     )
@@ -149,7 +150,7 @@ def main(
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
-    ttr_config = nipcbatt.TemperatureThermistorMeasurementConfiguration(
+    ttr_config = daq.TemperatureThermistorMeasurementConfiguration(
         global_channel_parameters=global_channel_parameters,
         specific_channels_parameters=specific_channels_parameters,
         measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -175,7 +176,7 @@ def main(
 ############################# CLEAN UP FUNCTION: CLOSE ALL TASKS ###################################
 # Close all tasks
 def cleanup( 
-    ttr: nipcbatt.TemperatureMeasurementUsingThermistor, pssm: nipcbatt.PowerSupplySourceAndMeasure
+    ttr: daq.TemperatureMeasurementUsingThermistor, pssm: daq.PowerSupplySourceAndMeasure
 ):
     ttr.close()
     pssm.close()

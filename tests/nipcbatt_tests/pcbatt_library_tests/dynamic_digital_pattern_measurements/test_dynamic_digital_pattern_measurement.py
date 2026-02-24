@@ -8,19 +8,11 @@ import unittest
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
+
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DigitalStartTriggerParameters,
     DynamicDigitalPatternTimingParameters,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
-    ConstantsForDynamicDigitalPatternMeasurement,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types.DynamicDigitalPatternMeasurementResultData' imported but unused (auto-generated noqa)
-    DynamicDigitalPatternMeasurementConfiguration,
-    DynamicDigitalPatternMeasurementResultData,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_measurement import (
-    DynamicDigitalPatternMeasurement,
 )
 
 # from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
@@ -62,20 +54,20 @@ class TestDynamicDigitalPatternMeasurement(unittest.TestCase):
 
     def test_dynamic_digital_pattern_measurement(self):
         """Checks if class 'DynamicDigitalPatternMeasurement' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (192 > 100 characters) (auto-generated noqa)
-        meas = DynamicDigitalPatternMeasurement()
-        meas.initialize("TS1_DIO/port0/line0:7")
+        meas = daq.DynamicDigitalPatternMeasurement()
+        meas.initialize("Simulated_DAQ/port0/line0:7")
         timing_parameters = DynamicDigitalPatternTimingParameters(
             sample_clock_source="OnboardClock",
             sampling_rate_hertz=10000.0,
             number_of_samples_per_channel=50,
-            active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+            active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
         )
         trigger_parameters = DigitalStartTriggerParameters(
-            trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-            digital_start_trigger_source="/TS1_Core/PFI0",
-            digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+            trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+            digital_start_trigger_source="/Simulated_DAQ/PFI0",
+            digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
         )
-        configuration = DynamicDigitalPatternMeasurementConfiguration(
+        configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
             measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
             timing_parameters=timing_parameters,
             trigger_parameters=trigger_parameters,

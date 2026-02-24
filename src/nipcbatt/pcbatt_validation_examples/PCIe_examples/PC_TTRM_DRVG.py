@@ -6,6 +6,7 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Global variables
@@ -14,10 +15,10 @@ save_fig = False
 use_specific_channel = True
 
 # Initialize
-drvg = nipcbatt.DcVoltageGeneration()
+drvg = daq.DcVoltageGeneration()
 drvg.initialize(analog_output_channel_expression="Dev1/ao2:3")
 
-ttrm = nipcbatt.TemperatureMeasurementUsingThermistor()
+ttrm = daq.TemperatureMeasurementUsingThermistor()
 ttrm.initialize("Dev1/ai2, Dev1/ai4")
 
 # region drvg configure and generate
@@ -28,7 +29,7 @@ range_settings = nipcbatt.VoltageGenerationChannelParameters(
 
 output_voltages = [10.0, 10.0]
 
-drvg_config = nipcbatt.DcVoltageGenerationConfiguration(
+drvg_config = daq.DcVoltageGenerationConfiguration(
     voltage_generation_range_parameters=range_settings, output_voltages=output_voltages
 )
 
@@ -38,25 +39,25 @@ drvg.configure_and_generate(drvg_config)
 
 # region TTR configure and measure
 
-coefficients_steinhart_hart_parameters = nipcbatt.CoefficientsSteinhartHartParameters(
+coefficients_steinhart_hart_parameters = daq.CoefficientsSteinhartHartParameters(
     coefficient_steinhart_hart_a=0,
     coefficient_steinhart_hart_b=0,
     coefficient_steinhart_hart_c=0,
 )
 
 beta_coefficient_and_sensor_resistance_parameters = (
-    nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+    daq.BetaCoefficientAndSensorResistanceParameters(
         coefficient_steinhart_hart_beta_kelvins=3720, sensor_resistance_ohms=5000
     )
 )
 
-global_channel_parameters = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+global_channel_parameters = daq.TemperatureThermistorRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     temperature_minimum_value_celsius_degrees=0,
     temperature_maximum_value_celsius_degrees=100,
     voltage_excitation_value_volts=10,
     thermistor_resistor_ohms=5000,
-    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
+    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
     coefficients_steinhart_hart_parameters=coefficients_steinhart_hart_parameters,
     beta_coefficient_and_sensor_resistance_parameters=beta_coefficient_and_sensor_resistance_parameters,
 )
@@ -64,58 +65,58 @@ global_channel_parameters = nipcbatt.TemperatureThermistorRangeAndTerminalParame
 # region specific_channels_parameters
 
 #   channel 0
-coefficients_steinhart_hart_parameters_0 = nipcbatt.CoefficientsSteinhartHartParameters(
+coefficients_steinhart_hart_parameters_0 = daq.CoefficientsSteinhartHartParameters(
     coefficient_steinhart_hart_a=0,
     coefficient_steinhart_hart_b=0,
     coefficient_steinhart_hart_c=0,
 )
 
 beta_coefficient_and_sensor_resistance_parameters_0 = (
-    nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+    daq.BetaCoefficientAndSensorResistanceParameters(
         coefficient_steinhart_hart_beta_kelvins=3720, sensor_resistance_ohms=5000
     )
 )
 
-channel_parameters_0 = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+channel_parameters_0 = daq.TemperatureThermistorRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     temperature_minimum_value_celsius_degrees=0,
     temperature_maximum_value_celsius_degrees=100,
     voltage_excitation_value_volts=10,
     thermistor_resistor_ohms=4990,
-    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
+    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
     coefficients_steinhart_hart_parameters=coefficients_steinhart_hart_parameters_0,
     beta_coefficient_and_sensor_resistance_parameters=beta_coefficient_and_sensor_resistance_parameters_0,
 )
 
-channel0 = nipcbatt.TemperatureThermistorChannelRangeAndTerminalParameters(
+channel0 = daq.TemperatureThermistorChannelRangeAndTerminalParameters(
     channel_name="Dev1/ai2", channel_parameters=channel_parameters_0
 )
 
 #   channel 1
-coefficients_steinhart_hart_parameters_1 = nipcbatt.CoefficientsSteinhartHartParameters(
+coefficients_steinhart_hart_parameters_1 = daq.CoefficientsSteinhartHartParameters(
     coefficient_steinhart_hart_a=0,
     coefficient_steinhart_hart_b=0,
     coefficient_steinhart_hart_c=0,
 )
 
 beta_coefficient_and_sensor_resistance_parameters_1 = (
-    nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+    daq.BetaCoefficientAndSensorResistanceParameters(
         coefficient_steinhart_hart_beta_kelvins=3720, sensor_resistance_ohms=10000
     )
 )
 
-channel_parameters_1 = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+channel_parameters_1 = daq.TemperatureThermistorRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     temperature_minimum_value_celsius_degrees=0,
     temperature_maximum_value_celsius_degrees=100,
     voltage_excitation_value_volts=10,
     thermistor_resistor_ohms=10090,
-    steinhart_hart_equation_option=nipcbatt.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
+    steinhart_hart_equation_option=daq.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE,
     coefficients_steinhart_hart_parameters=coefficients_steinhart_hart_parameters_1,
     beta_coefficient_and_sensor_resistance_parameters=beta_coefficient_and_sensor_resistance_parameters_1,
 )
 
-channel1 = nipcbatt.TemperatureThermistorChannelRangeAndTerminalParameters(
+channel1 = daq.TemperatureThermistorChannelRangeAndTerminalParameters(
     channel_name="Dev1/ai4", channel_parameters=channel_parameters_1
 )
 
@@ -139,7 +140,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-ttrm_config = nipcbatt.TemperatureThermistorMeasurementConfiguration(
+ttrm_config = daq.TemperatureThermistorMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -154,7 +155,7 @@ ttrm_result_data = ttrm.configure_and_measure(configuration=ttrm_config)
 # Set DC Voltage to 0
 output_voltages = [0.0, 0.0]
 
-drvg_config1 = nipcbatt.DcVoltageGenerationConfiguration(
+drvg_config1 = daq.DcVoltageGenerationConfiguration(
     voltage_generation_range_parameters=range_settings, output_voltages=output_voltages
 )
 

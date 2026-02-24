@@ -8,12 +8,14 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
-)
+)'''
 
 
 class TestIntegrationDcVoltageGeneration(unittest.TestCase):
@@ -39,7 +41,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx(_MockInterpreter)
+        #_replace_daqmx(_MockInterpreter)
 
     @classmethod
     def tearDownClass(cls):
@@ -48,7 +50,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
     def test_dc_voltage_generation_generate_only(self):
         """Checks if class `DcVoltageGeneration' can generate with just the initial configurations"""  # noqa: W505, D202, D415 - doc line too long (101 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
-        generation = nipcbatt.DcVoltageGeneration()
+        generation = daq.DcVoltageGeneration()
         generation.initialize(
             analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0"
         )
@@ -79,7 +81,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
         parameters_list.append((generation_channel_parameters_1, output_voltages_1))
         parameters_list.append((generation_channel_parameters_2, output_voltages_2))
 
-        generation = nipcbatt.DcVoltageGeneration()
+        generation = daq.DcVoltageGeneration()
         generation.initialize(
             analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
         )
@@ -100,12 +102,12 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
     ):
         """Checks if class `DcVoltageGeneration' throws expected error when called with invalid output_voltages"""  # noqa: W505, D202, D415 - doc line too long (114 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa)
 
-        generation = nipcbatt.DcVoltageGeneration()
+        generation = daq.DcVoltageGeneration()
         generation.initialize(
             analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
         )
         generation.configure_all_channels(
-            parameters=nipcbatt.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
+            parameters=daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
         )
         # The generate_voltage with valid output_voltages shoudl not throw any error
         generation.generate_voltage([0.5, 0.7])

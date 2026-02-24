@@ -5,6 +5,7 @@
 import nidaqmx.constants
 
 import nipcbatt
+from nipcbatt import daq
 import nipcbatt.pcbatt_utilities.plotter as pl
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
@@ -14,7 +15,7 @@ save_fig = False
 use_specific_channel = False
 
 # initialize 'TemperatureMeasurementUsingThermocouple' class instance
-ttcm = nipcbatt.TemperatureMeasurementUsingThermocouple()
+ttcm = daq.TemperatureMeasurementUsingThermocouple()
 ttcm.initialize(
     channel_expression="cDAQ1_TC/ai0:1",
     cold_junction_compensation_source=nidaqmx.constants.CJCSource.BUILT_IN,
@@ -23,7 +24,7 @@ ttcm.initialize(
 
 # region ttcm configure and measure
 
-global_channel_parameters = nipcbatt.TemperatureThermocoupleMeasurementTerminalParameters(
+global_channel_parameters = daq.TemperatureThermocoupleMeasurementTerminalParameters(
     temperature_minimum_value_celsius_degrees=0.0,
     temperature_maximum_value_celsius_degrees=100.0,
     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -34,7 +35,7 @@ global_channel_parameters = nipcbatt.TemperatureThermocoupleMeasurementTerminalP
 
 # region specific_channels_parameters
 
-channel_parameters = nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
+channel_parameters = daq.TemperatureThermocoupleRangeAndTerminalParameters(
     temperature_minimum_value_celsius_degrees=0.0,
     temperature_maximum_value_celsius_degrees=100.0,
     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
@@ -45,7 +46,7 @@ channel_parameters = nipcbatt.TemperatureThermocoupleRangeAndTerminalParameters(
     auto_zero_mode=nidaqmx.constants.AutoZeroType.NONE,
 )
 
-channel1 = nipcbatt.TemperatureThermocoupleChannelRangeAndTerminalParameters(
+channel1 = daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
     channel_name="cDAQ1_TC/ai0",
     channel_parameters=channel_parameters,
 )
@@ -69,7 +70,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-ttcm_config = nipcbatt.TemperatureThermocoupleMeasurementConfiguration(
+ttcm_config = daq.TemperatureThermocoupleMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,

@@ -6,7 +6,7 @@ import pyvisa
 import pyvisa.constants
 
 # import functions
-import nipcbatt
+from nipcbatt import communications
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 # Note to run with Hardware: Update Serial VISA for the COM port
@@ -22,7 +22,7 @@ DEFAULT_FILEPATH = "C:\\Windows\\Temp\\serial_comm_test_results.txt"
 ######## INITIALIZE ################################################################################
 def setup():
     """Creates and initializes serial communication object""" 
-    resource = nipcbatt.SerialCommunication()
+    resource = communications.SerialCommunication()
     resource.initialize(serial_device_name=DEVICE_ID)
     return resource
 
@@ -33,7 +33,7 @@ def setup():
 # region configure
 ####### CONFIGURE & READ/WRITE DATA ###############################################################
 def main(
-    resource: nipcbatt.SerialCommunication,
+    resource: communications.SerialCommunication,
     write_to_file: bool,
 ):
     """If you wish to write your results to a file use the following commands
@@ -50,7 +50,7 @@ def main(
 
     # Update the Serial Write Command based on the usecase
 
-    comm_params = nipcbatt.SerialCommunicationParameters(
+    comm_params = communications.SerialCommunicationParameters(
         data_rate_bauds=9600,
         number_of_bits_in_data_frame=8,
         delay_before_receive_response_milliseconds=500,
@@ -61,7 +61,7 @@ def main(
 
     command = "IDN?\n"  # Update the command to send
 
-    config = nipcbatt.SerialCommunicationConfiguration(
+    config = communications.SerialCommunicationConfiguration(
         communication_parameters=comm_params, command_to_send=command
     )
 
@@ -85,7 +85,7 @@ def main(
 
 
 # Close all tasks
-def cleanup(resource: nipcbatt.SerialCommunication):
+def cleanup(resource: communications.SerialCommunication):
     """Closes out the created objects used in the communication""" 
     resource.close()
 

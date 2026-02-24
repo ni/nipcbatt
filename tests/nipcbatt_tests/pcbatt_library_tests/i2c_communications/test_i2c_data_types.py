@@ -8,7 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-
+from nipcbatt import communications
 
 class TestI2cDeviceParameters(unittest.TestCase):
     """Defines a test fixture that checks
@@ -45,7 +45,7 @@ class TestI2cDeviceParameters(unittest.TestCase):
         expected_enable_i2c_pullup_resistor = False
         expected_voltage_level = nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_25
 
-        instance = nipcbatt.I2cDeviceParameters(
+        instance = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=expected_enable_i2c_pullup_resistor,
             voltage_level=expected_voltage_level,
         )
@@ -100,7 +100,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cCommunicationParameters(
+                communications.I2cCommunicationParameters(
                     device_address=expected_device_address,
                     addressing_type=expected_addressing_type,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
@@ -126,7 +126,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cCommunicationParameters(
+                communications.I2cCommunicationParameters(
                     device_address=expected_device_address,
                     addressing_type=expected_addressing_type,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
@@ -152,7 +152,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cCommunicationParameters(
+                communications.I2cCommunicationParameters(
                     device_address=expected_device_address,
                     addressing_type=expected_addressing_type,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
@@ -178,7 +178,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cCommunicationParameters(
+                communications.I2cCommunicationParameters(
                     device_address=expected_device_address,
                     addressing_type=expected_addressing_type,
                     clock_rate_kilohertz=expected_clock_rate_kilohertz,
@@ -200,7 +200,7 @@ class TestI2cCommunicationParameters(unittest.TestCase):
         expected_clock_rate_kilohertz = 100
         expected_ack_poll_timeout_milliseconds = 1000
 
-        instance = nipcbatt.I2cCommunicationParameters(
+        instance = communications.I2cCommunicationParameters(
             device_address=expected_device_address,
             addressing_type=expected_addressing_type,
             clock_rate_kilohertz=expected_clock_rate_kilohertz,

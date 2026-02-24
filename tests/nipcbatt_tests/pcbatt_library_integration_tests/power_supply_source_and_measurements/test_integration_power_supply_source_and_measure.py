@@ -8,12 +8,14 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterPowerSupplySourceAndMeasure,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx_if_not_installed,
-)
+)'''
 
 
 class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
@@ -39,7 +41,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx_if_not_installed(_InterpreterPowerSupplySourceAndMeasure)
+        #_replace_daqmx_if_not_installed(_InterpreterPowerSupplySourceAndMeasure)
 
     @classmethod
     def tearDownClass(cls):
@@ -50,14 +52,14 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
         nipcbatt.pcbatt_library.power_supply_source_and_measurements.power_supply_source_and_measure.PowerSupplySourceAndMeasure
          with MeasurementExecutionType.CONFIGURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (426 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
+        with daq.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
                 power_channel_name="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod5/power"
             )
 
-            configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+            configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                 terminal_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                 ),
                 measurement_options=nipcbatt.MeasurementOptions(
                     execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
@@ -66,10 +68,10 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -89,14 +91,14 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
          with MeasurementExecutionType.CONFIGURE_ONLY and MeasurementExecutionType.MEASURE_ONLY
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
+        with daq.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
                 power_channel_name="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod5/power"
             )
 
-            configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+            configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                 terminal_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                 ),
                 measurement_options=nipcbatt.MeasurementOptions(
                     execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
@@ -105,10 +107,10 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -118,9 +120,9 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
             print(f"results = {results}")
             self.assertIs(None, results)
 
-            configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+            configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                 terminal_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                 ),
                 measurement_options=nipcbatt.MeasurementOptions(
                     execution_option=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
@@ -129,10 +131,10 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -141,7 +143,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.MEASURE_ONLY, results = {results}"
             )
-            self.assertIsInstance(results, nipcbatt.PowerSupplySourceAndMeasureResultData)
+            self.assertIsInstance(results, daq.PowerSupplySourceAndMeasureResultData)
 
             measurement.close()
 
@@ -153,14 +155,14 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
          with MeasurementExecutionType.CONFIGURE_AND_MEASURE
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
+        with daq.PowerSupplySourceAndMeasure() as measurement:
             measurement.initialize(
                 power_channel_name="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod5/power"
             )
 
-            configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+            configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                 terminal_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                 ),
                 measurement_options=nipcbatt.MeasurementOptions(
                     execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -169,10 +171,10 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -184,9 +186,9 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
             )
             self.assertIs(None, results)
 
-            configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+            configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                 terminal_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                 ),
                 measurement_options=nipcbatt.MeasurementOptions(
                     execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
@@ -195,10 +197,10 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                     ),
                 ),
                 sample_clock_timing_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                 ),
                 digital_start_trigger_parameters=(
-                    nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                    daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                 ),
             )
 
@@ -207,7 +209,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.CONFIGURE_AND_MEASURE and MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS, results = {results}"
             )
-            self.assertIsInstance(results, nipcbatt.PowerSupplySourceAndMeasureResultData)
+            self.assertIsInstance(results, daq.PowerSupplySourceAndMeasureResultData)
 
             measurement.close()
 
@@ -219,21 +221,21 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
         for initialize, configure and measure and close to be called in loop with the same context.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         for _ in range(3):
-            with nipcbatt.PowerSupplySourceAndMeasure() as measurement:
+            with daq.PowerSupplySourceAndMeasure() as measurement:
                 measurement.initialize(
                     power_channel_name="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod5/power"
                 )
 
-                configuration = nipcbatt.PowerSupplySourceAndMeasureConfiguration(
+                configuration = daq.PowerSupplySourceAndMeasureConfiguration(
                     terminal_parameters=(
-                        nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
+                        daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_TERMINAL_PARAMETERS
                     ),
-                    measurement_options=nipcbatt.DEFAULT_POWER_SUPPLY_MEASUREMENT_OPTIONS,
+                    measurement_options=daq.DEFAULT_POWER_SUPPLY_MEASUREMENT_OPTIONS,
                     sample_clock_timing_parameters=(
-                        nipcbatt.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
+                        daq.DEFAULT_POWER_SUPPLY_SAMPLE_CLOCK_TIMING_PARAMETERS
                     ),
                     digital_start_trigger_parameters=(
-                        nipcbatt.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
+                        daq.DEFAULT_POWER_SUPPLY_DIGITAL_START_TRIGGER_PARAMETERS
                     ),
                 )
 
@@ -242,7 +244,7 @@ class TestIntegrationPowerSupplySourceAndMeasureMeasurement(unittest.TestCase):
                 print(
                     f"after configuration with MeasurementExecutionType.CONFIGURE_AND_MEASURE and MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS, results = {results}"
                 )
-                self.assertIsInstance(results, nipcbatt.PowerSupplySourceAndMeasureResultData)
+                self.assertIsInstance(results, daq.PowerSupplySourceAndMeasureResultData)
 
                 measurement.close()
 

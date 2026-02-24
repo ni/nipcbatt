@@ -9,24 +9,15 @@ import nidaqmx.constants  # noqa: F401 - 'nidaqmx.constants' imported but unused
 import numpy as np
 from varname import nameof
 
+from nipcbatt import daq
+
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
 )
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_constants import (
-    ConstantsForDynamicDigitalPatternGeneration,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_data_types.DynamicDigitalPatternGenerationData' imported but unused (auto-generated noqa)
-    DynamicDigitalPatternGenerationConfiguration,
-    DynamicDigitalPatternGenerationData,
-    DynamicDigitalStartTriggerParameters,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_generations.dynamic_digital_pattern_generation import (
-    DynamicDigitalPatternGeneration,
-)
 
-CHANNEL = "TS1_DIO/port0/line0:7"
+CHANNEL = "Simulated_DAQ/port0/line0:7"
 CLOCK_SOURCE = "OnboardClock"
-TRIGGER_SOURCE = "/TS1_Core/PFI0"
+TRIGGER_SOURCE = "/Simulated_DAQ/PFI0"
 
 
 class TestDynamicDigitalPatternGeneration(unittest.TestCase):
@@ -62,11 +53,11 @@ class TestDynamicDigitalPatternGeneration(unittest.TestCase):
 
         clock_source = CLOCK_SOURCE
         num_samples = 100
-        edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
         sample_rate = 10000.0
         trig_source = TRIGGER_SOURCE
-        trig_edge = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
-        trig_type = ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_TYPE
+        trig_edge = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_EDGE
+        trig_type = daq.ConstantsForDynamicDigitalPatternGeneration.DEFAULT_TRIGGER_TYPE
 
         time_parameters = DynamicDigitalPatternTimingParameters(
             clock_source,
@@ -75,11 +66,12 @@ class TestDynamicDigitalPatternGeneration(unittest.TestCase):
             edge,
         )
 
-        trig_parameters = DynamicDigitalStartTriggerParameters(trig_source, trig_edge, trig_type)
+        trig_parameters = daq.DynamicDigitalStartTriggerParameters(trig_source, trig_edge, trig_type)
+        pulse_signal_parameters = np.array([[0]], dtype=np.uint32)
 
-        config = DynamicDigitalPatternGenerationConfiguration(time_parameters, trig_parameters)
+        config = daq.DynamicDigitalPatternGenerationConfiguration(time_parameters, trig_parameters, pulse_signal_parameters)
 
-        gen = DynamicDigitalPatternGeneration()
+        gen = daq.DynamicDigitalPatternGeneration()
 
         gen.initialize(CHANNEL)
         gen.task.stop()
@@ -90,7 +82,7 @@ class TestDynamicDigitalPatternGeneration(unittest.TestCase):
             n = 1
         pattern = np.zeros((n, 1), dtype="uint32")
 
-        gen.configure_and_generate(config, pattern)
+        gen.configure_and_generate(config)
         gen.close()
 
 

@@ -10,7 +10,7 @@ from limit_exception import (
 )
 
 import nipcbatt
-
+from nipcbatt import daq
 
 class AudioFilterTest:  
     def __init__(self):  
@@ -30,13 +30,13 @@ class AudioFilterTest:
     def initialize_multi_tone_audio_signal_gen( 
         self,
     ) -> None:
-        self.signal_voltage_gen_task = nipcbatt.SignalVoltageGeneration()
+        self.signal_voltage_gen_task = daq.SignalVoltageGeneration()
         self.signal_voltage_gen_task.initialize("TS_LINE_IN0")
 
     def initialize_audio_meas(  
         self,
     ) -> None:
-        self.freq_domain_meas_task = nipcbatt.FrequencyDomainMeasurement()
+        self.freq_domain_meas_task = daq.FrequencyDomainMeasurement()
         self.freq_domain_meas_task.initialize("TP_LINE_OUT0")
 
     def main(self) -> None:  
@@ -73,7 +73,7 @@ class AudioFilterTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.FrequencyDomainMeasurementConfiguration(
+        configuration = daq.FrequencyDomainMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=[],
             measurement_options=measurement_options,
@@ -90,31 +90,31 @@ class AudioFilterTest:
             range_min_volts=-10, range_max_volts=10
         )
 
-        tone1 = nipcbatt.ToneParameters(
+        tone1 = daq.ToneParameters(
             tone_frequency_hertz=10, tone_amplitude_volts=1, tone_phase_radians=0
         )
 
-        tone2 = nipcbatt.ToneParameters(
+        tone2 = daq.ToneParameters(
             tone_frequency_hertz=100, tone_amplitude_volts=1, tone_phase_radians=0
         )
 
-        tone3 = nipcbatt.ToneParameters(
+        tone3 = daq.ToneParameters(
             tone_frequency_hertz=1000, tone_amplitude_volts=1, tone_phase_radians=0
         )
 
-        tone4 = nipcbatt.ToneParameters(
+        tone4 = daq.ToneParameters(
             tone_frequency_hertz=10000, tone_amplitude_volts=1, tone_phase_radians=0
         )
 
         multiple_tones_parameters = [tone1, tone2, tone3, tone4]
 
-        waveform_parameters = nipcbatt.SignalVoltageGenerationMultipleTonesWaveParameters(
+        waveform_parameters = daq.SignalVoltageGenerationMultipleTonesWaveParameters(
             generated_signal_offset_volts=0,
             generated_signal_amplitude_volts=1,
             multiple_tones_parameters=multiple_tones_parameters,
         )
 
-        timing_parameters = nipcbatt.SignalVoltageGenerationTimingParameters(
+        timing_parameters = daq.SignalVoltageGenerationTimingParameters(
             sample_clock_source="OnboardClock",
             sampling_rate_hertz=100000,
             generated_signal_duration_seconds=0.1,
@@ -126,7 +126,7 @@ class AudioFilterTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.SignalVoltageGenerationMultipleTonesConfiguration(
+        configuration = daq.SignalVoltageGenerationMultipleTonesConfiguration(
             voltage_generation_range_parameters=voltage_generation_range_parameters,
             waveform_parameters=waveform_parameters,
             timing_parameters=timing_parameters,
@@ -166,7 +166,7 @@ class AudioFilterTest:
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
 
-        configuration = nipcbatt.FrequencyDomainMeasurementConfiguration(
+        configuration = daq.FrequencyDomainMeasurementConfiguration(
             global_channel_parameters=global_channel_parameters,
             specific_channels_parameters=[],
             measurement_options=measurement_options,

@@ -10,6 +10,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestSpiWriteParameters(unittest.TestCase):
@@ -49,7 +50,7 @@ class TestSpiWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.zeros(shape=10),
@@ -71,7 +72,7 @@ class TestSpiWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=None,
@@ -97,7 +98,7 @@ class TestSpiWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([]),
@@ -122,7 +123,7 @@ class TestSpiWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=-128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -147,7 +148,7 @@ class TestSpiWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=0,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -172,7 +173,7 @@ class TestSpiWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteParameters(
+                communications.SpiWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=-10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -205,7 +206,7 @@ class TestSpiWriteParameters(unittest.TestCase):
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
         )
 
-        instance = nipcbatt.SpiWriteParameters(
+        instance = communications.SpiWriteParameters(
             number_of_bytes_per_page=expected_number_of_bytes_per_page,
             delay_between_page_write_operations_milliseconds=(
                 expected_delay_between_page_write_operations_milliseconds
@@ -273,14 +274,14 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        communication_parameters = nipcbatt.SpiCommunicationParameters(
+        communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
             clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
         )
 
-        communication_write_parameters = nipcbatt.SpiWriteParameters(
+        communication_write_parameters = communications.SpiWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -294,7 +295,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteCommunicationConfiguration(
+                communications.SpiWriteCommunicationConfiguration(
                     device_parameters=None,
                     communication_parameters=communication_parameters,
                     write_parameters=communication_write_parameters,
@@ -314,11 +315,11 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        device_parameters = nipcbatt.SpiDeviceParameters(
+        device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        communication_write_parameters = nipcbatt.SpiWriteParameters(
+        communication_write_parameters = communications.SpiWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -332,7 +333,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteCommunicationConfiguration(
+                communications.SpiWriteCommunicationConfiguration(
                     device_parameters=device_parameters,
                     communication_parameters=None,
                     write_parameters=communication_write_parameters,
@@ -349,11 +350,11 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.spi_communications.spi_write_data_types.SpiWriteCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        device_parameters = nipcbatt.SpiDeviceParameters(
+        device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        communication_parameters = nipcbatt.SpiCommunicationParameters(
+        communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
@@ -363,7 +364,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.SpiWriteCommunicationConfiguration(
+                communications.SpiWriteCommunicationConfiguration(
                     device_parameters=device_parameters,
                     communication_parameters=communication_parameters,
                     write_parameters=None,
@@ -380,18 +381,18 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        expected_device_parameters = nipcbatt.SpiDeviceParameters(
+        expected_device_parameters = communications.SpiDeviceParameters(
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        expected_communication_parameters = nipcbatt.SpiCommunicationParameters(
+        expected_communication_parameters = communications.SpiCommunicationParameters(
             chip_select=50,
             clock_rate_kilohertz=100,
             clock_phase=nipcbatt.SpiConfigurationClockPhase.CLOCK_PHASE_SECOND_EDGE,
             clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
         )
 
-        expected_communication_write_parameters = nipcbatt.SpiWriteParameters(
+        expected_communication_write_parameters = communications.SpiWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -403,7 +404,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
         )
 
         # Act
-        instance = nipcbatt.SpiWriteCommunicationConfiguration(
+        instance = communications.SpiWriteCommunicationConfiguration(
             device_parameters=expected_device_parameters,
             communication_parameters=expected_communication_parameters,
             write_parameters=expected_communication_write_parameters,

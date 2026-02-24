@@ -12,21 +12,7 @@ import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-gener
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library.common.common_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.common.common_data_types.DigitalStartTriggerParameters' imported but unused (auto-generated noqa)
-    DigitalStartTriggerParameters,
-    DynamicDigitalPatternTimingParameters,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_constants import (
-    ConstantsForDynamicDigitalPatternMeasurement,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_data_types.DynamicDigitalPatternMeasurementConfiguration' imported but unused (auto-generated noqa)
-    DynamicDigitalPatternMeasurementConfiguration,
-    DynamicDigitalPatternMeasurementResultData,
-)
-from nipcbatt.pcbatt_library.dynamic_digital_pattern_measurements.dynamic_digital_pattern_measurement import (
-    DynamicDigitalPatternMeasurement,
-)
-
+from nipcbatt import daq
 
 class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
     """Defines a test fixture that check the integration of the
@@ -60,7 +46,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         """Integration test ensuring that if channel expression is empty then
         initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
-        with DynamicDigitalPatternMeasurement() as meas:
+        with daq.DynamicDigitalPatternMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression="")
 
@@ -71,7 +57,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DynamicDigitalPatternMeasurement() as meas:
+        with daq.DynamicDigitalPatternMeasurement() as meas:
             with self.assertRaises(ValueError):
                 meas.initialize(channel_expression=None)
 
@@ -85,7 +71,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.CONFIGURE_ONLY
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
+        with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
                 channel_expression="TS1_DIO/port0/line0:7",
             )
@@ -93,14 +79,14 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
                 sample_clock_source="OnboardClock",
                 sampling_rate_hertz=10000.0,
                 number_of_samples_per_channel=50,
-                active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+                active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
-                trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+                trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
                 digital_start_trigger_source="/TS1_Core/PFI0",
-                digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+                digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
-            configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+            configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
                 timing_parameters=timing_parameters,
                 trigger_parameters=trigger_parameters,
@@ -120,7 +106,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.CONFIGURE_AND_MEASURE
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
+        with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
                 channel_expression="TS1_DIO/port0/line0:1",
             )
@@ -128,14 +114,14 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
                 sample_clock_source="OnboardClock",
                 sampling_rate_hertz=10000.0,
                 number_of_samples_per_channel=50,
-                active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+                active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
-                trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+                trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
                 digital_start_trigger_source="/TS1_Core/PFI0",
-                digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+                digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
-            configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+            configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
                 timing_parameters=timing_parameters,
                 trigger_parameters=trigger_parameters,
@@ -146,7 +132,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             print(f"parameters = {configuration}")
             print(f"results = {results}")
             print(type(results))
-            self.assertIsInstance(results, DynamicDigitalPatternMeasurementResultData)
+            self.assertIsInstance(results, daq.DynamicDigitalPatternMeasurementResultData)
 
     def test_integration_test_dynamic_digital_pattern_measurement_configure_only_and_measure_only(
         self,
@@ -156,7 +142,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
         DynamicDigitalPatternMeasurement with MeasurementExecutionType.MeasurementExecutionType.CONFIGURE_ONLY
         and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (110 > 100 characters) (auto-generated noqa)
 
-        with nipcbatt.DynamicDigitalPatternMeasurement() as meas:
+        with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
                 channel_expression="TS1_DIO/port0/line0:7",
             )
@@ -164,14 +150,14 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
                 sample_clock_source="OnboardClock",
                 sampling_rate_hertz=10000.0,
                 number_of_samples_per_channel=50,
-                active_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
+                active_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_ACTIVE_EDGE,
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
-                trigger_select=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
+                trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
                 digital_start_trigger_source="/TS1_Core/PFI0",
-                digital_start_trigger_edge=ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
+                digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
-            configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+            configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
                 timing_parameters=timing_parameters,
                 trigger_parameters=trigger_parameters,
@@ -183,7 +169,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             )
             self.assertIs(None, results)
 
-            configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+            configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
                 measurement_options=nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
                 timing_parameters=timing_parameters,
                 trigger_parameters=trigger_parameters,
@@ -194,7 +180,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             print(
                 f"after configuration with MeasurementExecutionType.MEASURE_ONLY, results = {results}"
             )
-            self.assertIsInstance(results, DynamicDigitalPatternMeasurementResultData)
+            self.assertIsInstance(results, daq.DynamicDigitalPatternMeasurementResultData)
 
 
 if __name__ == "__main__":

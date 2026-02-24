@@ -4,10 +4,11 @@ import nidaqmx.constants
 import numpy as np
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # DDPG_Initialization
-ddpg = nipcbatt.DynamicDigitalPatternGeneration()
+ddpg = daq.DynamicDigitalPatternGeneration()
 ddpg.initialize(channel_expression="Dev1/port0/line0:15")
 
 # RouteSyncSignal
@@ -15,7 +16,7 @@ ddpg.route_start_trigger_signal_to_terminal(terminal_name="/Dev1/PFI0")
 ddpg.route_sample_clock_signal_to_terminal(terminal_name="/Dev1/PFI1")
 
 # DDPM_Initialization
-ddpm = nipcbatt.DynamicDigitalPatternMeasurement()
+ddpm = daq.DynamicDigitalPatternMeasurement()
 ddpm.initialize(
     channel_expression="Dev2/port0/line0:15",
 )
@@ -39,7 +40,7 @@ trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-ddpm_configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+ddpm_configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
     measurement_options=measurement_options,
     timing_parameters=timing_parameters,
     trigger_parameters=trigger_parameters,
@@ -58,7 +59,7 @@ timing_parameters = nipcbatt.DynamicDigitalPatternTimingParameters(
     active_edge=nidaqmx.constants.Edge.FALLING,
 )
 
-trigger_parameters = nipcbatt.DynamicDigitalStartTriggerParameters(
+trigger_parameters = daq.DynamicDigitalStartTriggerParameters(
     digital_start_trigger_source="/Dev1/PFI6",
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     trigger_type=nipcbatt.StartTriggerType.NO_TRIGGER,
@@ -72,7 +73,7 @@ digital_lis.append(values_list)
 
 pulse_signal = np.array(digital_lis, dtype=np.uint32)
 
-ddpg_configuration = nipcbatt.DynamicDigitalPatternGenerationConfiguration(
+ddpg_configuration = daq.DynamicDigitalPatternGenerationConfiguration(
     timing_parameters=timing_parameters,
     digital_start_trigger_parameters=trigger_parameters,
     pulse_signal=pulse_signal,
@@ -103,7 +104,7 @@ trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-ddpm_configuration = nipcbatt.DynamicDigitalPatternMeasurementConfiguration(
+ddpm_configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
     measurement_options=measurement_options,
     timing_parameters=timing_parameters,
     trigger_parameters=trigger_parameters,

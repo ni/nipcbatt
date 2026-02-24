@@ -3,15 +3,16 @@
 ### Ensure correct hardware and corresponding trigger names before running this example
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Initialize
-sdsg = nipcbatt.StaticDigitalStateGeneration()
+sdsg = daq.StaticDigitalStateGeneration()
 sdsg.initialize(channel_expression="Dev1/port0/line0:3")
 
 # region SDSG configure and generate
 
-sdsg_config = nipcbatt.StaticDigitalStateGenerationConfiguration(
+sdsg_config = daq.StaticDigitalStateGenerationConfiguration(
     data_to_write=[False, True, False, True]
 )
 
@@ -21,7 +22,7 @@ sdsg_result_data = sdsg.configure_and_generate(configuration=sdsg_config)
 
 # region SDSM configure and measure
 
-sdsm = nipcbatt.StaticDigitalStateMeasurement()
+sdsm = daq.StaticDigitalStateMeasurement()
 sdsm.initialize(channel_expression="Dev2/port0/line0:3")
 
 # end region SDSM configure and measure

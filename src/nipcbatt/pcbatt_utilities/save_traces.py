@@ -12,7 +12,7 @@ from typing import Union
 
 import pkg_resources
 
-import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.csv_utilities import export_signal_to_csv_file
 
 
@@ -20,20 +20,20 @@ from nipcbatt.pcbatt_utilities.csv_utilities import export_signal_to_csv_file
 # https://peps.python.org/pep-0604/
 def save_traces(
     config: Union[
-        nipcbatt.DcRmsCurrentMeasurementConfiguration,
-        nipcbatt.DcRmsVoltageMeasurementConfiguration,
-        nipcbatt.PowerSupplySourceAndMeasureConfiguration,
-        nipcbatt.TimeDomainMeasurementConfiguration,
-        nipcbatt.TemperatureRtdMeasurementConfiguration,
-        nipcbatt.TemperatureThermistorMeasurementConfiguration,
+        daq.DcRmsCurrentMeasurementConfiguration,
+        daq.DcRmsVoltageMeasurementConfiguration,
+        daq.PowerSupplySourceAndMeasureConfiguration,
+        daq.TimeDomainMeasurementConfiguration,
+        daq.TemperatureRtdMeasurementConfiguration,
+        daq.TemperatureThermistorMeasurementConfiguration,
     ],
     file_name: str,
     result_data: Union[
-        nipcbatt.DcRmsCurrentMeasurementResultData,
-        nipcbatt.DcRmsVoltageMeasurementResultData,
-        nipcbatt.PowerSupplySourceAndMeasureResultData,
-        nipcbatt.TimeDomainMeasurementResultData,
-        nipcbatt.TemperatureMeasurementResultData,
+        daq.DcRmsCurrentMeasurementResultData,
+        daq.DcRmsVoltageMeasurementResultData,
+        daq.PowerSupplySourceAndMeasureResultData,
+        daq.TimeDomainMeasurementResultData,
+        daq.TemperatureMeasurementResultData,
     ] = None,
     sampling_rate: int = 10000,
     unit: str = "Amplitude",

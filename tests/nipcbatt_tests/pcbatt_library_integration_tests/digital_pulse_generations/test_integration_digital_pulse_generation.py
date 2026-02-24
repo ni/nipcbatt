@@ -10,18 +10,8 @@ import nidaqmx.stream_writers  # noqa: F401 - 'nidaqmx.stream_writers' imported 
 import numpy as np  # noqa: F401 - 'numpy as np' imported but unused (auto-generated noqa)
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
-    ConstantsForDigitalPulseGeneration,
-)
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (
-    DigitalPulseGenerationConfiguration,
-    DigitalPulseGenerationCounterChannelParameters,
-    DigitalPulseGenerationData,
-    DigitalPulseGenerationTimingParameters,
-)
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_generation import (
-    DigitalPulseGeneration,
-)
+import nipcbatt 
+from nipcbatt import daq
 
 # constants used across multiple tests
 CHANNEL = "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0"
@@ -60,7 +50,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         """Integration test ensuring that if channel expression is empty then
         initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression="", output_terminal_name=TERMINAL)
 
@@ -70,7 +60,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         """Integration test ensuring that if channel expression is None then
         initialize() catches the error"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (411 > 100 characters) (auto-generated noqa)
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression=None, output_terminal_name=TERMINAL)
 
@@ -81,7 +71,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         is empty then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression=CHANNEL, output_terminal_name="")
 
@@ -92,7 +82,7 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         is null then initialize() catches the error
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (287 > 100 characters) (auto-generated noqa)
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
                 gen.initialize(channel_expression=CHANNEL, output_terminal_name=None)
 
@@ -105,19 +95,19 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
         t_low = 0.1
         t_high = 0.1
-        state_idle = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
+        state_idle = daq.ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         p_count = 10
 
-        channel_params = DigitalPulseGenerationCounterChannelParameters(state_idle, t_low, t_high)
-        timing_params = DigitalPulseGenerationTimingParameters(p_count)
-        config = DigitalPulseGenerationConfiguration(channel_params, timing_params)
+        channel_params = daq.DigitalPulseGenerationCounterChannelParameters(state_idle, t_low, t_high)
+        timing_params = daq.DigitalPulseGenerationTimingParameters(p_count)
+        config = daq.DigitalPulseGenerationConfiguration(channel_params, timing_params)
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             gen.initialize(CHANNEL, TERMINAL)
             gen_data = gen.configure_and_generate(config)
             gen.close()
 
-        self.assertIsInstance(gen_data, DigitalPulseGenerationData)
+        self.assertIsInstance(gen_data, daq.DigitalPulseGenerationData)
 
     def test_integration_digital_pulse_generation_negative_values(self):
         """Integration test of Digital Pulse Generation that ensures
@@ -127,17 +117,17 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
         t_low = -0.1
         t_high = 0.1
-        state_idle = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
+        state_idle = daq.ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         p_count = 10
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
-                channel_params = DigitalPulseGenerationCounterChannelParameters(
+                channel_params = daq.DigitalPulseGenerationCounterChannelParameters(
                     state_idle, t_low, t_high
                 )
 
-                timing_params = DigitalPulseGenerationTimingParameters(p_count)
-                config = DigitalPulseGenerationConfiguration(channel_params, timing_params)
+                timing_params = daq.DigitalPulseGenerationTimingParameters(p_count)
+                config = daq.DigitalPulseGenerationConfiguration(channel_params, timing_params)
 
                 gen.initialize(CHANNEL, TERMINAL)
                 gen.configure_and_generate(config)
@@ -145,17 +135,17 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
         t_low = 0.1
         t_high = -0.1
-        state_idle = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
+        state_idle = daq.ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         p_count = 10
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
-                channel_params = DigitalPulseGenerationCounterChannelParameters(
+                channel_params = daq.DigitalPulseGenerationCounterChannelParameters(
                     state_idle, t_low, t_high
                 )
 
-                timing_params = DigitalPulseGenerationTimingParameters(p_count)
-                config = DigitalPulseGenerationConfiguration(channel_params, timing_params)
+                timing_params = daq.DigitalPulseGenerationTimingParameters(p_count)
+                config = daq.DigitalPulseGenerationConfiguration(channel_params, timing_params)
 
                 gen.initialize(CHANNEL, TERMINAL)
                 gen.configure_and_generate(config)
@@ -163,17 +153,17 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
 
         t_low = 0.1
         t_high = 0.1
-        state_idle = ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
+        state_idle = daq.ConstantsForDigitalPulseGeneration.DEFAULT_GENERATION_IDLE_STATE
         p_count = -10
 
-        with DigitalPulseGeneration() as gen:
+        with daq.DigitalPulseGeneration() as gen:
             with self.assertRaises(ValueError):
-                channel_params = DigitalPulseGenerationCounterChannelParameters(
+                channel_params = daq.DigitalPulseGenerationCounterChannelParameters(
                     state_idle, t_low, t_high
                 )
 
-                timing_params = DigitalPulseGenerationTimingParameters(p_count)
-                config = DigitalPulseGenerationConfiguration(channel_params, timing_params)
+                timing_params = daq.DigitalPulseGenerationTimingParameters(p_count)
+                config = daq.DigitalPulseGenerationConfiguration(channel_params, timing_params)
 
                 gen.initialize(CHANNEL, TERMINAL)
                 gen.configure_and_generate(config)
@@ -188,19 +178,19 @@ class TestIntegrationDigitalPulseGeneration(unittest.TestCase):
         t_high = 0.1
         p_count = 10
 
-        with DigitalPulseGeneration() as gen:
-            channel_params = DigitalPulseGenerationCounterChannelParameters(
+        with daq.DigitalPulseGeneration() as gen:
+            channel_params = daq.DigitalPulseGenerationCounterChannelParameters(
                 low_time_seconds=t_low, high_time_seconds=t_high
             )
 
-            timing_params = DigitalPulseGenerationTimingParameters(p_count)
-            config = DigitalPulseGenerationConfiguration(channel_params, timing_params)
+            timing_params = daq.DigitalPulseGenerationTimingParameters(p_count)
+            config = daq.DigitalPulseGenerationConfiguration(channel_params, timing_params)
 
             gen.initialize(CHANNEL, TERMINAL)
             gen_data = gen.configure_and_generate(config)
             gen.close()
 
-            self.assertIsInstance(gen_data, DigitalPulseGenerationData)
+            self.assertIsInstance(gen_data, daq.DigitalPulseGenerationData)
 
 
 if __name__ == "__main__":

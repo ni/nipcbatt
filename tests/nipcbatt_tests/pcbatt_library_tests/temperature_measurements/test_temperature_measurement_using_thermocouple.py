@@ -9,6 +9,7 @@ import nidaqmx.constants
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import daq
 
 
 class TestTemperatureMeasurementUsingThermocouple(unittest.TestCase):
@@ -41,15 +42,15 @@ class TestTemperatureMeasurementUsingThermocouple(unittest.TestCase):
 
     def test_temperature_measurement_using_thermocouple(self):
         """Checks if class TemperatureMeasurementUsingThermocouple is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (196 > 100 characters) (auto-generated noqa)
-        measurement = nipcbatt.TemperatureMeasurementUsingThermocouple()
+        measurement = daq.TemperatureMeasurementUsingThermocouple()
         measurement.initialize(
-            channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0",
+            channel_expression="Simulated_DAQ/ai0",
             cold_junction_compensation_source=nidaqmx.constants.CJCSource.CONSTANT_USER_VALUE,
             cold_junction_compensation_channel="",
         )
 
         results = measurement.configure_and_measure(
-            configuration=nipcbatt.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_CONFIGURATION
+            configuration=daq.DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_CONFIGURATION
         )
         print(results)
 

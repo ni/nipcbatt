@@ -1,7 +1,7 @@
 """Example demonstrates DC-RMS Voltage Measurements by performing button actions 
    (generating DC Voltages) on specific test points"""  
 
-import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 ## Setup: Get the physical channels required for the test.
@@ -28,8 +28,8 @@ def setup(
     """Creates the necessary objects for the simulation and measurement of the action button"""  
 
     # Create the instances of generation and measurement classes required for the test.
-    button_instance = nipcbatt.DcVoltageGeneration()
-    dc_rms_voltage_test_point = nipcbatt.DcRmsVoltageMeasurement()
+    button_instance = daq.DcVoltageGeneration()
+    dc_rms_voltage_test_point = daq.DcRmsVoltageMeasurement()
 
     # Initialize Action Button
     """Initializes the configured channels of AO module to perform action button functionality"""
@@ -49,8 +49,8 @@ def setup(
 # region configure_and_generate
 ###################  MAIN TEST FUNCTION : CONFIGURE AND GENERATE/MEASURE ###########################
 def main(
-    button_instance: nipcbatt.DcVoltageGeneration,
-    dc_rms_voltage_test_point: nipcbatt.DcRmsVoltageMeasurement,
+    button_instance: daq.DcVoltageGeneration,
+    dc_rms_voltage_test_point: daq.DcRmsVoltageMeasurement,
     write_to_file=True,
     filepath=DEFAULT_FILEPATH,
 ):
@@ -66,8 +66,8 @@ def main(
     """Button ON Action"""
 
     # create a configuration that will generate 3.3V to simulate a button press
-    button_configuration = nipcbatt.DcVoltageGenerationConfiguration(
-        voltage_generation_range_parameters=nipcbatt.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
+    button_configuration = daq.DcVoltageGenerationConfiguration(
+        voltage_generation_range_parameters=daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
         output_voltages=[3.3],  # ON voltage = 3.3V
     )
 
@@ -86,7 +86,7 @@ def main(
 
     # Acquire the data from the test points using CONFIGURE_AND_MEASURE (button should be on)
     test_point_result_data_after_button_on = dc_rms_voltage_test_point.configure_and_measure(
-        configuration=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+        configuration=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
     )
 
     """Storing results -- create both a Python dictionary (hashmap)
@@ -101,8 +101,8 @@ def main(
         This step can be replaced with actual button action"""
 
     # Reconfigure the button object with 0V to prepare it to turn off in next step
-    button_configuration = nipcbatt.DcVoltageGenerationConfiguration(
-        voltage_generation_range_parameters=nipcbatt.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
+    button_configuration = daq.DcVoltageGenerationConfiguration(
+        voltage_generation_range_parameters=daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,
         output_voltages=[0.0],  # OFF voltage = 0V
     )
 
@@ -111,7 +111,7 @@ def main(
 
     # Acquire the data from the test points again using CONFIGURE_AND_MEASURE (button should be off)
     test_point_result_data_after_button_off = dc_rms_voltage_test_point.configure_and_measure(
-        configuration=nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
+        configuration=daq.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION,
     )
 
     # record intermediate result

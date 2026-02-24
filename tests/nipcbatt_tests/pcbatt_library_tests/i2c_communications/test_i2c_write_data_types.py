@@ -10,6 +10,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestI2cWriteParameters(unittest.TestCase):
@@ -49,7 +50,7 @@ class TestI2cWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.zeros(shape=10),
@@ -71,7 +72,7 @@ class TestI2cWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=None,
@@ -97,7 +98,7 @@ class TestI2cWriteParameters(unittest.TestCase):
 
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([]),
@@ -122,7 +123,7 @@ class TestI2cWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=-128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -147,7 +148,7 @@ class TestI2cWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=0,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -172,7 +173,7 @@ class TestI2cWriteParameters(unittest.TestCase):
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteParameters(
+                communications.I2cWriteParameters(
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=-10,
                     data_to_be_written=numpy.array([0, 2]),
@@ -205,7 +206,7 @@ class TestI2cWriteParameters(unittest.TestCase):
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
         )
 
-        instance = nipcbatt.I2cWriteParameters(
+        instance = communications.I2cWriteParameters(
             number_of_bytes_per_page=expected_number_of_bytes_per_page,
             delay_between_page_write_operations_milliseconds=(
                 expected_delay_between_page_write_operations_milliseconds
@@ -273,14 +274,14 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        communication_parameters = nipcbatt.I2cCommunicationParameters(
+        communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
             ack_poll_timeout_milliseconds=1000,
         )
 
-        communication_write_parameters = nipcbatt.I2cWriteParameters(
+        communication_write_parameters = communications.I2cWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -294,7 +295,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteCommunicationConfiguration(
+                communications.I2cWriteCommunicationConfiguration(
                     device_parameters=None,
                     communication_parameters=communication_parameters,
                     write_parameters=communication_write_parameters,
@@ -314,12 +315,12 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        device_parameters = nipcbatt.I2cDeviceParameters(
+        device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        communication_write_parameters = nipcbatt.I2cWriteParameters(
+        communication_write_parameters = communications.I2cWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -333,7 +334,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteCommunicationConfiguration(
+                communications.I2cWriteCommunicationConfiguration(
                     device_parameters=device_parameters,
                     communication_parameters=None,
                     write_parameters=communication_write_parameters,
@@ -350,12 +351,12 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_write_data_types.I2cWriteCommunicationConfiguration.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         # Arrange
-        device_parameters = nipcbatt.I2cDeviceParameters(
+        device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        communication_parameters = nipcbatt.I2cCommunicationParameters(
+        communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
@@ -365,7 +366,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         # Act
         with self.assertRaises(ValueError) as ctx:
             print(
-                nipcbatt.I2cWriteCommunicationConfiguration(
+                communications.I2cWriteCommunicationConfiguration(
                     device_parameters=device_parameters,
                     communication_parameters=communication_parameters,
                     write_parameters=None,
@@ -382,19 +383,19 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         data_to_be_written_list = list(random.randint(0, 255) for i in range(0, 100))
         data_to_be_written = numpy.array(data_to_be_written_list, dtype=numpy.ubyte)
 
-        expected_device_parameters = nipcbatt.I2cDeviceParameters(
+        expected_device_parameters = communications.I2cDeviceParameters(
             enable_i2c_pullup_resistor=True,
             voltage_level=nipcbatt.Ni845xVoltageLevel.VOLTAGE_LEVEL_18,
         )
 
-        expected_communication_parameters = nipcbatt.I2cCommunicationParameters(
+        expected_communication_parameters = communications.I2cCommunicationParameters(
             device_address=50,
             addressing_type=nipcbatt.Ni845xI2cAddressingType.ADDRESSING_10_BIT,
             clock_rate_kilohertz=100,
             ack_poll_timeout_milliseconds=1000,
         )
 
-        expected_communication_write_parameters = nipcbatt.I2cWriteParameters(
+        expected_communication_write_parameters = communications.I2cWriteParameters(
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
@@ -406,7 +407,7 @@ class TestI2cWriteCommunicationConfiguration(unittest.TestCase):
         )
 
         # Act
-        instance = nipcbatt.I2cWriteCommunicationConfiguration(
+        instance = communications.I2cWriteCommunicationConfiguration(
             device_parameters=expected_device_parameters,
             communication_parameters=expected_communication_parameters,
             write_parameters=expected_communication_write_parameters,

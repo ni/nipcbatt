@@ -5,6 +5,7 @@ import nidaqmx.constants
 import numpy as np  
 
 import nipcbatt
+from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.save_traces import save_traces
 
 # Global variables
@@ -13,9 +14,9 @@ save_fig = False
 use_specific_channel = False
 
 # Initialize
-drvg = nipcbatt.DcVoltageGeneration()
+drvg = daq.DcVoltageGeneration()
 drvg.initialize("Dev1/ao2:3")
-drcm = nipcbatt.DcRmsCurrentMeasurement()
+drcm = daq.DcRmsCurrentMeasurement()
 drcm.initialize("Dev1/ai2:4", use_specific_channel)
 
 # region DRVG configure and generate
@@ -26,7 +27,7 @@ voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameter
 
 output_voltages = [10.0, 10.0]
 
-drvg_config = nipcbatt.DcVoltageGenerationConfiguration(
+drvg_config = daq.DcVoltageGenerationConfiguration(
     voltage_generation_range_parameters=voltage_generation_range_parameters,
     output_voltages=output_voltages,
 )
@@ -37,7 +38,7 @@ drvg.configure_and_generate(configuration=drvg_config)
 
 # region drcm configure and measure
 
-global_channel_parameters = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+global_channel_parameters = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_amperes=-0.001,
     range_max_amperes=0.001,
@@ -46,36 +47,36 @@ global_channel_parameters = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParamet
 
 # region specific channels
 
-channel_parameters1 = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+channel_parameters1 = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     range_min_amperes=-0.002,
     range_max_amperes=0.002,
     shunt_resistor_ohms=5000.0,
 )
 
-channel1 = nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+channel1 = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
     channel_name="Dev1/ai2", channel_parameters=channel_parameters1
 )
 
-channel_parameters2 = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+channel_parameters2 = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_amperes=-0.002,
     range_max_amperes=0.002,
     shunt_resistor_ohms=5000.0,
 )
 
-channel2 = nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+channel2 = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
     channel_name="Dev1/ai3", channel_parameters=channel_parameters2
 )
 
-channel_parameters3 = nipcbatt.DcRmsCurrentMeasurementTerminalRangeParameters(
+channel_parameters3 = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_amperes=-0.001,
     range_max_amperes=0.001,
     shunt_resistor_ohms=10000.0,
 )
 
-channel3 = nipcbatt.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
+channel3 = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
     channel_name="Dev1/ai4", channel_parameters=channel_parameters3
 )
 
@@ -105,7 +106,7 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
-drcm_config = nipcbatt.DcRmsCurrentMeasurementConfiguration(
+drcm_config = daq.DcRmsCurrentMeasurementConfiguration(
     global_channel_parameters=global_channel_parameters,
     specific_channels_parameters=specific_channels_parameters,
     measurement_options=measurement_options,

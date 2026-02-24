@@ -6,13 +6,7 @@ import sys
 import unittest
 
 from varname import nameof
-
-from nipcbatt.pcbatt_library.digital_clock_generations.digital_clock_data_types import (
-    DigitalClockGenerationConfiguration,
-    DigitalClockGenerationCounterChannelParameters,
-    DigitalClockGenerationData,
-    DigitalClockGenerationTimingParameters,
-)
+from nipcbatt import daq
 
 
 class TestDigitalClockGenerationDataTypes(unittest.TestCase):
@@ -48,7 +42,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         created with specific values"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (409 > 100 characters) (auto-generated noqa)
 
         expected_duration = 1.0
-        instance = DigitalClockGenerationTimingParameters(expected_duration)
+        instance = daq.DigitalClockGenerationTimingParameters(expected_duration)
         actual_duration = instance.clock_duration_seconds
 
         self.assertEqual(expected_duration, actual_duration)
@@ -61,10 +55,10 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationTimingParameters(expected_duration),
+            lambda: daq.DigitalClockGenerationTimingParameters(expected_duration),
         )
 
-        self.assertRaises(ValueError, lambda: DigitalClockGenerationTimingParameters(None))
+        self.assertRaises(ValueError, lambda: daq.DigitalClockGenerationTimingParameters(None))
 
     def test_digital_clock_generation_counter_channel_parameters(self):
         """Tests if an instance of DigitalClockGenerationCounterChannelParameters
@@ -73,7 +67,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         expected_frequency = 1000.0
         expected_duty_cycle = 0.95
 
-        instance = DigitalClockGenerationCounterChannelParameters(
+        instance = daq.DigitalClockGenerationCounterChannelParameters(
             expected_frequency, expected_duty_cycle
         )
 
@@ -91,7 +85,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
+            lambda: daq.DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
         )
 
         frequency = 10
@@ -99,7 +93,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
+            lambda: daq.DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
         )
 
         frequency = 10
@@ -107,7 +101,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
+            lambda: daq.DigitalClockGenerationCounterChannelParameters(frequency, duty_cycle),
         )
 
     def test_digital_clock_generation_configuration(self):
@@ -118,15 +112,15 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         duty_cycle = 0.5
         duration = 1.0
 
-        counter_channel_parameters = DigitalClockGenerationCounterChannelParameters(
+        counter_channel_parameters = daq.DigitalClockGenerationCounterChannelParameters(
             freq, duty_cycle
         )
-        timing_parameters = DigitalClockGenerationTimingParameters(duration)
+        timing_parameters = daq.DigitalClockGenerationTimingParameters(duration)
 
         expected_channel_parameters = counter_channel_parameters
         expected_timing_parameters = timing_parameters
 
-        instance = DigitalClockGenerationConfiguration(
+        instance = daq.DigitalClockGenerationConfiguration(
             expected_channel_parameters, expected_timing_parameters
         )
 
@@ -145,23 +139,23 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         duration = 1.0
 
         counter_channel_parameters = None
-        timing_parameters = DigitalClockGenerationTimingParameters(duration)
+        timing_parameters = daq.DigitalClockGenerationTimingParameters(duration)
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationConfiguration(
+            lambda: daq.DigitalClockGenerationConfiguration(
                 counter_channel_parameters, timing_parameters
             ),
         )
 
-        counter_channel_parameters = DigitalClockGenerationCounterChannelParameters(
+        counter_channel_parameters = daq.DigitalClockGenerationCounterChannelParameters(
             freq, duty_cycle
         )
         timing_parameters = None
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationConfiguration(
+            lambda: daq.DigitalClockGenerationConfiguration(
                 counter_channel_parameters, timing_parameters
             ),
         )
@@ -175,7 +169,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
         expected_actual_clock_duty_cycle = 0.5
         expected_actual_clock_duration = 1.0
 
-        instance = DigitalClockGenerationData(
+        instance = daq.DigitalClockGenerationData(
             expected_timebase_freq,
             expected_actual_clock_freq,
             expected_actual_clock_duty_cycle,
@@ -198,7 +192,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationData(
+            lambda: daq.DigitalClockGenerationData(
                 expected_timebase_freq,
                 expected_actual_clock_freq,
                 expected_actual_clock_duty_cycle,
@@ -213,7 +207,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationData(
+            lambda: daq.DigitalClockGenerationData(
                 expected_timebase_freq,
                 expected_actual_clock_freq,
                 expected_actual_clock_duty_cycle,
@@ -228,7 +222,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationData(
+            lambda: daq.DigitalClockGenerationData(
                 expected_timebase_freq,
                 expected_actual_clock_freq,
                 expected_actual_clock_duty_cycle,
@@ -243,7 +237,7 @@ class TestDigitalClockGenerationDataTypes(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: DigitalClockGenerationData(
+            lambda: daq.DigitalClockGenerationData(
                 expected_timebase_freq,
                 expected_actual_clock_freq,
                 expected_actual_clock_duty_cycle,
