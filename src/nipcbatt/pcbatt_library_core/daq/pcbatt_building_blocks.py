@@ -1,6 +1,8 @@
 # pylint: disable=W0707, W0719, W0702
 """Defines the base classes used by PCBA Test Toolkit building blocks"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 from typing import Callable, Optional
 
@@ -11,6 +13,7 @@ import nidaqmx.system.storage.persisted_channel
 import nidaqmx.utils
 import pyvisa
 import niswitch
+import nidmm
 
 from nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices import (
     Ni845xI2cDevicesHandler,
@@ -120,8 +123,43 @@ class BuildingBlockUsingNISWITCH(BuildingBlockUsingInstrument):
             )
         return self._instrument
     
+class BuildingBlockUsingNIDMM(BuildingBlockUsingInstrument):
+    """Defines building block that uses NI-DMM for instrument measurements."""
 
+    @classmethod
+    def _instrument_factory(cls) -> Optional[nidmm.Session]:
+        """Creates a placeholder for an NI-DMM session.
 
+        Returns:
+            Optional[nidmm.Session]: None until initialize() opens the session.
+        """
+        return None
+
+    @property
+    def is_session_initialized(self) -> bool:
+        """Checks whether an NI-DMM session has been opened.
+
+        Returns:
+            bool: True if the NI-DMM session is open.
+        """
+        return self._instrument is not None
+
+    @property
+    def session(self) -> nidmm.Session:
+        """Defines the instance of the NI-DMM session.
+
+        Returns:
+            nidmm.Session: the instrument session.
+
+        Raises:
+            PCBATTLibraryException: if the session has not been initialized.
+        """
+        if self._instrument is None:
+            raise PCBATTLibraryException(
+                "NI-DMM session is not initialized. \n"
+                "Call initialize() on the derived building block."
+            )
+        return self._instrument
 
 class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
     """Defines Building block that uses DAQmx task for instrument management."""
