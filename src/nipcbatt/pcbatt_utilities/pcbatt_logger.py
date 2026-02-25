@@ -53,7 +53,14 @@ class PcbattLogger:
 
         with open(self.__file, mode="a", encoding="utf-8") as f:
             f.write("Module : " + str(module.__class__).rsplit(".", maxsplit=1)[-1][:-2] + "\n")
-            f.write("Channel names : " + str(module.task.channel_names) + "\n")
+            # Check if module has task attribute (DAQ modules)     
+            if hasattr(module, 'task') and hasattr(module.task, 'channel_names'): 
+                f.write("Channel names : " + str(module.task.channel_names) + "\n")
+            # Check if module has DMM-specific attributes 
+            if hasattr(module, '_dmm_resource_name'): 
+                f.write("DMM Resource : " + str(module._dmm_resource_name) + "\n") 
+            if hasattr(module, '_powerline_frequency'): 
+                f.write("Powerline Frequency : " + str(module._powerline_frequency) + " Hz\n") 
             if configuration:
                 f.write("Inputs :\n")
                 f.write(str(configuration) + "\n\n")
@@ -81,7 +88,14 @@ class PcbattLogger:
 
         with open(self.__file, mode="a", encoding="utf-8") as f:
             f.write("Module : " + str(module.__class__).rsplit(".", maxsplit=1)[-1][:-2] + "\n")
-            f.write("Channel names :" + str(module.task.channel_names) + "\n")
+            # Check if module has task attribute (DAQ modules)     
+            if hasattr(module, 'task') and hasattr(module.task, 'channel_names'): 
+                f.write("Channel names : " + str(module.task.channel_names) + "\n")
+            # Check if module has DMM-specific attributes 
+            if hasattr(module, '_dmm_resource_name'): 
+                f.write("DMM Resource : " + str(module._dmm_resource_name) + "\n") 
+            if hasattr(module, '_powerline_frequency'): 
+                f.write("Powerline Frequency : " + str(module._powerline_frequency) + " Hz\n") 
             if configuration:
                 f.write("Inputs\n")
                 f.write(str(configuration) + "\n")
