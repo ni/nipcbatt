@@ -5,7 +5,7 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
-    """Configures and executes custom DMM DC RMS current measurement with logging.
+    """Configures and executes default DMM DC RMS current measurement with logging.
 
     Returns:
         DcRmsCurrentMeasurementResultData: Measurement results including
@@ -17,7 +17,7 @@ def main():
     logger.attach(dmm_current_measurement)
     
     # ======================= Initialize the DMM ============================
-    dmm_current_measurement.initialize("Sim_DMM", 50)
+    dmm_current_measurement.initialize("DMM", 50)
 
     # ================= Default measurement configuration ===================
     measurement = dmm_current_measurement.configure_and_measure(
