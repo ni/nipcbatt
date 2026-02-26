@@ -3,14 +3,29 @@ and provide a corresponding instrument handle according to the topology selected
 
 from nipcbatt import switch
 from nipcbatt import dmm
+from nipcbatt.pcbatt_library.dmm.common.common_data_types import ResolutionInDigits
 
-#Close shunts to run scan
-close_all_shunts = True
+#edit this list to define the configurations to use during the scan
+#each entry should be a list in the format [channel, range & function, resolution]
+scan_configuration = [
+    ['0',  dmm.VoltageRangeAndFunctions.DC_100mV, ResolutionInDigits.DIGITS_6_5],
+    ['1',  dmm.VoltageRangeAndFunctions.DC_1V,    ResolutionInDigits.DIGITS_5_5],
+    ['2',  dmm.VoltageRangeAndFunctions.DC_10V,   ResolutionInDigits.DIGITS_4_5],
+    ['16', dmm.VoltageRangeAndFunctions.AC_200mV, ResolutionInDigits.DIGITS_7_5],
+    ['17', dmm.VoltageRangeAndFunctions.AC_2V,    ResolutionInDigits.DIGITS_5_5],
+    ['18', dmm.VoltageRangeAndFunctions.AC_20V,   ResolutionInDigits.DIGITS_4_5]
+]
+
+
+################## INTIIALIZATION #################################################################
 
 #Generate switch objects for scan
 mux_generation = switch.StaticDigitalPathGeneration()
 shunt_generation = switch.StaticDigitalPathGeneration()
 dmm_generation = dmm.DcRmsVoltageMeasurement()
+
+#Close shunts to run scan
+close_all_shunts = True
 
 #Declare constants for initialization
 mux_resource_name = "Sim_MUX"
@@ -52,6 +67,11 @@ if close_all_shunts:
 
         #configure and generate
         shunt_generation.configure_and_generate(ts_settings, timing_settings)
+
+
+############################### MEASUREMENT SCAN ##########################################################
+
+
 
 print('SUCCESS')
 
