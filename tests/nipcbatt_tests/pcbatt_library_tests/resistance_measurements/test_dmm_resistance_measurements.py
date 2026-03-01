@@ -1,5 +1,5 @@
 """ Performs unit tests ensuring the integrity of the datatypes used in 
-    DMM-based DC-RMS voltage measurements """
+    DMM-based resistance measurements """
 
 import importlib.metadata
 import logging
@@ -10,14 +10,15 @@ from varname import nameof
 
 from nipcbatt import dmm
 
-class TestDMMDcRmsVoltage(unittest.TestCase):
-    """Defines a test fixture that ensures the enums are created 
-        correctly
+
+class TestDmmResistance(unittest.TestCase):
+    """Defines a test fixture that ensures the data types of the 
+        dmm.Resistance class are created correctly
         
         Args:
             unittest.TestCase: Base class from which this class inherits
         """
-    
+
     def setUp(self):
         pass
 
@@ -42,21 +43,39 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
     def test_enum_members_shape_and_types(self):
         "Tests the creation of different type and shapes of enums"
 
-        range_values = [member.value for member in dmm.VoltageRangeAndFunctions]
+        range_values = [member.value for member in dmm.ResistanceRangeAndFunctions]
 
         for value in range_values:
-            data = dmm.VoltageRangeAndFunctions(value)
+            data = dmm.ResistanceRangeAndFunctions(value)
             self.assertEqual(value, data.value)
+
+    def test_function_params_basic_construction_and_properties(self):
+        """Create a ResistanceMeasurementFunctionParameters and verify properties."""
+
+        RESOLUTION = 6.5
+
+        target_member = dmm.ResistanceRangeAndFunctions.TWO_W_RES_1k_Ohm
+        resolution = dmm.ResolutionInDigits(RESOLUTION)
+
+        params = dmm.ResistanceMeasurementFunctionParameters(
+            measurement_function=target_member,
+            resolution_in_digits=resolution,
+        )
+
+        # Verify properties return exactly what we passed in
+        self.assertIs(params.measurement_function, target_member)
+        self.assertIs(params.resolution_in_digits, resolution)
+        self.assertEqual(params.resolution_in_digits.value, RESOLUTION)
 
 
     def test_properties_are_effectively_read_only(self):
         """Attempting to assign to properties should raise AttributeError."""
         RESOLUTION = 5.5
 
-        initial_member = dmm.VoltageRangeAndFunctions.AC_200mV
+        initial_member = dmm.ResistanceRangeAndFunctions.TWO_W_RES_1k_Ohm
         resolution = dmm.ResolutionInDigits(RESOLUTION)
 
-        params = dmm.DcRmsCurrentMeasurementFunctionParameters(
+        params = dmm.ResistanceMeasurementFunctionParameters(
             measurement_function=initial_member,
             resolution_in_digits=resolution,
         )
@@ -64,7 +83,7 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
         # The class exposes read-only properties (no setters). Direct assignment should fail.
         with self.assertRaises(AttributeError):
             # type: ignore[attr-defined]
-            setattr(params, "measurement_function", dmm.VoltageRangeAndFunctions.AC_50mV)
+            setattr(params, "measurement_function", dmm.ResistanceRangeAndFunctions.TWO_W_RES_10k_Ohm)
 
         with self.assertRaises(AttributeError):
             # type: ignore[attr-defined]
@@ -74,16 +93,16 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
         self.assertIs(params.measurement_function, initial_member)
         self.assertIs(params.resolution_in_digits, resolution)
 
-
+    
     def test_basic_construction_and_properties(self):
         """Create params and verify properties return the same objects."""
 
         RESOLUTION = 6.5
 
-        member = dmm.VoltageRangeAndFunctions.DC_100mV
+        member = dmm.ResistanceRangeAndFunctions.TWO_W_RES_1k_Ohm
         res = dmm.ResolutionInDigits(RESOLUTION)
 
-        params = dmm.DcRmsVoltageMeasurementFunctionParameters(
+        params = dmm.ResistanceMeasurementFunctionParameters(
             measurement_function=member,
             resolution_in_digits=res,
         )
@@ -93,13 +112,13 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
         self.assertEqual(params.resolution_in_digits.value, RESOLUTION)
 
 
-    def test_construct_for_every_voltage_range_enum_value(self):
-        """Iterate all VoltageRangeAndFunctions, instantiate params, and verify."""
+    def test_construct_for_every_current_range_enum_value(self):
+        """Iterate all CurrentRangeAndFunctions, instantiate params, and verify."""
        
         res = dmm.ResolutionInDigits(5.5)
 
-        for member in dmm.VoltageRangeAndFunctions:
-            params = dmm.DcRmsVoltageMeasurementFunctionParameters(
+        for member in dmm.ResistanceRangeAndFunctions:
+            params = dmm.ResistanceMeasurementFunctionParameters(
                 measurement_function=member,
                 resolution_in_digits=res,
             )
@@ -111,17 +130,17 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
 
         "Ensure all function properties are read only"
 
-        member = dmm.VoltageRangeAndFunctions.AC_200mV
+        member = dmm.ResistanceRangeAndFunctions.TWO_W_RES_1k_Ohm
         res = dmm.ResolutionInDigits(6.5)
 
-        params = dmm.DcRmsVoltageMeasurementFunctionParameters(
+        params = dmm.ResistanceMeasurementFunctionParameters(
             measurement_function=member,
             resolution_in_digits=res,
         )
 
         with self.assertRaises(AttributeError):
             # type: ignore[attr-defined]
-            setattr(params, "measurement_function", dmm.VoltageRangeAndFunctions.DC_1V)
+            setattr(params, "measurement_function", dmm.ResistanceRangeAndFunctions.TWO_W_RES_10k_Ohm)
 
         with self.assertRaises(AttributeError):
             # type: ignore[attr-defined]
@@ -135,10 +154,10 @@ class TestDMMDcRmsVoltage(unittest.TestCase):
 
         "Make sure the same object is returned, not a copy"
 
-        member = dmm.VoltageRangeAndFunctions.DC_1V
+        member = dmm.ResistanceRangeAndFunctions.TWO_W_RES_100k_Ohm
         res = dmm.ResolutionInDigits(7.5)
 
-        params = dmm.DcRmsVoltageMeasurementFunctionParameters(
+        params = dmm.ResistanceMeasurementFunctionParameters(
             measurement_function=member,
             resolution_in_digits=res,
         )
