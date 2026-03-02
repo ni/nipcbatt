@@ -49,7 +49,7 @@ def main():
         ac_min_frequency=40.0,
     )
     # ======================= Initialize the DMM ============================
-    dmm_current_measurement.initialize("DMM", 50)
+    dmm_current_measurement.initialize("Sim_DMM", 50)
 
     # ================= Default measurement configuration ===================
     measurement = dmm_current_measurement.configure_and_measure(configuration=config)
