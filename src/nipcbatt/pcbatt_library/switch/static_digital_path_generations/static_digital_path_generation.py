@@ -15,10 +15,11 @@ import niswitch
 from nipcbatt.pcbatt_library.switch.static_digital_path_generations.static_digital_path_data_types import(
     StaticDigitalPathGenerationModuleCharacteristics,
     StaticDigitalPathGenerationChannelParameters,
-    StaticDigitalPathGenerarionPathStatus,
+    StaticDigitalPathGenerationPathStatus,
     StaticDigitalPathGenerationStateParameters,
     StaticDigitalPathGenerationTimingParameters,
-    StaticDigitalPathGenerationTerminalAndStateSettings
+    StaticDigitalPathGenerationTerminalAndStateSettings,
+    StaticDigitalPathGenerationConfiguration
 )
 
 from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
@@ -92,10 +93,9 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
         self.session.close()
 
     def configure_and_generate(
-            self, 
-            terminal_and_state_settings: StaticDigitalPathGenerationTerminalAndStateSettings,
-            timing_settings: StaticDigitalPathGenerationTimingParameters
-    ) -> StaticDigitalPathGenerarionPathStatus:
+            self,
+            configuration = StaticDigitalPathGenerationConfiguration
+    ) -> StaticDigitalPathGenerationPathStatus:
         
         """Creates the connections defined within the terminal and state settings
            and generates a path status indicating if the operation was succesful
@@ -105,12 +105,12 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
         """
         
         #extract channels and state to employ
-        channel_one = terminal_and_state_settings.channel_parameters.channel_one
-        channel_two = terminal_and_state_settings.channel_parameters.channel_two
-        connect = terminal_and_state_settings.connection_state.connect
+        channel_one = configuration.terminal_and_state_settings.channel_parameters.channel_one
+        channel_two = configuration.terminal_and_state_settings.channel_parameters.channel_two
+        connect = configuration.terminal_and_state_settings.connection_state.connect
 
         #extract maximum wait for debounce time
-        max_wait = timing_settings.max_debounce_wait
+        max_wait = configuration.timing_settings.max_debounce_wait
 
         #verify channels can be connected
         path_capability = self.session.can_connect(channel_one, channel_two)
@@ -132,7 +132,7 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
             pass
 
         #return path capbility inside path status object
-        return StaticDigitalPathGenerarionPathStatus(path_capability)
+        return StaticDigitalPathGenerationPathStatus(path_capability)
 
         
         

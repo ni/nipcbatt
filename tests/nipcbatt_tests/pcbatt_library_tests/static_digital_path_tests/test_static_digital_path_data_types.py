@@ -10,7 +10,7 @@ import unittest
 from varname import nameof
 
 from nipcbatt.pcbatt_library.switch.static_digital_path_generations.static_digital_path_data_types import (
-    StaticDigitalPathGenerarionPathStatus,
+    StaticDigitalPathGenerationPathStatus,
     StaticDigitalPathGenerationChannelParameters,
     StaticDigitalPathGenerationModuleCharacteristics,
     StaticDigitalPathGenerationStateParameters,
@@ -93,14 +93,14 @@ class TestStaticDigitalPathGenerationData(unittest.TestCase):
         """Tests the generation static digital path status with valid data"""
 
         path_status = True 
-        instance = StaticDigitalPathGenerarionPathStatus(path_status)
+        instance = StaticDigitalPathGenerationPathStatus(path_status)
         self.assertTrue(instance.path_status == path_status)
 
     def test_static_digital_path_generation_status_false_is_valid(self):
         """False should also be accepted as a valid status (non-float, non-None)."""
 
         path_status = False
-        instance = StaticDigitalPathGenerarionPathStatus(path_status)
+        instance = StaticDigitalPathGenerationPathStatus(path_status)
         self.assertIs(instance.path_status, False)
 
     def test_static_digital_path_generation_status_with_invalid_data(self):
@@ -110,13 +110,13 @@ class TestStaticDigitalPathGenerationData(unittest.TestCase):
         #Tests if a path is None and will throw an error if so
         self.assertRaises(
             ValueError,
-            lambda: StaticDigitalPathGenerarionPathStatus(None)
+            lambda: StaticDigitalPathGenerationPathStatus(None)
         )
 
         #Tests if a path is a float and will throw an error if so
         self.assertRaises(
             ValueError,
-            lambda: StaticDigitalPathGenerarionPathStatus(1.1)
+            lambda: StaticDigitalPathGenerationPathStatus(1.1)
         )
         
     def test_static_digital_path_generation_timing_parameters_with_valid_data(self):

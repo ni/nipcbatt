@@ -172,7 +172,46 @@ class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
         """
         return self._max_ac_voltage
     
-class StaticDigitalPathGenerarionPathStatus(PCBATestToolkitData):
+class StaticDigitalPathGenerationConfiguration(PCBATestToolkitData):
+    """ Contains the ultimate configuration used in path generation """
+
+    def __init__(
+                 self, 
+                 terminal_and_state_settings: StaticDigitalPathGenerationTerminalAndStateSettings,
+                 timing_settings: StaticDigitalPathGenerationTimingParameters
+    ) -> None:
+        """Creates an instance of StaticDigitalPathGenerationConfiguration
+
+        Args:
+            terminal_state_settings (StaticDigitalPathGenerationTerminalAndStateSettings): 
+                A populated instance of StaticDigitalPathGenerationTerminalAndStateSettings
+            timing_settings (StaticDigitalPathGenerationTimingParameters):  
+                A populated instance of StaticDigitalPathTimingParameters
+        """
+
+        #input validation
+        Guard.is_not_none(terminal_and_state_settings, nameof(terminal_and_state_settings))
+        Guard.is_not_none(timing_settings, nameof(timing_settings))
+
+        #assign values 
+        self._terminal_and_state_settings = terminal_and_state_settings 
+        self._timing_settings = timing_settings
+
+    @property 
+    def terminal_and_state_settings(self) -> StaticDigitalPathGenerationTerminalAndStateSettings:
+        """
+        :type: StaticDigitalPathGenerationTerminalAndStateSettings
+        """
+        return self._terminal_and_state_settings
+    
+    @property
+    def timing_settings(self) -> StaticDigitalPathGenerationTimingParameters:
+        """
+        :type: StaticDigitalPathGenerationTimingParameters
+        """
+        return self._timing_settings
+   
+class StaticDigitalPathGenerationPathStatus(PCBATestToolkitData):
     """ Defines the status of the path"""
 
     def __init__(self, path_status: niswitch.PathCapability) -> None:

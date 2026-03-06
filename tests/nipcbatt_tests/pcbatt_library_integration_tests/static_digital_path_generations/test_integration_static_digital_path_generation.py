@@ -7,8 +7,9 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt import switch
 from niswitch import errors as niswitch_errors
+from nipcbatt import switch
+
 
 class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
     """Definte a test fixture that chceck the integration of 
@@ -54,15 +55,17 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         #Disconnect
         connect = False 
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
         generation.close()
 
         return status.path_status
@@ -82,15 +85,17 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         # Disconnect
         connect = False
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         generation.close()
         return status.path_status
@@ -109,10 +114,11 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
         with self.assertRaises(niswitch_errors.DriverError):
-            generation.configure_and_generate(ts_settings, timing_settings)
+            generation.configure_and_generate(configuration)
 
         generation.close()
 
@@ -130,10 +136,11 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
         with self.assertRaises(niswitch_errors.DriverError):
-            generation.configure_and_generate(ts_settings, timing_settings)
+            generation.configure_and_generate(configuration)
 
         generation.close()
 
@@ -155,10 +162,11 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         try:
             generation.initialize(resource_name, topology, reset_device=False, simulate=True)
-            generation.configure_and_generate(ts_settings, timing_settings)
+            generation.configure_and_generate(configuration)
         except niswitch_errors.DriverError:
             # Expected when current topology differs.
             generation.close()
@@ -170,13 +178,14 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         # Now with reset=True it should succeed deterministically.
         generation = switch.StaticDigitalPathGeneration()
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         # Disconnect to leave the session clean
         connect = False
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
         generation.close()
         return status.path_status
 
@@ -197,24 +206,28 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         connect = False
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         connect = True
         channel_params = switch.StaticDigitalPathGenerationChannelParameters(ch, com)
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         connect = False
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         generation.close()
         return status.path_status
@@ -236,12 +249,14 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
             state = switch.StaticDigitalPathGenerationStateParameters(connect)
             ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
             timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
-            status = generation.configure_and_generate(ts_settings, timing_settings)
+            configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+            status = generation.configure_and_generate(configuration)
 
             connect = False
             state = switch.StaticDigitalPathGenerationStateParameters(connect)
             ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-            status = generation.configure_and_generate(ts_settings, timing_settings)
+            configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+            status = generation.configure_and_generate(configuration)
 
         generation.close()
         return status.path_status
@@ -261,17 +276,18 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
+        status = generation.configure_and_generate(configuration)
 
         # Disconnect
         connect = False
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
-        status = generation.configure_and_generate(ts_settings, timing_settings)
-
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
         generation.close()
+
         return status.path_status
     
     def test_disconnect_without_prior_connect(self):
@@ -288,11 +304,12 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         try:
-            generation.configure_and_generate(ts_settings, timing_settings)
+            generation.configure_and_generate(configuration)
         except niswitch_errors.DriverError:
             # Expected when current topology differs.
             generation.close()
@@ -314,9 +331,10 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state = switch.StaticDigitalPathGenerationStateParameters(connect)
         ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
         timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        generation.configure_and_generate(ts_settings, timing_settings)
+        generation.configure_and_generate(configuration)
 
         generation.close()
 
@@ -338,31 +356,34 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+        path_status1 = generation.configure_and_generate(configuration1)
 
         #ch16 to com1 connection
         channel_params2 = switch.StaticDigitalPathGenerationChannelParameters("ch16", "com1")
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+        path_status2 = generation.configure_and_generate(configuration2)
 
         #ch2 to com0 connection
         channel_params3 = switch.StaticDigitalPathGenerationChannelParameters("ch2", "com0")
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         #expect an error due to the connection already existing
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #since this path already exists this should throw an error
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         #check that error code is NISWITCH_ERROR_EXPLICIT_CONNECTION_EXISTS
         self.assertEqual(error.exception.code, -1074126836)
@@ -382,30 +403,33 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+        path_status1 = generation.configure_and_generate(configuration1)
 
         #ch16 to com1 connection
         channel_params2 = switch.StaticDigitalPathGenerationChannelParameters("ch16", "com1")
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+        path_status2 = generation.configure_and_generate(configuration2)
 
         #ch2 to com0 connection
         channel_params3 = switch.StaticDigitalPathGenerationChannelParameters("ch2", "com0")
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #com0 resource is already in use- throw error
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         #verfiy that error is NISWITCH_ERROR_RSRC_IN_USE
         self.assertEqual(error.exception.code, -1074126845)
@@ -426,21 +450,23 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+        path_status1 = generation.configure_and_generate(configuration1)
 
         #ch16 to com1 connection
         channel_params2 = switch.StaticDigitalPathGenerationChannelParameters("ch1", "ch2")
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #path is unsupported
-            path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+            path_status2 = generation.configure_and_generate(configuration2)
 
         #check that error code is NISWITCH_ERROR_PATH_NOT_FOUND
         self.assertEqual(error.exception.code, -1074126831)
@@ -450,12 +476,13 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #com0 resource is already in use- throw error
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         #verify that error is NISWITCH_ERROR_RSRC_IN_USE
         self.assertEqual(error.exception.code, -1074126845)
@@ -477,21 +504,23 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+        path_status1 = generation.configure_and_generate(configuration1)
 
         #ch16 to com1 connection
         channel_params2 = switch.StaticDigitalPathGenerationChannelParameters("ch1", "com0")
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #path already exists
-            path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+            path_status2 = generation.configure_and_generate(configuration2)
 
         #check that error code is NISWITCH_ERROR_EXPLICIT_CONNECTION_EXISTS
         self.assertEqual(error.exception.code, -1074126836)
@@ -501,12 +530,13 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #com0 resource is already in use- throw error
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         #verify that error is NISWITCH_ERROR_RSRC_IN_USE
         self.assertEqual(error.exception.code, -1074126845)
@@ -528,21 +558,23 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+        path_status1 = generation.configure_and_generate(configuration1)
 
         #ch16 to com1 connection
         channel_params2 = switch.StaticDigitalPathGenerationChannelParameters("ch1", "com1")
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #path is unsupported
-            path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+            path_status2 = generation.configure_and_generate(configuration2)
 
         #check that error code is NISWITCH_ERROR_PATH_NOT_FOUND
         self.assertEqual(error.exception.code, -1074126831)
@@ -552,12 +584,13 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #path already exists
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         #check that error code is NISWITCH_ERROR_EXPLICIT_CONNECTION_EXISTS
         self.assertEqual(error.exception.code, -1074126836)
@@ -579,12 +612,13 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state1 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings1 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params1, state1)
         timing_settings1 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration1 = switch.StaticDigitalPathGenerationConfiguration(ts_settings1, timing_settings1)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #path unsupported
-            path_status1 = generation.configure_and_generate(ts_settings1, timing_settings1)
+            path_status1 = generation.configure_and_generate(configuration1)
 
         #check that error code is NISWITCH_ERROR_PATH_NOT_FOUND
         self.assertEqual(error.exception.code, -1074126831)
@@ -594,21 +628,23 @@ class TestIntegrationStaticDigitalPathGeneration(unittest.TestCase):
         state2 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings2 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params2, state2)
         timing_settings2 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration2 = switch.StaticDigitalPathGenerationConfiguration(ts_settings2, timing_settings2)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
-        path_status2 = generation.configure_and_generate(ts_settings2, timing_settings2)
+        path_status2 = generation.configure_and_generate(configuration2)
 
         #ch2 to com0 connection
         channel_params3 = switch.StaticDigitalPathGenerationChannelParameters("ch16", "com3")
         state3 = switch.StaticDigitalPathGenerationStateParameters(True)
         ts_settings3 = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params3, state3)
         timing_settings3 = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+        configuration3 = switch.StaticDigitalPathGenerationConfiguration(ts_settings3, timing_settings3)
 
         generation.initialize(resource_name, topology, reset_device=True, simulate=True)
 
         with self.assertRaises(niswitch_errors.DriverError) as error:
             #unknown channel or repeated capability name
-            path_status3 = generation.configure_and_generate(ts_settings3, timing_settings3)
+            path_status3 = generation.configure_and_generate(configuration3)
 
         self.assertEqual(error.exception.code, -1074135008)
 
