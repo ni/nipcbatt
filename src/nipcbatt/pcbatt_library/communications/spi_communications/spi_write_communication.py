@@ -19,7 +19,7 @@ from nipcbatt.pcbatt_library.communications.spi_communications.spi_write_data_ty
     SpiWriteCommunicationConfiguration,
     SpiWriteParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xSpiDevice,
 )
 

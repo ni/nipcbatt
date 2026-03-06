@@ -22,7 +22,7 @@ from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_co
     DigitalEdgeCountMeasurementTimingParameters,
     DigitalEdgeCountSoftwareTimerConfiguration,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,

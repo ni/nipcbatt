@@ -104,7 +104,7 @@ from nipcbatt.pcbatt_library.common.voltage_data_types import (
     VoltageRangeAndTerminalParameters,
 )
 
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingDAQmx,
     BuildingBlockUsingInstrument,
     BuildingBlockUsingVisa,

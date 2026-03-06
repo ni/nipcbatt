@@ -1,8 +1,8 @@
-"""DMM DC RMS Voltage mmeasurement example with custom input parameters."""
+"""DMM DC-RMS Voltage measurement example with custom input parameters."""
 
 import nidmm
 
-from nipcbatt.pcbatt_library import dmm
+from nipcbatt import dmm
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
 from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
     ResolutionInDigits,
@@ -19,12 +19,7 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
-    """Configures and executes custom DMM DC RMS voltage measurement with logging.
-
-    Returns:
-        DcRmsVoltageMeasurementResultData: Measurement results including
-            execution settings and measured voltage values.
-    """
+    """Configures and executes custom DMM DC-RMS voltage measurement with logging."""
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
 
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
@@ -49,9 +44,9 @@ def main():
         ac_min_frequency=40.0,
     )
     # ======================= Initialize the DMM ============================
-    dmm_voltage_measurement.initialize("DMM", 50)
+    dmm_voltage_measurement.initialize("Sim_DMM", 50)
 
-    # ================= Default measurement configuration ===================
+    # ================= Custom measurement configuration ===================
     measurement = dmm_voltage_measurement.configure_and_measure(configuration=config)
 
     # ===================== Close the DMM session ===========================

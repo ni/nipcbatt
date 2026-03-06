@@ -4,7 +4,7 @@ from typing import Union
 
 import nidmm
 
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingNIDMM
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingNIDMM
 
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
 from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
@@ -70,9 +70,8 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
             MeasurementExecutionType.MEASURE_ONLY,
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         ):
-            dmm_read = self.session.read()
             return self.acquire_measurement(
-                configuration.measurement_function_parameters.resolution_in_digits.value, dmm_read
+                configuration.measurement_function_parameters.resolution_in_digits.value
             )
         return None
 
@@ -135,15 +134,13 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
         self.session.settle_time = parameters.settle_time_seconds
 
     def acquire_measurement(
-        self, range_in_digits: float, measured_value: float
+        self, resolution_in_digits: float
     ) -> ResistanceMeasurementResultData:
         """Acquires and formats the measurement result data.
 
         Args:
-            range_in_digits (float):
+            resolution_in_digits (float):
                 The resolution in digits used for formatting the measured value.
-            measured_value (float):
-                The raw measured resistance value from the DMM.
 
         Returns:
             ResistanceMeasurementResultData:
@@ -154,8 +151,8 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
                   'Formatted_Measurement'
         """
         measurement = FormatMeasurement.measurement(
-            range_in_digits=range_in_digits,
-            measured_value=measured_value,
+            resolution_in_digits=resolution_in_digits,
+            measured_value=self.session.read(),
             measurement_function=self.session.function,
         )
         aperture_time = "{}{}".format(

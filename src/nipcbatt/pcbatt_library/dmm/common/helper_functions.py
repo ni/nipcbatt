@@ -116,12 +116,12 @@ class FormatMeasurement:
 
     @staticmethod
     def measurement(
-        range_in_digits: float, measured_value: float, measurement_function: nidmm.Function = None
+        resolution_in_digits: float, measured_value: float, measurement_function: nidmm.Function = None
     ) -> dict:
         """Formats the measurement value according to the specified resolution.
 
         Args:
-            range_in_digits: Resolution in digits (e.g., 6.5 for 6.5 digit resolution)
+            resolution_in_digits: Resolution in digits (e.g., 6.5 for 6.5 digit resolution)
             measured_value: The measured value to format
             measurement_function: Optional nidmm.Function to append appropriate unit
 
@@ -154,7 +154,7 @@ class FormatMeasurement:
                 "Unit": unit,
             }
 
-        total_digits = int(range_in_digits) + 1
+        total_digits = int(resolution_in_digits) + 1
         formatted_number, prefix = FormatMeasurement.format_with_si_prefix(
             measured_value, total_digits
         )

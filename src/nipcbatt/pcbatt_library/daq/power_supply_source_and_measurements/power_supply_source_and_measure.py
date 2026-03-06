@@ -27,7 +27,7 @@ from nipcbatt.pcbatt_library.daq.power_supply_source_and_measurements.power_supp
     PowerSupplySourceAndMeasureResultData,
     PowerSupplySourceAndMeasureTerminalParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value
 

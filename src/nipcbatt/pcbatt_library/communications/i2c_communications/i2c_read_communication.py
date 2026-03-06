@@ -13,7 +13,7 @@ from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_read_data_typ
     I2cReadCommunicationData,
     I2cReadParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xI2cDevice,
 )
 

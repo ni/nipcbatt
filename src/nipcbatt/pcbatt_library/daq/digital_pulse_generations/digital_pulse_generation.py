@@ -16,7 +16,7 @@ from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_data_ty
     DigitalPulseGenerationData,
     DigitalPulseGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_library_core.pcbatt_library_exceptions import (
     PCBATTLibraryException,
     PCBATTLibraryExceptionMessages,
