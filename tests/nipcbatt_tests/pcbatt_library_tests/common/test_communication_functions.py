@@ -6,11 +6,11 @@ import sys
 import unittest
 from typing import List
 
-from parameterized import parameterized
+from parameterized import parameterized 
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library.common.communication_functions import (
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_spi_read_communication,
     create_command_for_spi_write_communication,

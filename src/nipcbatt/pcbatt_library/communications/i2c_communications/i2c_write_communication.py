@@ -5,10 +5,10 @@ import time
 import numpy
 
 from nipcbatt.pcbatt_communication_library.ni_845x_data_types import Ni845xPullupStatus
-from nipcbatt.pcbatt_library.common.communication_data_types import (
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
     MemoryAddressParameters,
 )
-from nipcbatt.pcbatt_library.common.communication_functions import (
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_i2c_communications,
 )

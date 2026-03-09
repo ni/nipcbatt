@@ -1,7 +1,7 @@
 """ Defines class used for I2C read communication on PCB points. """
 
 from nipcbatt.pcbatt_communication_library.ni_845x_data_types import Ni845xPullupStatus
-from nipcbatt.pcbatt_library.common.communication_functions import (
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     create_command_for_i2c_communications,
 )
 from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_data_types import (

@@ -151,9 +151,10 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
                 - measurement: Dictionary with keys 'Measured_Value', 'Unit', and
                   'Formatted_Measurement'
         """
+        measured_value = self.session.read()
         measurement = FormatMeasurement.measurement(
             resolution_in_digits=resolution_in_digits,
-            measured_value=self.session.read(),
+            measured_value=measured_value,
             measurement_function=self.session.function,
         )
         aperture_time = "{}{}".format(
