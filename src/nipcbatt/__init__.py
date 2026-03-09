@@ -95,10 +95,10 @@ from nipcbatt.pcbatt_library.communications.common.communication_data_types impo
     MemoryAddressParameters,
     MemoryPageCharacteristics,
 )
-from nipcbatt.pcbatt_library.common.voltage_constants import (
+from nipcbatt.pcbatt_library.daq.common.voltage_constants import (
     ConstantsForVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,

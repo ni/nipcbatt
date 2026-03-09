@@ -18,10 +18,10 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     MeasurementOptions,
     SampleClockTimingParameters,
 )
-from nipcbatt.pcbatt_library.common.voltage_constants import (
+from nipcbatt.pcbatt_library.daq.common.voltage_constants import (
     ConstantsForVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageRangeAndTerminalParameters,
 )
 from nipcbatt.pcbatt_library.daq.time_domain_measurements.time_domain_data_types import (

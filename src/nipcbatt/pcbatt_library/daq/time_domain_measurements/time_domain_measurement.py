@@ -25,10 +25,10 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     SampleTimingEngine,
     StartTriggerType,
 )
-from nipcbatt.pcbatt_library.common.voltage_constants import (
+from nipcbatt.pcbatt_library.daq.common.voltage_constants import (
     ConstantsForVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,
 )
