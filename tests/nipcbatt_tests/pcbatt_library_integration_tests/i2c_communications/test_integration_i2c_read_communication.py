@@ -66,7 +66,7 @@ class TestIntegrationI2cReadCommunication(unittest.TestCase):
             )
             read_parameters = communications.I2cReadParameters(
                 number_of_bytes_to_read=2,
-                memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                memory_address_parameters=communications.MemoryAddressParameters(
                     memory_address=0,
                     address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE,
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

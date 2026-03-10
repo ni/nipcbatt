@@ -4,7 +4,7 @@ import dataclasses
 
 import nidaqmx.constants
 
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
 )
 from nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_data_types import (

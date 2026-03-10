@@ -70,7 +70,7 @@ def main(
         logger.attach(measurement_instance)
 
     """Configure Freq Domain Measurement setting to wait for Hardware Trigger"""
-    glob_chan_params = nipcbatt.VoltageRangeAndTerminalParameters(
+    glob_chan_params = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         range_min_volts=-10.0,
         range_max_volts=10.0,
@@ -107,7 +107,7 @@ def main(
     measurement_instance.configure_and_measure(configuration=meas_config_configure_only)
 
     # generate sine wave and trigger to initiate measurement
-    vol_gen_range_params = nipcbatt.VoltageGenerationChannelParameters(
+    vol_gen_range_params = daq.VoltageGenerationChannelParameters(
         range_min_volts=-2.0, range_max_volts=2.0
     )
 

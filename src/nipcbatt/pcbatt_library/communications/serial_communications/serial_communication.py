@@ -5,7 +5,7 @@ from nipcbatt.pcbatt_library.communications.serial_communications.serial_data_ty
     SerialCommunicationData,
     SerialCommunicationParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingVisa
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingVisa
 
 
 class SerialCommunication(BuildingBlockUsingVisa):

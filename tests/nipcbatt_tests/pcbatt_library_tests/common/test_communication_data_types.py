@@ -8,6 +8,7 @@ import unittest
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 
 
 class TestMemoryAddressParameters(unittest.TestCase):
@@ -46,7 +47,7 @@ class TestMemoryAddressParameters(unittest.TestCase):
         expected_address_type = nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE
         expected_address_endianness = nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN
 
-        instance = nipcbatt.MemoryAddressParameters(
+        instance = communications.MemoryAddressParameters(
             memory_address=expected_memory_address,
             address_type=expected_address_type,
             address_endianness=expected_address_endianness,

@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_communication_library.ni_845x_data_types import (
     SpiConfigurationClockPhase,
     SpiConfigurationClockPolarity,
 )
-from nipcbatt.pcbatt_library.common.communication_data_types import (
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
     MemoryAddressParameters,
 )
 from nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types import (

@@ -35,7 +35,7 @@ from nidaqmx.errors import DaqError
 from varname import nameof
 
 import nipcbatt.pcbatt_utilities.reflection_utilities
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingDAQmx,
     BuildingBlockUsingInstrument,
 )

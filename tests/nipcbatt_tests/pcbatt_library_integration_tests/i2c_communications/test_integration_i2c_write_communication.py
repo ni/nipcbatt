@@ -69,7 +69,7 @@ class TestIntegrationI2cWriteCommunication(unittest.TestCase):
                 number_of_bytes_per_page=2,
                 delay_between_page_write_operations_milliseconds=10,
                 data_to_be_written=numpy.array([26, 192, 30, 120, 50]),
-                memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                memory_address_parameters=communications.MemoryAddressParameters(
                     memory_address=0,
                     address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_ONE_BYTE,
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

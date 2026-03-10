@@ -11,7 +11,7 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     MeasurementOptions,
     SampleClockTimingParameters,
 )
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageMeasurementChannelAndTerminalRangeParameters,
     VoltageRangeAndTerminalParameters,
 )

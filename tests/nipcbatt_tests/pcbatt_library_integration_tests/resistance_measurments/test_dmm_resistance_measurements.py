@@ -68,7 +68,6 @@ class TestIntegrationDmmResistanceMeasurement(unittest.TestCase):
             measurement_function_parameters=meas_params,
             trigger_parameters=trig_params,
             timing_parameters=timing_params,
-            ac_min_frequency=10.0
         )
 
         result = uut.configure_and_measure(cfg)
@@ -105,7 +104,6 @@ class TestIntegrationDmmResistanceMeasurement(unittest.TestCase):
             measurement_function_parameters=meas_params,
             trigger_parameters=trig_params,
             timing_parameters=timing_params,
-            ac_min_frequency=10.0
         )
 
         result = uut.configure_and_measure(cfg)
@@ -144,7 +142,6 @@ class TestIntegrationDmmResistanceMeasurement(unittest.TestCase):
             measurement_function_parameters=meas_params,
             trigger_parameters=trig_params,
             timing_parameters=timing_params,
-            ac_min_frequency=25.0
         )
 
         result = uut.configure_and_measure(cfg)
@@ -185,7 +182,6 @@ class TestIntegrationDmmResistanceMeasurement(unittest.TestCase):
             measurement_function_parameters=meas_params,
             trigger_parameters=trig_params,
             timing_parameters=timing_params,
-            ac_min_frequency=123.0
         )
 
         result = uut.configure_and_measure(cfg)
@@ -229,7 +225,6 @@ class TestIntegrationDmmResistanceMeasurement(unittest.TestCase):
                     enable_trigger=True
                 ),
                 timing_parameters=dmm.TimingParameters(0.001, 0.01),
-                ac_min_frequency=10.0
             )
 
             result = uut.configure_and_measure(cfg)

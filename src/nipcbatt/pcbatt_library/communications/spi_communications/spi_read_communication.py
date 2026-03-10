@@ -1,6 +1,6 @@
 """ Defines class used for SPI read communication on PCB points. """
 
-from nipcbatt.pcbatt_library.common.communication_functions import (
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     create_command_for_spi_read_communication,
 )
 from nipcbatt.pcbatt_library.communications.spi_communications.spi_data_types import (
@@ -12,7 +12,7 @@ from nipcbatt.pcbatt_library.communications.spi_communications.spi_read_data_typ
     SpiReadCommunicationData,
     SpiReadParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xSpiDevice,
 )
 

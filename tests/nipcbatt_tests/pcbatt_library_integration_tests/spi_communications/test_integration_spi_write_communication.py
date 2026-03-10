@@ -9,6 +9,7 @@ import numpy
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
 
 
@@ -88,7 +89,7 @@ class TestIntegrationSpiWriteCommunication(unittest.TestCase):
                         174,
                     ]
                 ),
-                memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                memory_address_parameters=communications.MemoryAddressParameters(
                     memory_address=0,
                     address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

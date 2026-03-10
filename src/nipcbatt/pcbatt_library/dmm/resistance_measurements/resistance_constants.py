@@ -39,9 +39,6 @@ DEFAULT_RESISTANCE_TIMING_PARAMETERS = TimingParameters(
     settle_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_SETTLE_TIME_SECONDS,
 )
 
-# Default AC minimum frequency
-DEFAULT_RESISTANCE_AC_MIN_FREQUENCY = ConstantsForDcRmsMeasurements.DEFAULT_AC_MIN_FREQUENCY
-
 # Default trigger parameters including trigger source, trigger delay, and trigger enable setting
 DEFAULT_RESISTANCE_TRIGGER_PARAMETERS = TriggerParameters(
     trigger_source=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_SOURCE,
@@ -56,5 +53,4 @@ DEFAULT_RESISTANCE_MEASUREMENT_CONFIGURATION = ResistanceMeasurementConfiguratio
     measurement_function_parameters=DEFAULT_RESISTANCE_MEASUREMENT_PARAMETERS,
     trigger_parameters=DEFAULT_RESISTANCE_TRIGGER_PARAMETERS,
     timing_parameters=DEFAULT_RESISTANCE_TIMING_PARAMETERS,
-    ac_min_frequency=DEFAULT_RESISTANCE_AC_MIN_FREQUENCY,
 )

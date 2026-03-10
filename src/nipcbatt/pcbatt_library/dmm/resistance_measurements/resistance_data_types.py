@@ -83,7 +83,6 @@ class ResistanceMeasurementConfiguration(PCBATestToolkitData):
         measurement_function_parameters: ResistanceMeasurementFunctionParameters,
         trigger_parameters: TriggerParameters,
         timing_parameters: TimingParameters,
-        ac_min_frequency: float,
     ) -> None:
         """Initializes the resistance measurement configuration.
 
@@ -96,14 +95,11 @@ class ResistanceMeasurementConfiguration(PCBATestToolkitData):
                 Trigger configuration including source, delay, and enable/disable settings.
             timing_parameters (TimingParameters):
                 Timing settings including aperture time and settle time.
-            ac_min_frequency (float):
-                Minimum frequency for AC voltage measurements in Hz (ignored for DC measurements).
         """
         self._execution_type = execution_type
         self._measurement_function_parameters = measurement_function_parameters
         self._trigger_parameters = trigger_parameters
         self._timing_parameters = timing_parameters
-        self._ac_min_frequency = ac_min_frequency
 
     @property
     def execution_type(self) -> MeasurementExecutionType:
@@ -141,15 +137,6 @@ class ResistanceMeasurementConfiguration(PCBATestToolkitData):
             TimingParameters: The aperture time and settle time settings.
         """
         return self._timing_parameters
-
-    @property
-    def ac_min_frequency(self) -> float:
-        """Gets the minimum AC frequency setting.
-
-        Returns:
-            float: The minimum frequency for AC voltage measurements.
-        """
-        return self._ac_min_frequency
 
 
 class ResistanceMeasurementResultData(PCBATestToolkitData):

@@ -29,7 +29,7 @@ from nipcbatt.pcbatt_library.daq.dc_rms_current_measurements.dc_rms_current_data
     DcRmsCurrentMeasurementResultData,
     DcRmsCurrentMeasurementTerminalRangeParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 from nipcbatt.pcbatt_utilities.numeric_utilities import invert_value
 

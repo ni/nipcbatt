@@ -76,7 +76,7 @@ class TestSpiWriteParameters(unittest.TestCase):
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=None,
-                    memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                    memory_address_parameters=communications.MemoryAddressParameters(
                         memory_address=50,
                         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                         address_endianness=nipcbatt.DataMemoryAddressEndianness.LITTLE_ENDIAN,
@@ -102,7 +102,7 @@ class TestSpiWriteParameters(unittest.TestCase):
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([]),
-                    memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                    memory_address_parameters=communications.MemoryAddressParameters(
                         memory_address=50,
                         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                         address_endianness=nipcbatt.DataMemoryAddressEndianness.LITTLE_ENDIAN,
@@ -127,7 +127,7 @@ class TestSpiWriteParameters(unittest.TestCase):
                     number_of_bytes_per_page=-128,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
-                    memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                    memory_address_parameters=communications.MemoryAddressParameters(
                         memory_address=50,
                         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                         address_endianness=nipcbatt.DataMemoryAddressEndianness.LITTLE_ENDIAN,
@@ -152,7 +152,7 @@ class TestSpiWriteParameters(unittest.TestCase):
                     number_of_bytes_per_page=0,
                     delay_between_page_write_operations_milliseconds=10,
                     data_to_be_written=numpy.array([0, 2]),
-                    memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                    memory_address_parameters=communications.MemoryAddressParameters(
                         memory_address=50,
                         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                         address_endianness=nipcbatt.DataMemoryAddressEndianness.LITTLE_ENDIAN,
@@ -177,7 +177,7 @@ class TestSpiWriteParameters(unittest.TestCase):
                     number_of_bytes_per_page=128,
                     delay_between_page_write_operations_milliseconds=-10,
                     data_to_be_written=numpy.array([0, 2]),
-                    memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                    memory_address_parameters=communications.MemoryAddressParameters(
                         memory_address=50,
                         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                         address_endianness=nipcbatt.DataMemoryAddressEndianness.LITTLE_ENDIAN,
@@ -200,7 +200,7 @@ class TestSpiWriteParameters(unittest.TestCase):
         expected_data_to_be_written = numpy.array(
             expected_data_to_be_written_list, dtype=numpy.ubyte
         )
-        expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
+        expected_memory_address_parameters = communications.MemoryAddressParameters(
             memory_address=50,
             address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -285,7 +285,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -323,7 +323,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -396,7 +396,7 @@ class TestSpiWriteCommunicationConfiguration(unittest.TestCase):
             number_of_bytes_per_page=128,
             delay_between_page_write_operations_milliseconds=10,
             data_to_be_written=data_to_be_written,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

@@ -71,7 +71,7 @@ def main(
     results_map = {}  # this structure will hold results in key-value pairs
 
     # Set the maximum and minimum range for tdvm measurement
-    global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+    global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         range_min_volts=-10,
         range_max_volts=10,
@@ -112,7 +112,7 @@ def main(
     # region configure SVG
 
     # Set the Signal Voltage generation range
-    voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+    voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
         range_min_volts=-10, range_max_volts=10
     )
     # Set the Sampling rate hertz and the generated siganl duration

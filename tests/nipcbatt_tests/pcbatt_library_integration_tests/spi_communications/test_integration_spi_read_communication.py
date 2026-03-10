@@ -65,7 +65,7 @@ class TestIntegrationSpiReadCommunication(unittest.TestCase):
             )
             read_parameters = communications.SpiReadParameters(
                 number_of_bytes_to_read=32,
-                memory_address_parameters=nipcbatt.MemoryAddressParameters(
+                memory_address_parameters=communications.MemoryAddressParameters(
                     memory_address=0,
                     address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                     address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

@@ -4,10 +4,10 @@ import time
 
 import numpy
 
-from nipcbatt.pcbatt_library.common.communication_data_types import (
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
     MemoryAddressParameters,
 )
-from nipcbatt.pcbatt_library.common.communication_functions import (
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_spi_write_communication,
 )
@@ -19,7 +19,7 @@ from nipcbatt.pcbatt_library.communications.spi_communications.spi_write_data_ty
     SpiWriteCommunicationConfiguration,
     SpiWriteParameters,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import (
     BuildingBlockUsingNi845xSpiDevice,
 )
 

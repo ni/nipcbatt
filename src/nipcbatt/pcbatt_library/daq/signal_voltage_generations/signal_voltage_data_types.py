@@ -7,7 +7,7 @@ from varname import nameof
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DigitalStartTriggerParameters,
 )
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
 )
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData

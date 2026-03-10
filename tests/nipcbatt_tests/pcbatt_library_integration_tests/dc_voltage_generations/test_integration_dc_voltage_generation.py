@@ -1,4 +1,4 @@
-"""This module provides test of integration of DcVoltageGeneration."""
+﻿"""This module provides test of integration of DcVoltageGeneration."""
 
 import importlib.metadata
 import logging
@@ -62,13 +62,13 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
     ):
         """Checks if class `DcVoltageGeneration' can configure and generate when they are called one after the other."""  # noqa: W505, D202 - doc line too long (120 > 100 characters) (auto-generated noqa), No blank lines allowed after function docstring (auto-generated noqa)
 
-        generation_channel_parameters_1 = nipcbatt.VoltageGenerationChannelParameters(
+        generation_channel_parameters_1 = daq.VoltageGenerationChannelParameters(
             range_min_volts=-5.0,
             range_max_volts=5.0,
         )
         output_voltages_1 = [2.0, 3.7]
 
-        generation_channel_parameters_2 = nipcbatt.VoltageGenerationChannelParameters(
+        generation_channel_parameters_2 = daq.VoltageGenerationChannelParameters(
             range_min_volts=-8.0,
             range_max_volts=8.0,
         )

@@ -9,7 +9,7 @@ import nidaqmx.stream_writers
 import numpy
 from varname import nameof
 
-from nipcbatt.pcbatt_library.common.voltage_data_types import (
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
     VoltageGenerationChannelParameters,
 )
 from nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_data_types import (
@@ -18,7 +18,7 @@ from nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_data_types im
 from nipcbatt.pcbatt_library.daq.dc_voltage_generations.dc_voltage_generation_constants import (
     ConstantsForDcVoltageGeneration,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingDAQmx
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingDAQmx
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
 

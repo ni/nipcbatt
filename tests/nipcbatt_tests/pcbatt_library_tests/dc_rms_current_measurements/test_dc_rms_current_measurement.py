@@ -62,7 +62,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
         measurement = daq.DcRmsCurrentMeasurement()
         self.assertRaises(
             TypeError,
-            lambda: measurement.analyze_measurement_data(measurement_data=None, None),
+            lambda: measurement.analyze_measurement_data(measurement_data=None),
         )
 
 

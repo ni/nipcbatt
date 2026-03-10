@@ -1,4 +1,14 @@
 "Provides commnuncations modules for pcbatt"
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
+    MemoryAddressParameters,
+    MemoryPageCharacteristics,
+)
+from nipcbatt.pcbatt_library.communications.common.communication_functions import (
+    compute_pages_characteristics,
+    create_command_for_i2c_communications,
+    create_command_for_spi_read_communication,
+    create_command_for_spi_write_communication,
+)
 from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_communication_constants import (
     DEFAULT_I2C_COMMUNICATION_PARAMETERS,
     DEFAULT_I2C_DEVICE_PARAMETERS,

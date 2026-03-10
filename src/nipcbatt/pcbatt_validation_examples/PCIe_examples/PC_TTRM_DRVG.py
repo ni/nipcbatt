@@ -23,7 +23,7 @@ ttrm.initialize("Dev1/ai2, Dev1/ai4")
 
 # region drvg configure and generate
 
-range_settings = nipcbatt.VoltageGenerationChannelParameters(
+range_settings = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10.0, range_max_volts=10.0
 )
 
