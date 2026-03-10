@@ -12,6 +12,7 @@ from typing import Union
 
 import pkg_resources
 
+import nipcbatt
 from nipcbatt import daq
 from nipcbatt.pcbatt_utilities.csv_utilities import export_signal_to_csv_file
 

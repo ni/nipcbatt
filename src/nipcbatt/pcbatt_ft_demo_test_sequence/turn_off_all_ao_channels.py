@@ -29,7 +29,7 @@ class TurnOffAllAOChannels:
     def dc_voltage_generation_configure_initiate_and_sources_dc_voltage(   
         self,
     ) -> None:
-        voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+        voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
             range_min_volts=-10, range_max_volts=10
         )
 

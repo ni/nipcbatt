@@ -73,7 +73,7 @@ def main(
     results_map = {}  # this structure will hold results in key-value pairs
 
     """Set up the minimum and maximum range for the generation of voltage"""
-    range_settings = nipcbatt.VoltageGenerationChannelParameters(
+    range_settings = daq.VoltageGenerationChannelParameters(
         range_min_volts=-10.0, range_max_volts=10.0
     )
 

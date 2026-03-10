@@ -1,4 +1,4 @@
-"""This module provides test of integration of SignalVoltageGeneration."""
+﻿"""This module provides test of integration of SignalVoltageGeneration."""
 
 import importlib.metadata
 import logging
@@ -72,7 +72,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
     def test_signal_voltage_generation_configure_and_generate_in_loop(self):
         """Checks if class `SignalVoltageGeneration' can configure and generate
         when they are called one after the other."""  # noqa: D205, D209, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (345 > 100 characters) (auto-generated noqa)
-        generation_channel_parameters_1 = nipcbatt.VoltageGenerationChannelParameters(
+        generation_channel_parameters_1 = daq.VoltageGenerationChannelParameters(
             range_min_volts=-5.0,
             range_max_volts=5.0,
         )
@@ -85,7 +85,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
             ),
         )
 
-        generation_channel_parameters_2 = nipcbatt.VoltageGenerationChannelParameters(
+        generation_channel_parameters_2 = daq.VoltageGenerationChannelParameters(
             range_min_volts=-8.0,
             range_max_volts=8.0,
         )

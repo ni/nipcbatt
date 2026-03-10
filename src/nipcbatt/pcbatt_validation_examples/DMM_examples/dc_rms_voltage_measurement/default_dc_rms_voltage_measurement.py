@@ -10,7 +10,7 @@ def main():
 
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
     logger.attach(dmm_voltage_measurement)
-    
+
     # ======================= Initialize the DMM ============================
     dmm_voltage_measurement.initialize("Sim_DMM", 50)
 

@@ -4,8 +4,6 @@ from typing import Union
 
 import nidmm
 
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingNIDMM
-
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
 from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
     TimingParameters,
@@ -16,10 +14,11 @@ from nipcbatt.pcbatt_library.dmm.common.helper_functions import (
     RangeAndMeasurementFunctionParameters,
 )
 from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_data_types import (
-    ResistanceMeasurementFunctionParameters,
     ResistanceMeasurementConfiguration,
+    ResistanceMeasurementFunctionParameters,
     ResistanceMeasurementResultData,
 )
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingNIDMM
 
 
 class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
@@ -52,7 +51,7 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
         Returns:
             ResistanceMeasurementResultData | None: An instance of
                 `ResistanceMeasurementResultData` containing DMM execution settings
-                 and the measured resistance value,or None if only configuration was performed.
+                and the measured resistance value, or None if only configuration was performed.
         """
         if configuration.execution_type in (
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -63,8 +62,6 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
             )
             self.configure_trigger(parameters=configuration.trigger_parameters)
             self.configure_timing(parameters=configuration.timing_parameters)
-            if self.session.function == nidmm.Function.AC_VOLTS:
-                self.session.ac_min_freq = configuration.ac_min_frequency
 
         if configuration.execution_type in (
             MeasurementExecutionType.MEASURE_ONLY,
@@ -105,7 +102,7 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
         Args:
             parameters (TriggerParameters):
                 An instance of `TriggerParameters` containing trigger source,
-                trigger delay, and enable/disable flag.
+                trigger delay, slope, and enable/disable flag.
         """
         if not parameters.enable_trigger:
             self.session.configure_trigger(
@@ -133,9 +130,7 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
         self.session.aperture_time = parameters.aperture_time_seconds
         self.session.settle_time = parameters.settle_time_seconds
 
-    def acquire_measurement(
-        self, resolution_in_digits: float
-    ) -> ResistanceMeasurementResultData:
+    def acquire_measurement(self, resolution_in_digits: float) -> ResistanceMeasurementResultData:
         """Acquires and formats the measurement result data.
 
         Args:
@@ -146,7 +141,9 @@ class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):
             ResistanceMeasurementResultData:
                 An instance of `ResistanceMeasurementResultData` containing:
                 - dmm_execution_settings: Dictionary with keys 'Function', 'Range',
-                  'Resolution_in_Digits', 'Aperture_Time', and 'Settle_Time'
+                  'Digits_Resolution', 'Aperture_Time(s)', 'Settle_Time(s)',
+                  'Minimum_Frequency(Hz)', 'Absolute_Resolution',
+                  'Input_Resistance(Ohm)', and 'Auto_Range_Value'
                 - measurement: Dictionary with keys 'Measured_Value', 'Unit', and
                   'Formatted_Measurement'
         """

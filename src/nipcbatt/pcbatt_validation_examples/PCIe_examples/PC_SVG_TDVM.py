@@ -59,7 +59,7 @@ tdvm.initialize(analog_input_channel_expression="Dev1/ai0")
 
 # region tdvm configure only
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_volts=-10,
     range_max_volts=10,
@@ -97,7 +97,7 @@ tdvm_config = daq.TimeDomainMeasurementConfiguration(
 tdvm.configure_and_measure(configuration=tdvm_config)
 
 # region configure SVG
-voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10, range_max_volts=10
 )
 

@@ -1,4 +1,4 @@
-# pylint: disable=C0116
+﻿# pylint: disable=C0116
 """This module provides voltage data types check."""
 
 import importlib.metadata
@@ -45,7 +45,7 @@ class TestVoltageRangeAndTerminalParameters(unittest.TestCase):
         expected_range_min_volts = -9.0
         expected_range_max_volts = 6.3
 
-        instance = nipcbatt.VoltageRangeAndTerminalParameters(
+        instance = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=expected_terminal_configuration,
             range_min_volts=expected_range_min_volts,
             range_max_volts=expected_range_max_volts,
@@ -94,13 +94,13 @@ class TestVoltageMeasurementChannelAndTerminalRangeParameters(unittest.TestCase)
         expected_range_max_volts = 6.3
         expected_channel_name = "Dev/ai0"
 
-        channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=expected_terminal_configuration,
             range_min_volts=expected_range_min_volts,
             range_max_volts=expected_range_max_volts,
         )
 
-        instance = nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
+        instance = daq.VoltageMeasurementChannelAndTerminalRangeParameters(
             channel_name=expected_channel_name,
             channel_parameters=channel_parameters,
         )
@@ -148,7 +148,7 @@ class TestVoltageGenerationChannelParameters(unittest.TestCase):
         expected_range_min_volts = -3.5
         expected_range_max_volts = 4.0
 
-        instance = nipcbatt.VoltageGenerationChannelParameters(
+        instance = daq.VoltageGenerationChannelParameters(
             range_min_volts=expected_range_min_volts,
             range_max_volts=expected_range_max_volts,
         )
@@ -162,7 +162,7 @@ class TestVoltageGenerationChannelParameters(unittest.TestCase):
         # Test if Valus error is raised when range Max = Min value
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.VoltageGenerationChannelParameters(
+            lambda: daq.VoltageGenerationChannelParameters(
                 range_min_volts=3.0, range_max_volts=3.0
             ),
         )
@@ -170,7 +170,7 @@ class TestVoltageGenerationChannelParameters(unittest.TestCase):
         # Test if value error is raised when Min is greater than Max
         self.assertRaises(
             ValueError,
-            lambda: nipcbatt.VoltageGenerationChannelParameters(
+            lambda: daq.VoltageGenerationChannelParameters(
                 range_min_volts=4.0,
                 range_max_volts=3.5,
             ),

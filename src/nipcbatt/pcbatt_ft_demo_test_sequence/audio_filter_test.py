@@ -49,7 +49,7 @@ class AudioFilterTest:
     ) -> None:
         # Configure Freq Domain Measurement settings to wait for Hardware Trigger from Audio Signal Generation  
 
-        global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
             range_max_volts=10,
@@ -86,7 +86,7 @@ class AudioFilterTest:
     def send_multi_tone_audio_signal(  
         self,
     ) -> None:
-        voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+        voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
             range_min_volts=-10, range_max_volts=10
         )
 
@@ -142,7 +142,7 @@ class AudioFilterTest:
     ) -> None:
         # Fetches the Analog Input voltage waveforms (Started measure when Signal Voltage generation sends Trigger) and returns Freq Domain Analysis 
 
-        global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
             range_max_volts=10,

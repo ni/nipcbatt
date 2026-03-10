@@ -10,6 +10,7 @@ from parameterized import parameterized
 from varname import nameof
 
 import nipcbatt
+from nipcbatt import communications
 from nipcbatt.pcbatt_library.communications.common.communication_functions import (
     compute_pages_characteristics,
     create_command_for_spi_read_communication,
@@ -53,7 +54,7 @@ class TestComputePagesCharacteristics(unittest.TestCase):
                 48,
                 128,
                 [
-                    nipcbatt.MemoryPageCharacteristics(0, 48, 0),
+                    communications.MemoryPageCharacteristics(0, 48, 0),
                 ],
             ),
             (
@@ -62,9 +63,9 @@ class TestComputePagesCharacteristics(unittest.TestCase):
                 340,
                 128,
                 [
-                    nipcbatt.MemoryPageCharacteristics(0, 116, 12),
-                    nipcbatt.MemoryPageCharacteristics(116, 128, 128),
-                    nipcbatt.MemoryPageCharacteristics(244, 96, 256),
+                    communications.MemoryPageCharacteristics(0, 116, 12),
+                    communications.MemoryPageCharacteristics(116, 128, 128),
+                    communications.MemoryPageCharacteristics(244, 96, 256),
                 ],
             ),
             (
@@ -73,9 +74,9 @@ class TestComputePagesCharacteristics(unittest.TestCase):
                 159,
                 96,
                 [
-                    nipcbatt.MemoryPageCharacteristics(0, 40, 56),
-                    nipcbatt.MemoryPageCharacteristics(40, 96, 96),
-                    nipcbatt.MemoryPageCharacteristics(136, 23, 192),
+                    communications.MemoryPageCharacteristics(0, 40, 56),
+                    communications.MemoryPageCharacteristics(40, 96, 96),
+                    communications.MemoryPageCharacteristics(136, 23, 192),
                 ],
             ),
         ]
@@ -86,7 +87,7 @@ class TestComputePagesCharacteristics(unittest.TestCase):
         memory_start_address: int,
         number_of_bytes_to_write: int,
         number_of_bytes_per_page: int,
-        expected_pages_characteristics: List[nipcbatt.MemoryPageCharacteristics],
+        expected_pages_characteristics: List[communications.MemoryPageCharacteristics],
     ):
         """unit test of compute_pages_characteristics."""  # noqa: D403, W505 - First word of the first line should be properly capitalized (auto-generated noqa), doc line too long (155 > 100 characters) (auto-generated noqa)
         logging.debug("running %s.", test_case_name)
@@ -178,7 +179,7 @@ class TestCreateArrayForSpiReadInstruction(unittest.TestCase):
         logging.debug("running %s.", test_case_name)
 
         actual_bytes_array = create_command_for_spi_read_communication(
-            address_parameters=nipcbatt.MemoryAddressParameters(
+            address_parameters=communications.MemoryAddressParameters(
                 memory_address=memory_address,
                 address_type=address_type,
                 address_endianness=address_endianness,
@@ -268,7 +269,7 @@ class TestCreateArrayForSpiWriteInstruction(unittest.TestCase):
         logging.debug("running %s.", test_case_name)
 
         actual_bytes_array = create_command_for_spi_write_communication(
-            address_parameters=nipcbatt.MemoryAddressParameters(
+            address_parameters=communications.MemoryAddressParameters(
                 memory_address=memory_address,
                 address_type=address_type,
                 address_endianness=address_endianness,

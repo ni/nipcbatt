@@ -4,8 +4,6 @@ from typing import Union
 
 import nidmm
 
-from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingNIDMM
-
 from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
 from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
     TimingParameters,
@@ -20,6 +18,7 @@ from nipcbatt.pcbatt_library.dmm.dc_rms_current_measurements.dc_rms_current_data
     DcRmsCurrentMeasurementFunctionParameters,
     DcRmsCurrentMeasurementResultData,
 )
+from nipcbatt.pcbatt_library_core.pcbatt_building_blocks import BuildingBlockUsingNIDMM
 
 
 class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
@@ -52,7 +51,7 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
         Returns:
             DcRmsCurrentMeasurementResultData | None: An instance of
                 `DcRmsCurrentMeasurementResultData` containing DMM execution settings
-                 and the measured current value,or None if only configuration was performed.
+                and the measured current value, or None if only configuration was performed.
         """
         if configuration.execution_type in (
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -105,7 +104,7 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
         Args:
             parameters (TriggerParameters):
                 An instance of `TriggerParameters` containing trigger source,
-                trigger delay, and enable/disable flag.
+                trigger delay, slope, and enable/disable flag.
         """
         if not parameters.enable_trigger:
             self.session.configure_trigger(
@@ -133,9 +132,7 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
         self.session.aperture_time = parameters.aperture_time_seconds
         self.session.settle_time = parameters.settle_time_seconds
 
-    def acquire_measurement(
-        self, resolution_in_digits: float
-    ) -> DcRmsCurrentMeasurementResultData:
+    def acquire_measurement(self, resolution_in_digits: float) -> DcRmsCurrentMeasurementResultData:
         """Acquires and formats the measurement result data.
 
         Args:
@@ -146,7 +143,9 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
             DcRmsCurrentMeasurementResultData:
                 An instance of `DcRmsCurrentMeasurementResultData` containing:
                 - dmm_execution_settings: Dictionary with keys 'Function', 'Range',
-                  'Resolution_in_Digits', 'Aperture_Time', 'Settle_Time', and 'AC_Min_Freq'
+                  'Digits_Resolution', 'Aperture_Time(s)', 'Settle_Time(s)',
+                  'Minimum_Frequency(Hz)', 'Absolute_Resolution',
+                  'Input_Resistance(Ohm)', and 'Auto_Range_Value'
                 - measurement: Dictionary with keys 'Measured_Value', 'Unit', and
                   'Formatted_Measurement'
         """

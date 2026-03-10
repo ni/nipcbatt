@@ -66,7 +66,7 @@ svg.route_sample_clock_signal_to_terminal(terminal_name="/Dev1/PFI1")
 
 # region tdvm configure only
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     range_min_volts=-10,
     range_max_volts=10,
@@ -93,13 +93,13 @@ digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
 # Specific channel parameters
 
 #    Channel 0
-cp0 = nipcbatt.VoltageRangeAndTerminalParameters(
+cp0 = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     range_min_volts=-10,
     range_max_volts=10,
 )
 
-channel0 = nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
+channel0 = daq.VoltageMeasurementChannelAndTerminalRangeParameters(
     channel_name="Dev2/ai0",
     channel_parameters=cp0,
 )
@@ -121,7 +121,7 @@ tdvm.configure_and_measure(configuration=tdvm_config)
 
 
 # region configure SVG
-voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10, range_max_volts=10
 )
 

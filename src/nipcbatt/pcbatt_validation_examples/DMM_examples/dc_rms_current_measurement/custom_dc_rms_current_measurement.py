@@ -2,19 +2,8 @@
 
 import nidmm
 
+import nipcbatt
 from nipcbatt import dmm
-from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
-    ResolutionInDigits,
-    Slope,
-    TimingParameters,
-    TriggerParameters,
-)
-from nipcbatt.pcbatt_library.dmm.dc_rms_current_measurements.dc_rms_current_data_types import (
-    CurrentRangeAndFunctions,
-    DcRmsCurrentMeasurementConfiguration,
-    DcRmsCurrentMeasurementFunctionParameters,
-)
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
@@ -25,19 +14,19 @@ def main():
     logger = PcbattLogger(file="c:\\Temp\\current_measurement_logger.txt")
     logger.attach(dmm_current_measurement)
 
-    config = DcRmsCurrentMeasurementConfiguration(
-        MeasurementExecutionType.CONFIGURE_AND_MEASURE,
-        trigger_parameters=TriggerParameters(
+    config = dmm.DcRmsCurrentMeasurementConfiguration(
+        nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+        trigger_parameters=dmm.TriggerParameters(
             trigger_source=nidmm.TriggerSource.IMMEDIATE,
             trigger_delay=5.0,
-            slope=Slope.FALLING_EDGE,
+            slope=dmm.Slope.FALLING_EDGE,
             enable_trigger=False,
         ),
-        measurement_function_parameters=DcRmsCurrentMeasurementFunctionParameters(
-            measurement_function=CurrentRangeAndFunctions.DC_1A,
-            resolution_in_digits=ResolutionInDigits.DIGITS_3_5,
+        measurement_function_parameters=dmm.DcRmsCurrentMeasurementFunctionParameters(
+            measurement_function=dmm.CurrentRangeAndFunctions.DC_1A,
+            resolution_in_digits=dmm.ResolutionInDigits.DIGITS_3_5,
         ),
-        timing_parameters=TimingParameters(
+        timing_parameters=dmm.TimingParameters(
             aperture_time_seconds=-1.0,
             settle_time_seconds=-1.0,
         ),

@@ -34,7 +34,6 @@ from nipcbatt.pcbatt_library.dmm.dc_rms_voltage_measurements.dc_rms_voltage_meas
     DcRmsVoltageMeasurement,
 )
 from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_constants import (
-    DEFAULT_RESISTANCE_AC_MIN_FREQUENCY,
     DEFAULT_RESISTANCE_EXECUTION_TYPE,
     DEFAULT_RESISTANCE_MEASUREMENT_CONFIGURATION,
     DEFAULT_RESISTANCE_MEASUREMENT_PARAMETERS,
@@ -49,8 +48,8 @@ from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_data_types i
     ResistanceRangeAndFunctions,
 )
 from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_measurement import (
-    DcRmsResistanceMeasurement) 
-
+    DcRmsResistanceMeasurement,
+)
 from nipcbatt.pcbatt_library.dmm.dc_rms_current_measurements.dc_rms_current_constants import (
     DEFAULT_DC_RMS_CURRENT_AC_MIN_FREQUENCY,
     DEFAULT_DC_RMS_CURRENT_EXECUTION_TYPE,

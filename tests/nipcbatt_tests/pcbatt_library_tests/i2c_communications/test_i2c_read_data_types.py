@@ -69,7 +69,7 @@ class TestI2cReadParameters(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = 0
-        expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
+        expected_memory_address_parameters = communications.MemoryAddressParameters(
             memory_address=50,
             address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -95,7 +95,7 @@ class TestI2cReadParameters(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = -7
-        expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
+        expected_memory_address_parameters = communications.MemoryAddressParameters(
             memory_address=50,
             address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -119,7 +119,7 @@ class TestI2cReadParameters(unittest.TestCase):
         nipcbatt.pcbatt_library.i2c_communications.i2c_read_data_types.I2cReadParameters.
         """  # noqa: D205, D415, W505 - 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (210 > 100 characters) (auto-generated noqa)
         expected_number_of_bytes_to_read = 7
-        expected_memory_address_parameters = nipcbatt.MemoryAddressParameters(
+        expected_memory_address_parameters = communications.MemoryAddressParameters(
             memory_address=50,
             address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
             address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -183,7 +183,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         )
         expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -216,7 +216,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         )
         expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -283,7 +283,7 @@ class TestI2cReadCommunicationConfiguration(unittest.TestCase):
         )
         expected_communication_read_parameters = communications.I2cReadParameters(
             number_of_bytes_to_read=7,
-            memory_address_parameters=nipcbatt.MemoryAddressParameters(
+            memory_address_parameters=communications.MemoryAddressParameters(
                 memory_address=128,
                 address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
                 address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

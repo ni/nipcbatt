@@ -1,4 +1,4 @@
-"""This module provides Frequency domain data types check."""
+﻿"""This module provides Frequency domain data types check."""
 
 import importlib.metadata
 import logging
@@ -180,7 +180,7 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
         expected_specific_range_min_volts = -5.0
         expected_specific_range_max_volts = 7.5
 
-        expected_global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        expected_global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=expected_terminal_configuration,
             range_min_volts=expected_range_min_volts,
             range_max_volts=expected_range_max_volts,
@@ -198,9 +198,9 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
 
         specific_channels_parameters = []
         specific_channels_parameters.append(
-            nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
+            daq.VoltageMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev/ai0",
-                channel_parameters=nipcbatt.VoltageRangeAndTerminalParameters(
+                channel_parameters=daq.VoltageRangeAndTerminalParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_volts=expected_specific_range_min_volts,
                     range_max_volts=expected_specific_range_max_volts,
@@ -208,9 +208,9 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
             )
         )
         specific_channels_parameters.append(
-            nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
+            daq.VoltageMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev/ai1",
-                channel_parameters=nipcbatt.VoltageRangeAndTerminalParameters(
+                channel_parameters=daq.VoltageRangeAndTerminalParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_volts=expected_specific_range_min_volts,
                     range_max_volts=expected_specific_range_max_volts,
@@ -218,9 +218,9 @@ class TestFrequencyDomainMeasurementConfiguration(unittest.TestCase):
             )
         )
         specific_channels_parameters.append(
-            nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
+            daq.VoltageMeasurementChannelAndTerminalRangeParameters(
                 channel_name="Dev/ai2",
-                channel_parameters=nipcbatt.VoltageRangeAndTerminalParameters(
+                channel_parameters=daq.VoltageRangeAndTerminalParameters(
                     terminal_configuration=expected_specific_terminal_configuration,
                     range_min_volts=expected_specific_range_min_volts,
                     range_max_volts=expected_specific_range_max_volts,

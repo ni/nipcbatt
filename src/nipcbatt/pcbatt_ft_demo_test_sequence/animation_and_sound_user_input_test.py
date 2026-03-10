@@ -58,7 +58,7 @@ class AnimationAndSoundUserInputTest:
     def configure_tweeter_meas( 
         self,
     ) -> None:
-        global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
             range_max_volts=10,
@@ -175,7 +175,7 @@ class AnimationAndSoundUserInputTest:
         # Fetches the measured DC Voltage (measured after Button action) and returns Time Domain Analysis Frequency 
         # NOTE: This Step errors outs for non-periodic waveform captures.
 
-        global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
             range_max_volts=10,

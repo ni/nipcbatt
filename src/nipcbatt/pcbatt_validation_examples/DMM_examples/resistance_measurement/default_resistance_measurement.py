@@ -10,7 +10,7 @@ def main():
 
     logger = PcbattLogger(file="c:\\Temp\\resistance_measurement_logger.txt")
     logger.attach(resistance_measurement)
-    
+
     # ======================= Initialize the DMM ============================
     resistance_measurement.initialize("Sim_DMM", 50)
 

@@ -2,19 +2,8 @@
 
 import nidmm
 
+import nipcbatt
 from nipcbatt import dmm
-from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
-from nipcbatt.pcbatt_library.dmm.common.common_data_types import (
-    ResolutionInDigits,
-    Slope,
-    TimingParameters,
-    TriggerParameters,
-)
-from nipcbatt.pcbatt_library.dmm.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
-    DcRmsVoltageMeasurementConfiguration,
-    DcRmsVoltageMeasurementFunctionParameters,
-    VoltageRangeAndFunctions,
-)
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
@@ -25,19 +14,19 @@ def main():
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
     logger.attach(dmm_voltage_measurement)
 
-    config = DcRmsVoltageMeasurementConfiguration(
-        MeasurementExecutionType.CONFIGURE_AND_MEASURE,
-        trigger_parameters=TriggerParameters(
+    config = dmm.DcRmsVoltageMeasurementConfiguration(
+        nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+        trigger_parameters=dmm.TriggerParameters(
             trigger_source=nidmm.TriggerSource.IMMEDIATE,
             trigger_delay=5.0,
-            slope=Slope.RISING_EDGE,
+            slope=dmm.Slope.RISING_EDGE,
             enable_trigger=False,
         ),
-        measurement_function_parameters=DcRmsVoltageMeasurementFunctionParameters(
-            measurement_function=VoltageRangeAndFunctions.DC_1V,
-            resolution_in_digits=ResolutionInDigits.DIGITS_5_5,
+        measurement_function_parameters=dmm.DcRmsVoltageMeasurementFunctionParameters(
+            measurement_function=dmm.VoltageRangeAndFunctions.DC_1V,
+            resolution_in_digits=dmm.ResolutionInDigits.DIGITS_5_5,
         ),
-        timing_parameters=TimingParameters(
+        timing_parameters=dmm.TimingParameters(
             aperture_time_seconds=-1.0,
             settle_time_seconds=-1.0,
         ),
