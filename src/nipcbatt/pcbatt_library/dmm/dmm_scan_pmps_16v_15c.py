@@ -1,4 +1,4 @@
-# pylint: disable=C0200
+# pylint: disable=C0200, C0103, C0301
 
 """This module interacts with the NI-DMM and NI-SWITCH drivers to control NI-DMM instruments
 and provide a corresponding instrument handle according to the topology selected"""
@@ -12,12 +12,13 @@ from nipcbatt.pcbatt_library.dmm.common.common_data_types import ResolutionInDig
 #edit this list to define the configurations to use during the scan
 #each entry should be a list in the format [channel, range & function, resolution]
 scan_configuration = [
-    [0,  dmm.VoltageRangeAndFunctions.DC_100mV, ResolutionInDigits.DIGITS_6_5],
-    [1,  dmm.VoltageRangeAndFunctions.DC_1V,    ResolutionInDigits.DIGITS_5_5],
-    [2,  dmm.VoltageRangeAndFunctions.DC_10V,   ResolutionInDigits.DIGITS_4_5],
-    [16, dmm.VoltageRangeAndFunctions.AC_200mV, ResolutionInDigits.DIGITS_6_5],
-    [17, dmm.VoltageRangeAndFunctions.AC_2V,    ResolutionInDigits.DIGITS_5_5],
-    [18, dmm.VoltageRangeAndFunctions.AC_20V,   ResolutionInDigits.DIGITS_4_5]
+    [0,  dmm.VoltageRangeAndFunctions.DC_100mV,             ResolutionInDigits.DIGITS_6_5],
+    [1,  dmm.VoltageRangeAndFunctions.DC_1V,                ResolutionInDigits.DIGITS_5_5],
+    [2,  dmm.VoltageRangeAndFunctions.AC_2V,                ResolutionInDigits.DIGITS_4_5],
+    [3,  dmm.ResistanceRangeAndFunctions.TWO_W_RES_10k_Ohm, ResolutionInDigits.DIGITS_4_5],
+    [16, dmm.CurrentRangeAndFunctions.DC_100mA,             ResolutionInDigits.DIGITS_6_5],
+    [17, dmm.CurrentRangeAndFunctions.DC_10mA,              ResolutionInDigits.DIGITS_5_5],
+    [18, dmm.CurrentRangeAndFunctions.AC_10mA,              ResolutionInDigits.DIGITS_4_5]
 ]
 
 # Data structures for output
@@ -31,7 +32,9 @@ execution_settings = []
 #Generate switch objects for scan
 mux_generation = switch.StaticDigitalPathGeneration()
 shunt_generation = switch.StaticDigitalPathGeneration()
-dmm_generation = dmm.DcRmsVoltageMeasurement()
+
+# Generate dmm object for mixed measurements
+dmm_generation = dmm.MixedMeasurement()
 
 #Close shunts to run scan
 close_all_shunts = True
@@ -146,11 +149,11 @@ for i in range(len(scan_configuration)):
     if prev != function_range_resolution[i]:
         
         # instantiate parameters object
-        params = dmm.DcRmsCurrentMeasurementFunctionParameters(function_and_range, resolution)
+        params = dmm.MixedMeasurementFunctionParameters(function_and_range, resolution)
         dmm_generation.configure_measurement_function(params)
 
     # measure only
-    dmm_read = dmm_generation.session.read()
+    dmm_read = dmm_generation.acquire_measurement(resolution.value)
 
     # SHUNT handling -- close current shunt if opened
     if ch >= 16 and close_all_shunts:   # current channels are ch16 - ch30
@@ -181,12 +184,12 @@ for i in range(len(scan_configuration)):
 
     #store raw output
     meas_type = params.measurement_function.value[0].name
-    value = dmm_read
-    raw_data = (channel_name, f'{value:.4f}', meas_type)
+    value = dmm_read.measurement
+    raw_data = (channel_name, value, meas_type)
     raw_measurements.append(raw_data)
 
     #store formatted measurement output
-    data = dmm_generation.acquire_measurement(resolution.value, dmm_read)
+    data = dmm_generation.acquire_measurement(resolution.value)
     meas = data.measurement
     formatted_meaurement = (channel_name, meas['Formatted_Measurement'], switch_time)
     formatted_measurements.append(formatted_meaurement)
@@ -201,24 +204,53 @@ for i in range(len(scan_configuration)):
 total_time_elapsed = time.perf_counter() - start_time
 
 print()
+print('------------- SCAN TIME --------------')
 print('Total Scan Time (s):', f'{total_time_elapsed: .2f}')
-print()
-
-print('    Formatted Measurements')
-print('Channel  Measurement      Time')
-for measurement in formatted_measurements:
-    print(measurement)
 print('\n')
 
-print('Execution Settings')
+print('------- FORMATTED MEASUREMENTS -------')
+print(f'{"Channel":<10} {"Measurement":<18} {"Time":>8}')
+
+for i in range(len(formatted_measurements)):
+    measurement = formatted_measurements[i]
+    full_unit = raw_measurements[i][2]
+
+    if 'DC' in full_unit:
+        unit = '(dc)'
+    elif 'AC' in full_unit:
+        unit = '(ac)'
+    else:
+        unit = '(ohm)'
+
+    channel = measurement[0]
+    value = f'{measurement[1]} {unit}'
+    time = measurement[2]
+
+    print(f'{channel:<10} {value:<18} {time:>8.3f}')
+print('\n')
+
+print('--------- EXECUTION SETTINGS ---------')
 for setting in execution_settings:
-    print(setting)
+    for key, value in setting.items():
+        print(str(key) + ': ' + str(value))
+    print()
 print('\n')
 
-print('      Raw Measurements')
-print('Channel    Value     Units')
-for measurement in raw_measurements:
-    print(measurement)
+
+#prepare raw measurements for output -- get largest width
+values_as_str = [
+    f"{m[1]['Measured_Value']:.16g}" for m in raw_measurements
+]
+value_width = max(len(v) for v in values_as_str)
+
+print('----------- RAW MEASUREMENTS -------------')
+print(f'{"Channel":<10} {"Value":^23} {"Units":^8}')
+
+for measurement, value_str in zip(raw_measurements, values_as_str):
+    channel = measurement[0]
+    unit = measurement[1]['Unit']
+
+    print(f'{channel:<10} {value_str:<{value_width}} {unit:>8}')
 print('\n')
 
 
