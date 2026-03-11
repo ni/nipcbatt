@@ -36,7 +36,7 @@ class VoltageRangeAndFunctions(Enum):
 
 
 class DcRmsVoltageMeasurementFunctionParameters(PCBATestToolkitData):
-    """Defines parameters used for configuration of DC-RMS voltage measurement.."""
+    """Defines parameters used for configuration of DC-RMS voltage measurement."""
 
     def __init__(
         self,

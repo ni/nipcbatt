@@ -37,7 +37,6 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
         """
         self._dmm_resource_name = dmm_resource_name
         self._powerline_frequency = powerline_frequency
-
         self._instrument = nidmm.Session(resource_name=self._dmm_resource_name)
         self.session.powerline_freq = self._powerline_frequency
 
@@ -72,7 +71,6 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
             MeasurementExecutionType.MEASURE_ONLY,
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         ):
-            # dmm_read = self.session.read()
             return self.acquire_measurement(
                 configuration.measurement_function_parameters.resolution_in_digits.value
             )
@@ -136,11 +134,11 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
         self.session.aperture_time = parameters.aperture_time_seconds
         self.session.settle_time = parameters.settle_time_seconds
 
-    def acquire_measurement(self, range_in_digits: float) -> MixedMeasurementResultData:
+    def acquire_measurement(self, resolution_in_digits: float) -> MixedMeasurementResultData:
         """Acquires and formats the measurement result data.
 
         Args:
-            range_in_digits (float):
+            resolution_in_digits (float):
                 The resolution in digits used for formatting the measured value.
 
         Returns:
@@ -155,7 +153,7 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
         """
         measured_value = self.session.read()
         measurement = FormatMeasurement.measurement(
-            range_in_digits=range_in_digits,
+            resolution_in_digits=resolution_in_digits,
             measured_value=measured_value,
             measurement_function=self.session.function,
         )
