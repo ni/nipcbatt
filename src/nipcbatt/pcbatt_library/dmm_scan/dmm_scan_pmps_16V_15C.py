@@ -39,7 +39,6 @@ class MeasurementResult(NamedTuple):
     formatted_measurements: list
     execution_settings: list
     raw_measurements: list
-  
 
 
 class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
@@ -77,14 +76,14 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         Returns:
             ScanResources: A tuple of two initialized switch sessions and one initalized dmm session
         """
-        
+      
         #Generate switch sessions for scan
         mux_generation = switch.StaticDigitalPathGeneration()
         shunt_generation = switch.StaticDigitalPathGeneration()
 
         # Generate dmm session for mixed measurements
         dmm_generation = dmm.MixedMeasurement()
-        
+       
         #Initialize sessions
         mux_generation.close()
         shunt_generation.close()

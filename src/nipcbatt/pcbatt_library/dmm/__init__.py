@@ -51,7 +51,7 @@ from nipcbatt.pcbatt_library.dmm.dc_rms_voltage_measurements.dc_rms_voltage_data
 from nipcbatt.pcbatt_library.dmm.dc_rms_voltage_measurements.dc_rms_voltage_measurement import (
     DcRmsVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library.dmm.mixed_measurements import (
+from nipcbatt.pcbatt_library.dmm.mixed_measurements.mixed_measurement import (
     MixedMeasurement,
 )
 from nipcbatt.pcbatt_library.dmm.mixed_measurements.mixed_measurement_constants import (
@@ -88,8 +88,3 @@ from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_measurement 
     DcRmsResistanceMeasurement,
 )
 
-from nipcbatt.pcbatt_library.dmm.DMM_SCAN.DMM_Scan_PXI_Mux_PXI_Shunt_16V_15C.DMM_Scan_PMPS_16V_15C import (
-    ScanResources,
-    MeasurementResult,
-    DmmScanPMPS
-)

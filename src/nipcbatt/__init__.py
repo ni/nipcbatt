@@ -18,6 +18,7 @@ from nipcbatt.pcbatt_library import daq
 from nipcbatt.pcbatt_library import dmm
 from nipcbatt.pcbatt_library import communications
 from nipcbatt.pcbatt_library import switch
+from nipcbatt.pcbatt_library import dmm_scan
 
 from nipcbatt.pcbatt_analysis.analysis_library_exceptions import (
     PCBATTAnalysisCallNativeLibraryFailedException,
