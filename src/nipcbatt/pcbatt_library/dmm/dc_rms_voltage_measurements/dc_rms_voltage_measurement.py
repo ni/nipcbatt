@@ -53,7 +53,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
         Returns:
             DcRmsVoltageMeasurementResultData | None: An instance of
                 `DcRmsVoltageMeasurementResultData` containing DMM execution settings
-                 and the measured voltage value,or None if only configuration was performed.
+                and the measured voltage value, or None if only configuration was performed.
         """
         if configuration.execution_type in (
             MeasurementExecutionType.CONFIGURE_ONLY,
@@ -71,9 +71,8 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
             MeasurementExecutionType.MEASURE_ONLY,
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         ):
-            dmm_read = self.session.read()
             return self.acquire_measurement(
-                configuration.measurement_function_parameters.resolution_in_digits.value, dmm_read
+                configuration.measurement_function_parameters.resolution_in_digits.value
             )
         return None
 
@@ -86,7 +85,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
     def configure_measurement_function(self, parameters: DcRmsVoltageMeasurementFunctionParameters):
         """Configures the measurement function settings for the DMM.
 
-        Args:S
+        Args:
             parameters (DcRmsVoltageMeasurementFunctionParameters):
                 An instance of `DcRmsVoltageMeasurementFunctionParameters` containing the
                 measurement function type (DC/AC voltage) and resolution in digits to configure.
@@ -107,7 +106,7 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
         Args:
             parameters (TriggerParameters):
                 An instance of `TriggerParameters` containing trigger source,
-                trigger delay, slope and enable/disable flag.
+                trigger delay, slope, and enable/disable flag.
         """
         if not parameters.enable_trigger:
             self.session.configure_trigger(
@@ -135,27 +134,26 @@ class DcRmsVoltageMeasurement(BuildingBlockUsingNIDMM):
         self.session.aperture_time = parameters.aperture_time_seconds
         self.session.settle_time = parameters.settle_time_seconds
 
-    def acquire_measurement(
-        self, range_in_digits: float, measured_value: float
-    ) -> DcRmsVoltageMeasurementResultData:
+    def acquire_measurement(self, resolution_in_digits: float) -> DcRmsVoltageMeasurementResultData:
         """Acquires and formats the measurement result data.
 
         Args:
-            range_in_digits (float):
+            resolution_in_digits (float):
                 The resolution in digits used for formatting the measured value.
-            measured_value (float):
-                The raw measured voltage value from the DMM.
 
         Returns:
             DcRmsVoltageMeasurementResultData:
                 An instance of `DcRmsVoltageMeasurementResultData` containing:
                 - dmm_execution_settings: Dictionary with keys 'Function', 'Range',
-                  'Resolution_in_Digits', 'Aperture_Time', 'Settle_Time', and 'AC_Min_Freq'
+                  'Digits_Resolution', 'Aperture_Time(s)', 'Settle_Time(s)',
+                  'Minimum_Frequency(Hz)', 'Absolute_Resolution',
+                  'Input_Resistance(Ohm)', and 'Auto_Range_Value'
                 - measurement: Dictionary with keys 'Measured_Value', 'Unit', and
                   'Formatted_Measurement'
         """
+        measured_value = self.session.read()
         measurement = FormatMeasurement.measurement(
-            range_in_digits=range_in_digits,
+            resolution_in_digits=resolution_in_digits,
             measured_value=measured_value,
             measurement_function=self.session.function,
         )
