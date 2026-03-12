@@ -10,7 +10,8 @@ from nipcbatt import dmm
 from nipcbatt.pcbatt_library.dmm.common.common_data_types import ResolutionInDigits
 
 #edit this list to define the configurations to use during the scan
-#each entry should be a list in the format [channel, range & function, resolution]
+#each entry should be a list in the format:
+#  [channel (int), range & function (<type>RangeAndFunctions), resolution (ResolutionInDigits)]
 scan_configuration = [
     [0,  dmm.VoltageRangeAndFunctions.DC_100mV,             ResolutionInDigits.DIGITS_6_5],
     [1,  dmm.VoltageRangeAndFunctions.DC_1V,                ResolutionInDigits.DIGITS_5_5],

@@ -67,7 +67,7 @@ class StaticDigitalPathGenerationStateParameters(PCBATestToolkitData):
 class StaticDigitalPathGenerationTimingParameters(PCBATestToolkitData):    
     """ Creates an instance of StaticDigitalPathGenerationTimingParameters """
 
-    def __init__(self, max_debounce_wait: int):
+    def __init__(self, max_debounce_wait: int = 5000):
         """Defines the maximum wait for debounce time
 
         Args:
