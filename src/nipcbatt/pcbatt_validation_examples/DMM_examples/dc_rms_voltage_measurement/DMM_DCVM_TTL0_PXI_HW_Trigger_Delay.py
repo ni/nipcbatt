@@ -12,10 +12,10 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 def main():
     # Initialize SVG and DMM
     svg = daq.SignalVoltageGeneration()
-    svg.initialize(channel_expression="PXI1Slot6/ao0")
+    svg.initialize(channel_expression="Sim_DAQ/ao0")
 
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
-    dmm_voltage_measurement.initialize("DMM", 50.0)
+    dmm_voltage_measurement.initialize("Sim_DMM", 50.0)
 
     # Add logger to DMM
     logger = PcbattLogger(file="c:\\Temp\\svg_dmm_logger.txt")
