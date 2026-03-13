@@ -1,3 +1,5 @@
+"""Signal Voltage Generation connected to DMM DC-RMS Voltage Measurement.""" 
+### Ensure correct hardware and corresponding trigger names before running this example
 
 import threading
 import time
