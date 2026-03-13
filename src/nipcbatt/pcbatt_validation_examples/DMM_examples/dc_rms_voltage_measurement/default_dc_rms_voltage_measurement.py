@@ -23,8 +23,7 @@ def main():
     dmm_voltage_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
-    print("executed succesfully")
+    print(measurement)
 
 
 if __name__ == "__main__":

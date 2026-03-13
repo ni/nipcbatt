@@ -42,7 +42,7 @@ def main():
     dmm_mixed_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
+    print(measurement)
 
 
 if __name__ == "__main__":

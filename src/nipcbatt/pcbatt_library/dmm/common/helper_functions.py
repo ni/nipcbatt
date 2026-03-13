@@ -45,14 +45,12 @@ class FormatMeasurement:
 
     # Mapping of nidmm.Function to measurement units
     UNIT_MAP = {
-        nidmm.Function.DC_VOLTS: "V",
-        nidmm.Function.AC_VOLTS: "V",
-        nidmm.Function.DC_CURRENT: "A",
-        nidmm.Function.AC_CURRENT: "A",
+        nidmm.Function.DC_VOLTS: "V (dc)",
+        nidmm.Function.AC_VOLTS: "V (ac)",
+        nidmm.Function.DC_CURRENT: "A (dc)",
+        nidmm.Function.AC_CURRENT: "A (ac)",
         nidmm.Function.TWO_WIRE_RES: "Ohm",
         nidmm.Function.FOUR_WIRE_RES: "Ohm",
-        nidmm.Function.FREQ: "Hz",
-        nidmm.Function.PERIOD: "s",
     }
 
     @staticmethod
@@ -142,6 +140,7 @@ class FormatMeasurement:
             }
         if math.isinf(measured_value):
             sign = "+" if measured_value > 0 else "-"
+            
             unit = FormatMeasurement.UNIT_MAP.get(measurement_function, "")
             return {
                 "Formatted_Measurement": f"{sign}Inf{unit}",
