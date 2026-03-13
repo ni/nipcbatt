@@ -8,10 +8,11 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterDcRmsVoltageMeasurement,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
 )
 
@@ -47,11 +48,11 @@ class TestTemperatureMeasurementUsingThermistor(unittest.TestCase):
 
     def test_temperature_measurement_using_thermistor(self):
         """Checks if class TemperatureMeasurementUsingThermistor is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (194 > 100 characters) (auto-generated noqa)
-        measurement = nipcbatt.TemperatureMeasurementUsingThermistor()
+        measurement = daq.TemperatureMeasurementUsingThermistor()
         measurement.initialize(channel_expression="Dev/ai0")
 
         results = measurement.configure_and_measure(
-            configuration=nipcbatt.DEFAULT_TEMPERATURE_THERMISTOR_MEASUREMENT_CONFIGURATION
+            configuration=daq.DEFAULT_TEMPERATURE_THERMISTOR_MEASUREMENT_CONFIGURATION
         )
         print(results)
 

@@ -14,20 +14,20 @@ import nipcbatt
 from nipcbatt.pcbatt_library.common.common_data_types import (
     DigitalStartTriggerParameters,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants.ConstantsForDigitalEdgeCountMeasurement' imported but unused (auto-generated noqa)
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_constants import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_constants.ConstantsForDigitalEdgeCountMeasurement' imported but unused (auto-generated noqa)
     ConstantsForDigitalEdgeCountMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData' imported but unused (auto-generated noqa)
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_data_types.DigitalEdgeCountMeasurementResultData' imported but unused (auto-generated noqa)
     DigitalEdgeCountHardwareTimerConfiguration,
     DigitalEdgeCountMeasurementCounterChannelParameters,
     DigitalEdgeCountMeasurementResultData,
     DigitalEdgeCountMeasurementTimingParameters,
     DigitalEdgeCountSoftwareTimerConfiguration,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_measurement_using_hardware_timer import (
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_measurement_using_hardware_timer import (
     DigitalEdgeCountMeasurementUsingHardwareTimer,
 )
-from nipcbatt.pcbatt_library.digital_edge_count_measurements.digital_edge_count_measurement_using_software_timer import (
+from nipcbatt.pcbatt_library.daq.digital_edge_count_measurements.digital_edge_count_measurement_using_software_timer import (
     DigitalEdgeCountMeasurementUsingSoftwareTimer,
 )
 

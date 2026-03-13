@@ -7,16 +7,16 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_constants import (
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_constants import (
     ConstantsForDigitalPulseGeneration,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_data_types.DigitalPulseGenerationData' imported but unused (auto-generated noqa)
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.daq   .digital_pulse_generations.digital_pulse_data_types.DigitalPulseGenerationData' imported but unused (auto-generated noqa)
     DigitalPulseGenerationConfiguration,
     DigitalPulseGenerationCounterChannelParameters,
     DigitalPulseGenerationData,
     DigitalPulseGenerationTimingParameters,
 )
-from nipcbatt.pcbatt_library.digital_pulse_generations.digital_pulse_generation import (
+from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_generation import (
     DigitalPulseGeneration,
 )
 

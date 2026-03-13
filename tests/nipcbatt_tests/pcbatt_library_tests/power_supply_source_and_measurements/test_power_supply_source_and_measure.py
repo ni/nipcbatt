@@ -9,10 +9,11 @@ import numpy as np
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterPowerSupplySourceAndMeasure,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
 )
 
@@ -48,12 +49,12 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
 
     def test_power_supply_source_and_measure(self):
         """Checks if class PowerSupplySourceAndMeasure is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)
-        measurement = nipcbatt.PowerSupplySourceAndMeasure()
+        measurement = daq.PowerSupplySourceAndMeasure()
 
         measurement.initialize(power_channel_name="TS1Mod1_pwr/power")
 
         measurement.configure_and_measure(
-            configuration=nipcbatt.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_CONFIGURATION
+            configuration=daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_CONFIGURATION
         )
 
         measurement.close()
@@ -74,23 +75,29 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         sample_rate2 = 100000000  # 100 MHz
         sample_rate4 = 1000000  # 1 MHz
 
-        data_1 = nipcbatt.PowerSupplySourceAndMeasureData(
+        data_1 = daq.PowerSupplySourceAndMeasureData(
             "data1", voltage_samples1, current_samples1, sample_rate1
         )
 
-        data_2 = nipcbatt.PowerSupplySourceAndMeasureData(
+        data_2 = daq.PowerSupplySourceAndMeasureData(
             "data2", voltage_samples2, current_samples2, sample_rate2
         )
 
-        data_4 = nipcbatt.PowerSupplySourceAndMeasureData(
+        data_4 = daq.PowerSupplySourceAndMeasureData(
             "data4", voltage_samples4, current_samples4, sample_rate4
         )
 
         #################### ACT ######################################################
         # generate result objects
-        res_data_1 = nipcbatt.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_1)
-        res_data_2 = nipcbatt.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_2)
-        res_data_4 = nipcbatt.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_4)
+        res_data_1 = daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_1, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
+        res_data_2 = daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_2, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
+        res_data_4 = daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_4, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
 
         #################### ASSERT ###################################################
         # test max voltage
@@ -135,19 +142,19 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         # test PowerSupplySourceAndMeasureData constructor
         with self.assertRaises(ValueError):
             print(
-                nipcbatt.PowerSupplySourceAndMeasureData(
+                daq.PowerSupplySourceAndMeasureData(
                     "data1", voltage_samples1, current_samples2, sample_rate2
                 )
             )
 
             print(
-                nipcbatt.PowerSupplySourceAndMeasureData(
+                daq.PowerSupplySourceAndMeasureData(
                     "data2", voltage_samples2, current_samples1, sample_rate2
                 )
             )
 
             print(
-                nipcbatt.PowerSupplySourceAndMeasureData(
+                daq.PowerSupplySourceAndMeasureData(
                     "data3", voltage_samples2, current_samples2, sample_rate1
                 )
             )
