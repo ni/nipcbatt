@@ -76,7 +76,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         Returns:
             ScanResources: A tuple of two initialized switch sessions and one initalized dmm session
         """
-      
+     
         #Generate switch sessions for scan
         mux_generation = switch.StaticDigitalPathGeneration()
         shunt_generation = switch.StaticDigitalPathGeneration()
@@ -88,7 +88,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         mux_generation.close()
         shunt_generation.close()
         dmm_generation.close()
-       
+      
         #Initialize sessions
         mux_generation.initialize(mux_resource_name, mux_topology_name, reset_device=True, simulate=False)
         shunt_generation.initialize(shunt_resource_name, shunt_topology_name, reset_device=True, simulate=False)
@@ -348,7 +348,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             resource_handles (ScanResources): Contains the sessions handles used in the scan
         """
         mux_generation = resource_handles.mux_generation
-        shunt_generation = resource_handles.shunt_generation 
+        shunt_generation = resource_handles.shunt_generation
         dmm_generation = resource_handles.dmm_generation
 
         #close and release all resources
