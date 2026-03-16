@@ -1,6 +1,6 @@
 # pylint: disable=C0200, C0103, C0301
 
-"""" Defines class used for DMM Scan using PXI Mux and PXI Shunt """
+""" Defines class used for DMM Scan using PXI Mux and PXI Shunt """
 
 import time
 from typing import NamedTuple
@@ -32,6 +32,7 @@ class MeasurementResult(NamedTuple):
         raw_measurements: The list of raw measurements captured during the scan
 
     Args:
+        NamedTuple: Built-in datatype to hold abstract tuples
         
     """
     sessions: ScanResources
@@ -39,7 +40,6 @@ class MeasurementResult(NamedTuple):
     formatted_measurements: list
     execution_settings: list
     raw_measurements: list
-
 
 class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
     """This class represents the set of properties and methods needed
@@ -83,12 +83,13 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
         # Generate dmm session for mixed measurements
         dmm_generation = dmm.MixedMeasurement()
-       
-        #Initialize sessions
+
+        # Ensure sessions are cleared before use
         mux_generation.close()
         shunt_generation.close()
         dmm_generation.close()
-
+       
+        #Initialize sessions
         mux_generation.initialize(mux_resource_name, mux_topology_name, reset_device=True, simulate=False)
         shunt_generation.initialize(shunt_resource_name, shunt_topology_name, reset_device=True, simulate=False)
         dmm_generation.initialize(dmm_resource_name, powerline_freq)
@@ -174,6 +175,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
         # previous function, range, resolution for comparison
         prev = None
+        params = None
 
         # start wall time counter
         start_time = time.perf_counter()
@@ -257,12 +259,12 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             raw_measurements.append(raw_data)
 
             #store formatted measurement output
-            data = dmm_generation.acquire_measurement(resolution.value)
+            data = dmm_read
             meas = data.measurement
-            formatted_meaurement = (channel_name, meas['Formatted_Measurement'], switch_time)
-            formatted_measurements.append(formatted_meaurement)
+            formatted_measurement = (channel_name, meas['Formatted_Measurement'], switch_time)
+            formatted_measurements.append(formatted_measurement)
 
-            #store execution ettings
+            #store execution settings
             exec_settings = data.dmm_execution_settings
             execution_settings.append(exec_settings)
 

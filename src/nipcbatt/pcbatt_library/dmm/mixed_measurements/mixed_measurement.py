@@ -155,7 +155,7 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
         """
         measured_value = self.session.read()
         measurement = FormatMeasurement.measurement(
-            range_in_digits=resolution_in_digits,
+            resolution_in_digits=resolution_in_digits,
             measured_value=measured_value,
             measurement_function=self.session.function,
         )
