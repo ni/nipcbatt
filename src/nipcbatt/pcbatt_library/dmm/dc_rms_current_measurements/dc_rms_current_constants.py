@@ -21,8 +21,8 @@ class ConstantsForDcRmsCurrentMeasurements:
     RANGE_AND_FUNCTION = CurrentRangeAndFunctions.DC_Current_Auto_Range
 
 
-"""Current measurement-specific range/function setting is defined 
-    in ConstantsForDcRmsCurrentMeasurements."""
+# Current measurement-specific range/function setting is defined
+# in ConstantsForDcRmsCurrentMeasurements.
 # Default execution type for current measurements
 DEFAULT_DC_RMS_CURRENT_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE
 

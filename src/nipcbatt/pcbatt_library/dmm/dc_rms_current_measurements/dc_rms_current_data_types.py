@@ -40,7 +40,7 @@ class CurrentRangeAndFunctions(Enum):
 
 
 class DcRmsCurrentMeasurementFunctionParameters:
-    """Defines parameters used for configuration of DC-RMS current measurement.."""
+    """Defines parameters used for configuration of DC-RMS current measurement."""
 
     def __init__(
         self,

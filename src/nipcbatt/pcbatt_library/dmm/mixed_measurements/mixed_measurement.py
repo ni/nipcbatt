@@ -37,7 +37,6 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
         """
         self._dmm_resource_name = dmm_resource_name
         self._powerline_frequency = powerline_frequency
-
         self._instrument = nidmm.Session(resource_name=self._dmm_resource_name)
         self.session.powerline_freq = self._powerline_frequency
 
@@ -72,7 +71,6 @@ class MixedMeasurement(BuildingBlockUsingNIDMM):
             MeasurementExecutionType.MEASURE_ONLY,
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         ):
-            # dmm_read = self.session.read()
             return self.acquire_measurement(
                 configuration.measurement_function_parameters.resolution_in_digits.value
             )

@@ -70,7 +70,6 @@ from nipcbatt.pcbatt_library.dmm.mixed_measurements.mixed_measurement_data_types
     MixedRangeAndFunctions,
 )
 from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_constants import (
-    DEFAULT_RESISTANCE_AC_MIN_FREQUENCY,
     DEFAULT_RESISTANCE_EXECUTION_TYPE,
     DEFAULT_RESISTANCE_MEASUREMENT_CONFIGURATION,
     DEFAULT_RESISTANCE_MEASUREMENT_PARAMETERS,

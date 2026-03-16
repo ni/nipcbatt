@@ -116,7 +116,13 @@ class FormatMeasurement:
 
     @staticmethod
     def measurement(
+<<<<<<< HEAD
         resolution_in_digits: float, measured_value: float, measurement_function: nidmm.Function = None
+=======
+        resolution_in_digits: float,
+        measured_value: float,
+        measurement_function: nidmm.Function = None,
+>>>>>>> main
     ) -> dict:
         """Formats the measurement value according to the specified resolution.
 

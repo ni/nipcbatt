@@ -1,23 +1,18 @@
-"""DMM Resistance measurement example with default input parameters."""
+"""Resistance measurement example with default input parameters."""
 
 from nipcbatt import dmm
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
-    """Configures and executes default DMM resistance measurement with logging.
-
-    Returns:
-        ResistanceMeasurementResultData: Measurement results including
-            execution settings and measured resistance values.
-    """
+    """Configures and executes default resistance measurement with logging."""
     resistance_measurement = dmm.DcRmsResistanceMeasurement()
 
     logger = PcbattLogger(file="c:\\Temp\\resistance_measurement_logger.txt")
     logger.attach(resistance_measurement)
-    
+
     # ======================= Initialize the DMM ============================
-    resistance_measurement.initialize("DMM", 50)
+    resistance_measurement.initialize("Sim_DMM", 50)
 
     # ================= Default measurement configuration ===================
     measurement = resistance_measurement.configure_and_measure(

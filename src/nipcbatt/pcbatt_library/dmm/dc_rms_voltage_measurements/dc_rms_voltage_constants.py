@@ -1,4 +1,4 @@
-"""Constants data types for DC-RMS Voltage  Measurements."""
+"""Constants data types for DC-RMS Voltage Measurements."""
 
 import dataclasses
 
@@ -21,8 +21,8 @@ class ConstantsForDcRmsVoltageMeasurements:
     RANGE_AND_FUNCTION = VoltageRangeAndFunctions.DC_Voltage_Auto_Range
 
 
-"""Voltage measurement-specific range/function setting is defined 
-    in ConstantsForDcRmsVoltageMeasurements."""
+# Voltage measurement-specific range/function setting is defined
+# in ConstantsForDcRmsVoltageMeasurements.
 # Default execution type for voltage measurements
 DEFAULT_DC_RMS_VOLTAGE_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE
 
