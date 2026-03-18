@@ -9,7 +9,7 @@ topology = "2527/2-Wire Dual 16x1 Mux"
 max_wait_debounce = 100
 
 #initialize session
-module_characteristics = generation.initialize(resource_name, topology, reset_device=True, simulate=True)
+module_characteristics = generation.initialize(resource_name, topology)
 
 ################## ch0 to ch1 connection ########################################################
 channel_params1 = switch.StaticDigitalPathGenerationChannelParameters("ch0", "ch1")
@@ -36,7 +36,7 @@ path_status2 = generation.configure_and_generate(configuration2)
 assert path_status2.path_status == niswitch.PathCapability.PATH_AVAILABLE
 
 print()
-print('ch0 to ch0')
+print('ch0 to com0')
 generation.display_status(path_status2)
 
 ################ ch1 to com0 connection ##########################################################
