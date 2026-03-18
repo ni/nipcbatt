@@ -45,7 +45,7 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
                    topology_name: str,
                    reset_device: bool = True,                
                    simulate: bool = False
-        ) -> None:
+        ) -> StaticDigitalPathGenerationModuleCharacteristics:
         """Initializes the session to prepare for path generation
 
         Args:
@@ -81,6 +81,17 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
         #assign session
         self._instrument = session
 
+        # populate module characteristics
+        module_characteristics = StaticDigitalPathGenerationModuleCharacteristics(
+            self.session.max_dc_voltage,
+            self.session.max_ac_voltage,
+            self.session.max_switching_dc_current,
+            self.session.max_switching_ac_current
+        )
+
+        #return the utilized moduel characteristics
+        return module_characteristics
+
     def close(self):
         """Disconnects all channels, closes the session and returns the resource"""
         if not self.is_session_initialized:
@@ -102,6 +113,8 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
 
            Args:
                 terminal_and_state_settings: Contains both the channel and state to employ
+
+            Returns: A StaticDigitalPathGenerationPathStatus object containing the path status
         """
         
         #extract channels and state to employ
@@ -115,9 +128,9 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
         #verify channels can be connected
         path_capability = self.session.can_connect(channel_one, channel_two)
 
-        #connect/disconnect/ignore depending on path capability
-        if path_capability.PATH_AVAILABLE or path_capability.PATH_EXISTS:
-
+        #connect depending on path capability
+        if path_capability == niswitch.PathCapability.PATH_AVAILABLE:
+        
             #if connecting make connection, else disconnect
             if connect:
                 self.session.connect(channel_one, channel_two)
@@ -127,12 +140,59 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
             #wait for maximum debounce time
             self.session.wait_for_debounce(max_wait)
 
-        #if the path is not available or doesn't exist, do nothing
-        else:
-            pass
+        #if the path is connected and connect is False
+        elif connect is False and path_capability == niswitch.PathCapability.PATH_EXISTS:
+
+            # disconnect
+            self.session.disconnect(channel_one, channel_two)
+
+        # populate path status object
+        path_status = StaticDigitalPathGenerationPathStatus(path_capability)
 
         #return path capbility inside path status object
-        return StaticDigitalPathGenerationPathStatus(path_capability)
+        return path_status
+            
+
+    
+    def display_status(self, status: StaticDigitalPathGenerationPathStatus) -> None:
+        """Takes in a StaticDigitalPathGenerationPathStatus object and
+           prints the contents in human-readable format based on the status
+
+        Args:
+            path_status (StaticDigitalPathGenerationPathStatus): A populated
+            StaticDigitalPathGenerationPathStatus object
+        """
+
+        # define a set of message strings to display for a given path status
+        messages = {
+            niswitch.PathCapability.PATH_AVAILABLE: 'Path Available',
+            niswitch.PathCapability.PATH_EXISTS: 'Path Exists',
+            niswitch.PathCapability.PATH_UNSUPPORTED: 'Path Unsupported',
+            niswitch.PathCapability.RESOURCE_IN_USE: 'Resource in use',
+            niswitch.PathCapability.SOURCE_CONFLICT: 'Source conflict',
+            niswitch.PathCapability.CHANNEL_NOT_AVAILABLE: 'Channel not available'
+        }
+
+        print('Path Status:', messages[status.path_status])
+        
+
+    def display_module_characteristics(
+            self, 
+            chararteristics: StaticDigitalPathGenerationModuleCharacteristics
+        ) -> None:
+        """Takes in a StaticDigitalPathGenerationModuleCharacteristics object
+           and prints the contents in human-readble format
+
+        Args:
+            chararteristics (StaticDigitalPathGenerationModuleCharacteristics): A
+            populated StaticDigitalPathGenerationModuleCharacteristics object
+        """
+
+        print('----- MODULE CHARACTERISTICS -------')
+        print('Max. DC Voltage (V):', chararteristics.max_dc_voltage)
+        print('Max. AC Voltage (V):', chararteristics.max_ac_voltage)
+        print('Max. Switching DC Current (A):', chararteristics.max_switching_dc_current)
+        print('Max. Switching AC Current (A):', chararteristics.max_switching_ac_current)
 
         
         

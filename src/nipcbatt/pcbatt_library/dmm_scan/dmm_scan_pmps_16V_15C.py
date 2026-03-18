@@ -319,13 +319,17 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             value_width = max(len(v) for v in values_as_str)
 
             print('----------- RAW MEASUREMENTS -------------')
-            print(f'{"Channel":<10} {"Value":^23} {"Units":^8}')
+            print(f'{"Channel":<10} {"Value":^23} {"Units":^6}')
 
             for measurement, value_str in zip(raw_measurements, values_as_str):
                 channel = measurement[0]
                 unit = measurement[1]['Unit']
+                if 'DC' in measurement[2]:
+                    unit += ' (dc)'
+                elif 'AC' in measurement[2]:
+                    unit += ' (ac)'
 
-                print(f'{channel:<10} {value_str:<{value_width}} {unit:>8}')
+                print(f'{channel:<10} {value_str:<{value_width}} {unit:^11}')
             print('\n')
 
         # prepare output

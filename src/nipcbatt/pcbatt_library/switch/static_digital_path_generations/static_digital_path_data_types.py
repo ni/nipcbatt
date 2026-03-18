@@ -172,6 +172,21 @@ class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
         """
         return self._max_ac_voltage
     
+    @property
+    def max_switching_dc_current(self) -> float:
+        """
+        :type:'float': Returns the max dc switching current
+        """
+        return self._max_switching_dc_current
+    
+    @property
+    def max_switching_ac_current(self) -> float:
+        """  
+        :type:'float': Returns the max ac switching current
+        """
+        return self._max_switching_ac_current
+    
+    
 class StaticDigitalPathGenerationConfiguration(PCBATestToolkitData):
     """ Contains the ultimate configuration used in path generation """
 
@@ -235,3 +250,4 @@ class StaticDigitalPathGenerationPathStatus(PCBATestToolkitData):
         """
         return self._path_status
     
+
