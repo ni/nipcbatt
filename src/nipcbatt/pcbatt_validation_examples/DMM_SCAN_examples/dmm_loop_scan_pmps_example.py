@@ -11,15 +11,15 @@ from nipcbatt import dmm_scan
 
 # edit this list to define the configurations to use during the scan
 # each entry should be a list in the format below:
-# [channel (int), range & function (<type>RangeAndFunctions), resolution (ResolutionInDigits)]
+# [channel (int), range & function (MixedRangeAndFunctions), resolution (ResolutionInDigits)]
 scan_configuration = [
-    [0,  dmm.VoltageRangeAndFunctions.DC_100mV,             dmm.ResolutionInDigits.DIGITS_6_5],
-    [1,  dmm.VoltageRangeAndFunctions.DC_1V,                dmm.ResolutionInDigits.DIGITS_5_5],
-    [2,  dmm.VoltageRangeAndFunctions.AC_2V,                dmm.ResolutionInDigits.DIGITS_4_5],
-    [3,  dmm.ResistanceRangeAndFunctions.TWO_W_RES_10k_Ohm, dmm.ResolutionInDigits.DIGITS_4_5],
-    [16, dmm.CurrentRangeAndFunctions.DC_100mA,             dmm.ResolutionInDigits.DIGITS_6_5],
-    [17, dmm.CurrentRangeAndFunctions.DC_10mA,              dmm.ResolutionInDigits.DIGITS_5_5],
-    [18, dmm.CurrentRangeAndFunctions.AC_10mA,              dmm.ResolutionInDigits.DIGITS_4_5]
+    [0,  dmm.MixedRangeAndFunctions.DC_100mV,             dmm.ResolutionInDigits.DIGITS_6_5],
+    [1,  dmm.MixedRangeAndFunctions.DC_1V,                dmm.ResolutionInDigits.DIGITS_5_5],
+    [2,  dmm.MixedRangeAndFunctions.AC_2V,                dmm.ResolutionInDigits.DIGITS_4_5],
+    [3,  dmm.MixedRangeAndFunctions.TWO_W_RES_10k_Ohm,    dmm.ResolutionInDigits.DIGITS_4_5],
+    [16, dmm.MixedRangeAndFunctions.DC_100mA,             dmm.ResolutionInDigits.DIGITS_6_5],
+    [17, dmm.MixedRangeAndFunctions.DC_10mA,              dmm.ResolutionInDigits.DIGITS_5_5],
+    [18, dmm.MixedRangeAndFunctions.AC_10mA,              dmm.ResolutionInDigits.DIGITS_4_5]
 ]
 
 #Declare constants for initialization
