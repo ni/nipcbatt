@@ -16,6 +16,7 @@ def main():
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
     logger.attach(dmm_voltage_measurement)
 
+    # Configure the measurement configuration for the DMM DC-RMS voltage measurement
     config = dmm.DcRmsVoltageMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
@@ -63,6 +64,7 @@ def main():
     # Measure in a loop
     for i in range(number_of_measurements):
         measurement = {}
+        # Perform measurement using the measure_only configuration in the loop and store the result in the measurement dictionary
         measurement["value"] = dmm_voltage_measurement.configure_and_measure(
             configuration=measure_only
         )

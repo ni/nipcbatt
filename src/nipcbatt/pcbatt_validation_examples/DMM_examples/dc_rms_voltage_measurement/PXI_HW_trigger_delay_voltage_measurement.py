@@ -80,7 +80,7 @@ def main():
     )
 
     # DMM voltage measurement in background thread 
-    dmm_result    = {}
+    dmm_result = {}
 
     def _dmm_measure():
         dmm_result["value"] = dmm_voltage_measurement.configure_and_measure(
@@ -105,6 +105,7 @@ def main():
     svg.close()
     dmm_voltage_measurement.close()
 
+    # Print the DMM measurement result
     print(dmm_result["value"])
 
 

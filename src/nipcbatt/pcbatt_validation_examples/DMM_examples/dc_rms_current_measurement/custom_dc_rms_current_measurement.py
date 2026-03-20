@@ -14,6 +14,7 @@ def main():
     logger = PcbattLogger(file="c:\\Temp\\current_measurement_logger.txt")
     logger.attach(dmm_current_measurement)
 
+    # Configure the measurement configuration for the DMM DC-RMS current measurement
     config = dmm.DcRmsCurrentMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(

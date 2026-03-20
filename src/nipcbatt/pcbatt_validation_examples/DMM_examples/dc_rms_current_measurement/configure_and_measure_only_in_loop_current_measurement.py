@@ -64,6 +64,7 @@ def main():
     # Measure in a loop
     for i in range(number_of_measurements):
         measurement = {}
+        # Perform measurement using the measure_only configuration in the loop and store the result in the measurement dictionary
         measurement["value"] = dmm_current_measurement.configure_and_measure(
             configuration=measure_only
         )

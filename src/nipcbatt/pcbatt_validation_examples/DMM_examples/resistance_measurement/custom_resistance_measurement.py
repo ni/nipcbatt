@@ -15,6 +15,7 @@ def main():
 
     logger.attach(resistance_measurement)
 
+    # Configure the measurement configuration for the DMM resistance measurement
     config = dmm.ResistanceMeasurementConfiguration(
         execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
