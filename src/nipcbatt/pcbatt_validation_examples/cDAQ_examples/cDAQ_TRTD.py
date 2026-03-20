@@ -16,7 +16,7 @@ use_specific_channel = False
 
 # initialize 'TemperatureMeasurementUsingRtd' class instance
 trtdm = daq.TemperatureMeasurementUsingRtd()
-trtdm.initialize("TP_RTD0")
+trtdm.initialize("TP_RTD")
 
 # region TRTDM configure and measure
 

@@ -16,9 +16,9 @@ use_specific_channel = False
 
 # Initialize
 pssm = daq.PowerSupplySourceAndMeasure()
-pssm.initialize("TS1_Power/power")
+pssm.initialize("Simulated_TS1_Power/power")
 drcm = daq.DcRmsCurrentMeasurement()
-drcm.initialize("TS1_AI/ai4")
+drcm.initialize("Simulated_TS1_AI/ai0")
 
 # region PSSM configure and measure
 
@@ -97,7 +97,7 @@ cp0 = daq.DcRmsCurrentMeasurementTerminalRangeParameters(
 )
 
 channel0 = daq.DcRmsCurrentMeasurementChannelAndTerminalRangeParameters(
-    channel_name="TS1_AI/ai4",
+    channel_name="Simulated_TS1_AI/ai4",
     channel_parameters=cp0,
 )
 

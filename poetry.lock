@@ -975,6 +975,42 @@ docs = ["Sphinx (>=4.3,<5.0)", "sphinx_rtd_theme (>=1.0,<2.0)"]
 grpc = ["grpcio (>=1.49.0,<2.0)", "protobuf (>=4.21,<5.0)"]
 
 [[package]]
+name = "nidmm"
+version = "1.4.7"
+description = "NI-DMM Python API"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "nidmm-1.4.7-py3-none-any.whl", hash = "sha256:b6616977647dff55b93a1087355a1775fbd4b085716d6e51b65cc91ca41a7ccb"},
+    {file = "nidmm-1.4.7.tar.gz", hash = "sha256:9b688403d3b74304d666ba5123a9bd0cd76bf18e9b5eae210baec2b91d8fcaa7"},
+]
+
+[package.dependencies]
+hightime = ">=0.2.0"
+
+[package.extras]
+grpc = ["grpcio (>=1.49.1,<2.0)", "protobuf (>=4.21,<5.0)"]
+
+[[package]]
+name = "niswitch"
+version = "1.4.7"
+description = "NI-SWITCH Python API"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "niswitch-1.4.7-py3-none-any.whl", hash = "sha256:6bb2e24d1358c0a852e38976ae2040bda7d24de516dab50b217961aeb6ec8440"},
+    {file = "niswitch-1.4.7.tar.gz", hash = "sha256:9d82e28f6f3c5c5e1e032c3bd31bc9e0f58630368c671b6a021b672c5cbe19bc"},
+]
+
+[package.dependencies]
+hightime = ">=0.2.0"
+
+[package.extras]
+grpc = ["grpcio (>=1.49.1,<2.0)", "protobuf (>=4.21,<5.0)"]
+
+[[package]]
 name = "numpy"
 version = "1.26.4"
 description = "Fundamental package for array computing in Python"
@@ -1791,4 +1827,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "936168b76396b3c800780328b6b74ed28bfab825b994ada573f26187562854d2"
+content-hash = "5e18b6f723ec448f69f62cd02ce553a1784d4d23a7180a41f4103b574e1bc6d0"

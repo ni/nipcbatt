@@ -17,10 +17,10 @@ use_specific_channel = False
 
 # Initialize
 pssm = daq.PowerSupplySourceAndMeasure()
-pssm.initialize(power_channel_name="TS1_Power/power")
+pssm.initialize(power_channel_name="Simulated_TS1_Power/power")
 
 tdvm = daq.TimeDomainMeasurement()
-tdvm.initialize(analog_input_channel_expression="TS1_AI/ai2")
+tdvm.initialize(analog_input_channel_expression="Simulated_TS1_AI/ai2")
 
 # region TDVM configure only
 
@@ -39,7 +39,7 @@ channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
 )
 
 channel0 = nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
-    channel_name="TS1_AI/ai2",
+    channel_name="Simulated_TS1_AI/ai2",
     channel_parameters=channel_parameters,
 )
 
@@ -61,7 +61,7 @@ sample_clock_timing_parameters = nipcbatt.SampleClockTimingParameters(
 
 digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-    digital_start_trigger_source="/TS1/te0/StartTrigger",
+    digital_start_trigger_source="/Sim_TS1/te0/StartTrigger",
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 

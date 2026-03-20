@@ -16,7 +16,7 @@ use_specific_channel = False
 
 # Initialize
 pssm = daq.PowerSupplySourceAndMeasure()
-pssm.initialize("TS1_Power/power")
+pssm.initialize("Simulated_TS1_Power/power")
 ttr = daq.TemperatureMeasurementUsingThermistor()
 ttr.initialize("TP_Rth0")
 
