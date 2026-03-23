@@ -58,7 +58,7 @@ drvm = daq.DcRmsVoltageMeasurement()
 drvm.initialize("Dev1/ai1")
 
 # region configure SVG
-voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10, range_max_volts=10
 )
 
@@ -137,7 +137,7 @@ else:
 
 # region DRVM configure and measure
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     range_min_volts=-10,
     range_max_volts=10,

@@ -66,7 +66,7 @@ def main(
         clock_polarity=nipcbatt.SpiConfigurationClockPolarity.CLOCK_POLARITY_IDLE_LOW,
     )
 
-    read_mem_params = nipcbatt.MemoryAddressParameters(
+    read_mem_params = communications.MemoryAddressParameters(
         memory_address=0,  # 0x00
         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,
@@ -99,7 +99,7 @@ def main(
     data = [np.ubyte(0xAB), np.ubyte(0x1D), np.ubyte(0x11), np.ubyte(0xFF)]
     data_to_write = np.array(data)
 
-    write_mem_params = nipcbatt.MemoryAddressParameters(
+    write_mem_params = communications.MemoryAddressParameters(
         memory_address=0,  # 0x00
         address_type=nipcbatt.DataMemoryAddressType.ADDRESS_ENCODED_ON_TWO_BYTES,
         address_endianness=nipcbatt.DataMemoryAddressEndianness.BIG_ENDIAN,

@@ -17,9 +17,9 @@ use_specific_channel = False
 # initialize 'TemperatureMeasurementUsingThermocouple' class instance
 ttcm = daq.TemperatureMeasurementUsingThermocouple()
 ttcm.initialize(
-    channel_expression="cDAQ1_TC/ai0:1",
+    channel_expression="Simulated_cDAQ_9211/ai0:1",
     cold_junction_compensation_source=nidaqmx.constants.CJCSource.BUILT_IN,
-    cold_junction_compensation_channel="TP_RTD0",
+    cold_junction_compensation_channel="TP_RTD",
 )
 
 # region ttcm configure and measure
@@ -41,13 +41,13 @@ channel_parameters = daq.TemperatureThermocoupleRangeAndTerminalParameters(
     thermocouple_type=nidaqmx.constants.ThermocoupleType.J,
     cold_junction_compensation_source=nidaqmx.constants.CJCSource.CONSTANT_USER_VALUE,
     cold_junction_compensation_temperature=25.0,
-    cold_junction_compensation_channel_name="TP_RTD0",
+    cold_junction_compensation_channel_name="TP_RTD",
     perform_auto_zero_mode=False,
     auto_zero_mode=nidaqmx.constants.AutoZeroType.NONE,
 )
 
 channel1 = daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
-    channel_name="cDAQ1_TC/ai0",
+    channel_name="Sim_cDAQ1/ai0",
     channel_parameters=channel_parameters,
 )
 

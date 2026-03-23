@@ -92,7 +92,7 @@ def main(
     )
 
     # intialize an instance of 'VoltageRangeAndTerminalParameters'
-    meas_global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+    meas_global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         range_min_volts=-10,
         range_max_volts=10,
@@ -140,7 +140,7 @@ def main(
     ### MOVE TO SIGNAL GENERATION ###
 
     """Generate sine wave from analog module"""
-    range_params = nipcbatt.VoltageGenerationChannelParameters(
+    range_params = daq.VoltageGenerationChannelParameters(
         range_min_volts=-10.0, range_max_volts=10.0
     )
 

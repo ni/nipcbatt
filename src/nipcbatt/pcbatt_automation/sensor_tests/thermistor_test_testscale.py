@@ -118,7 +118,7 @@ def main(
     )
 
     beta_coefficient_and_sensor_resistance_parameters = (
-        nipcbatt.pcbBetaCoefficientAndSensorResistanceParameters(
+        daq.BetaCoefficientAndSensorResistanceParameters(
             coefficient_steinhart_hart_beta_kelvins=3720, sensor_resistance_ohms=10000
         )
     )

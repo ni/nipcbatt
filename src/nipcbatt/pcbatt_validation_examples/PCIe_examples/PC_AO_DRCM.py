@@ -21,7 +21,7 @@ drcm.initialize("Dev1/ai2:4", use_specific_channel)
 
 # region DRVG configure and generate
 
-voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10, range_max_volts=10
 )
 
