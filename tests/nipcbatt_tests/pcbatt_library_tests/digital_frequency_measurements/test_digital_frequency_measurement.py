@@ -7,12 +7,12 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_data_types import (  # DigitalFrequencyMeasurementResultData,
+from nipcbatt.pcbatt_library.daq.digital_frequency_measurements.digital_frequency_data_types import (  # DigitalFrequencyMeasurementResultData,
     DigitalFrequencyMeasurementConfiguration,
     DigitalFrequencyMeasurementCounterChannelParameters,
     DigitalFrequencyRangeParameters,
 )
-from nipcbatt.pcbatt_library.digital_frequency_measurements.digital_frequency_measurement import (
+from nipcbatt.pcbatt_library.daq.digital_frequency_measurements.digital_frequency_measurement import (
     DigitalFrequencyMeasurement,
 )
 
