@@ -11,11 +11,11 @@ def main():
     """Configures and executes custom resistance measurement with logging."""
     resistance_measurement = dmm.DcRmsResistanceMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\resistance_measurement_logger.txt")
-
     logger.attach(resistance_measurement)
 
-    # Configure the measurement configuration for the DMM resistance measurement
+    # Configure the measurement configuration for the resistance measurement
     config = dmm.ResistanceMeasurementConfiguration(
         execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(

@@ -11,6 +11,7 @@ def main():
     """Configures and executes custom DMM DC-RMS current measurement with logging."""
     dmm_current_measurement = dmm.DcRmsCurrentMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\current_measurement_logger.txt")
     logger.attach(dmm_current_measurement)
 

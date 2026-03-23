@@ -1,4 +1,4 @@
-"""Mixed mmeasurement example with default input parameters."""
+"""Mixed measurement example with default input parameters."""
 
 from nipcbatt import dmm
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
@@ -8,6 +8,7 @@ def main():
     """Configures and executes default Mixed measurement with logging."""
     dmm_mixed_measurement = dmm.MixedMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\mixed_measurement_logger.txt")
     logger.attach(dmm_mixed_measurement)
 

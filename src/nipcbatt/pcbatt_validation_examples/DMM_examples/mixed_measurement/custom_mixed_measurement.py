@@ -1,4 +1,4 @@
-"""DMM Mixed mmeasurement example with custom input parameters."""
+"""DMM Mixed measurement example with custom input parameters."""
 
 import nidmm
 
@@ -11,10 +11,11 @@ def main():
     """Configures and executes custom DMM mixed measurement with logging."""
     dmm_mixed_measurement = dmm.MixedMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\mixed_measurement_logger.txt")
     logger.attach(dmm_mixed_measurement)
 
-    # Configure the measurement configuration for the DMM mixed measurement
+    # Configure the measurement configuration for the mixed measurement
     config = dmm.MixedMeasurementConfiguration(
         execution_type=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
@@ -36,7 +37,7 @@ def main():
     # ======================= Initialize the DMM ============================
     dmm_mixed_measurement.initialize("Sim_DMM", 50)
 
-    # ================= Default measurement configuration ===================
+    # ================= Custom measurement configuration ===================
     measurement = dmm_mixed_measurement.configure_and_measure(configuration=config)
 
     # ===================== Close the DMM session ===========================

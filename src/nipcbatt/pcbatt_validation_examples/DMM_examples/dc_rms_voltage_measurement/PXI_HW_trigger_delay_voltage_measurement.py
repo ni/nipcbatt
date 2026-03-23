@@ -19,7 +19,7 @@ def main():
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
     dmm_voltage_measurement.initialize("Sim_DMM", 50.0)
 
-    # Add logger to DMM
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\svg_dmm_logger.txt")
     logger.attach(dmm_voltage_measurement)
 

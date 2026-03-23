@@ -1,4 +1,4 @@
-"""DMM DC-RMS Current measurement in loop example with custom input parameters."""
+"""DMM DC-RMS Voltage measurement in loop example with custom input parameters."""
 
 import time
 
@@ -10,13 +10,15 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
-    """Configures and executes custom DMM DC-RMS current measurement with logging."""
-    dmm_current_measurement = dmm.DcRmsCurrentMeasurement()
+    """Configures and executes custom DMM DC-RMS voltage measurement with logging."""
+    dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
 
-    logger = PcbattLogger(file="c:\\Temp\\current_measurement_logger.txt")
-    logger.attach(dmm_current_measurement)
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
+    logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
+    logger.attach(dmm_voltage_measurement)
 
-    config = dmm.DcRmsCurrentMeasurementConfiguration(
+    # Configure the measurement configuration for the DMM DC-RMS voltage measurement
+    config = dmm.DcRmsVoltageMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
             trigger_source=nidmm.TriggerSource.IMMEDIATE,
@@ -24,8 +26,8 @@ def main():
             slope=dmm.Slope.RISING_EDGE,
             enable_trigger=False,
         ),
-        measurement_function_parameters=dmm.DcRmsCurrentMeasurementFunctionParameters(
-            measurement_function=dmm.CurrentRangeAndFunctions.DC_1A,
+        measurement_function_parameters=dmm.DcRmsVoltageMeasurementFunctionParameters(
+            measurement_function=dmm.VoltageRangeAndFunctions.DC_10V,
             resolution_in_digits=dmm.ResolutionInDigits.DIGITS_5_5,
         ),
         timing_parameters=dmm.TimingParameters(
@@ -34,15 +36,14 @@ def main():
         ),
         ac_min_frequency=40.0,
     )
-
     # Number of measurements to take in the loop
     number_of_measurements = 5
 
     # ======================= Initialize the DMM ============================
-    dmm_current_measurement.initialize("Sim_DMM", 50)
+    dmm_voltage_measurement.initialize("Sim_DMM", 50)
 
     # ================= Configure once, then measure in a loop ===================
-    config_only = dmm.DcRmsCurrentMeasurementConfiguration(
+    config_only = dmm.DcRmsVoltageMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
         trigger_parameters=config.trigger_parameters,
         measurement_function_parameters=config.measurement_function_parameters,
@@ -50,7 +51,7 @@ def main():
         ac_min_frequency=config.ac_min_frequency,
     )
 
-    measure_only = dmm.DcRmsCurrentMeasurementConfiguration(
+    measure_only = dmm.DcRmsVoltageMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.MEASURE_ONLY,
         trigger_parameters=config.trigger_parameters,
         measurement_function_parameters=config.measurement_function_parameters,
@@ -59,20 +60,20 @@ def main():
     )
 
     # Configure the DMM once before the loop
-    dmm_current_measurement.configure_and_measure(configuration=config_only)
+    dmm_voltage_measurement.configure_and_measure(configuration=config_only)
 
     # Measure in a loop
     for i in range(number_of_measurements):
         measurement = {}
         # Perform measurement using the measure_only configuration in the loop and store the result in the measurement dictionary
-        measurement["value"] = dmm_current_measurement.configure_and_measure(
+        measurement["value"] = dmm_voltage_measurement.configure_and_measure(
             configuration=measure_only
         )
-        print(measurement["value"])
-        time.sleep(2)  # Wait for 2 seconds between measurements
+        print(measurement['value'])
+        time.sleep(2) # Wait for 2 seconds between measurements
 
     # ===================== Close the DMM session ===========================
-    dmm_current_measurement.close()
+    dmm_voltage_measurement.close()
 
 
 if __name__ == "__main__":
