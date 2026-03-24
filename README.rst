@@ -19,7 +19,7 @@ operations. The package is implemented in Python, as a highly object-oriented pa
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DAQ devices hardware, and compatible with NI PC Based DAQ, CompactDAQ,
+**nipcbatt** package is focused on NI DAQ and DMM devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
 TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
 resources on any platform.
 
@@ -118,6 +118,8 @@ Required Drivers
 | NI-845x: 2022 Q3 and above 
 | NI-VISA: 2023 Q2 and above 
 | NI-Serial: 2023 Q2 and above 
+| NI-SWITCH: 2023 Q4 and above 
+| NI-DMM: 2023 Q4 and above
 
 Supported Hardware
 ------------------
@@ -126,6 +128,9 @@ Supported Hardware
 | CompactDAQ
 | TestScale
 | Any DAQmx devices with similar functionality and resources.
+| Switch devices compatible with the NI-SWITCH driver 
+| PXI DMM devices compatible with the NI-DMM driver
+
 
 
 Operating System Support
@@ -153,7 +158,7 @@ Manual Driver Installation
 --------------------------
 
 Visit `ni.com/downloads <http://www.ni.com/downloads/>`_ to download the latest version of **Python PCB Assembly Test
-Toolkit**. It is recommended you continue to install the NI-DAQmx Runtime with Configuration Support and NI Hardware Configuration Utility from the Additional items
+Toolkit**. It is recommended you continue to install the NI-DAQmx, NI-DMM, and NI-SWITCH Runtimes with Configuration Support and NI Hardware Configuration Utility from the Additional items
 checklist as it is required to access and manage hardware. All other recommended Additional items
 are not necessary for nipcbatt to function, and they can be removed to minimize installation size. 
 
