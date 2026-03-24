@@ -112,7 +112,7 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
            and generates a path status indicating if the operation was succesful
 
            Args:
-                terminal_and_state_settings: Contains both the channel and state to employ
+                StaticDigitalPathGenerationConfiguration: Contains both the channel and state to employ
 
             Returns: A StaticDigitalPathGenerationPathStatus object containing the path status
         """
