@@ -178,10 +178,13 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         params = None
 
         # start wall time counter
-        start_time = time.perf_counter()
+        start_time_all_tests = time.perf_counter()
 
         # Main Scan Loop
         for i in range(len(scan_configuration)):
+
+            # test start time
+            start_single_test_time = time.perf_counter()
 
             #extract ch (int) and com (string)
             ch, com = channel_pairs[i][0], channel_pairs[i][1]
@@ -196,7 +199,6 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
             # execute configure and generate for max channel pair
             mux_generation.configure_and_generate(mux_config)
-
 
             # SHUNT handling -- if channel is a current channel, open SHUNT
             if ch >= 16 and close_all_shunts:   # current channels are ch16 - ch30
@@ -250,7 +252,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             mux_generation.configure_and_generate(mux_config)
 
             #measure elapsed time
-            switch_time = time.perf_counter() - start_time
+            switch_time = time.perf_counter() - start_single_test_time
 
             #store raw output
             meas_type = params.measurement_function.value[0].name
@@ -274,7 +276,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             ######### END MAIN LOOP #####################
 
         #capture total scan time
-        total_time_elapsed = time.perf_counter() - start_time
+        total_time_elapsed = time.perf_counter() - start_time_all_tests
 
         #if verbose = True, print results to console
         if verbose:
