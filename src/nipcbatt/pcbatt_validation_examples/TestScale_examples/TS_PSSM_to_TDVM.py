@@ -17,14 +17,14 @@ use_specific_channel = False
 
 # Initialize
 pssm = daq.PowerSupplySourceAndMeasure()
-pssm.initialize(power_channel_name="TS1_Power/power")
+pssm.initialize(power_channel_name="Simulated_TS1_Power/power")
 
 tdvm = daq.TimeDomainMeasurement()
-tdvm.initialize(analog_input_channel_expression="TS1_AI/ai2")
+tdvm.initialize(analog_input_channel_expression="Simulated_TS1_AI/ai2")
 
 # region TDVM configure only
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_volts=-10,
     range_max_volts=10,
@@ -32,14 +32,14 @@ global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
 
 # Specific channel parameters
 
-channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
     range_max_volts=5,
     range_min_volts=-5,
 )
 
-channel0 = nipcbatt.VoltageMeasurementChannelAndTerminalRangeParameters(
-    channel_name="TS1_AI/ai2",
+channel0 = daq.VoltageMeasurementChannelAndTerminalRangeParameters(
+    channel_name="Simulated_TS1_AI/ai2",
     channel_parameters=channel_parameters,
 )
 
@@ -61,7 +61,7 @@ sample_clock_timing_parameters = nipcbatt.SampleClockTimingParameters(
 
 digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
     trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-    digital_start_trigger_source="/TS1/te0/StartTrigger",
+    digital_start_trigger_source="/Sim_TS1/te0/StartTrigger",
     digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
 )
 
@@ -118,7 +118,7 @@ pssm_result_data = pssm.configure_and_measure(configuration=pssm_config)
 
 # region TDVM measure only
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_volts=-10,
     range_max_volts=10,

@@ -20,7 +20,7 @@ drvm.initialize(analog_input_channel_expression="Dev1/ai0")
 
 # region drvg configure and generate
 
-range_settings = nipcbatt.VoltageGenerationChannelParameters(
+range_settings = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10.0, range_max_volts=10.0
 )
 
@@ -36,7 +36,7 @@ drvg.configure_and_generate(drvg_config)
 
 # region DC-RMS VM Configure and Measure
 
-global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     range_min_volts=-10,
     range_max_volts=10,

@@ -7,13 +7,13 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.static_digital_state_measurements.static_digital_state_measurement import (
+from nipcbatt.pcbatt_library.daq.static_digital_state_measurements.static_digital_state_measurement import (
     StaticDigitalStateMeasurement,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
 )
 

@@ -5,7 +5,7 @@ from typing import List
 import numpy
 
 from nipcbatt.pcbatt_communication_library._ni_845x_internal import _ni_845x_functions
-from nipcbatt.pcbatt_library.common.communication_data_types import (
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
     MemoryAddressParameters,
     MemoryPageCharacteristics,
 )

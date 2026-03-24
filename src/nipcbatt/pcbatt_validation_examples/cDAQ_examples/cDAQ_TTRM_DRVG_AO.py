@@ -31,7 +31,7 @@ ttrm.initialize("cDAQ1_AI_/ai3")  # cDAQ1_AI/ai3
 
 # region drvg configure and generate
 
-range_settings = nipcbatt.VoltageGenerationChannelParameters(
+range_settings = daq.VoltageGenerationChannelParameters(
     range_min_volts=-10.0, range_max_volts=10.0
 )
 

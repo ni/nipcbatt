@@ -55,7 +55,7 @@ def main(
     results_map = {}  # this structure will hold results in key-value pairs
 
     # Set the minimum and maximum voltage range
-    global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+    global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.DIFF,
         range_min_volts=-10,
         range_max_volts=10,

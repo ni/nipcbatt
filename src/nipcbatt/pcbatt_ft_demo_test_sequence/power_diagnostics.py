@@ -147,7 +147,7 @@ class PowerDiagnostics:
     def measure_dc_regulator_voltages( 
         self,
     ) -> None:
-        global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+        global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
             terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
             range_min_volts=-10,
             range_max_volts=10,
