@@ -68,6 +68,9 @@ Supported Features
    * - Static Digital State Generation Library
      - This feature allows initializing, configuring, sourcing, generate, and close on user configurable digital output pins.
      - SDSG
+   * - Static Digital Path Generation Library
+     - This feature allows initializing, configuring, generating, and releasing of a switch path between two defined channels
+     - SDPG
    * - Temperature Thermistor Measurement Library
      - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins to derive temperature measurements from voltage excited NTC typed Thermistor devices.
      - TTRM
