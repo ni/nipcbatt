@@ -9,10 +9,10 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
 )
 
@@ -52,11 +52,11 @@ class TestStaticDigitalStateGeneration(unittest.TestCase):
 
         num_channels = 3
         test_data_to_write = [random.choice([True, False]) for item in range(num_channels)]
-        test_cfg = nipcbatt.StaticDigitalStateGenerationConfiguration(
+        test_cfg = nipcbatt.daq.StaticDigitalStateGenerationConfiguration(
             data_to_write=test_data_to_write
         )
 
-        gen = nipcbatt.StaticDigitalStateGeneration()
+        gen = nipcbatt.daq.StaticDigitalStateGeneration()
         gen.initialize("NI_PCBA_Measurement_Simulated_TestScale_TS1Mod4/port0/line0:2")
         gen.configure_and_generate(configuration=test_cfg)
         gen.close()

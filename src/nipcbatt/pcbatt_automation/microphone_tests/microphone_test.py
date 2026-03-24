@@ -71,7 +71,7 @@ def main(
 
     """Configure Freq Domain Measurement settings to wait for Hardware Trigger"""
     # Set the maximum and minimum range for FDVM measurement
-    global_channel_parameters = nipcbatt.VoltageRangeAndTerminalParameters(
+    global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         range_min_volts=-10,
         range_max_volts=10,
@@ -114,7 +114,7 @@ def main(
     # region configure SVG
 
     # Set the Siganl Voltage Generation Range
-    voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+    voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
         range_min_volts=-2, range_max_volts=2
     )
     # Set the Sampling rate hertz and the generated siganl duration

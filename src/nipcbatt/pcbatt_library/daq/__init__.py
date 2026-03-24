@@ -28,7 +28,15 @@ from nipcbatt.pcbatt_library.daq.dc_rms_voltage_measurements.dc_rms_voltage_cons
     ConstantsForDcRmsVoltageMeasurement,
 )
 
+from nipcbatt.pcbatt_library.daq.common.voltage_constants import (
+    ConstantsForVoltageMeasurement
+)
 
+from nipcbatt.pcbatt_library.daq.common.voltage_data_types import (
+    VoltageGenerationChannelParameters,
+    VoltageMeasurementChannelAndTerminalRangeParameters,
+    VoltageRangeAndTerminalParameters,
+)
 from nipcbatt.pcbatt_library.daq.dc_rms_voltage_measurements.dc_rms_voltage_data_types import (
     DcRmsVoltageMeasurementConfiguration,
     DcRmsVoltageMeasurementResultData,

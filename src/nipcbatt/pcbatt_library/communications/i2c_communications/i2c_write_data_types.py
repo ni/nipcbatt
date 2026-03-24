@@ -3,7 +3,7 @@
 import numpy
 from varname import nameof
 
-from nipcbatt.pcbatt_library.common.communication_data_types import (
+from nipcbatt.pcbatt_library.communications.common.communication_data_types import (
     MemoryAddressParameters,
 )
 from nipcbatt.pcbatt_library.communications.i2c_communications.i2c_read_data_types import (

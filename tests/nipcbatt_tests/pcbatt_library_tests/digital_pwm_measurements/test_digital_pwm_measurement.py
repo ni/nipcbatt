@@ -7,23 +7,23 @@ import unittest
 
 from varname import nameof
 
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_constants import (
+from nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_constants import (
     ConstantsForDigitalPwmMeasurement,
 )
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_data_types.DigitalPwmMeasurementData' imported but unused (auto-generated noqa)
+from nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_data_types import (  # noqa: F401 - 'nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_data_types.DigitalPwmMeasurementData' imported but unused (auto-generated noqa)
     DigitalPwmMeasurementConfiguration,
     DigitalPwmMeasurementCounterChannelParameters,
     DigitalPwmMeasurementData,
     DigitalPwmMeasurementResultData,
     DigitalPwmMeasurementTimingParameters,
 )
-from nipcbatt.pcbatt_library.digital_pwm_measurements.digital_pwm_measurement import (
+from nipcbatt.pcbatt_library.daq.digital_pwm_measurements.digital_pwm_measurement import (
     DigitalPwmMeasurement,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
+from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
 )
 

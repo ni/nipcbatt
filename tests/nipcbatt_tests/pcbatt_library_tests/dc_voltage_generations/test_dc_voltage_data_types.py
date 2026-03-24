@@ -44,7 +44,7 @@ class TestDcVoltageGenerationConfiguration(unittest.TestCase):
         expected_range_min_volts = -5.0
         expected_range_max_volts = 5.0
         expected_output_voltages = [1.2, 2.8, 3.2]
-        expected_voltage_generation_range_parameters = nipcbatt.VoltageGenerationChannelParameters(
+        expected_voltage_generation_range_parameters = daq.VoltageGenerationChannelParameters(
             range_min_volts=expected_range_min_volts,
             range_max_volts=expected_range_max_volts,
         )
