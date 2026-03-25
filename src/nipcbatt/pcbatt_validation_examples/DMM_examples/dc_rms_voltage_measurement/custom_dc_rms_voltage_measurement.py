@@ -11,9 +11,11 @@ def main():
     """Configures and executes custom DMM DC-RMS voltage measurement with logging."""
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
     logger.attach(dmm_voltage_measurement)
 
+    # Configure the measurement configuration for the DMM DC-RMS voltage measurement
     config = dmm.DcRmsVoltageMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
@@ -42,7 +44,7 @@ def main():
     dmm_voltage_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
+    print(measurement)
 
 
 if __name__ == "__main__":

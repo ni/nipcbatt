@@ -47,7 +47,7 @@ channel_parameters = daq.TemperatureThermocoupleRangeAndTerminalParameters(
 )
 
 channel1 = daq.TemperatureThermocoupleChannelRangeAndTerminalParameters(
-    channel_name="Sim_cDAQ1/ai0",
+    channel_name="Simulated_cDAQ_9211/ai0",
     channel_parameters=channel_parameters,
 )
 

@@ -11,9 +11,11 @@ def main():
     """Configures and executes custom DMM DC-RMS current measurement with logging."""
     dmm_current_measurement = dmm.DcRmsCurrentMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\current_measurement_logger.txt")
     logger.attach(dmm_current_measurement)
 
+    # Configure the measurement configuration for the DMM DC-RMS current measurement
     config = dmm.DcRmsCurrentMeasurementConfiguration(
         nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
         trigger_parameters=dmm.TriggerParameters(
@@ -42,8 +44,7 @@ def main():
     dmm_current_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
-    print("executed succesfully")
+    print(measurement)
 
 
 if __name__ == "__main__":

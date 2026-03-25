@@ -34,7 +34,7 @@ global_channel_parameters = daq.TemperatureRtdMeasurementTerminalParameters(
 # region specific_channels_parameters
 
 channel0 = daq.TemperatureRtdMeasurementChannelParameters(
-    channel_name="TP_RTD0",
+    channel_name="TP_RTD",
     sensor_resistance_ohms=100,
     current_excitation_value_amperes=0.001,
     rtd_type=nidaqmx.constants.RTDType.PT_3750,

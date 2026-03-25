@@ -115,7 +115,7 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):
             trigger_source=nidmm.TriggerSource[parameters.trigger_source.name],
             trigger_delay=parameters.trigger_delay,
         )
-        # Configure Slope if trigger is enabled
+        # Configure Slope only if trigger is enabled
         nidmm_trigger_slope_attribute_id = 1250334
         self.session._set_attribute_vi_int32(
             nidmm_trigger_slope_attribute_id, parameters.trigger_slope.value

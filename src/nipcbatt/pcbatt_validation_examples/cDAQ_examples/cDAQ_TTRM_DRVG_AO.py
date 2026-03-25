@@ -24,10 +24,9 @@ use_specific_channel = False
 
 # Initialize
 drvg = daq.DcVoltageGeneration()
-drvg.initialize(analog_output_channel_expression="cDAQ1_AO/ao2")
+drvg.initialize(analog_output_channel_expression="Simulated_cDAQ_9263/ao0")
 ttrm = daq.TemperatureMeasurementUsingThermistor()
-ttrm.initialize("cDAQ1_AI_/ai3")  # cDAQ1_AI/ai3
-# ttrm.initialize('TP_THcDAQ0')
+ttrm.initialize("Simulated_cDAQ_9215/ai0")  
 
 # region drvg configure and generate
 
@@ -96,8 +95,7 @@ channel_parameters1 = daq.TemperatureThermistorRangeAndTerminalParameters(
 )
 
 channel0 = daq.TemperatureThermistorChannelRangeAndTerminalParameters(
-    # channel_name='cDAQ1_AI/ai3',
-    channel_name="TP_THcDAQ0",
+    channel_name="Simulated_cDAQ_9215/ai0",
     channel_parameters=channel_parameters1,
 )
 specific_channels_parameters = []

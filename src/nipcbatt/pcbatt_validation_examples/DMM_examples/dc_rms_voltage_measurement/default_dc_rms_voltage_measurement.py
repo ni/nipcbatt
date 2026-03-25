@@ -8,6 +8,7 @@ def main():
     """Configures and executes default DMM DC-RMS voltage measurement with logging."""
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\voltage_measurement_logger.txt")
     logger.attach(dmm_voltage_measurement)
 
@@ -23,8 +24,7 @@ def main():
     dmm_voltage_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
-    print("executed succesfully")
+    print(measurement)
 
 
 if __name__ == "__main__":

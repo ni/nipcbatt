@@ -8,6 +8,7 @@ def main():
     """Configures and executes default resistance measurement with logging."""
     resistance_measurement = dmm.DcRmsResistanceMeasurement()
 
+    # PcbattLogger logs DMM configurations and measurement results to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\resistance_measurement_logger.txt")
     logger.attach(resistance_measurement)
 
@@ -23,8 +24,7 @@ def main():
     resistance_measurement.close()
 
     # Print the measurement result
-    print(measurement.dmm_execution_settings, measurement.measurement)
-    print("executed succesfully")
+    print(measurement)
 
 
 if __name__ == "__main__":
