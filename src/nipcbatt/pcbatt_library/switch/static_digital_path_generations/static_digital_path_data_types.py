@@ -67,7 +67,7 @@ class StaticDigitalPathGenerationStateParameters(PCBATestToolkitData):
 class StaticDigitalPathGenerationTimingParameters(PCBATestToolkitData):    
     """ Creates an instance of StaticDigitalPathGenerationTimingParameters """
 
-    def __init__(self, max_debounce_wait: int):
+    def __init__(self, max_debounce_wait: int = 5000):
         """Defines the maximum wait for debounce time
 
         Args:
@@ -172,6 +172,21 @@ class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
         """
         return self._max_ac_voltage
     
+    @property
+    def max_switching_dc_current(self) -> float:
+        """
+        :type:'float': Returns the max dc switching current
+        """
+        return self._max_switching_dc_current
+    
+    @property
+    def max_switching_ac_current(self) -> float:
+        """  
+        :type:'float': Returns the max ac switching current
+        """
+        return self._max_switching_ac_current
+    
+    
 class StaticDigitalPathGenerationConfiguration(PCBATestToolkitData):
     """ Contains the ultimate configuration used in path generation """
 
@@ -235,3 +250,4 @@ class StaticDigitalPathGenerationPathStatus(PCBATestToolkitData):
         """
         return self._path_status
     
+
