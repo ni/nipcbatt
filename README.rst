@@ -41,72 +41,18 @@ Supported Features
    * - Feature name
      - Description
      - Acronym
-   * - Power Supply Source and Measure Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable power supply for power supply measurements (TestScale only).
-     - PSSM
-   * - DC-RMS Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurements.
-     - DRVM
-   * - DC Voltage Generation Library
-     - This feature allows initializing, configuring, generating, and closing user configurable analog output pins for DC voltage generations.
-     - DRVG
-   * - DC-RMS Current Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for current measurements.
-     - DRCM
-   * - Time Domain Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurement and derive time domain measurement for the measured waveforms.
-     - TDVM
-   * - Frequency Domain Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurement and derive frequency domain measurement for the measured waveforms.
-     - FDVM
-   * - Signal Voltage Generation Library
-     - This feature allows initializing, configuring, generate, and closing different waveform voltage signals like tones (single/multi) or square windows, over a given generation time(s) on user configurable analog output pins.
-     - SVG
-   * - Static Digital State Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable digital input pins.
-     - SDSM
-   * - Static Digital State Generation Library
-     - This feature allows initializing, configuring, sourcing, generate, and close on user configurable digital output pins.
-     - SDSG
-   * - Static Digital Path Generation Library
-     - This feature allows initializing, configuring, generating, and releasing of a switch path between two defined channels
-     - SDPG
-   * - Temperature Thermistor Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins to derive temperature measurements from voltage excited NTC typed Thermistor devices.
-     - TTRM
-   * - Temperature RTD Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable analog input pins for temperature measurements from Resistance Temperature Detector (RTD).
-     - TRTDM
-   * - Temperature Thermocouple Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable analog input pins to derive temperature measurements from Thermocouples.
-     - TTCM
-   * - Dynamic Digital Pattern Measurement Library
-     - This feature provides options to measure digital patterns through the specified lines.
-     - DDPM
-   * - Dynamic Digital Pattern Generation Library
-     - This feature provides options to generate digital patterns, an array of digital samples in the specified IO lines.
-     - DDPG
-   * - Digital Clock Generation Library
-     - This feature allows initializing, configuring, generate and closing on user configurable terminals using counters.
-     - DCG
-   * - Digital Pulse Generation Library
-     - This feature allows initializing, configuring, generate and closing on user configurable terminals using counters.
-     - DPG
-   * - Digital Frequency Measurement Library
-     - This feature allows initializing, configuring, measuring and closing on user configurable PFI line using the selected counter for digital frequency measurement.
-     - DFM
-   * - Digital PWM Measurement Library
-     - This feature allows initializing, configuring, generating and closing on user configurable PFI line using the selected counter for digital PWM measurement.
-     - DPWMM
-   * - Digital Edge Count Measurement Library
-     - This feature allows initializing, configuring, generating and closing on user configurable PFI line using the selected counter for Edge Counting using Software and Hardware Timers.
-     - DECM
-   * - Communication Library
-     - This feature allows initializing, configuring, read and writing data, and closing on I2C, SPI and Serial Communication devices.
-     - COM
-   * - Synchronization Library
-     - This feature allows synchronizing between specified source and output terminals for the given DAQmx Task.
-     - RSS
+   * - DMM Measurement Library
+     - A collection of methods to perform DMM measurements using NI-DMM driver.
+     - dmm
+   * - DAQ Measurement Library
+     - A collection of methods to perform measurements using NI-DAQmx driver.
+     - daq
+   * - SWITCH Measurement Library
+     - A collection of methods to perform measurements using NI-SWITCH driver.
+     - switch
+   * - DMM Scan Measurement 
+     - A collection of methods to perform measurements using NI-SWITCH driver.
+     - dmm_scan
 
 
 Required Drivers
