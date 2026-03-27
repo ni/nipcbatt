@@ -54,37 +54,39 @@ Supported Features
      - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
 
-.. note:: Library imports and migration
+.. note:: highlight-block
 
-  In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
-  `nipcbatt` package. Example usage:
+    **Library imports and migration**
 
-  .. code-block:: python
+    In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
+    `nipcbatt` package. Example usage:
 
-    from nipcbatt import daq
-    drv = daq.DcVoltageGeneration()
-    drv.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+    .. code-block:: python
 
-  Many classes remain accessible directly from `nipcbatt` (for
-  example `nipcbatt.DcVoltageGeneration`). However, explicit subpackage imports are the recommended approach 
-  for all new code. To migrate existing code, update imports and references from the legacy form:
+      from nipcbatt import daq
+      drv = daq.DcVoltageGeneration()
+      drv.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
 
-  .. code-block:: python
+    Many classes remain accessible directly from `nipcbatt` (for
+    example `nipcbatt.DcVoltageGeneration`). However, explicit subpackage imports are the recommended approach 
+    for all new code. To migrate existing code, update imports and references from the legacy form:
 
-    # Legacy (still works for backward compatibility)
-    import nipcbatt
-    drv = nipcbatt.DcVoltageGeneration()
+    .. code-block:: python
 
-  to the explicit subpackage form:
+      # Legacy (still works for backward compatibility)
+      import nipcbatt
+      drv = nipcbatt.DcVoltageGeneration()
 
-  .. code-block:: python
+    to the explicit subpackage form:
 
-    # Recommended
-    from nipcbatt import daq
-    drv = daq.DcVoltageGeneration()
+    .. code-block:: python
 
-  See `Migration Guide — API Mapping <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
-  for a complete list of class mappings, all available subpackage classes, and a discovery script to update your codebase.
+      # Recommended
+      from nipcbatt import daq
+      drv = daq.DcVoltageGeneration()
+
+    See `Migration Guide — API Mapping <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
+    for a complete list of class mappings, all available subpackage classes, and a discovery script to update your codebase.
 
 
 Required Drivers
