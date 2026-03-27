@@ -149,14 +149,14 @@ Configuration Utility to verify and configure your devices.
 
 Finding and configuring device name in **NI MAX**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/update_documentation/src/nipcbatt/docs/images/NI-MAX%20Configuration.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX%20Configuration.png
   :alt: NI-MAX
   :align: center
   :width: 800px
 
 Finding and configuring device name in **NI Hardware Configuration Utility**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/update_documentation/src/nipcbatt/docs/images/Hardware%20Configuration%20Utility.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/Hardware%20Configuration%20Utility.png
   :alt: Hardware Config 
   :align: center
   :width: 800px
