@@ -149,7 +149,7 @@ Configuration Utility to verify and configure your devices.
 
 Finding and configuring device name in **NI MAX**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX%20Configuration.png
   :alt: NI-MAX
   :align: center
   :width: 800px
