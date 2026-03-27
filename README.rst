@@ -48,14 +48,14 @@ Supported Features
      - A collection of methods to perform measurements using NI-DAQmx driver.
      - daq
    * - SWITCH Measurement Libraries
-     - A collection of methods to perform measurements using NI-SWITCH driver.
+     - A collection of methods to control Switch hardware, and switch paths using the NI-SWITCH driver.
      - switch
-   * - DMM Scan Measurement Library
+   * - DMM Scan Measurement Libraries
      - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
-   * - SWITCH Measurement Libraries
-     - A collection of methods to perform measurements using NI-SWITCH driver.
-     - switch
+   * - Communication Libraries
+     - A collection of methods to perform communication operations (for example I2C, SPI, and serial) using NI-845x and NI-VISA drivers.
+     - comm
 
 
 Library imports and migrations
@@ -117,7 +117,6 @@ Supported Hardware
 - TestScale
 
 
-
 Operating System Support
 ------------------------
 
@@ -138,13 +137,6 @@ You can use `pip <http://pypi.python.org/pypi/pip>`_ to download **nipcbatt** fr
 
   $ python -m pip install nipcbatt==2.0.0
 
-
-Manual Driver Installation
---------------------------
-
-Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html>`_ to download the required drivers. It is recommended you continue to install the NI-DAQmx, NI-DMM, and NI-SWITCH Runtimes with Configuration Support and NI Hardware Configuration Utility from the Additional items
-checklist as it is required to access and manage hardware. All other recommended Additional items
-are not necessary for nipcbatt to function, and they can be removed to minimize installation size. 
 
 Getting Started
 ===============
@@ -211,7 +203,7 @@ Example code to configure and measure DC voltage using the class instance:
   >>> measurement = dmm_voltage_measurement.configure_and_measure(
   >>>   configuration=dmm.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION
   >>> )
-  ... # Default measurement voltage configuration can be found in the documentation or in the source code as a class variable.
+  ... # Default voltage measurement configuration 
 
 
 - Close:
@@ -227,7 +219,7 @@ Example code to close the session and clear resources:
   >>> dmm_voltage_measurement.close()
 
 
-2. Features and Utilities
+1. Features and Utilities
 -------------------------
 
 - Virtual Channels 
