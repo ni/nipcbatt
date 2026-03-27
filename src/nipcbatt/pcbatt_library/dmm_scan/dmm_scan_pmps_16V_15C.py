@@ -290,17 +290,9 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
             for i in range(len(formatted_measurements)):
                 measurement = formatted_measurements[i]
-                full_unit = raw_measurements[i][2]
-
-                if 'DC' in full_unit:
-                    unit = '(dc)'
-                elif 'AC' in full_unit:
-                    unit = '(ac)'
-                else:
-                    unit = '(ohm)'
 
                 channel = measurement[0]
-                value = f'{measurement[1]} {unit}'
+                value = f'{measurement[1]}'
                 switch_time = measurement[2]
 
                 print(f'{channel:<10} {value:<18} {switch_time:>8.3f}')
@@ -326,10 +318,6 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             for measurement, value_str in zip(raw_measurements, values_as_str):
                 channel = measurement[0]
                 unit = measurement[1]['Unit']
-                if 'DC' in measurement[2]:
-                    unit += ' (dc)'
-                elif 'AC' in measurement[2]:
-                    unit += ' (ac)'
 
                 print(f'{channel:<10} {value_str:<{value_width}} {unit:^11}')
             print('\n')

@@ -13,13 +13,13 @@ About
 =====
 
 The **nipcbatt** package contains an API (Application Programming Interface) for interacting with 
-the NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
+the NI_DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
 operations. The package is implemented in Python, as a highly object-oriented package.
 
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DAQ and DMM devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
+**nipcbatt** package is focused on NI DAQ, DMM, and SWITCH devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
 TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
 resources on any platform.
 
@@ -51,31 +51,64 @@ Supported Features
      - A collection of methods to perform measurements using NI-SWITCH driver.
      - switch
    * - DMM Scan Measurement 
-     - A collection of methods to perform measurements using NI-SWITCH driver.
+     - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
+
+.. note:: Library imports and migration
+
+  In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
+  `nipcbatt` package. Example usage:
+
+  .. code-block:: python
+
+    from nipcbatt import daq
+    drv = daq.DcVoltageGeneration()
+    drv.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+
+  Many classes remain accessible directly from `nipcbatt` (for
+  example `nipcbatt.DcVoltageGeneration`). However, explicit subpackage imports are the recommended approach 
+  for all new code. To migrate existing code, update imports and references from the legacy form:
+
+  .. code-block:: python
+
+    # Legacy (still works for backward compatibility)
+    import nipcbatt
+    drv = nipcbatt.DcVoltageGeneration()
+
+  to the explicit subpackage form:
+
+  .. code-block:: python
+
+    # Recommended
+    from nipcbatt import daq
+    drv = daq.DcVoltageGeneration()
+
+  See `Migration Guide — API Mapping <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
+  for a complete list of class mappings, all available subpackage classes, and a discovery script to update your codebase.
 
 
 Required Drivers
 -----------------
 
 
+| NI-DMM: 2023 Q4 and above
+| NI-SWITCH: 2023 Q4 and above 
 | NI-DAQmx: 2023 Q3 and above 
 | LabVIEW Runtime: 2022 Q3 and above (64 bit) 
 | NI-845x: 2022 Q3 and above 
 | NI-VISA: 2023 Q2 and above 
 | NI-Serial: 2023 Q2 and above 
-| NI-SWITCH: 2023 Q4 and above 
-| NI-DMM: 2023 Q4 and above
+
 
 Supported Hardware
 ------------------
 
+| PXI DMM devices compatible with the NI-DMM driver
+| Switch devices compatible with the NI-SWITCH driver 
+| Any DAQmx devices with similar functionality and resources.
 | NI PC Based DAQ
 | CompactDAQ
 | TestScale
-| Any DAQmx devices with similar functionality and resources.
-| Switch devices compatible with the NI-SWITCH driver 
-| PXI DMM devices compatible with the NI-DMM driver
 
 
 

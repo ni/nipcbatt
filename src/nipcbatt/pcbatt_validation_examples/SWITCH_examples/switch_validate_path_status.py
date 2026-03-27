@@ -7,7 +7,7 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 generation = switch.StaticDigitalPathGeneration()
 
 # Setup logger
-logger = PcbattLogger(file="c:\\Temp\\switch_logger1.txt")
+logger = PcbattLogger(file="c:\\Temp\\switch_logger.txt")
 logger.attach(generation)
 
 resource_name = "Sim_MUX"

@@ -41,7 +41,7 @@ counter_channel_parameters = daq.DigitalPwmMeasurementCounterChannelParameters(
 
 dpwmm_configuration = daq.DigitalPwmMeasurementConfiguration(
     parameters=counter_channel_parameters,
-    measurement_option=daq.MeasurementExecutionType.CONFIGURE_ONLY,
+    measurement_option=nipcbatt.MeasurementExecutionType.CONFIGURE_ONLY,
 )
 
 dpwmm.configure_and_measure(configuration=dpwmm_configuration)
