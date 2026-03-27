@@ -76,6 +76,7 @@ Library imports and migrations
 
     .. code-block:: python
 
+      # Not recommended ❌
       import nipcbatt
       drvg = nipcbatt.DcVoltageGeneration()
 
@@ -83,7 +84,7 @@ Library imports and migrations
 
     .. code-block:: python
 
-      # Recommended
+      # Recommended ✅
       from nipcbatt import daq
       drvg = daq.DcVoltageGeneration()
 
