@@ -72,7 +72,6 @@ Supported Features
 
     .. code-block:: python
 
-      # Legacy (still works for backward compatibility)
       import nipcbatt
       drv = nipcbatt.DcVoltageGeneration()
 
@@ -85,7 +84,7 @@ Supported Features
       drv = daq.DcVoltageGeneration()
 
     See `Migration Guide — API Mapping <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
-    for a complete list of class mappings, all available subpackage classes, and a discovery script to update your codebase.
+    for a complete list of class mappings, and all available subpackage classes.
 
 
 Required Drivers
@@ -131,14 +130,13 @@ Installation
 You can use `pip <http://pypi.python.org/pypi/pip>`_ to download **nipcbatt** from
 `PyPI <https://pypi.org/project/nipcbatt/>`_ and install it::
 
-  $ python -m pip install nipcbatt
+  $ python -m pip install nipcbatt==2.0.0
 
 
 Manual Driver Installation
 --------------------------
 
-Visit `ni.com/downloads <http://www.ni.com/downloads/>`_ to download the latest version of **Python PCB Assembly Test
-Toolkit**. It is recommended you continue to install the NI-DAQmx, NI-DMM, and NI-SWITCH Runtimes with Configuration Support and NI Hardware Configuration Utility from the Additional items
+Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html>`_ to download the required drivers. It is recommended you continue to install the NI-DAQmx, NI-DMM, and NI-SWITCH Runtimes with Configuration Support and NI Hardware Configuration Utility from the Additional items
 checklist as it is required to access and manage hardware. All other recommended Additional items
 are not necessary for nipcbatt to function, and they can be removed to minimize installation size. 
 
@@ -178,48 +176,49 @@ All the measurement libraries consist of three main methods which have to be use
 
 - Initialize:
  
-   Used to initialize a DAQmx using either physical or global virtual channels 
-   provided to perform the respective task.
+   Used to initialize a measurement instance (for DAQmx use either physical or global virtual channels to perform the respective task).
 
-   This is done by calling the intialize() method on the class instance.
+   This is done by calling the initialize() method on the class instance.
 
-Example code to initialize an instance of DRVG to generate a DC Voltage:
+Example code to initialize an instance of DC RMS voltage measurement:
 
 .. code-block:: python
 
-  >>> from nipcbatt import daq
-  >>> drvg = daq.DcVoltageGeneration()
-  >>> drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+  >>> from nipcbatt import dmm
+  >>> dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
+  >>> dmm_voltage_measurement.initialize("Sim_DMM", 50)
 
 
 - Configure and Generate/Configure and Measure:
  
-   Configures, Initiates and Measure/Generate for an input/output 
-   task respectively. Also, can return raw data for external custom post 
-   analysis and measurements from embedded analysis(selectable/optional)
+   Configures and executes measurement or generation tasks. For measurements, 
+   this method can return both raw data for custom analysis and processed results 
+   from built-in analysis functions (configurable via measurement options).
  
    This is done by calling the
    configure_and_measure()/configure_and_generate() method on the class instance.
 
-Example code to configure and generate DC voltage using the class instance:
+Example code to configure and measure DC voltage using the class instance:
 
 .. code-block:: python
 
-  >>> drvg.configure_and_generate(daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
-  ... # Default generation voltage is 1.2V, Defaut Range is [-10.0, 10.0]
+  >>> measurement = dmm_voltage_measurement.configure_and_measure(
+  >>>   configuration=dmm.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION
+  >>> )
+  ... # Default measurement voltage configuration can be found in the documentation or in the source code as a class variable.
 
 
 - Close:
  
-   Closes the DAQmx tasks and clears resources.
+   Closes the measurement or generation session and releases hardware resources.
 
    This is done by calling the close() method on the class instance.
   
-Example code to close the task and clear resources after generation:
+Example code to close the session and clear resources:
 
 .. code-block:: python
 
-  >>> drvg.close()
+  >>> dmm_voltage_measurement.close()
 
 
 2. Features and Utilities
@@ -259,7 +258,7 @@ libraries together, where one library is used for generation and another for mea
 The validation examples can be found in this location `pcbatt_validation_examples <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_validation_examples>`_.
 
 The following images shows sample results for Signal Voltage Generation to Frequency Domain Voltage Measurement Validation example which
-is located at *"/pcbatt_validation_examples/PCIe_examples/PC_SVG_FDVM.py"*:
+is located at *"/pcbatt_validation_examples/PC_Based_Examples/PC_SVG_FDVM.py"*:
 
 .. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/SVG_to_FDVM_Results.png
   :alt: SVG_to_FDVM_Results
