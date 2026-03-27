@@ -187,8 +187,8 @@ Example code to initialize an instance of DRVG to generate a DC Voltage:
 
 .. code-block:: python
 
-  >>> import nipcbatt
-  >>> drvg = nipcbatt.DcVoltageGeneration()
+  >>> from nipcbatt import daq
+  >>> drvg = daq.DcVoltageGeneration()
   >>> drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
 
 
@@ -205,7 +205,7 @@ Example code to configure and generate DC voltage using the class instance:
 
 .. code-block:: python
 
-  >>> drvg.configure_and_generate(nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
+  >>> drvg.configure_and_generate(daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
   ... # Default generation voltage is 1.2V, Defaut Range is [-10.0, 10.0]
 
 
