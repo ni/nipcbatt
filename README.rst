@@ -55,7 +55,7 @@ Supported Features
      - dmm_scan
 
 
-    **Library imports and migration**
+**Library imports and migration**
 
     In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
     `nipcbatt` package. Example usage:
