@@ -12,7 +12,7 @@
 About
 =====
 
-The **nipcbatt** package contains an API (Application Programming Interface) for interacting with 
+The **nipcbatt** package provides APIs (Application Programming Interface) for interacting with 
 the NI_DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
 operations. The package is implemented in Python, as a highly object-oriented package.
 
@@ -41,21 +41,25 @@ Supported Features
    * - Feature name
      - Description
      - Acronym
-   * - DMM Measurement Library
+   * - DMM Measurement Libraries
      - A collection of methods to perform DMM measurements using NI-DMM driver.
      - dmm
-   * - DAQ Measurement Library
+   * - DAQ Measurement Libraries
      - A collection of methods to perform measurements using NI-DAQmx driver.
      - daq
-   * - SWITCH Measurement Library
+   * - SWITCH Measurement Libraries
      - A collection of methods to perform measurements using NI-SWITCH driver.
      - switch
-   * - DMM Scan Measurement 
+   * - DMM Scan Measurement Library
      - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
+   * - SWITCH Measurement Libraries
+     - A collection of methods to perform measurements using NI-SWITCH driver.
+     - switch
 
 
-**Library imports and migration**
+Library imports and migrations
+-------------------------------
 
     In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
     `nipcbatt` package. Example usage:
@@ -63,17 +67,17 @@ Supported Features
     .. code-block:: python
 
       from nipcbatt import daq
-      drv = daq.DcVoltageGeneration()
-      drv.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+      drvg = daq.DcVoltageGeneration()
+      drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
 
-    Many classes remain accessible directly from `nipcbatt` (for
-    example `nipcbatt.DcVoltageGeneration`). However, explicit subpackage imports are the recommended approach 
-    for all new code. To migrate existing code, update imports and references from the legacy form:
+    Few classes remain accessible directly from `nipcbatt` (for
+    example `nipcbatt.MeasurementExecutionType`). However, explicit subpackage imports are the recommended approach 
+    for all new code. To migrate existing code, update imports and references from:
 
     .. code-block:: python
 
       import nipcbatt
-      drv = nipcbatt.DcVoltageGeneration()
+      drvg = nipcbatt.DcVoltageGeneration()
 
     to the explicit subpackage form:
 
@@ -81,9 +85,9 @@ Supported Features
 
       # Recommended
       from nipcbatt import daq
-      drv = daq.DcVoltageGeneration()
+      drvg = daq.DcVoltageGeneration()
 
-    See `Migration Guide — API Mapping <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
+    See `Migration Guide for nipcbatt 2.0.0 <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
     for a complete list of class mappings, and all available subpackage classes.
 
 
@@ -91,24 +95,26 @@ Required Drivers
 -----------------
 
 
-| NI-DMM: 2023 Q4 and above
-| NI-SWITCH: 2023 Q4 and above 
-| NI-DAQmx: 2023 Q3 and above 
-| LabVIEW Runtime: 2022 Q3 and above (64 bit) 
-| NI-845x: 2022 Q3 and above 
-| NI-VISA: 2023 Q2 and above 
-| NI-Serial: 2023 Q2 and above 
+- NI-DMM: 2023 Q4 and above
+- NI-SWITCH: 2023 Q4 and above 
+- NI-DAQmx: 2023 Q3 and above 
+- LabVIEW Runtime: 2022 Q3 and above (64 bit) 
+- NI-845x: 2022 Q3 and above 
+- NI-VISA: 2023 Q2 and above 
+- NI-Serial: 2023 Q2 and above 
+  
+Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html>`_ to download the Required Drivers.
 
 
 Supported Hardware
 ------------------
 
-| PXI DMM devices compatible with the NI-DMM driver
-| Switch devices compatible with the NI-SWITCH driver 
-| Any DAQmx devices with similar functionality and resources.
-| NI PC Based DAQ
-| CompactDAQ
-| TestScale
+- DMM devices compatible with the NI-DMM driver
+- Switch devices compatible with the NI-SWITCH driver
+- Any DAQmx devices with similar functionality and resources
+- NI PC-Based DAQ
+- CompactDAQ
+- TestScale
 
 
 
