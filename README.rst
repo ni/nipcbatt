@@ -54,7 +54,6 @@ Supported Features
      - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
 
-.. note:: 
 
     **Library imports and migration**
 
