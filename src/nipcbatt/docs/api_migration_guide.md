@@ -62,18 +62,44 @@ drv = DcVoltageGeneration()
 **Usage Example**
 ```python
 from nipcbatt import daq
+import nidaqmx.constants
+import nipcbatt
 
-# Generation
-gen = daq.DcVoltageGeneration()
-gen.initialize(analog_output_channel_expression="Dev1/ao0")
-gen.configure_and_generate(daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
+# Signal Voltage Generation (Sine Wave)
+gen = daq.SignalVoltageGeneration()
+gen.initialize(analog_output_channel_expression="/Dev1/ao0")
+
+timing_params = nipcbatt.AnalogWaveformGenerationTimingParameters(
+    sampling_rate_hertz=1000.0,
+    number_of_samples_per_channel=5000
+)
+
+gen_config = daq.SignalVoltageGenerationConfiguration(
+    timing_parameters=timing_params,
+    waveform_type=daq.WaveformType.SINE_WAVE,
+    frequency_hertz=100.0,
+    amplitude_volts=1.0,
+    phase_radians=0.0
+)
+gen.configure_and_generate(gen_config)
 gen.close()
 
-# Measurement
-meas = daq.DcVoltageMeasurement()
-meas.initialize(analog_input_channel_expression="Dev1/ai0")
-result = meas.configure_and_measure(daq.DEFAULT_DC_VOLTAGE_MEASUREMENT_CONFIGURATION)
+# Time Domain Voltage Measurement
+meas = daq.TimeDomainMeasurement()
+meas.initialize(analog_input_channel_expression="/Dev1/ai0")
+
+meas_timing = nipcbatt.AnalogWaveformMeasurementTimingParameters(
+    sampling_rate_hertz=1000.0,
+    number_of_samples_per_channel=5000,
+    active_edge=nidaqmx.constants.Edge.RISING
+)
+
+meas_config = daq.TimeDomainMeasurementConfiguration(
+    timing_parameters=meas_timing
+)
+result = meas.configure_and_measure(meas_config)
 meas.close()
+print(result)
 ```
 
 ---
@@ -113,16 +139,37 @@ meas.close()
 **Usage Example**
 ```python
 from nipcbatt import dmm
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
-meas = dmm.DcRmsVoltageMeasurement()
-meas.initialize(resource_name="DMM1", powerline_frequency=50)
-params = dmm.DcRmsVoltageMeasurementFunctionParameters(
-    range_value=dmm.DcRmsVoltageRange.DC_10V,
-    resolution=dmm.ResolutionInDigits.DIGITS_5_5
+# DC-RMS Voltage Measurement
+voltage_meas = dmm.DcRmsVoltageMeasurement()
+
+# Attach logger to record configuration and results
+logger = PcbattLogger(file="c:\\Temp\\voltage_measurement.txt")
+logger.attach(voltage_meas)
+
+voltage_meas.initialize(resource_name="Sim_DMM", powerline_frequency=50)
+
+# Use default configuration or customize
+measurement_result = voltage_meas.configure_and_measure(
+    configuration=dmm.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION
 )
-meas.configure_measurement_function(params)
-result = meas.acquire_measurement()
-meas.close()
+
+voltage_meas.close()
+print(measurement_result)
+
+# Resistance Measurement (2-wire or 4-wire)
+resistance_meas = dmm.DcRmsResistanceMeasurement()
+logger2 = PcbattLogger(file="c:\\Temp\\resistance_measurement.txt")
+logger2.attach(resistance_meas)
+
+resistance_meas.initialize(resource_name="Sim_DMM", powerline_frequency=50)
+resistance_result = resistance_meas.configure_and_measure(
+    configuration=dmm.DEFAULT_RESISTANCE_MEASUREMENT_CONFIGURATION
+)
+
+resistance_meas.close()
+print(resistance_result)
 ```
 
 ---
@@ -145,18 +192,34 @@ meas.close()
 **Usage Example**
 ```python
 from nipcbatt import switch
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
-gen = switch.StaticDigitalPathGeneration()
-gen.initialize(resource_name="Switch1", topology_name="2527/2-Wire Dual 16x1 Mux")
+generation = switch.StaticDigitalPathGeneration()
 
-params = switch.StaticDigitalPathGenerationChannelParameters("ch0", "com0")
-state = switch.StaticDigitalPathGenerationStateParameters(True)  # True = close
-settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(params, state)
-timing = switch.StaticDigitalPathGenerationTimingParameters()
-config = switch.StaticDigitalPathGenerationConfiguration(settings, timing)
+logger = PcbattLogger(file="c:\\Temp\\switch_logger.txt")
+logger.attach(generation)
 
-gen.configure_and_generate(config)
-gen.close()
+# Initialize with specific switch hardware
+resource_name = "Sim_MUX"
+topology = "2527/2-Wire Dual 16x1 Mux"
+module_characteristics = generation.initialize(resource_name, topology)
+
+# Configure path from ch0 to com0
+p1, p2 = "ch0", "com0"
+connect = True
+max_wait_debounce = 100
+
+channel_params = switch.StaticDigitalPathGenerationChannelParameters(p1, p2)
+state = switch.StaticDigitalPathGenerationStateParameters(connect)
+ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+timing_settings = switch.StaticDigitalPathGenerationTimingParameters(max_wait_debounce)
+config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+
+print(f'Connecting {p1} to {p2}')
+path_status = generation.configure_and_generate(config)
+generation.display_status(path_status)
+
+generation.close()
 ```
 
 ---
@@ -175,24 +238,49 @@ gen.close()
 
 **Usage Example**
 ```python
+from nipcbatt import dmm
 from nipcbatt import dmm_scan
 
-scanner = dmm_scan.DmmScanPMPS()
-resources = scanner.initialize(
-    mux_resource_name="Sim_MUX",
-    shunt_resource_name="Sim_SHUNT",
-    dmm_resource_name="Sim_DMM",
+# Define scan configuration for multiple channels and functions
+scan_configuration = [
+    [0,  dmm.MixedRangeAndFunctions.DC_100mV,             dmm.ResolutionInDigits.DIGITS_6_5],
+    [1,  dmm.MixedRangeAndFunctions.DC_1V,                dmm.ResolutionInDigits.DIGITS_5_5],
+    [2,  dmm.MixedRangeAndFunctions.AC_2V,                dmm.ResolutionInDigits.DIGITS_4_5],
+    [3,  dmm.MixedRangeAndFunctions.TWO_W_RES_10k_Ohm,    dmm.ResolutionInDigits.DIGITS_4_5],
+    [16, dmm.MixedRangeAndFunctions.DC_100mA,             dmm.ResolutionInDigits.DIGITS_6_5],
+    [17, dmm.MixedRangeAndFunctions.DC_10mA,              dmm.ResolutionInDigits.DIGITS_5_5],
+]
+
+# Create and initialize scanner (Mux + Shunt + DMM combo)
+scan = dmm_scan.DmmScanPMPS()
+
+mux_resource_name = "Sim_MUX"
+mux_topology_name = "2527/2-Wire Dual 16x1 Mux"
+shunt_resource_name = "Sim_SHUNT"
+shunt_topology_name = "2568/31-SPST"
+dmm_resource_name = "Sim_DMM"
+powerline_freq = 50
+verbose = True
+
+resources = scan.initialize(
+    mux_resource_name,
+    mux_topology_name,
+    shunt_resource_name,
+    shunt_topology_name,
+    dmm_resource_name,
+    powerline_freq,
     close_all_shunts=True
 )
 
-# Define scan points: (channel, measurement_function, resolution)
-scan_config = [
-    (0, dmm_scan.MixedMeasurementFunction.DC_VOLTS, dmm_scan.ResolutionInDigits.DIGITS_5_5),
-    (1, dmm_scan.MixedMeasurementFunction.DC_VOLTS, dmm_scan.ResolutionInDigits.DIGITS_5_5),
-]
+# Execute scan across configured channels
+result = scan.configure_and_measure(
+    resources,
+    scan_configuration,
+    verbose=verbose
+)
 
-result = scanner.configure_and_measure(resources, scan_config, verbose=True)
-scanner.close(resources)
+scan.close(resources)
+print(result)
 ```
 
 ---
@@ -216,15 +304,41 @@ scanner.close(resources)
 - `DEFAULT_SPI_READ_COMMUNICATION_CONFIGURATION`
 - `DEFAULT_SPI_WRITE_COMMUNICATION_CONFIGURATION`
 
-**Usage Example**
+**Usage Example (NI-845x I2C)**
 ```python
-from nipcbatt.pcbatt_library.communications import i2c
+import numpy
+import nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices
+import nipcbatt.pcbatt_communication_library.ni_845x_data_types
 
-reader = i2c.I2cReadCommunication()
-reader.initialize(resource_name="PXI1Slot2", visa_resource_class="TCPIP")
-config = i2c.DEFAULT_I2C_READ_COMMUNICATION_CONFIGURATION
-result = reader.configure_and_communicate(config)
-reader.close()
+# Initialize I2C handler for USB-8452 device
+i2c = (
+    nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices
+    .Ni845xI2cDevicesHandler()
+)
+i2c.open(device_name="USB-8452")
+
+# Configure I2C settings
+i2c.enable_pullup_resistors(enable=False)
+i2c.set_timeout(timeout_milliseconds=40000)
+
+# Set I2C address and communication parameters
+i2c.configuration.address = 0x48  # LM75 temperature sensor address
+seven_bits = (
+    nipcbatt.pcbatt_communication_library.ni_845x_data_types
+    .Ni845xI2cAddressingType(0)
+)
+i2c.configuration.addressing_type = seven_bits
+i2c.configuration.clock_rate_kilohertz = 400
+
+# Write and read I2C data
+data_to_write = numpy.ndarray(shape=[0], dtype=numpy.ubyte)
+result = i2c.write_and_read_data(
+    data_bytes_to_be_written=data_to_write,
+    number_of_bytes_to_read=2
+)
+
+print(f"I2C Read Result: {result}")
+i2c.close()
 ```
 
 ---
