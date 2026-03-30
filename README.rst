@@ -136,7 +136,7 @@ Installation
 You can use `pip <http://pypi.python.org/pypi/pip>`_ to download **nipcbatt** from
 `PyPI <https://pypi.org/project/nipcbatt/>`_ and install it::
 
-  $ python -m pip install nipcbatt==2.0.0
+  $ python -m pip install nipcbatt
 
 
 Getting Started
