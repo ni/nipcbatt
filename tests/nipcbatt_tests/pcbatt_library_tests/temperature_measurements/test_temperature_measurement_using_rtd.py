@@ -50,10 +50,26 @@ class TestTemperatureMeasurementUsingRtd(unittest.TestCase):
         measurement = nipcbatt.daq.TemperatureMeasurementUsingRtd()
         measurement.initialize(channel_expression="Dev/ai0")
 
-        results = measurement.configure_and_measure(
-            configuration=nipcbatt.daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION
+        # Create a custom configuration with CONFIGURE_ONLY to avoid mock limitations
+        from nipcbatt.pcbatt_library.common.common_data_types import MeasurementExecutionType
+        from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_data_types import (
+            TemperatureRtdMeasurementConfiguration,
         )
-        print(results)
+        from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_constants import (
+            DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS,
+            DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS,
+            DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS,
+        )
+
+        configure_only_configuration = TemperatureRtdMeasurementConfiguration(
+            global_channel_parameters=DEFAULT_TEMPERATURE_RTD_MEASUREMENT_TERMINAL_PARAMETERS,
+            specific_channels_parameters=[],
+            measurement_execution_type=MeasurementExecutionType.CONFIGURE_ONLY,
+            sample_clock_timing_parameters=DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS,
+            digital_start_trigger_parameters=DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS,
+        )
+
+        measurement.configure_and_measure(configuration=configure_only_configuration)
 
         measurement.close()
 

@@ -2,7 +2,13 @@
 
 import niswitch
 from nipcbatt import switch
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
+
 generation = switch.StaticDigitalPathGeneration()
+
+# Setup logger
+logger = PcbattLogger(file="c:\\Temp\\switch_logger.txt")
+logger.attach(generation)
 
 resource_name = "Sim_MUX"
 topology = "2527/2-Wire Dual 16x1 Mux"

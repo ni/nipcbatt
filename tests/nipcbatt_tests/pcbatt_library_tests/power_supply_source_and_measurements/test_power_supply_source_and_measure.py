@@ -50,7 +50,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         """Checks if class PowerSupplySourceAndMeasure is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.daq.PowerSupplySourceAndMeasure()
 
-        measurement.initialize(power_channel_name="TS1Mod1_pwr/power")
+        measurement.initialize(power_channel_name="Simulated_DAQ/power")
 
         measurement.configure_and_measure(
             configuration=nipcbatt.daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_CONFIGURATION
@@ -88,9 +88,15 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
 
         #################### ACT ######################################################
         # generate result objects
-        res_data_1 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_1)
-        res_data_2 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_2)
-        res_data_4 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(self, data_4)
+        res_data_1 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_1, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
+        res_data_2 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_2, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
+        res_data_4 = nipcbatt.daq.PowerSupplySourceAndMeasure.analyze_measurement_data(
+            self, data_4, nipcbatt.MeasurementAnalysisRequirement.PROCEED_TO_ANALYSIS
+        )
 
         #################### ASSERT ###################################################
         # test max voltage

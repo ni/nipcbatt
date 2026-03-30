@@ -56,8 +56,8 @@ class TestDigitalFrequencyMeasurement(unittest.TestCase):
 
         meas = DigitalFrequencyMeasurement()
         meas.initialize(
-            "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/ctr0",
-            "/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0",
+            "Simulated_DAQ/ctr0",
+            "/Simulated_DAQ/PFI0",
         )
         meas.configure_and_measure(test_config)
         meas.close()

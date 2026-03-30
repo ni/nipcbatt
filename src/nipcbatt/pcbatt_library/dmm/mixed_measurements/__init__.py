@@ -1,1 +1,1 @@
-"""Provides Mixed measurement functionality using DMM""" 
+"""Provides mixed measurement functionality using DMM.""" 

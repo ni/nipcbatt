@@ -25,7 +25,7 @@ dpwmm.initialize(
 # begin dpwmm configure
 
 range_parameters = daq.DigitalPwmMeasurementRangeParameters(
-    semi_period_maximum_value_seconds=53.687,
+    semi_period_maximum_value_seconds=42.949,
     semi_period_minimum_value_seconds=20e-9,
 )
 

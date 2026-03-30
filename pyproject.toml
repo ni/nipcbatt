@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "nipcbatt"
-version = "1.0.60"
+version = "2.0.0"
 license = "MIT"
 description = "Python PCB Assembly Test Toolkit"
 authors = ["NI <opensource@ni.com>"]
-maintainers = ["John Meeker <john.meeker@emerson.com>", "Emmanuel ROSET <emmanuel.roset@emerson.com>", "Srinivasan J <srinivasan.j@emerson.com>", "Aditya Saxena <adityasaxena@emerson.com>"]
+maintainers = ["Emmanuel ROSET <emmanuel.roset@emerson.com>", "Srinivasan J <srinivasan.j@emerson.com>", "Aditya Saxena <adityasaxena@emerson.com>", "Ankit Singh <ankitsingh@emerson.com>"]
 include = ["requirements.txt", "requirements_for_packaging.txt"]
 readme = "README.rst"
 repository = "https://github.com/ni/nipcbatt"
@@ -19,6 +19,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 packages = [{ include = "nipcbatt", from = "src" }]
 

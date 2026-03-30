@@ -1,1 +1,1 @@
-"""Provides nipcbatt stati digital path generation modules"""
+"""Provides nipcbatt static digital path generation modules"""

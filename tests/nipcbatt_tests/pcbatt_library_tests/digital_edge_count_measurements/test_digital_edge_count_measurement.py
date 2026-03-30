@@ -72,9 +72,9 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         """Checks if class 'DigitalEdgeCountMeasurementUsingHardwareTimer' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
         meas = DigitalEdgeCountMeasurementUsingHardwareTimer()
         meas.initialize(
-            measurement_channel_expression="TS1_Core/ctr1",
-            measurement_input_terminal_name="/TS1_Core/PFI6",
-            timer_channel_expression="TS1_Core/ctr2",
+            measurement_channel_expression="Simulated_TS1_Core/ctr1",
+            measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+            timer_channel_expression="Simulated_TS1_Core/ctr2",
         )
 
         counter_channel_parameters = DigitalEdgeCountMeasurementCounterChannelParameters(
@@ -85,11 +85,14 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         )
         trigger_parameters = DigitalStartTriggerParameters(
             trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-            digital_start_trigger_source="/TS1_Core/PFI0",
+            digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
             digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
         )
         configuration = DigitalEdgeCountHardwareTimerConfiguration(
-            measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+            measurement_options=nipcbatt.MeasurementOptions(
+                execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+                measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.SKIP_ANALYSIS,
+            ),
             counter_channel_parameters=counter_channel_parameters,
             timing_parameters=timing_parameters,
             trigger_parameters=trigger_parameters,
@@ -103,8 +106,8 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         """Checks if class 'DigitalEdgeCountMeasurementUsingSoftwareTimer' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
         meas = DigitalEdgeCountMeasurementUsingSoftwareTimer()
         meas.initialize(
-            measurement_channel_expression="TS1_Core/ctr1",
-            measurement_input_terminal_name="/TS1_Core/PFI6",
+            measurement_channel_expression="Simulated_TS1_Core/ctr3",
+            measurement_input_terminal_name="/Simulated_TS1_Core/PFI7",
         )
         counter_channel_parameters = DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=nidaqmx.constants.Edge.FALLING,
@@ -113,7 +116,10 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
             edge_counting_duration=0.005,
         )
         configuration = DigitalEdgeCountSoftwareTimerConfiguration(
-            measurement_options=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+            measurement_options=nipcbatt.MeasurementOptions(
+                execution_option=nipcbatt.MeasurementExecutionType.CONFIGURE_AND_MEASURE,
+                measurement_analysis_requirement=nipcbatt.MeasurementAnalysisRequirement.SKIP_ANALYSIS,
+            ),
             timing_parameters=timing_parameters,
             counter_channel_parameters=counter_channel_parameters,
         )

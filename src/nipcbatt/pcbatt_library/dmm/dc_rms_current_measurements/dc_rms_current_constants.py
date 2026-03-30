@@ -1,4 +1,4 @@
-"""Constants data types for DC-RMS Current Measurements."""
+"""Constants for DC-RMS Current Measurements."""
 
 import dataclasses
 
@@ -23,16 +23,16 @@ class ConstantsForDcRmsCurrentMeasurements:
 
 # Current measurement-specific range/function setting is defined
 # in ConstantsForDcRmsCurrentMeasurements.
-# Default execution type for current measurements
+# Default execution type for current measurements.
 DEFAULT_DC_RMS_CURRENT_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE
 
-# Default measurement function parameters including current range/function and resolution in digits
+# Default measurement function parameters including current range/function and resolution in digits.
 DEFAULT_DC_RMS_CURRENT_MEASUREMENT_PARAMETERS = DcRmsCurrentMeasurementFunctionParameters(
     measurement_function=ConstantsForDcRmsCurrentMeasurements.RANGE_AND_FUNCTION,
     resolution_in_digits=ConstantsForDcRmsMeasurements.DEFAULT_RESOLUTION_IN_DIGITS,
 )
 
-# Default timing parameters including aperture time and settle time
+# Default timing parameters including aperture time and settle time.
 DEFAULT_DC_RMS_CURRENT_TIMING_PARAMETERS = TimingParameters(
     aperture_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_APERTURE_TIME_SECONDS,
     settle_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_SETTLE_TIME_SECONDS,
@@ -41,7 +41,7 @@ DEFAULT_DC_RMS_CURRENT_TIMING_PARAMETERS = TimingParameters(
 # Default AC minimum frequency
 DEFAULT_DC_RMS_CURRENT_AC_MIN_FREQUENCY = ConstantsForDcRmsMeasurements.DEFAULT_AC_MIN_FREQUENCY
 
-# Default trigger parameters including trigger source, trigger delay, and trigger enable setting
+# Default trigger parameters including trigger source, trigger delay, and trigger enable setting.
 DEFAULT_DC_RMS_CURRENT_TRIGGER_PARAMETERS = TriggerParameters(
     trigger_source=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_SOURCE,
     trigger_delay=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_DELAY,
@@ -49,7 +49,7 @@ DEFAULT_DC_RMS_CURRENT_TRIGGER_PARAMETERS = TriggerParameters(
     enable_trigger=ConstantsForDcRmsMeasurements.DEFAULT_ENABLE_TRIGGER,
 )
 
-# Default DC-RMS current measurement configuration
+# Default DC-RMS current measurement configuration.
 DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION = DcRmsCurrentMeasurementConfiguration(
     execution_type=DEFAULT_DC_RMS_CURRENT_EXECUTION_TYPE,
     measurement_function_parameters=DEFAULT_DC_RMS_CURRENT_MEASUREMENT_PARAMETERS,

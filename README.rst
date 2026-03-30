@@ -12,14 +12,14 @@
 About
 =====
 
-The **nipcbatt** package contains an API (Application Programming Interface) for interacting with 
-the NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
+The **nipcbatt** package provides APIs (Application Programming Interface) for interacting with 
+the NI_DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
 operations. The package is implemented in Python, as a highly object-oriented package.
 
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DAQ and DMM devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
+**nipcbatt** package is focused on NI DAQ, DMM, and SWITCH devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
 TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
 resources on any platform.
 
@@ -41,96 +41,81 @@ Supported Features
    * - Feature name
      - Description
      - Acronym
-   * - Power Supply Source and Measure Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable power supply for power supply measurements (TestScale only).
-     - PSSM
-   * - DC-RMS Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurements.
-     - DRVM
-   * - DC Voltage Generation Library
-     - This feature allows initializing, configuring, generating, and closing user configurable analog output pins for DC voltage generations.
-     - DRVG
-   * - DC-RMS Current Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for current measurements.
-     - DRCM
-   * - Time Domain Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurement and derive time domain measurement for the measured waveforms.
-     - TDVM
-   * - Frequency Domain Voltage Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins for voltage measurement and derive frequency domain measurement for the measured waveforms.
-     - FDVM
-   * - Signal Voltage Generation Library
-     - This feature allows initializing, configuring, generate, and closing different waveform voltage signals like tones (single/multi) or square windows, over a given generation time(s) on user configurable analog output pins.
-     - SVG
-   * - Static Digital State Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable digital input pins.
-     - SDSM
-   * - Static Digital State Generation Library
-     - This feature allows initializing, configuring, sourcing, generate, and close on user configurable digital output pins.
-     - SDSG
-   * - Static Digital Path Generation Library
-     - This feature allows initializing, configuring, generating, and releasing of a switch path between two defined channels
-     - SDPG
-   * - Temperature Thermistor Measurement Library
-     - This feature allows initializing, configuring, measuring, and closing user configurable analog input pins to derive temperature measurements from voltage excited NTC typed Thermistor devices.
-     - TTRM
-   * - Temperature RTD Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable analog input pins for temperature measurements from Resistance Temperature Detector (RTD).
-     - TRTDM
-   * - Temperature Thermocouple Measurement Library
-     - This feature allows initializing, configuring, sourcing, measuring, and closing user configurable analog input pins to derive temperature measurements from Thermocouples.
-     - TTCM
-   * - Dynamic Digital Pattern Measurement Library
-     - This feature provides options to measure digital patterns through the specified lines.
-     - DDPM
-   * - Dynamic Digital Pattern Generation Library
-     - This feature provides options to generate digital patterns, an array of digital samples in the specified IO lines.
-     - DDPG
-   * - Digital Clock Generation Library
-     - This feature allows initializing, configuring, generate and closing on user configurable terminals using counters.
-     - DCG
-   * - Digital Pulse Generation Library
-     - This feature allows initializing, configuring, generate and closing on user configurable terminals using counters.
-     - DPG
-   * - Digital Frequency Measurement Library
-     - This feature allows initializing, configuring, measuring and closing on user configurable PFI line using the selected counter for digital frequency measurement.
-     - DFM
-   * - Digital PWM Measurement Library
-     - This feature allows initializing, configuring, generating and closing on user configurable PFI line using the selected counter for digital PWM measurement.
-     - DPWMM
-   * - Digital Edge Count Measurement Library
-     - This feature allows initializing, configuring, generating and closing on user configurable PFI line using the selected counter for Edge Counting using Software and Hardware Timers.
-     - DECM
-   * - Communication Library
-     - This feature allows initializing, configuring, read and writing data, and closing on I2C, SPI and Serial Communication devices.
-     - COM
-   * - Synchronization Library
-     - This feature allows synchronizing between specified source and output terminals for the given DAQmx Task.
-     - RSS
+   * - DMM Measurement Libraries
+     - A collection of methods to perform DMM measurements using NI-DMM driver.
+     - dmm
+   * - DAQ Measurement Libraries
+     - A collection of methods to perform measurements using NI-DAQmx driver.
+     - daq
+   * - SWITCH Measurement Libraries
+     - A collection of methods to control Switch hardware, and switch paths using the NI-SWITCH driver.
+     - switch
+   * - DMM Scan Measurement Libraries
+     - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
+     - dmm_scan
+   * - Communication Libraries
+     - A collection of methods to perform communication operations (for example I2C, SPI, and serial) using NI-845x and NI-VISA drivers.
+     - comm
+
+
+Library imports and migrations
+-------------------------------
+
+    In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
+    `nipcbatt` package. Example usage:
+
+    .. code-block:: python
+
+      from nipcbatt import daq
+      drvg = daq.DcVoltageGeneration()
+      drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+
+    Few classes remain accessible directly from `nipcbatt` (for
+    example `nipcbatt.MeasurementExecutionType`). However, explicit subpackage imports are the recommended approach 
+    for all new code. To migrate existing code, update imports and references from:
+
+    .. code-block:: python
+
+      # Not recommended ❌
+      import nipcbatt
+      drvg = nipcbatt.DcVoltageGeneration()
+
+    to the explicit subpackage form:
+
+    .. code-block:: python
+
+      # Recommended ✅
+      from nipcbatt import daq
+      drvg = daq.DcVoltageGeneration()
+
+    See `Migration Guide for nipcbatt 2.0.0 <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
+    for a complete list of class mappings, and all available subpackage classes.
 
 
 Required Drivers
 -----------------
 
 
-| NI-DAQmx: 2023 Q3 and above 
-| LabVIEW Runtime: 2022 Q3 and above (64 bit) 
-| NI-845x: 2022 Q3 and above 
-| NI-VISA: 2023 Q2 and above 
-| NI-Serial: 2023 Q2 and above 
-| NI-SWITCH: 2023 Q4 and above 
-| NI-DMM: 2023 Q4 and above
+- NI-DMM: 2023 Q4 and above
+- NI-SWITCH: 2023 Q4 and above 
+- NI-DAQmx: 2023 Q3 and above 
+- LabVIEW Runtime: 2022 Q3 and above (64 bit) 
+- NI-845x: 2022 Q3 and above 
+- NI-VISA: 2023 Q2 and above 
+- NI-Serial: 2023 Q2 and above 
+  
+Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package Manager <https://www.ni.com/en/support/downloads/software-products/download.package-manager.html>`_ to download the Required Drivers.
+
 
 Supported Hardware
 ------------------
 
-| NI PC Based DAQ
-| CompactDAQ
-| TestScale
-| Any DAQmx devices with similar functionality and resources.
-| Switch devices compatible with the NI-SWITCH driver 
-| PXI DMM devices compatible with the NI-DMM driver
-
+- DMM devices compatible with the NI-DMM driver
+- Switch devices compatible with the NI-SWITCH driver
+- Any DAQmx devices with similar functionality and resources
+- NI PC-Based DAQ
+- CompactDAQ
+- TestScale
 
 
 Operating System Support
@@ -151,16 +136,8 @@ Installation
 You can use `pip <http://pypi.python.org/pypi/pip>`_ to download **nipcbatt** from
 `PyPI <https://pypi.org/project/nipcbatt/>`_ and install it::
 
-  $ python -m pip install nipcbatt
+  $ python -m pip install nipcbatt==2.0.0
 
-
-Manual Driver Installation
---------------------------
-
-Visit `ni.com/downloads <http://www.ni.com/downloads/>`_ to download the latest version of **Python PCB Assembly Test
-Toolkit**. It is recommended you continue to install the NI-DAQmx, NI-DMM, and NI-SWITCH Runtimes with Configuration Support and NI Hardware Configuration Utility from the Additional items
-checklist as it is required to access and manage hardware. All other recommended Additional items
-are not necessary for nipcbatt to function, and they can be removed to minimize installation size. 
 
 Getting Started
 ===============
@@ -173,7 +150,7 @@ Configuration Utility to verify and configure your devices.
 
 Finding and configuring device name in **NI MAX**:
 
-.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX.png
+.. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/NI-MAX%20Configuration.png
   :alt: NI-MAX
   :align: center
   :width: 800px
@@ -198,51 +175,52 @@ All the measurement libraries consist of three main methods which have to be use
 
 - Initialize:
  
-   Used to initialize a DAQmx using either physical or global virtual channels 
-   provided to perform the respective task.
+   Used to initialize a measurement instance (for DAQmx use either physical or global virtual channels to perform the respective task).
 
-   This is done by calling the intialize() method on the class instance.
+   This is done by calling the initialize() method on the class instance.
 
-Example code to initialize an instance of DRVG to generate a DC Voltage:
+Example code to initialize an instance of DC RMS voltage measurement:
 
 .. code-block:: python
 
-  >>> import nipcbatt
-  >>> drvg = nipcbatt.DcVoltageGeneration()
-  >>> drvg.initialize(analog_output_channel_expression="Sim_PC_basedDAQ/ao0")
+  >>> from nipcbatt import dmm
+  >>> dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
+  >>> dmm_voltage_measurement.initialize("Sim_DMM", 50)
 
 
 - Configure and Generate/Configure and Measure:
  
-   Configures, Initiates and Measure/Generate for an input/output 
-   task respectively. Also, can return raw data for external custom post 
-   analysis and measurements from embedded analysis(selectable/optional)
+   Configures and executes measurement or generation tasks. For measurements, 
+   this method can return both raw data for custom analysis and processed results 
+   from built-in analysis functions (configurable via measurement options).
  
    This is done by calling the
    configure_and_measure()/configure_and_generate() method on the class instance.
 
-Example code to configure and generate DC voltage using the class instance:
+Example code to configure and measure DC voltage using the class instance:
 
 .. code-block:: python
 
-  >>> drvg.configure_and_generate(nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION)
-  ... # Default generation voltage is 1.2V, Defaut Range is [-10.0, 10.0]
+  >>> measurement = dmm_voltage_measurement.configure_and_measure(
+  >>>   configuration=dmm.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION
+  >>> )
+  ... # Default voltage measurement configuration 
 
 
 - Close:
  
-   Closes the DAQmx tasks and clears resources.
+   Closes the measurement or generation session and releases hardware resources.
 
    This is done by calling the close() method on the class instance.
   
-Example code to close the task and clear resources after generation:
+Example code to close the session and clear resources:
 
 .. code-block:: python
 
-  >>> drvg.close()
+  >>> dmm_voltage_measurement.close()
 
 
-2. Features and Utilities
+1. Features and Utilities
 -------------------------
 
 - Virtual Channels 
@@ -279,7 +257,7 @@ libraries together, where one library is used for generation and another for mea
 The validation examples can be found in this location `pcbatt_validation_examples <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_validation_examples>`_.
 
 The following images shows sample results for Signal Voltage Generation to Frequency Domain Voltage Measurement Validation example which
-is located at *"/pcbatt_validation_examples/PCIe_examples/PC_SVG_FDVM.py"*:
+is located at *"/pcbatt_validation_examples/PC_Based_Examples/PC_SVG_FDVM.py"*:
 
 .. image:: https://raw.githubusercontent.com/ni/nipcbatt/main/src/nipcbatt/docs/images/SVG_to_FDVM_Results.png
   :alt: SVG_to_FDVM_Results

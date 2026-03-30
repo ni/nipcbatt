@@ -1,1 +1,1 @@
-"""Provides common data types, constants and helper functions for DMM measurements""" 
+"""Provides common data types, constants, and helper functions for DMM measurements.""" 
