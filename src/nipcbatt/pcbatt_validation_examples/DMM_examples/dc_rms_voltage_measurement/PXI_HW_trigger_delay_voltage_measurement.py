@@ -14,7 +14,7 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 def main():
     # Initialize SVG and DMM
     svg = daq.SignalVoltageGeneration()
-    svg.initialize(channel_expression="Simulated_DAQ/ao0")
+    svg.initialize(channel_expression="Sim_PXIeDAQ/ao0")
 
     dmm_voltage_measurement = dmm.DcRmsVoltageMeasurement()
     dmm_voltage_measurement.initialize("Sim_DMM", 50.0)

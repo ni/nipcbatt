@@ -20,8 +20,8 @@ from nipcbatt.pcbatt_library.daq.digital_pulse_generations.digital_pulse_generat
     DigitalPulseGeneration,
 )
 
-CHANNEL = "Simulated_DAQ/ctr0"
-TERMINAL = "/Simulated_DAQ/PFI0"
+CHANNEL = "Sim_PXIeDAQ/ctr0"
+TERMINAL = "/Sim_PXIeDAQ/PFI0"
 
 
 class TestDigitalPulseGeneration(unittest.TestCase):

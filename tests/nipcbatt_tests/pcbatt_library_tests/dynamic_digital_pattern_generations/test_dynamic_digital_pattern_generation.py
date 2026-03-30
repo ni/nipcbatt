@@ -15,9 +15,9 @@ from nipcbatt.pcbatt_library.common.common_data_types import (
     DynamicDigitalPatternTimingParameters,
 )
 
-CHANNEL = "Simulated_DAQ/port0/line0:7"
+CHANNEL = "Sim_PXIeDAQ/port0/line0:7"
 CLOCK_SOURCE = "OnboardClock"
-TRIGGER_SOURCE = "/Simulated_DAQ/PFI0"
+TRIGGER_SOURCE = "/Sim_PXIeDAQ/PFI0"
 
 
 class TestDynamicDigitalPatternGeneration(unittest.TestCase):

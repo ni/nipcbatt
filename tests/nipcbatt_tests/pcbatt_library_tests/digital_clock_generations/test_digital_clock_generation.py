@@ -40,8 +40,8 @@ class TestDigitalClockGeneration(unittest.TestCase):
     def test_digital_clock_generation(self):
         """Checks if class 'DigitalClockGeneration' is ready to use"""  # noqa: D202, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (258 > 100 characters) (auto-generated noqa)
 
-        physical_channel = "Simulated_DAQ/ctr0"
-        output_terminal = "/Simulated_DAQ/PFI12"
+        physical_channel = "Sim_PXIeDAQ/ctr0"
+        output_terminal = "/Sim_PXIeDAQ/PFI12"
         timing_parameters = daq.DigitalClockGenerationTimingParameters(1.0)
         counter_parameters = daq.DigitalClockGenerationCounterChannelParameters(1000.0, 0.5)
         config = daq.DigitalClockGenerationConfiguration(counter_parameters, timing_parameters)

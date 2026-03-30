@@ -41,19 +41,19 @@ Supported Features
    * - Feature name
      - Description
      - Acronym
-   * - DMM Measurement Libraries
+   * - `DMM Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dmm>`_
      - A collection of methods to perform DMM measurements using NI-DMM driver.
      - dmm
-   * - DAQ Measurement Libraries
+   * - `DAQ Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/daq>`_
      - A collection of methods to perform measurements using NI-DAQmx driver.
      - daq
-   * - SWITCH Measurement Libraries
+   * - `SWITCH Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/switch>`_
      - A collection of methods to control Switch hardware, and switch paths using the NI-SWITCH driver.
      - switch
-   * - DMM Scan Measurement Libraries
+   * - `DMM Scan Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dmm_scan>`_
      - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
      - dmm_scan
-   * - Communication Libraries
+   * - `Communication Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/communications>`_
      - A collection of methods to perform communication operations (for example I2C, SPI, and serial) using NI-845x and NI-VISA drivers.
      - comm
 
@@ -88,7 +88,7 @@ Library imports and migrations
       from nipcbatt import daq
       drvg = daq.DcVoltageGeneration()
 
-    See `Migration Guide for nipcbatt 2.0.0 <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/migration_guide_api.md>`_ 
+    See `Migration Guide for nipcbatt 2.0.0 <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/Migration%20Guide%20for%20nipcbatt%202.0.0.md>`_ 
     for a complete list of class mappings, and all available subpackage classes.
 
 
@@ -128,7 +128,7 @@ which versions of the driver support your hardware on a given operating system.
 Python Version Support
 ----------------------
 
-**nipcbatt** supports Python 3.9+ (64 bit)
+**nipcbatt** supports Python 3.9 to 3.12 (64 bit)
 
 Installation
 ============

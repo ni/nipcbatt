@@ -44,7 +44,7 @@ class TestTemperatureMeasurementUsingThermocouple(unittest.TestCase):
         """Checks if class TemperatureMeasurementUsingThermocouple is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (196 > 100 characters) (auto-generated noqa)
         measurement = daq.TemperatureMeasurementUsingThermocouple()
         measurement.initialize(
-            channel_expression="Simulated_DAQ/ai0",
+            channel_expression="Sim_PXIeDAQ/ai0",
             cold_junction_compensation_source=nidaqmx.constants.CJCSource.CONSTANT_USER_VALUE,
             cold_junction_compensation_channel="",
         )
