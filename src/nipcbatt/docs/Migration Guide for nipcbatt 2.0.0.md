@@ -17,7 +17,7 @@ This change makes dependencies explicit and prevents naming conflicts.
 
 ## Quick Migration: Before and After
 
-### ❌ Old Style (Broken in 2.0.0)
+### ❌ Old format (Broken in 2.x)
 ```python
 import nipcbatt
 
@@ -27,7 +27,7 @@ dmm = nipcbatt.DcRmsVoltageMeasurement()
 config = nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION
 ```
 
-### ✅ New Style (Required in 2.0.0)
+### ✅ Fix Required (2.x Onwards)
 ```python
 from nipcbatt import daq, dmm
 
@@ -41,31 +41,41 @@ config = daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION
 
 ## Common Migration Patterns
 
-### DAQmx: Generation and Measurement
+### DAQ: Generation and Measurement
 
-| Aspect | Before (2.x) | After (2.0.0) |
+| Module | Before 2.x | 2.x Onwards |
 |--------|------|--------|
 | **Import** | `import nipcbatt` | `from nipcbatt import daq` |
-| **Voltage Generation** | `nipcbatt.DcVoltageGeneration()` | `daq.DcVoltageGeneration()` |
-| **Voltage Measurement** | `nipcbatt.DcRmsVoltageMeasurement()` | `daq.DcRmsVoltageMeasurement()` |
+| **DC Voltage Generation** | `nipcbatt.DcVoltageGeneration()` | `daq.DcVoltageGeneration()` |
+| **Signal Voltage Generation** | `nipcbatt.SignalVoltageGeneration()` | `daq.SignalVoltageGeneration()` |
+| **DC RMS Voltage Measurement** | `nipcbatt.DcRmsVoltageMeasurement()` | `daq.DcRmsVoltageMeasurement()` |
+| **DC RMS Current Measurement** | `nipcbatt.DcRmsCurrentMeasurement()` | `daq.DcRmsCurrentMeasurement()` |
+| **Time Domain Measurement** | `nipcbatt.TimeDomainMeasurement()` | `daq.TimeDomainMeasurement()` |
+| **Frequency Domain Measurement** | `nipcbatt.FrequencyDomainMeasurement()` | `daq.FrequencyDomainMeasurement()` |
+| **Temperature Measurement** | `nipcbatt.TemperatureMeasurement()` | `daq.TemperatureMeasurement()` |
+| **Power Supply Source and Measure** | `nipcbatt.PowerSupplySourceAndMeasure()` | `daq.PowerSupplySourceAndMeasure()` |
+| **Digital PWM Measurement** | `nipcbatt.DigitalPwmMeasurement()` | `daq.DigitalPwmMeasurement()` |
+| **Digital Clock Generation** | `nipcbatt.DigitalClockGeneration()` | `daq.DigitalClockGeneration()` |
+| **Digital Pulse Generation** | `nipcbatt.DigitalPulseGeneration()` | `daq.DigitalPulseGeneration()` |
+| **Static Digital State Generation** | `nipcbatt.StaticDigitalStateGeneration()` | `daq.StaticDigitalStateGeneration()` |
+| **Static Digital State Measurement** | `nipcbatt.StaticDigitalStateMeasurement()` | `daq.StaticDigitalStateMeasurement()` |
+| **Dynamic Digital Pattern Generation** | `nipcbatt.DynamicDigitalPatternGeneration()` | `daq.DynamicDigitalPatternGeneration()` |
+| **Dynamic Digital Pattern Measurement** | `nipcbatt.DynamicDigitalPatternMeasurement()` | `daq.DynamicDigitalPatternMeasurement()` |
 | **Default Config** | `nipcbatt.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION` | `daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION` |
 
-### DMM Measurements
 
-| Aspect | Before (2.x) | After (2.0.0) |
+### Communications: I2C, SPI, and Serial
+
+| Module | Before 2.x | 2.x Onwards |
 |--------|------|--------|
-| **Import** | `import nipcbatt` | `from nipcbatt import dmm` |
-| **Voltage Measurement** | `nipcbatt.DcRmsVoltageMeasurement()` | `dmm.DcRmsVoltageMeasurement()` |
-| **Resistance Measurement** | `nipcbatt.DcRmsResistanceMeasurement()` | `dmm.DcRmsResistanceMeasurement()` |
-| **Default Config** | `nipcbatt.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION` | `dmm.DEFAULT_DC_RMS_VOLTAGE_MEASUREMENT_CONFIGURATION` |
-
-### Switch and Communications
-
-| Module | Before | After |
-|--------|--------|-------|
-| **Switch** | `import nipcbatt` → `nipcbatt.StaticDigitalPathGeneration()` | `from nipcbatt import switch` → `switch.StaticDigitalPathGeneration()` |
-| **Communications** | `import nipcbatt` → `nipcbatt.I2cReadCommunication()` | `from nipcbatt import communications as comm` → `comm.I2cReadCommunication()` |
-| **DMM Scan** | `import nipcbatt` → `nipcbatt.DmmScanPMPS()` | `from nipcbatt import dmm_scan` → `dmm_scan.DmmScanPMPS()` |
+| **Import** | `import nipcbatt` | `from nipcbatt import communications as comm` |
+| **I2C Read** | `nipcbatt.I2cReadCommunication()` | `comm.I2cReadCommunication()` |
+| **I2C Write** | `nipcbatt.I2cWriteCommunication()` | `comm.I2cWriteCommunication()` |
+| **SPI Read** | `nipcbatt.SpiReadCommunication()` | `comm.SpiReadCommunication()` |
+| **SPI Write** | `nipcbatt.SpiWriteCommunication()` | `comm.SpiWriteCommunication()` |
+| **Serial** | `nipcbatt.SerialCommunication()` | `comm.SerialCommunication()` |
+| **I2C Default Config** | `nipcbatt.DEFAULT_I2C_READ_COMMUNICATION_CONFIGURATION` | `comm.DEFAULT_I2C_READ_COMMUNICATION_CONFIGURATION` |
+| **SPI Default Config** | `nipcbatt.DEFAULT_SPI_READ_COMMUNICATION_CONFIGURATION` | `comm.DEFAULT_SPI_READ_COMMUNICATION_CONFIGURATION` |
 
 ---
 

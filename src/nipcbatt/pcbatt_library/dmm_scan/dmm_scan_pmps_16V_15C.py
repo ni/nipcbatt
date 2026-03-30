@@ -286,7 +286,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             print('\n')
 
             print('------- FORMATTED MEASUREMENTS -------')
-            print(f'{"Channel":<10} {"Measurement":<18} {"Time":>8}')
+            print(f'{"Channel":<10} {"Measurement":<18} {"Time (s)":>8}')
 
             for i in range(len(formatted_measurements)):
                 measurement = formatted_measurements[i]
@@ -299,7 +299,8 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             print('\n')
 
             print('--------- EXECUTION SETTINGS ---------')
-            for setting in execution_settings:
+            for i, setting in enumerate(execution_settings):
+                print(f'Channel: {formatted_measurements[i][0]}')
                 for key, value in setting.items():
                     print(str(key) + ': ' + str(value))
                 print()
