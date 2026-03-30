@@ -1,4 +1,4 @@
-"""Constants data types for Resistance Measurements."""
+"""Constants for Resistance Measurements."""
 
 import dataclasses
 
@@ -27,19 +27,19 @@ class ConstantsForDcRmsResistanceMeasurements:
 DEFAULT_RESISTANCE_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE
 
 # Default measurement function parameter including resistance range/function
-# and resolution in digits
+# and resolution in digits.
 DEFAULT_RESISTANCE_MEASUREMENT_PARAMETERS = ResistanceMeasurementFunctionParameters(
     measurement_function=ConstantsForDcRmsResistanceMeasurements.RANGE_AND_FUNCTION,
     resolution_in_digits=ConstantsForDcRmsMeasurements.DEFAULT_RESOLUTION_IN_DIGITS,
 )
 
-# Default timing parameters including aperture time and settle time
+# Default timing parameters including aperture time and settle time.
 DEFAULT_RESISTANCE_TIMING_PARAMETERS = TimingParameters(
     aperture_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_APERTURE_TIME_SECONDS,
     settle_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_SETTLE_TIME_SECONDS,
 )
 
-# Default trigger parameters including trigger source, trigger delay, and trigger enable setting
+# Default trigger parameters including trigger source, trigger delay, and trigger enable setting.
 DEFAULT_RESISTANCE_TRIGGER_PARAMETERS = TriggerParameters(
     trigger_source=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_SOURCE,
     trigger_delay=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_DELAY,
@@ -47,7 +47,7 @@ DEFAULT_RESISTANCE_TRIGGER_PARAMETERS = TriggerParameters(
     slope=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_SLOPE,
 )
 
-# Default DC-RMS resistance measurement configuration
+# Default DC-RMS resistance measurement configuration.
 DEFAULT_RESISTANCE_MEASUREMENT_CONFIGURATION = ResistanceMeasurementConfiguration(
     execution_type=DEFAULT_RESISTANCE_EXECUTION_TYPE,
     measurement_function_parameters=DEFAULT_RESISTANCE_MEASUREMENT_PARAMETERS,

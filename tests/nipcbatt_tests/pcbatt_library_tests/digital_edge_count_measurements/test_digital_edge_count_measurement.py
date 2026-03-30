@@ -106,8 +106,8 @@ class TestDigitalEdgeCountMeasurement(unittest.TestCase):
         """Checks if class 'DigitalEdgeCountMeasurementUsingSoftwareTimer' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (205 > 100 characters) (auto-generated noqa)
         meas = DigitalEdgeCountMeasurementUsingSoftwareTimer()
         meas.initialize(
-            measurement_channel_expression="Simulated_TS1_Core/ctr1",
-            measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+            measurement_channel_expression="Simulated_TS1_Core/ctr3",
+            measurement_input_terminal_name="/Simulated_TS1_Core/PFI7",
         )
         counter_channel_parameters = DigitalEdgeCountMeasurementCounterChannelParameters(
             edge_type=nidaqmx.constants.Edge.FALLING,

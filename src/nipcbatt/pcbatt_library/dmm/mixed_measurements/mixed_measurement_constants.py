@@ -1,4 +1,4 @@
-"""Constants data types for Mixed Measurements."""
+"""Constants for Mixed Measurements."""
 
 import dataclasses
 
@@ -26,13 +26,13 @@ class ConstantsForMixedMeasurements:
 # Default execution type for Mixed measurements
 DEFAULT_MIXED_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE
 
-# Default measurement function parameter including Mixed range/function and resolution in digits
+# Default measurement function parameter including mixed range/function and resolution in digits.
 DEFAULT_MIXED_MEASUREMENT_PARAMETERS = MixedMeasurementFunctionParameters(
     measurement_function=ConstantsForMixedMeasurements.RANGE_AND_FUNCTION,
     resolution_in_digits=ConstantsForDcRmsMeasurements.DEFAULT_RESOLUTION_IN_DIGITS,
 )
 
-# Default timing parameters including aperture time and settle time
+# Default timing parameters including aperture time and settle time.
 DEFAULT_MIXED_TIMING_PARAMETERS = TimingParameters(
     aperture_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_APERTURE_TIME_SECONDS,
     settle_time_seconds=ConstantsForDcRmsMeasurements.DEFAULT_SETTLE_TIME_SECONDS,
@@ -41,7 +41,7 @@ DEFAULT_MIXED_TIMING_PARAMETERS = TimingParameters(
 # Default AC minimum frequency
 DEFAULT_MIXED_AC_MIN_FREQUENCY = ConstantsForDcRmsMeasurements.DEFAULT_AC_MIN_FREQUENCY
 
-# Default trigger parameters including trigger source, trigger delay, and trigger enable setting
+# Default trigger parameters including trigger source, trigger delay, and trigger enable setting.
 DEFAULT_MIXED_TRIGGER_PARAMETERS = TriggerParameters(
     trigger_source=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_SOURCE,
     trigger_delay=ConstantsForDcRmsMeasurements.DEFAULT_TRIGGER_DELAY,
@@ -49,7 +49,7 @@ DEFAULT_MIXED_TRIGGER_PARAMETERS = TriggerParameters(
     enable_trigger=ConstantsForDcRmsMeasurements.DEFAULT_ENABLE_TRIGGER,
 )
 
-# Default DC-RMS Mixed measurement configuration
+# Default DC-RMS mixed measurement configuration.
 DEFAULT_MIXED_MEASUREMENT_CONFIGURATION = MixedMeasurementConfiguration(
     execution_type=DEFAULT_MIXED_EXECUTION_TYPE,
     measurement_function_parameters=DEFAULT_MIXED_MEASUREMENT_PARAMETERS,

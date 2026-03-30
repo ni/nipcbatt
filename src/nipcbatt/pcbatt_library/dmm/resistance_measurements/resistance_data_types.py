@@ -37,7 +37,7 @@ class ResistanceRangeAndFunctions(Enum):
 
 
 class ResistanceMeasurementFunctionParameters:
-    """Defines parameters used for configuration of resistance measurement.."""
+    """Defines parameters used for configuration of resistance measurement."""
 
     def __init__(
         self,
