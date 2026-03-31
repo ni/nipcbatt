@@ -92,7 +92,6 @@ class TestIntegrationDmmScanPMPSWorkflow(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=False,
             verbose=False,
         )
 
@@ -142,7 +141,6 @@ class TestIntegrationDmmScanPMPSWorkflow(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=False,
             verbose=False,
         )
 
@@ -190,7 +188,6 @@ class TestIntegrationDmmScanPMPSWorkflow(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=False,
             verbose=False,
         )
 
@@ -265,7 +262,6 @@ class TestIntegrationDmmScanPMPSScanConfiguration(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=False,
             verbose=False,
         )
 
@@ -354,7 +350,6 @@ class TestIntegrationDmmScanPMPSWithVerboseOutput(unittest.TestCase):
             result = self.dmm_scan.configure_and_measure(
                 resource_handles=scan_resources,
                 scan_configuration=scan_configuration,
-                close_all_shunts=False,
                 verbose=True,
             )
 
@@ -439,7 +434,6 @@ class TestIntegrationDmmScanPMPSWithShuntHandling(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=True,
             verbose=False,
         )
 
@@ -492,7 +486,6 @@ class TestIntegrationDmmScanPMPSWithShuntHandling(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=True,
             verbose=False,
         )
 
@@ -561,7 +554,6 @@ class TestIntegrationDmmScanPMPSPerformance(unittest.TestCase):
         result = self.dmm_scan.configure_and_measure(
             resource_handles=scan_resources,
             scan_configuration=scan_configuration,
-            close_all_shunts=False,
             verbose=False,
         )
 

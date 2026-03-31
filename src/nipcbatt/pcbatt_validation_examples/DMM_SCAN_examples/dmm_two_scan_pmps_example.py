@@ -1,8 +1,7 @@
 # pylint: disable=C0200, C0103, C0301
 
-"""This example executes a DMM Scan to obtain 3 voltage, 3 current,
-   and one resistance measurement. It returns both the formatted and
-   the raw measurements."""
+"""This example executes a DMM Scan to obtain 3 voltage, 3 current
+   measurement. It returns both the formatted and the raw measurements."""
 
 from nipcbatt import dmm
 from nipcbatt import dmm_scan
@@ -39,7 +38,6 @@ dmm_resource_name = "Sim_DMM"
 mux_topology_name = "2527/2-Wire Dual 16x1 Mux"
 shunt_topology_name = "2568/31-SPST"
 
-max_wait = 5000
 powerline_freq = 50
 close_all_shunts = True
 verbose = True # Set to False to not print measurements to console
@@ -64,13 +62,13 @@ resources = scan.initialize(
 print('\n\n\n')
 print('############################ SCAN 1 ##################################################')
 
-results = scan.configure_and_measure(resources, scan_configuration1, close_all_shunts, verbose)
+results = scan.configure_and_measure(resources, scan_configuration1, verbose)
 
 # Execute second scan
 print('\n\n\n')
 print('############################ SCAN 2 ##################################################')
 
-results = scan.configure_and_measure(resources, scan_configuration2, close_all_shunts, verbose)
+results = scan.configure_and_measure(resources, scan_configuration2, verbose)
 
 # Disconnect and close resources
 scan.close(resources)

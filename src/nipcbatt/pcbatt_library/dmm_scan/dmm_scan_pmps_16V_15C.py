@@ -132,6 +132,9 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
                 # configure and generate
                 shunt_generation.configure_and_generate(config)
 
+        # Store close_all_shunts for use in configure_and_measure
+        self.close_all_shunts = close_all_shunts
+
         # return initialized objects
         return ScanResources(mux_generation, shunt_generation, dmm_generation)
 
@@ -139,7 +142,6 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         self,
         resource_handles: ScanResources,
         scan_configuration: list,
-        close_all_shunts: bool = True,
         verbose=True,
     ) -> MeasurementResult:
         """This method executes a complete scan across every measurement which is
@@ -149,7 +151,6 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             resource_handles (ScanResources): The two switch sessions and dmm session to use.
             scan_configuration (list): Populate this list with every measurement you
               wish to make during the scan.
-            close_all_shunts (bool): Set to True if all shunts were closed during initialize(). Defaults to True.
             verbose (bool): If True, this will print out all of the measurement results
               from the scan. Pass False if you do not wish to print results to console. Defaults to True.
 
@@ -217,7 +218,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             mux_generation.configure_and_generate(mux_config)
 
             # SHUNT handling -- if channel is a current channel, open SHUNT.
-            if ch >= 16 and close_all_shunts:  # current channels are ch16 - ch30
+            if ch >= 16 and self.close_all_shunts:  # current channels are ch16 - ch30
                 com = "com" + str(ch)
                 channel_params = switch.StaticDigitalPathGenerationChannelParameters(
                     channel_name, com
@@ -251,7 +252,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             dmm_read = dmm_generation.acquire_measurement(resolution.value)
 
             # SHUNT handling -- close current shunt if opened.
-            if ch >= 16 and close_all_shunts:  # current channels are ch16 - ch30
+            if ch >= 16 and self.close_all_shunts:  # current channels are ch16 - ch30
                 com = "com" + str(ch)
                 channel_params = switch.StaticDigitalPathGenerationChannelParameters(
                     channel_name, com
