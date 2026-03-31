@@ -1,1 +1,1 @@
-"""Provides DC and RMS current measurement functionality using DMM."""  
+"""Provides DC and RMS current measurement functionality using DMM."""

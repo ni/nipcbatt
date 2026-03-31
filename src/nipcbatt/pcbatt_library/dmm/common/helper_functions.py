@@ -140,7 +140,7 @@ class FormatMeasurement:
             }
         if math.isinf(measured_value):
             sign = "+" if measured_value > 0 else "-"
-            
+
             unit = FormatMeasurement.UNIT_MAP.get(measurement_function, "")
             return {
                 "Formatted_Measurement": f"{sign}Inf{unit}",

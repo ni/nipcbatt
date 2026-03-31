@@ -1,8 +1,10 @@
 # pylint: disable=C0200, C0103, C0301
 
-"""This example executes a DMM Scan to obtain 3 voltage, 3 current,
-   and one resistance measurement. It returns both the formatted and
-   the raw measurements."""
+"""This example executes a DMM Scan in a loop 5 times with a 2 second
+   delay between iterations. Each iteration scans 3 voltage and 3 current
+   measurements and prints the results."""
+
+import time
 
 from nipcbatt import dmm
 from nipcbatt import dmm_scan
@@ -33,6 +35,8 @@ max_wait = 5000
 powerline_freq = 50
 close_all_shunts = True
 verbose = True # Set to False to not print measurements to console
+num_iterations = 5
+delay_between_iterations = 2  # seconds
 
 ############ EXECUTE SCAN ####################################################################
 
@@ -50,18 +54,17 @@ resources = scan.initialize(
     close_all_shunts
 )
 
-print('\n')
-
 # Execute scan loop
-for i in range(len(scan_configuration)):
+for i in range(num_iterations):
 
-    print(f"########################### LOOP {i + 1}  #######################################")
+    print(f"\n########################### ITERATION {i + 1} of {num_iterations} #######################################")
 
-    #convert single element to list for compatibility inside configure_and_measure
-    cfg = [scan_configuration[i]]
+    # Execute full scan
+    results = scan.configure_and_measure(resources, scan_configuration, close_all_shunts, verbose)
 
-    #execute measurement
-    results = scan.configure_and_measure(resources, cfg, close_all_shunts, verbose)
+    # Wait before next iteration (skip delay after last iteration)
+    if i < num_iterations - 1:
+        time.sleep(delay_between_iterations)
 
 # Disconnect and close resources
 scan.close(resources)

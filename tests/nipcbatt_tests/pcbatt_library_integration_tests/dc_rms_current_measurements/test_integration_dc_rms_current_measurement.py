@@ -55,7 +55,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         with daq.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
-                    "Simulated_DAQ/ai0:3"
+                    "Sim_PXIeDAQ/ai0:3"
                 )
             )
 
@@ -96,7 +96,7 @@ class TestIntegrationDcRmsCurrentMeasurement(unittest.TestCase):
         with daq.DcRmsCurrentMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
-                    "Simulated_DAQ/ai0:3"
+                    "Sim_PXIeDAQ/ai0:3"
                 )
             )
 

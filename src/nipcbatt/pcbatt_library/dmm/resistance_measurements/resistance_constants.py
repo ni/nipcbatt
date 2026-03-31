@@ -21,7 +21,7 @@ class ConstantsForDcRmsResistanceMeasurements:
     RANGE_AND_FUNCTION = ResistanceRangeAndFunctions.TWO_W_Resistance_Auto_Range
 
 
-# Resistance measurement-specific range/function setting is defined 
+# Resistance measurement-specific range/function setting is defined
 # in ConstantsForDcRmsResistanceMeasurements.
 # Default execution type for resistance measurements
 DEFAULT_RESISTANCE_EXECUTION_TYPE = ConstantsForDcRmsMeasurements.DEFAULT_EXECUTION_TYPE

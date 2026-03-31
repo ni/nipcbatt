@@ -51,7 +51,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
         generation = nipcbatt.daq.SignalVoltageGeneration()
         # Test for Sine wave generation
         generation.initialize(
-            channel_expression="Simulated_DAQ/ao0:1"
+            channel_expression="Sim_PXIeDAQ/ao0:1"
         )
         generation.configure_and_generate_sine_waveform(
             configuration=nipcbatt.daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_SINE_WAVE_CONFIGURATION,
@@ -64,7 +64,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
         generation = nipcbatt.daq.SignalVoltageGeneration()
         # Test for Square wave generation
         generation.initialize(
-            channel_expression="Simulated_DAQ/ao0:1"
+            channel_expression="Sim_PXIeDAQ/ao0:1"
         )
         generation.configure_and_generate_square_waveform(
             configuration=nipcbatt.daq.DEFAULT_SQUARE_WAVE_GENERATION_CONFIGURATION,
@@ -78,7 +78,7 @@ class TestSignalVoltageGeneration(unittest.TestCase):
         generation = nipcbatt.daq.SignalVoltageGeneration()
         # Test for multi-tone sine wave generation
         generation.initialize(
-            channel_expression="Simulated_DAQ/ao0:1"
+            channel_expression="Sim_PXIeDAQ/ao0:1"
         )
         generation.configure_and_generate_multiple_tones_waveform(
             configuration=nipcbatt.daq.DEFAULT_MULTI_TONE_GENERATION_CONFIGURATION,

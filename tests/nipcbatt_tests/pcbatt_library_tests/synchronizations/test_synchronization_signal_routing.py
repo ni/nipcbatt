@@ -101,7 +101,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         # Arrange
         with daq.SynchronizationSignalRouting() as synchronization_signal_routing:
             synchronization_signal_routing.task.ai_channels.add_ai_voltage_chan(
-                "Simulated_DAQ/ai0"
+                "Sim_PXIeDAQ/ai0"
             )
 
             synchronization_signal_routing.task.timing.cfg_samp_clk_timing(
@@ -112,7 +112,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
 
             # Act
             synchronization_signal_routing.route_sample_clock_signal_to_terminal(
-                terminal_name="/Simulated_DAQ/PFI0"
+                terminal_name="/Sim_PXIeDAQ/PFI0"
             )
             # Assert
 
@@ -177,7 +177,7 @@ class TestSynchronizationSignalRouting(unittest.TestCase):
         # Arrange
         with daq.SynchronizationSignalRouting() as synchronization_signal_routing:
             synchronization_signal_routing.task.ai_channels.add_ai_voltage_chan(
-                "Simulated_DAQ/ai0"
+                "Sim_PXIeDAQ/ai0"
             )
 
             synchronization_signal_routing.task.timing.cfg_samp_clk_timing(

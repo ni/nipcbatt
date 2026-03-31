@@ -1,14 +1,15 @@
 # pylint: disable=C0200, C0103, C0301
 
-""" Defines class used for DMM Scan using PXI Mux and PXI Shunt """
+"""Defines class used for DMM Scan using PXI Mux and PXI Shunt"""
 
 import time
 from typing import NamedTuple
 
-from nipcbatt import switch
-from nipcbatt import dmm
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingNISWITCH
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingNIDMM
+from nipcbatt import dmm, switch
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+    BuildingBlockUsingNIDMM,
+    BuildingBlockUsingNISWITCH,
+)
 
 
 class ScanResources(NamedTuple):
@@ -18,9 +19,11 @@ class ScanResources(NamedTuple):
     Args:
         NamedTuple: Built-in datatype to hold abstract tuples
     """
+
     mux_generation: switch.StaticDigitalPathGeneration
     shunt_generation: switch.StaticDigitalPathGeneration
     dmm_generation: dmm.MixedMeasurement
+
 
 class MeasurementResult(NamedTuple):
     """This class is the return type of the configure_and_measure method of DmmScanPMPS.
@@ -33,17 +36,19 @@ class MeasurementResult(NamedTuple):
 
     Args:
         NamedTuple: Built-in datatype to hold abstract tuples
-        
+
     """
+
     sessions: ScanResources
     scan_time: float
     formatted_measurements: list
     execution_settings: list
     raw_measurements: list
 
+
 class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
     """This class represents the set of properties and methods needed
-       to complete a scan of different measurements using a DMM 
+       to complete a scan of different measurements using a DMM
        and various switch configurations
 
     Args:
@@ -52,16 +57,15 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
     """
 
     def initialize(
-            self,
-            mux_resource_name = "Sim_MUX",
-            mux_topology_name = "2527/2-Wire Dual 16x1 Mux",
-            shunt_resource_name = "Sim_SHUNT",
-            shunt_topology_name = "2568/31-SPST",
-            dmm_resource_name = "Sim_DMM",
-            powerline_freq = 50,
-            close_all_shunts = True
+        self,
+        mux_resource_name="Sim_MUX",
+        mux_topology_name="2527/2-Wire Dual 16x1 Mux",
+        shunt_resource_name="Sim_SHUNT",
+        shunt_topology_name="2568/31-SPST",
+        dmm_resource_name="Sim_DMM",
+        powerline_freq=50,
+        close_all_shunts=True,
     ) -> ScanResources:
-        
         """Initializes the switch and dmm objects to be used in the dmm scan
 
         Args:
@@ -76,8 +80,8 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         Returns:
             ScanResources: A tuple of two initialized switch sessions and one initialized dmm session
         """
-     
-        #Generate switch sessions for scan
+
+        # Generate switch sessions for scan
         mux_generation = switch.StaticDigitalPathGeneration()
         shunt_generation = switch.StaticDigitalPathGeneration()
 
@@ -88,50 +92,56 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         mux_generation.close()
         shunt_generation.close()
         dmm_generation.close()
-      
-        #Initialize sessions
-        mux_generation.initialize(mux_resource_name, mux_topology_name, reset_device=True, simulate=False)
-        shunt_generation.initialize(shunt_resource_name, shunt_topology_name, reset_device=True, simulate=False)
+
+        # Initialize sessions
+        mux_generation.initialize(
+            mux_resource_name, mux_topology_name, reset_device=True, simulate=False
+        )
+        shunt_generation.initialize(
+            shunt_resource_name, shunt_topology_name, reset_device=True, simulate=False
+        )
         dmm_generation.initialize(dmm_resource_name, powerline_freq)
 
         # Close all shunt relays from 16 to 30 (NI 2568) in a fixed
         # channel topology mapping - option to open shunts only for 2-wire resistance measuerments
         if close_all_shunts:
 
-            #cycle across all 16 channel pairs
+            # cycle across all 16 channel pairs
             for i in range(15):
 
-                #adjust channel index
+                # adjust channel index
                 idx = i + 16
 
-                #declare channels
-                ch1 = f'ch{idx}'
-                ch2 = f'com{idx}'
+                # declare channels
+                ch1 = f"ch{idx}"
+                ch2 = f"com{idx}"
 
-                #create channel parameters and state objects
+                # create channel parameters and state objects
                 channel_params = switch.StaticDigitalPathGenerationChannelParameters(ch1, ch2)
                 state = switch.StaticDigitalPathGenerationStateParameters(True)
 
-                #configure terminal and timing settings
-                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+                # configure terminal and timing settings
+                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(
+                    channel_params, state
+                )
                 timing_settings = switch.StaticDigitalPathGenerationTimingParameters()
-                config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+                config = switch.StaticDigitalPathGenerationConfiguration(
+                    ts_settings, timing_settings
+                )
 
-                #configure and generate
+                # configure and generate
                 shunt_generation.configure_and_generate(config)
 
-        #return initialized objects
+        # return initialized objects
         return ScanResources(mux_generation, shunt_generation, dmm_generation)
 
-
     def configure_and_measure(
-            self,
-            resource_handles: ScanResources,
-            scan_configuration: list,
-            close_all_shunts: bool = True,
-            verbose=True
-        ) -> MeasurementResult:
-
+        self,
+        resource_handles: ScanResources,
+        scan_configuration: list,
+        close_all_shunts: bool = True,
+        verbose=True,
+    ) -> MeasurementResult:
         """This method executes a complete scan across every measurement which is
            provided in the scan_configuration input parameter.
 
@@ -163,9 +173,9 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         channel_pairs = []
         for ch in channel_list:
             if ch < 16:
-                pair = (ch, 'com0')
+                pair = (ch, "com0")
             else:
-                pair = (ch, 'com1')
+                pair = (ch, "com1")
             channel_pairs.append(pair)
 
         # Data structures for output.
@@ -188,30 +198,43 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
             # Extract ch (int) and com (string).
             ch, com = channel_pairs[i][0], channel_pairs[i][1]
-            channel_name = 'ch' + str(ch)
+            channel_name = "ch" + str(ch)
 
             # MUX handling -- close MUX channel for respective ch#, com#.
             channel_params = switch.StaticDigitalPathGenerationChannelParameters(channel_name, com)
-            state = switch.StaticDigitalPathGenerationStateParameters(True)  # Use TRUE value to CLOSE mux channel.
-            ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+            state = switch.StaticDigitalPathGenerationStateParameters(
+                True
+            )  # Use TRUE value to CLOSE mux channel.
+            ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(
+                channel_params, state
+            )
             timing_settings = switch.StaticDigitalPathGenerationTimingParameters()
-            mux_config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+            mux_config = switch.StaticDigitalPathGenerationConfiguration(
+                ts_settings, timing_settings
+            )
 
             # Execute configure and generate for mux channel pair.
             mux_generation.configure_and_generate(mux_config)
 
             # SHUNT handling -- if channel is a current channel, open SHUNT.
-            if ch >= 16 and close_all_shunts:   # current channels are ch16 - ch30
-                com = 'com' + str(ch)
-                channel_params = switch.StaticDigitalPathGenerationChannelParameters(channel_name, com)
-                state = switch.StaticDigitalPathGenerationStateParameters(False)  # False state to OPEN shunt.
-                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+            if ch >= 16 and close_all_shunts:  # current channels are ch16 - ch30
+                com = "com" + str(ch)
+                channel_params = switch.StaticDigitalPathGenerationChannelParameters(
+                    channel_name, com
+                )
+                state = switch.StaticDigitalPathGenerationStateParameters(
+                    False
+                )  # False state to OPEN shunt.
+                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(
+                    channel_params, state
+                )
                 timing_settings = switch.StaticDigitalPathGenerationTimingParameters()
-                shunt_config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+                shunt_config = switch.StaticDigitalPathGenerationConfiguration(
+                    ts_settings, timing_settings
+                )
 
                 # Execute configure and generate for shunt channel pair.
                 shunt_generation.configure_and_generate(shunt_config)
-
 
             # DMM handling -- configure and acquire measurement.
             function_and_range = function_range_resolution[i][0]
@@ -219,7 +242,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
 
             # If previous function, range, and resolution are the same, skip dmm configuration.
             if prev != function_range_resolution[i]:
-                
+
                 # Instantiate parameters object.
                 params = dmm.MixedMeasurementFunctionParameters(function_and_range, resolution)
                 dmm_generation.configure_measurement_function(params)
@@ -228,25 +251,39 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             dmm_read = dmm_generation.acquire_measurement(resolution.value)
 
             # SHUNT handling -- close current shunt if opened.
-            if ch >= 16 and close_all_shunts:   # current channels are ch16 - ch30
-                com = 'com' + str(ch)
-                channel_params = switch.StaticDigitalPathGenerationChannelParameters(channel_name, com)
-                state = switch.StaticDigitalPathGenerationStateParameters(True)  # True state to CLOSE shunt.
-                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+            if ch >= 16 and close_all_shunts:  # current channels are ch16 - ch30
+                com = "com" + str(ch)
+                channel_params = switch.StaticDigitalPathGenerationChannelParameters(
+                    channel_name, com
+                )
+                state = switch.StaticDigitalPathGenerationStateParameters(
+                    True
+                )  # True state to CLOSE shunt.
+                ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(
+                    channel_params, state
+                )
                 timing_settings = switch.StaticDigitalPathGenerationTimingParameters()
-                shunt_config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+                shunt_config = switch.StaticDigitalPathGenerationConfiguration(
+                    ts_settings, timing_settings
+                )
 
                 # Execute configure and generate for shunt channel pair.
                 shunt_generation.configure_and_generate(shunt_config)
 
             # MUX handling -- open MUX channel to release it.
             ch, com = channel_pairs[i][0], channel_pairs[i][1]
-            channel_name = 'ch' + str(ch)
+            channel_name = "ch" + str(ch)
             channel_params = switch.StaticDigitalPathGenerationChannelParameters(channel_name, com)
-            state = switch.StaticDigitalPathGenerationStateParameters(False)  # Use FALSE value to OPEN mux channel.
-            ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(channel_params, state)
+            state = switch.StaticDigitalPathGenerationStateParameters(
+                False
+            )  # Use FALSE value to OPEN mux channel.
+            ts_settings = switch.StaticDigitalPathGenerationTerminalAndStateSettings(
+                channel_params, state
+            )
             timing_settings = switch.StaticDigitalPathGenerationTimingParameters()
-            mux_config = switch.StaticDigitalPathGenerationConfiguration(ts_settings, timing_settings)
+            mux_config = switch.StaticDigitalPathGenerationConfiguration(
+                ts_settings, timing_settings
+            )
 
             # Execute configure and generate for mux channel pair.
             mux_generation.configure_and_generate(mux_config)
@@ -263,7 +300,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             # Store formatted measurement output.
             data = dmm_read
             meas = data.measurement
-            formatted_measurement = (channel_name, meas['Formatted_Measurement'], switch_time)
+            formatted_measurement = (channel_name, meas["Formatted_Measurement"], switch_time)
             formatted_measurements.append(formatted_measurement)
 
             # Store execution settings.
@@ -281,47 +318,44 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         # If verbose is True, print results to console.
         if verbose:
             print()
-            print('------------- SCAN TIME --------------')
-            print('Total Scan Time (s):', f'{total_time_elapsed: .2f}')
-            print('\n')
+            print("------------- SCAN TIME --------------")
+            print("Total Scan Time (s):", f"{total_time_elapsed: .2f}")
+            print("\n")
 
-            print('------- FORMATTED MEASUREMENTS -------')
+            print("------- FORMATTED MEASUREMENTS -------")
             print(f'{"Channel":<10} {"Measurement":<18} {"Time (s)":>8}')
 
             for i in range(len(formatted_measurements)):
                 measurement = formatted_measurements[i]
 
                 channel = measurement[0]
-                value = f'{measurement[1]}'
+                value = f"{measurement[1]}"
                 switch_time = measurement[2]
 
-                print(f'{channel:<10} {value:<18} {switch_time:>8.3f}')
-            print('\n')
+                print(f"{channel:<10} {value:<18} {switch_time:>8.3f}")
+            print("\n")
 
-            print('--------- EXECUTION SETTINGS ---------')
+            print("--------- EXECUTION SETTINGS ---------")
             for i, setting in enumerate(execution_settings):
-                print(f'Channel: {formatted_measurements[i][0]}')
+                print(f"Channel: {formatted_measurements[i][0]}")
                 for key, value in setting.items():
-                    print(str(key) + ': ' + str(value))
+                    print(str(key) + ": " + str(value))
                 print()
-            print('\n')
-
+            print("\n")
 
             # Prepare raw measurements for output -- get largest width.
-            values_as_str = [
-                f"{m[1]['Measured_Value']:.16g}" for m in raw_measurements
-            ]
+            values_as_str = [f"{m[1]['Measured_Value']:.16g}" for m in raw_measurements]
             value_width = max(len(v) for v in values_as_str)
 
-            print('----------- RAW MEASUREMENTS -------------')
+            print("----------- RAW MEASUREMENTS -------------")
             print(f'{"Channel":<10} {"Value":^23} {"Units":^6}')
 
             for measurement, value_str in zip(raw_measurements, values_as_str):
                 channel = measurement[0]
-                unit = measurement[1]['Unit']
+                unit = measurement[1]["Unit"]
 
-                print(f'{channel:<10} {value_str:<{value_width}} {unit:^11}')
-            print('\n')
+                print(f"{channel:<10} {value_str:<{value_width}} {unit:^11}")
+            print("\n")
 
         # Prepare output.
         output = MeasurementResult(
@@ -329,12 +363,11 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
             total_time_elapsed,
             formatted_measurements,
             execution_settings,
-            raw_measurements
+            raw_measurements,
         )
 
         # Return measurement result.
         return output
-
 
     def close(self, resource_handles: ScanResources) -> None:
         """This method disconnects, closes, and releases the resources.
@@ -350,10 +383,3 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         mux_generation.close()
         shunt_generation.close()
         dmm_generation.close()
-
-
-
-
-
-
-

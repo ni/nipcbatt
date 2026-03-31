@@ -51,7 +51,7 @@ class TestDcVoltageGeneration(unittest.TestCase):
 
         generation = daq.DcVoltageGeneration()
         generation.initialize(
-            analog_output_channel_expression="Simulated_DAQ/ao0"
+            analog_output_channel_expression="Sim_PXIeDAQ/ao0"
         )
         generation.configure_and_generate(
             configuration=daq.DEFAULT_DC_VOLTAGE_GENERATION_CONFIGURATION

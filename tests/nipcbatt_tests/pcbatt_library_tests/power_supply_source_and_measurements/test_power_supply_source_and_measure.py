@@ -50,7 +50,7 @@ class TestPowerSupplySourceAndMeasure(unittest.TestCase):
         """Checks if class PowerSupplySourceAndMeasure is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (184 > 100 characters) (auto-generated noqa)
         measurement = nipcbatt.daq.PowerSupplySourceAndMeasure()
 
-        measurement.initialize(power_channel_name="Simulated_DAQ/power")
+        measurement.initialize(power_channel_name="Sim_PXIeDAQ/power")
 
         measurement.configure_and_measure(
             configuration=nipcbatt.daq.DEFAULT_POWER_SUPPLY_SOURCE_AND_MEASURE_CONFIGURATION

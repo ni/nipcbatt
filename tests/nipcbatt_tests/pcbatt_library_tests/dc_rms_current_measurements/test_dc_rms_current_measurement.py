@@ -50,7 +50,7 @@ class TestDcRmsCurrentMeasurement(unittest.TestCase):
     def test_dc_rms_current_measurement(self):
         """Tests for the proper flow of DC-RMS Current Measurement"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (180 > 100 characters) (auto-generated noqa)
         measurement = daq.DcRmsCurrentMeasurement()
-        measurement.initialize(analog_input_channel_expression="Simulated_DAQ/ai0:2")
+        measurement.initialize(analog_input_channel_expression="Sim_PXIeDAQ/ai0:2")
         measurement.configure_and_measure(
             configuration=daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION
         )

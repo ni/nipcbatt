@@ -55,7 +55,7 @@ class TestDynamicDigitalPatternMeasurement(unittest.TestCase):
     def test_dynamic_digital_pattern_measurement(self):
         """Checks if class 'DynamicDigitalPatternMeasurement' is ready for use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (192 > 100 characters) (auto-generated noqa)
         meas = daq.DynamicDigitalPatternMeasurement()
-        meas.initialize("Simulated_DAQ/port0/line0:7")
+        meas.initialize("Sim_PXIeDAQ/port0/line0:7")
         timing_parameters = DynamicDigitalPatternTimingParameters(
             sample_clock_source="OnboardClock",
             sampling_rate_hertz=10000.0,
@@ -64,7 +64,7 @@ class TestDynamicDigitalPatternMeasurement(unittest.TestCase):
         )
         trigger_parameters = DigitalStartTriggerParameters(
             trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-            digital_start_trigger_source="/Simulated_DAQ/PFI0",
+            digital_start_trigger_source="/Sim_PXIeDAQ/PFI0",
             digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
         )
         configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
