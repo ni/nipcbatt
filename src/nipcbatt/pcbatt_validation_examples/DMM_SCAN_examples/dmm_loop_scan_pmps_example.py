@@ -31,7 +31,6 @@ dmm_resource_name = "Sim_DMM"
 mux_topology_name = "2527/2-Wire Dual 16x1 Mux"
 shunt_topology_name = "2568/31-SPST"
 
-max_wait = 5000
 powerline_freq = 50
 close_all_shunts = True
 verbose = True # Set to False to not print measurements to console
@@ -60,7 +59,7 @@ for i in range(num_iterations):
     print(f"\n########################### ITERATION {i + 1} of {num_iterations} #######################################")
 
     # Execute full scan
-    results = scan.configure_and_measure(resources, scan_configuration, close_all_shunts, verbose)
+    results = scan.configure_and_measure(resources, scan_configuration, verbose)
 
     # Wait before next iteration (skip delay after last iteration)
     if i < num_iterations - 1:

@@ -19,7 +19,7 @@ operations. The package is implemented in Python, as a highly object-oriented pa
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DAQ, DMM, and SWITCH devices hardware, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
+**nipcbatt** package is focused on NI DAQ, DMM, and SWITCH devices, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
 TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
 resources on any platform.
 

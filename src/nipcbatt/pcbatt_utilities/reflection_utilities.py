@@ -59,9 +59,10 @@ def convert_for_json_serialization(
         return value
 
     if isinstance(value, dict):
-        if np.bool_(False) in value.values() or np.bool_(True) in value.values():
-            return str(value)
-        return value
+        return {
+            k: bool(v) if isinstance(v, np.bool_) else v
+            for k, v in value.items()
+        }
 
     if isinstance(value, list):
         return [convert_for_json_serialization(item) for item in value]
