@@ -18,7 +18,9 @@ from nipcbatt.pcbatt_library.dmm.dc_rms_current_measurements.dc_rms_current_data
     DcRmsCurrentMeasurementFunctionParameters,
     DcRmsCurrentMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingNIDMM
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+    BuildingBlockUsingNIDMM,
+)
 
 
 class DcRmsCurrentMeasurement(BuildingBlockUsingNIDMM):

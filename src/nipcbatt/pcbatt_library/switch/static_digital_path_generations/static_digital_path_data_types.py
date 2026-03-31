@@ -1,14 +1,14 @@
 "These data types are used when implementing digital path generation"
 
 import niswitch
-
 from varname import nameof
 
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
 
+
 class StaticDigitalPathGenerationChannelParameters(PCBATestToolkitData):
-    """Defines the channel value names assigned for the switch connection"""    
+    """Defines the channel value names assigned for the switch connection"""
 
     def __init__(self, channel_one: str, channel_two: str) -> None:
         """Creates an instance of StaticDigitalPathGenerationChannelParameters
@@ -18,54 +18,56 @@ class StaticDigitalPathGenerationChannelParameters(PCBATestToolkitData):
             channel_two (str): The name of the second channel
         """
 
-        #input validation
+        # input validation
         Guard.is_not_none_nor_empty_nor_whitespace(channel_one, nameof(channel_one))
         Guard.is_not_none_nor_empty_nor_whitespace(channel_two, nameof(channel_two))
 
-        #assign values
+        # assign values
         self._channel_one = channel_one
         self._channel_two = channel_two
 
-    @property 
+    @property
     def channel_one(self) -> str:
         """
         :type:'str': Returns the name of channel one
         """
         return self._channel_one
-    
+
     @property
     def channel_two(self) -> str:
         """
         :type:'str': Returns the name of channel two
         """
         return self._channel_two
-    
+
+
 class StaticDigitalPathGenerationStateParameters(PCBATestToolkitData):
     """Creates an instance of StaticDigitalPathGenerationStateParameters"""
 
     def __init__(self, connect: bool) -> None:
-        """Defines whether to disconnect or connect a particular path 
+        """Defines whether to disconnect or connect a particular path
 
-            Args:
-                connect(bool): Indicates whether to make or break a given connection
+        Args:
+            connect(bool): Indicates whether to make or break a given connection
         """
 
-        #inout validation
+        # inout validation
         Guard.is_not_none(connect, nameof(connect))
         Guard.is_not_float(connect, nameof(connect))
 
-        # assign values 
+        # assign values
         self._connect = connect
 
-    @property 
+    @property
     def connect(self) -> bool:
-        """  
+        """
         :type:'boolean': Gets the boolean value to write
         """
         return self._connect
-    
-class StaticDigitalPathGenerationTimingParameters(PCBATestToolkitData):    
-    """ Creates an instance of StaticDigitalPathGenerationTimingParameters """
+
+
+class StaticDigitalPathGenerationTimingParameters(PCBATestToolkitData):
+    """Creates an instance of StaticDigitalPathGenerationTimingParameters"""
 
     def __init__(self, max_debounce_wait: int = 5000):
         """Defines the maximum wait for debounce time
@@ -74,26 +76,28 @@ class StaticDigitalPathGenerationTimingParameters(PCBATestToolkitData):
             max_debounce_wait (int): The maximum time to wait for debounce
         """
 
-        #Input Validation
+        # Input Validation
         Guard.is_not_none(max_debounce_wait, nameof(max_debounce_wait))
         Guard.is_greater_than_or_equal_to_zero(max_debounce_wait, nameof(max_debounce_wait))
 
-        #assign values
+        # assign values
         self._max_debounce_wait = max_debounce_wait
 
     @property
     def max_debounce_wait(self) -> int:
-        """   
+        """
         :type:int
         """
         return self._max_debounce_wait
-    
+
+
 class StaticDigitalPathGenerationTerminalAndStateSettings(PCBATestToolkitData):
     """Creates an instance of StaticDigitalPathGenerationTerminalAndStateSettings"""
 
-    def __init__(self,
-                 channel_parameters: StaticDigitalPathGenerationChannelParameters,
-                 connection_state: StaticDigitalPathGenerationStateParameters
+    def __init__(
+        self,
+        channel_parameters: StaticDigitalPathGenerationChannelParameters,
+        connection_state: StaticDigitalPathGenerationStateParameters,
     ):
         """Aggragates channel and timing parameters into a single class
 
@@ -103,43 +107,49 @@ class StaticDigitalPathGenerationTerminalAndStateSettings(PCBATestToolkitData):
             timing_parameters (StaticDigitalPathGenerationStateParameters): The connection
                 state to be implemented
         """
-        #input validation
+        # input validation
         Guard.is_not_none(channel_parameters, nameof(channel_parameters))
         Guard.is_not_none(connection_state, nameof(connection_state))
 
-        #assign values 
-        self._channel_parameters = channel_parameters 
-        self._connection_state = connection_state 
+        # assign values
+        self._channel_parameters = channel_parameters
+        self._connection_state = connection_state
 
     @property
     def channel_parameters(self) -> StaticDigitalPathGenerationChannelParameters:
-        """  
+        """
         :type: StaticDigitalPathGenerationChannelParameters
         """
         return self._channel_parameters
-    
-    @property 
+
+    @property
     def connection_state(self) -> StaticDigitalPathGenerationStateParameters:
-        """   
+        """
         :type: StaticDigitalPathGenerationStateParameters
         """
         return self._connection_state
-        
+
 
 class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
-    """  Defines the max voltage and current characteristics of the switch """
-    
-    def __init__(self, max_dc_voltage: float, max_ac_voltage: float, max_switching_dc_current: float, max_switching_ac_current: float) -> None:
+    """Defines the max voltage and current characteristics of the switch"""
+
+    def __init__(
+        self,
+        max_dc_voltage: float,
+        max_ac_voltage: float,
+        max_switching_dc_current: float,
+        max_switching_ac_current: float,
+    ) -> None:
         """Creates an instance of StaticDigitalPathGenerationModuleCharacteristics
 
         Args:
-            max_dc_voltage (float): The rated maximum DC voltage of the topology 
-            max_ac_voltage (float): The rated maximum AC voltage of the topology 
+            max_dc_voltage (float): The rated maximum DC voltage of the topology
+            max_ac_voltage (float): The rated maximum AC voltage of the topology
             max_switching_dc_current (float): The rated maximum DC switching current of the topology
             max_switching_ac_current (float): The rated maximum AC switching current of the topology
         """
 
-        #input validation 
+        # input validation
         Guard.is_not_none(max_dc_voltage, nameof(max_dc_voltage))
         Guard.is_greater_than_or_equal_to_zero(max_dc_voltage, nameof(max_dc_voltage))
 
@@ -147,10 +157,14 @@ class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
         Guard.is_greater_than_or_equal_to_zero(max_ac_voltage, nameof(max_ac_voltage))
 
         Guard.is_not_none(max_switching_dc_current, nameof(max_switching_dc_current))
-        Guard.is_greater_than_or_equal_to_zero(max_switching_dc_current, nameof(max_switching_dc_current))
+        Guard.is_greater_than_or_equal_to_zero(
+            max_switching_dc_current, nameof(max_switching_dc_current)
+        )
 
         Guard.is_not_none(max_switching_ac_current, nameof(max_switching_ac_current))
-        Guard.is_greater_than_or_equal_to_zero(max_switching_ac_current, nameof(max_switching_ac_current))
+        Guard.is_greater_than_or_equal_to_zero(
+            max_switching_ac_current, nameof(max_switching_ac_current)
+        )
 
         # assign values
         self._max_dc_voltage = max_dc_voltage
@@ -160,74 +174,75 @@ class StaticDigitalPathGenerationModuleCharacteristics(PCBATestToolkitData):
 
     @property
     def max_dc_voltage(self) -> float:
-        """  
-        :type:'float': Returns the max DC voltage for the topology 
+        """
+        :type:'float': Returns the max DC voltage for the topology
         """
         return self._max_dc_voltage
-    
-    @property 
+
+    @property
     def max_ac_voltage(self) -> float:
-        """  
+        """
         :type:'float': Returns the max AC voltage for the topology
         """
         return self._max_ac_voltage
-    
+
     @property
     def max_switching_dc_current(self) -> float:
         """
         :type:'float': Returns the max dc switching current
         """
         return self._max_switching_dc_current
-    
+
     @property
     def max_switching_ac_current(self) -> float:
-        """  
+        """
         :type:'float': Returns the max ac switching current
         """
         return self._max_switching_ac_current
-    
-    
+
+
 class StaticDigitalPathGenerationConfiguration(PCBATestToolkitData):
-    """ Contains the ultimate configuration used in path generation """
+    """Contains the ultimate configuration used in path generation"""
 
     def __init__(
-                 self, 
-                 terminal_and_state_settings: StaticDigitalPathGenerationTerminalAndStateSettings,
-                 timing_settings: StaticDigitalPathGenerationTimingParameters
+        self,
+        terminal_and_state_settings: StaticDigitalPathGenerationTerminalAndStateSettings,
+        timing_settings: StaticDigitalPathGenerationTimingParameters,
     ) -> None:
         """Creates an instance of StaticDigitalPathGenerationConfiguration
 
         Args:
-            terminal_state_settings (StaticDigitalPathGenerationTerminalAndStateSettings): 
+            terminal_state_settings (StaticDigitalPathGenerationTerminalAndStateSettings):
                 A populated instance of StaticDigitalPathGenerationTerminalAndStateSettings
-            timing_settings (StaticDigitalPathGenerationTimingParameters):  
+            timing_settings (StaticDigitalPathGenerationTimingParameters):
                 A populated instance of StaticDigitalPathTimingParameters
         """
 
-        #input validation
+        # input validation
         Guard.is_not_none(terminal_and_state_settings, nameof(terminal_and_state_settings))
         Guard.is_not_none(timing_settings, nameof(timing_settings))
 
-        #assign values 
-        self._terminal_and_state_settings = terminal_and_state_settings 
+        # assign values
+        self._terminal_and_state_settings = terminal_and_state_settings
         self._timing_settings = timing_settings
 
-    @property 
+    @property
     def terminal_and_state_settings(self) -> StaticDigitalPathGenerationTerminalAndStateSettings:
         """
         :type: StaticDigitalPathGenerationTerminalAndStateSettings
         """
         return self._terminal_and_state_settings
-    
+
     @property
     def timing_settings(self) -> StaticDigitalPathGenerationTimingParameters:
         """
         :type: StaticDigitalPathGenerationTimingParameters
         """
         return self._timing_settings
-   
+
+
 class StaticDigitalPathGenerationPathStatus(PCBATestToolkitData):
-    """ Defines the status of the path"""
+    """Defines the status of the path"""
 
     def __init__(self, path_status: niswitch.PathCapability) -> None:
         """Creates an instance of StaticDigitalPathGenerationPathStatus
@@ -236,18 +251,16 @@ class StaticDigitalPathGenerationPathStatus(PCBATestToolkitData):
             path_status (str): Displays whether or not the switch path is available
         """
 
-        #input validation
+        # input validation
         Guard.is_not_none(path_status, nameof(path_status))
         Guard.is_not_float(path_status, nameof(path_status))
 
-        #assign values 
+        # assign values
         self._path_status = path_status
 
     @property
     def path_status(self) -> niswitch.PathCapability:
-        """  
-        :type:'string': Returns the availability of the path for the given connections 
+        """
+        :type:'string': Returns the availability of the path for the given connections
         """
         return self._path_status
-    
-

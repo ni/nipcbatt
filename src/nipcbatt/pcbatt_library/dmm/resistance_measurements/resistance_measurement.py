@@ -18,7 +18,9 @@ from nipcbatt.pcbatt_library.dmm.resistance_measurements.resistance_data_types i
     ResistanceMeasurementFunctionParameters,
     ResistanceMeasurementResultData,
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import BuildingBlockUsingNIDMM
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+    BuildingBlockUsingNIDMM,
+)
 
 
 class DcRmsResistanceMeasurement(BuildingBlockUsingNIDMM):

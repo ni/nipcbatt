@@ -64,7 +64,6 @@ for i in range(num_iterations):
 
     # Wait before next iteration (skip delay after last iteration)
     if i < num_iterations - 1:
-        print(f"Waiting {delay_between_iterations} seconds before next iteration...")
         time.sleep(delay_between_iterations)
 
 # Disconnect and close resources
