@@ -7,6 +7,7 @@ from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_m
 )
 from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_data_types import (
     DCVoltageSourceAndMeasureParameters,
+    DCVoltageSourceAndMeasureResultData,
     EventSignalToExport,
     ExecutionSettings,
     ExportEvent,

@@ -3,6 +3,7 @@
 import nidcpower
 from enum import Enum
 
+from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 
 class MeasurementExecutionType(Enum):
     """Defines the execution type for DC constant voltage source and measure."""
@@ -303,7 +304,7 @@ class TriggerParameters:
         """
         return self._output_event_signal_terminal   
 
-class DCVoltageSourceAndMeasureParameters:
+class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
     """Defines the full configuration for DC constant voltage source and measure operation."""
 
     def __init__(
@@ -367,3 +368,47 @@ class DCVoltageSourceAndMeasureParameters:
             routing settings.
         """
         return self._trigger_parameters
+
+
+class DCVoltageSourceAndMeasureResultData(PCBATestToolkitData):
+    """Defines the results obtained from a DC constant voltage source and measure operation."""
+
+    def __init__(
+        self,
+        execution_settings: dict,
+        measurement_results: dict,
+    ) -> None:
+        """Initializes the DC voltage source and measure result data.
+
+        Args:
+            execution_settings (dict):
+                Dictionary containing the applied hardware settings including voltage level,
+                ranges, aperture time, device model, and output function.
+                Fields are ``math.nan`` when configuration is not performed.
+            measurement_results (dict):
+                Dictionary containing the measured values including voltage, current,
+                compliance state, power, and resistance.
+                Fields are ``math.nan``/``False`` when measurement is not performed.
+        """
+        self._execution_settings = execution_settings
+        self._measurement_results = measurement_results
+
+    @property
+    def execution_settings(self) -> dict:
+        """Gets the applied hardware execution settings.
+
+        Returns:
+            dict: Applied hardware settings including voltage level, ranges, aperture time,
+                device model, and output function.
+        """
+        return self._execution_settings
+
+    @property
+    def measurement_results(self) -> dict:
+        """Gets the measurement results.
+
+        Returns:
+            dict: Measured values including voltage, current, compliance state, power,
+                and resistance.
+        """
+        return self._measurement_results

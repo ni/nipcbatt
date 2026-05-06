@@ -3,6 +3,7 @@
 import nidcpower
 
 from nipcbatt import dcpower
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
@@ -48,8 +49,12 @@ def main():
     # ======================= Initialize the SMU/PPS ============================
     dc_voltage_source_and_measure.initialize(resource_name="PPS1/0")
 
+    # PcbattLogger logs NI-DCPower configurations and measurement results to the mentioned file path.
+    logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.csv")
+    logger.attach(dc_voltage_source_and_measure)
+
     # ================== Custom measurement configuration ===================
-    execution_settings, measurement_results = dc_voltage_source_and_measure.configure_and_measure(
+    results = dc_voltage_source_and_measure.configure_and_measure(
         configuration=configuration
     )
 
@@ -57,8 +62,7 @@ def main():
     dc_voltage_source_and_measure.close()
 
     # Print the measurement results
-    print(f"Execution Settings: {execution_settings}")
-    print(f"Measurement Results: {measurement_results}")
+    print(results)
 
 
 if __name__ == "__main__":
