@@ -1,9 +1,11 @@
 """Data types used for DC constant voltage source and measurement on PCB points."""
 
-import nidcpower
 from enum import Enum
 
+import nidcpower
+
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
+
 
 class MeasurementExecutionType(Enum):
     """Defines the execution type for DC constant voltage source and measure."""
@@ -13,17 +15,20 @@ class MeasurementExecutionType(Enum):
     START_SOURCE_ONLY = "START_SOURCE_ONLY"
     MEASURE_ONLY = "MEASURE_ONLY"
 
+
 class SourceTriggerBehavior(Enum):
     """Defines the source trigger behavior enum."""
 
     Start_Source_Trigger = "Start_Source_Trigger"
     Disable_Source_Trigger = "Disable_Source_Trigger"
 
+
 class ExportEvent(Enum):
     """Defines the export event enum."""
 
     NONE = "NONE"
     Route_Event = "Route_Event"
+
 
 class EventSignalToExport(Enum):
     """Defines the NI-DCPower event or trigger signal to route to an output terminal enum.
@@ -44,14 +49,11 @@ class EventSignalToExport(Enum):
     Sequence_Advance_Trigger = "exported_sequence_advance_trigger_output_terminal"
     Pulse_Trigger = "exported_pulse_trigger_output_terminal"
 
+
 class ExecutionSettings:
     """Defines execution settings for a DC constant voltage source and measure operation."""
 
-    def __init__(
-            self,
-            execution_type: MeasurementExecutionType,
-            skip_analysis: bool
-        ) -> None:  
+    def __init__(self, execution_type: MeasurementExecutionType, skip_analysis: bool) -> None:
         """Initializes the execution settings.
 
         Args:
@@ -86,8 +88,11 @@ class ExecutionSettings:
         """
         return self._skip_analysis
 
+
 class VoltageChannelSettings:
-    """Defines the voltage level, current limit, sensing, and output enable settings for a channel."""
+    """Defines the voltage level, current limit, sensing, and output enable
+    settings for a channel.
+    """
 
     def __init__(
         self,
@@ -175,6 +180,7 @@ class VoltageChannelSettings:
         """
         return self._enable_output
 
+
 class TimingParameters:
     """Defines timing settings for DC constant voltage source and measure."""
 
@@ -225,8 +231,11 @@ class TimingParameters:
         """
         return self._transient_response
 
+
 class TriggerParameters:
-    """Defines trigger parameters and event signal routing settings for a DC voltage source operation."""
+    """Defines trigger parameters and event signal routing settings for
+    a DC voltage source operation.
+    """
 
     def __init__(
         self,
@@ -234,7 +243,7 @@ class TriggerParameters:
         start_source_name: str,
         export_event: ExportEvent,
         event_signal_to_export: EventSignalToExport,
-        output_event_signal_terminal: str
+        output_event_signal_terminal: str,
     ) -> None:
         """Initializes the trigger parameters.
 
@@ -250,7 +259,7 @@ class TriggerParameters:
                 Configures the event signal to export.
                 Ignored when ``export_event`` is ``NONE``.
             output_event_signal_terminal (str):
-                The output terminal name to which the event signal is routed. 
+                The output terminal name to which the event signal is routed.
                 Ignored when ``export_event`` is ``NONE``.
         """
         self._source_trigger_behavior = source_trigger_behavior
@@ -302,7 +311,8 @@ class TriggerParameters:
         Returns:
             str: Configures the output event signal terminal.
         """
-        return self._output_event_signal_terminal   
+        return self._output_event_signal_terminal
+
 
 class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
     """Defines the full configuration for DC constant voltage source and measure operation."""
@@ -336,7 +346,8 @@ class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         """Gets the voltage channel settings.
 
         Returns:
-            VoltageChannelSettings: Configures the voltage level, current limit, sensing, and output enable settings.
+            VoltageChannelSettings: Configures the voltage level, current limit,
+            sensing, and output enable settings.
         """
         return self._voltage_channel_settings
 

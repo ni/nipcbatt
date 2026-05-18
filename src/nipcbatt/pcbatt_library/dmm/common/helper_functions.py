@@ -5,6 +5,10 @@ from enum import Enum
 
 import nidmm
 
+from nipcbatt.pcbatt_library.common.helper_functions import (
+    format_with_si_prefix as _format_with_si_prefix,
+)
+
 
 # Helper Class to extract nidmm.Function and range value from enum
 class RangeAndMeasurementFunctionParameters:
@@ -64,53 +68,9 @@ class FormatMeasurement:
         Returns:
             tuple: (formatted_number, si_prefix)
                 - formatted_number: The scaled value as a string with appropriate decimal places
-                - si_prefix: The SI prefix symbol (e.g., 'k', 'M', 'µ', 'm') or exponential notation
-
-        How it works:
-            1. Convert measured_value to scientific notation
-            2. Transform to engineering notation (exponent divisible by 3)
-            3. Scale the mantissa accordingly to match engineering exponent
-            4. Determine decimal places needed to maintain significant figures
-            5. Map engineering exponent to SI prefix (m, k, M, G, etc.)
-            6. Return formatted number and SI prefix
+                - si_prefix: The SI prefix symbol (e.g., 'k', 'M', 'u', 'm') or exponential notation
         """
-        # Convert to scientific notation string and parse
-        sci_str = f"{measured_value:.{total_digits-1}e}"
-        mantissa_str, exp_str = sci_str.split("e")
-        mantissa = float(mantissa_str)
-        exponent = int(exp_str)
-
-        # Convert to engineering notation (exponent divisible by 3)
-        eng_exponent = 3 * (exponent // 3)
-        scaled_value = mantissa * (10 ** (exponent - eng_exponent))
-
-        # Calculate decimal places
-        decimal_places = total_digits - len(str(int(abs(scaled_value))))
-        decimal_places = max(0, decimal_places)
-        formatted_number = f"{scaled_value:.{decimal_places}f}"
-
-        si_prefixes = {
-            -24: "y",
-            -21: "z",
-            -18: "a",
-            -15: "f",
-            -12: "p",
-            -9: "n",
-            -6: "u",
-            -3: "m",
-            0: "",
-            3: "k",
-            6: "M",
-            9: "G",
-            12: "T",
-            15: "P",
-            18: "E",
-            21: "Z",
-            24: "Y",
-        }
-        prefix = si_prefixes.get(eng_exponent, f"e{eng_exponent}")
-
-        return (formatted_number, prefix)
+        return _format_with_si_prefix(measured_value, total_digits)
 
     @staticmethod
     def measurement(

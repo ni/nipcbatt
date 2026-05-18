@@ -49,14 +49,13 @@ def main():
     # ======================= Initialize the SMU/PPS ============================
     dc_voltage_source_and_measure.initialize(resource_name="PPS1/0")
 
-    # PcbattLogger logs NI-DCPower configurations and measurement results to the mentioned file path.
+    # PcbattLogger logs NI-DCPower configurations and measurement results
+    # to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.csv")
     logger.attach(dc_voltage_source_and_measure)
 
     # ================== Custom measurement configuration ===================
-    results = dc_voltage_source_and_measure.configure_and_measure(
-        configuration=configuration
-    )
+    results = dc_voltage_source_and_measure.configure_and_measure(configuration=configuration)
 
     # ===================== Close the SMU/PPS session ===========================
     dc_voltage_source_and_measure.close()

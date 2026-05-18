@@ -3,11 +3,13 @@
 from nipcbatt import dcpower
 from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
+
 def main():
     """Configures and executes DC CV source and measure using default constants."""
     dc_voltage_source_and_measure = dcpower.DCVoltageSourceAndMeasure()
 
-    # PcbattLogger logs NI-DCPower configurations and measurement results to the mentioned file path.
+    # PcbattLogger logs NI-DCPower configurations and measurement results
+    # to the mentioned file path.
     logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.txt")
     logger.attach(dc_voltage_source_and_measure)
 
@@ -28,5 +30,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
