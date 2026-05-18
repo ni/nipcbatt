@@ -6,7 +6,7 @@ on:
 
 
 env:
-      PYTHON_VERSION: 3.10
+      PYTHON_VERSION: '3.10'
       POETRY_VERSION: 1.8.4
       ARCHITECTURE: 'x64'
 
