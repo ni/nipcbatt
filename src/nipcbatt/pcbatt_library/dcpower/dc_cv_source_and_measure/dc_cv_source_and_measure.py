@@ -86,10 +86,18 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             "Output Function": self.session.channels[self._channel_name].output_function.name,
         }
         measurement_results = {
-            "Voltage Measurement (V)": math.nan,
-            "Current Measurement (A)": math.nan,
-            "Power (W)": math.nan,
-            "Resistance (Ohm)": math.nan,
+            "formatted_measurements": {
+                "Voltage Measurement (V)": math.nan,
+                "Current Measurement (A)": math.nan,
+                "Power (W)": math.nan,
+                "Resistance (Ohm)": math.nan,
+            },
+            "raw_measurements": {
+                "Voltage Measurement (V)": math.nan,
+                "Current Measurement (A)": math.nan,
+                "Power (W)": math.nan,
+                "Resistance (Ohm)": math.nan,
+            },
             "Compliance/Limit Reached": False,
         }
 
@@ -119,22 +127,18 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.session.commit()
             execution_settings.update(
                 {
-                    "Voltage Level Setting (V)": "".join(
-                        _si_notation(self.session.channels[self._channel_name].voltage_level, 6)
-                    ),
-                    "Voltage Level Range (V)": "".join(
-                        _si_notation(
-                            self.session.channels[self._channel_name].voltage_level_range, 3
-                        )
-                    ),
-                    "Current Limit Setting (A)": "".join(
-                        _si_notation(self.session.channels[self._channel_name].current_limit, 3)
-                    ),
-                    "Current Limit Range (A)": "".join(
-                        _si_notation(
-                            self.session.channels[self._channel_name].current_limit_range, 5
-                        )
-                    ),
+                    "Voltage Level Setting (V)": self.session.channels[
+                        self._channel_name
+                    ].voltage_level,
+                    "Voltage Level Range (V)": self.session.channels[
+                        self._channel_name
+                    ].voltage_level_range,
+                    "Current Limit Setting (A)": self.session.channels[
+                        self._channel_name
+                    ].current_limit,
+                    "Current Limit Range (A)": self.session.channels[
+                        self._channel_name
+                    ].current_limit_range,
                     "Device Model": self.session.instrument_model,
                     "Output Function": self.session.channels[
                         self._channel_name
@@ -149,9 +153,9 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             ]:
                 execution_settings.update(
                     {
-                        "Aperture Time (Sec)": "".join(
-                            _si_notation(self.session.channels[self._channel_name].aperture_time, 3)
-                        )
+                        "Aperture Time (Sec)": self.session.channels[
+                            self._channel_name
+                        ].aperture_time
                     }
                 )
             # For CONFIGURE_SOURCE_AND_MEASURE, initiate after commit
@@ -180,14 +184,20 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             measurement_results["Compliance/Limit Reached"] = in_compliance
 
             if configuration.execution_settings.skip_analysis:
-                measurement_results.update(
+                measurement_results["formatted_measurements"].update(
                     {
                         "Voltage Measurement (V)": "".join(
                             _si_notation(measured_value[0].voltage, 6)
                         ),
                         "Current Measurement (A)": "".join(
-                            _si_notation(measured_value[0].current, 3)
+                            _si_notation(measured_value[0].current, 5)
                         ),
+                    }
+                )
+                measurement_results["raw_measurements"].update(
+                    {
+                        "Voltage Measurement (V)": float(measured_value[0].voltage),
+                        "Current Measurement (A)": float(measured_value[0].current),
                     }
                 )
                 return DCVoltageSourceAndMeasureResultData(
@@ -204,12 +214,20 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 if measured_value[0].current != 0
                 else math.inf
             )
-            measurement_results.update(
+            measurement_results["formatted_measurements"].update(
                 {
                     "Voltage Measurement (V)": "".join(_si_notation(measured_value[0].voltage, 6)),
-                    "Current Measurement (A)": "".join(_si_notation(measured_value[0].current, 3)),
-                    "Power (W)": "".join(_si_notation(power, 3)),
-                    "Resistance (Ohm)": "".join(_si_notation(resistance, 3)),
+                    "Current Measurement (A)": "".join(_si_notation(measured_value[0].current, 5)),
+                    "Power (W)": "".join(_si_notation(power, 5)),
+                    "Resistance (Ohm)": "".join(_si_notation(resistance, 5)),
+                }
+            )
+            measurement_results["raw_measurements"].update(
+                {
+                    "Voltage Measurement (V)": float(measured_value[0].voltage),
+                    "Current Measurement (A)": float(measured_value[0].current),
+                    "Power (W)": float(power),
+                    "Resistance (Ohm)": float(resistance),
                 }
             )
 
