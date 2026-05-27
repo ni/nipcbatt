@@ -13,7 +13,7 @@ def main():
     # Configure custom voltage channel settings
     voltage_channel_settings = dcpower.VoltageChannelSettings(
         voltage_level=1.0,
-        voltage_level_range=2.0,
+        voltage_level_range=1.0,
         current_limit=0.01,
         current_limit_range=0.1,
         sensing=nidcpower.Sense.REMOTE,
