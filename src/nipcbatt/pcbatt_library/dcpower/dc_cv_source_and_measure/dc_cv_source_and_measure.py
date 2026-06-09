@@ -4,8 +4,8 @@ import math
 
 import nidcpower
 
-from nipcbatt.pcbatt_library.common.helper_functions import (
-    format_with_si_prefix as _si_notation,
+from nipcbatt.pcbatt_library.dcpower.common.helper_function import (
+    format_si_fixed_decimals as _si_fixed,
 )
 from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_data_types import (
     DCVoltageSourceAndMeasureParameters,
@@ -32,8 +32,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         the source mode to single-point, and sets the output function to DC voltage.
 
         Args:
-            resource_name (str):
-                The resource name of the NI-DCPower instrument (e.g., "PPS1/0").
+            resource_name (str): NI-DCPower resource name, e.g. ``"PPS1/0"``.
         """
         self._resource_name = resource_name
         # Open the NI-DCPower session for the given resource
@@ -47,10 +46,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         )
 
     def close(self):
-        """Closes the NI DC Power session and releases internal resources.
-
-        Resets the specified channel(s) to a known state before closing the session.
-        """
+        """Resets the channel and closes the NI-DCPower session, releasing all resources."""
         if self.is_session_initialized:
             self.session.channels[self._channel_name].reset()
             self.session.close()
@@ -59,23 +55,25 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
     def configure_and_measure(
         self, configuration: DCVoltageSourceAndMeasureParameters
     ) -> DCVoltageSourceAndMeasureResultData:
-        """Configures and/or performs a DC voltage source and measurement operation.
+        """Configures and/or measures DC voltage. Behavior is set by ``execution_settings``.
 
         Behavior is controlled by the ``execution_settings`` :
+        To source and measure all in one function call:
+        - CONFIGURE_SOURCE_AND_MEASURE 
+
+        Or use separated steps calls to execute the same flow but sequentially with:	
         - CONFIGURE_ONLY
-        - CONFIGURE_SOURCE_AND_MEASURE
         - START_SOURCE_ONLY
         - MEASURE_ONLY
 
+
         Args:
-            configuration (DCVoltageSourceAndMeasureParameters):
-                An instance of ``DCVoltageSourceAndMeasureParameters`` containing
-                voltage channel settings, timing parameters, trigger parameters,
-                and the execution settings.
+            configuration (DCVoltageSourceAndMeasureParameters): Channel, timing,
+                trigger, and execution settings.
 
         Returns:
-            DCVoltageSourceAndMeasureResultData: An instance containing the applied
-                hardware execution settings and measurement results.
+            DCVoltageSourceAndMeasureResultData: Hardware execution settings and
+                measurement results. Unused fields contain ``NaN``.
         """
         execution_settings = {
             "Voltage Level Setting (V)": math.nan,
@@ -87,10 +85,10 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         }
         measurement_results = {
             "formatted_measurements": {
-                "Voltage Measurement (V)": math.nan,
-                "Current Measurement (A)": math.nan,
-                "Power (W)": math.nan,
-                "Resistance (Ohm)": math.nan,
+                "Voltage Measurement": math.nan,
+                "Current Measurement": math.nan,
+                "Power": math.nan,
+                "Resistance": math.nan,
             },
             "raw_measurements": {
                 "Voltage Measurement (V)": math.nan,
@@ -158,7 +156,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                         ].aperture_time
                     }
                 )
-            # For CONFIGURE_SOURCE_AND_MEASURE, initiate after commit
+            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source immediately after commit
             if (
                 configuration.execution_settings.execution_type
                 == MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
@@ -186,12 +184,8 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             if configuration.execution_settings.skip_analysis:
                 measurement_results["formatted_measurements"].update(
                     {
-                        "Voltage Measurement (V)": "".join(
-                            _si_notation(measured_value[0].voltage, 6)
-                        ),
-                        "Current Measurement (A)": "".join(
-                            _si_notation(measured_value[0].current, 5)
-                        ),
+                        "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
+                        "Current Measurement": _si_fixed(measured_value[0].current, "A"),
                     }
                 )
                 measurement_results["raw_measurements"].update(
@@ -216,10 +210,10 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             )
             measurement_results["formatted_measurements"].update(
                 {
-                    "Voltage Measurement (V)": "".join(_si_notation(measured_value[0].voltage, 6)),
-                    "Current Measurement (A)": "".join(_si_notation(measured_value[0].current, 5)),
-                    "Power (W)": "".join(_si_notation(power, 5)),
-                    "Resistance (Ohm)": "".join(_si_notation(resistance, 5)),
+                    "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
+                    "Current Measurement": _si_fixed(measured_value[0].current, "A"),
+                    "Power": _si_fixed(power, "W"),
+                    "Resistance": _si_fixed(resistance, "Ohm"),
                 }
             )
             measurement_results["raw_measurements"].update(
@@ -242,9 +236,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         """Configures the voltage level, current limit, and their respective ranges on the channel.
 
         Args:
-            voltage_channel_settings (VoltageChannelSettings):
-                An instance of ``VoltageChannelSettings`` containing the voltage level,
-                voltage level range, current limit, and current limit range to apply.
+            voltage_channel_settings (VoltageChannelSettings): Channel settings to apply.
         """
         self.session.channels[self._channel_name].voltage_level = (
             voltage_channel_settings.voltage_level
@@ -262,15 +254,14 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
     def configure_timing_settings(
         self, timing_parameters: TimingParameters, execution_settings: dict
     ) -> None:
-        """Configures aperture time and transient response settings based on the instrument model.
+        """Configures aperture time and transient response based on the instrument model.
+
+        PXIe-4112/4113: aperture time only. PXI-4110/4130/4131A/4154: neither supported
+        (``Aperture Time (Sec)`` set to ``NaN``). All other models: both supported.
 
         Args:
-            timing_parameters (TimingParameters):
-                An instance of ``TimingParameters`` containing the aperture time (in seconds)
-                and transient response setting to apply.
-            execution_settings (dict):
-                The execution settings dictionary to update with the aperture time value.
-                Set to ``math.nan`` for models that do not support aperture time.
+            timing_parameters (TimingParameters): Aperture time and transient response to apply.
+            execution_settings (dict): Updated in-place; ``NaN`` set for unsupported models.
         """
         match self.session.instrument_model:
             case "NI PXIe-4112" | "NI PXIe-4113":
@@ -294,12 +285,14 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 )
 
     def configure_trigger_settings(self, trigger_parameters: TriggerParameters) -> None:
-        """Configures source trigger input and event signal routing for the channel.
+        """Configures source trigger input and event signal routing.
+
+        - ``Start_Source_Trigger``: source waits for a digital edge on ``start_source_name``.
+        - ``Route_Event``: exports ``event_signal_to_export`` to ``output_event_signal_terminal``.
+        - Not supported on all devices (e.g. NI PXI-4110 raises ``DriverError``).
 
         Args:
-            trigger_parameters (TriggerParameters):
-                An instance of ``TriggerParameters`` containing the source trigger behavior, start
-                source name, export event, event signal to export, and output event signal terminal.
+            trigger_parameters (TriggerParameters): Trigger and event routing settings.
         """
         # Configure digital-edge source trigger if enabled
         if trigger_parameters.source_trigger_behavior == SourceTriggerBehavior.Start_Source_Trigger:

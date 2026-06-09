@@ -19,27 +19,27 @@ from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_m
 
 @dataclasses.dataclass
 class ConstantsForDCVoltageSourceAndMeasure:
-    """Default scalar constants used for DC voltage source and measure operations."""
+    """Default scalar constants for DC voltage source and measure operations."""
 
     DEFAULT_EXECUTION_TYPE = MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
     DEFAULT_SKIP_ANALYSIS = False
 
-    DEFAULT_VOLTAGE_LEVEL_VOLTS = 1.0
-    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 1.0
-    DEFAULT_CURRENT_LIMIT_AMPERES = 0.01
-    DEFAULT_CURRENT_LIMIT_RANGE_AMPERES = 0.1
-    DEFAULT_SENSING = nidcpower.Sense.REMOTE
-    DEFAULT_ENABLE_OUTPUT = True
+    DEFAULT_VOLTAGE_LEVEL_VOLTS = 1.0             # Small value to protect hardware
+    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 2.0       # Must be >= voltage level
+    DEFAULT_CURRENT_LIMIT_AMPERES = 0.01          # 10 mA — small value to protect hardware
+    DEFAULT_CURRENT_LIMIT_RANGE_AMPERES = 0.1     # Must be >= current limit
+    DEFAULT_SENSING = nidcpower.Sense.REMOTE      # Not compatible with all devices; use LOCAL if needed
+    DEFAULT_ENABLE_OUTPUT = True                  # Set False to control output manually via enable_output()
 
-    DEFAULT_SOURCE_DELAY_SECONDS = 0.1
-    DEFAULT_APERTURE_TIME_SECONDS = 0.02
-    DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL
+    DEFAULT_SOURCE_DELAY_SECONDS = 0.1            # 100 ms; compatible with all PPS/SMU; use <=20 ms for SMUs
+    DEFAULT_APERTURE_TIME_SECONDS = 0.02          # 20 ms for 50 Hz noise rejection; use 16.667 ms for 60 Hz
+    DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL  # Adjust based on DUT behavior
 
-    DEFAULT_SOURCE_TRIGGER_BEHAVIOR = SourceTriggerBehavior.Disable_Source_Trigger
-    DEFAULT_START_SOURCE_NAME = ""
-    DEFAULT_EXPORT_EVENT = ExportEvent.NONE
-    DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event
-    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""
+    DEFAULT_SOURCE_TRIGGER_BEHAVIOR = SourceTriggerBehavior.Disable_Source_Trigger  # Source starts immediately; use Start_Source_Trigger to wait for an external edge
+    DEFAULT_START_SOURCE_NAME = ""                                                    # Trigger input terminal, e.g. "/PXI1Slot2/PXI_Trig0"; ignored when trigger is disabled
+    DEFAULT_EXPORT_EVENT = ExportEvent.NONE                                           # Use Route_Event to broadcast a signal to other instruments for synchronization
+    DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event        # Signal to route; ignored when export event is NONE
+    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""                                         # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"; ignored when export event is NONE
 
 
 DEFAULT_DC_CV_EXECUTION_SETTINGS = ExecutionSettings(
