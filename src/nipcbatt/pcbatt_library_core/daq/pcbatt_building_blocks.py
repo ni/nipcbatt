@@ -14,6 +14,7 @@ import nidaqmx.utils
 import pyvisa
 import niswitch
 import nidmm
+import nidcpower
 
 from nipcbatt.pcbatt_communication_library.ni_845x_i2c_communication_devices import (
     Ni845xI2cDevicesHandler,
@@ -160,6 +161,45 @@ class BuildingBlockUsingNIDMM(BuildingBlockUsingInstrument):
                 "Call initialize() on the derived building block."
             )
         return self._instrument
+
+class BuildingBlockUsingNIDCPower(BuildingBlockUsingInstrument):
+    """Defines building block that uses NI-DCPower for DC power sourcing and measurement."""
+
+    @classmethod
+    def _instrument_factory(cls) -> Optional[nidcpower.Session]:
+        """Creates a placeholder for an NI-DCPower session.
+
+        Returns:
+            Optional[nidcpower.Session]: None until initialize() opens the session.
+        """
+        return None
+
+    @property
+    def is_session_initialized(self) -> bool:
+        """Checks whether an NI-DCPower session has been opened.
+
+        Returns:
+            bool: True if the NI-DCPower session is open.
+        """
+        return self._instrument is not None
+
+    @property
+    def session(self) -> nidcpower.Session:
+        """Defines the instance of the NI-DCPower session.
+
+        Returns:
+            nidcpower.Session: the instrument session.
+
+        Raises:
+            PCBATTLibraryException: if the session has not been initialized.
+        """
+        if self._instrument is None:
+            raise PCBATTLibraryException(
+                "NI-DCPower session is not initialized. \n"
+                "Call initialize() on the derived building block."
+            )
+        return self._instrument
+
 
 class BuildingBlockUsingDAQmx(BuildingBlockUsingInstrument):
     """Defines Building block that uses DAQmx task for instrument management."""
