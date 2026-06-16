@@ -3,6 +3,7 @@ scipy
 nidaqmx
 nidmm
 niswitch
+nidcpower
 pyvisa
 colorama
 varname
