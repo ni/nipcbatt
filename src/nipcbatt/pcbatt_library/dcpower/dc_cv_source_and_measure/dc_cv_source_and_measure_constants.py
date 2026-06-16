@@ -25,7 +25,7 @@ class ConstantsForDCVoltageSourceAndMeasure:
     DEFAULT_SKIP_ANALYSIS = False
 
     DEFAULT_VOLTAGE_LEVEL_VOLTS = 1.0             # Small value to protect hardware
-    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 2.0       # Must be >= voltage level
+    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 1.0       # Must be >= voltage level
     DEFAULT_CURRENT_LIMIT_AMPERES = 0.01          # 10 mA — small value to protect hardware
     DEFAULT_CURRENT_LIMIT_RANGE_AMPERES = 0.1     # Must be >= current limit
     DEFAULT_SENSING = nidcpower.Sense.REMOTE      # Not compatible with all devices; use LOCAL if needed

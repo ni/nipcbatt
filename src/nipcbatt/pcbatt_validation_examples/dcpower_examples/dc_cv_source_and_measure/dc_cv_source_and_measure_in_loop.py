@@ -84,6 +84,8 @@ def main():
 
     # ======================= Start source only =========================
     dc_voltage_source_and_measure.configure_and_measure(configuration=start_source_only)
+     # Note: when the execution type is set to "configure_only" or "start_source_only" mode, the return data will contain
+     # valid values for "execution_settings" only and "measurement_results" will be NaN after the execution.
 
     # ======================= Measure only in loop ======================
     num_iterations = 5
@@ -91,6 +93,8 @@ def main():
         results = dc_voltage_source_and_measure.configure_and_measure(configuration=measure_only)
         print(f"Iteration {iteration + 1}/{num_iterations}: {results}")
         time.sleep(1)  # Optional delay between measurements
+        # Note: when the execution type is set to  "measure_only" or "configure_and_measure" mode, the return data will 
+        # contain valid values for both "execution_settings" and "measurement_results" after the execution.
 
     # ======================= Close the SMU/PPS session =================
     dc_voltage_source_and_measure.close()

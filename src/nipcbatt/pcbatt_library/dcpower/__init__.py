@@ -5,9 +5,7 @@
 from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure import (
     DCVoltageSourceAndMeasure,
 )
-from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_data_types import (
-    DCVoltageSourceAndMeasureParameters,
-    DCVoltageSourceAndMeasureResultData,
+from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
     EventSignalToExport,
     ExecutionSettings,
     ExportEvent,
@@ -15,6 +13,10 @@ from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_m
     SourceTriggerBehavior,
     TimingParameters,
     TriggerParameters,
+)
+from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_data_types import (
+    DCVoltageSourceAndMeasureParameters,
+    DCVoltageSourceAndMeasureResultData,
     VoltageChannelSettings,
 )
 from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_constants import (
