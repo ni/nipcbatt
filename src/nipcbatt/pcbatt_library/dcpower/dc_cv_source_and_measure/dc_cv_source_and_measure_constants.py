@@ -39,7 +39,7 @@ class ConstantsForDCVoltageSourceAndMeasure:
     DEFAULT_START_SOURCE_NAME = ""                                                    # Trigger input terminal, e.g. "/PXI1Slot2/PXI_Trig0"; ignored when trigger is disabled
     DEFAULT_EXPORT_EVENT = ExportEvent.NONE                                           # Use Route_Event to route triggers and events to specified terminals; use None to disable exporting
     DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event        # Signal to route
-    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""                                         # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"
+    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""                                         # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"; Ignored when using ExportEvent.NONE
 
 DEFAULT_DC_CV_EXECUTION_SETTINGS = ExecutionSettings(
     execution_type=ConstantsForDCVoltageSourceAndMeasure.DEFAULT_EXECUTION_TYPE,

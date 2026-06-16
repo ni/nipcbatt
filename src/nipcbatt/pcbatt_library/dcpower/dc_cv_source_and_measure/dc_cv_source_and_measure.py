@@ -30,6 +30,9 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
         Opens a new NI-DCPower session, resets the channel, configures
         the source mode to single-point, and sets the output function to DC voltage.
+        Also initializes the ``_execution_settings`` and ``_measurement_results``
+        instance dictionaries with ``NaN`` defaults so that state persists across the
+        separated ``CONFIGURE_ONLY``, ``START_SOURCE_ONLY``, and ``MEASURE_ONLY`` calls.
 
         Args:
             resource_name (str): NI-DCPower resource name, e.g. ``"PPS1/0"``.
@@ -44,6 +47,31 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         self.session.channels[self._channel_name].output_function = (
             nidcpower.OutputFunction.DC_VOLTAGE
         )
+        # Initialize result containers as instance state so values persist across
+        # the separated CONFIGURE_ONLY, START_SOURCE_ONLY, and MEASURE_ONLY calls
+        self._execution_settings = {
+            "Voltage Level Setting (V)": math.nan,
+            "Voltage Level Range (V)": math.nan,
+            "Current Limit Setting (A)": math.nan,
+            "Current Limit Range (A)": math.nan,
+            "Aperture Time (Sec)": math.nan,
+            "Output Function": nidcpower.OutputFunction.DC_VOLTAGE.name,
+        }
+        self._measurement_results = {
+            "formatted_measurements": {
+                "Voltage Measurement": math.nan,
+                "Current Measurement": math.nan,
+                "Power": math.nan,
+                "Resistance": math.nan,
+            },
+            "raw_measurements": {
+                "Voltage Measurement (V)": math.nan,
+                "Current Measurement (A)": math.nan,
+                "Power (W)": math.nan,
+                "Resistance (Ohm)": math.nan,
+            },
+            "Compliance/Limit Reached": False,
+        }
 
     def close(self):
         """Resets the channel and closes the NI-DCPower session, releasing all resources."""
@@ -73,32 +101,10 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
         Returns:
             DCVoltageSourceAndMeasureResultData: Hardware execution settings and
-                measurement results. Unused fields contain ``NaN``.
+                measurement results held in instance state (``_execution_settings`` and
+                ``_measurement_results``). Fields not populated by the current execution
+                type retain the values set during ``initialize`` (``NaN`` by default).
         """
-        execution_settings = {
-            "Voltage Level Setting (V)": math.nan,
-            "Voltage Level Range (V)": math.nan,
-            "Current Limit Setting (A)": math.nan,
-            "Current Limit Range (A)": math.nan,
-            "Aperture Time (Sec)": math.nan,
-            "Output Function": self.session.channels[self._channel_name].output_function.name,
-        }
-        measurement_results = {
-            "formatted_measurements": {
-                "Voltage Measurement": math.nan,
-                "Current Measurement": math.nan,
-                "Power": math.nan,
-                "Resistance": math.nan,
-            },
-            "raw_measurements": {
-                "Voltage Measurement (V)": math.nan,
-                "Current Measurement (A)": math.nan,
-                "Power (W)": math.nan,
-                "Resistance (Ohm)": math.nan,
-            },
-            "Compliance/Limit Reached": False,
-        }
-
         # Apply channel, timing, and trigger settings for CONFIGURE_ONLY or
         # CONFIGURE_SOURCE_AND_MEASURE
         if configuration.execution_settings.execution_type in [
@@ -119,11 +125,11 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             )
             self.configure_timing_settings(
                 timing_parameters=configuration.timing_parameters,
-                execution_settings=execution_settings,
+                execution_settings=self._execution_settings,
             )
             self.configure_trigger_settings(trigger_parameters=configuration.trigger_parameters)
             self.session.commit()
-            execution_settings.update(
+            self._execution_settings.update(
                 {
                     "Voltage Level Setting (V)": self.session.channels[
                         self._channel_name
@@ -149,7 +155,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 "NI PXI-4131A",
                 "NI PXIe-4154",
             ]:
-                execution_settings.update(
+                self._execution_settings.update(
                     {
                         "Aperture Time (Sec)": self.session.channels[
                             self._channel_name
@@ -179,24 +185,24 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         ]:
             measured_value = self.session.measure_multiple()
             in_compliance = self.session.query_in_compliance()
-            measurement_results["Compliance/Limit Reached"] = in_compliance
+            self._measurement_results["Compliance/Limit Reached"] = in_compliance
 
             if configuration.execution_settings.skip_analysis:
-                measurement_results["formatted_measurements"].update(
+                self._measurement_results["formatted_measurements"].update(
                     {
                         "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
                         "Current Measurement": _si_fixed(measured_value[0].current, "A"),
                     }
                 )
-                measurement_results["raw_measurements"].update(
+                self._measurement_results["raw_measurements"].update(
                     {
                         "Voltage Measurement (V)": float(measured_value[0].voltage),
                         "Current Measurement (A)": float(measured_value[0].current),
                     }
                 )
                 return DCVoltageSourceAndMeasureResultData(
-                    execution_settings=execution_settings,
-                    measurement_results=measurement_results,
+                    execution_settings=self._execution_settings,
+                    measurement_results=self._measurement_results,
                 )
 
             # Calculate power from the measured voltage and current
@@ -208,7 +214,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 if measured_value[0].current != 0
                 else math.inf
             )
-            measurement_results["formatted_measurements"].update(
+            self._measurement_results["formatted_measurements"].update(
                 {
                     "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
                     "Current Measurement": _si_fixed(measured_value[0].current, "A"),
@@ -216,7 +222,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                     "Resistance": _si_fixed(resistance, "Ohm"),
                 }
             )
-            measurement_results["raw_measurements"].update(
+            self._measurement_results["raw_measurements"].update(
                 {
                     "Voltage Measurement (V)": float(measured_value[0].voltage),
                     "Current Measurement (A)": float(measured_value[0].current),
@@ -226,8 +232,8 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             )
 
         return DCVoltageSourceAndMeasureResultData(
-            execution_settings=execution_settings,
-            measurement_results=measurement_results,
+            execution_settings=self._execution_settings,
+            measurement_results=self._measurement_results,
         )
 
     def configure_range_and_terminal(
