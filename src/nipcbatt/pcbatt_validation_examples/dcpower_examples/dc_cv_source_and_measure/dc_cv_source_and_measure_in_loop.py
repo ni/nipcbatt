@@ -38,38 +38,19 @@ def main():
         output_event_signal_terminal="",
     )
 
-    # Configuration for CONFIGURE_ONLY
-    configure_only = dcpower.DCVoltageSourceAndMeasureParameters(
-        voltage_channel_settings=voltage_channel_settings,
-        execution_settings=dcpower.ExecutionSettings(
-            execution_type=dcpower.MeasurementExecutionType.CONFIGURE_ONLY,
-            skip_analysis=False,
-        ),
-        timing_parameters=timing_parameters,
-        trigger_parameters=trigger_parameters,
-    )
-
-    # Configuration for START_SOURCE_ONLY
-    start_source_only = dcpower.DCVoltageSourceAndMeasureParameters(
-        voltage_channel_settings=voltage_channel_settings,
-        execution_settings=dcpower.ExecutionSettings(
-            execution_type=dcpower.MeasurementExecutionType.START_SOURCE_ONLY,
-            skip_analysis=False,
-        ),
-        timing_parameters=timing_parameters,
-        trigger_parameters=trigger_parameters,
-    )
-
-    # Configuration for MEASURE_ONLY
-    measure_only = dcpower.DCVoltageSourceAndMeasureParameters(
-        voltage_channel_settings=voltage_channel_settings,
-        execution_settings=dcpower.ExecutionSettings(
-            execution_type=dcpower.MeasurementExecutionType.MEASURE_ONLY,
-            skip_analysis=False,
-        ),
-        timing_parameters=timing_parameters,
-        trigger_parameters=trigger_parameters,
-    )
+    def configuration(
+        execution_type: dcpower.MeasurementExecutionType,
+    ) -> dcpower.DCVoltageSourceAndMeasureParameters:
+        """Builds a DCVoltageSourceAndMeasureParameters with shared channel/timing/trigger settings."""
+        return dcpower.DCVoltageSourceAndMeasureParameters(
+            voltage_channel_settings=voltage_channel_settings,
+            execution_settings=dcpower.ExecutionSettings(
+                execution_type=execution_type,
+                skip_analysis=False,
+            ),
+            timing_parameters=timing_parameters,
+            trigger_parameters=trigger_parameters,
+        )
 
     # ======================= Initialize the SMU/PPS ====================
     dc_voltage_source_and_measure.initialize(resource_name="PPS1/0")
@@ -80,21 +61,29 @@ def main():
     logger.attach(dc_voltage_source_and_measure)
 
     # ======================= Configure only ============================
-    dc_voltage_source_and_measure.configure_and_measure(configuration=configure_only)
+    dc_voltage_source_and_measure.configure_and_measure(
+        configuration=configuration(dcpower.MeasurementExecutionType.CONFIGURE_ONLY)
+    )
 
     # ======================= Start source only =========================
-    dc_voltage_source_and_measure.configure_and_measure(configuration=start_source_only)
-     # Note: when the execution type is set to "configure_only" or "start_source_only" mode, the return data will contain
-     # valid values for "execution_settings" only and "measurement_results" will be NaN after the execution.
+    dc_voltage_source_and_measure.configure_and_measure(
+        configuration=configuration(dcpower.MeasurementExecutionType.START_SOURCE_ONLY)
+    )
+    # Note: when the execution type is set to "configure_only" or "start_source_only" mode,
+    #  the return data will contain valid values for "execution_settings" only and
+    # "measurement_results" will be NaN after the execution.
 
     # ======================= Measure only in loop ======================
     num_iterations = 5
     for iteration in range(num_iterations):
-        results = dc_voltage_source_and_measure.configure_and_measure(configuration=measure_only)
+        results = dc_voltage_source_and_measure.configure_and_measure(
+            configuration=configuration(dcpower.MeasurementExecutionType.MEASURE_ONLY)
+        )
         print(f"Iteration {iteration + 1}/{num_iterations}: {results}")
         time.sleep(1)  # Optional delay between measurements
-        # Note: when the execution type is set to  "measure_only" or "configure_and_measure" mode, the return data will 
-        # contain valid values for both "execution_settings" and "measurement_results" after the execution.
+        # Note: when the execution type is set to  "measure_only" or "configure_and_measure" mode,
+        # the return data will contain valid values for both "execution_settings" and
+        # "measurement_results" after the execution.
 
     # ======================= Close the SMU/PPS session =================
     dc_voltage_source_and_measure.close()

@@ -61,14 +61,10 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             "formatted_measurements": {
                 "Voltage Measurement": math.nan,
                 "Current Measurement": math.nan,
-                "Power": math.nan,
-                "Resistance": math.nan,
             },
             "raw_measurements": {
                 "Voltage Measurement (V)": math.nan,
                 "Current Measurement (A)": math.nan,
-                "Power (W)": math.nan,
-                "Resistance (Ohm)": math.nan,
             },
             "Compliance/Limit Reached": False,
         }
@@ -87,9 +83,9 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
         Behavior is controlled by the ``execution_settings`` :
         To source and measure all in one function call:
-        - CONFIGURE_SOURCE_AND_MEASURE 
+        - CONFIGURE_SOURCE_AND_MEASURE
 
-        Or use separated steps calls to execute the same flow but sequentially with:	
+        Or use separated steps calls to execute the same flow but sequentially with:
         - CONFIGURE_ONLY
         - START_SOURCE_ONLY
         - MEASURE_ONLY
@@ -156,11 +152,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 "NI PXIe-4154",
             ]:
                 self._execution_settings.update(
-                    {
-                        "Aperture Time (Sec)": self.session.channels[
-                            self._channel_name
-                        ].aperture_time
-                    }
+                    {"Aperture Time (Sec)": self.session.channels[self._channel_name].aperture_time}
                 )
             # For CONFIGURE_SOURCE_AND_MEASURE — initiate source immediately after commit
             if (
@@ -188,18 +180,14 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self._measurement_results["Compliance/Limit Reached"] = in_compliance
 
             if configuration.execution_settings.skip_analysis:
-                self._measurement_results["formatted_measurements"].update(
-                    {
-                        "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
-                        "Current Measurement": _si_fixed(measured_value[0].current, "A"),
-                    }
-                )
-                self._measurement_results["raw_measurements"].update(
-                    {
-                        "Voltage Measurement (V)": float(measured_value[0].voltage),
-                        "Current Measurement (A)": float(measured_value[0].current),
-                    }
-                )
+                self._measurement_results["formatted_measurements"] = {
+                    "Voltage Measurement": _si_fixed(measured_value[0].voltage, "V"),
+                    "Current Measurement": _si_fixed(measured_value[0].current, "A"),
+                }
+                self._measurement_results["raw_measurements"] = {
+                    "Voltage Measurement (V)": float(measured_value[0].voltage),
+                    "Current Measurement (A)": float(measured_value[0].current),
+                }
                 return DCVoltageSourceAndMeasureResultData(
                     execution_settings=self._execution_settings,
                     measurement_results=self._measurement_results,
