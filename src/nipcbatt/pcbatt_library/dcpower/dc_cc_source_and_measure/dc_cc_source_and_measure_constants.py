@@ -35,11 +35,19 @@ class ConstantsForDCCurrentSourceAndMeasure:
     DEFAULT_APERTURE_TIME_SECONDS = 0.02          # 20 ms for 50 Hz noise rejection; use 16.667 ms for 60 Hz
     DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL  # Adjust based on DUT behavior
 
-    DEFAULT_SOURCE_TRIGGER_BEHAVIOR = SourceTriggerBehavior.Disable_Source_Trigger  # Source trigger disabled by default 
-    DEFAULT_START_SOURCE_NAME = ""                                                    # Trigger input terminal, e.g. "/PXI1Slot2/PXI_Trig0"; ignored when trigger is disabled
-    DEFAULT_EXPORT_EVENT = ExportEvent.NONE                                           # Use Route_Event to route triggers and events to specified terminals; use None to disable exporting
-    DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event        # Signal to route
-    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""                                         # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"; Ignored when no export event or when using ExportEvent.NONE
+    DEFAULT_SOURCE_TRIGGER_BEHAVIOR = (
+        SourceTriggerBehavior.Disable_Source_Trigger
+    )  # Source trigger disabled by default
+    DEFAULT_START_SOURCE_NAME = (
+        ""  # Trigger input terminal, e.g. "/PXI1Slot2/PXI_Trig0"; ignored when trigger is disabled
+    )
+    DEFAULT_EXPORT_EVENT = (
+        ExportEvent.NONE
+    )  # Use Route_Event to route triggers and events to specified terminals; use None to disable exporting
+    DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event  # Signal to route
+    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = (
+        ""  # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"; Ignored when using ExportEvent.NONE
+    )
 
 DEFAULT_DC_CC_EXECUTION_SETTINGS = ExecutionSettings(
     execution_type=ConstantsForDCCurrentSourceAndMeasure.DEFAULT_EXECUTION_TYPE,
