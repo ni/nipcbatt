@@ -31,7 +31,7 @@ def main():
     trigger_parameters = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
         start_source_name="",
-        export_event=dcpower.ExportEvent.Route_Event,
+        export_event=dcpower.ExportEvent.NONE,
         event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,
         output_event_signal_terminal="",
     )
@@ -51,7 +51,7 @@ def main():
 
     # PcbattLogger logs NI-DCPower configurations and measurement results
     # to the mentioned file path.
-    logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.csv")
+    logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.txt")
     logger.attach(dc_voltage_source_and_measure)
 
     # ================== Custom measurement configuration ===================

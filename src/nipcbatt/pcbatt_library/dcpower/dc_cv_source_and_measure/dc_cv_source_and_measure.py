@@ -21,6 +21,10 @@ from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNIDCPower,
 )
 
+_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset({
+    "NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"
+})
+
 
 class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
     """Defines a way that allows you to source DC voltage and perform measurements on PCB points."""
@@ -145,12 +149,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                     ].output_function.name,
                 }
             )
-            if self.session.instrument_model not in [
-                "NI PXI-4110",
-                "NI PXI-4130",
-                "NI PXI-4131A",
-                "NI PXIe-4154",
-            ]:
+            if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
                 self._execution_settings.update(
                     {"Aperture Time (Sec)": self.session.channels[self._channel_name].aperture_time}
                 )
@@ -265,7 +264,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 self.session.channels[self._channel_name].aperture_time_units = (
                     nidcpower.ApertureTimeUnits.SECONDS
                 )
-            case "NI PXI-4110" | "NI PXI-4130" | "NI PXI-4131A" | "NI PXIe-4154":
+            case _ if self.session.instrument_model in _APERTURE_TIME_UNSUPPORTED_MODELS:
                 execution_settings.update({"Aperture Time (Sec)": math.nan})
             case _:
                 self.session.channels[self._channel_name].aperture_time = (

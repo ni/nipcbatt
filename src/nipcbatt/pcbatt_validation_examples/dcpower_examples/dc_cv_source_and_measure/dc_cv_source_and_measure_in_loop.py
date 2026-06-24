@@ -33,7 +33,7 @@ def main():
     trigger_parameters = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
         start_source_name="",
-        export_event=dcpower.ExportEvent.Route_Event,
+        export_event=dcpower.ExportEvent.NONE,
         event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,
         output_event_signal_terminal="",
     )
