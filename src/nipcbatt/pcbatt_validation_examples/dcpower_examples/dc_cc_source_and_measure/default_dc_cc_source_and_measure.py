@@ -14,7 +14,7 @@ def main():
     logger.attach(dc_current_source_and_measure)
 
     # ======================= Initialize the SMU/PPS ============================
-    dc_current_source_and_measure.initialize(resource_name="PPS1/0")
+    dc_current_source_and_measure.initialize(resource_name="SMU1/0")
 
     # ================= Default measurement configuration ===================
     results = dc_current_source_and_measure.configure_and_measure(

@@ -2,8 +2,6 @@
 
 import math
 
-import nidcpower
-
 _SI_PREFIXES = {
     -24: "y",
     -21: "z",
@@ -62,26 +60,3 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
     scaled = value / (10**eng_exp)
     prefix = _SI_PREFIXES.get(eng_exp, f"e{eng_exp}")
     return f"{scaled:.{decimal_places}f}{prefix}{unit}"
-
-
-def set_output_enabled(
-    session: nidcpower.Session,
-    channel_name: str,
-    enable_output: bool,
-) -> None:
-    """Enables or disables the output of a DC power channel.
-
-    Accepts an existing DCPower session resource, retrieves 
-    the channel name, and sets the ``output_enabled`` 
-    property.
-
-    Args:
-        session (nidcpower.Session):
-            An already-open NI-DCPower session.
-        channel_name (str):
-            The name of the channel to configure (e.g. ``"0"``).
-        enable_output (bool):
-            When ``True``, enables the channel output.
-            When ``False``, disables the channel output.
-    """
-    session.channels[channel_name].output_enabled = enable_output

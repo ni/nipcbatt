@@ -21,9 +21,9 @@ from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNIDCPower,
 )
 
-_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset({
-    "NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"
-})
+_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
+    {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"}
+)
 
 
 class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
@@ -73,6 +73,14 @@ class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
             "Compliance/Limit Reached": False,
         }
 
+    def set_output_enabled(self, enable_output: bool) -> None:
+        """Enables or disables the output of the channel.
+
+        Args:
+            enable_output (bool): True to enable output, False to disable.
+        """
+        self.session.channels[self._channel_name].output_enabled = enable_output
+
     def close(self):
         """Resets the channel and closes the NI-DCPower session, releasing all resources."""
         if self.is_session_initialized:
@@ -87,9 +95,9 @@ class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
         Behavior is controlled by the ``execution_settings`` :
         To source and measure all in one function call:
-        - CONFIGURE_SOURCE_AND_MEASURE 
+        - CONFIGURE_SOURCE_AND_MEASURE
 
-        Or use separated steps calls to execute the same flow but sequentially with:	
+        Or use separated steps calls to execute the same flow but sequentially with:
         - CONFIGURE_ONLY
         - START_SOURCE_ONLY
         - MEASURE_ONLY
@@ -151,11 +159,7 @@ class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
             )
             if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
                 self._execution_settings.update(
-                    {
-                        "Aperture Time (Sec)": self.session.channels[
-                            self._channel_name
-                        ].aperture_time
-                    }
+                    {"Aperture Time (Sec)": self.session.channels[self._channel_name].aperture_time}
                 )
             # For CONFIGURE_SOURCE_AND_MEASURE — initiate source immediately after commit
             if (

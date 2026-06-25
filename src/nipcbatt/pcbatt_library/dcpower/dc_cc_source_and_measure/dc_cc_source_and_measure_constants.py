@@ -24,15 +24,15 @@ class ConstantsForDCCurrentSourceAndMeasure:
     DEFAULT_EXECUTION_TYPE = MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
     DEFAULT_SKIP_ANALYSIS = False
 
-    DEFAULT_CURRENT_LEVEL_AMPERES = 10e-6         # 10 uA — small value to protect hardware
-    DEFAULT_CURRENT_LEVEL_RANGE_AMPERES = 0.1     # Must be >= current level
-    DEFAULT_VOLTAGE_LIMIT_VOLTS = 1.0             # Small value to protect hardware
-    DEFAULT_VOLTAGE_LIMIT_RANGE_VOLTS = 2.0       # Must be >= voltage limit
-    DEFAULT_SENSING = nidcpower.Sense.REMOTE      # Not compatible with all devices; use LOCAL if needed
-    DEFAULT_ENABLE_OUTPUT = True                  # Set False to control output manually via enable_output()
+    DEFAULT_CURRENT_LEVEL_AMPERES = 10e-6  # 10 uA — small value to protect hardware
+    DEFAULT_CURRENT_LEVEL_RANGE_AMPERES = 0.1  # Must be >= current level
+    DEFAULT_VOLTAGE_LIMIT_VOLTS = 1.0  # Small value to protect hardware
+    DEFAULT_VOLTAGE_LIMIT_RANGE_VOLTS = 2.0  # Must be >= voltage limit
+    DEFAULT_SENSING = nidcpower.Sense.REMOTE  # Not compatible with all devices; use LOCAL if needed
+    DEFAULT_ENABLE_OUTPUT = True  # Set False to control output manually via enable_output()
 
-    DEFAULT_SOURCE_DELAY_SECONDS = 0.1            # 100 ms; compatible with all PPS/SMU; use <=20 ms for SMUs
-    DEFAULT_APERTURE_TIME_SECONDS = 0.02          # 20 ms for 50 Hz noise rejection; use 16.667 ms for 60 Hz
+    DEFAULT_SOURCE_DELAY_SECONDS = 0.1  # 100 ms; compatible with all PPS/SMU; use <=20 ms for SMUs
+    DEFAULT_APERTURE_TIME_SECONDS = 0.02  # 20 ms for 50 Hz noise rejection; use 16.667 ms for 60 Hz
     DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL  # Adjust based on DUT behavior
 
     DEFAULT_SOURCE_TRIGGER_BEHAVIOR = (
@@ -48,6 +48,7 @@ class ConstantsForDCCurrentSourceAndMeasure:
     DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = (
         ""  # Output terminal, e.g. "/PXI1Slot2/PXI_Trig1"; Ignored when using ExportEvent.NONE
     )
+
 
 DEFAULT_DC_CC_EXECUTION_SETTINGS = ExecutionSettings(
     execution_type=ConstantsForDCCurrentSourceAndMeasure.DEFAULT_EXECUTION_TYPE,

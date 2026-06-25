@@ -21,9 +21,9 @@ from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNIDCPower,
 )
 
-_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset({
-    "NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"
-})
+_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
+    {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"}
+)
 
 
 class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
@@ -72,6 +72,14 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             },
             "Compliance/Limit Reached": False,
         }
+
+    def set_output_enabled(self, enable_output: bool) -> None:
+        """Enables or disables the output of the channel.
+
+        Args:
+            enable_output (bool): True to enable output, False to disable.
+        """
+        self.session.channels[self._channel_name].output_enabled = enable_output
 
     def close(self):
         """Resets the channel and closes the NI-DCPower session, releasing all resources."""

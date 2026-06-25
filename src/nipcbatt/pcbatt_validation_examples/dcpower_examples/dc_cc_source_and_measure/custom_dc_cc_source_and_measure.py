@@ -12,7 +12,7 @@ def main():
 
     # Configure custom current channel settings
     current_channel_settings = dcpower.CurrentChannelSettings(
-        current_level=10e-6, 
+        current_level=10e-6,
         current_level_range=0.1,
         voltage_limit=1.0,
         voltage_limit_range=2.0,
