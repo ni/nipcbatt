@@ -1,4 +1,4 @@
-"""DC constant voltage source and measure example with custom input parameters."""
+"""DC constant current source and measure example with custom input parameters."""
 
 import nidcpower
 
@@ -7,15 +7,15 @@ from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
 
 
 def main():
-    """Configures and executes DC CV source and measure using custom parameters."""
-    dc_voltage_source_and_measure = dcpower.DCVoltageSourceAndMeasure()
+    """Configures and executes DC CC source and measure using custom parameters."""
+    dc_current_source_and_measure = dcpower.DCCurrentSourceAndMeasure()
 
-    # Configure custom voltage channel settings
-    voltage_channel_settings = dcpower.VoltageChannelSettings(
-        voltage_level=1.0,
-        voltage_level_range=1.0,
-        current_limit=0.01,
-        current_limit_range=0.1,
+    # Configure custom current channel settings
+    current_channel_settings = dcpower.CurrentChannelSettings(
+        current_level=10e-6,
+        current_level_range=0.1,
+        voltage_limit=1.0,
+        voltage_limit_range=2.0,
         sensing=nidcpower.Sense.REMOTE,
         enable_output=True,
     )
@@ -37,8 +37,8 @@ def main():
     )
 
     # Build the full measurement configuration
-    configuration = dcpower.DCVoltageSourceAndMeasureParameters(
-        voltage_channel_settings=voltage_channel_settings,
+    configuration = dcpower.DCCurrentSourceAndMeasureParameters(
+        current_channel_settings=current_channel_settings,
         execution_settings=dcpower.ExecutionSettings(
             execution_type=dcpower.MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
             skip_analysis=False,
@@ -47,18 +47,18 @@ def main():
         trigger_parameters=trigger_parameters,
     )
     # ======================= Initialize the SMU/PPS ============================
-    dc_voltage_source_and_measure.initialize(resource_name="PPS1/0")
+    dc_current_source_and_measure.initialize(resource_name="SMU1/0")
 
     # PcbattLogger logs NI-DCPower configurations and measurement results
     # to the mentioned file path.
-    logger = PcbattLogger(file="c:\\Temp\\dc_cv_source_and_measure_logger.txt")
-    logger.attach(dc_voltage_source_and_measure)
+    logger = PcbattLogger(file="c:\\Temp\\dc_cc_source_and_measure_logger.txt")
+    logger.attach(dc_current_source_and_measure)
 
     # ================== Custom measurement configuration ===================
-    results = dc_voltage_source_and_measure.configure_and_measure(configuration=configuration)
+    results = dc_current_source_and_measure.configure_and_measure(configuration=configuration)
 
     # ===================== Close the SMU/PPS session ===========================
-    dc_voltage_source_and_measure.close()
+    dc_current_source_and_measure.close()
 
     # Print the measurement results
     print(results)

@@ -2,6 +2,7 @@ numpy
 scipy
 nidaqmx
 nidmm
+nidcpower
 niswitch
 nidcpower
 pyvisa
