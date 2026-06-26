@@ -73,7 +73,7 @@ class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
             "Compliance/Limit Reached": False,
         }
 
-    def set_output_enabled(self, enable_output: bool) -> None:
+    def enable_output(self, enable_output: bool) -> None:
         """Enables or disables the output of the channel.
 
         Args:
