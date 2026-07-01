@@ -11,7 +11,6 @@ from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_
     MeasurementExecutionType,
     SourceTriggerBehavior,
     TimingParameters,
-    TriggerParameters,
     VoltageChannelSettings,
     WaveformVoltageSourceAndMeasureParameters,
 )
@@ -35,6 +34,7 @@ class ConstantsForWaveformVoltageSourceAndMeasure:
     # TimingParameters
     DEFAULT_SOURCE_DELAY_SECONDS = 0.1               # Step Time = 100 ms
     DEFAULT_APERTURE_TIME_SECONDS = 0.001            # Aperture Time = 1 ms
+    DEFAULT_STEP_SIZE_SECONDS = 0.00001              # Step size = 10 µs (aperture_time / step_record_length)
     DEFAULT_MEASURE_RECORD_LENGTH = 100              # Step Record Length
     DEFAULT_MEASURE_WHEN = nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
     DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL
@@ -69,6 +69,7 @@ DEFAULT_WAVEFORM_CV_CHANNEL_SETTINGS = VoltageChannelSettings(
 DEFAULT_WAVEFORM_CV_TIMING_PARAMETERS = TimingParameters(
     source_delay=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_SOURCE_DELAY_SECONDS,
     aperture_time=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_APERTURE_TIME_SECONDS,
+    step_size=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_STEP_SIZE_SECONDS,
     measure_record_length=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_MEASURE_RECORD_LENGTH,
     measure_when=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_MEASURE_WHEN,
     transient_response=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_TRANSIENT_RESPONSE,

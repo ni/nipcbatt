@@ -1,23 +1,12 @@
 """Defines class used for DC constant voltage source and measurement on PCB points."""
 
-from itertools import count
 import math
-from socket import timeout
 
 import nidcpower
-
-from nipcbatt.pcbatt_library.common.helper_functions import (
-    format_with_si_prefix as _si_notation,
-)
-
-from nipcbatt.pcbatt_library.dcpower.common.helper_functions import (
-    generate_pulse_current_sequence,
-)
 
 from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
     WaveformVoltageSourceAndMeasureParameters,
     WaveformVoltageSourceAndMeasureResultData,
-    EffectiveExecutionSettings,
     ExportEvent,
     MeasurementExecutionType,
     SourceTriggerBehavior,
@@ -111,13 +100,13 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self._execution_settings.update(
                 {
                     "Transient Response": self.session.channels[
-                        self.transient_response
-                    ].voltage_level,
-                    "Voltage Gain Bandwdith": self.session.channels[
+                        self._channel_name
+                    ].transient_response.name,
+                    "Voltage Gain Bandwidth": self.session.channels[
                         self._channel_name
                     ].voltage_gain_bandwidth,
                     "Voltage Compensation Frequency": self.session.channels[
-                        self.channel_name
+                        self._channel_name
                     ].voltage_compensation_frequency,
                     "Voltage Pole Zero Ratio": self.session.channels[
                         self._channel_name
@@ -166,7 +155,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             count = len(configuration.voltage_setpoints) * step_record_length
 
             # Fetch measurements from the instrument
-            measurements = self.session.channels[self._channel_name].fetch_measurement(count=count, timeout=timeout)
+            measurements = self.session.channels[self._channel_name].fetch_multiple(count=count, timeout=10.0)
 
             # Extract voltage, current, and compliance status from the measurements
             voltages = [m.voltage for m in measurements]
@@ -209,7 +198,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         Args:
             voltage_channel_settings (VoltageChannelSettings): Channel settings to apply.
         """
-        )
         self.session.channels[self._channel_name].current_limit = (
             voltage_channel_settings.current_limit
         )
@@ -234,17 +222,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 The execution settings dictionary to update with the aperture time value.
                 Set to ``math.nan`` for models that do not support aperture time.
         """
-
-        """Configures aperture time and transient response based on the instrument model.
-
-        PXIe-4112/4113: aperture time only. PXI-4110/4130/4131A/4154: neither supported
-        (``Aperture Time (Sec)`` set to ``NaN``). All other models: both supported.
-
-        Args:
-            timing_parameters (TimingParameters): Aperture time and transient response to apply.
-            execution_settings (dict): Updated in-place; ``NaN`` set for unsupported models.
-        """
-
         self.session.channels[self._channel_name].source_delay = (
             timing_parameters.source_delay
         )
@@ -278,6 +255,9 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         )
         self.session.channels[self._channel_name].current_pole_zero_ratio = (
             timing_parameters.current_pole_zero_ratio
+        )
+        self.session.channels[self._channel_name].voltage_pole_zero_ratio = (
+            timing_parameters.voltage_pole_zero_ratio
         )
 
 
@@ -335,37 +315,3 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
             self.session.commit_with_channel(self._channel_name)
 '''
-
-    def build_effective_execution_settings(self, channel_name, last_point_current, number_of_poimts, instrument_model):
-        """Builds a dictionary of effective execution settings based on the current configuration.
-
-        Args:
-            channel_name (str): The name of the channel being configured.
-            last_point_current (float): The last point current value.
-            number_of_points (int): The number of points in the pulse sequence.
-            instrument_model (str): The model of the instrument being used.
-
-        Returns:
-            dict: A dictionary containing the effective execution settings.
-        """
-        effective_execution_settings = {
-            "Pulse On Time": self.session.channels[self._channel_name].pulse_on_time,
-            "Pulse Off Time": self.session.channels[self._channel_name].pulse_off_time,
-            "Pulse Bias Delay": self.session.channels[self._channel_name].pulse_bias_delay,
-            "Pulse Current Level Range": self.session.channels[self._channel_name].pulse_current_level_range,
-            "Pulse Bias Current Level": self.session.channels[self._channel_name].pulse_bias_current_level,
-            "Pulse Voltage Limit": self.session.channels[self._channel_name].pulse_voltage_limit,
-            "Pulse Voltage Limit Range": self.session.channels[self._channel_name].pulse_voltage_limit_range,
-            "Pulse Bias Voltage Limit": self.session.channels[self._channel_name].pulse_bias_voltage_limit,
-            "Output Function": self.session.channels[self._channel_name].output_function.name,
-            "Aperture Time (Sec)": self.session.channels[self._channel_name].aperture_time,
-            "Transient Response": self.session.channels[self._channel_name].transient_response.name,
-            "Voltage Gain Bandwidth": self.session.channels[self._channel_name].voltage_gain_bandwidth,
-            "Voltage Pole Zero Ratio": self.session.channels[self._channel_name].voltage_pole_zero_ratio,
-            "Current Gain Bandwidth": self.session.channels[self._channel_name].current_gain_bandwidth,
-            "Current Pole Zero Ratio": self.session.channels[self._channel_name].current_pole_zero_ratio,
-            "Last Point Current (A)": self.session.channels[self._channel_name].last_point_current,
-            "Number of Points": self.session.channels[self._channel_name].number_of_points,
-            "Device Model": self.session.channels[self._channel_name].instrument_model,
-        }
-        return effective_execution_settings

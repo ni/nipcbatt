@@ -75,109 +75,6 @@ class EventSignalToExport(Enum):
     Pulse_Trigger = "exported_pulse_trigger_output_terminal"
 
 
-class EffectiveExecutionSettings:
-    """Defines execution settings for a DC constant voltage source and measure operation."""
-
-    def __init__(self, pulse_on_time: float, pulse_off_time: float, pulse_bias_delay: float, 
-                 pulse_current_level_range: float, pulse_bias_current_level: float, 
-                 pulse_voltage_limit: float, pulse_voltage_limit_range: float, pulse_bias_voltage_limit: float, 
-                 output_function: nidcpower.OutputFunction, aperture_time: float, 
-                 transient_response: nidcpower.TransientResponse,
-                 voltage_gain_bandwidth: float,
-                 voltage_compensation_frequency: float,
-                 voltage_pole_zero_ratio: float,
-                 current_gain_bandwidth: float,
-                 current_compensation_frequency: float,
-                 current_pole_zero_ratio: float,
-                 number_of_points: int,
-                 device_model: str,
-                 last_point_current: float
-                 ) -> None:
-        """Initializes the execution settings.
-
-        Args:
-            pulse_on_time (float):
-                The pulse on time, in seconds.
-            pulse_off_time (float):
-                The pulse off time, in seconds.
-            pulse_bias_delay (float):
-                The pulse bias delay, in seconds.
-            pulse_current_level_range (float):
-                The pulse current level range, in amperes.
-            pulse_bias_current_level (float):
-                The pulse bias current level, in amperes.
-            pulse_voltage_limit (float):
-                The pulse voltage limit, in volts.
-            pulse_voltage_limit_range (float):
-                The pulse voltage limit range, in volts.
-            pulse_bias_voltage_limit (float):
-                The pulse bias voltage limit, in volts.
-            output_function (nidcpower.OutputFunction):
-                The output function (``DC_VOLTAGE``, ``DC_CURRENT``, ``PULSE_VOLTAGE``, or ``PULSE_CURRENT``).
-            aperture_time (float):
-                The aperture time, in seconds.
-            transient_response (nidcpower.TransientResponse):
-                The transient response (``NORMAL``, ``SLOW``, or ``FAST``).
-            voltage_gain_bandwidth (float):
-                The voltage gain bandwidth, in hertz.
-            voltage_compensation_frequency (float):
-                The voltage compensation frequency, in hertz.
-            voltage_pole_zero_ratio (float):
-                The voltage pole-zero ratio.
-            current_gain_bandwidth (float):
-                The current gain bandwidth, in hertz.
-            current_compensation_frequency (float):
-                The current compensation frequency, in hertz.
-            current_pole_zero_ratio (float):
-                The current pole-zero ratio.
-            number_of_points (int):
-                The number of points in the measurement.
-            device_model (str):
-                The model of the device under test.
-            last_point_current (float):
-                The current measured at the last point, in amperes.     
-        """
-        self._pulse_on_time = pulse_on_time
-        self._pulse_off_time = pulse_off_time
-        self._pulse_bias_delay = pulse_bias_delay
-        self._pulse_current_level_range = pulse_current_level_range
-        self._pulse_bias_current_level = pulse_bias_current_level
-        self._pulse_voltage_limit = pulse_voltage_limit
-        self._pulse_voltage_limit_range = pulse_voltage_limit_range
-        self._pulse_bias_voltage_limit = pulse_bias_voltage_limit
-        self._output_function = output_function
-        self._aperture_time = aperture_time
-        self._transient_response = transient_response
-        self._voltage_gain_bandwidth = voltage_gain_bandwidth
-        self._voltage_compensation_frequency = voltage_compensation_frequency
-        self._voltage_pole_zero_ratio = voltage_pole_zero_ratio
-        self._current_gain_bandwidth = current_gain_bandwidth
-        self._current_compensation_frequency = current_compensation_frequency
-        self._current_pole_zero_ratio = current_pole_zero_ratio
-        self._number_of_points = number_of_points
-        self._device_model = device_model
-        self._last_point_current = last_point_current   
-
-    @property
-    def execution_type(self) -> MeasurementExecutionType:
-        """Gets the measurement execution type.
-
-        Returns:
-            MeasurementExecutionType: The configured execution type.
-        """
-        return self._execution_type
-
-    @property
-    def skip_analysis(self) -> bool:
-        """Gets whether post-measurement analysis is skipped.
-
-        Returns:
-            bool: ``True`` if analysis is skipped;
-            ``False`` if full analysis is performed.
-        """
-        return self._skip_analysis
-
-
 class VoltageChannelSettings:
     """Defines the voltage level, current limit, sensing, and output enable
     settings for a channel.
@@ -240,6 +137,7 @@ class TimingParameters:
         self,
         source_delay: float,
         aperture_time: float,
+        step_size: float,
         measure_record_length: int,
         measure_when: nidcpower.MeasureWhen,
         transient_response: nidcpower.TransientResponse,
@@ -257,6 +155,9 @@ class TimingParameters:
                 Defines source delay in seconds.
             aperture_time (float):
                 Defines aperture time in seconds.
+            step_size (float):
+                Defines the time interval between consecutive measurement samples, in seconds.
+                Used to calculate step_record_length = aperture_time / step_size.
             measure_record_length (int):
                 Defines how many samples constitute a record. If this is set to value greater than 1,
                 then the measure_when parameter must be set to MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE, 
@@ -285,6 +186,7 @@ class TimingParameters:
         """
         self._source_delay = source_delay
         self._aperture_time = aperture_time
+        self._step_size = step_size
         self._measure_record_length = measure_record_length
         self._measure_when = measure_when
         self._transient_response = transient_response
@@ -315,6 +217,33 @@ class TimingParameters:
         return self._aperture_time
 
     @property
+    def step_size(self) -> float:
+        """Gets the step size (time interval between samples).
+
+        Returns:
+            float: The step size in seconds.
+        """
+        return self._step_size
+
+    @property
+    def measure_record_length(self) -> int:
+        """Gets the measure record length.
+
+        Returns:
+            int: Number of samples per record.
+        """
+        return self._measure_record_length
+
+    @property
+    def measure_when(self) -> nidcpower.MeasureWhen:
+        """Gets the measure when setting.
+
+        Returns:
+            nidcpower.MeasureWhen: When measurements are taken.
+        """
+        return self._measure_when
+
+    @property
     def transient_response(self) -> nidcpower.TransientResponse:
         """Gets the transient response setting.
 
@@ -322,6 +251,60 @@ class TimingParameters:
             nidcpower.TransientResponse: The transient response mode.
         """
         return self._transient_response
+
+    @property
+    def voltage_gain_bandwidth(self) -> float:
+        """Gets the voltage gain bandwidth.
+
+        Returns:
+            float: The voltage gain bandwidth in Hz.
+        """
+        return self._voltage_gain_bandwidth
+
+    @property
+    def voltage_compensation_frequency(self) -> float:
+        """Gets the voltage compensation frequency.
+
+        Returns:
+            float: The voltage compensation frequency in Hz.
+        """
+        return self._voltage_compensation_frequency
+
+    @property
+    def voltage_pole_zero_ratio(self) -> float:
+        """Gets the voltage pole-zero ratio.
+
+        Returns:
+            float: The voltage pole-zero ratio.
+        """
+        return self._voltage_pole_zero_ratio
+
+    @property
+    def current_gain_bandwidth(self) -> float:
+        """Gets the current gain bandwidth.
+
+        Returns:
+            float: The current gain bandwidth in Hz.
+        """
+        return self._current_gain_bandwidth
+
+    @property
+    def current_compensation_frequency(self) -> float:
+        """Gets the current compensation frequency.
+
+        Returns:
+            float: The current compensation frequency in Hz.
+        """
+        return self._current_compensation_frequency
+
+    @property
+    def current_pole_zero_ratio(self) -> float:
+        """Gets the current pole-zero ratio.
+
+        Returns:
+            float: The current pole-zero ratio.
+        """
+        return self._current_pole_zero_ratio
 
 
 class TriggerParameters:
@@ -479,19 +462,9 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         """
         return self._timing_parameters
 
-    @property
-    def trigger_parameters(self) -> TriggerParameters:
-        """Gets the trigger parameters.
 
-        Returns:
-            TriggerParameters: Configures the source trigger input and event signal
-            routing settings.
-        """
-        return self._trigger_parameters
-
-
-class DCVoltageSourceAndMeasureResultData(PCBATestToolkitData):
-    """Defines the results obtained from a DC constant voltage source and measure operation."""
+class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
+    """Defines the results obtained from a waveform DC voltage source and measure operation."""
 
     def __init__(
         self,
