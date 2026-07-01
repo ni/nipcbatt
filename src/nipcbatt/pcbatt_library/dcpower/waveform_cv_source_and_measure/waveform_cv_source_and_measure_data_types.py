@@ -16,6 +16,30 @@ class MeasurementExecutionType(Enum):
     MEASURE_ONLY = "MEASURE_ONLY"
 
 
+class ExecutionSettings:
+    """Defines execution mode and analysis control settings."""
+
+    def __init__(self, execution_type: MeasurementExecutionType, skip_analysis: bool = False) -> None:
+        """Initializes execution settings.
+
+        Args:
+            execution_type (MeasurementExecutionType): The execution mode.
+            skip_analysis (bool): Whether to skip post-measurement analysis.
+        """
+        self._execution_type = execution_type
+        self._skip_analysis = skip_analysis
+
+    @property
+    def execution_type(self) -> MeasurementExecutionType:
+        """Gets the execution type."""
+        return self._execution_type
+
+    @property
+    def skip_analysis(self) -> bool:
+        """Gets whether post-measurement analysis is skipped."""
+        return self._skip_analysis
+
+
 class SourceTriggerBehavior(Enum):
     """Defines the source trigger behavior enum."""
 
@@ -161,52 +185,25 @@ class VoltageChannelSettings:
 
     def __init__(
         self,
-        start_current: float,
-        end_current: float,
-        step_size_current: float,
-        pulse_current_level_range: float,
-        pulse_bias_current_level: float,
-        pulse_voltage_limit: float,
-        pulse_voltage_limit_range: float,
-        pulse_bias_voltage_limit: float,
-        sensing: nidcpower.Sense,
-        enable_output: bool,
+        voltage_level_range: float,
+        current_limit_range: float,
+        current_limit: float,
+        
     ) -> None:
         """Initializes the voltage channel settings.
 
         Args:
-            voltage_level (float):
-                The DC voltage level to source, in volts.
             voltage_level_range (float):
                 The voltage level range setting, in volts.
             current_limit (float):
                 The current limit for the output, in amperes.
             current_limit_range (float):
                 The current limit range setting, in amperes.
-            sensing (nidcpower.Sense):
-                The sensing mode (``LOCAL`` or ``REMOTE``) for voltage measurement.
-            enable_output (bool):
-                Whether the channel output is enabled.
+            
         """
-        self._start_current = start_current
-        self._end_current = end_current
-        self._step_size_current = step_size_current
-        self._pulse_current_level_range = pulse_current_level_range
-        self._pulse_bias_current_level = pulse_bias_current_level
-        self._pulse_voltage_limit = pulse_voltage_limit
-        self._pulse_voltage_limit_range = pulse_voltage_limit_range
-        self._pulse_bias_voltage_limit = pulse_bias_voltage_limit
-        self._sensing = sensing
-        self._enable_output = enable_output
-
-    @property
-    def voltage_level(self) -> float:
-        """Gets the DC voltage level to source.
-
-        Returns:
-            float: The voltage level in volts.
-        """
-        return self._voltage_level
+        self._voltage_level_range = voltage_level_range
+        self._current_limit_range = current_limit_range
+        self._current_limit = current_limit
 
     @property
     def voltage_level_range(self) -> float:
@@ -235,24 +232,6 @@ class VoltageChannelSettings:
         """
         return self._current_limit_range
 
-    @property
-    def sensing(self) -> nidcpower.Sense:
-        """Gets the sensing mode.
-
-        Returns:
-            nidcpower.Sense: The sensing mode (``LOCAL`` or ``REMOTE``).
-        """
-        return self._sensing
-
-    @property
-    def enable_output(self) -> bool:
-        """Gets whether output is enabled.
-
-        Returns:
-            bool: ``True`` if the output is enabled, ``False`` otherwise.
-        """
-        return self._enable_output
-
 
 class TimingParameters:
     """Defines timing settings for DC constant voltage source and measure."""
@@ -261,7 +240,15 @@ class TimingParameters:
         self,
         source_delay: float,
         aperture_time: float,
+        measure_record_length: int,
+        measure_when: nidcpower.MeasureWhen,
         transient_response: nidcpower.TransientResponse,
+        voltage_gain_bandwidth: float,
+        voltage_compensation_frequency: float,
+        voltage_pole_zero_ratio: float,
+        current_gain_bandwidth: float,
+        current_compensation_frequency: float,
+        current_pole_zero_ratio: float,
     ) -> None:
         """Initializes the timing parameters.
 
@@ -270,12 +257,44 @@ class TimingParameters:
                 Defines source delay in seconds.
             aperture_time (float):
                 Defines aperture time in seconds.
+            measure_record_length (int):
+                Defines how many samples constitute a record. If this is set to value greater than 1,
+                then the measure_when parameter must be set to MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE, 
+                or MeasureWhen.ON_MEASURE_TRIGGER.
+            measure_when (nidcpower.MeasureWhen):
+                Specifies when the measure unit should take measurements. Unless this property is set to MeasureWhen.ON_MEASURE_TRIGGER, 
+                the measure_trigger propery will be ignored.
             transient_response (nidcpower.TransientResponse):
                 Defines the transient response.
+            voltage_gain_bandwidth (float):
+                The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. 
+                This property takes effect when the channel is in Constant Voltage mode. 
+            voltage_compensation_frequency (float):
+                The frequency at which a pole-zero pair is added to the system when the channel is in Constant Voltage mode. 
+            voltage_pole_zero_ratio (float):
+                The ratio of the pole frequency to the zero frequency when the channel is in Constant Voltage mode. 
+            current_gain_bandwidth (float):
+                The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. 
+                This property takes effect when the channel is in Constant Current mode. 
+            current_compensation_frequency (float):
+                The frequency at which a pole-zero pair is added to the system when the channel is in Constant Current mode. 
+            current_pole_zero_ratio (float):
+                The ratio of the pole frequency to the zero frequency when the channel is in Constant Current mode. 
+
+
         """
         self._source_delay = source_delay
         self._aperture_time = aperture_time
+        self._measure_record_length = measure_record_length
+        self._measure_when = measure_when
         self._transient_response = transient_response
+        self._voltage_gain_bandwidth = voltage_gain_bandwidth
+        self._voltage_compensation_frequency = voltage_compensation_frequency
+        self._voltage_pole_zero_ratio = voltage_pole_zero_ratio
+        self._current_gain_bandwidth = current_gain_bandwidth
+        self._current_compensation_frequency = current_compensation_frequency
+        self._current_pole_zero_ratio = current_pole_zero_ratio
+
 
     @property
     def source_delay(self) -> float:
@@ -391,15 +410,16 @@ class TriggerParameters:
         return self._output_event_signal_terminal
 
 
-class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
+class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
     """Defines the full configuration for DC constant voltage source and measure operation."""
 
     def __init__(
         self,
         voltage_channel_settings: VoltageChannelSettings,
-        execution_settings: EffectiveExecutionSettings,
+        execution_settings: ExecutionSettings,
         timing_parameters: TimingParameters,
-        trigger_parameters: TriggerParameters,
+        voltage_setpoints: list,
+        # trigger_parameters: TriggerParameters,
     ) -> None:
         """Initializes the DC voltage source and measure parameters.
 
@@ -412,11 +432,14 @@ class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
                 Source delay, aperture time, and transient response settings.
             trigger_parameters (TriggerParameters):
                 Source trigger input and event signal routing settings.
+            voltage_setpoints (list):
+                List of voltage setpoints to be applied during the source and measure operation.
         """
         self._voltage_channel_settings = voltage_channel_settings
         self._execution_settings = execution_settings
         self._timing_parameters = timing_parameters
-        self._trigger_parameters = trigger_parameters
+        self._voltage_setpoints = voltage_setpoints
+        # self._trigger_parameters = trigger_parameters
 
     @property
     def voltage_channel_settings(self) -> VoltageChannelSettings:
@@ -429,11 +452,20 @@ class DCVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         return self._voltage_channel_settings
 
     @property
-    def effective_execution_settings(self) -> EffectiveExecutionSettings:
+    def voltage_setpoints(self) -> list:
+        """Gets the voltage setpoints.
+
+        Returns:
+            list: Voltage setpoints to apply as a sequence.
+        """
+        return self._voltage_setpoints
+
+    @property
+    def execution_settings(self) -> ExecutionSettings:
         """Gets the execution settings.
 
         Returns:
-            EffectiveExecutionSettings: Configures the execution mode and skip analysis settings.
+            ExecutionSettings: Configures the execution mode and skip analysis settings.
         """
         return self._execution_settings
 

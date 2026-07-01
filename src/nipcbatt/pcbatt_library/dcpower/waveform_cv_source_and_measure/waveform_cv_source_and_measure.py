@@ -1,6 +1,8 @@
 """Defines class used for DC constant voltage source and measurement on PCB points."""
 
+from itertools import count
 import math
+from socket import timeout
 
 import nidcpower
 
@@ -13,8 +15,8 @@ from nipcbatt.pcbatt_library.dcpower.common.helper_functions import (
 )
 
 from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
-    DCVoltageSourceAndMeasureParameters,
-    DCVoltageSourceAndMeasureResultData,
+    WaveformVoltageSourceAndMeasureParameters,
+    WaveformVoltageSourceAndMeasureResultData,
     EffectiveExecutionSettings,
     ExportEvent,
     MeasurementExecutionType,
@@ -23,13 +25,17 @@ from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_
     TriggerParameters,
     VoltageChannelSettings,
 )
+
+_APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
+    {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"}
+)
 from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNIDCPower,
 )
 
 
-class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
-    """Defines a way that allows you to source DC voltage and perform measurements on PCB points."""
+class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
+    """Defines a way that allows you to source DC voltage waveform and perform measurements on PCB points."""
 
     def initialize(self, resource_name: str):
         """Initializes the NI DC Power session with the specified resource.
@@ -47,7 +53,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
         self._channel_name = self.session.get_channel_names(0)[0]
         self.session.channels[self._channel_name].reset()
-        self.session.channels[self._channel_name].source_mode = nidcpower.SourceMode.SINGLE_POINT
+        self.session.channels[self._channel_name].source_mode = nidcpower.SourceMode.SEQUENCE
         self.session.channels[self._channel_name].output_function = (
             nidcpower.OutputFunction.DC_VOLTAGE
         )
@@ -63,55 +69,30 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self._instrument = None
 
     def configure_and_measure(
-        self, configuration: DCVoltageSourceAndMeasureParameters
-    ) -> DCVoltageSourceAndMeasureResultData:
-        """Configures and/or performs a DC voltage source and measurement operation.
+        self, configuration: WaveformVoltageSourceAndMeasureParameters
+    ) -> WaveformVoltageSourceAndMeasureResultData:
+        """Configures and/or measures DC voltage. Behavior is set by ``execution_settings``.
 
         Behavior is controlled by the ``execution_settings`` :
-        - CONFIGURE_ONLY
+        To source and measure all in one function call:
         - CONFIGURE_SOURCE_AND_MEASURE
+
+        Or use separated steps calls to execute the same flow but sequentially with:
+        - CONFIGURE_ONLY
         - START_SOURCE_ONLY
         - MEASURE_ONLY
 
+
         Args:
-            configuration (DCVoltageSourceAndMeasureParameters):
-                An instance of ``DCVoltageSourceAndMeasureParameters`` containing
-                voltage channel settings, timing parameters, trigger parameters,
-                and the execution settings.
+            configuration (WaveformVoltageSourceAndMeasureParameters): Channel, timing,
+                trigger, and execution settings.
 
         Returns:
-            DCVoltageSourceAndMeasureResultData: An instance containing the applied
-                hardware execution settings and measurement results.
+            WaveformVoltageSourceAndMeasureResultData: Hardware execution settings and
+                measurement results held in instance state (``_execution_settings`` and
+                ``_measurement_results``). Fields not populated by the current execution
+                type retain the values set during ``initialize`` (``NaN`` by default).
         """
-        effective_execution_settings = {
-            "Pulse On Time": math.nan,
-            "Pulse Off Time": math.nan,
-            "Pulse Bias Delay": math.nan,
-            "Pulse Current Level Range": math.nan,
-            "Pulse Bias Current Level": math.nan,
-            "Pulse Voltage Limit": math.nan,
-            "Pulse Voltage Limit Range": math.nan,
-            "Pulse Bias Voltage Limit": math.nan,
-            "Output Function": self.session.channels[self._channel_name].output_function.name,
-            "Aperture Time (Sec)": math.nan,
-            "Transient Response": self.session.channels[self._channel_name].transient_response.name,
-            "Voltage Gain Bandwidth": math.nan,
-            "Voltage Compensation Frequency": math.nan,
-            "Voltage Pole Zero Ratio": math.nan,
-            "Current Gain Bandwidth": math.nan,
-            "Current Compensation Frequency": math.nan,
-            "Current Pole Zero Ratio": math.nan,
-            "Last Point Current (A)": math.nan,
-            "Number of Points": math.nan,
-            "Device Model": ""            
-        }
-        measurement_results = {
-            "In Compliance": list(bool()),
-            "Current Measurements": list(float()),
-            "Voltage Measurements": list(float()),
-            "Power Measurements": list(float()),
-        }
-
         # Apply channel, timing, and trigger settings for CONFIGURE_ONLY or
         # CONFIGURE_SOURCE_AND_MEASURE
         if configuration.execution_settings.execution_type in [
@@ -121,47 +102,43 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.configure_range_and_terminal(
                 voltage_channel_settings=configuration.voltage_channel_settings
             )
-            
             self.configure_timing_settings(
-                timing_parameters=configuration.timing_parameters,
-                effective_execution_settings=effective_execution_settings,
+                timing_parameters=configuration.timing_parameters
             )
-            self.configure_trigger_settings(trigger_parameters=configuration.trigger_parameters, timing_parameters=configuration.timing_parameters)
+            # self.configure_trigger_settings(trigger_parameters=configuration.trigger_parameters)
+            self.session.set_sequence(values=configuration.voltage_setpoints)
             self.session.commit()
-            effective_execution_settings.update(
+            self._execution_settings.update(
                 {
-                    "Voltage Level Setting (V)": self.session.channels[
-                        self._channel_name
+                    "Transient Response": self.session.channels[
+                        self.transient_response
                     ].voltage_level,
-                    "Voltage Level Range (V)": self.session.channels[
+                    "Voltage Gain Bandwdith": self.session.channels[
                         self._channel_name
-                    ].voltage_level_range,
-                    "Current Limit Setting (A)": self.session.channels[
+                    ].voltage_gain_bandwidth,
+                    "Voltage Compensation Frequency": self.session.channels[
+                        self.channel_name
+                    ].voltage_compensation_frequency,
+                    "Voltage Pole Zero Ratio": self.session.channels[
                         self._channel_name
-                    ].current_limit,
-                    "Current Limit Range (A)": self.session.channels[
+                    ].voltage_pole_zero_ratio,
+                    "Current Gain Bandwidth": self.session.channels[
                         self._channel_name
-                    ].current_limit_range,
+                    ].current_gain_bandwidth,
+                    "Current Compensation Frequency": self.session.channels[
+                        self._channel_name
+                    ].current_compensation_frequency,
+                    "Current Pole Zero Ratio": self.session.channels[
+                        self._channel_name
+                    ].current_pole_zero_ratio,
                     "Device Model": self.session.instrument_model,
                     "Output Function": self.session.channels[
                         self._channel_name
                     ].output_function.name,
                 }
             )
-            if self.session.instrument_model not in [
-                "NI PXI-4110",
-                "NI PXI-4130",
-                "NI PXI-4131A",
-                "NI PXIe-4154",
-            ]:
-                effective_execution_settings.update(
-                    {
-                        "Aperture Time (Sec)": self.session.channels[
-                            self._channel_name
-                        ].aperture_time
-                    }
-                )
-            # For CONFIGURE_SOURCE_AND_MEASURE, initiate after commit
+           
+            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source immediately after commit
             if (
                 configuration.execution_settings.execution_type
                 == MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
@@ -175,69 +152,54 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             == MeasurementExecutionType.START_SOURCE_ONLY
         ):
             self.session.initiate()
-            self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
+            # self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
         # Perform measurement for CONFIGURE_SOURCE_AND_MEASURE or MEASURE_ONLY
         if configuration.execution_settings.execution_type in [
             MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
             MeasurementExecutionType.MEASURE_ONLY,
         ]:
-            measured_value = self.session.measure_multiple()
-            in_compliance = self.session.query_in_compliance()
-            measurement_results["Compliance/Limit Reached"] = in_compliance
+            
+            # Calculate the number of measurements to fetch based on the aperture time and step size
+            measure_record_dt = self.session.channels[self._channel_name].measure_record_dt
+            step_record_length = int(abs(configuration.timing_parameters.aperture_time / configuration.timing_parameters.step_size))
+            count = len(configuration.voltage_setpoints) * step_record_length
 
-            if configuration.execution_settings.skip_analysis:
-                measurement_results["formatted_measurements"].update(
-                    {
-                        "Voltage Measurement (V)": "".join(
-                            _si_notation(measured_value[0].voltage, 6)
-                        ),
-                        "Current Measurement (A)": "".join(
-                            _si_notation(measured_value[0].current, 5)
-                        ),
-                    }
-                )
-                measurement_results["raw_measurements"].update(
-                    {
-                        "Voltage Measurement (V)": float(measured_value[0].voltage),
-                        "Current Measurement (A)": float(measured_value[0].current),
-                    }
-                )
-                return DCVoltageSourceAndMeasureResultData(
-                    execution_settings=effective_execution_settings,
-                    measurement_results=measurement_results,
-                )
+            # Fetch measurements from the instrument
+            measurements = self.session.channels[self._channel_name].fetch_measurement(count=count, timeout=timeout)
 
-            # Calculate power from the measured voltage and current
-            power = measured_value[0].voltage * measured_value[0].current
-            # Calculate Resistance from the measured voltage and current.
-            # Avoid division by zero if current is zero.
-            resistance = (
-                abs(measured_value[0].voltage / measured_value[0].current)
-                if measured_value[0].current != 0
-                else math.inf
-            )
-            measurement_results["formatted_measurements"].update(
-                {
-                    "Voltage Measurement (V)": "".join(_si_notation(measured_value[0].voltage, 6)),
-                    "Current Measurement (A)": "".join(_si_notation(measured_value[0].current, 5)),
-                    "Power (W)": "".join(_si_notation(power, 5)),
-                    "Resistance (Ohm)": "".join(_si_notation(resistance, 5)),
-                }
-            )
-            measurement_results["raw_measurements"].update(
-                {
-                    "Voltage Measurement (V)": float(measured_value[0].voltage),
-                    "Current Measurement (A)": float(measured_value[0].current),
-                    "Power (W)": float(power),
-                    "Resistance (Ohm)": float(resistance),
-                }
+            # Extract voltage, current, and compliance status from the measurements
+            voltages = [m.voltage for m in measurements]
+            currents = [m.current for m in measurements]
+            in_compliance = [m.in_compliance for m in measurements]
+
+            # Store the measurement results in the instance state
+            self._measurement_results["waveform_measurements"] = {
+                "x_data": voltages,
+                "y_data": currents,
+                "dt": measure_record_dt
+            }
+            self._measurement_results["raw_measurements"] = {
+                "Voltage Measurement (V)": float(voltages[0]),
+                "Current Measurement (A)": float(currents[0]),
+                "In Compliance": bool(in_compliance[0])
+            }
+            self._measurement_results["Measure Record Delta Time"] = measure_record_dt
+            self._measurement_results["Sample Rate (Hz)"] = 1.0 / measure_record_dt
+            self._measurement_results["Step Record Length"] = step_record_length
+            self._measurement_results["Effective Step Time (Sec)"] = measure_record_dt * self._measurement_results["Step Record Length"]
+            self._measurement_results["Total Sequence Time (Sec)"] = self._measurement_results["Effective Step Time (Sec)"] * len(configuration.voltage_setpoints)
+            return WaveformVoltageSourceAndMeasureResultData(
+                execution_settings=self._execution_settings,
+                measurement_results=self._measurement_results,
             )
 
-        return DCVoltageSourceAndMeasureResultData(
-            execution_settings=effective_execution_settings,
-            measurement_results=measurement_results,
+        # Return the execution settings and measurement results
+        return WaveformVoltageSourceAndMeasureResultData(
+            execution_settings=self._execution_settings,
+            measurement_results=self._measurement_results,
         )
+
 
     def configure_range_and_terminal(
         self, voltage_channel_settings: VoltageChannelSettings
@@ -245,47 +207,22 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         """Configures the voltage level, current limit, and their respective ranges on the channel.
 
         Args:
-            voltage_channel_settings (VoltageChannelSettings):
-                An instance of ``VoltageChannelSettings`` containing the voltage level,
-                voltage level range, current limit, and current limit range to apply.
+            voltage_channel_settings (VoltageChannelSettings): Channel settings to apply.
         """
-
-        source_delays, number_of_points, pulse_current_sequence, last_point_current = generate_pulse_current_sequence(
-            start_current=voltage_channel_settings.start_current,
-            end_current=voltage_channel_settings.end_current,
-            step_size=voltage_channel_settings.step_size,
-            source_delay=voltage_channel_settings.source_delay,
+        )
+        self.session.channels[self._channel_name].current_limit = (
+            voltage_channel_settings.current_limit
+        )
+        self.session.channels[self._channel_name].voltage_level_range = (
+            voltage_channel_settings.voltage_level_range
+        )
+        self.session.channels[self._channel_name].current_limit_range = (
+            voltage_channel_settings.current_limit_range
         )
 
-        self.session.channels.source_delay = source_delays
-        self.session.channels.number_of_points = number_of_points
-        self.session.channels.pulse_current_sequence = pulse_current_sequence
-        self.session.channels.last_point_current = last_point_current
-
-        self.session.channels[self._channel_name].pulse_current_level_range = (
-            voltage_channel_settings.pulse_current_level_range
-        )
-
-        self.session.channels[self._channel_name].pulse_bias_current_level = (
-            voltage_channel_settings.pulse_bias_current_level
-        )
-
-        self.session.channels[self._channel_name].pulse_voltage_limit = (
-            voltage_channel_settings.pulse_voltage_limit
-        )
-
-        self.session.channels[self._channel_name].pulse_voltage_limit_range = (
-            voltage_channel_settings.pulse_voltage_limit_range
-        )
-
-        self.session.channels[self._channel_name].pulse_bias_voltage_limit = (
-            voltage_channel_settings.pulse_bias_voltage_limit
-        )
-
-        
 
     def configure_timing_settings(
-        self, timing_parameters: TimingParameters, effective_execution_settings: EffectiveExecutionSettings
+        self, timing_parameters: TimingParameters, 
     ) -> None:
         """Configures aperture time and transient response settings based on the instrument model.
 
@@ -297,14 +234,19 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 The execution settings dictionary to update with the aperture time value.
                 Set to ``math.nan`` for models that do not support aperture time.
         """
-        self.session.channels[self._channel_name].pulse_on_time = (
-            timing_parameters.pulse_on_time
-        )
-        self.session.channels[self._channel_name].pulse_off_time = (
-            timing_parameters.pulse_off_time
-        )
-        self.session.channels[self._channel_name].pulse_bias_delay = (
-            timing_parameters.pulse_bias_delay
+
+        """Configures aperture time and transient response based on the instrument model.
+
+        PXIe-4112/4113: aperture time only. PXI-4110/4130/4131A/4154: neither supported
+        (``Aperture Time (Sec)`` set to ``NaN``). All other models: both supported.
+
+        Args:
+            timing_parameters (TimingParameters): Aperture time and transient response to apply.
+            execution_settings (dict): Updated in-place; ``NaN`` set for unsupported models.
+        """
+
+        self.session.channels[self._channel_name].source_delay = (
+            timing_parameters.source_delay
         )
         self.session.channels[self._channel_name].aperture_time = (
             timing_parameters.aperture_time
@@ -312,7 +254,34 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         self.session.channels[self._channel_name].aperture_time_units = (
             nidcpower.ApertureTimeUnits.SECONDS
         )
+        self.session.channels[self._channel_name].measure_record_length = (
+            timing_parameters.measure_record_length
+        )
+        self.session.channels[self._channel_name].measure_when = (
+            timing_parameters.measure_when
+        )
+        self.session.channels[self._channel_name].transient_response = (
+            timing_parameters.transient_response
+        )
+        self.session.channels[self._channel_name].voltage_gain_bandwidth = (
+            timing_parameters.voltage_gain_bandwidth
+        )
+        self.session.channels[self._channel_name].voltage_compensation_frequency = (
+            timing_parameters.voltage_compensation_frequency
+        )
+        
+        self.session.channels[self._channel_name].current_gain_bandwidth = (
+            timing_parameters.current_gain_bandwidth    
+        )
+        self.session.channels[self._channel_name].current_compensation_frequency = (
+            timing_parameters.current_compensation_frequency
+        )
+        self.session.channels[self._channel_name].current_pole_zero_ratio = (
+            timing_parameters.current_pole_zero_ratio
+        )
 
+
+'''
     def configure_trigger_settings(self, trigger_parameters: TriggerParameters, timing_parameters: TimingParameters) -> None:
         """Configures source trigger input and event signal routing for the channel.
 
@@ -365,7 +334,7 @@ class DCVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 pass
 
             self.session.commit_with_channel(self._channel_name)
-
+'''
 
     def build_effective_execution_settings(self, channel_name, last_point_current, number_of_poimts, instrument_model):
         """Builds a dictionary of effective execution settings based on the current configuration.
