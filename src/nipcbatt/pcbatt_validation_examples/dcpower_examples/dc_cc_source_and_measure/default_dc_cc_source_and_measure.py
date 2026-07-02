@@ -1,0 +1,32 @@
+"""DC constant current source and measure example with default input parameters."""
+
+from nipcbatt import dcpower
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
+
+
+def main():
+    """Configures and executes DC CC source and measure using default constants."""
+    dc_current_source_and_measure = dcpower.DCCurrentSourceAndMeasure()
+
+    # PcbattLogger logs NI-DCPower configurations and measurement results
+    # to the mentioned file path.
+    logger = PcbattLogger(file="c:\\Temp\\dc_cc_source_and_measure_logger.txt")
+    logger.attach(dc_current_source_and_measure)
+
+    # ======================= Initialize the SMU/PPS ============================
+    dc_current_source_and_measure.initialize(resource_name="SMU1/0")
+
+    # ================= Default measurement configuration ===================
+    results = dc_current_source_and_measure.configure_and_measure(
+        configuration=dcpower.DEFAULT_DC_CC_SOURCE_AND_MEASURE_PARAMETERS
+    )
+
+    # ===================== Close the SMU/PPS session ===========================
+    dc_current_source_and_measure.close()
+
+    # Print the measurement results
+    print(results)
+
+
+if __name__ == "__main__":
+    main()

@@ -61,6 +61,11 @@ class PcbattLogger:
                 f.write("DMM Resource : " + str(module._dmm_resource_name) + "\n") 
             if hasattr(module, '_powerline_frequency'): 
                 f.write("Powerline Frequency : " + str(module._powerline_frequency) + " Hz\n") 
+            # Check if module has NI-DCPower-specific attributes
+            if hasattr(module, '_resource_name'):
+                f.write("DCPower Resource : " + str(module._resource_name) + "\n")
+            if hasattr(module, '_channel_name'):
+                f.write("DCPower Channel : " + str(module._channel_name) + "\n")
             if configuration:
                 f.write("Inputs :\n")
                 f.write(str(configuration) + "\n\n")
@@ -96,6 +101,11 @@ class PcbattLogger:
                 f.write("DMM Resource : " + str(module._dmm_resource_name) + "\n") 
             if hasattr(module, '_powerline_frequency'): 
                 f.write("Powerline Frequency : " + str(module._powerline_frequency) + " Hz\n") 
+            # Check if module has NI-DCPower-specific attributes
+            if hasattr(module, '_resource_name'):
+                f.write("DCPower Resource : " + str(module._resource_name) + "\n")
+            if hasattr(module, '_channel_name'):
+                f.write("DCPower Channel : " + str(module._channel_name) + "\n")
             if configuration:
                 f.write("Inputs\n")
                 f.write(str(configuration) + "\n")
