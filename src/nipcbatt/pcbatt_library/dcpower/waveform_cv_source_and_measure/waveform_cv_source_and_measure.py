@@ -5,13 +5,11 @@ import math
 import nidcpower
 
 from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
+    WaveformTimingParameters,
     WaveformVoltageSourceAndMeasureParameters,
     WaveformVoltageSourceAndMeasureResultData,
-    ExportEvent,
-    MeasurementExecutionType,
     SourceTriggerBehavior,
-    TimingParameters,
-    TriggerParameters,
+    WaveformTimingParameters,
     VoltageChannelSettings,
 )
 
@@ -94,7 +92,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.configure_timing_settings(
                 timing_parameters=configuration.timing_parameters
             )
-            # self.configure_trigger_settings(trigger_parameters=configuration.trigger_parameters)
             self.session.set_sequence(values=configuration.voltage_setpoints)
             self.session.commit()
             self._execution_settings.update(
@@ -141,7 +138,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             == MeasurementExecutionType.START_SOURCE_ONLY
         ):
             self.session.initiate()
-            # self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
         # Perform measurement for CONFIGURE_SOURCE_AND_MEASURE or MEASURE_ONLY
         if configuration.execution_settings.execution_type in [
@@ -210,13 +206,13 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
 
     def configure_timing_settings(
-        self, timing_parameters: TimingParameters, 
+        self, timing_parameters: WaveformTimingParameters, 
     ) -> None:
         """Configures aperture time and transient response settings based on the instrument model.
 
         Args:
-            timing_parameters (TimingParameters):
-                An instance of ``TimingParameters`` containing the aperture time (in seconds)
+            timing_parameters (WaveformTimingParameters):
+                An instance of ``WaveformTimingParameters`` containing the aperture time (in seconds)
                 and transient response setting to apply.
             effective_execution_settings (EffectiveExecutionSettings):
                 The execution settings dictionary to update with the aperture time value.
@@ -260,58 +256,3 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             timing_parameters.voltage_pole_zero_ratio
         )
 
-
-'''
-    def configure_trigger_settings(self, trigger_parameters: TriggerParameters, timing_parameters: TimingParameters) -> None:
-        """Configures source trigger input and event signal routing for the channel.
-
-        Args:
-            trigger_parameters (TriggerParameters):
-                An instance of ``TriggerParameters`` containing the source trigger behavior, start
-                source name, export event, event signal to export, and output event signal terminal.
-        """
-        # Configure digital-edge source trigger if enabled
-        if trigger_parameters.source_trigger_behavior == SourceTriggerBehavior.No_Synchronization_Events:
-
-            if trigger_parameters.export_event == ExportEvent.Route_Event:
-                self.session.channels[self._channel_name].event_signal_to_export = (
-                    trigger_parameters.event_signal_to_export.value
-                )
-            elif trigger_parameters.export_event == ExportEvent.NONE:
-                pass
-
-            self.session.commit_with_channel(self._channel_name)
-
-        elif trigger_parameters.source_trigger_behavior == SourceTriggerBehavior.Primary_Configuration_Events:
-
-            self.session.channels[self._channel_name].source_delay = timing_parameters.source_delay
-            self.session.channels[self._channel_name].disable_source_trigger = True
-            self.session.channels[self._channel_name].measure_trigger_behavior = nidcpower.MeasureTriggerBehavior.SOURCE_COMPLETE
-            self.session.channels[self._channel_name].measure_complete_event_delay = timing_parameters.measure_complete_event_delay
-
-            if trigger_parameters.export_event == ExportEvent.Route_Event:
-                self.session.channels[self._channel_name].event_signal_to_export = (
-                    trigger_parameters.event_signal_to_export.value
-                )
-            elif trigger_parameters.export_event == ExportEvent.NONE:
-                pass
-
-            self.session.commit_with_channel(self._channel_name)
-
-
-        elif trigger_parameters.source_trigger_behavior == SourceTriggerBehavior.Secondary_Configuration_Events:
-
-            self.session.channels[self._channel_name].source_delay = 0.00003
-            self.session.channels[self._channel_name].source_digital_edge_source_trigger_input_terminal = trigger_parameters.start_source_name
-            self.session.channels[self._channel_name].measure_trigger_behavior = nidcpower.MeasureTriggerBehavior.ON_MEASURE_TRIGGER
-            self.session.channels[self._channel_name].measure_digital_edge_source_trigger_input_terminal = timing_parameters.start_measure_name
-
-            if trigger_parameters.export_event == ExportEvent.Route_Event:
-                self.session.channels[self._channel_name].event_signal_to_export = (
-                    trigger_parameters.event_signal_to_export.value
-                )
-            elif trigger_parameters.export_event == ExportEvent.NONE:
-                pass
-
-            self.session.commit_with_channel(self._channel_name)
-'''

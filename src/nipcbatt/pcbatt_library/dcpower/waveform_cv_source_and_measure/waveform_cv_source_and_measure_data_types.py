@@ -1,4 +1,4 @@
-"""Data types used for DC constant voltage source and measurement on PCB points."""
+"""Data types used for waveform constant voltage source and measurement on PCB points."""
 
 from enum import Enum
 
@@ -6,73 +6,11 @@ import nidcpower
 
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 
-
-class MeasurementExecutionType(Enum):
-    """Defines the execution type for DC constant voltage source and measure."""
-
-    CONFIGURE_SOURCE_AND_MEASURE = "CONFIGURE_SOURCE_AND_MEASURE"
-    CONFIGURE_ONLY = "CONFIGURE_ONLY"
-    START_SOURCE_ONLY = "START_SOURCE_ONLY"
-    MEASURE_ONLY = "MEASURE_ONLY"
-
-
-class ExecutionSettings:
-    """Defines execution mode and analysis control settings."""
-
-    def __init__(self, execution_type: MeasurementExecutionType, skip_analysis: bool = False) -> None:
-        """Initializes execution settings.
-
-        Args:
-            execution_type (MeasurementExecutionType): The execution mode.
-            skip_analysis (bool): Whether to skip post-measurement analysis.
-        """
-        self._execution_type = execution_type
-        self._skip_analysis = skip_analysis
-
-    @property
-    def execution_type(self) -> MeasurementExecutionType:
-        """Gets the execution type."""
-        return self._execution_type
-
-    @property
-    def skip_analysis(self) -> bool:
-        """Gets whether post-measurement analysis is skipped."""
-        return self._skip_analysis
-
-
-class SourceTriggerBehavior(Enum):
-    """Defines the source trigger behavior enum."""
-
-    No_Synchronization_Events = "No_Synchronization_Events"
-    Primary_Configuration_Events = "Primary_Configuration_Events"
-    Secondary_Configuration_Events = "Secondary_Configuration_Events"
-
-
-class ExportEvent(Enum):
-    """Defines the export event enum."""
-
-    NONE = "NONE"
-    Route_Event = "Route_Event"
-
-
-class EventSignalToExport(Enum):
-    """Defines the NI-DCPower event or trigger signal to route to an output terminal enum.
-
-    Each member's value is the corresponding NI-DCPower channel attribute name,
-    used with ``setattr`` to configure the output terminal for that signal.
-    """
-
-    Source_Complete_Event = "source_complete_event_output_terminal"
-    Measure_Complete_Event = "measure_complete_event_output_terminal"
-    Sequence_Iteration_Complete_Event = "sequence_iteration_complete_event_output_terminal"
-    Sequence_Engine_Done_Event = "sequence_engine_done_event_output_terminal"
-    Pulse_Complete_Event = "pulse_complete_event_output_terminal"
-    Ready_for_Pulse_Trigger_Event = "ready_for_pulse_trigger_event_output_terminal"
-    Start_Trigger = "exported_start_trigger_output_terminal"
-    Source_Trigger = "exported_source_trigger_output_terminal"
-    Measure_Trigger = "exported_measure_trigger_output_terminal"
-    Sequence_Advance_Trigger = "exported_sequence_advance_trigger_output_terminal"
-    Pulse_Trigger = "exported_pulse_trigger_output_terminal"
+from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
+    ExecutionSettings,
+    MeasurementExecutionType,
+    EventSignalToExport,
+)
 
 
 class VoltageChannelSettings:
@@ -130,8 +68,8 @@ class VoltageChannelSettings:
         return self._current_limit_range
 
 
-class TimingParameters:
-    """Defines timing settings for DC constant voltage source and measure."""
+class WaveformTimingParameters:
+    """Defines timing settings for waveform constant voltage source and measure."""
 
     def __init__(
         self,

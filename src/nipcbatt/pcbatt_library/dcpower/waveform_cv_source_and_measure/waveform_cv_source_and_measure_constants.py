@@ -6,10 +6,7 @@ import nidcpower
 
 from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
     ExecutionSettings,
-    EventSignalToExport,
-    ExportEvent,
     MeasurementExecutionType,
-    SourceTriggerBehavior,
     TimingParameters,
     VoltageChannelSettings,
     WaveformVoltageSourceAndMeasureParameters,
@@ -45,15 +42,6 @@ class ConstantsForWaveformVoltageSourceAndMeasure:
     DEFAULT_CURRENT_COMPENSATION_FREQUENCY = 250000.0 # Hz
     DEFAULT_CURRENT_POLE_ZERO_RATIO = 5.0
 
-    # TriggerParameters
-    DEFAULT_SOURCE_TRIGGER_BEHAVIOR = SourceTriggerBehavior.No_Synchronization_Events
-    DEFAULT_SOURCE_TRIGGER_EDGE = nidcpower.TriggerEdge.RISING
-    DEFAULT_START_SOURCE_NAME = ""
-    DEFAULT_START_MEASURE_NAME = ""
-    DEFAULT_EXPORT_EVENT = ExportEvent.NONE
-    DEFAULT_EVENT_SIGNAL_TO_EXPORT = EventSignalToExport.Source_Complete_Event
-    DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL = ""
-
 
 DEFAULT_WAVEFORM_CV_EXECUTION_SETTINGS = ExecutionSettings(
     execution_type=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_EXECUTION_TYPE,
@@ -80,16 +68,6 @@ DEFAULT_WAVEFORM_CV_TIMING_PARAMETERS = TimingParameters(
     current_compensation_frequency=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_CURRENT_COMPENSATION_FREQUENCY,
     current_pole_zero_ratio=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_CURRENT_POLE_ZERO_RATIO,
 )
-
-# DEFAULT_WAVEFORM_CV_TRIGGER_PARAMETERS = TriggerParameters(
-#     source_trigger_behavior=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_SOURCE_TRIGGER_BEHAVIOR,
-#     source_trigger_edge=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_SOURCE_TRIGGER_EDGE,
-#     start_source_name=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_START_SOURCE_NAME,
-#     start_measure_name=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_START_MEASURE_NAME,
-#     export_event=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_EXPORT_EVENT,
-#     event_signal_to_export=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_EVENT_SIGNAL_TO_EXPORT,
-#     output_event_signal_terminal=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_OUTPUT_EVENT_SIGNAL_TERMINAL,
-# )
 
 DEFAULT_WAVEFORM_CV_SOURCE_AND_MEASURE_PARAMETERS = WaveformVoltageSourceAndMeasureParameters(
     voltage_channel_settings=DEFAULT_WAVEFORM_CV_CHANNEL_SETTINGS,
