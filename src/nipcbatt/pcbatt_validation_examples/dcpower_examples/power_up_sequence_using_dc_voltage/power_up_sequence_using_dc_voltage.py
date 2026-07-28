@@ -12,18 +12,21 @@ from nipcbatt import daq, dcpower
 
 
 def main():
-    """Execute a two-channel DC CV power-up sequence with DAQ sync.
+    """Execute a two-channel DC CV power-up sequence with inter-rail delay and DAQ-synchronized monitoring.
 
     Sequence
     --------
-    1. Pre-configure the TDVM (CONFIGURE_ONLY, armed for HW trigger from SMU2).
-    2. Initialize SMU1 (rail 1) and SMU2 (rail 2).
+    1. Pre-configure the DAQ TDVM (CONFIGURE_ONLY, armed for HW trigger
+    from PPS1 Engine 0).
+    2. Initialize PPS0 channel 0 (rail 1) and PPS1 channel 0 (rail 2).
+    Note: Supports separate PPS/SMU instruments or multiple independently
+    controlled channels on the same PPS/SMU device.
     3. Configure both channels (CONFIGURE_ONLY) with output disabled.
     4. Start both sources in software (START_SOURCE_ONLY, outputs still off).
     5. Wait 10 ms to let the sources settle before enabling outputs.
-    6. Enable rail-1 output (SMU1).
+    6. Enable rail-1 output (PPS0 channel 0).
     7. Wait 100 ms (inter-rail sequencing delay).
-    8. Enable rail-2 output (SMU2) — this also fires the TDVM start trigger.
+    8. Enable rail-2 output (PPS1 channel 0)  — this also fires the TDVM start trigger.
     9. Wait 500 ms to allow the rails to reach steady state.
     10. Measure both channels (MEASURE_ONLY) and close DC power sessions.
     11. Collect the TDVM waveforms (MEASURE_ONLY) and close the DAQ session.
@@ -38,13 +41,13 @@ def main():
         voltage_level_range=1.0,
         current_limit=0.1,
         current_limit_range=0.1,
-        sensing=nidcpower.Sense.REMOTE,
+        sensing=nidcpower.Sense.LOCAL,
         enable_output=False,
     )
     timing_parameters_1 = dcpower.TimingParameters(
         source_delay=0.1,
         aperture_time=0.02,
-        transient_response=nidcpower.TransientResponse.FAST,
+        transient_response=nidcpower.TransientResponse.NORMAL,
     )
     trigger_parameters_1 = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
@@ -58,7 +61,7 @@ def main():
     voltage_channel_settings_2 = dcpower.VoltageChannelSettings(
         voltage_level=1.0,
         voltage_level_range=1.0,
-        current_limit=0.01,
+        current_limit=0.1,
         current_limit_range=0.1,
         sensing=nidcpower.Sense.REMOTE,
         enable_output=False,
@@ -66,7 +69,7 @@ def main():
     timing_parameters_2 = dcpower.TimingParameters(
         source_delay=0.1,
         aperture_time=0.02,
-        transient_response=nidcpower.TransientResponse.FAST,
+        transient_response=nidcpower.TransientResponse.NORMAL,
     )
     trigger_parameters_2 = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
@@ -107,7 +110,9 @@ def main():
     # ======================== TDVM configuration region ==========================
 
     tdvm = daq.TimeDomainMeasurement()
-    tdvm.initialize(analog_input_channel_expression="DAQ/ai0:7")
+    tdvm.initialize(
+        analog_input_channel_expression="DAQ/ai0:7"
+    )  # Declare only channels used in your configuration to monitor appropriated rails
 
     global_channel_parameters = daq.VoltageRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
@@ -131,7 +136,7 @@ def main():
 
     digital_start_trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
         trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-        digital_start_trigger_source="/SMU2/Engine0/StartTrigger",
+        digital_start_trigger_source="/PPS1/Engine0/StartTrigger",
         digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
     )
 
@@ -147,8 +152,8 @@ def main():
     tdvm.configure_and_measure(configuration=tdvm_config)
 
     # ========================= Initialize ==================================
-    dc_voltage_1.initialize(resource_name="SMU1/0")
-    dc_voltage_2.initialize(resource_name="SMU2/0")
+    dc_voltage_1.initialize(resource_name="PPS0/0")
+    dc_voltage_2.initialize(resource_name="PPS1/0")
 
     # ========================= Configure only ==============================
     dc_voltage_1.configure_and_measure(
