@@ -8,10 +8,18 @@ from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_
     WaveformTimingParameters,
     WaveformVoltageSourceAndMeasureParameters,
     WaveformVoltageSourceAndMeasureResultData,
-    SourceTriggerBehavior,
-    WaveformTimingParameters,
     VoltageChannelSettings,
+    ExecutionSettings,
+    MeasurementExecutionType,
+    EventSignalToExport,
+    ExportEvent,
+    TriggerParameters,
+    SourceTriggerBehavior,
 )
+
+# from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
+#     MeasurementExecutionType,
+# )
 
 _APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
     {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"}
@@ -44,6 +52,10 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         self.session.channels[self._channel_name].output_function = (
             nidcpower.OutputFunction.DC_VOLTAGE
         )
+        self._execution_settings = {
+        }
+        self._measurement_results = {
+        }
 
     def close(self):
         """Closes the NI DC Power session and releases internal resources.
@@ -92,7 +104,10 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.configure_timing_settings(
                 timing_parameters=configuration.timing_parameters
             )
-            self.session.set_sequence(values=configuration.voltage_setpoints)
+            self.configure_trigger_settings(
+                trigger_parameters=configuration.trigger_parameters
+            )
+            self.session.set_sequence(values=configuration.voltage_setpoints, source_delays = [0,0,0])
             self.session.commit()
             self._execution_settings.update(
                 {
@@ -146,7 +161,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         ]:
             
             # Calculate the number of measurements to fetch based on the aperture time and step size
-            measure_record_dt = self.session.channels[self._channel_name].measure_record_dt
+            measure_record_dt = self.session.channels[self._channel_name].measure_record_delta_time.total_seconds()
             step_record_length = int(abs(configuration.timing_parameters.aperture_time / configuration.timing_parameters.step_size))
             count = len(configuration.voltage_setpoints) * step_record_length
 
@@ -256,3 +271,29 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             timing_parameters.voltage_pole_zero_ratio
         )
 
+    def configure_trigger_settings(self, trigger_parameters: TriggerParameters) -> None:
+        """Configures source trigger input and event signal routing.
+
+        - ``Start_Source_Trigger``: source waits for a digital edge on ``start_source_name``.
+        - ``Route_Event``: exports ``event_signal_to_export`` to ``output_event_signal_terminal``.
+        - Not supported on all devices (e.g. NI PXI-4110 raises ``DriverError``).
+
+        Args:
+            trigger_parameters (TriggerParameters): Trigger and event routing settings.
+        """
+        # Configure digital-edge source trigger if enabled
+        if trigger_parameters.source_trigger_behavior == SourceTriggerBehavior.Start_Source_Trigger:
+            self.session.channels[self._channel_name].source_trigger_type = (
+                nidcpower.TriggerType.DIGITAL_EDGE
+            )
+            self.session.channels[self._channel_name].digital_edge_source_trigger_input_terminal = (
+                trigger_parameters.start_source_name
+            )
+
+        # Route the selected event signal to the specified output terminal
+        if trigger_parameters.export_event == ExportEvent.Route_Event:
+            setattr(
+                self.session.channels[self._channel_name],
+                trigger_parameters.event_signal_to_export.value,
+                trigger_parameters.output_event_signal_terminal,
+            )

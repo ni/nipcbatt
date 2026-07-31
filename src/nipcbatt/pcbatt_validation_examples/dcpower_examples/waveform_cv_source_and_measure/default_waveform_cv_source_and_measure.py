@@ -64,7 +64,7 @@ def main():
     logger.attach(waveform_voltage_source_and_measure)
 
     # ======================= Initialize the SMU/PPS ============================
-    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
+    waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
 
     # ================= Default measurement configuration ===================
     # Default voltage setpoints: [100 mV, 1 V, 100 mV]

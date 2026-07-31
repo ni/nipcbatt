@@ -7,7 +7,7 @@ import nidcpower
 from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
     ExecutionSettings,
     MeasurementExecutionType,
-    TimingParameters,
+    WaveformTimingParameters,
     VoltageChannelSettings,
     WaveformVoltageSourceAndMeasureParameters,
 )
@@ -34,7 +34,7 @@ class ConstantsForWaveformVoltageSourceAndMeasure:
     DEFAULT_STEP_SIZE_SECONDS = 0.00001              # Step size = 10 µs (aperture_time / step_record_length)
     DEFAULT_MEASURE_RECORD_LENGTH = 100              # Step Record Length
     DEFAULT_MEASURE_WHEN = nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
-    DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL
+    DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.SLOW
     DEFAULT_VOLTAGE_GAIN_BANDWIDTH = 5000.0          # Hz
     DEFAULT_VOLTAGE_COMPENSATION_FREQUENCY = 50000.0 # Hz
     DEFAULT_VOLTAGE_POLE_ZERO_RATIO = 0.16
@@ -54,7 +54,7 @@ DEFAULT_WAVEFORM_CV_CHANNEL_SETTINGS = VoltageChannelSettings(
     current_limit_range=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_CURRENT_LIMIT_RANGE_AMPERES,
 )
 
-DEFAULT_WAVEFORM_CV_TIMING_PARAMETERS = TimingParameters(
+DEFAULT_WAVEFORM_CV_TIMING_PARAMETERS = WaveformTimingParameters(
     source_delay=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_SOURCE_DELAY_SECONDS,
     aperture_time=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_APERTURE_TIME_SECONDS,
     step_size=ConstantsForWaveformVoltageSourceAndMeasure.DEFAULT_STEP_SIZE_SECONDS,

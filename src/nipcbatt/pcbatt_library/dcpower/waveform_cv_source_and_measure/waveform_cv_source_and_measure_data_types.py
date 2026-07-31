@@ -10,6 +10,9 @@ from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
     ExecutionSettings,
     MeasurementExecutionType,
     EventSignalToExport,
+    ExportEvent,
+    TriggerParameters,
+    SourceTriggerBehavior,
 )
 
 
@@ -244,93 +247,6 @@ class WaveformTimingParameters:
         """
         return self._current_pole_zero_ratio
 
-
-class TriggerParameters:
-    """Defines trigger parameters and event signal routing settings for
-    a DC voltage source operation.
-    """
-
-    def __init__(
-        self,
-        source_trigger_behavior: SourceTriggerBehavior,
-        source_trigger_edge: nidcpower.TriggerEdge,
-        start_source_name: str,
-        start_measure_name: str,
-        export_event: ExportEvent,
-        event_signal_to_export: EventSignalToExport,
-        output_event_signal_terminal: str,
-    ) -> None:
-        """Initializes the trigger parameters.
-
-        Args:
-            source_trigger_behavior (SourceTriggerBehavior):
-                Configures source trigger behavior.
-            start_source_name (str):
-                Configures the start source name.
-                Ignored when ``source_trigger_behavior`` is ``Disable_Source_Trigger``.
-            export_event (ExportEvent):
-                Configures export event.
-            event_signal_to_export (EventSignalToExport):
-                Configures the event signal to export.
-                Ignored when ``export_event`` is ``NONE``.
-            output_event_signal_terminal (str):
-                The output terminal name to which the event signal is routed.
-                Ignored when ``export_event`` is ``NONE``.
-        """
-        self._source_trigger_behavior = source_trigger_behavior
-        self._source_trigger_edge = source_trigger_edge
-        self._start_source_name = start_source_name
-        self._start_measure_name = start_measure_name
-        self._export_event = export_event
-        self._event_signal_to_export = event_signal_to_export
-        self._output_event_signal_terminal = output_event_signal_terminal
-
-    @property
-    def source_trigger_behavior(self) -> SourceTriggerBehavior:
-        """Gets the source trigger behavior.
-
-        Returns:
-            SourceTriggerBehavior: Configures source trigger behavior.
-        """
-        return self._source_trigger_behavior
-
-    @property
-    def start_source_name(self) -> str:
-        """Gets the start source name.
-
-        Returns:
-            str: The start source name.
-        """
-        return self._start_source_name
-
-    @property
-    def export_event(self) -> ExportEvent:
-        """Gets the export event setting.
-
-        Returns:
-            ExportEvent: Configures export event.
-        """
-        return self._export_event
-
-    @property
-    def event_signal_to_export(self) -> EventSignalToExport:
-        """Gets the event signal to export.
-
-        Returns:
-            EventSignalToExport: Configures the event signal to export.
-        """
-        return self._event_signal_to_export
-
-    @property
-    def output_event_signal_terminal(self) -> str:
-        """Gets the output event signal terminal.
-
-        Returns:
-            str: Configures the output event signal terminal.
-        """
-        return self._output_event_signal_terminal
-
-
 class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
     """Defines the full configuration for DC constant voltage source and measure operation."""
 
@@ -338,9 +254,9 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         self,
         voltage_channel_settings: VoltageChannelSettings,
         execution_settings: ExecutionSettings,
-        timing_parameters: TimingParameters,
+        timing_parameters: WaveformTimingParameters,
         voltage_setpoints: list,
-        # trigger_parameters: TriggerParameters,
+        trigger_parameters: TriggerParameters,
     ) -> None:
         """Initializes the DC voltage source and measure parameters.
 
@@ -349,7 +265,7 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
                 Voltage level, current limit, sensing mode, and output enable settings.
             execution_settings (ExecutionSettings):
                 Execution mode and analysis control settings.
-            timing_parameters (TimingParameters):
+            timing_parameters (WaveformTimingParameters):
                 Source delay, aperture time, and transient response settings.
             trigger_parameters (TriggerParameters):
                 Source trigger input and event signal routing settings.
@@ -360,7 +276,7 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         self._execution_settings = execution_settings
         self._timing_parameters = timing_parameters
         self._voltage_setpoints = voltage_setpoints
-        # self._trigger_parameters = trigger_parameters
+        self._trigger_parameters = trigger_parameters
 
     @property
     def voltage_channel_settings(self) -> VoltageChannelSettings:
@@ -391,16 +307,24 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         return self._execution_settings
 
     @property
-    def timing_parameters(self) -> TimingParameters:
+    def timing_parameters(self) -> WaveformTimingParameters:
         """Gets the timing parameters.
 
         Returns:
-            TimingParameters: Configures the source delay, aperture time, and transient
+            WaveformTimingParameters: Configures the source delay, aperture time, and transient
             response settings.
         """
         return self._timing_parameters
 
+    @property
+    def trigger_parameters(self) -> TriggerParameters:
+        """Gets the trigger parameters.
 
+        Returns:
+            TriggerParameters: Configures the source trigger input and event signal routing settings.
+        """
+        return self._trigger_parameters
+    
 class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
     """Defines the results obtained from a waveform DC voltage source and measure operation."""
 
