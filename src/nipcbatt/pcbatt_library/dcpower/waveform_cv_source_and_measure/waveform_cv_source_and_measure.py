@@ -8,21 +8,23 @@ from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_
     WaveformTimingParameters,
     WaveformVoltageSourceAndMeasureParameters,
     WaveformVoltageSourceAndMeasureResultData,
-    VoltageChannelSettings,
-    ExecutionSettings,
+    WaveformVoltageChannelSettings,
+    WaveformExecutionSettings,
     MeasurementExecutionType,
     EventSignalToExport,
     ExportEvent,
     TriggerParameters,
     SourceTriggerBehavior,
 )
-
-# from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
-#     MeasurementExecutionType,
-# )
+from nipcbatt.pcbatt_library.common.common_data_types import (
+    AnalogWaveform,
+)
 
 _APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
     {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154"}
+)
+_TRANSIENT_RESPONSE_UNSUPPORTED_MODELS = frozenset(
+    {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154", "NI PXIe-4112", "NI PXIe-4113"}
 )
 from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
     BuildingBlockUsingNIDCPower,
@@ -53,8 +55,22 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             nidcpower.OutputFunction.DC_VOLTAGE
         )
         self._execution_settings = {
-        }
-        self._measurement_results = {
+            "Voltage Level Range (V)": math.nan,
+            "Current Limit (A)": math.nan,
+            "Current Limit Range (A)": math.nan,
+            "Measure Record Delta Time": math.nan,
+            "Sample Rate (Hz)": math.nan,
+            "Step Record Length": math.nan,
+            "Effective Step Time (Sec)": math.nan,
+            "Total Sequence Time (Sec)": math.nan,
+            "Device Model": "",
+            "Transient Response": "",
+            "Voltage Gain Bandwidth (Hz)": math.nan,
+            "Voltage Compensation Frequency (Hz)": math.nan,
+            "Voltage Pole Zero Ratio": math.nan,
+            "Current Gain Bandwidth (Hz)": math.nan,
+            "Current Compensation Frequency (Hz)": math.nan,
+            "Current Pole Zero Ratio": math.nan,
         }
 
     def close(self):
@@ -92,6 +108,9 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 ``_measurement_results``). Fields not populated by the current execution
                 type retain the values set during ``initialize`` (``NaN`` by default).
         """
+        step_record_length = 0
+        voltage_waveform = []
+        current_waveform = []
         # Apply channel, timing, and trigger settings for CONFIGURE_ONLY or
         # CONFIGURE_SOURCE_AND_MEASURE
         if configuration.execution_settings.execution_type in [
@@ -101,41 +120,81 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.configure_range_and_terminal(
                 voltage_channel_settings=configuration.voltage_channel_settings
             )
+            self.session.channels[self._channel_name].source_delay = configuration.timing_parameters.source_delay
+            self.session.channels[self._channel_name].sense = (
+                configuration.voltage_channel_settings.sensing
+            )
+            self.session.channels[self._channel_name].output_enabled = (
+                configuration.voltage_channel_settings.enable_output
+            )
+
+            if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
+                try:
+                    step_record_length = int(abs(configuration.voltage_channel_settings.step_time / configuration.timing_parameters.aperture_time))
+                except ZeroDivisionError as error:
+                    raise ValueError(
+                        "Failed to compute step_record_length: aperture_time is zero."
+                    ) from error
+            else:   
+                step_record_length = int(abs(configuration.voltage_channel_settings.step_time / 0.01666666))
+
+            self.session.channels[self._channel_name].measure_record_length = step_record_length
+            self.session.channels[self._channel_name].measure_when = nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
+
             self.configure_timing_settings(
                 timing_parameters=configuration.timing_parameters
             )
+
             self.configure_trigger_settings(
                 trigger_parameters=configuration.trigger_parameters
             )
-            self.session.set_sequence(values=configuration.voltage_setpoints, source_delays = [0,0,0])
+
+            source_delays = [configuration.timing_parameters.source_delay] * len(configuration.voltage_channel_settings.voltage_setpoints)
+            self.session.set_sequence(values=configuration.voltage_channel_settings.voltage_setpoints, source_delays=source_delays)
             self.session.commit()
+
+            if configuration.timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+                self._execution_settings.update(
+                    {
+                        "Transient Response": self.session.channels[
+                            self._channel_name
+                        ].transient_response.name,
+                        "Voltage Gain Bandwidth": self.session.channels[
+                            self._channel_name
+                        ].voltage_gain_bandwidth,
+                        "Voltage Compensation Frequency": self.session.channels[
+                            self._channel_name
+                        ].voltage_compensation_frequency,
+                        "Voltage Pole Zero Ratio": self.session.channels[
+                            self._channel_name
+                        ].voltage_pole_zero_ratio,
+                        "Current Gain Bandwidth": self.session.channels[
+                            self._channel_name
+                        ].current_gain_bandwidth,
+                        "Current Compensation Frequency": self.session.channels[
+                            self._channel_name
+                        ].current_compensation_frequency,
+                        "Current Pole Zero Ratio": self.session.channels[
+                            self._channel_name
+                        ].current_pole_zero_ratio,
+                    }
+                )
+            else:
+                if self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+                    self._execution_settings.update(
+                        {
+                            "Transient Response": self.session.channels[
+                                self._channel_name 
+                            ].transient_response.name,
+                        }
+                    )
+            
             self._execution_settings.update(
                 {
-                    "Transient Response": self.session.channels[
-                        self._channel_name
-                    ].transient_response.name,
-                    "Voltage Gain Bandwidth": self.session.channels[
-                        self._channel_name
-                    ].voltage_gain_bandwidth,
-                    "Voltage Compensation Frequency": self.session.channels[
-                        self._channel_name
-                    ].voltage_compensation_frequency,
-                    "Voltage Pole Zero Ratio": self.session.channels[
-                        self._channel_name
-                    ].voltage_pole_zero_ratio,
-                    "Current Gain Bandwidth": self.session.channels[
-                        self._channel_name
-                    ].current_gain_bandwidth,
-                    "Current Compensation Frequency": self.session.channels[
-                        self._channel_name
-                    ].current_compensation_frequency,
-                    "Current Pole Zero Ratio": self.session.channels[
-                        self._channel_name
-                    ].current_pole_zero_ratio,
+                    "Voltage Level Range (V)": self.session.channels[self._channel_name].voltage_level_range,
+                    "Current Limit (A)": self.session.channels[self._channel_name].current_limit,
+                    "Current Limit Range (A)": self.session.channels[self._channel_name].current_limit_range,
                     "Device Model": self.session.instrument_model,
-                    "Output Function": self.session.channels[
-                        self._channel_name
-                    ].output_function.name,
                 }
             )
            
@@ -153,67 +212,78 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             == MeasurementExecutionType.START_SOURCE_ONLY
         ):
             self.session.initiate()
+            self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
         # Perform measurement for CONFIGURE_SOURCE_AND_MEASURE or MEASURE_ONLY
         if configuration.execution_settings.execution_type in [
             MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
             MeasurementExecutionType.MEASURE_ONLY,
         ]:
-            
-            # Calculate the number of measurements to fetch based on the aperture time and step size
             measure_record_dt = self.session.channels[self._channel_name].measure_record_delta_time.total_seconds()
-            step_record_length = int(abs(configuration.timing_parameters.aperture_time / configuration.timing_parameters.step_size))
-            count = len(configuration.voltage_setpoints) * step_record_length
+            sample_rate = 1.0 / measure_record_dt
+            effective_step_time = measure_record_dt * step_record_length
+            total_sequence_time = effective_step_time * len(configuration.voltage_channel_settings.voltage_setpoints)
+            self._execution_settings.update(
+                {
+                    "Measure Record Delta Time": measure_record_dt,
+                    "Sample Rate (Hz)": sample_rate,
+                    "Step Record Length": step_record_length,
+                    "Effective Step Time (Sec)": effective_step_time,
+                    "Total Sequence Time (Sec)": total_sequence_time,
+                }
+            )
+
+            count = len(configuration.voltage_channel_settings.voltage_setpoints) * step_record_length
+            timeout_padding_multiplier = 2
+            timeout = count * measure_record_dt * timeout_padding_multiplier
 
             # Fetch measurements from the instrument
-            measurements = self.session.channels[self._channel_name].fetch_multiple(count=count, timeout=10.0)
+            measurements = self.session.channels[self._channel_name].fetch_multiple(count=count, timeout=timeout)
 
             # Extract voltage, current, and compliance status from the measurements
             voltages = [m.voltage for m in measurements]
             currents = [m.current for m in measurements]
-            in_compliance = [m.in_compliance for m in measurements]
-
-            # Store the measurement results in the instance state
-            self._measurement_results["waveform_measurements"] = {
-                "x_data": voltages,
-                "y_data": currents,
-                "dt": measure_record_dt
-            }
-            self._measurement_results["raw_measurements"] = {
-                "Voltage Measurement (V)": float(voltages[0]),
-                "Current Measurement (A)": float(currents[0]),
-                "In Compliance": bool(in_compliance[0])
-            }
-            self._measurement_results["Measure Record Delta Time"] = measure_record_dt
-            self._measurement_results["Sample Rate (Hz)"] = 1.0 / measure_record_dt
-            self._measurement_results["Step Record Length"] = step_record_length
-            self._measurement_results["Effective Step Time (Sec)"] = measure_record_dt * self._measurement_results["Step Record Length"]
-            self._measurement_results["Total Sequence Time (Sec)"] = self._measurement_results["Effective Step Time (Sec)"] * len(configuration.voltage_setpoints)
+            # in_compliance = [m.in_compliance for m in measurements]
+            voltage_waveform.append(
+                AnalogWaveform(
+                    channel_name=self._channel_name,
+                    delta_time_seconds=measure_record_dt,
+                    samples=voltages,
+                )
+            )
+            current_waveform.append(
+                AnalogWaveform(
+                    channel_name=self._channel_name,
+                    delta_time_seconds=measure_record_dt,
+                    samples=currents,
+                )
+            )
             return WaveformVoltageSourceAndMeasureResultData(
                 execution_settings=self._execution_settings,
-                measurement_results=self._measurement_results,
+                voltage_waveform=voltage_waveform,
+                current_waveform=current_waveform,
             )
 
         # Return the execution settings and measurement results
         return WaveformVoltageSourceAndMeasureResultData(
             execution_settings=self._execution_settings,
-            measurement_results=self._measurement_results,
+            voltage_waveform=voltage_waveform,
+            current_waveform=current_waveform,
         )
 
-
     def configure_range_and_terminal(
-        self, voltage_channel_settings: VoltageChannelSettings
+        self, voltage_channel_settings: WaveformVoltageChannelSettings
     ) -> None:
         """Configures the voltage level, current limit, and their respective ranges on the channel.
 
         Args:
-            voltage_channel_settings (VoltageChannelSettings): Channel settings to apply.
+            voltage_channel_settings (WaveformVoltageChannelSettings): Channel settings to apply.
         """
-        self.session.channels[self._channel_name].current_limit = (
-            voltage_channel_settings.current_limit
-        )
         self.session.channels[self._channel_name].voltage_level_range = (
             voltage_channel_settings.voltage_level_range
+        )
+        self.session.channels[self._channel_name].current_limit = (
+            voltage_channel_settings.current_limit
         )
         self.session.channels[self._channel_name].current_limit_range = (
             voltage_channel_settings.current_limit_range
@@ -233,43 +303,51 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 The execution settings dictionary to update with the aperture time value.
                 Set to ``math.nan`` for models that do not support aperture time.
         """
-        self.session.channels[self._channel_name].source_delay = (
-            timing_parameters.source_delay
-        )
-        self.session.channels[self._channel_name].aperture_time = (
-            timing_parameters.aperture_time
-        )
-        self.session.channels[self._channel_name].aperture_time_units = (
-            nidcpower.ApertureTimeUnits.SECONDS
-        )
-        self.session.channels[self._channel_name].measure_record_length = (
-            timing_parameters.measure_record_length
-        )
-        self.session.channels[self._channel_name].measure_when = (
-            timing_parameters.measure_when
-        )
-        self.session.channels[self._channel_name].transient_response = (
-            timing_parameters.transient_response
-        )
-        self.session.channels[self._channel_name].voltage_gain_bandwidth = (
-            timing_parameters.voltage_gain_bandwidth
-        )
-        self.session.channels[self._channel_name].voltage_compensation_frequency = (
-            timing_parameters.voltage_compensation_frequency
-        )
-        
-        self.session.channels[self._channel_name].current_gain_bandwidth = (
-            timing_parameters.current_gain_bandwidth    
-        )
-        self.session.channels[self._channel_name].current_compensation_frequency = (
-            timing_parameters.current_compensation_frequency
-        )
-        self.session.channels[self._channel_name].current_pole_zero_ratio = (
-            timing_parameters.current_pole_zero_ratio
-        )
-        self.session.channels[self._channel_name].voltage_pole_zero_ratio = (
-            timing_parameters.voltage_pole_zero_ratio
-        )
+
+        match self.session.instrument_model:
+            case "NI PXIe-4112" | "NI PXIe-4113":
+                self.session.channels[self._channel_name].aperture_time = (
+                    timing_parameters.aperture_time
+                )
+                self.session.channels[self._channel_name].aperture_time_units = (
+                    nidcpower.ApertureTimeUnits.SECONDS
+                )
+            case _ if self.session.instrument_model in _APERTURE_TIME_UNSUPPORTED_MODELS:
+                pass # Do not set aperture time and transient response for unsupported models
+            case _:
+                self.session.channels[self._channel_name].aperture_time = (
+                    timing_parameters.aperture_time
+                )
+                self.session.channels[self._channel_name].aperture_time_units = (
+                    nidcpower.ApertureTimeUnits.SECONDS
+                )
+                if timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+                    self.session.channels[self._channel_name].transient_response = (
+                        timing_parameters.transient_response
+                    )
+                    self.session.channels[self._channel_name].voltage_gain_bandwidth = (
+                        timing_parameters.voltage_gain_bandwidth
+                    )
+                    self.session.channels[self._channel_name].voltage_compensation_frequency = (
+                        timing_parameters.voltage_compensation_frequency
+                    )
+                    self.session.channels[self._channel_name].voltage_pole_zero_ratio = (
+                        timing_parameters.voltage_pole_zero_ratio
+                    )
+                    self.session.channels[self._channel_name].current_gain_bandwidth = (
+                        timing_parameters.current_gain_bandwidth    
+                    )
+                    self.session.channels[self._channel_name].current_compensation_frequency = (
+                        timing_parameters.current_compensation_frequency
+                    )
+                    self.session.channels[self._channel_name].current_pole_zero_ratio = (
+                        timing_parameters.current_pole_zero_ratio
+                    )
+                else:
+                    if self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+                        self.session.channels[self._channel_name].transient_response = (
+                            timing_parameters.transient_response
+                        )
 
     def configure_trigger_settings(self, trigger_parameters: TriggerParameters) -> None:
         """Configures source trigger input and event signal routing.

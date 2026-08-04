@@ -1,13 +1,14 @@
 """Data types used for waveform constant voltage source and measurement on PCB points."""
 
 from enum import Enum
+from typing import List
 
 import nidcpower
 
+from nipcbatt.pcbatt_library.common.common_data_types import AnalogWaveform
 from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
 
 from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
-    ExecutionSettings,
     MeasurementExecutionType,
     EventSignalToExport,
     ExportEvent,
@@ -15,8 +16,30 @@ from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
     SourceTriggerBehavior,
 )
 
+class WaveformExecutionSettings:
+    def __init__(self, execution_type: MeasurementExecutionType, skip_analysis: bool) -> None:
+            """Initializes the execution settings.
+    
+            Args:
+                execution_type (MeasurementExecutionType):
+                    The execution type having values:
+                    - ``CONFIGURE_SOURCE_AND_MEASURE``,
+                    - ``CONFIGURE_ONLY``,
+                    - ``START_SOURCE_ONLY``, or
+                    - ``MEASURE_ONLY``.
+            """
+            self._execution_type = execution_type
+    
+    @property
+    def execution_type(self) -> MeasurementExecutionType:
+        """Gets the measurement execution type.
 
-class VoltageChannelSettings:
+        Returns:
+            MeasurementExecutionType: The configured execution type.
+        """
+        return self._execution_type
+
+class WaveformVoltageChannelSettings:
     """Defines the voltage level, current limit, sensing, and output enable
     settings for a channel.
     """
@@ -26,7 +49,10 @@ class VoltageChannelSettings:
         voltage_level_range: float,
         current_limit_range: float,
         current_limit: float,
-        
+        step_time: float,
+        sensing: nidcpower.Sense,
+        enable_output: bool,
+        voltage_setpoints: list,
     ) -> None:
         """Initializes the voltage channel settings.
 
@@ -37,11 +63,23 @@ class VoltageChannelSettings:
                 The current limit for the output, in amperes.
             current_limit_range (float):
                 The current limit range setting, in amperes.
-            
+            step_time (float):
+                The duration of each voltage setpoint step, in seconds.
+            sensing (nidcpower.Sense):
+                The sensing mode (``LOCAL`` or ``REMOTE``) for voltage measurement.
+            enable_output (bool):
+                Whether the channel output is enabled.
+            voltage_setpoints (list):
+                List of voltage setpoints, in volts, to be applied as a sequence during
+                the source and measure operation.
         """
         self._voltage_level_range = voltage_level_range
         self._current_limit_range = current_limit_range
         self._current_limit = current_limit
+        self._step_time = step_time
+        self._sensing = sensing
+        self._enable_output = enable_output
+        self._voltage_setpoints = voltage_setpoints
 
     @property
     def voltage_level_range(self) -> float:
@@ -56,7 +94,7 @@ class VoltageChannelSettings:
     def current_limit(self) -> float:
         """Gets the current limit for the output.
 
-        Returns:
+        Returns:i
             float: The current limit in amperes.
         """
         return self._current_limit
@@ -70,6 +108,42 @@ class VoltageChannelSettings:
         """
         return self._current_limit_range
 
+    @property
+    def step_time(self) -> float:
+        """Gets the duration of each voltage setpoint step.
+
+        Returns:
+            float: The step time in seconds.
+        """
+        return self._step_time
+
+    @property
+    def sensing(self) -> nidcpower.Sense:
+        """Gets the sensing mode.
+
+        Returns:
+            nidcpower.Sense: The sensing mode (``LOCAL`` or ``REMOTE``).
+        """
+        return self._sensing
+
+    @property
+    def enable_output(self) -> bool:
+        """Gets whether output is enabled.
+
+        Returns:
+            bool: ``True`` if the output is enabled, ``False`` otherwise.
+        """
+        return self._enable_output
+
+    @property
+    def voltage_setpoints(self) -> list:
+        """Gets the voltage setpoints.
+
+        Returns:
+            list: Voltage setpoints, in volts, to apply as a sequence.
+        """
+        return self._voltage_setpoints
+
 
 class WaveformTimingParameters:
     """Defines timing settings for waveform constant voltage source and measure."""
@@ -78,9 +152,6 @@ class WaveformTimingParameters:
         self,
         source_delay: float,
         aperture_time: float,
-        step_size: float,
-        measure_record_length: int,
-        measure_when: nidcpower.MeasureWhen,
         transient_response: nidcpower.TransientResponse,
         voltage_gain_bandwidth: float,
         voltage_compensation_frequency: float,
@@ -96,16 +167,6 @@ class WaveformTimingParameters:
                 Defines source delay in seconds.
             aperture_time (float):
                 Defines aperture time in seconds.
-            step_size (float):
-                Defines the time interval between consecutive measurement samples, in seconds.
-                Used to calculate step_record_length = aperture_time / step_size.
-            measure_record_length (int):
-                Defines how many samples constitute a record. If this is set to value greater than 1,
-                then the measure_when parameter must be set to MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE, 
-                or MeasureWhen.ON_MEASURE_TRIGGER.
-            measure_when (nidcpower.MeasureWhen):
-                Specifies when the measure unit should take measurements. Unless this property is set to MeasureWhen.ON_MEASURE_TRIGGER, 
-                the measure_trigger propery will be ignored.
             transient_response (nidcpower.TransientResponse):
                 Defines the transient response.
             voltage_gain_bandwidth (float):
@@ -122,14 +183,9 @@ class WaveformTimingParameters:
                 The frequency at which a pole-zero pair is added to the system when the channel is in Constant Current mode. 
             current_pole_zero_ratio (float):
                 The ratio of the pole frequency to the zero frequency when the channel is in Constant Current mode. 
-
-
         """
         self._source_delay = source_delay
         self._aperture_time = aperture_time
-        self._step_size = step_size
-        self._measure_record_length = measure_record_length
-        self._measure_when = measure_when
         self._transient_response = transient_response
         self._voltage_gain_bandwidth = voltage_gain_bandwidth
         self._voltage_compensation_frequency = voltage_compensation_frequency
@@ -156,33 +212,6 @@ class WaveformTimingParameters:
             float: The aperture time in seconds.
         """
         return self._aperture_time
-
-    @property
-    def step_size(self) -> float:
-        """Gets the step size (time interval between samples).
-
-        Returns:
-            float: The step size in seconds.
-        """
-        return self._step_size
-
-    @property
-    def measure_record_length(self) -> int:
-        """Gets the measure record length.
-
-        Returns:
-            int: Number of samples per record.
-        """
-        return self._measure_record_length
-
-    @property
-    def measure_when(self) -> nidcpower.MeasureWhen:
-        """Gets the measure when setting.
-
-        Returns:
-            nidcpower.MeasureWhen: When measurements are taken.
-        """
-        return self._measure_when
 
     @property
     def transient_response(self) -> nidcpower.TransientResponse:
@@ -252,57 +281,45 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
 
     def __init__(
         self,
-        voltage_channel_settings: VoltageChannelSettings,
-        execution_settings: ExecutionSettings,
+        voltage_channel_settings: WaveformVoltageChannelSettings,
+        execution_settings: WaveformExecutionSettings,
         timing_parameters: WaveformTimingParameters,
-        voltage_setpoints: list,
         trigger_parameters: TriggerParameters,
     ) -> None:
         """Initializes the DC voltage source and measure parameters.
 
         Args:
-            voltage_channel_settings (VoltageChannelSettings):
-                Voltage level, current limit, sensing mode, and output enable settings.
-            execution_settings (ExecutionSettings):
+            voltage_channel_settings (WaveformVoltageChannelSettings):
+                Voltage level, current limit, sensing mode, output enable, step time,
+                and voltage setpoints settings.
+            execution_settings (WaveformExecutionSettings):
                 Execution mode and analysis control settings.
             timing_parameters (WaveformTimingParameters):
                 Source delay, aperture time, and transient response settings.
             trigger_parameters (TriggerParameters):
                 Source trigger input and event signal routing settings.
-            voltage_setpoints (list):
-                List of voltage setpoints to be applied during the source and measure operation.
         """
         self._voltage_channel_settings = voltage_channel_settings
         self._execution_settings = execution_settings
         self._timing_parameters = timing_parameters
-        self._voltage_setpoints = voltage_setpoints
         self._trigger_parameters = trigger_parameters
 
     @property
-    def voltage_channel_settings(self) -> VoltageChannelSettings:
+    def voltage_channel_settings(self) -> WaveformVoltageChannelSettings:
         """Gets the voltage channel settings.
 
         Returns:
-            VoltageChannelSettings: Configures the voltage level, current limit,
-            sensing, and output enable settings.
+            WaveformVoltageChannelSettings: Configures the voltage level, current limit,
+            sensing, output enable, step time, and voltage setpoints settings.
         """
         return self._voltage_channel_settings
 
     @property
-    def voltage_setpoints(self) -> list:
-        """Gets the voltage setpoints.
-
-        Returns:
-            list: Voltage setpoints to apply as a sequence.
-        """
-        return self._voltage_setpoints
-
-    @property
-    def execution_settings(self) -> ExecutionSettings:
+    def execution_settings(self) -> WaveformExecutionSettings:
         """Gets the execution settings.
 
         Returns:
-            ExecutionSettings: Configures the execution mode and skip analysis settings.
+            WaveformExecutionSettings: Configures the execution mode and skip analysis settings.
         """
         return self._execution_settings
 
@@ -331,7 +348,8 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
     def __init__(
         self,
         execution_settings: dict,
-        measurement_results: dict,
+        voltage_waveform: List[AnalogWaveform],
+        current_waveform: List[AnalogWaveform],
     ) -> None:
         """Initializes the DC voltage source and measure result data.
 
@@ -346,7 +364,8 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
                 Fields are ``math.nan``/``False`` when measurement is not performed.
         """
         self._execution_settings = execution_settings
-        self._measurement_results = measurement_results
+        self._voltage_waveform = voltage_waveform
+        self._current_waveform = current_waveform
 
     @property
     def execution_settings(self) -> dict:
@@ -359,11 +378,20 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
         return self._execution_settings
 
     @property
-    def measurement_results(self) -> dict:
-        """Gets the measurement results.
+    def voltage_waveform(self) -> List[AnalogWaveform]:
+        """Gets the measured voltage waveform.
 
         Returns:
-            dict: Measured values including voltage, current, compliance state, power,
-                and resistance.
+            List[AnalogWaveform]: Measured voltage waveform data.
         """
-        return self._measurement_results
+        return self._voltage_waveform   
+
+    @property
+    def current_waveform(self) -> List[AnalogWaveform]:     
+        """Gets the measured current waveform.
+
+        Returns:
+            List[AnalogWaveform]: Measured current waveform data.
+        """
+        return self._current_waveform
+
