@@ -53,3 +53,11 @@ from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_
     WaveformVoltageSourceAndMeasureParameters,
     WaveformVoltageSourceAndMeasureResultData,
 )
+from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_constants import (
+    ConstantsForWaveformVoltageSourceAndMeasure,
+    DEFAULT_WAVEFORM_CV_CHANNEL_SETTINGS,
+    DEFAULT_WAVEFORM_CV_EXECUTION_SETTINGS,
+    DEFAULT_WAVEFORM_CV_SOURCE_AND_MEASURE_PARAMETERS,
+    DEFAULT_WAVEFORM_CV_TIMING_PARAMETERS,
+    DEFAULT_WAVEFORM_CV_TRIGGER_PARAMETERS,
+)

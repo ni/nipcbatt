@@ -63,7 +63,6 @@ def main():
     # Execute configure + source + measure in a single call; run full analysis.
     custom_execution_settings = dcpower.WaveformExecutionSettings(
         execution_type=dcpower.MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
-        skip_analysis=False,
     )
 
     # ==================== Custom timing parameters =============================

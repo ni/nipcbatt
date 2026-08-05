@@ -17,7 +17,7 @@ from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
 )
 
 class WaveformExecutionSettings:
-    def __init__(self, execution_type: MeasurementExecutionType, skip_analysis: bool) -> None:
+    def __init__(self, execution_type: MeasurementExecutionType) -> None:
             """Initializes the execution settings.
     
             Args:
