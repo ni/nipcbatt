@@ -1,0 +1,4 @@
+- Fix switch driver error
+- Incorporate switch documentation
+- Fix linter errors
+- unit/integration tests for DMM
