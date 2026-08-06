@@ -166,19 +166,19 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                         "Transient Response": self.session.channels[
                             self._channel_name
                         ].transient_response.name,
-                        "Voltage Gain Bandwidth": self.session.channels[
+                        "Voltage Gain Bandwidth (Hz)": self.session.channels[
                             self._channel_name
                         ].voltage_gain_bandwidth,
-                        "Voltage Compensation Frequency": self.session.channels[
+                        "Voltage Compensation Frequency (Hz)": self.session.channels[
                             self._channel_name
                         ].voltage_compensation_frequency,
                         "Voltage Pole Zero Ratio": self.session.channels[
                             self._channel_name
                         ].voltage_pole_zero_ratio,
-                        "Current Gain Bandwidth": self.session.channels[
+                        "Current Gain Bandwidth (Hz)": self.session.channels[
                             self._channel_name
                         ].current_gain_bandwidth,
-                        "Current Compensation Frequency": self.session.channels[
+                        "Current Compensation Frequency (Hz)": self.session.channels[
                             self._channel_name
                         ].current_compensation_frequency,
                         "Current Pole Zero Ratio": self.session.channels[
