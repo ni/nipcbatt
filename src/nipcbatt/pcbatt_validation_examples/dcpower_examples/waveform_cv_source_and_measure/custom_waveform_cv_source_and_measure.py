@@ -47,8 +47,8 @@ def main():
     waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
 
     # ==================== Custom channel settings ==============================
-    # Voltage level range: 6 V, current limit: 50 mA, current limit range: 100 mA.
-    # Ramp 500 mV → 1 V → 500 mV, 200 ms per step, local sensing, output enabled.
+    # Voltage level range: 6 V, current limit: 20 mA, current limit range: 20 mA.
+    # Sequence 100 mV → 1 V → 100 mV, 100 ms per step, local sensing, output enabled.
     custom_channel_settings = dcpower.WaveformVoltageChannelSettings(
         voltage_level_range=6.0,
         current_limit_range=0.02,
@@ -60,17 +60,17 @@ def main():
     )
 
     # ==================== Custom execution settings ============================
-    # Execute configure + source + measure in a single call; run full analysis.
+    # Execute configure + source + measure in a single call.
     custom_execution_settings = dcpower.WaveformExecutionSettings(
         execution_type=dcpower.MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
     )
 
     # ==================== Custom timing parameters =============================
-    # Source delay: 200 ms, aperture time: 2 ms, custom transient response.
+    # Source delay: 0 s, aperture time: 1 ms, fast transient response.
     custom_timing_parameters = dcpower.WaveformTimingParameters(
-        source_delay=0.00,                  # Source delay = 200 ms
-        aperture_time=0.001,                 # Aperture time = 2 ms
-        transient_response=nidcpower.TransientResponse.NORMAL,  # Transient response = Normal
+        source_delay=0.00,                  # Source delay = 0 s
+        aperture_time=0.001,                 # Aperture time = 1 ms
+        transient_response=nidcpower.TransientResponse.FAST,  # Transient response = Fast
         voltage_gain_bandwidth=10000.0,      # Hz
         voltage_compensation_frequency=50000.0,  # Hz
         voltage_pole_zero_ratio=0.16,
@@ -80,7 +80,7 @@ def main():
     )
 
     # ==================== Custom trigger parameters ============================
-    # Disable source trigger; export the Source Complete Event to PXI_Trig0.
+    # Disable source trigger; event export disabled (output terminal ignored).
     custom_trigger_parameters = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
         start_source_name="",
@@ -105,7 +105,7 @@ def main():
     # ===================== Close the SMU/PPS session ===========================
     waveform_voltage_source_and_measure.close()
 
-    # Print the execution settings 
+    # Print the measurement results
     print(results)
 
     # ===================== Plot voltage and current waveforms ==================

@@ -17,6 +17,8 @@ from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
 )
 
 class WaveformExecutionSettings:
+    """Defines the execution mode for a waveform voltage source and measure operation."""
+
     def __init__(self, execution_type: MeasurementExecutionType) -> None:
             """Initializes the execution settings.
     
@@ -94,7 +96,7 @@ class WaveformVoltageChannelSettings:
     def current_limit(self) -> float:
         """Gets the current limit for the output.
 
-        Returns:i
+        Returns:
             float: The current limit in amperes.
         """
         return self._current_limit
@@ -277,7 +279,7 @@ class WaveformTimingParameters:
         return self._current_pole_zero_ratio
 
 class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
-    """Defines the full configuration for DC constant voltage source and measure operation."""
+    """Defines the full configuration for waveform DC constant voltage source and measure operation."""
 
     def __init__(
         self,
@@ -286,7 +288,7 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         timing_parameters: WaveformTimingParameters,
         trigger_parameters: TriggerParameters,
     ) -> None:
-        """Initializes the DC voltage source and measure parameters.
+        """Initializes the waveform DC voltage source and measure parameters.
 
         Args:
             voltage_channel_settings (WaveformVoltageChannelSettings):
@@ -319,7 +321,8 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         """Gets the execution settings.
 
         Returns:
-            WaveformExecutionSettings: Configures the execution mode and skip analysis settings.
+            WaveformExecutionSettings: Configures the execution mode used to run the
+            waveform voltage source and measure operation.
         """
         return self._execution_settings
 
@@ -351,17 +354,20 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
         voltage_waveform: List[AnalogWaveform],
         current_waveform: List[AnalogWaveform],
     ) -> None:
-        """Initializes the DC voltage source and measure result data.
+        """Initializes the waveform DC voltage source and measure result data.
 
         Args:
             execution_settings (dict):
-                Dictionary containing the applied hardware settings including voltage level,
-                ranges, aperture time, device model, and output function.
+                Dictionary containing the applied hardware settings including voltage level
+                range, current limit, ranges, timing (sample rate, step record length,
+                effective step time, total sequence time), transient response, and device model.
                 Fields are ``math.nan`` when configuration is not performed.
-            measurement_results (dict):
-                Dictionary containing the measured values including voltage, current,
-                compliance state, power, and resistance.
-                Fields are ``math.nan``/``False`` when measurement is not performed.
+            voltage_waveform (List[AnalogWaveform]):
+                List containing the measured voltage waveform. Empty when measurement is
+                not performed.
+            current_waveform (List[AnalogWaveform]):
+                List containing the measured current waveform. Empty when measurement is
+                not performed.
         """
         self._execution_settings = execution_settings
         self._voltage_waveform = voltage_waveform
@@ -372,8 +378,8 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
         """Gets the applied hardware execution settings.
 
         Returns:
-            dict: Applied hardware settings including voltage level, ranges, aperture time,
-                device model, and output function.
+            dict: Applied hardware settings including voltage level range, current limit,
+                ranges, timing, transient response, and device model.
         """
         return self._execution_settings
 

@@ -32,10 +32,10 @@ class ConstantsForWaveformVoltageSourceAndMeasure:
     DEFAULT_ENABLE_OUTPUT = True
 
     # Voltage setpoints applied as a sequence
-    DEFAULT_VOLTAGE_SETPOINTS = [0.0, 1.0, 0.0]     # [100 mV, 1 V, 100 mV]
+    DEFAULT_VOLTAGE_SETPOINTS = [0.0, 1.0, 0.0]     # [0 V, 1 V, 0 V]
 
     # WaveformTimingParameters
-    DEFAULT_SOURCE_DELAY_SECONDS = 0.0               # Source Delay = 100 ms
+    DEFAULT_SOURCE_DELAY_SECONDS = 0.0               # Source Delay = 0 s
     DEFAULT_APERTURE_TIME_SECONDS = 0.001            # Aperture Time = 1 ms
     DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL
     DEFAULT_VOLTAGE_GAIN_BANDWIDTH = 5000.0          # Hz

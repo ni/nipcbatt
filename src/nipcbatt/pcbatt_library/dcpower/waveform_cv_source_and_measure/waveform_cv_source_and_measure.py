@@ -1,4 +1,4 @@
-"""Defines class used for DC constant voltage source and measurement on PCB points."""
+"""Defines class used for waveform DC constant voltage source and measurement on PCB points."""
 
 import math
 
@@ -38,7 +38,8 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         """Initializes the NI DC Power session with the specified resource.
 
         Opens a new NI-DCPower session, resets the channel, configures
-        the source mode to single-point, and sets the output function to DC voltage.
+        the source mode to sequence (for stepping through the waveform's voltage
+        setpoints), and sets the output function to DC voltage.
 
         Args:
             resource_name (str):
@@ -54,6 +55,8 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         self.session.channels[self._channel_name].output_function = (
             nidcpower.OutputFunction.DC_VOLTAGE
         )
+        # Initialize the execution settings as instance state so values persist across
+        # the separated CONFIGURE_ONLY, START_SOURCE_ONLY, and MEASURE_ONLY calls
         self._execution_settings = {
             "Voltage Level Range (V)": math.nan,
             "Current Limit (A)": math.nan,
@@ -86,7 +89,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
     def configure_and_measure(
         self, configuration: WaveformVoltageSourceAndMeasureParameters
     ) -> WaveformVoltageSourceAndMeasureResultData:
-        """Configures and/or measures DC voltage. Behavior is set by ``execution_settings``.
+        """Configures and/or measures DC voltage waveform. Behavior is set by ``execution_settings``.
 
         Behavior is controlled by the ``execution_settings`` :
         To source and measure all in one function call:
@@ -103,10 +106,11 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 trigger, and execution settings.
 
         Returns:
-            WaveformVoltageSourceAndMeasureResultData: Hardware execution settings and
-                measurement results held in instance state (``_execution_settings`` and
-                ``_measurement_results``). Fields not populated by the current execution
-                type retain the values set during ``initialize`` (``NaN`` by default).
+            WaveformVoltageSourceAndMeasureResultData: Hardware execution settings held in
+                instance state (``_execution_settings``), plus the measured voltage and
+                current waveforms. Execution settings not populated by the current execution
+                type retain the values set during ``initialize`` (``NaN`` by default), and
+                the waveforms are empty when measurement is not performed.
         """
         step_record_length = 0
         voltage_waveform = []
@@ -136,6 +140,8 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                         "Failed to compute step_record_length: aperture_time is zero."
                     ) from error
             else:   
+                # If aperture time is unsupported by the instrument model, 
+                # use a default value of 16.66666 ms to compute step_record_length
                 step_record_length = int(abs(configuration.voltage_channel_settings.step_time / 0.01666666))
 
             self.session.channels[self._channel_name].measure_record_length = step_record_length
@@ -149,6 +155,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 trigger_parameters=configuration.trigger_parameters
             )
 
+            # Apply the same source delay to every voltage setpoint in the sequence
             source_delays = [configuration.timing_parameters.source_delay] * len(configuration.voltage_channel_settings.voltage_setpoints)
             self.session.set_sequence(values=configuration.voltage_channel_settings.voltage_setpoints, source_delays=source_delays)
             self.session.commit()
@@ -198,7 +205,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 }
             )
            
-            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source immediately after commit
+            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source and wait for event completion after commit
             if (
                 configuration.execution_settings.execution_type
                 == MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
@@ -220,7 +227,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             MeasurementExecutionType.MEASURE_ONLY,
         ]:
             measure_record_dt = self.session.channels[self._channel_name].measure_record_delta_time.total_seconds()
-            sample_rate = 1.0 / measure_record_dt
+            sample_rate = 1.0 / measure_record_dt # measure_record_delta_time is read from the instrument in seconds
             effective_step_time = measure_record_dt * step_record_length
             total_sequence_time = effective_step_time * len(configuration.voltage_channel_settings.voltage_setpoints)
             self._execution_settings.update(
@@ -240,10 +247,9 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             # Fetch measurements from the instrument
             measurements = self.session.channels[self._channel_name].fetch_multiple(count=count, timeout=timeout)
 
-            # Extract voltage, current, and compliance status from the measurements
+            # Extract voltage and current from the measurements
             voltages = [m.voltage for m in measurements]
             currents = [m.current for m in measurements]
-            # in_compliance = [m.in_compliance for m in measurements]
             voltage_waveform.append(
                 AnalogWaveform(
                     channel_name=self._channel_name,
@@ -299,9 +305,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             timing_parameters (WaveformTimingParameters):
                 An instance of ``WaveformTimingParameters`` containing the aperture time (in seconds)
                 and transient response setting to apply.
-            effective_execution_settings (EffectiveExecutionSettings):
-                The execution settings dictionary to update with the aperture time value.
-                Set to ``math.nan`` for models that do not support aperture time.
         """
 
         match self.session.instrument_model:
