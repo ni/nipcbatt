@@ -57,6 +57,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         )
         # Initialize the execution settings as instance state so values persist across
         # the separated CONFIGURE_ONLY, START_SOURCE_ONLY, and MEASURE_ONLY calls
+        self._step_record_length = 0
         self._execution_settings = {
             "Voltage Level Range (V)": math.nan,
             "Current Limit (A)": math.nan,
@@ -112,7 +113,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 type retain the values set during ``initialize`` (``NaN`` by default), and
                 the waveforms are empty when measurement is not performed.
         """
-        step_record_length = 0
         voltage_waveform = []
         current_waveform = []
         # Apply channel, timing, and trigger settings for CONFIGURE_ONLY or
@@ -134,7 +134,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
             if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
                 try:
-                    step_record_length = int(abs(configuration.voltage_channel_settings.step_time / configuration.timing_parameters.aperture_time))
+                    self._step_record_length = int(abs(configuration.voltage_channel_settings.step_time / configuration.timing_parameters.aperture_time))
                 except ZeroDivisionError as error:
                     raise ValueError(
                         "Failed to compute step_record_length: aperture_time is zero."
@@ -142,9 +142,9 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             else:   
                 # If aperture time is unsupported by the instrument model, 
                 # use a default value of 16.66666 ms to compute step_record_length
-                step_record_length = int(abs(configuration.voltage_channel_settings.step_time / 0.01666666))
+                self._step_record_length = int(abs(configuration.voltage_channel_settings.step_time / 0.01666666))
 
-            self.session.channels[self._channel_name].measure_record_length = step_record_length
+            self.session.channels[self._channel_name].measure_record_length = self._step_record_length
             self.session.channels[self._channel_name].measure_when = nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
 
             self.configure_timing_settings(
@@ -228,19 +228,19 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         ]:
             measure_record_dt = self.session.channels[self._channel_name].measure_record_delta_time.total_seconds()
             sample_rate = 1.0 / measure_record_dt # measure_record_delta_time is read from the instrument in seconds
-            effective_step_time = measure_record_dt * step_record_length
+            effective_step_time = measure_record_dt * self._step_record_length
             total_sequence_time = effective_step_time * len(configuration.voltage_channel_settings.voltage_setpoints)
             self._execution_settings.update(
                 {
                     "Measure Record Delta Time": measure_record_dt,
                     "Sample Rate (Hz)": sample_rate,
-                    "Step Record Length": step_record_length,
+                    "Step Record Length": self._step_record_length,
                     "Effective Step Time (Sec)": effective_step_time,
                     "Total Sequence Time (Sec)": total_sequence_time,
                 }
             )
 
-            count = len(configuration.voltage_channel_settings.voltage_setpoints) * step_record_length
+            count = len(configuration.voltage_channel_settings.voltage_setpoints) * self._step_record_length
             timeout_padding_multiplier = 2
             timeout = count * measure_record_dt * timeout_padding_multiplier
 

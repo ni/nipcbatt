@@ -43,11 +43,9 @@ def main():
     logger.attach(waveform_voltage_source_and_measure)
 
     # ======================= Initialize the SMU/PPS ============================
-    waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
+    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
 
     # ================= Default measurement configuration ===================
-    # Default voltage setpoints: [0 V, 1 V, 0 V]
-    # Default step time: 100 ms, aperture time: 1 ms
     results = waveform_voltage_source_and_measure.configure_and_measure(
         configuration=dcpower.DEFAULT_WAVEFORM_CV_SOURCE_AND_MEASURE_PARAMETERS
     )

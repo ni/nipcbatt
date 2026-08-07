@@ -44,43 +44,38 @@ def main():
     logger.attach(waveform_voltage_source_and_measure)
 
     # ======================= Initialize the SMU/PPS ============================
-    waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
+    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
 
     # ==================== Custom channel settings ==============================
-    # Voltage level range: 6 V, current limit: 20 mA, current limit range: 20 mA.
-    # Sequence 100 mV → 1 V → 100 mV, 100 ms per step, local sensing, output enabled.
     custom_channel_settings = dcpower.WaveformVoltageChannelSettings(
         voltage_level_range=6.0,
         current_limit_range=0.02,
         current_limit=0.02,
         step_time=0.100,
-        sensing=nidcpower.Sense.LOCAL,
+        sensing=nidcpower.Sense.REMOTE,
         enable_output=True,
         voltage_setpoints=[0.1, 1, 0.1],
     )
 
     # ==================== Custom execution settings ============================
-    # Execute configure + source + measure in a single call.
     custom_execution_settings = dcpower.WaveformExecutionSettings(
         execution_type=dcpower.MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
     )
 
     # ==================== Custom timing parameters =============================
-    # Source delay: 0 s, aperture time: 1 ms, fast transient response.
     custom_timing_parameters = dcpower.WaveformTimingParameters(
         source_delay=0.00,                  # Source delay = 0 s
-        aperture_time=0.001,                 # Aperture time = 1 ms
-        transient_response=nidcpower.TransientResponse.FAST,  # Transient response = Fast
-        voltage_gain_bandwidth=10000.0,      # Hz
-        voltage_compensation_frequency=50000.0,  # Hz
+        aperture_time=0.001,                 
+        transient_response=nidcpower.TransientResponse.NORMAL, 
+        voltage_gain_bandwidth=5000.0,     
+        voltage_compensation_frequency=50000.0,  
         voltage_pole_zero_ratio=0.16,
-        current_gain_bandwidth=50000.0,      # Hz
+        current_gain_bandwidth=50000.0,     
         current_compensation_frequency=250000.0,  # Hz
         current_pole_zero_ratio=5.0,
     )
 
     # ==================== Custom trigger parameters ============================
-    # Disable source trigger; event export disabled (output terminal ignored).
     custom_trigger_parameters = dcpower.TriggerParameters(
         source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
         start_source_name="",

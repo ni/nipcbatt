@@ -24,19 +24,19 @@ class ConstantsForWaveformVoltageSourceAndMeasure:
     DEFAULT_EXECUTION_TYPE = MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
 
     # WaveformVoltageChannelSettings
-    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 6.0         # Voltage Level Range
-    DEFAULT_CURRENT_LIMIT_AMPERES = 0.020            # Current Limit = 20 mA
-    DEFAULT_CURRENT_LIMIT_RANGE_AMPERES = 0.020      # Current Limit Range = 20 mA
-    DEFAULT_STEP_TIME_SECONDS = 0.1                  # Step Time = 100 ms
+    DEFAULT_VOLTAGE_LEVEL_RANGE_VOLTS = 6.0       
+    DEFAULT_CURRENT_LIMIT_AMPERES = 0.020            
+    DEFAULT_CURRENT_LIMIT_RANGE_AMPERES = 0.020     
+    DEFAULT_STEP_TIME_SECONDS = 0.1                 
     DEFAULT_SENSING = nidcpower.Sense.REMOTE
     DEFAULT_ENABLE_OUTPUT = True
 
     # Voltage setpoints applied as a sequence
-    DEFAULT_VOLTAGE_SETPOINTS = [0.0, 1.0, 0.0]     # [0 V, 1 V, 0 V]
+    DEFAULT_VOLTAGE_SETPOINTS = [0.1, 1.0, 0.1]    
 
     # WaveformTimingParameters
     DEFAULT_SOURCE_DELAY_SECONDS = 0.0               # Source Delay = 0 s
-    DEFAULT_APERTURE_TIME_SECONDS = 0.001            # Aperture Time = 1 ms
+    DEFAULT_APERTURE_TIME_SECONDS = 0.001           
     DEFAULT_TRANSIENT_RESPONSE = nidcpower.TransientResponse.NORMAL
     DEFAULT_VOLTAGE_GAIN_BANDWIDTH = 5000.0          # Hz
     DEFAULT_VOLTAGE_COMPENSATION_FREQUENCY = 50000.0 # Hz
