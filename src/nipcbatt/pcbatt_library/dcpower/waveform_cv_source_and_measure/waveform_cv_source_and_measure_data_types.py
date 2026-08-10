@@ -1,13 +1,10 @@
 """Data types used for waveform constant voltage source and measurement on PCB points."""
 
-from enum import Enum
 from typing import List
 
 import nidcpower
 
 from nipcbatt.pcbatt_library.common.common_data_types import AnalogWaveform
-from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
-
 from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
     MeasurementExecutionType,
     EventSignalToExport,
@@ -15,23 +12,25 @@ from nipcbatt.pcbatt_library.dcpower.common.common_data_types import (
     TriggerParameters,
     SourceTriggerBehavior,
 )
+from nipcbatt.pcbatt_library_core.pcbatt_data_types import PCBATestToolkitData
+
 
 class WaveformExecutionSettings:
     """Defines the execution mode for a waveform voltage source and measure operation."""
 
     def __init__(self, execution_type: MeasurementExecutionType) -> None:
-            """Initializes the execution settings.
-    
-            Args:
-                execution_type (MeasurementExecutionType):
-                    The execution type having values:
-                    - ``CONFIGURE_SOURCE_AND_MEASURE``,
-                    - ``CONFIGURE_ONLY``,
-                    - ``START_SOURCE_ONLY``, or
-                    - ``MEASURE_ONLY``.
-            """
-            self._execution_type = execution_type
-    
+        """Initializes the execution settings.
+
+        Args:
+            execution_type (MeasurementExecutionType):
+                The execution type having values:
+                - ``CONFIGURE_SOURCE_AND_MEASURE``,
+                - ``CONFIGURE_ONLY``,
+                - ``START_SOURCE_ONLY``, or
+                - ``MEASURE_ONLY``.
+        """
+        self._execution_type = execution_type
+
     @property
     def execution_type(self) -> MeasurementExecutionType:
         """Gets the measurement execution type.
@@ -41,10 +40,9 @@ class WaveformExecutionSettings:
         """
         return self._execution_type
 
+
 class WaveformVoltageChannelSettings:
-    """Defines the voltage level, current limit, sensing, and output enable
-    settings for a channel.
-    """
+    """Defines the voltage level, current limit, sensing, and output enable settings for a channel."""
 
     def __init__(
         self,
@@ -172,19 +170,23 @@ class WaveformTimingParameters:
             transient_response (nidcpower.TransientResponse):
                 Defines the transient response.
             voltage_gain_bandwidth (float):
-                The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. 
-                This property takes effect when the channel is in Constant Voltage mode. 
+                The frequency at which the unloaded loop gain extrapolates to 0 dB in the
+                absence of additional poles and zeroes.
             voltage_compensation_frequency (float):
-                The frequency at which a pole-zero pair is added to the system when the channel is in Constant Voltage mode. 
+                The frequency at which a pole-zero pair is added to the system when the
+                channel is in Constant Voltage mode.
             voltage_pole_zero_ratio (float):
-                The ratio of the pole frequency to the zero frequency when the channel is in Constant Voltage mode. 
+                The ratio of the pole frequency to the zero frequency when the
+                channel is in Constant Voltage mode.
             current_gain_bandwidth (float):
-                The frequency at which the unloaded loop gain extrapolates to 0 dB in the absence of additional poles and zeroes. 
-                This property takes effect when the channel is in Constant Current mode. 
+                The frequency at which the unloaded loop gain extrapolates to 0 dB in the
+                absence of additional poles and zeroes.
             current_compensation_frequency (float):
-                The frequency at which a pole-zero pair is added to the system when the channel is in Constant Current mode. 
+                The frequency at which a pole-zero pair is added to the system when the
+                channel is in Constant Current mode.
             current_pole_zero_ratio (float):
-                The ratio of the pole frequency to the zero frequency when the channel is in Constant Current mode. 
+                The ratio of the pole frequency to the zero frequency when the c
+                hannel is in Constant Current mode.
         """
         self._source_delay = source_delay
         self._aperture_time = aperture_time
@@ -195,7 +197,6 @@ class WaveformTimingParameters:
         self._current_gain_bandwidth = current_gain_bandwidth
         self._current_compensation_frequency = current_compensation_frequency
         self._current_pole_zero_ratio = current_pole_zero_ratio
-
 
     @property
     def source_delay(self) -> float:
@@ -278,6 +279,7 @@ class WaveformTimingParameters:
         """
         return self._current_pole_zero_ratio
 
+
 class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
     """Defines the full configuration for waveform DC constant voltage source and measure operation."""
 
@@ -341,10 +343,12 @@ class WaveformVoltageSourceAndMeasureParameters(PCBATestToolkitData):
         """Gets the trigger parameters.
 
         Returns:
-            TriggerParameters: Configures the source trigger input and event signal routing settings.
+            TriggerParameters: Configures the source trigger input and
+            event signal routing settings.
         """
         return self._trigger_parameters
-    
+
+
 class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
     """Defines the results obtained from a waveform DC voltage source and measure operation."""
 
@@ -390,14 +394,13 @@ class WaveformVoltageSourceAndMeasureResultData(PCBATestToolkitData):
         Returns:
             List[AnalogWaveform]: Measured voltage waveform data.
         """
-        return self._voltage_waveform   
+        return self._voltage_waveform
 
     @property
-    def current_waveform(self) -> List[AnalogWaveform]:     
+    def current_waveform(self) -> List[AnalogWaveform]:
         """Gets the measured current waveform.
 
         Returns:
             List[AnalogWaveform]: Measured current waveform data.
         """
         return self._current_waveform
-

@@ -44,7 +44,7 @@ def main():
     logger.attach(waveform_voltage_source_and_measure)
 
     # ======================= Initialize the SMU/PPS ============================
-    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
+    waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
 
     # ==================== Custom channel settings ==============================
     custom_channel_settings = dcpower.WaveformVoltageChannelSettings(
@@ -54,7 +54,7 @@ def main():
         step_time=0.100,
         sensing=nidcpower.Sense.REMOTE,
         enable_output=True,
-        voltage_setpoints=[0.1, 1, 0.1],
+        voltage_setpoints=[0.0, 1.0, 0.0],
     )
 
     # ==================== Custom execution settings ============================
@@ -64,27 +64,27 @@ def main():
 
     # ==================== Custom timing parameters =============================
     custom_timing_parameters = dcpower.WaveformTimingParameters(
-        source_delay=0.00,                  # Source delay = 0 s
-        aperture_time=0.001,                 
-        transient_response=nidcpower.TransientResponse.NORMAL, 
-        voltage_gain_bandwidth=5000.0,     
-        voltage_compensation_frequency=50000.0,  
+        source_delay=0.00,  # Source delay = 0 s
+        aperture_time=0.001,
+        transient_response=nidcpower.TransientResponse.NORMAL,
+        voltage_gain_bandwidth=5000.0,
+        voltage_compensation_frequency=50000.0,
         voltage_pole_zero_ratio=0.16,
-        current_gain_bandwidth=50000.0,     
+        current_gain_bandwidth=50000.0,
         current_compensation_frequency=250000.0,  # Hz
         current_pole_zero_ratio=5.0,
     )
 
     # ==================== Custom trigger parameters ============================
     custom_trigger_parameters = dcpower.TriggerParameters(
-        source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,
+        source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,  # Trigger will be waiting at each step for multiple values in sequence
         start_source_name="",
         export_event=dcpower.ExportEvent.NONE,
         event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,
         output_event_signal_terminal="PXI_Trig0",
     )
 
-    # ==================== Assemble the full parameter set ======================
+    # ==================== Build the full measurement configuration ======================
     custom_parameters = dcpower.WaveformVoltageSourceAndMeasureParameters(
         voltage_channel_settings=custom_channel_settings,
         execution_settings=custom_execution_settings,

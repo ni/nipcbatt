@@ -4,20 +4,21 @@ import math
 
 import nidcpower
 
-from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
-    WaveformTimingParameters,
-    WaveformVoltageSourceAndMeasureParameters,
-    WaveformVoltageSourceAndMeasureResultData,
-    WaveformVoltageChannelSettings,
-    WaveformExecutionSettings,
-    MeasurementExecutionType,
-    EventSignalToExport,
-    ExportEvent,
-    TriggerParameters,
-    SourceTriggerBehavior,
-)
 from nipcbatt.pcbatt_library.common.common_data_types import (
     AnalogWaveform,
+)
+from nipcbatt.pcbatt_library.dcpower.waveform_cv_source_and_measure.waveform_cv_source_and_measure_data_types import (
+    ExportEvent,
+    MeasurementExecutionType,
+    SourceTriggerBehavior,
+    TriggerParameters,
+    WaveformTimingParameters,
+    WaveformVoltageChannelSettings,
+    WaveformVoltageSourceAndMeasureParameters,
+    WaveformVoltageSourceAndMeasureResultData,
+)
+from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
+    BuildingBlockUsingNIDCPower,
 )
 
 _APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
@@ -26,13 +27,10 @@ _APERTURE_TIME_UNSUPPORTED_MODELS = frozenset(
 _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS = frozenset(
     {"NI PXI-4110", "NI PXI-4130", "NI PXI-4131A", "NI PXIe-4154", "NI PXIe-4112", "NI PXIe-4113"}
 )
-from nipcbatt.pcbatt_library_core.daq.pcbatt_building_blocks import (
-    BuildingBlockUsingNIDCPower,
-)
 
 
 class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
-    """Defines a way that allows you to source DC voltage waveform and perform measurements on PCB points."""
+    """Defines a way that allows to source DC voltage waveform and perform measurements on PCB points."""
 
     def initialize(self, resource_name: str):
         """Initializes the NI DC Power session with the specified resource.
@@ -55,8 +53,8 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
         self.session.channels[self._channel_name].output_function = (
             nidcpower.OutputFunction.DC_VOLTAGE
         )
-        # Initialize the execution settings as instance state so values persist across
-        # the separated CONFIGURE_ONLY, START_SOURCE_ONLY, and MEASURE_ONLY calls
+        # Initialize the execution settings and step_record_length as instance state so values
+        # persist across the separated CONFIGURE_ONLY, START_SOURCE_ONLY, and MEASURE_ONLY calls
         self._step_record_length = 0
         self._execution_settings = {
             "Voltage Level Range (V)": math.nan,
@@ -124,7 +122,9 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             self.configure_range_and_terminal(
                 voltage_channel_settings=configuration.voltage_channel_settings
             )
-            self.session.channels[self._channel_name].source_delay = configuration.timing_parameters.source_delay
+            self.session.channels[self._channel_name].source_delay = (
+                configuration.timing_parameters.source_delay
+            )
             self.session.channels[self._channel_name].sense = (
                 configuration.voltage_channel_settings.sensing
             )
@@ -134,33 +134,49 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
 
             if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
                 try:
-                    self._step_record_length = int(abs(configuration.voltage_channel_settings.step_time / configuration.timing_parameters.aperture_time))
+                    self._step_record_length = int(
+                        abs(
+                            configuration.voltage_channel_settings.step_time
+                            / configuration.timing_parameters.aperture_time
+                        )
+                    )
                 except ZeroDivisionError as error:
                     raise ValueError(
                         "Failed to compute step_record_length: aperture_time is zero."
                     ) from error
-            else:   
-                # If aperture time is unsupported by the instrument model, 
+            else:
+                # If aperture time is unsupported by the instrument model,
                 # use a default value of 16.66666 ms to compute step_record_length
-                self._step_record_length = int(abs(configuration.voltage_channel_settings.step_time / 0.01666666))
+                self._step_record_length = int(
+                    abs(configuration.voltage_channel_settings.step_time / 0.01666666)
+                )
 
-            self.session.channels[self._channel_name].measure_record_length = self._step_record_length
-            self.session.channels[self._channel_name].measure_when = nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
-
-            self.configure_timing_settings(
-                timing_parameters=configuration.timing_parameters
+            self.session.channels[self._channel_name].measure_record_length = (
+                self._step_record_length
+            )
+            self.session.channels[self._channel_name].measure_when = (
+                nidcpower.MeasureWhen.AUTOMATICALLY_AFTER_SOURCE_COMPLETE
             )
 
-            self.configure_trigger_settings(
-                trigger_parameters=configuration.trigger_parameters
-            )
+            self.configure_timing_settings(timing_parameters=configuration.timing_parameters)
+
+            self.configure_trigger_settings(trigger_parameters=configuration.trigger_parameters)
 
             # Apply the same source delay to every voltage setpoint in the sequence
-            source_delays = [configuration.timing_parameters.source_delay] * len(configuration.voltage_channel_settings.voltage_setpoints)
-            self.session.set_sequence(values=configuration.voltage_channel_settings.voltage_setpoints, source_delays=source_delays)
+            source_delays = [configuration.timing_parameters.source_delay] * len(
+                configuration.voltage_channel_settings.voltage_setpoints
+            )
+            self.session.set_sequence(
+                values=configuration.voltage_channel_settings.voltage_setpoints,
+                source_delays=source_delays,
+            )
             self.session.commit()
 
-            if configuration.timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+            if (
+                configuration.timing_parameters.transient_response
+                is nidcpower.TransientResponse.CUSTOM
+                and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS
+            ):
                 self._execution_settings.update(
                     {
                         "Transient Response": self.session.channels[
@@ -191,27 +207,30 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                     self._execution_settings.update(
                         {
                             "Transient Response": self.session.channels[
-                                self._channel_name 
+                                self._channel_name
                             ].transient_response.name,
                         }
                     )
-            
+
             self._execution_settings.update(
                 {
-                    "Voltage Level Range (V)": self.session.channels[self._channel_name].voltage_level_range,
+                    "Voltage Level Range (V)": self.session.channels[
+                        self._channel_name
+                    ].voltage_level_range,
                     "Current Limit (A)": self.session.channels[self._channel_name].current_limit,
-                    "Current Limit Range (A)": self.session.channels[self._channel_name].current_limit_range,
+                    "Current Limit Range (A)": self.session.channels[
+                        self._channel_name
+                    ].current_limit_range,
                     "Device Model": self.session.instrument_model,
                 }
             )
-           
+
             # For CONFIGURE_SOURCE_AND_MEASURE — initiate source and wait for event completion after commit
             if (
                 configuration.execution_settings.execution_type
                 == MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
             ):
                 self.session.initiate()
-                self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
         # For START_SOURCE_ONLY, initiate and wait for event completion
         if (
@@ -219,17 +238,22 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             == MeasurementExecutionType.START_SOURCE_ONLY
         ):
             self.session.initiate()
-            self.session.wait_for_event(nidcpower.Event.SOURCE_COMPLETE)
 
         # Perform measurement for CONFIGURE_SOURCE_AND_MEASURE or MEASURE_ONLY
         if configuration.execution_settings.execution_type in [
             MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
             MeasurementExecutionType.MEASURE_ONLY,
         ]:
-            measure_record_dt = self.session.channels[self._channel_name].measure_record_delta_time.total_seconds()
-            sample_rate = 1.0 / measure_record_dt # measure_record_delta_time is read from the instrument in seconds
+            measure_record_dt = self.session.channels[
+                self._channel_name
+            ].measure_record_delta_time.total_seconds()
+            sample_rate = (
+                1.0 / measure_record_dt
+            )  # measure_record_delta_time is read from the instrument in seconds
             effective_step_time = measure_record_dt * self._step_record_length
-            total_sequence_time = effective_step_time * len(configuration.voltage_channel_settings.voltage_setpoints)
+            total_sequence_time = effective_step_time * len(
+                configuration.voltage_channel_settings.voltage_setpoints
+            )
             self._execution_settings.update(
                 {
                     "Measure Record Delta Time": measure_record_dt,
@@ -240,12 +264,17 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 }
             )
 
-            count = len(configuration.voltage_channel_settings.voltage_setpoints) * self._step_record_length
+            count = (
+                len(configuration.voltage_channel_settings.voltage_setpoints)
+                * self._step_record_length
+            )
             timeout_padding_multiplier = 2
             timeout = count * measure_record_dt * timeout_padding_multiplier
 
             # Fetch measurements from the instrument
-            measurements = self.session.channels[self._channel_name].fetch_multiple(count=count, timeout=timeout)
+            measurements = self.session.channels[self._channel_name].fetch_multiple(
+                count=count, timeout=timeout
+            )
 
             # Extract voltage and current from the measurements
             voltages = [m.voltage for m in measurements]
@@ -295,18 +324,17 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             voltage_channel_settings.current_limit_range
         )
 
-
     def configure_timing_settings(
-        self, timing_parameters: WaveformTimingParameters, 
+        self,
+        timing_parameters: WaveformTimingParameters,
     ) -> None:
         """Configures aperture time and transient response settings based on the instrument model.
 
         Args:
             timing_parameters (WaveformTimingParameters):
-                An instance of ``WaveformTimingParameters`` containing the aperture time (in seconds)
+                An instance of ``WaveformTimingParameters`` containing the aperture time (seconds)
                 and transient response setting to apply.
         """
-
         match self.session.instrument_model:
             case "NI PXIe-4112" | "NI PXIe-4113":
                 self.session.channels[self._channel_name].aperture_time = (
@@ -316,7 +344,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                     nidcpower.ApertureTimeUnits.SECONDS
                 )
             case _ if self.session.instrument_model in _APERTURE_TIME_UNSUPPORTED_MODELS:
-                pass # Do not set aperture time and transient response for unsupported models
+                pass  # Do not set aperture time and transient response for unsupported models
             case _:
                 self.session.channels[self._channel_name].aperture_time = (
                     timing_parameters.aperture_time
@@ -324,7 +352,10 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 self.session.channels[self._channel_name].aperture_time_units = (
                     nidcpower.ApertureTimeUnits.SECONDS
                 )
-                if timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+                if (
+                    timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM
+                    and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS
+                ):
                     self.session.channels[self._channel_name].transient_response = (
                         timing_parameters.transient_response
                     )
@@ -338,7 +369,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                         timing_parameters.voltage_pole_zero_ratio
                     )
                     self.session.channels[self._channel_name].current_gain_bandwidth = (
-                        timing_parameters.current_gain_bandwidth    
+                        timing_parameters.current_gain_bandwidth
                     )
                     self.session.channels[self._channel_name].current_compensation_frequency = (
                         timing_parameters.current_compensation_frequency
