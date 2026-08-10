@@ -1,0 +1,1 @@
+"""Contains the unit tests for the nidcpower package."""
