@@ -78,7 +78,7 @@ def main():
         start_source_name="",
         export_event=dcpower.ExportEvent.NONE,
         event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,
-        output_event_signal_terminal="PXI_Trig0",
+        output_event_signal_terminal="",
     )
 
     # ==================== Build the full measurement configuration ======================
