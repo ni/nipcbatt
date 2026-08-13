@@ -349,9 +349,6 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             if (
                 timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM
             ):
-                self.session.channels[self._channel_name].transient_response = (
-                    timing_parameters.transient_response
-                )
                 self.session.channels[self._channel_name].voltage_gain_bandwidth = (
                     timing_parameters.voltage_gain_bandwidth
                 )
