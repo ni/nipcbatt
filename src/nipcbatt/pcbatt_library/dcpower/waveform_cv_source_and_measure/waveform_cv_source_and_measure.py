@@ -335,53 +335,41 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 An instance of ``WaveformTimingParameters`` containing the aperture time (seconds)
                 and transient response setting to apply.
         """
-        match self.session.instrument_model:
-            case "NI PXIe-4112" | "NI PXIe-4113":
-                self.session.channels[self._channel_name].aperture_time = (
-                    timing_parameters.aperture_time
+        if self.session.instrument_model not in _APERTURE_TIME_UNSUPPORTED_MODELS:
+            self.session.channels[self._channel_name].aperture_time = (
+                timing_parameters.aperture_time
+            )
+            self.session.channels[self._channel_name].aperture_time_units = (
+                nidcpower.ApertureTimeUnits.SECONDS
+            )
+        if self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
+            self.session.channels[self._channel_name].transient_response = (
+                timing_parameters.transient_response
+            )
+            if (
+                timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM
+            ):
+                self.session.channels[self._channel_name].transient_response = (
+                    timing_parameters.transient_response
                 )
-                self.session.channels[self._channel_name].aperture_time_units = (
-                    nidcpower.ApertureTimeUnits.SECONDS
+                self.session.channels[self._channel_name].voltage_gain_bandwidth = (
+                    timing_parameters.voltage_gain_bandwidth
                 )
-            case _ if self.session.instrument_model in _APERTURE_TIME_UNSUPPORTED_MODELS:
-                pass  # Do not set aperture time and transient response for unsupported models
-            case _:
-                self.session.channels[self._channel_name].aperture_time = (
-                    timing_parameters.aperture_time
+                self.session.channels[self._channel_name].voltage_compensation_frequency = (
+                    timing_parameters.voltage_compensation_frequency
                 )
-                self.session.channels[self._channel_name].aperture_time_units = (
-                    nidcpower.ApertureTimeUnits.SECONDS
+                self.session.channels[self._channel_name].voltage_pole_zero_ratio = (
+                    timing_parameters.voltage_pole_zero_ratio
                 )
-                if (
-                    timing_parameters.transient_response is nidcpower.TransientResponse.CUSTOM
-                    and self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS
-                ):
-                    self.session.channels[self._channel_name].transient_response = (
-                        timing_parameters.transient_response
-                    )
-                    self.session.channels[self._channel_name].voltage_gain_bandwidth = (
-                        timing_parameters.voltage_gain_bandwidth
-                    )
-                    self.session.channels[self._channel_name].voltage_compensation_frequency = (
-                        timing_parameters.voltage_compensation_frequency
-                    )
-                    self.session.channels[self._channel_name].voltage_pole_zero_ratio = (
-                        timing_parameters.voltage_pole_zero_ratio
-                    )
-                    self.session.channels[self._channel_name].current_gain_bandwidth = (
-                        timing_parameters.current_gain_bandwidth
-                    )
-                    self.session.channels[self._channel_name].current_compensation_frequency = (
-                        timing_parameters.current_compensation_frequency
-                    )
-                    self.session.channels[self._channel_name].current_pole_zero_ratio = (
-                        timing_parameters.current_pole_zero_ratio
-                    )
-                else:
-                    if self.session.instrument_model not in _TRANSIENT_RESPONSE_UNSUPPORTED_MODELS:
-                        self.session.channels[self._channel_name].transient_response = (
-                            timing_parameters.transient_response
-                        )
+                self.session.channels[self._channel_name].current_gain_bandwidth = (
+                    timing_parameters.current_gain_bandwidth
+                )
+                self.session.channels[self._channel_name].current_compensation_frequency = (
+                    timing_parameters.current_compensation_frequency
+                )
+                self.session.channels[self._channel_name].current_pole_zero_ratio = (
+                    timing_parameters.current_pole_zero_ratio
+                )
 
     def configure_trigger_settings(self, trigger_parameters: TriggerParameters) -> None:
         """Configures source trigger input and event signal routing.

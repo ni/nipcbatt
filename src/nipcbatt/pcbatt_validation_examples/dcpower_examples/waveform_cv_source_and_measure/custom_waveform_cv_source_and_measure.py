@@ -43,9 +43,6 @@ def main():
     logger = PcbattLogger(file="c:\\Temp\\custom_waveform_cv_source_and_measure_logger.txt")
     logger.attach(waveform_voltage_source_and_measure)
 
-    # ======================= Initialize the SMU/PPS ============================
-    waveform_voltage_source_and_measure.initialize(resource_name="SMU1/0")
-
     # ==================== Custom channel settings ==============================
     custom_channel_settings = dcpower.WaveformVoltageChannelSettings(
         voltage_level_range=6.0,
@@ -91,6 +88,9 @@ def main():
         timing_parameters=custom_timing_parameters,
         trigger_parameters=custom_trigger_parameters,
     )
+
+    # ======================= Initialize the SMU/PPS ============================
+    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
 
     # ================= Execute source and measure ==============================
     results = waveform_voltage_source_and_measure.configure_and_measure(
