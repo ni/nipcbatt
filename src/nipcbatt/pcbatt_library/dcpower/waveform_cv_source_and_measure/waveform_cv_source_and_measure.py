@@ -60,7 +60,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             "Voltage Level Range (V)": math.nan,
             "Current Limit (A)": math.nan,
             "Current Limit Range (A)": math.nan,
-            "Measure Record Delta Time": math.nan,
+            "Measure Record Delta Time (sec)": math.nan,
             "Sample Rate (Hz)": math.nan,
             "Step Record Length": math.nan,
             "Effective Step Time (Sec)": math.nan,
@@ -256,7 +256,7 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
             )
             self._execution_settings.update(
                 {
-                    "Measure Record Delta Time": measure_record_dt,
+                    "Measure Record Delta Time (sec)": measure_record_dt,
                     "Sample Rate (Hz)": sample_rate,
                     "Step Record Length": self._step_record_length,
                     "Effective Step Time (Sec)": effective_step_time,
