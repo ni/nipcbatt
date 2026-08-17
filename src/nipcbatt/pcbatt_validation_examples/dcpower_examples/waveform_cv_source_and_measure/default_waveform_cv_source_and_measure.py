@@ -1,5 +1,8 @@
-"""Waveform DC voltage source and measure example with default input parameters."""
+"""Waveform DC voltage source and measure example.
 
+Allows configuring voltage channel settings, execution settings,
+timing parameters, and trigger parameters with default input parameters.
+"""
 import numpy as np
 
 import nipcbatt.pcbatt_utilities.plotter as pl

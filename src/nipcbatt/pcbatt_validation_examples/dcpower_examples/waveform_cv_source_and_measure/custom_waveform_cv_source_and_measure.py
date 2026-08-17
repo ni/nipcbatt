@@ -1,4 +1,8 @@
-"""Waveform DC voltage source and measure example with custom input parameters."""
+"""Waveform DC voltage source and measure example.
+
+Allows configuring voltage channel settings, execution settings,
+timing parameters, and trigger parameters with custom input parameters.
+"""
 
 import nidcpower
 import numpy as np
