@@ -3,15 +3,18 @@
 
 # All classes inherited from PCBATestToolkitData, BuildingBlockUsingInstrument
 # shall be imported here. By this way, the use of blocks in PCBA Test Toolkit
-# is greatly facilitated. for that "import nipcbatt" imports all classes used
-# for measurements, generations and device communications.
+# is greatly facilitated. Measurement, generation, and communication classes
+# are grouped in instrument-specific subpackages (e.g. "nipcbatt.daq") rather
+# than the top-level "nipcbatt" namespace; see the Migration Guide for details.
 # Excample:
 #
-# import nipcbatt
+# from nipcbatt import daq
 #
-# measurement = nipcbatt.DcRmsCurrentMeasurement()
+# measurement = daq.DcRmsCurrentMeasurement()
 # measurement.initialize()
-# results = measurement.configure_and_measure(configuration=nipcbatt.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION)  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
+# results = measurement.configure_and_measure(
+#     configuration=daq.DEFAULT_DC_RMS_CURRENT_MEASUREMENT_CONFIGURATION
+# )
 # measurement.close()
 
 from nipcbatt.pcbatt_library import daq

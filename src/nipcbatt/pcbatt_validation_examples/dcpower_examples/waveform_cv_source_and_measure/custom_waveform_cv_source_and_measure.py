@@ -1,0 +1,115 @@
+"""Waveform DC voltage source and measure example.
+
+Allows configuring voltage channel settings, execution settings,
+timing parameters, and trigger parameters with custom input parameters.
+"""
+
+import nidcpower
+import numpy as np
+
+import nipcbatt.pcbatt_utilities.plotter as pl
+from nipcbatt import dcpower
+from nipcbatt.pcbatt_utilities.pcbatt_logger import PcbattLogger
+
+
+def plot_waveforms(results) -> None:
+    """Plots voltage and current waveforms from a measurement result.
+
+    Args:
+        results (WaveformVoltageSourceAndMeasureResultData): Result returned by
+            ``WaveformVoltageSourceAndMeasure.configure_and_measure``.
+    """
+    voltage_waveform = results.voltage_waveform[0]
+    current_waveform = results.current_waveform[0]
+    time_axis = np.arange(len(voltage_waveform.samples)) * voltage_waveform.delta_time_seconds
+
+    pl.plot_two(
+        y1=voltage_waveform.samples,
+        y2=current_waveform.samples,
+        x1=time_axis,
+        title1="Voltage Waveform",
+        ylabel1="Voltage (V)",
+        xlabel1="Time (s)",
+        x2=time_axis,
+        title2="Current Waveform",
+        ylabel2="Current (A)",
+        xlabel2="Time (s)",
+        stitle="Waveform CV Source and Measure (Custom Parameters)",
+    )
+
+
+def main():
+    """Configures and executes waveform CV source and measure using custom parameters."""
+    waveform_voltage_source_and_measure = dcpower.WaveformVoltageSourceAndMeasure()
+
+    # PcbattLogger logs NI-DCPower configurations and measurement results
+    # to the mentioned file path.
+    logger = PcbattLogger(file="c:\\Temp\\custom_waveform_cv_source_and_measure_logger.txt")
+    logger.attach(waveform_voltage_source_and_measure)
+
+    # ==================== Custom channel settings ==============================
+    custom_channel_settings = dcpower.WaveformVoltageChannelSettings(
+        voltage_level_range=6.0,
+        current_limit_range=0.02,
+        current_limit=0.02,
+        step_time=0.100,
+        sensing=nidcpower.Sense.REMOTE,
+        enable_output=True,
+        voltage_setpoints=[0.0, 1.0, 0.0],
+    )
+
+    # ==================== Custom execution settings ============================
+    custom_execution_settings = dcpower.WaveformExecutionSettings(
+        execution_type=dcpower.MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
+    )
+
+    # ==================== Custom timing parameters =============================
+    custom_timing_parameters = dcpower.WaveformTimingParameters(
+        source_delay=0.00,  # Source delay = 0 s
+        aperture_time=0.001,
+        transient_response=nidcpower.TransientResponse.NORMAL,
+        voltage_gain_bandwidth=5000.0,
+        voltage_compensation_frequency=50000.0,
+        voltage_pole_zero_ratio=0.16,
+        current_gain_bandwidth=50000.0,
+        current_compensation_frequency=250000.0,  # Hz
+        current_pole_zero_ratio=5.0,
+    )
+
+    # ==================== Custom trigger parameters ============================
+    custom_trigger_parameters = dcpower.TriggerParameters(
+        source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,  # Trigger will be waiting at each step for multiple values in sequence
+        start_source_name="",
+        export_event=dcpower.ExportEvent.NONE,
+        event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,
+        output_event_signal_terminal="",
+    )
+
+    # ==================== Build the full measurement configuration ======================
+    custom_parameters = dcpower.WaveformVoltageSourceAndMeasureParameters(
+        voltage_channel_settings=custom_channel_settings,
+        execution_settings=custom_execution_settings,
+        timing_parameters=custom_timing_parameters,
+        trigger_parameters=custom_trigger_parameters,
+    )
+
+    # ======================= Initialize the SMU/PPS ============================
+    waveform_voltage_source_and_measure.initialize(resource_name="PPS1/0")
+
+    # ================= Execute source and measure ==============================
+    results = waveform_voltage_source_and_measure.configure_and_measure(
+        configuration=custom_parameters
+    )
+
+    # ===================== Close the SMU/PPS session ===========================
+    waveform_voltage_source_and_measure.close()
+
+    # Print the measurement results
+    print(results)
+
+    # ===================== Plot voltage and current waveforms ==================
+    plot_waveforms(results)
+
+
+if __name__ == "__main__":
+    main()
