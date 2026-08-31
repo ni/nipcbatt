@@ -13,13 +13,13 @@ About
 =====
 
 The **nipcbatt** package provides APIs (Application Programming Interface) for interacting with 
-the NI_DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
+the NI-DCPOWER, NI-DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
 operations. The package is implemented in Python, as a highly object-oriented package.
 
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DAQ, DMM, and SWITCH devices, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
+**nipcbatt** package is focused on NI DCPOWER, DAQ, DMM, and SWITCH devices, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
 TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
 resources on any platform.
 
@@ -41,6 +41,9 @@ Supported Features
    * - Feature name
      - Description
      - Acronym
+   * - `DCPOWER Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dcpower>`_
+     - A collection of methods to perform DC power measurements using NI-DCPOWER driver.
+     - dcpower
    * - `DMM Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dmm>`_
      - A collection of methods to perform DMM measurements using NI-DMM driver.
      - dmm
@@ -61,7 +64,7 @@ Supported Features
 Library imports and migrations
 -------------------------------
 
-    In this release the instrument-specific measurement libraries are exposed as subpackages under the top-level
+    In the release 2.x and above the instrument-specific measurement libraries are exposed as subpackages under the top-level
     `nipcbatt` package. Example usage:
 
     .. code-block:: python
@@ -95,7 +98,7 @@ Library imports and migrations
 Required Drivers
 -----------------
 
-
+- NI-DCPOWER: 2025 Q4 and above
 - NI-DMM: 2023 Q4 and above
 - NI-SWITCH: 2023 Q4 and above 
 - NI-DAQmx: 2023 Q3 and above 
@@ -110,6 +113,7 @@ Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package M
 Supported Hardware
 ------------------
 
+- DCPOWER devices compatible with the NI-DCPOWER driver
 - DMM devices compatible with the NI-DMM driver
 - Switch devices compatible with the NI-SWITCH driver
 - Any DAQmx devices with similar functionality and resources
@@ -128,7 +132,7 @@ which versions of the driver support your hardware on a given operating system.
 Python Version Support
 ----------------------
 
-**nipcbatt** supports Python 3.9 to 3.12 (64 bit)
+**nipcbatt** supports Python 3.10 to 3.12 (64 bit)
 
 Installation
 ============
