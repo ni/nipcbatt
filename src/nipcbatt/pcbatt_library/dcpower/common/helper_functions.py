@@ -55,7 +55,9 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
     if value == 0.0:
         return f"0.{'0' * decimal_places}{unit}"
 
-    exp = math.floor(math.log10(abs(value)))
+    sci_str = f"{value:.{decimal_places}e}"
+    _, exp_str = sci_str.split("e")
+    exp = int(exp_str)
     eng_exp = 3 * (exp // 3)
     scaled = value / (10**eng_exp)
     prefix = _SI_PREFIXES.get(eng_exp, f"e{eng_exp}")
