@@ -4,7 +4,7 @@ import math
 
 import nidcpower
 
-from nipcbatt.pcbatt_library.dcpower.common.helper_function import (
+from nipcbatt.pcbatt_library.dcpower.common.helper_functions import (
     format_si_fixed_decimals as _si_fixed,
 )
 from nipcbatt.pcbatt_library.dcpower.dc_cv_source_and_measure.dc_cv_source_and_measure_data_types import (
