@@ -91,7 +91,7 @@ Library imports and migrations
       from nipcbatt import daq
       drvg = daq.DcVoltageGeneration()
 
-    See `Migration Guide for nipcbatt 2.0.0 <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/Migration%20Guide%20for%20nipcbatt%202.0.0.md>`_ 
+    See `Migration Guide for nipcbatt 2.x <https://github.com/ni/nipcbatt/blob/main/src/nipcbatt/docs/Migration%20Guide%20for%20nipcbatt%202.x.md>`_ 
     for a complete list of class mappings, and all available subpackage classes.
 
 
@@ -256,8 +256,8 @@ Usage
 1. Validation Examples
 ---------------------------
  
-Validation examples are created as examples for testing and validating a pair of
-libraries together, where one library is used for generation and another for measurement.
+Validation examples are created as examples for testing and validating one or more
+libraries together, covering generation, measurement, communication, or a combination of these.
 The validation examples can be found in this location `pcbatt_validation_examples <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_validation_examples>`_.
 
 The following images shows sample results for Signal Voltage Generation to Frequency Domain Voltage Measurement Validation example which

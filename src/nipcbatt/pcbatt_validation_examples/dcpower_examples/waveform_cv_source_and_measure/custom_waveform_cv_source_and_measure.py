@@ -78,7 +78,7 @@ def main():
 
     # ==================== Custom trigger parameters ============================
     custom_trigger_parameters = dcpower.TriggerParameters(
-        source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,  # Trigger will be waiting at each step for multiple values in sequence
+        source_trigger_behavior=dcpower.SourceTriggerBehavior.Disable_Source_Trigger,  # Trigger will be required at each step for multiple values in voltage sequence, if trigger is enabled
         start_source_name="",
         export_event=dcpower.ExportEvent.NONE,
         event_signal_to_export=dcpower.EventSignalToExport.Source_Complete_Event,

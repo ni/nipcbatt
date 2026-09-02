@@ -225,14 +225,14 @@ class WaveformVoltageSourceAndMeasure(BuildingBlockUsingNIDCPower):
                 }
             )
 
-            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source and wait for event completion after commit
+            # For CONFIGURE_SOURCE_AND_MEASURE — initiate source after commit
             if (
                 configuration.execution_settings.execution_type
                 == MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE
             ):
                 self.session.initiate()
 
-        # For START_SOURCE_ONLY, initiate and wait for event completion
+        # For START_SOURCE_ONLY, initiate source
         if (
             configuration.execution_settings.execution_type
             == MeasurementExecutionType.START_SOURCE_ONLY
