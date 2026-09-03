@@ -2,7 +2,7 @@
  
 import unittest
  
-from nipcbatt.pcbatt_library.dcpower.common.helper_function import (
+from nipcbatt.pcbatt_library.dcpower.common.helper_functions import (
     format_si_fixed_decimals,
 )
  

@@ -25,7 +25,7 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
     """Formats a numeric value in SI engineering notation with a fixed number of decimal places.
 
     Scales the value to engineering notation (exponent divisible by 3),
-    applies the matching SI prefix, and appends the unit directly without a space.
+    applies the matching SI prefix, and appends the unit with a space separating it from the value.
 
     Args:
         value (float):
@@ -39,19 +39,19 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
         str: Formatted string with SI prefix and unit attached.
 
     Examples:
-        ``format_si_fixed_decimals(0.000958775, "A")`` → ``"958.775uA"``
+        ``format_si_fixed_decimals(0.000958775, "A")`` → ``"958.775 uA"``
 
-        ``format_si_fixed_decimals(9.696e-5, "W")`` → ``"96.960uW"``
+        ``format_si_fixed_decimals(9.696e-5, "W")`` → ``"96.960 uW"``
 
-        ``format_si_fixed_decimals(105.477, "Ohm")`` → ``"105.477Ohm"``
+        ``format_si_fixed_decimals(105.477, "Ohm")`` → ``"105.477 Ohm"``
 
-        ``format_si_fixed_decimals(0.0, "V")`` → ``"0.000V"``
+        ``format_si_fixed_decimals(0.0, "V")`` → ``"0.000 V"``
     """
     if math.isnan(value):
-        return f"NaN{unit}"
+        return f"NaN"
     if math.isinf(value):
         sign = "+" if value > 0 else "-"
-        return f"{sign}Inf{unit}"
+        return f"{sign}Inf"
     if value == 0.0:
         return f"0.{'0' * decimal_places}{unit}"
 
@@ -61,4 +61,4 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
     eng_exp = 3 * (exp // 3)
     scaled = value / (10**eng_exp)
     prefix = _SI_PREFIXES.get(eng_exp, f"e{eng_exp}")
-    return f"{scaled:.{decimal_places}f}{prefix}{unit}"
+    return f"{scaled:.{decimal_places}f} {prefix}{unit}"
