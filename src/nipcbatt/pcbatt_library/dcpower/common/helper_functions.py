@@ -53,7 +53,7 @@ def format_si_fixed_decimals(value: float, unit: str, decimal_places: int = 3) -
         sign = "+" if value > 0 else "-"
         return f"{sign}Inf"
     if value == 0.0:
-        return f"0.{'0' * decimal_places}{unit}"
+        return f"0.{'0' * decimal_places} {unit}"
 
     sci_str = f"{value:.{decimal_places}e}"
     _, exp_str = sci_str.split("e")
