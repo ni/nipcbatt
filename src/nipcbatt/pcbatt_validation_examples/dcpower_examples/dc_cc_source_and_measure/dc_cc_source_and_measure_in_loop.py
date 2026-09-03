@@ -53,7 +53,7 @@ def main():
         )
 
     # ======================= Initialize the SMU/PPS ====================
-    dc_current_source_and_measure.initialize(resource_name="SMU1/0")
+    dc_current_source_and_measure.initialize(resource_name="PPS1/0")
 
     # PcbattLogger logs NI-DCPower configurations and measurement results
     # to the mentioned file path.

@@ -1,8 +1,8 @@
-# Migration Guide for nipcbatt 2.0.0
+# Migration Guide for nipcbatt 2.x
 
-## Overview: Breaking Change in 2.0.0
+## Overview: Breaking Change in 2.x
 
-nipcbatt 2.0.0 introduces a **breaking change**: all classes must now be imported from **instrument-specific subpackages** instead of the top-level `nipcbatt` namespace.
+nipcbatt 2.x introduces a **breaking change**: all classes must now be imported from **instrument-specific subpackages** instead of the top-level `nipcbatt` namespace.
 
 ### Organization by Instrument Type
 - **`nipcbatt.daq`** — DAQmx-based generation/measurement (voltage, digital, temperature)
