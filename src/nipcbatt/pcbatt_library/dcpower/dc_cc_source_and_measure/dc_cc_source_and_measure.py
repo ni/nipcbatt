@@ -119,6 +119,7 @@ class DCCurrentSourceAndMeasure(BuildingBlockUsingNIDCPower):
             MeasurementExecutionType.CONFIGURE_SOURCE_AND_MEASURE,
             MeasurementExecutionType.CONFIGURE_ONLY,
         ]:
+            self.session.channels[self._channel_name].abort()
             self.configure_range_and_terminal(
                 current_channel_settings=configuration.current_channel_settings
             )
