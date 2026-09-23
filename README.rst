@@ -19,9 +19,7 @@ operations. The package is implemented in Python, as a highly object-oriented pa
 Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
 Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
 
-**nipcbatt** package is focused on NI DCPOWER, DAQ, DMM, and SWITCH devices, and compatible with NI PC Based DAQ, CompactDAQ, NI-DMM,
-TestScale and high level enough to be applicable or scalable for other instruments with similar functionality and 
-resources on any platform.
+**nipcbatt** package is focused on  NI PXI Programmable Power Supplies (PPS) and Source Measure Units (SMUs), NI PXI and PC-based DAQ devices, CompactDAQ systems, NI PXI and PCIe Digital Multimeters (DMMs), NI Switch modules, TestScale platform and high level enough to be applicable or scalable for other instruments with similar functionality and resources on any platform.
 
 Documentation
 -------------
@@ -42,19 +40,19 @@ Supported Features
      - Description
      - Acronym
    * - `DCPOWER Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dcpower>`_
-     - A collection of methods to perform DC power measurements using NI-DCPOWER driver.
+     - A collection of methods to perform power, source/sink and measurements using NI-DCPOWER driver. 
      - dcpower
    * - `DMM Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dmm>`_
      - A collection of methods to perform DMM measurements using NI-DMM driver.
      - dmm
    * - `DAQ Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/daq>`_
-     - A collection of methods to perform measurements using NI-DAQmx driver.
+     - A collection of methods to perform generations and measurements using NI-DAQmx driver. 
      - daq
    * - `SWITCH Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/switch>`_
      - A collection of methods to control Switch hardware, and switch paths using the NI-SWITCH driver.
      - switch
    * - `DMM Scan Measurement Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/dmm_scan>`_
-     - A collection of methods to perform measurements using NI-DMM and NI-SWITCH driver.
+     - A collection of methods to perform multiple measurements in a scan using NI-DMM and NI-SWITCH driver. 
      - dmm_scan
    * - `Communication Libraries <https://github.com/ni/nipcbatt/tree/main/src/nipcbatt/pcbatt_library/communications>`_
      - A collection of methods to perform communication operations (for example I2C, SPI, and serial) using NI-845x and NI-VISA drivers.
@@ -113,7 +111,7 @@ Visit `ni.com/downloads <http://www.ni.com/downloads/>`_  or visit `NI Package M
 Supported Hardware
 ------------------
 
-- DCPOWER devices compatible with the NI-DCPOWER driver
+- PPS/SMU devices compatible with the NI-DCPOWER driver 
 - DMM devices compatible with the NI-DMM driver
 - Switch devices compatible with the NI-SWITCH driver
 - Any DAQmx devices with similar functionality and resources
