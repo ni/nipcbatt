@@ -16,8 +16,8 @@ The **nipcbatt** package provides APIs (Application Programming Interface) for i
 the NI-DCPOWER, NI-DMM, NI-SWITCH, NI-DAQmx driver and with LabVIEW runtime to perform measurement, generation and communication 
 operations. The package is implemented in Python, as a highly object-oriented package.
 
-Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Library, Automation Examples,
-Test Demo Example developed in Python along with Documentation for PCB Assembly electrical functional test.
+Python PCB Assembly Test Toolkit or **nipcbatt** is a collection of Measurement Libraries, Automation Examples,
+Test Demo Examples developed in Python along with Documentation for PCB Assembly electrical functional test.
 
 **nipcbatt** package is focused on  NI PXI Programmable Power Supplies (PPS) and Source Measure Units (SMUs), NI PXI and PC-based DAQ devices, CompactDAQ systems, NI PXI and PCIe Digital Multimeters (DMMs), NI Switch modules, TestScale platform and high level enough to be applicable or scalable for other instruments with similar functionality and resources on any platform.
 
