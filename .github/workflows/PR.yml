@@ -5,8 +5,16 @@ on:
     branches:
       - main
       - 'releases/**'
+  push:
+    branches:
+      - main
+      - 'releases/**'
   workflow_call:
   workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
