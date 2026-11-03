@@ -19,9 +19,9 @@ import nipcbatt
 from nipcbatt import daq
 
 # constants used across tests
-CHANNEL = "TS1_DIO/port0/line0:7"
+CHANNEL = "Simulated_TS1_DIO/port0/line0:7"
 CLOCK_SOURCE = "OnboardClock"
-TRIGGER_SOURCE = "/TS1_Core/PFI0"
+TRIGGER_SOURCE = "/Simulated_TS1_Core/PFI0"
 
 
 class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
@@ -94,12 +94,6 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
             trigger_type=nidaqmx.constants.TriggerType.DIGITAL_EDGE,
         )
 
-        test_config = daq.DynamicDigitalPatternGenerationConfiguration(
-            timing_parameters=timing_params,
-            digital_start_trigger_parameters=trigger_params,
-            pulse_signal=np.ndarray([0])
-        )
-
         gen = daq.DynamicDigitalPatternGeneration()
         gen.initialize(CHANNEL)
 
@@ -109,6 +103,12 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
             n = 11
 
         pattern = np.zeros((n, 10), dtype="uint32")
+
+        test_config = daq.DynamicDigitalPatternGenerationConfiguration(
+            timing_parameters=timing_params,
+            digital_start_trigger_parameters=trigger_params,
+            pulse_signal=pattern
+        )
 
         gen.configure_and_generate(test_config)
         gen.close()
@@ -206,7 +206,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
             test_config = daq.DynamicDigitalPatternGenerationConfiguration(
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
-                pulse_signal=np.array([0])
+                pulse_signal=signal
             )
 
             gen.initialize(channel_expression=CHANNEL)
@@ -241,7 +241,7 @@ class TestIntegrationDynamicDigitalPatternGeneration(unittest.TestCase):
             test_config = daq.DynamicDigitalPatternGenerationConfiguration(
                 timing_parameters=timing_params,
                 digital_start_trigger_parameters=trigger_params,
-                pulse_signal=np.array([0])
+                pulse_signal=signal
             )
 
             gen = daq.DynamicDigitalPatternGeneration()

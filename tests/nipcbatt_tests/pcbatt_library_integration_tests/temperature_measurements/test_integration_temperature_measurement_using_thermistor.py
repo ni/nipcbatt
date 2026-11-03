@@ -9,25 +9,26 @@ import nidaqmx.constants
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+'''from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterDcRmsVoltageMeasurement,
 )
 from nipcbatt.pcbatt_library_core._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx_if_not_installed,
-)
+)'''
 
-TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS_WITH_BETA_COEFFICIENT = nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS_WITH_BETA_COEFFICIENT = daq.TemperatureThermistorRangeAndTerminalParameters(
     terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
     temperature_minimum_value_celsius_degrees=0.0,
     temperature_maximum_value_celsius_degrees=100.0,
     voltage_excitation_value_volts=6.0,
     thermistor_resistor_ohms=9980,
     steinhart_hart_equation_option=(
-        nipcbatt.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE
+        daq.SteinhartHartEquationOption.USE_COEFFICIENT_BETA_AND_SENSOR_RESISTANCE
     ),
-    coefficients_steinhart_hart_parameters=nipcbatt.DEFAULT_COEFFICIENTS_STEINHART_HART_PARAMETERS,
+    coefficients_steinhart_hart_parameters=daq.DEFAULT_COEFFICIENTS_STEINHART_HART_PARAMETERS,
     beta_coefficient_and_sensor_resistance_parameters=(
-        nipcbatt.BetaCoefficientAndSensorResistanceParameters(
+        daq.BetaCoefficientAndSensorResistanceParameters(
             coefficient_steinhart_hart_beta_kelvins=3720.0,
             sensor_resistance_ohms=10000.0,
         )
@@ -35,22 +36,22 @@ TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS_WITH_BETA_COEFFICIENT = nip
 )
 
 TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS_WITH_COEFFICIENTS = (
-    nipcbatt.TemperatureThermistorRangeAndTerminalParameters(
+    daq.TemperatureThermistorRangeAndTerminalParameters(
         terminal_configuration=nidaqmx.constants.TerminalConfiguration.RSE,
         temperature_minimum_value_celsius_degrees=0.0,
         temperature_maximum_value_celsius_degrees=100.0,
         voltage_excitation_value_volts=6.0,
         thermistor_resistor_ohms=9980,
         steinhart_hart_equation_option=(
-            nipcbatt.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS
+            daq.SteinhartHartEquationOption.USE_STEINHART_HART_COEFFICIENTS
         ),
-        coefficients_steinhart_hart_parameters=nipcbatt.CoefficientsSteinhartHartParameters(
+        coefficients_steinhart_hart_parameters=daq.CoefficientsSteinhartHartParameters(
             coefficient_steinhart_hart_a=0.001295361,
             coefficient_steinhart_hart_b=0.0002343159,
             coefficient_steinhart_hart_c=1.018703e-7,
         ),
         beta_coefficient_and_sensor_resistance_parameters=(
-            nipcbatt.DEFAULT_BETA_OEFFICIENT_AND_SENSOR_RESISTANCE_PARAMETERS
+            daq.DEFAULT_BETA_OEFFICIENT_AND_SENSOR_RESISTANCE_PARAMETERS
         ),
     )
 )
@@ -79,7 +80,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx_if_not_installed(_InterpreterDcRmsVoltageMeasurement)
+        #_replace_daqmx_if_not_installed(_InterpreterDcRmsVoltageMeasurement)
 
     @classmethod
     def tearDownClass(cls):

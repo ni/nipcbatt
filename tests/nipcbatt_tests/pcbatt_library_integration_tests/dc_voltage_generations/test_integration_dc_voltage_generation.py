@@ -52,7 +52,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
 
         generation = daq.DcVoltageGeneration()
         generation.initialize(
-            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0"
+            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ao0"
         )
         generation.generate_voltage(output_voltages=[0.8])
         generation.close()
@@ -83,7 +83,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
 
         generation = daq.DcVoltageGeneration()
         generation.initialize(
-            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
+            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ao0:1"
         )
 
         # With the instance of DCVoltageGeneration Initialized, test for configure and generate in loop with different Voltage ranges  # noqa: W505 - doc line too long (133 > 100 characters) (auto-generated noqa)
@@ -104,7 +104,7 @@ class TestIntegrationDcVoltageGeneration(unittest.TestCase):
 
         generation = daq.DcVoltageGeneration()
         generation.initialize(
-            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/ao0:1"
+            analog_output_channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ao0:1"
         )
         generation.configure_all_channels(
             parameters=daq.DEFAULT_VOLTAGE_GENERATION_CHANNEL_PARAMETERS,

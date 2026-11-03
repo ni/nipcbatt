@@ -10,12 +10,13 @@ from varname import nameof
 from nipcbatt.pcbatt_library.daq.static_digital_state_measurements.static_digital_state_measurement import (
     StaticDigitalStateMeasurement,
 )
-from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
+
+'''from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _MockInterpreter,
 )
 from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
-)
+)'''
 
 
 class TestStaticDigitalStateMeasurement(unittest.TestCase):
@@ -42,7 +43,7 @@ class TestStaticDigitalStateMeasurement(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx(_MockInterpreter)
+        #_replace_daqmx(_MockInterpreter)
 
     @classmethod
     def tearDownClass(cls):
