@@ -120,7 +120,6 @@ class TimeDomainMeasurement(BuildingBlockUsingDAQmx):
                 data, configuration.measurement_options.measurement_analysis_requirement
             )
 
-        self.task.start()
         return None
 
     def configure_all_channels(self, parameters: VoltageRangeAndTerminalParameters):

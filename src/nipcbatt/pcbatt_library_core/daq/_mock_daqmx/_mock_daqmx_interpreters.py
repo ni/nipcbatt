@@ -8,7 +8,7 @@ import nidaqmx.constants
 import nidaqmx.errors
 import nidaqmx.utils
 from nidaqmx._library_interpreter import LibraryInterpreter
-from nidaqmx._task_modules.channels.channel import ChannelType
+from nidaqmx.constants import ChannelType
 
 from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_constants import (
     _DAQMX_ATTRIBUTES,
@@ -474,16 +474,58 @@ class _MockInterpreter(LibraryInterpreter):
             channel[_ConstantsForMockDAQmx.CHANNEL_NAME] = lines
             channel[_ConstantsForMockDAQmx.CHANNEL_TYPE] = ChannelType.DIGITAL_INPUT.value
             self._digital_input_channels[lines] = channel
+
+            # Also register individual lines when a range is used.
+            # Example:
+            # Simulated_TS1_DIO/port0/line0:7
+            if ":" in lines:
+                start_expr = lines.split(":")[0]
+
+                prefix = start_expr.rsplit("line", 1)[0]
+                start_line = int(start_expr.split("line")[-1])
+                end_line = int(lines.split(":")[-1])
+
+                for i in range(start_line, end_line + 1):
+                    line_name = f"{prefix}line{i}"
+
+                    line_channel = {}
+                    line_channel[
+                        _ConstantsForMockDAQmx.CHANNEL_NAME
+                    ] = line_name
+                    line_channel[
+                        _ConstantsForMockDAQmx.CHANNEL_TYPE
+                    ] = ChannelType.DIGITAL_INPUT.value
+
+                    self._digital_input_channels[line_name] = line_channel
         else:
             lines_names = nidaqmx.utils.unflatten_channel_string(lines)
+
+            # Expand DAQmx line ranges such as:
+            # Sim_PXIeDAQ/port0/line0:7
+            if len(lines_names) == 1 and "/line" in lines and ":" in lines:
+                start_expr = lines.split(":")[0]
+
+                prefix = start_expr.rsplit("line", 1)[0]
+                start_line = int(start_expr.split("line")[-1])
+                end_line = int(lines.split(":")[-1])
+
+                lines_names = [
+                    f"{prefix}line{i}"
+                    for i in range(start_line, end_line + 1)
+                ]
+
             for line_name in lines_names:
                 channel = (
                     self._digital_input_channels[line_name]
                     if line_name in self._digital_input_channels
                     else {}
                 )
+
                 channel[_ConstantsForMockDAQmx.CHANNEL_NAME] = line_name
-                channel[_ConstantsForMockDAQmx.CHANNEL_TYPE] = ChannelType.DIGITAL_INPUT.value
+                channel[_ConstantsForMockDAQmx.CHANNEL_TYPE] = (
+                    ChannelType.DIGITAL_INPUT.value
+                )
+
                 self._digital_input_channels[line_name] = channel
 
     def create_do_chan(self, task, lines, name_to_assign_to_lines, line_grouping):
@@ -988,17 +1030,17 @@ class _MockInterpreter(LibraryInterpreter):
         # if analog input channels list is not empty.
         if self._analog_input_channels:
             # gets the settings of the first analog input channel.
-            channel_settings = next(self._analog_input_channels.values())
+            channel_settings = next(iter(self._analog_input_channels.values()))
         elif self._analog_output_channels:
-            channel_settings = next(self._analog_output_channels.values())
+            channel_settings = next(iter(self._analog_output_channels.values()))
         elif self._digital_input_channels:
-            channel_settings = next(self._digital_input_channels.values())
+            channel_settings = next(iter(self._digital_input_channels.values()))
         elif self._digital_output_channels:
-            channel_settings = next(self._digital_output_channels.values())
+            channel_settings = next(iter(self._digital_output_channels.values()))
         elif self._counter_input_channels:
-            channel_settings = next(self._counter_input_channels.values())
+            channel_settings = next(iter(self._counter_input_channels.values()))
         elif self._counter_output_channels:
-            channel_settings = next(self._counter_output_channels.values())
+            channel_settings = next(iter(self._counter_output_channels.values()))
         else:
             raise LookupError(_ConstantsForMockDAQmx.NO_CHANNEL_DEFINED.value)
 
@@ -1006,32 +1048,32 @@ class _MockInterpreter(LibraryInterpreter):
 
     def _assign_attribute_value_to_channels(self, attribute: int, value: Any):
         # sets the setting to all analog input channels.
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._analog_input_channels, attribute, value
         )
 
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._analog_output_channels, attribute, value
         )
 
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._digital_input_channels, attribute, value
         )
 
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._digital_output_channels, attribute, value
         )
 
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._counter_input_channels, attribute, value
         )
 
-        _MockInterpreter._assign_attribute_value_to_channels(
+        _MockInterpreter._assign_attribute_value_to_channel_collection(
             self._counter_output_channels, attribute, value
         )
 
     @staticmethod
-    def _assign_attribute_value_to_channels(  # noqa: F811 - redefinition of unused '_assign_attribute_value_to_channels' from line 1007 (auto-generated noqa)
+    def _assign_attribute_value_to_channel_collection(  # noqa: F811 - redefinition of unused '_assign_attribute_value_to_channels' from line 1007 (auto-generated noqa)
         channels: Dict[str, Dict], attribute: int, value: Any
     ):
         for channel_name in channels:

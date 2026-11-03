@@ -370,7 +370,7 @@ class DmmScanPMPS(BuildingBlockUsingNIDMM, BuildingBlockUsingNISWITCH):
         # Return measurement result.
         return output
 
-    def close(self, resource_handles: ScanResources) -> None:
+    def close(self, resource_handles: ScanResources | None = None) -> None:
         """This method disconnects, closes, and releases the resources.
 
         Args:

@@ -73,7 +73,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
 
         with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
-                channel_expression="TS1_DIO/port0/line0:7",
+                channel_expression="Simulated_TS1_DIO/port0/line0:7",
             )
             timing_parameters = nipcbatt.DynamicDigitalPatternTimingParameters(
                 sample_clock_source="OnboardClock",
@@ -83,7 +83,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-                digital_start_trigger_source="/TS1_Core/PFI0",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
                 digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
             configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
@@ -108,7 +108,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
 
         with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
-                channel_expression="TS1_DIO/port0/line0:1",
+                channel_expression="Simulated_TS1_DIO/port0/line0:1",
             )
             timing_parameters = nipcbatt.DynamicDigitalPatternTimingParameters(
                 sample_clock_source="OnboardClock",
@@ -118,7 +118,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-                digital_start_trigger_source="/TS1_Core/PFI0",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
                 digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
             configuration = daq.DynamicDigitalPatternMeasurementConfiguration(
@@ -144,7 +144,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
 
         with daq.DynamicDigitalPatternMeasurement() as meas:
             meas.initialize(
-                channel_expression="TS1_DIO/port0/line0:7",
+                channel_expression="Simulated_TS1_DIO/port0/line0:7",
             )
             timing_parameters = nipcbatt.DynamicDigitalPatternTimingParameters(
                 sample_clock_source="OnboardClock",
@@ -154,7 +154,7 @@ class TestIntegrationDynamicDigitalPatternMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_TRIGGER_TYPE,
-                digital_start_trigger_source="/TS1_Core/PFI0",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
                 digital_start_trigger_edge=daq.ConstantsForDynamicDigitalPatternMeasurement.DEFAULT_DIGITAL_START_TRIGGER_EDGE,
             )
             configuration = daq.DynamicDigitalPatternMeasurementConfiguration(

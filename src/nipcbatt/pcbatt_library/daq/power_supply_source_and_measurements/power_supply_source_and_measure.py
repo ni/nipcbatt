@@ -104,7 +104,6 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
                 data, configuration.measurement_options.measurement_analysis_requirement
             )
 
-        self.task.start()
         return None
 
     def configure_all_channels(self, parameters: PowerSupplySourceAndMeasureTerminalParameters):
@@ -231,6 +230,12 @@ class PowerSupplySourceAndMeasure(BuildingBlockUsingDAQmx):
                 that specifies the measurement results.
         """
         Guard.is_not_none(measurement_data, nameof(measurement_data))
+
+        if (
+            measurement_analysis_requirement
+            == MeasurementAnalysisRequirement.SKIP_ANALYSIS
+        ):
+            return None
 
         # extract & convert sample rate to delta_t
 

@@ -41,8 +41,13 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
     """  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (118 > 100 characters) (auto-generated noqa)
 
     # define class variable as there are two seperate tasks for counter and timer
-    counter_task = nidaqmx.Task()
-    timer_task = nidaqmx.Task()
+    # counter_task = nidaqmx.Task()
+    # timer_task = nidaqmx.Task()
+    def __init__(self):
+        super().__init__()
+
+        self.counter_task = nidaqmx.Task()
+        self.timer_task = nidaqmx.Task()
 
     def initialize(
         self,
@@ -145,11 +150,11 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
             DigitalEdgeCountMeasurementResultData | None: An instance of `DigitalEdgeCountMeasurementResultData`
             or `None` if no measure was performed.
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
-
+        
         if (
-            configuration.measurement_options.execution_option
+            configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
+            or configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_ONLY
         ):
             self.configure_counter_channel(
@@ -165,9 +170,9 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
             self.configure_trigger(configuration.trigger_parameters)
 
         if (
-            configuration.measurement_options.execution_option
+            configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
+            or configuration.measurement_options
             == MeasurementExecutionType.MEASURE_ONLY
         ):
             return self.acquire_data_for_measurement_analysis()
@@ -246,16 +251,40 @@ class DigitalEdgeCountMeasurementUsingHardwareTimer(BuildingBlockUsingDAQmx):
         )
         return decm_result
 
+    @property
+    def is_task_initialized(self) -> bool:
+        try:
+            return (
+                len(self.counter_task.channel_names) > 0
+                or len(self.timer_task.channel_names) > 0
+            )
+        except Exception:
+            return False
+
     def close(self):
         """Closes the task and returns the hardware resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
         if not self.is_task_initialized:
             return
 
-        # stop and close DAQmx counter_task
-        self.counter_task.stop()
+        try:
+            self.counter_task.stop()
+        except Exception:
+            pass
+
         self.counter_task.close()
 
-        # stop and close DAQmx timer_task
-        self.timer_task.wait_until_done()
-        self.timer_task.stop()
+        try:
+            self.timer_task.wait_until_done()
+        except Exception:
+            pass
+
+        try:
+            self.timer_task.stop()
+        except Exception:
+            pass
+
         self.timer_task.close()
+
+        # Create fresh tasks for next initialize()
+        self.counter_task = nidaqmx.Task()
+        self.timer_task = nidaqmx.Task()
