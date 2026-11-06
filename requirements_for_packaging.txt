@@ -7,11 +7,11 @@ executing==2.3.0
 ipython==8.17.2
 jedi==0.19.1
 matplotlib-inline==0.1.6
-packaging==23.2
+packaging==26.3
 parso==0.8.3
 prompt-toolkit==3.0.40
 pure-eval==0.2.2
-Pygments==2.16.1
+Pygments==2.21.0
 pyproject_hooks==1.0.0
 six==1.16.0
 stack-data==0.6.3
