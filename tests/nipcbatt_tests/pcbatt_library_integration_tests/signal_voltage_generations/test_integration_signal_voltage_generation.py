@@ -172,7 +172,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
         )
         generation.configure_trigger(parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS)
         generation.route_sample_clock_signal_to_terminal(
-            terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"
+            terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/PFI0"
         )
         generation.generate_voltage_multi_tones_waveform(
             signal_parameters=daq.DEFAULT_MULTI_TONE_GENERATION_PARAMETERS,
@@ -195,7 +195,7 @@ class TestIntegrationSignalVoltageGeneration(unittest.TestCase):
             parameters=daq.DEFAULT_SIGNAL_VOLTAGE_GENERATION_TIMING_PARAMETERS
         )
         generation.route_start_trigger_signal_to_terminal(
-            terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod1/PFI0"
+            terminal_name="/NI_PCBA_Measurement_Simulated_TestScale_TS1Mod3/PFI0"
         )
         generation.configure_trigger(parameters=daq.DEFAULT_DIGITAL_START_TRIGGER_PARAMETERS)
         generation.generate_voltage_square_waveform(

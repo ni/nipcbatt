@@ -8,12 +8,13 @@ import unittest
 from varname import nameof
 
 import nipcbatt
-from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
+from nipcbatt import daq
+'''from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_interpreters import (
     _InterpreterDcRmsVoltageMeasurement,
 )
 from nipcbatt.pcbatt_library_core.daq._mock_daqmx._mock_daqmx_utilities import (
     _replace_daqmx,
-)
+)'''
 
 
 class TestFrequencyDomainMeasurement(unittest.TestCase):
@@ -39,7 +40,7 @@ class TestFrequencyDomainMeasurement(unittest.TestCase):
 
         used_nidaqmx_version = importlib.metadata.version("nidaqmx")
         logging.debug("%s = %s", nameof(used_nidaqmx_version), used_nidaqmx_version)
-        _replace_daqmx(_InterpreterDcRmsVoltageMeasurement)
+        #_replace_daqmx(_InterpreterDcRmsVoltageMeasurement)
 
     @classmethod
     def tearDownClass(cls):
@@ -47,7 +48,7 @@ class TestFrequencyDomainMeasurement(unittest.TestCase):
 
     def test_frequency_domain_measurement(self):
         """Checks if class FrequencyDomainMeasurement is ready to use"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (183 > 100 characters) (auto-generated noqa)
-        with nipcbatt.daq.FrequencyDomainMeasurement() as measurement:
+        with daq.FrequencyDomainMeasurement() as measurement:
             measurement.initialize(
                 analog_input_channel_expression=(
                     "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0"
@@ -55,7 +56,7 @@ class TestFrequencyDomainMeasurement(unittest.TestCase):
             )
 
             measurement.configure_and_measure(
-                configuration=nipcbatt.daq.DEFAULT_FREQUENCY_DOMAIN_MEASUREMENT_CONFIGURATION
+                configuration=daq.DEFAULT_FREQUENCY_DOMAIN_MEASUREMENT_CONFIGURATION
             )
             measurement.close()
 

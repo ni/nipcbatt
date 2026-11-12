@@ -55,7 +55,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
 
         with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
-                channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
+                channel_expression="Simulated_cDAQ_9217/ai0:3"
             )
 
             configuration = daq.TemperatureRtdMeasurementConfiguration(
@@ -84,7 +84,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
 
         with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
-                channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
+                channel_expression="Simulated_cDAQ_9217/ai0:3"
             )
 
             print(f"parameters = {daq.DEFAULT_TEMPERATURE_RTD_MEASUREMENT_CONFIGURATION}")
@@ -105,7 +105,7 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
 
         with daq.TemperatureMeasurementUsingRtd() as measurement:
             measurement.initialize(
-                channel_expression="NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3"
+                channel_expression="Simulated_cDAQ_9217/ai0:3"
             )
 
             configuration = daq.TemperatureRtdMeasurementConfiguration(
@@ -159,10 +159,9 @@ class TestIntegrationTemperatureMeasurementUsingRtd(unittest.TestCase):
         and MeasurementExecutionType.MEASURE_ONLY"""  # noqa: D202, D205, D209, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), Multi-line docstring closing quotes should be on a separate line (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (422 > 100 characters) (auto-generated noqa)
 
         channel_expressions = [
-            "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0:3",
-            "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai6",
-            "NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai0,"
-            + " NI_PCBA_Measurement_Simulated_TestScale_TS1Mod2/ai15",
+            "Simulated_cDAQ_9217/ai0:3",
+            "Simulated_cDAQ_9217/ai0",
+            "Simulated_cDAQ_9217/ai0, Simulated_cDAQ_9217/ai1",
         ]
         for channel_expression in channel_expressions:
             with daq.TemperatureMeasurementUsingRtd() as measurement:

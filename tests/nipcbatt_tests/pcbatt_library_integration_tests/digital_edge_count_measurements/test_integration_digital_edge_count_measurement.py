@@ -54,8 +54,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             with self.assertRaises(ValueError):
                 measurement.initialize(
                     measurement_channel_expression="",
-                    measurement_input_terminal_name="/TS1_Core/PFI6",
-                    timer_channel_expression="TS1_Core/ctr2",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+                    timer_channel_expression="Simulated_TS1_Core/ctr2",
                 )
 
             measurement.close()
@@ -70,8 +70,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             with self.assertRaises(ValueError):
                 measurement.initialize(
                     measurement_channel_expression=None,
-                    measurement_input_terminal_name="/TS1_Core/PFI6",
-                    timer_channel_expression="TS1_Core/ctr2",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+                    timer_channel_expression="Simulated_TS1_Core/ctr2",
                 )
 
             measurement.close()
@@ -85,9 +85,9 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS1_Core/ctr1",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
                     measurement_input_terminal_name="",
-                    timer_channel_expression="TS1_Core/ctr2",
+                    timer_channel_expression="Simulated_TS1_Core/ctr2",
                 )
 
             measurement.close()
@@ -101,9 +101,9 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS1_Core/ctr1",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
                     measurement_input_terminal_name=None,
-                    timer_channel_expression="TS1_Core/ctr2",
+                    timer_channel_expression="Simulated_TS1_Core/ctr2",
                 )
 
             measurement.close()
@@ -117,8 +117,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS1_Core/ctr1",
-                    measurement_input_terminal_name="/TS1_Core/PFI6",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
                     timer_channel_expression="",
                 )
 
@@ -133,8 +133,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS1_Core/ctr1",
-                    measurement_input_terminal_name="/TS1_Core/PFI6",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
                     timer_channel_expression=None,
                 )
 
@@ -150,9 +150,9 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS1_Core/ctr0",
-                measurement_input_terminal_name="/TS1_Core/PFI0",
-                timer_channel_expression="TS1_Core/ctr2",
+                measurement_channel_expression="Simulated_TS1_Core/ctr0",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI0",
+                timer_channel_expression="Simulated_TS1_Core/ctr2",
             )
 
             counter_channel_parameters = (
@@ -165,7 +165,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-                digital_start_trigger_source="/TS1_Core/PFI6",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI6",
                 digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
             )
             configuration = daq.DigitalEdgeCountHardwareTimerConfiguration(
@@ -191,9 +191,9 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS1_Core/ctr1",
-                measurement_input_terminal_name="/TS1_Core/PFI6",
-                timer_channel_expression="TS1_Core/ctr2",
+                measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+                timer_channel_expression="Simulated_TS1_Core/ctr2",
             )
 
             counter_channel_parameters = (
@@ -206,7 +206,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-                digital_start_trigger_source="/TS1_Core/PFI0",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
                 digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
             )
             configuration = daq.DigitalEdgeCountHardwareTimerConfiguration(
@@ -232,9 +232,9 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingHardwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS1_Core/ctr1",
-                measurement_input_terminal_name="/TS1_Core/PFI6",
-                timer_channel_expression="TS1_Core/ctr2",
+                measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
+                timer_channel_expression="Simulated_TS1_Core/ctr2",
             )
 
             counter_channel_parameters = (
@@ -247,7 +247,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             )
             trigger_parameters = nipcbatt.DigitalStartTriggerParameters(
                 trigger_select=nipcbatt.StartTriggerType.DIGITAL_TRIGGER,
-                digital_start_trigger_source="/TS1_Core/PFI0",
+                digital_start_trigger_source="/Simulated_TS1_Core/PFI0",
                 digital_start_trigger_edge=nidaqmx.constants.Edge.RISING,
             )
             configuration = daq.DigitalEdgeCountHardwareTimerConfiguration(
@@ -288,7 +288,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             with self.assertRaises(ValueError):
                 measurement.initialize(
                     measurement_channel_expression="",
-                    measurement_input_terminal_name="/TS3_Core/PFI6",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
                 )
 
             measurement.close()
@@ -303,7 +303,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
             with self.assertRaises(ValueError):
                 measurement.initialize(
                     measurement_channel_expression=None,
-                    measurement_input_terminal_name="/TS3_Core/PFI6",
+                    measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
                 )
 
             measurement.close()
@@ -317,7 +317,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS3_Core/ctr1",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
                     measurement_input_terminal_name="",
                 )
 
@@ -332,7 +332,7 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
         with daq.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             with self.assertRaises(ValueError):
                 measurement.initialize(
-                    measurement_channel_expression="TS3_Core/ctr1",
+                    measurement_channel_expression="Simulated_TS1_Core/ctr1",
                     measurement_input_terminal_name=None,
                 )
 
@@ -348,8 +348,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS3_Core/ctr1",
-                measurement_input_terminal_name="/TS3_Core/PFI6",
+                measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
             )
 
             counter_channel_parameters = (
@@ -384,8 +384,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS3_Core/ctr1",
-                measurement_input_terminal_name="/TS3_Core/PFI6",
+                measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
             )
 
             counter_channel_parameters = (
@@ -418,8 +418,8 @@ class TestIntegrationDigitalEdgeCountMeasurement(unittest.TestCase):
 
         with daq.DigitalEdgeCountMeasurementUsingSoftwareTimer() as measurement:
             measurement.initialize(
-                measurement_channel_expression="TS3_Core/ctr1",
-                measurement_input_terminal_name="/TS3_Core/PFI6",
+                measurement_channel_expression="Simulated_TS1_Core/ctr1",
+                measurement_input_terminal_name="/Simulated_TS1_Core/PFI6",
             )
             counter_channel_parameters = (
                 daq.DigitalEdgeCountMeasurementCounterChannelParameters(

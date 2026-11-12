@@ -12,24 +12,24 @@ from enum import Enum  # noqa: F401 - 'enum.Enum' imported but unused (auto-gene
 
 import nidaqmx
 from nidaqmx import utils  # noqa: F401 - 'nidaqmx.utils' imported but unused (auto-generated noqa)
-from nidaqmx._task_modules.ai_channel_collection import AIChannelCollection
-from nidaqmx._task_modules.ao_channel_collection import (  # noqa: F401 - 'nidaqmx._task_modules.ao_channel_collection.AOChannelCollection' imported but unused (auto-generated noqa)
+from nidaqmx.task.collections._ai_channel_collection import AIChannelCollection
+from nidaqmx.task.collections._ao_channel_collection import (  # noqa: F401 - 'nidaqmx._task_modules.ao_channel_collection.AOChannelCollection' imported but unused (auto-generated noqa)
     AOChannelCollection,
 )
-from nidaqmx._task_modules.channels.channel import (  # noqa: F401 - 'nidaqmx._task_modules.channels.channel.Channel' imported but unused (auto-generated noqa)
+from nidaqmx.task.channels import (  # noqa: F401 - 'nidaqmx._task_modules.channels.channel.Channel' imported but unused (auto-generated noqa)
     Channel,
 )
-from nidaqmx._task_modules.ci_channel_collection import CIChannelCollection
-from nidaqmx._task_modules.co_channel_collection import COChannelCollection
-from nidaqmx._task_modules.di_channel_collection import DIChannelCollection
-from nidaqmx._task_modules.do_channel_collection import DOChannelCollection
-from nidaqmx._task_modules.export_signals import (  # noqa: F401 - 'nidaqmx._task_modules.export_signals.ExportSignals' imported but unused (auto-generated noqa)
+from nidaqmx.task.collections._ci_channel_collection import CIChannelCollection
+from nidaqmx.task.collections._co_channel_collection import COChannelCollection
+from nidaqmx.task.collections._di_channel_collection import DIChannelCollection
+from nidaqmx.task.collections._do_channel_collection import DOChannelCollection
+from nidaqmx.task import (  # noqa: F401 - 'nidaqmx._task_modules.export_signals.ExportSignals' imported but unused (auto-generated noqa)
     ExportSignals,
 )
-from nidaqmx._task_modules.in_stream import InStream
-from nidaqmx._task_modules.out_stream import OutStream
-from nidaqmx._task_modules.timing import Timing
-from nidaqmx._task_modules.triggers import Triggers
+from nidaqmx.task import InStream
+from nidaqmx.task import OutStream
+from nidaqmx.task import Timing
+from nidaqmx.task.triggering import Triggers
 from nidaqmx.constants import ChannelType, Edge, UsageTypeAI
 from nidaqmx.errors import DaqError
 from varname import nameof
@@ -382,24 +382,58 @@ class MockDAQmxTask(nidaqmx.Task):
             def __init__(self):
                 self.num_channels = 1
 
-            def add_do_chan(self, exp):
+            def add_do_chan(
+                self,
+                lines,
+                name_to_assign_to_lines="",
+                line_grouping=None,
+            ):
                 return [DOChannel()]
 
         return DOChannel()
 
     @property
     def ci_channels(self):
-        class CI_Channels:  # noqa: N801 - class name 'CI_Channels' should use CapWords convention (auto-generated noqa)
+        class CI_Channels:
             def __init__(self):
                 self.channel_names = "Channel_One"
 
-            def add_ci_freq_chan(self, one, two):
-                self.channel_names = one
+            def add_ci_freq_chan(
+                self,
+                counter,
+                name_to_assign_to_channel="",
+                min_val=None,
+                max_val=None,
+                units=None,
+                edge=None,
+                meas_method=None,
+                meas_time=None,
+                divisor=None,
+            ):
+                self.channel_names = counter
+                return self
+
+            def add_ci_count_edges_chan(
+                self,
+                counter,
+                name_to_assign_to_channel="",
+                edge=None,
+                initial_count=0,
+                count_direction=None,
+            ):
+                self.channel_names = counter
+                return self
 
             def add_ci_semi_period_chan(
-                self, counter, name_to_assign_to_channel, min_val, max_val, units
+                self,
+                counter,
+                name_to_assign_to_channel="",
+                min_val=None,
+                max_val=None,
+                units=None,
             ):
-                self.channel_names = "Channel_One"
+                self.channel_names = counter
+                return self
 
         return CI_Channels()
 
@@ -546,6 +580,10 @@ class TestBuildingBlockUsingDAQmx(unittest.TestCase):
     """
 
     def setUp(self):
+        self._original_instrument_factory = (
+            BuildingBlockUsingDAQmx._instrument_factory
+        )
+
         nipcbatt.pcbatt_utilities.reflection_utilities.substitute_method(
             cls=BuildingBlockUsingDAQmx,
             method=instrument_factory,
@@ -553,7 +591,9 @@ class TestBuildingBlockUsingDAQmx(unittest.TestCase):
         )
 
     def tearDown(self):
-        pass
+        BuildingBlockUsingDAQmx._instrument_factory = (
+            self._original_instrument_factory
+        )
 
     @classmethod
     def setUpClass(cls):

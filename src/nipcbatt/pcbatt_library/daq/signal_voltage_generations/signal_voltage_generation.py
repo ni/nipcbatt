@@ -162,6 +162,8 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             self.task.out_stream, auto_start=True
         )
         writer.write_many_sample(samples_to_write)
+        self.task.wait_until_done()
+        self.task.stop()
 
     def generate_voltage_square_waveform(
         self,
@@ -204,6 +206,8 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             self.task.out_stream, auto_start=True
         )
         writer.write_many_sample(data=samples_to_write)
+        self.task.wait_until_done()
+        self.task.stop()
 
     def generate_voltage_multi_tones_waveform(
         self,
@@ -253,6 +257,8 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             self.task.out_stream, auto_start=True
         )
         writer.write_many_sample(data=samples_to_write)
+        self.task.wait_until_done()
+        self.task.stop()
 
     def configure_and_generate_sine_waveform(
         self,
@@ -352,7 +358,7 @@ class SignalVoltageGeneration(SynchronizationSignalRouting):
             return
         # Wait until done
         self.task.wait_until_done()
-        super().close()
         # Stop and close the DAQmx task
         self.task.stop()
         self.task.close()
+        super().close()

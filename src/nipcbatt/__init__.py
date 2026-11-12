@@ -114,3 +114,24 @@ from nipcbatt.pcbatt_library_core.pcbatt_library_messages import (
     PCBATTLibraryExceptionMessages,
 )
 from nipcbatt.pcbatt_utilities.guard_utilities import Guard
+
+from nipcbatt.pcbatt_library.daq import (
+    TemperatureThermistorMeasurementConfiguration,
+    TemperatureThermocoupleMeasurementConfiguration,
+    TemperatureThermocoupleMeasurementTerminalParameters,
+    DEFAULT_TEMPERATURE_THERMISTOR_MEASUREMENT_CONFIGURATION,
+    DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_CONFIGURATION,
+    TemperatureMeasurementResultData,
+    DEFAULT_TEMPERATURE_THERMISTOR_RANGE_AND_TERMINAL_PARAMETERS,
+    DEFAULT_TEMPERATURE_SAMPLE_CLOCK_TIMING_PARAMETERS,
+    DEFAULT_TEMPERATURE_THERMOCOUPLE_MEASUREMENT_TERMINAL_PARAMETERS,
+    DEFAULT_TEMPERATURE_DIGITAL_START_TRIGGER_PARAMETERS
+)
+
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_measurement_using_thermistor import (
+    TemperatureMeasurementUsingThermistor,
+)
+            
+from nipcbatt.pcbatt_library.daq.temperature_measurements.temperature_measurement_using_thermocouple import (
+    TemperatureMeasurementUsingThermocouple,
+)
