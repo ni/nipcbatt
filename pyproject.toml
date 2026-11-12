@@ -15,58 +15,57 @@ classifiers = [
     "Intended Audience :: Manufacturing",
     "Intended Audience :: Science/Research",
     "Operating System :: Microsoft :: Windows",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 packages = [{ include = "nipcbatt", from = "src" }]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
-numpy = "1.26.4"
-scipy = "1.13.0"
-nidaqmx = "0.9.0"
-nidmm = "1.4.7"
-niswitch = "1.4.7"
-nidcpower = "1.5.0"
-pyvisa = "1.14.1"
+python = ">=3.12,<3.14"
+numpy = "2.5.4"
+scipy = "1.18.1"
+nidaqmx = "1.6.0"
+nidmm = "1.5.0"
+niswitch = "1.5.0"
+nidcpower = "1.6.0"
+pyvisa = "1.16.2"
 colorama = "0.4.6"
-varname = "0.12.0"
-executing = "2.0.1"
-pandas = "2.2.2"
-matplotlib = "3.9.2"
+varname = "1.0.0"
+executing = "2.3.0"
+pandas = "3.0.6"
+matplotlib = "3.11.2"
 
 [tool.poetry.group.dev.dependencies]
-setuptools = "*"
-wheel = "*"
+setuptools = "^84.2.1"
+wheel = "^0.48.0"
 asttokens = "2.4.1"
 build = "1.0.3"
 colorama = "0.4.6"
 decorator = "5.1.1"
 deprecation = "2.1.0"
-executing = "2.0.1"
+executing = "2.3.0"
 ipython = "8.17.2"
 jedi = "0.19.1"
 matplotlib-inline = "0.1.6"
-packaging = "23.2"
+packaging = "26.3"
 parso = "0.8.3"
 prompt-toolkit = "3.0.40"
 pure-eval = "0.2.2"
-Pygments = "2.16.1"
+Pygments = "2.21.0"
 pyproject_hooks = "1.0.0"
 six = "1.16.0"
 stack-data = "0.6.3"
 toml = "0.10.2"
 traitlets = "5.13.0"
-varname = "0.12.0"
+varname = "1.0.0"
 wcwidth = "0.2.9"
-pytest = ">=6.2.3"
+pytest = ">=9.2.0"
 pytest-cov = "^4.1.0"
 mock = ">=4.0.3"
 pep8-naming = ">=0.13.2"
 parameterized = "^0.8.1"
 ni-python-styleguide = ">=0.4.6"
-black = "^23.3.0"
+black = "^26.10.1"
 flake8 = ">=5.0.4"
 
 
