@@ -85,7 +85,7 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
             )
 
         # reserve lines for the task
-        self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
+        #self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
 
     def close(self):
         """Closes the task and returns the hardware resources"""  # noqa: D415, W505 - First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (175 > 100 characters) (auto-generated noqa)
@@ -161,8 +161,6 @@ class DynamicDigitalPatternMeasurement(BuildingBlockUsingDAQmx):
                 trigger_source=parameters.digital_start_trigger_source,
                 trigger_edge=parameters.digital_start_trigger_edge,
             )
-
-        self.task.start()
 
     def acquire_data_for_measurement_analysis(self):
         """Acquires Data from DAQ channel for measurement of dynamic digital pattern

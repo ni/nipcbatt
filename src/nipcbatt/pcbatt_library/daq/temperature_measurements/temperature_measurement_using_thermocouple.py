@@ -97,7 +97,12 @@ class TemperatureMeasurementUsingThermocouple(TemperatureMeasurement):
             MeasurementExecutionType.CONFIGURE_AND_MEASURE,
             MeasurementExecutionType.MEASURE_ONLY,
         ):
+            self.task.start()
+
             data = self.acquire_data_for_measurement_analysis()
+
+            self.task.stop()
+
             return self.analyze_measurement_data(data)
 
         return None

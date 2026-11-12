@@ -100,7 +100,6 @@ class StaticDigitalPathGeneration(BuildingBlockUsingNISWITCH):
 
         # disconnect all connections
         self.session.disconnect_all()
-
         # close the session
         self.session.close()
 

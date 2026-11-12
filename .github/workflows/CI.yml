@@ -1,21 +1,30 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-      - 'releases/**'
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  security-events: read
+
 env:
-      PYTHON_VERSION: '3.10'
-      POETRY_VERSION: 1.8.4
-      ARCHITECTURE: 'x64'
+  POETRY_VERSION: 1.8.4
+  ARCHITECTURE: 'x64'
+  PYTHONPATH: ${{ github.workspace }}
+
+concurrency:
+  group: shared-windows-runner
+  cancel-in-progress: false
 
 jobs:
   build:
-    runs-on: [windows-latest]
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.12', '3.13']
 
     steps:
       - name: Check out code
@@ -25,37 +34,51 @@ jobs:
         uses: actions/setup-python@v5
         with:
           architecture: ${{ env.ARCHITECTURE }}
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: ${{ matrix.python-version }}
 
       - name: Check Windows architecture
-        shell: pwsh
-        run:  |
-          Write-Host "OS Architecture: $((Get-CimInstance Win32_OperatingSystem).OSArchitecture)" 
+        shell: powershell
+        run: |
+          Write-Host "OS Architecture: $((Get-CimInstance Win32_OperatingSystem).OSArchitecture)"
 
-      - uses: Gr1N/setup-poetry@v9
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install poetry==${{ env.POETRY_VERSION }}
+
+      - name: Install Dependencies
+        run: |
+          poetry install -vvv
+          poetry run pip install pip-audit
+
+      - name: Security Scan - pip-audit
+        continue-on-error: true
+        shell: powershell
+        run: |
+          poetry run pip-audit `
+            --format json `
+            --output pip-audit-report.json
+
+      - name: Upload pip-audit Report
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          poetry-version: ${{ env.POETRY_VERSION }}
-      - name: Check Poetry version
-        run: poetry --version
-
-      - name: Install the Package
-        run: poetry install -vvv
-      - name: Check Poetry version
-        run: poetry --version
+          name: pip-audit-report-py${{ matrix.python-version }}
+          path: pip-audit-report.json
+          if-no-files-found: ignore
 
       - name: Lint the Code
         continue-on-error: true
-        run: poetry run ni-python-styleguide lint
+        shell: powershell
+        run: |
+          poetry run python -m pip show ni-python-styleguide
 
-      - name: Run tests
-        run: poetry run pytest --verbose --doctest-modules --junitxml=junit/test-results-${{ env.PYTHON_VERSION }}.xml
-      - name: Upload pytest test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: pytest-results-${{env.PYTHON_VERSION }}
-          path: junit/test-results-${{ env.PYTHON_VERSION }}.xml
-        # Use always() to always run this step to publish test results when there are test failures
-        if: ${{ always() }}
+          if ($LASTEXITCODE -eq 0) {
+              poetry run ni-python-styleguide lint
+          }
+          else {
+              Write-Host "ni-python-styleguide not installed. Skipping lint."
+          }
 
       - name: Build Python package
         run: poetry build
@@ -63,7 +86,66 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: dist-py${{ matrix.python-version }}
           path: |
             dist
             !dist/**/*.md
+
+  unit-tests:
+    runs-on: [windows, shared, nipcbatt]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.12', '3.13', '3.14']
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          architecture: ${{ env.ARCHITECTURE }}
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up Poetry
+        uses: Gr1N/setup-poetry@v9
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+
+      - name: Point Poetry at the matrix Python
+        shell: powershell
+        run: poetry env use "$env:pythonLocation\python.exe"
+
+      - name: Install the package and HTML report plugin
+        run: |
+          poetry install -vvv
+          poetry run python -m pip install pytest pytest-html
+
+      - name: Create report directories
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path reports
+          New-Item -ItemType Directory -Force -Path junit
+
+      - name: Run nipcbatt unit tests
+        run: >-
+          poetry run pytest tests/nipcbatt_tests --verbose --doctest-modules
+          -o "norecursedirs=__pycache__ .*"
+          --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+          --html=reports/pytest-report-${{ matrix.python-version }}.html --self-contained-html
+
+      - name: Upload pytest test results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+
+      - name: Upload HTML test report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: nipcbatt-unit-test-html-report-${{ matrix.python-version }}
+          path: reports/pytest-report-${{ matrix.python-version }}.html

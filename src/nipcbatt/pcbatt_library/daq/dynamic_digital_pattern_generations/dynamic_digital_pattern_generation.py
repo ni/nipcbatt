@@ -79,7 +79,7 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
             self.task.do_channels.add_do_chan(channel_expression)
 
             # reserve resources for task
-            self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
+            #self.task.control(nidaqmx.constants.TaskMode.TASK_RESERVE)
 
     def configure_timing(self, parameters: DynamicDigitalPatternTimingParameters) -> None:
         """This method configures the timing of the generation
@@ -172,6 +172,8 @@ class DynamicDigitalPatternGeneration(SynchronizationSignalRouting):
         generation_time = self.generate(configuration.pulse_signal)
         data_out = DynamicDigitalPatternGenerationData(generation_time)
         self.task.start()
+        self.task.wait_until_done()
+        self.task.stop()
 
         return data_out
 

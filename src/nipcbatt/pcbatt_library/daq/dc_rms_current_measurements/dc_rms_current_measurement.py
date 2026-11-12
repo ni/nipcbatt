@@ -127,8 +127,7 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingDAQmx):
             return self.analyze_measurement_data(
                 data, configuration.measurement_options.measurement_analysis_requirement
             )
-
-        self.task.start()
+        
         return None
 
     def configure_all_channels(
@@ -241,6 +240,9 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingDAQmx):
             number_of_samples_per_channel=number_of_samples_per_channel,
         )
 
+        self.task.wait_until_done()
+        self.task.stop()
+
         return MeasurementData(data_to_read)
 
     def analyze_measurement_data(
@@ -309,6 +311,12 @@ class DcRmsCurrentMeasurement(BuildingBlockUsingDAQmx):
 
                 # Obtains the RMS value for the acquired samples for a channel and append to the list
                 calculated_rms_values.append(dc_rms_processing_result.rms_value)
+
+        if (
+            measurement_analysis_requirement
+            == MeasurementAnalysisRequirement.SKIP_ANALYSIS
+        ):
+            return None
 
         return DcRmsCurrentMeasurementResultData(
             waveforms=current_waveforms,

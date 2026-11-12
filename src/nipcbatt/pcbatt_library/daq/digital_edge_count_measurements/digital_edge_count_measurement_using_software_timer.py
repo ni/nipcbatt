@@ -99,9 +99,9 @@ class DigitalEdgeCountMeasurementUsingSoftwareTimer(BuildingBlockUsingDAQmx):
         """  # noqa: D202, D205, D415, W505 - No blank lines allowed after function docstring (auto-generated noqa), 1 blank line required between summary line and description (auto-generated noqa), First line should end with a period, question mark, or exclamation point (auto-generated noqa), doc line too long (105 > 100 characters) (auto-generated noqa)
 
         if (
-            configuration.measurement_options.execution_option
+            configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
+            or configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_ONLY
         ):
             self.configure_counter_channel(
@@ -116,9 +116,9 @@ class DigitalEdgeCountMeasurementUsingSoftwareTimer(BuildingBlockUsingDAQmx):
             )
 
         if (
-            configuration.measurement_options.execution_option
+            configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_AND_MEASURE
-            or configuration.measurement_options.execution_option
+            or configuration.measurement_options
             == MeasurementExecutionType.MEASURE_ONLY
         ):
             self.meas_option = configuration.measurement_options
@@ -161,7 +161,7 @@ class DigitalEdgeCountMeasurementUsingSoftwareTimer(BuildingBlockUsingDAQmx):
             An instance of `DigitalEdgeCountMeasurementResultData` that specifies the data acquired from DAQ channels.
         """  # noqa: W505 - doc line too long (118 > 100 characters) (auto-generated noqa)
         if (
-            configuration.measurement_options.execution_option
+            configuration.measurement_options
             == MeasurementExecutionType.CONFIGURE_AND_MEASURE
         ):
             time.sleep(configuration.timing_parameters.edge_counting_duration)
