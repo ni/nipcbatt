@@ -88,6 +88,7 @@ def save_traces(
 
     if config:
         f.write("inputs :\n")
+    
         for attribute in config.__dict__:
             element = getattr(config, attribute)
             f.write(attribute + ": " + str(element) + "\n")
