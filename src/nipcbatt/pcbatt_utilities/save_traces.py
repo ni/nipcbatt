@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Union
 
-import pkg_resources
+from importlib.metadata import version
 
 import nipcbatt
 from nipcbatt import daq
@@ -84,10 +84,11 @@ def save_traces(
         + " "
     )
     f.write(str(struct.calcsize("P") * 8) + "bits\n")
-    f.write("nipcbatt : " + pkg_resources.get_distribution("nipcbatt").version + "\n\n\n")
+    f.write("nipcbatt : " + version("nipcbatt") + "\n\n\n")
 
     if config:
         f.write("inputs :\n")
+    
         for attribute in config.__dict__:
             element = getattr(config, attribute)
             f.write(attribute + ": " + str(element) + "\n")
